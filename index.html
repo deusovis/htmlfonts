@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HTML Fonts | 100% Free Web Fonts & CSS Pairings</title>
     <meta name="description" content="Discover, compare, and instantly copy CSS for the best free web fonts. Use our Font VS Font tool to build perfect typography interfaces.">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKESX7E20P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TKESX7E20P');
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,7 +95,8 @@
                     </select>
                 </div>
             </div>
-            <div id="font-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
+            
+            <div id="font-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 min-h-[600px]"></div>
         </section>
 
         <section id="vs-tool" class="bg-gradient-to-b from-slate-50 to-indigo-50/50 border-y border-slate-200 py-24">
@@ -96,31 +106,43 @@
                     <p class="text-slate-500 font-medium mt-4">Select two fonts to compare legibility and styling side-by-side.</p>
                 </div>
                 <div class="bg-white rounded-3xl p-6 md:p-10 shadow-2xl border border-slate-200/60">
-                    <input type="text" id="vs-text" 
-                        value="Optimize your UI design with fast-loading free web fonts and scalable CSS typography." 
-                        onfocus="if(this.value===this.defaultValue) { this.value=''; this.dispatchEvent(new Event('input')); }" 
-                        onblur="if(this.value==='') { this.value=this.defaultValue; this.dispatchEvent(new Event('input')); }"
-                        class="w-full mb-10 px-6 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-xl text-center font-medium shadow-inner">
+                    
+                    <div class="flex flex-col md:flex-row gap-6 mb-10">
+                        <div class="w-full md:w-2/3">
+                            <input type="text" id="vs-text" 
+                                value="Optimize your UI design with fast-loading free web fonts." 
+                                onfocus="if(this.value===this.defaultValue) { this.value=''; this.dispatchEvent(new Event('input')); }" 
+                                onblur="if(this.value==='') { this.value=this.defaultValue; this.dispatchEvent(new Event('input')); }"
+                                class="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-xl text-center font-medium shadow-inner">
+                        </div>
+                        <div class="w-full md:w-1/3 flex flex-col justify-center bg-slate-50 border border-slate-200 rounded-xl px-6 py-2 shadow-inner">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">VS Size</span>
+                                <span id="vs-size-label" class="text-indigo-600 font-bold text-sm">48px</span>
+                            </div>
+                            <input type="range" id="vs-font-size" min="16" max="96" value="48" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
+                        </div>
+                    </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-10 divide-y md:divide-y-0 md:divide-x divide-slate-100">
                         <div class="md:pr-10 pt-6 md:pt-0 flex flex-col h-full">
                             <select id="vs-font-a" class="w-full p-4 mb-6 bg-white border-2 border-slate-100 rounded-xl font-black text-slate-800 text-lg shadow-sm cursor-pointer"></select>
-                            <div class="flex-grow flex items-center min-h-[120px]">
-                                <p id="vs-preview-a" class="text-5xl text-slate-900 break-words leading-tight">Loading...</p>
+                            <div class="flex-grow flex items-center min-h-[150px]">
+                                <p id="vs-preview-a" class="text-slate-900 break-words leading-tight" style="font-size: 48px;">Loading...</p>
                             </div>
                             <div class="mt-8 flex gap-3">
-                                <button onclick="copyVsCode('a', 'html')" class="flex-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold uppercase tracking-widest py-3 rounded-lg transition shadow-md">Copy HTML</button>
-                                <button onclick="copyVsCode('a', 'css')" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold uppercase tracking-widest py-3 rounded-lg transition shadow-md">Copy CSS</button>
+                                <button onclick="copyVsCode('a', 'html')" class="flex-1 bg-slate-900 hover:bg-slate-800 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest py-3 rounded-lg transition shadow-md">Copy HTML</button>
+                                <button onclick="copyVsCode('a', 'css')" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest py-3 rounded-lg transition shadow-md">Copy CSS</button>
                             </div>
                         </div>
                         <div class="md:pl-10 pt-6 md:pt-0 flex flex-col h-full">
                             <select id="vs-font-b" class="w-full p-4 mb-6 bg-white border-2 border-slate-100 rounded-xl font-black text-slate-800 text-lg shadow-sm cursor-pointer"></select>
-                            <div class="flex-grow flex items-center min-h-[120px]">
-                                <p id="vs-preview-b" class="text-5xl text-slate-900 break-words leading-tight">Loading...</p>
+                            <div class="flex-grow flex items-center min-h-[150px]">
+                                <p id="vs-preview-b" class="text-slate-900 break-words leading-tight" style="font-size: 48px;">Loading...</p>
                             </div>
                             <div class="mt-8 flex gap-3">
-                                <button onclick="copyVsCode('b', 'html')" class="flex-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold uppercase tracking-widest py-3 rounded-lg transition shadow-md">Copy HTML</button>
-                                <button onclick="copyVsCode('b', 'css')" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold uppercase tracking-widest py-3 rounded-lg transition shadow-md">Copy CSS</button>
+                                <button onclick="copyVsCode('b', 'html')" class="flex-1 bg-slate-900 hover:bg-slate-800 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest py-3 rounded-lg transition shadow-md">Copy HTML</button>
+                                <button onclick="copyVsCode('b', 'css')" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest py-3 rounded-lg transition shadow-md">Copy CSS</button>
                             </div>
                         </div>
                     </div>
@@ -128,18 +150,23 @@
             </div>
         </section>
 
-        <section id="editor-desk" class="bg-slate-900 text-white py-24">
-            <div class="max-w-4xl mx-auto px-6">
-                <div class="flex items-center space-x-4 mb-8">
-                    <div class="h-px flex-grow bg-slate-800"></div>
-                    <span id="date-badge" class="text-indigo-400 text-xs font-black uppercase tracking-[0.3em]">Latest Release</span>
-                    <div class="h-px flex-grow bg-slate-800"></div>
+        <section id="editor-desk" class="bg-slate-900 text-white py-24 relative overflow-hidden">
+            <div class="max-w-4xl mx-auto px-6 relative z-10">
+                <div class="flex justify-between items-end mb-8 border-b border-slate-800 pb-6">
+                    <div>
+                        <span id="date-badge" class="text-indigo-400 text-xs font-black uppercase tracking-[0.3em] block mb-2">Latest Release</span>
+                        <h3 class="text-4xl md:text-5xl font-black tracking-tight" id="tip-heading">Loading Editor's Pick...</h3>
+                    </div>
+                    <button onclick="shareLink(window.location.origin + '/tips/' + currentTipSlug + '.html')" class="hidden md:flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-300 px-4 py-2 rounded-lg text-xs font-bold uppercase transition">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-5.368m0 5.368l5.657 5.657m-5.657-5.657l5.657-5.657m0 11.314a3 3 0 105.368-5.368 3 3 0 00-5.368 5.368zm0-11.314a3 3 0 105.368-5.368 3 3 0 00-5.368 5.368z"/></svg>
+                        Bookmark
+                    </button>
                 </div>
-                <h3 class="text-4xl md:text-5xl font-black mb-6 tracking-tight" id="tip-heading">Loading Editor's Pick...</h3>
+                
                 <p class="text-slate-400 text-xl leading-relaxed mb-10" id="tip-text">Accessing archives...</p>
                 <div class="relative bg-slate-950 rounded-xl p-8 border border-slate-800 shadow-2xl">
                     <pre id="css-block" class="font-mono text-sm text-indigo-300 overflow-x-auto no-scrollbar">/* Loading snippet... */</pre>
-                    <button onclick="copyRaw('css-block')" class="absolute top-6 right-6 bg-white text-slate-950 px-4 py-2 rounded-lg text-xs font-black hover:bg-indigo-50 transition uppercase tracking-tighter">Copy Code</button>
+                    <button onclick="copyRaw('css-block')" class="absolute top-6 right-6 bg-white text-slate-950 px-4 py-2 rounded-lg text-xs font-black hover:bg-indigo-50 transition uppercase tracking-tighter shadow-md">Copy Code</button>
                 </div>
             </div>
         </section>
@@ -194,7 +221,8 @@
     </footer>
 
     <script>
-        const fonts = [
+        // MASSIVE 69 FONT DATABASE - Raw Data
+        let fontsRaw = [
             { name: "System Sans", type: "sans-serif", css: "system-ui, -apple-system, sans-serif", link: null },
             { name: "System Serif", type: "serif", css: "Charter, Cambria, serif", link: null },
             { name: "Arial", type: "sans-serif", css: "Arial, Helvetica, sans-serif", link: null },
@@ -266,6 +294,9 @@
             { name: "Crete Round", type: "serif", css: "'Crete Round', serif", link: "Crete+Round" }
         ];
 
+        // 1. Sort Fonts Alphabetically automatically
+        const fonts = fontsRaw.sort((a, b) => a.name.localeCompare(b.name));
+
         const loadedFonts = new Set();
         function loadFont(link) {
             if (!link || loadedFonts.has(link)) return;
@@ -273,15 +304,14 @@
             document.head.appendChild(el); loadedFonts.add(link);
         }
 
-        function renderGrid() {
-            const inputEl = document.getElementById('preview-text');
-            const val = inputEl.value || inputEl.defaultValue;
-            const sz = document.getElementById('font-size').value;
-            document.getElementById('size-label').innerText = sz + 'px';
+        // BUG FIX: Separation of DOM creation (createGrid) vs updating text (updateGridText)
+        let renderedFonts = [];
+        function createGrid() {
             const filter = document.getElementById('category-filter').value;
-            const grid = document.getElementById('font-grid'); grid.innerHTML = '';
+            const grid = document.getElementById('font-grid'); 
+            grid.innerHTML = ''; renderedFonts = [];
 
-            fonts.forEach(f => {
+            fonts.forEach((f, i) => {
                 if (filter !== 'all' && f.type !== filter) return;
                 loadFont(f.link);
                 const card = document.createElement('div');
@@ -293,33 +323,67 @@
                     const m = document.getElementById('code-modal'); m.classList.remove('hidden');
                     setTimeout(() => document.getElementById('modal-content').classList.add('modal-active'), 10);
                 };
+                
+                const previewP = document.createElement('p');
+                previewP.className = "whitespace-nowrap w-full text-slate-900";
+                previewP.style.fontFamily = f.css;
+                renderedFonts.push(previewP); // Save reference for fast updates
+
                 card.innerHTML = `<div class="flex justify-between items-center mb-6">
                         <span class="text-xs font-black text-slate-800">${f.name}</span>
                         <span class="text-[9px] font-black uppercase tracking-widest bg-slate-100 text-slate-500 px-2 py-1 rounded">${f.type}</span>
-                    </div>
-                    <div class="flex-grow overflow-hidden flex items-center"><p class="whitespace-nowrap w-full text-slate-900" style="font-family: ${f.css}; font-size: ${sz}px;">${val}</p></div>`;
+                    </div>`;
+                
+                const container = document.createElement('div');
+                container.className = "flex-grow overflow-hidden flex items-center";
+                container.appendChild(previewP);
+                card.appendChild(container);
                 grid.appendChild(card);
+            });
+            updateGridText(); // Apply current text/size
+        }
+
+        // Fast text/size update without DOM deletion (Fixes Scroll Jump)
+        function updateGridText() {
+            const inputEl = document.getElementById('preview-text');
+            const val = inputEl.value || inputEl.defaultValue;
+            const sz = document.getElementById('font-size').value;
+            document.getElementById('size-label').innerText = sz + 'px';
+            
+            renderedFonts.forEach(p => {
+                p.innerText = val;
+                p.style.fontSize = sz + 'px';
             });
         }
 
+        // ENGINE: VS Tool
         let vsData = { a: null, b: null };
         function initVSTool() {
             const selA = document.getElementById('vs-font-a'); const selB = document.getElementById('vs-font-b');
             fonts.forEach((f, i) => { selA.add(new Option(f.name, i)); selB.add(new Option(f.name, i)); });
-            selA.selectedIndex = 8; selB.selectedIndex = 9; // Default Inter vs Roboto
+            
+            // Auto-select Inter and Roboto safely via index finding
+            selA.selectedIndex = fonts.findIndex(f => f.name === 'Inter') || 0; 
+            selB.selectedIndex = fonts.findIndex(f => f.name === 'Roboto') || 1; 
             
             function updateVS() {
                 const inputEl = document.getElementById('vs-text');
                 const text = inputEl.value || inputEl.defaultValue;
+                const sz = document.getElementById('vs-font-size').value;
+                document.getElementById('vs-size-label').innerText = sz + 'px';
+
                 vsData.a = fonts[selA.value]; vsData.b = fonts[selB.value];
                 loadFont(vsData.a.link); loadFont(vsData.b.link);
-                document.getElementById('vs-preview-a').style.fontFamily = vsData.a.css;
-                document.getElementById('vs-preview-a').innerText = text;
-                document.getElementById('vs-preview-b').style.fontFamily = vsData.b.css;
-                document.getElementById('vs-preview-b').innerText = text;
+                
+                const pA = document.getElementById('vs-preview-a');
+                pA.style.fontFamily = vsData.a.css; pA.style.fontSize = sz + 'px'; pA.innerText = text;
+                
+                const pB = document.getElementById('vs-preview-b');
+                pB.style.fontFamily = vsData.b.css; pB.style.fontSize = sz + 'px'; pB.innerText = text;
             }
             selA.onchange = updateVS; selB.onchange = updateVS; 
             document.getElementById('vs-text').addEventListener('input', updateVS);
+            document.getElementById('vs-font-size').addEventListener('input', updateVS);
             updateVS();
         }
 
@@ -329,11 +393,15 @@
             navigator.clipboard.writeText(text); showToast();
         }
 
-        document.getElementById('preview-text').addEventListener('input', renderGrid);
-        document.getElementById('category-filter').addEventListener('change', renderGrid);
-        document.getElementById('font-size').addEventListener('input', renderGrid);
-        renderGrid(); initVSTool();
+        // UI Event Listeners
+        document.getElementById('preview-text').addEventListener('input', updateGridText);
+        document.getElementById('font-size').addEventListener('input', updateGridText);
+        document.getElementById('category-filter').addEventListener('change', createGrid);
+        
+        createGrid(); initVSTool();
 
+        // Utilities
+        let currentTipSlug = ""; // Used for sharing
         function closeModal(id) {
             document.getElementById('modal-content').classList.remove('modal-active');
             setTimeout(() => document.getElementById(id).classList.add('hidden'), 200);
@@ -343,22 +411,33 @@
             document.getElementById('info-body').innerText = body;
             document.getElementById('info-modal').classList.remove('hidden');
         }
-        function showToast() {
-            const t = document.getElementById('toast'); t.classList.remove('hidden');
+        function showToast(msg = 'Copied to clipboard! 🚀') {
+            const t = document.getElementById('toast'); 
+            t.innerText = msg;
+            t.classList.remove('hidden');
             setTimeout(() => t.classList.add('hidden'), 2500);
         }
         async function copyRaw(id) { await navigator.clipboard.writeText(document.getElementById(id).innerText); showToast(); }
+        async function shareLink(url) {
+            try {
+                await navigator.clipboard.writeText(url);
+                showToast('Link copied to clipboard! 🔗');
+            } catch (err) { console.error('Failed to copy', err); }
+        }
 
+        // Fetch SEO Engine Data
         fetch('content.json').then(r => r.json()).then(d => {
+            currentTipSlug = d.slug;
             document.getElementById('tip-heading').innerText = d.title;
             document.getElementById('tip-text').innerText = d.tip;
             document.getElementById('css-block').innerText = d.css_snippet;
             document.getElementById('date-badge').innerText = `Issue: ${d.date}`;
         }).catch(e=>{});
+        
         fetch('history.json').then(r => r.json()).then(h => {
             const list = document.getElementById('history-list');
-            h.slice(1, 11).forEach(item => {
-                if(item.slug) list.innerHTML += `<a href="/compare/${item.slug}.html" class="block bg-white p-6 rounded-3xl border border-slate-100 hover:shadow-2xl hover:border-indigo-400 transition-all cursor-pointer"><h4 class="text-xl font-black text-slate-800 tracking-tight">${item.title}</h4><p class="text-sm text-slate-500 mt-3 line-clamp-2 leading-relaxed">${item.tip}</p></a>`;
+            h.slice(1, 15).forEach(item => {
+                if(item.slug) list.innerHTML += `<div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm flex flex-col justify-between"><a href="/compare/${item.slug}.html" class="block hover:text-indigo-600 transition-all cursor-pointer"><h4 class="text-xl font-black text-slate-800 tracking-tight hover:text-indigo-600">${item.title}</h4><p class="text-sm text-slate-500 mt-3 line-clamp-2 leading-relaxed">${item.tip}</p></a><div class="mt-4 pt-4 border-t border-slate-50 flex justify-between items-center"><span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">${item.date}</span><button onclick="shareLink(window.location.origin + '/compare/${item.slug}.html')" class="text-indigo-500 text-[10px] font-bold uppercase tracking-widest hover:text-indigo-700">Share</button></div></div>`;
             });
         }).catch(e=>{});
     </script>
