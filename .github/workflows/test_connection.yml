@@ -1,11 +1,13 @@
 name: Manual API Connection Test
 
 on:
-  workflow_dispatch: # This allows you to click a button to run it
+  workflow_dispatch:
 
 jobs:
   test-apis:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Future-proofs for June 2026
     steps:
       - name: Checkout
         uses: actions/checkout@v4
