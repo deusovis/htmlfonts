@@ -90,7 +90,33 @@ try:
 except Exception as e:
     print(f"❌ Automation Error: {e}")
     exit(1)
+# ... [Previous code that saves history.json] ...
+    
+    # --- AUTOMATIC XML SITEMAP GENERATOR ---
+    print("Building XML Sitemap...")
+    sitemap_content = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    sitemap_content += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    
+    # Always include the homepage with high priority
+    sitemap_content += '  <url>\n    <loc>https://htmlfonts.com/</loc>\n    <changefreq>daily</changefreq>\n    <priority>1.0</priority>\n  </url>\n'
+    
+    # Loop through the history and create a sitemap entry for every single page
+    for item in history:
+        # Check if slug exists to prevent errors on older generated items
+        if 'slug' in item:
+            sitemap_content += f"  <url>\n    <loc>https://htmlfonts.com/tips/{item['slug']}.html</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n"
+        
+    sitemap_content += '</urlset>'
+    
+    # Save the sitemap file to the root of the repository
+    with open('sitemap.xml', 'w', encoding='utf-8') as f:
+        f.write(sitemap_content)
+        
+    print("✅ Sitemap generated successfully.")
 
+except Exception as e:
+    print(f"❌ Automation Error: {e}")
+    exit(1)
 # 3. Post to X
 try:
     client_x = tweepy.Client(
