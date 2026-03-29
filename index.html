@@ -1,19 +1,213 @@
-<section class="mt-16">
-    <h3 class="text-xl font-bold mb-6 text-slate-400 uppercase tracking-widest text-sm">Recent Font Insights</h3>
-    <div id="history-list" class="space-y-4">
-        </div>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Fonts | Modern Web Typography & CSS Snippets</title>
+    <meta name="description" content="Instant CSS typography snippets, variable font pairings, and daily AI-powered web design insights for developers.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "HTML Fonts Developer Utility",
+      "url": "https://htmlfonts.com",
+      "description": "Daily AI-powered web typography pairings, CSS code snippets, and live font previewer.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "All"
+    }
+    </script>
 
-<script>
-    fetch('history.json')
-        .then(res => res.json())
-        .then(history => {
-            const list = document.getElementById('history-list');
-            history.slice(1, 6).forEach(item => {
-                const div = document.createElement('div');
-                div.className = "p-4 bg-white rounded-xl border border-slate-100 text-sm shadow-sm";
-                div.innerHTML = `<span class="text-indigo-600 font-bold">${item.date}:</span> ${item.tip.substring(0, 100)}...`;
-                list.appendChild(div);
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        /* Smooth fade for the copy toast */
+        .toast-enter { opacity: 0; transform: translateY(-1rem); }
+        .toast-active { opacity: 1; transform: translateY(0); transition: all 0.3s ease-out; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
+
+    <div id="toast" class="fixed top-5 right-5 hidden bg-emerald-500 text-white px-6 py-3 rounded-xl shadow-2xl z-50 font-medium tracking-wide">
+        CSS copied to clipboard! 🚀
+    </div>
+
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-extrabold tracking-tighter text-indigo-600">html<span class="text-slate-900">fonts.com</span></h1>
+            <nav class="hidden md:flex space-x-8 text-sm font-semibold text-slate-500">
+                <a href="#" class="hover:text-indigo-600 transition-colors">Daily Insight</a>
+                <a href="#playground" class="hover:text-indigo-600 transition-colors">Playground</a>
+                <a href="#archive" class="hover:text-indigo-600 transition-colors">Archive</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-5xl mx-auto px-6 py-10 w-full">
+        
+        <section class="mb-16">
+            <div class="bg-gradient-to-br from-slate-900 to-indigo-950 rounded-3xl p-8 md:p-12 shadow-xl text-white relative overflow-hidden">
+                <div class="absolute -top-24 -right-24 w-64 h-64 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+                
+                <div class="flex items-center space-x-3 mb-8 relative z-10">
+                    <span class="bg-indigo-500/20 text-indigo-200 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-widest border border-indigo-400/20">Daily Tip</span>
+                    <span id="date-badge" class="text-slate-400 text-sm font-medium">Loading Date...</span>
+                </div>
+                
+                <div id="ai-container" class="space-y-6 relative z-10">
+                    <h2 class="text-3xl md:text-4xl font-bold leading-tight tracking-tight text-white" id="tip-heading">Loading today's typography masterclass...</h2>
+                    <p class="text-slate-300 text-lg max-w-2xl leading-relaxed" id="tip-text">If this message remains, the AI automation is running its first update. Please check back in a few minutes.</p>
+                    
+                    <div class="relative group mt-8">
+                        <pre id="css-block" class="bg-slate-950 rounded-xl p-6 font-mono text-sm text-indigo-300 border border-slate-800 overflow-x-auto shadow-inner leading-relaxed">/* Fetching CSS... */</pre>
+                        <button onclick="copySnippet()" class="absolute top-4 right-4 bg-white/10 hover:bg-white text-white hover:text-indigo-900 px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center shadow-sm backdrop-blur-sm border border-white/20">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                            </svg>
+                            COPY CSS
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="playground" class="mb-16 bg-white rounded-3xl shadow-sm border border-slate-200 p-8 md:p-10">
+            <h3 class="text-xl font-bold mb-8 flex items-center text-slate-800 tracking-tight">
+                <span class="bg-indigo-50 text-indigo-600 p-2.5 rounded-xl mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                    </svg>
+                </span>
+                Live CSS Previewer
+            </h3>
+
+            <div class="grid md:grid-cols-12 gap-8">
+                <div class="md:col-span-5 space-y-6">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Test Your Text</label>
+                        <input type="text" id="user-input" placeholder="The quick brown fox..." 
+                            class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all font-medium text-slate-700"
+                            onkeyup="updatePreview()">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Select Font Stack</label>
+                        <select id="font-selector" onchange="updatePreview()" 
+                            class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none appearance-none cursor-pointer font-medium text-slate-700">
+                            <option value="system-ui, -apple-system, sans-serif">Modern System UI (Fastest)</option>
+                            <option value="'Inter', sans-serif">Inter (Clean Tech)</option>
+                            <option value="Georgia, 'Times New Roman', serif">Georgia (Editorial Serif)</option>
+                            <option value="ui-monospace, 'Courier New', monospace">Monospace (Code)</option>
+                            <option value="Impact, fantasy">Impact (Bold Heading)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="md:col-span-7 flex items-center justify-center bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200 p-8 min-h-[200px]">
+                    <p id="preview-display" class="text-4xl md:text-5xl text-center break-words text-slate-800 transition-all duration-200" style="font-family: system-ui, -apple-system, sans-serif;">
+                        The quick brown fox.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="archive" class="mb-10">
+            <h3 class="text-sm font-bold mb-6 text-slate-400 uppercase tracking-widest border-b border-slate-200 pb-2">Recent AI Typography Insights</h3>
+            <div id="history-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <p class="text-sm text-slate-500 italic col-span-full" id="history-placeholder">Archive building... check back tomorrow for previous tips.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-8 mt-auto">
+        <div class="max-w-5xl mx-auto px-6 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-sm text-slate-500 font-medium">
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> htmlfonts.com. Built for modern web performance.</p>
+            <div class="space-x-4 mt-4 md:mt-0">
+                <a href="https://github.com" class="hover:text-slate-800 transition-colors">GitHub</a>
+                <a href="https://x.com" class="hover:text-slate-800 transition-colors">X.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- UI Logic ---
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('hidden');
+            toast.classList.add('toast-active');
+            setTimeout(() => {
+                toast.classList.remove('toast-active');
+                setTimeout(() => toast.classList.add('hidden'), 300);
+            }, 3000);
+        }
+
+        async function copySnippet() {
+            const text = document.getElementById('css-block').innerText;
+            try {
+                await navigator.clipboard.writeText(text);
+                showToast();
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+            }
+        }
+
+        function updatePreview() {
+            const text = document.getElementById('user-input').value;
+            const font = document.getElementById('font-selector').value;
+            const display = document.getElementById('preview-display');
+            
+            display.innerText = text || "The quick brown fox.";
+            display.style.fontFamily = font;
+        }
+
+        // --- Data Fetching (The Jamstack Magic) ---
+        
+        // 1. Fetch Today's Tip
+        fetch('content.json')
+            .then(res => {
+                if (!res.ok) throw new Error('No content yet');
+                return res.json();
+            })
+            .then(data => {
+                document.getElementById('tip-heading').innerText = "Today's Pro Tip";
+                document.getElementById('tip-text').innerText = data.tip;
+                document.getElementById('css-block').innerText = data.css_snippet;
+                document.getElementById('date-badge').innerText = data.date;
+            })
+            .catch(() => {
+                console.log("content.json not found yet. Waiting for first Action run.");
             });
-        });
-</script>
+
+        // 2. Fetch History Archive
+        fetch('history.json')
+            .then(res => {
+                if (!res.ok) throw new Error('No history yet');
+                return res.json();
+            })
+            .then(history => {
+                if (history && history.length > 1) {
+                    const list = document.getElementById('history-list');
+                    document.getElementById('history-placeholder').style.display = 'none'; // Hide placeholder
+                    
+                    // Skip the first item [0] since it's already displayed in the Hero section
+                    history.slice(1, 7).forEach(item => {
+                        const div = document.createElement('div');
+                        div.className = "p-5 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow";
+                        div.innerHTML = `
+                            <div class="text-xs font-bold text-indigo-500 mb-2">${item.date}</div>
+                            <p class="text-slate-700 text-sm leading-relaxed">${item.tip.substring(0, 120)}...</p>
+                        `;
+                        list.appendChild(div);
+                    });
+                }
+            })
+            .catch(() => {
+                console.log("history.json not found yet. It will generate tomorrow.");
+            });
+    </script>
+</body>
+</html>
