@@ -21,7 +21,7 @@ try:
     # Save daily tip page
     os.makedirs('tips', exist_ok=True)
     with open(f"tips/{new_data['slug']}.html", 'w', encoding='utf-8') as f:
-        f.write(f"<!DOCTYPE html><html><head><title>{new_data['title']} | htmlfonts.com</title><script src='[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)'></script></head><body class='p-10'><h1 class='text-4xl font-bold'>{new_data['title']}</h1><p class='mt-4'>{new_data['tip']}</p></body></html>")
+        f.write(f"<!DOCTYPE html><html><head><title>{new_data['title']} | htmlfonts.com</title><script src='[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)'></script></head><body class='bg-slate-50 p-6 md:p-12'><div class='max-w-3xl mx-auto'><a href='/' class='text-indigo-600 font-bold uppercase'>&larr; Back to Directory</a><h1 class='text-4xl font-bold mt-8'>{new_data['title']}</h1><p class='mt-4 text-lg text-slate-700'>{new_data['tip']}</p></div></body></html>")
 
     # Update Archives
     history = []
@@ -31,7 +31,7 @@ try:
     with open('history.json', 'w') as f: json.dump(history, f, indent=4)
     with open('content.json', 'w') as f: json.dump(new_data, f, indent=4)
 
-    # --- NEW: PROGRAMMATIC "VS" PAGE GENERATOR ---
+    # --- PROGRAMMATIC "VS" PAGE GENERATOR ---
     print("Generating SEO Comparison Pages...")
     os.makedirs('compare', exist_ok=True)
     
@@ -39,7 +39,8 @@ try:
     top_comparisons = [
         ("Arial", "Helvetica"), ("Inter", "Roboto"), ("Playfair Display", "Merriweather"),
         ("Open Sans", "Lato"), ("Montserrat", "Raleway"), ("Fira Code", "JetBrains Mono"),
-        ("Oswald", "Bebas Neue"), ("Ubuntu", "Quicksand"), ("Lora", "PT Serif"), ("Nunito", "Poppins")
+        ("Oswald", "Bebas Neue"), ("Ubuntu", "Quicksand"), ("Lora", "PT Serif"), ("Nunito", "Poppins"),
+        ("Roboto", "Open Sans"), ("Lato", "Montserrat"), ("Rubik", "Karla"), ("Outfit", "Lexend")
     ]
     
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="[http://www.sitemaps.org/schemas/sitemap/0.9](http://www.sitemaps.org/schemas/sitemap/0.9)">\n'
@@ -55,7 +56,7 @@ try:
     <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
 </head>
 <body class="bg-slate-50 p-10 text-center">
-    <a href="/#vs-tool" class="text-indigo-600 font-bold uppercase">&larr; Back to VS Tool</a>
+    <a href="/#vs-tool" class="text-indigo-600 font-bold uppercase">&larr; Back to Font VS Font</a>
     <h1 class="text-5xl font-black mt-10">{font_a} vs {font_b}</h1>
     <p class="text-xl text-slate-500 mt-4">Discover which typeface fits your UI design best using our live comparison tool on the homepage.</p>
 </body>
