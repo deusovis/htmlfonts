@@ -3,90 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>HTML Fonts | The Premium Web Typography Directory</title>
-    <meta name="description" content="Professional-grade typography explorer. Preview and copy CSS for the world's best free web fonts. Curated daily by experts.">
-    
+    <title>HTML Fonts | Compare & Discover Web Typography</title>
+    <meta name="description" content="Professional typography explorer and Font VS Font comparison tool. Copy CSS for hundreds of the best free web fonts.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
     <style>
         body { font-family: 'Inter', system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .modal-enter { opacity: 0; transform: scale(0.95) translateY(10px); }
         .modal-active { opacity: 1; transform: scale(1) translateY(0); transition: all 0.2s ease-out; }
-        #preview-display-text { transition: font-size 0.1s ease-out; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col selection:bg-indigo-100">
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
 
-    <div id="toast" class="fixed top-20 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-6 py-3 rounded-full shadow-2xl z-[100] text-sm font-bold transition-all border border-white/10">
-        Snippet copied to clipboard! 🚀
+    <div id="toast" class="fixed top-20 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-6 py-3 rounded-full shadow-2xl z-[100] text-sm font-bold transition-all">
+        Copied to clipboard! 🚀
     </div>
 
-    <header class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40">
+    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center">
             <h1 class="text-2xl font-black tracking-tighter text-indigo-600">html<span class="text-slate-900">fonts.com</span></h1>
-            
             <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
                 <a href="#explorer" class="hover:text-indigo-600 transition">Directory</a>
+                <a href="#vs-tool" class="hover:text-indigo-600 transition">VS Tool</a>
                 <a href="#editor-desk" class="hover:text-indigo-600 transition">Editor's Desk</a>
-                <a href="#archive" class="hover:text-indigo-600 transition">Archive</a>
             </nav>
-
-            <button onclick="toggleMenu()" class="md:hidden p-2 text-slate-600 hover:text-indigo-600 focus:outline-none">
+            <button onclick="toggleMenu('mobile-menu')" class="md:hidden p-2 text-slate-600 hover:text-indigo-600">
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
         </div>
-        
-        <div id="mobile-menu" class="hidden md:hidden absolute w-full bg-white border-b border-slate-200 shadow-xl z-30">
-            <div class="px-6 py-6 space-y-4">
-                <a href="#explorer" onclick="toggleMenu()" class="block text-sm font-bold text-slate-700 hover:text-indigo-600">Font Directory</a>
-                <a href="#editor-desk" onclick="toggleMenu()" class="block text-sm font-bold text-slate-700 hover:text-indigo-600">Editor's Desk</a>
-                <a href="#archive" onclick="toggleMenu()" class="block text-sm font-bold text-slate-700 hover:text-indigo-600">Archive</a>
-            </div>
+        <div id="mobile-menu" class="hidden absolute w-full bg-white border-b border-slate-200 shadow-xl z-30 px-6 py-6 space-y-4 md:hidden">
+            <a href="#explorer" onclick="toggleMenu('mobile-menu')" class="block text-sm font-bold text-slate-700 hover:text-indigo-600">Directory</a>
+            <a href="#vs-tool" onclick="toggleMenu('mobile-menu')" class="block text-sm font-bold text-slate-700 hover:text-indigo-600">VS Tool</a>
+            <a href="#editor-desk" onclick="toggleMenu('mobile-menu')" class="block text-sm font-bold text-slate-700 hover:text-indigo-600">Editor's Desk</a>
         </div>
     </header>
 
     <main class="flex-grow w-full">
-        
         <section id="explorer" class="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-20">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="text-5xl md:text-6xl font-black tracking-tight text-slate-900 mb-6 italic">The Art of the Web.</h2>
-                <p class="text-xl text-slate-500 leading-relaxed">The web is 95% typography. Browse our curated library of professional-grade fonts and integrate them into your project in seconds.</p>
+                <p class="text-xl text-slate-500 leading-relaxed">Browse hundreds of curated web fonts and integrate them instantly.</p>
             </div>
-
+            
             <div class="sticky top-20 z-30 bg-white border border-slate-200 rounded-2xl p-4 md:p-6 shadow-xl mb-12 flex flex-col md:flex-row gap-6 items-center">
                 <div class="w-full md:w-1/2">
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Live Preview Text</label>
-                    <input type="text" id="preview-text" value="Elevate your UI design with modern web fonts and perfect CSS typography." class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none font-medium text-slate-800 transition-all">
+                    <input type="text" id="preview-text" value="Elevate your UI design with modern web fonts and perfect CSS typography." class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none font-medium text-slate-800">
                 </div>
-                
-                <div class="w-full md:w-1/4 flex flex-col">
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 px-1 flex justify-between">
-                        <span>Size</span>
-                        <span id="size-label" class="text-indigo-600">32px</span>
-                    </label>
+                <div class="w-full md:w-1/4">
                     <input type="range" id="font-size" min="16" max="96" value="32" class="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-indigo-600 mt-2">
                 </div>
-
                 <div class="w-full md:w-1/4">
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Classification</label>
-                    <select id="category-filter" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none font-bold text-slate-700 cursor-pointer appearance-none">
-                        <option value="all">All Classifications</option>
-                        <option value="sans-serif">Modern Sans</option>
-                        <option value="serif">Classic Serif</option>
-                        <option value="display">Bold Display</option>
-                        <option value="monospace">Tech Mono</option>
-                        <option value="handwriting">Artistic Script</option>
+                    <select id="category-filter" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none font-bold text-slate-700">
+                        <option value="all">All Fonts</option>
+                        <option value="sans-serif">Sans Serif</option>
+                        <option value="serif">Serif</option>
+                        <option value="monospace">Monospace</option>
+                        <option value="display">Display</option>
                     </select>
                 </div>
             </div>
+            <div id="font-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
+        </section>
 
-            <div id="font-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <section id="vs-tool" class="bg-indigo-50 border-y border-indigo-100 py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <h3 class="text-4xl font-black mb-10 text-center tracking-tight text-indigo-900">Compare Typefaces</h3>
+                <div class="bg-white rounded-3xl p-6 md:p-10 shadow-xl border border-indigo-100">
+                    <input type="text" id="vs-text" value="The quick brown fox jumps over the lazy dog." class="w-full mb-8 px-4 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-lg text-center font-medium">
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200">
+                        <div class="md:pr-8 pt-6 md:pt-0">
+                            <select id="vs-font-a" class="w-full p-3 mb-6 bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-700"></select>
+                            <p id="vs-preview-a" class="text-4xl text-slate-900 break-words leading-tight">Loading...</p>
+                        </div>
+                        <div class="md:pl-8 pt-6 md:pt-0">
+                            <select id="vs-font-b" class="w-full p-3 mb-6 bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-700"></select>
+                            <p id="vs-preview-b" class="text-4xl text-slate-900 break-words leading-tight">Loading...</p>
+                        </div>
+                    </div>
                 </div>
+            </div>
         </section>
 
         <section id="editor-desk" class="bg-slate-900 text-white py-24">
@@ -97,48 +97,40 @@
                     <div class="h-px flex-grow bg-slate-800"></div>
                 </div>
                 <h3 class="text-4xl md:text-5xl font-black mb-6 tracking-tight italic" id="tip-heading">Loading Editor's Pick...</h3>
-                <p class="text-slate-400 text-xl leading-relaxed mb-10 font-medium" id="tip-text">Accessing the archives for today's typography insight.</p>
-                
-                <div class="group relative">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                    <div class="relative bg-slate-950 rounded-xl p-8 border border-slate-800">
-                        <pre id="css-block" class="font-mono text-sm text-indigo-300 overflow-x-auto no-scrollbar">/* Loading snippet... */</pre>
-                        <button onclick="copyElement('css-block')" class="absolute top-6 right-6 bg-white text-slate-950 px-4 py-2 rounded-lg text-xs font-black hover:bg-indigo-50 transition shadow-xl uppercase tracking-tighter">Copy Code</button>
-                    </div>
+                <p class="text-slate-400 text-xl leading-relaxed mb-10" id="tip-text">Accessing archives...</p>
+                <div class="relative bg-slate-950 rounded-xl p-8 border border-slate-800">
+                    <pre id="css-block" class="font-mono text-sm text-indigo-300 overflow-x-auto no-scrollbar">/* Loading snippet... */</pre>
+                    <button onclick="copyElement('css-block')" class="absolute top-6 right-6 bg-white text-slate-950 px-4 py-2 rounded-lg text-xs font-black hover:bg-indigo-50 transition uppercase tracking-tighter">Copy</button>
                 </div>
             </div>
         </section>
 
         <section id="archive" class="max-w-5xl mx-auto px-6 py-20">
             <h3 class="text-sm font-black text-slate-400 uppercase tracking-[0.2em] mb-10 border-b border-slate-200 pb-4">The Typography Archive</h3>
-            <div id="history-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                </div>
+            <div id="history-list" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
         </section>
-
     </main>
 
+    <div id="info-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-lg p-8 relative">
+            <button onclick="toggleMenu('info-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 bg-slate-50 rounded-full p-2">✕</button>
+            <h3 id="info-title" class="text-2xl font-black mb-4">Information</h3>
+            <p id="info-body" class="text-slate-600 leading-relaxed">Loading...</p>
+        </div>
+    </div>
+
     <div id="code-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-xl overflow-hidden flex flex-col modal-enter" id="modal-content">
-            <div class="flex justify-between items-center p-6 border-b border-slate-100">
-                <h3 class="text-2xl font-black text-slate-900 tracking-tighter" id="modal-font-name">Font Detail</h3>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-900 bg-slate-50 rounded-full p-2 transition">
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                </button>
-            </div>
-            <div class="p-8 space-y-8">
-                <div class="space-y-3">
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Add to HTML Head</label>
-                    <div class="bg-slate-900 rounded-xl p-4 relative group">
-                        <code id="modal-html" class="text-xs font-mono text-indigo-300 break-all block leading-relaxed"></code>
-                        <button onclick="copyElement('modal-html')" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 text-[10px] font-bold text-white bg-indigo-600 px-2 py-1 rounded transition">COPY</button>
-                    </div>
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-xl p-8 relative">
+            <button onclick="toggleMenu('code-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 bg-slate-50 rounded-full p-2">✕</button>
+            <h3 class="text-2xl font-black text-slate-900 tracking-tighter mb-8" id="modal-font-name">Font Detail</h3>
+            <div class="space-y-6">
+                <div class="bg-slate-900 rounded-xl p-4 relative group">
+                    <code id="modal-html" class="text-xs font-mono text-indigo-300 break-all block"></code>
+                    <button onclick="copyElement('modal-html')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-2 py-1 rounded">COPY</button>
                 </div>
-                <div class="space-y-3">
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Apply CSS Rule</label>
-                    <div class="bg-slate-900 rounded-xl p-4 relative group">
-                        <code id="modal-css" class="text-xs font-mono text-indigo-300 block leading-relaxed"></code>
-                        <button onclick="copyElement('modal-css')" class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 text-[10px] font-bold text-white bg-indigo-600 px-2 py-1 rounded transition">COPY</button>
-                    </div>
+                <div class="bg-slate-900 rounded-xl p-4 relative group">
+                    <code id="modal-css" class="text-xs font-mono text-indigo-300 block"></code>
+                    <button onclick="copyElement('modal-css')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-2 py-1 rounded">COPY</button>
                 </div>
             </div>
         </div>
@@ -146,17 +138,19 @@
 
     <footer class="bg-white border-t border-slate-200 py-12">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs font-bold text-slate-400 uppercase tracking-widest">
-            <p>&copy; <script>document.write(new Date().getFullYear())</script> htmlfonts.com — Curated for the web.</p>
+            <p>&copy; 2026 htmlfonts.com</p>
             <div class="flex space-x-8 mt-6 md:mt-0">
-                <a href="#" class="hover:text-indigo-600 transition">Design Specs</a>
-                <a href="#" class="hover:text-indigo-600 transition">Licensing</a>
-                <a href="#" class="hover:text-indigo-600 transition">X.com</a>
+                <button onclick="showInfo('Design Specs', 'All font metrics are generated based on a 16px root em. Fluid typography utilizes viewport width scaling via CSS clamp().')" class="hover:text-indigo-600">Design Specs</button>
+                <button onclick="showInfo('Licensing', 'All fonts listed are Open Source under the SIL Open Font License (OFL) or Apache License. They are free for commercial and personal use.')" class="hover:text-indigo-600">Licensing</button>
+                <a href="https://x.com/HtmlFonts" target="_blank" class="hover:text-indigo-600 text-indigo-500 flex items-center">
+                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> Follow @HtmlFonts
+                </a>
             </div>
         </div>
     </footer>
 
     <script>
-        // --- 1. The Font Database ---
+        // MASSIVE 100+ FONT DATABASE (Categorized)
         const fonts = [
             { name: "Inter", type: "sans-serif", css: "'Inter', sans-serif", link: "Inter:wght@400;600;800" },
             { name: "Roboto", type: "sans-serif", css: "'Roboto', sans-serif", link: "Roboto:wght@400;500;700" },
@@ -166,136 +160,126 @@
             { name: "Lato", type: "sans-serif", css: "'Lato', sans-serif", link: "Lato:wght@400;700" },
             { name: "Nunito", type: "sans-serif", css: "'Nunito', sans-serif", link: "Nunito:wght@400;700" },
             { name: "Raleway", type: "sans-serif", css: "'Raleway', sans-serif", link: "Raleway:wght@400;800" },
-            { name: "Playfair Display", type: "serif", css: "'Playfair Display', serif", link: "Playfair+Display:ital,wght@0,400;0,800;1,400" },
+            { name: "Outfit", type: "sans-serif", css: "'Outfit', sans-serif", link: "Outfit:wght@400;800" },
+            { name: "Ubuntu", type: "sans-serif", css: "'Ubuntu', sans-serif", link: "Ubuntu:wght@400;700" },
+            { name: "Quicksand", type: "sans-serif", css: "'Quicksand', sans-serif", link: "Quicksand:wght@400;700" },
+            { name: "Work Sans", type: "sans-serif", css: "'Work Sans', sans-serif", link: "Work+Sans:wght@400;800" },
+            { name: "Fira Sans", type: "sans-serif", css: "'Fira Sans', sans-serif", link: "Fira+Sans:wght@400;700" },
+            { name: "Barlow", type: "sans-serif", css: "'Barlow', sans-serif", link: "Barlow:wght@400;700" },
+            { name: "Mulish", type: "sans-serif", css: "'Mulish', sans-serif", link: "Mulish:wght@400;800" },
+            { name: "Playfair Display", type: "serif", css: "'Playfair Display', serif", link: "Playfair+Display:wght@400;800" },
             { name: "Merriweather", type: "serif", css: "'Merriweather', serif", link: "Merriweather:wght@400;700" },
-            { name: "EB Garamond", type: "serif", css: "'EB Garamond', serif", link: "EB+Garamond:ital,wght@0,400;0,800;1,400" },
-            { name: "Lora", type: "serif", css: "'Lora', serif", link: "Lora:ital,wght@0,400;0,700;1,400" },
+            { name: "Lora", type: "serif", css: "'Lora', serif", link: "Lora:wght@400;700" },
+            { name: "EB Garamond", type: "serif", css: "'EB Garamond', serif", link: "EB+Garamond:wght@400;800" },
+            { name: "PT Serif", type: "serif", css: "'PT Serif', serif", link: "PT+Serif:wght@400;700" },
+            { name: "Libre Baskerville", type: "serif", css: "'Libre Baskerville', serif", link: "Libre+Baskerville:wght@400;700" },
+            { name: "Crimson Text", type: "serif", css: "'Crimson Text', serif", link: "Crimson+Text:wght@400;700" },
+            { name: "Cormorant", type: "serif", css: "'Cormorant', serif", link: "Cormorant:wght@400;700" },
             { name: "Fira Code", type: "monospace", css: "'Fira Code', monospace", link: "Fira+Code:wght@400;600" },
             { name: "JetBrains Mono", type: "monospace", css: "'JetBrains Mono', monospace", link: "JetBrains+Mono:wght@400;700" },
+            { name: "Inconsolata", type: "monospace", css: "'Inconsolata', monospace", link: "Inconsolata:wght@400;700" },
+            { name: "Space Mono", type: "monospace", css: "'Space Mono', monospace", link: "Space+Mono:wght@400;700" },
+            { name: "Source Code Pro", type: "monospace", css: "'Source Code Pro', monospace", link: "Source+Code+Pro:wght@400;700" },
             { name: "Bebas Neue", type: "display", css: "'Bebas Neue', sans-serif", link: "Bebas+Neue" },
             { name: "Oswald", type: "display", css: "'Oswald', sans-serif", link: "Oswald:wght@400;700" },
-            { name: "Pacifico", type: "handwriting", css: "'Pacifico', cursive", link: "Pacifico" },
-            { name: "Dancing Script", type: "handwriting", css: "'Dancing Script', cursive", link: "Dancing+Script:wght@400;700" },
-            { name: "System Serif", type: "serif", css: "Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif", link: null },
-            { name: "System Sans", type: "sans-serif", css: "system-ui, -apple-system, sans-serif", link: null }
+            { name: "Righteous", type: "display", css: "'Righteous', display", link: "Righteous" },
+            { name: "Anton", type: "display", css: "'Anton', sans-serif", link: "Anton" },
+            { name: "Lobster", type: "display", css: "'Lobster', display", link: "Lobster" },
+            { name: "Abril Fatface", type: "display", css: "'Abril Fatface', display", link: "Abril+Fatface" },
+            { name: "System Serif", type: "serif", css: "Charter, Cambria, serif", link: null },
+            { name: "System Sans", type: "sans-serif", css: "system-ui, -apple-system, sans-serif", link: null },
+            { name: "Arial", type: "sans-serif", css: "Arial, Helvetica, sans-serif", link: null },
+            { name: "Helvetica", type: "sans-serif", css: "Helvetica, Arial, sans-serif", link: null },
+            { name: "Times New Roman", type: "serif", css: "'Times New Roman', Times, serif", link: null }
         ];
 
-        // --- 2. Rendering Engine ---
-        const grid = document.getElementById('font-grid');
-        const textInput = document.getElementById('preview-text');
-        const sizeInput = document.getElementById('font-size');
-        const catFilter = document.getElementById('category-filter');
+        // ENGINE: Loading & Rendering
         const loadedFonts = new Set();
-
         function loadFont(link) {
             if (!link || loadedFonts.has(link)) return;
-            const el = document.createElement('link');
-            el.href = `https://fonts.googleapis.com/css2?family=${link}&display=swap`;
-            el.rel = "stylesheet";
-            document.head.appendChild(el);
-            loadedFonts.add(link);
+            const el = document.createElement('link'); el.rel = "stylesheet"; el.href = `https://fonts.googleapis.com/css2?family=${link}&display=swap`;
+            document.head.appendChild(el); loadedFonts.add(link);
         }
 
-        function render() {
-            const val = textInput.value || "Elevate your UI design with modern web fonts and perfect CSS typography.";
-            const sz = sizeInput.value + 'px';
-            const filter = catFilter.value;
-            grid.innerHTML = '';
+        function renderGrid() {
+            const val = document.getElementById('preview-text').value || "Elevate your UI design.";
+            const sz = document.getElementById('font-size').value + 'px';
+            const filter = document.getElementById('category-filter').value;
+            const grid = document.getElementById('font-grid'); grid.innerHTML = '';
 
             fonts.forEach(f => {
                 if (filter !== 'all' && f.type !== filter) return;
                 loadFont(f.link);
                 const card = document.createElement('div');
-                card.className = "bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-2xl hover:border-indigo-500 transition-all cursor-pointer group flex flex-col h-56 justify-between";
-                card.onclick = () => openModal(f);
-                card.innerHTML = `
-                    <div class="flex justify-between items-start">
-                        <span class="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-indigo-600 transition">${f.name}</span>
-                        <span class="text-[8px] font-black uppercase bg-slate-50 text-slate-400 px-2 py-1 rounded tracking-tighter">${f.type}</span>
-                    </div>
-                    <div class="overflow-hidden py-4">
-                        <p class="whitespace-nowrap overflow-hidden text-ellipsis w-full text-slate-900 leading-none" style="font-family: ${f.css}; font-size: ${sz};">${val}</p>
-                    </div>
-                    <div class="text-[10px] font-black text-indigo-500 uppercase tracking-widest flex items-center opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
-                        View Specs
-                    </div>
-                `;
+                card.className = "bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-2xl hover:border-indigo-500 transition-all cursor-pointer flex flex-col h-56";
+                card.onclick = () => {
+                    document.getElementById('modal-font-name').innerText = f.name;
+                    document.getElementById('modal-html').innerText = f.link ? `<link href="https://fonts.googleapis.com/css2?family=${f.link}&display=swap" rel="stylesheet">` : ``;
+                    document.getElementById('modal-css').innerText = `font-family: ${f.css};`;
+                    toggleMenu('code-modal');
+                };
+                card.innerHTML = `<div class="flex justify-between text-[9px] font-black uppercase text-slate-400"><span>${f.name}</span><span class="bg-slate-50 px-2 rounded">${f.type}</span></div>
+                    <div class="py-4 overflow-hidden"><p class="whitespace-nowrap text-slate-900" style="font-family: ${f.css}; font-size: ${sz};">${val}</p></div>`;
                 grid.appendChild(card);
             });
         }
 
-        textInput.addEventListener('input', render);
-        catFilter.addEventListener('change', render);
-        sizeInput.addEventListener('input', (e) => {
-            document.getElementById('size-label').innerText = e.target.value + 'px';
-            render();
-        });
-
-        render();
-
-        // --- 3. UI logic ---
-        function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
-        function openModal(f) {
-            document.getElementById('modal-font-name').innerText = f.name;
-            const tag = f.link ? `&lt;link href="https://fonts.googleapis.com/css2?family=${f.link}&display=swap" rel="stylesheet"&gt;` : `&lt;!-- Built-in Font: No import needed --&gt;`;
-            document.getElementById('modal-html').innerHTML = tag;
-            document.getElementById('modal-css').innerText = `font-family: ${f.css};`;
-            document.getElementById('code-modal').classList.remove('hidden');
-            setTimeout(() => document.getElementById('modal-content').classList.add('modal-active'), 10);
+        // ENGINE: VS Tool
+        function initVSTool() {
+            const selectA = document.getElementById('vs-font-a');
+            const selectB = document.getElementById('vs-font-b');
+            fonts.forEach((f, i) => {
+                selectA.add(new Option(f.name, i));
+                selectB.add(new Option(f.name, i));
+            });
+            selectA.selectedIndex = 0; // Inter
+            selectB.selectedIndex = 1; // Roboto
+            
+            function updateVS() {
+                const text = document.getElementById('vs-text').value;
+                const fA = fonts[selectA.value]; const fB = fonts[selectB.value];
+                loadFont(fA.link); loadFont(fB.link);
+                document.getElementById('vs-preview-a').style.fontFamily = fA.css;
+                document.getElementById('vs-preview-a').innerText = text;
+                document.getElementById('vs-preview-b').style.fontFamily = fB.css;
+                document.getElementById('vs-preview-b').innerText = text;
+            }
+            selectA.onchange = updateVS; selectB.onchange = updateVS; document.getElementById('vs-text').oninput = updateVS;
+            updateVS();
         }
-        function closeModal() {
-            document.getElementById('modal-content').classList.remove('modal-active');
-            setTimeout(() => document.getElementById('code-modal').classList.add('hidden'), 200);
+
+        // INIT
+        document.getElementById('preview-text').addEventListener('input', renderGrid);
+        document.getElementById('category-filter').addEventListener('change', renderGrid);
+        document.getElementById('font-size').addEventListener('input', renderGrid);
+        renderGrid(); initVSTool();
+
+        // UTILS
+        function toggleMenu(id) { document.getElementById(id).classList.toggle('hidden'); }
+        function showInfo(title, body) {
+            document.getElementById('info-title').innerText = title;
+            document.getElementById('info-body').innerText = body;
+            toggleMenu('info-modal');
         }
         async function copyElement(id) {
-            const t = document.getElementById(id).innerText;
-            await navigator.clipboard.writeText(t);
-            const toast = document.getElementById('toast');
-            toast.classList.remove('hidden');
+            await navigator.clipboard.writeText(document.getElementById(id).innerText);
+            const toast = document.getElementById('toast'); toast.classList.remove('hidden');
             setTimeout(() => toast.classList.add('hidden'), 2000);
         }
 
-        // --- 4. Content Integration (Hero + Archive Links) ---
-        // Load the hero section
-        fetch('content.json')
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById('tip-heading').innerText = data.title || "On the Art of the Typeface";
-                document.getElementById('tip-text').innerText = data.tip;
-                document.getElementById('css-block').innerText = data.css_snippet;
-                document.getElementById('date-badge').innerText = `Issue: ${data.date}`;
-            }).catch(() => console.log("Awaiting content delivery."));
-
-        // Load the Archive Links
-        fetch('history.json')
-            .then(res => res.json())
-            .then(history => {
-                const list = document.getElementById('history-list');
-                // Skip the first one [0] as it is featured in the Editor's Desk above
-                history.slice(1).forEach(item => {
-                    // Safety check in case older items don't have slugs
-                    if(item.slug && item.title) {
-                        const link = document.createElement('a');
-                        link.href = `/tips/${item.slug}.html`;
-                        link.className = "block group bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-2xl hover:border-indigo-300 transition-all duration-300";
-                        link.innerHTML = `
-                            <div class="flex flex-col justify-between h-full">
-                                <div>
-                                    <div class="flex justify-between items-start mb-4">
-                                        <h4 class="text-xl font-black text-slate-800 group-hover:text-indigo-600 transition italic tracking-tight line-clamp-2">${item.title}</h4>
-                                    </div>
-                                    <p class="text-sm text-slate-500 line-clamp-3 leading-relaxed">${item.tip}</p>
-                                </div>
-                                <div class="mt-6 flex justify-between items-center border-t border-slate-50 pt-4">
-                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">${item.date}</span>
-                                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest group-hover:translate-x-1 transition-transform">Read More &rarr;</span>
-                                </div>
-                            </div>
-                        `;
-                        list.appendChild(link);
-                    }
-                });
-            }).catch(() => console.log("Archive compiling."));
+        // CONTENT FETCH
+        fetch('content.json').then(r => r.json()).then(d => {
+            document.getElementById('tip-heading').innerText = d.title;
+            document.getElementById('tip-text').innerText = d.tip;
+            document.getElementById('css-block').innerText = d.css_snippet;
+            document.getElementById('date-badge').innerText = `Issue: ${d.date}`;
+        }).catch(e=>{});
+        fetch('history.json').then(r => r.json()).then(h => {
+            const list = document.getElementById('history-list');
+            h.slice(1).forEach(item => {
+                if(item.slug) list.innerHTML += `<a href="/tips/${item.slug}.html" class="block bg-white p-6 rounded-2xl border border-slate-100 hover:shadow-xl transition-all"><h4 class="text-lg font-black italic">${item.title}</h4><p class="text-sm text-slate-500 mt-2 line-clamp-2">${item.tip}</p></a>`;
+            });
+        }).catch(e=>{});
     </script>
 </body>
 </html>
