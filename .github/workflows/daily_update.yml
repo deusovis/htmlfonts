@@ -1,41 +1,11 @@
-name: Daily Typography SEO Automation
-
-on:
-  schedule:
-    - cron: '0 8 * * *'
-  workflow_dispatch:
-
-jobs:
-  update-content:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Python
+- name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12' # Upgraded from 3.10
+          python-version: '3.12' # Move to 3.12 to avoid the 2026 EOL warning
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run Automation Script
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          X_API_KEY: ${{ secrets.X_API_KEY }}
-          X_API_SECRET: ${{ secrets.X_API_SECRET }}
-          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
-          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
-        run: python automation.py
-
-      - name: Commit and Push
+      - name: Clean and Install Dependencies
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add content.json
-          git commit -m "Automated SEO Update: $(date)" || exit 0
-          git push
+          # Remove any potential legacy conflicts
+          pip uninstall -y google-generativeai google-api-core
+          # Install the fresh 2026 SDKs
+          pip install google-genai tweepy
