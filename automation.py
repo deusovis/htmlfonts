@@ -1,393 +1,150 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>HTML Fonts | Top Free Web Fonts & CSS Pairings</title>
-    <meta name="description" content="Discover, compare, and instantly copy CSS for the most popular free web fonts.">
+import os
+import json
+import datetime
+from google import genai
+import tweepy
+
+# 1. SETUP & AI GENERATION
+client_gemini = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+
+seo_prompt = """Generate a JSON object for htmlfonts.com. 
+Target Keywords: Free Web Fonts, CSS typography, UI design. 
+Keys MUST exactly match: "title", "slug", "tweet", "tip", "css_snippet".
+Return ONLY raw JSON."""
+
+try:
+    # Fetch Daily Tip from Gemini
+    response = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=seo_prompt)
+    raw_text = response.text.strip()
+    if raw_text.startswith("```json"): 
+        raw_text = raw_text[7:-3].strip()
+    new_data = json.loads(raw_text)
+    new_data["date"] = datetime.datetime.now().strftime("%B %d, %Y")
+
+    # Update Archives
+    history = []
+    if os.path.exists('history.json'):
+        with open('history.json', 'r', encoding='utf-8') as f: 
+            history = json.load(f)
+    history.insert(0, new_data)
+    with open('history.json', 'w', encoding='utf-8') as f: json.dump(history, f, indent=4)
+    with open('content.json', 'w', encoding='utf-8') as f: json.dump(new_data, f, indent=4)
+
+    # Setup Folders
+    os.makedirs('compare', exist_ok=True)
+    os.makedirs('article', exist_ok=True)
     
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
+    # Start Sitemap (Added new core pages for SEO)
+    sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="[http://www.sitemaps.org/schemas/sitemap/0.9](http://www.sitemaps.org/schemas/sitemap/0.9)">\n'
+    sitemap += '  <url><loc>[https://htmlfonts.com/](https://htmlfonts.com/)</loc><priority>1.0</priority></url>\n'
+    sitemap += '  <url><loc>[https://htmlfonts.com/font-vs-font-comparison-tool.html](https://htmlfonts.com/font-vs-font-comparison-tool.html)</loc><priority>0.9</priority></url>\n'
+    sitemap += '  <url><loc>[https://htmlfonts.com/daily-css-typography-tips.html](https://htmlfonts.com/daily-css-typography-tips.html)</loc><priority>0.9</priority></url>\n'
+    sitemap += '  <url><loc>[https://htmlfonts.com/html-css-font-guides.html](https://htmlfonts.com/html-css-font-guides.html)</loc><priority>0.9</priority></url>\n'
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        .toast-enter { opacity: 0; transform: translate(-50%, 20px); }
-        .toast-active { opacity: 1; transform: translate(-50%, 0); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .modal-enter { opacity: 0; transform: scale(0.95) translateY(10px); }
-        .modal-active { opacity: 1; transform: scale(1) translateY(0); transition: all 0.2s ease-out; }
-    </style>
-</head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col selection:bg-indigo-200">
+    # 2. DATA ARRAYS: THE SEO ENGINE
+    # TOP 30 HOW-TO ARTICLES
+    top_guides = [
+        ("how-to-change-font-size-in-html", "How to Change Font Size in HTML", "Learn to use the CSS font-size property with px, rem, and em units.", "font-size: 16px;"),
+        ("how-to-add-google-fonts-to-html", "How to Add Google Fonts to HTML", "Step-by-step guide to embedding external fonts via the <link> tag.", "<link href='...' rel='stylesheet'>"),
+        ("how-to-change-font-color-in-html", "How to Change Font Color in HTML", "Use CSS hex codes and RGB values to style your web typography.", "color: #4f46e5;"),
+        ("how-to-bold-text-in-html", "How to Bold Text in HTML", "Master the font-weight property for stronger visual hierarchy.", "font-weight: 800;"),
+        ("how-to-center-text-in-html", "How to Center Text in HTML", "The best ways to align text using CSS text-align and flexbox.", "text-align: center;"),
+        ("what-is-the-best-font-for-reading", "The Best Fonts for On-Screen Reading", "Why high x-height fonts like Inter and Roboto lead the industry.", "font-family: 'Inter', sans-serif;"),
+        ("how-to-use-custom-fonts-in-css", "How to Use Custom Fonts in CSS", "Tutorial on @font-face for self-hosting your own font files.", "@font-face { font-family: 'MyFont'; src: url('...'); }"),
+        ("how-to-add-text-shadow-in-css", "How to Add Text Shadow in CSS", "Create depth with the text-shadow property and rgba colors.", "text-shadow: 2px 2px 5px rgba(0,0,0,0.1);"),
+        ("how-to-import-local-fonts", "How to Import Local Fonts in HTML", "Using system-ui and locally installed typefaces for speed.", "font-family: system-ui, sans-serif;"),
+        ("how-to-underline-text-in-css", "How to Underline Text in CSS", "Beyond the <u> tag: modern text-decoration styling.", "text-decoration: underline;"),
+        ("how-to-make-fluid-typography", "Creating Fluid Typography in CSS", "Using clamp() to make fonts responsive across all devices.", "font-size: clamp(1rem, 5vw, 2rem);"),
+        ("rem-vs-em-css-guide", "REM vs EM: Which CSS Unit is Best?", "A comparison of relative units for modern web accessibility.", "font-size: 1.25rem;"),
+        ("how-to-change-line-height-in-css", "Improving Readability with Line Height", "How to adjust vertical spacing between lines of text.", "line-height: 1.6;"),
+        ("how-to-style-drop-caps-in-html", "How to Style Drop Caps in HTML", "Using the ::first-letter pseudo-element for editorial design.", "p::first-letter { font-size: 3em; }"),
+        ("how-to-add-letter-spacing-in-css", "How to Adjust Letter Spacing (Tracking)", "Fine-tuning the horizontal space between characters.", "letter-spacing: 0.05em;"),
+        ("how-to-use-variable-fonts-in-html", "How to Use Variable Fonts in HTML", "Control multiple font weights with a single file import.", "font-variation-settings: 'wght' 600;"),
+        ("how-to-prevent-text-wrapping-css", "Preventing Text Wrapping in CSS", "Using white-space properties to keep text on one line.", "white-space: nowrap;"),
+        ("how-to-create-gradient-text-css", "How to Create Gradient Text in CSS", "Modern techniques using background-clip and transparent text.", "background-clip: text; color: transparent;"),
+        ("best-fonts-for-mobile-apps", "The Best Fonts for Mobile App UI", "Choosing legible typefaces for small screen environments.", "font-family: 'Outfit', sans-serif;"),
+        ("how-to-load-fonts-asynchronously", "How to Load Fonts Asynchronously", "Speed up your site using font-display: swap and preloading.", "font-display: swap;"),
+        ("how-to-use-monospace-fonts-for-coding", "Best Monospace Fonts for Developers", "Top picks for code editors and technical documentation.", "font-family: 'Fira Code', monospace;"),
+        ("how-to-italicize-text-in-css", "How to Italicize Text in CSS", "The difference between font-style: italic and oblique.", "font-style: italic;"),
+        ("how-to-change-font-weight-numerically", "Font Weight 100 to 900 Explained", "A guide to numerical font weights for CSS developers.", "font-weight: 900;"),
+        ("how-to-capitalize-first-letter-css", "Capitalizing First Letters with CSS", "Automating text transformations without changing HTML.", "text-transform: capitalize;"),
+        ("how-to-add-columns-to-text", "Creating Newspaper Columns in CSS", "Using column-count for multi-column text layouts.", "column-count: 3;"),
+        ("how-to-fix-blurry-fonts-on-browser", "How to Fix Blurry Fonts in Chrome", "Optimizing font rendering for high-DPI displays.", "-webkit-font-smoothing: antialiased;"),
+        ("how-to-import-adobe-fonts", "How to Import Adobe Typekit Fonts", "Integrating Creative Cloud fonts into your web project.", "<script src='[https://use.typekit.net/](https://use.typekit.net/)...'></script>"),
+        ("what-is-x-height-typography", "Understanding X-Height in Typography", "How vertical proportions affect font legibility on web.", "/* Concept Guide */"),
+        ("best-serif-fonts-for-minimalist-web", "Best Serif Fonts for Minimalism", "Top serif choices for modern, clean web interfaces.", "font-family: 'Lora', serif;"),
+        ("how-to-add-font-fallback-stacks", "Creating Bulletproof Font Stacks", "How to ensure your site looks good even if fonts fail.", "font-family: 'Inter', Arial, sans-serif;")
+    ]
 
-    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black tracking-widest uppercase toast-enter border border-slate-700 flex items-center gap-3">
-        <svg class="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-        <span id="toast-msg">Code copied! 🚀</span>
-    </div>
+    # TOP 30 FONT-VS-FONT COMPARISONS
+    top_comparisons = [
+        ("Arial", "Helvetica", "Arial, sans-serif", "Helvetica, Arial, sans-serif", "", ""), 
+        ("Inter", "Roboto", "'Inter', sans-serif", "'Roboto', sans-serif", "Inter:wght@400;700", "Roboto:wght@400;700"), 
+        ("Open Sans", "Lato", "'Open Sans', sans-serif", "'Lato', sans-serif", "Open+Sans:wght@400;700", "Lato:wght@400;700"), 
+        ("Montserrat", "Raleway", "'Montserrat', sans-serif", "'Raleway', sans-serif", "Montserrat:wght@400;700", "Raleway:wght@400;700"), 
+        ("Playfair Display", "Merriweather", "'Playfair Display', serif", "'Merriweather', serif", "Playfair+Display:wght@400;700", "Merriweather:wght@400;700"), 
+        ("Fira Code", "JetBrains Mono", "'Fira Code', monospace", "'JetBrains Mono', monospace", "Fira+Code:wght@400;700", "JetBrains+Mono:wght@400;700"),
+        ("Oswald", "Bebas Neue", "'Oswald', sans-serif", "'Bebas Neue', sans-serif", "Oswald:wght@400;700", "Bebas+Neue"), 
+        ("Ubuntu", "Quicksand", "'Ubuntu', sans-serif", "'Quicksand', sans-serif", "Ubuntu:wght@400;700", "Quicksand:wght@400;700"), 
+        ("Lora", "PT Serif", "'Lora', serif", "'PT Serif', serif", "Lora:wght@400;700", "PT+Serif:wght@400;700"), 
+        ("Nunito", "Poppins", "'Nunito', sans-serif", "'Poppins', sans-serif", "Nunito:wght@400;700", "Poppins:wght@400;700"),
+        ("Outfit", "Lexend", "'Outfit', sans-serif", "'Lexend', sans-serif", "Outfit:wght@400;700", "Lexend:wght@400;700"),
+        ("Rubik", "Karla", "'Rubik', sans-serif", "'Karla', sans-serif", "Rubik:wght@400;700", "Karla:wght@400;700"),
+        ("Roboto", "Open Sans", "'Roboto', sans-serif", "'Open Sans', sans-serif", "Roboto:wght@400;700", "Open+Sans:wght@400;700"),
+        ("Montserrat", "Poppins", "'Montserrat', sans-serif", "'Poppins', sans-serif", "Montserrat:wght@400;700", "Poppins:wght@400;700"),
+        ("Lato", "Roboto", "'Lato', sans-serif", "'Roboto', sans-serif", "Lato:wght@400;700", "Roboto:wght@400;700"),
+        ("Work Sans", "Fira Sans", "'Work Sans', sans-serif", "'Fira Sans', sans-serif", "Work+Sans:wght@400;700", "Fira+Sans:wght@400;700"),
+        ("Barlow", "Rubik", "'Barlow', sans-serif", "'Rubik', sans-serif", "Barlow:wght@400;700", "Rubik:wght@400;700"),
+        ("Space Grotesk", "Lexend", "'Space Grotesk', sans-serif", "'Lexend', sans-serif", "Space+Grotesk:wght@400;700", "Lexend:wght@400;700"),
+        ("Public Sans", "DM Sans", "'Public Sans', sans-serif", "'DM Sans', sans-serif", "Public+Sans:wght@400;700", "DM+Sans:wght@400;700"),
+        ("Crimson Text", "Cormorant", "'Crimson Text', serif", "'Cormorant', serif", "Crimson+Text:wght@400;700", "Cormorant:wght@400;700"),
+        ("Bitter", "Noto Serif", "'Bitter', serif", "'Noto Serif', serif", "Bitter:wght@400;700", "Noto+Serif:wght@400;700"),
+        ("Source Code Pro", "Inconsolata", "'Source Code Pro', monospace", "'Inconsolata', monospace", "Source+Code+Pro:wght@400;700", "Inconsolata:wght@400;700"),
+        ("Anton", "Oswald", "'Anton', sans-serif", "'Oswald', sans-serif", "Anton", "Oswald:wght@400;700"),
+        ("Pacifico", "Dancing Script", "'Pacifico', cursive", "'Dancing Script', cursive", "Pacifico", "Dancing+Script:wght@400;700"),
+        ("Caveat", "Pacifico", "'Caveat', cursive", "'Pacifico', cursive", "Caveat:wght@400;700", "Pacifico"),
+        ("Comfortaa", "Quicksand", "'Comfortaa', display", "'Quicksand', sans-serif", "Comfortaa:wght@400;700", "Quicksand:wght@400;700"),
+        ("Righteous", "Anton", "'Righteous', display", "'Anton', sans-serif", "Righteous", "Anton"),
+        ("IBM Plex Mono", "Space Mono", "'IBM Plex Mono', monospace", "'Space Mono', monospace", "IBM+Plex+Mono:wght@400;600", "Space+Mono:wght@400;700"),
+        ("Crimson Pro", "Zilla Slab", "'Crimson Pro', serif", "'Zilla Slab', serif", "Crimson+Pro:wght@400;600", "Zilla+Slab:wght@400;600"),
+        ("Teko", "Bebas Neue", "'Teko', sans-serif", "'Bebas Neue', sans-serif", "Teko:wght@400;600", "Bebas+Neue")
+    ]
 
-    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center">
-            <a href="/" class="flex items-center gap-2 group">
-                <div class="bg-gradient-to-br from-indigo-600 to-violet-600 text-white p-1.5 rounded-lg shadow-md group-hover:scale-105 transition-transform">
-                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                </div>
-                <span class="text-2xl font-black tracking-tighter">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">html</span><span class="text-slate-900">fonts</span>
-                </span>
-            </a>
-            
-            <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
-                <a href="#explorer" class="hover:text-indigo-600 transition">Directory</a>
-                <a href="#vs-tool" class="hover:text-indigo-600 transition">Font VS Font</a>
-                <a href="#editor-desk" class="hover:text-indigo-600 transition">Editor's Desk</a>
-                <a href="#guides" class="hover:text-indigo-600 transition text-indigo-500">Guides</a>
-            </nav>
-            <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden p-2 text-slate-600 hover:text-indigo-600">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-            </button>
-        </div>
-        <div id="mobile-menu" class="hidden absolute w-full bg-white border-b border-slate-200 shadow-xl z-30 px-6 py-6 space-y-4 md:hidden">
-            <a href="#explorer" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block text-sm font-bold text-slate-700">Directory</a>
-            <a href="#vs-tool" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block text-sm font-bold text-slate-700">Font VS Font</a>
-            <a href="#editor-desk" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block text-sm font-bold text-slate-700">Editor's Desk</a>
-            <a href="#guides" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block text-sm font-bold text-indigo-600">Guides</a>
-        </div>
-    </header>
+    # 3. GENERATION LOOPS
+    # Loop 1: Articles
+    for slug, title, desc, code in top_guides:
+        safe_code = code.replace('<', '&lt;').replace('>', '&gt;')
+        html = f"""<!DOCTYPE html><html lang="en"><head><title>{title} | htmlfonts Guides</title><meta name="description" content="{desc}"><script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script><style>body {{ font-family: system-ui, sans-serif; }}</style></head><body class="bg-slate-50 py-16 px-6"><div class="max-w-3xl mx-auto"><a href="/html-css-font-guides.html" class="text-indigo-600 font-bold uppercase tracking-widest text-xs">&larr; Back to Guides</a><article class="bg-white p-10 mt-8 rounded-3xl shadow-lg border border-slate-200"><h1 class="text-4xl font-black mb-4 tracking-tight">{title}</h1><p class="text-xl text-slate-600 mb-8">{desc}</p><div class="bg-slate-900 p-6 rounded-xl overflow-x-auto"><code class="text-indigo-300 font-mono text-sm whitespace-pre">{safe_code}</code></div></article></div></body></html>"""
+        with open(f"article/{slug}.html", 'w', encoding='utf-8') as f: f.write(html)
+        sitemap += f"  <url><loc>[https://htmlfonts.com/article/](https://htmlfonts.com/article/){slug}.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>\n"
 
-    <main class="flex-grow w-full">
-        <section id="explorer" class="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-20">
-            <div class="text-center max-w-4xl mx-auto mb-16">
-                <h1 class="text-5xl md:text-6xl font-black tracking-tight text-slate-900 mb-6">
-                    Directory of the <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Most Popular Free Fonts.</span>
-                </h1>
-                <p class="text-xl text-slate-500 leading-relaxed font-medium">Test and instantly copy HTML and CSS codes for the top-rated typography on the internet.</p>
-            </div>
-            
-            <div class="sticky top-20 z-30 bg-white/95 backdrop-blur border border-slate-200 rounded-2xl p-4 md:p-6 shadow-xl mb-12 flex flex-col md:flex-row gap-6 items-center">
-                <div class="w-full md:w-1/2">
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Live Preview Text</label>
-                    <input type="text" id="preview-text" value="Optimize your UI design with fast-loading free web fonts." 
-                        onfocus="if(this.value===this.defaultValue) { this.value=''; this.dispatchEvent(new Event('input')); }" 
-                        onblur="if(this.value==='') { this.value=this.defaultValue; this.dispatchEvent(new Event('input')); }"
-                        class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none font-medium text-slate-800 transition-all shadow-inner">
-                </div>
-                <div class="w-full md:w-1/4 flex flex-col">
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 px-1 flex justify-between">
-                        <span>Size</span><span id="size-label" class="text-indigo-600 font-bold">16px</span>
-                    </label>
-                    <input type="range" id="font-size" min="10" max="96" value="16" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600 mt-2">
-                </div>
-                <div class="w-full md:w-1/4">
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Classification</label>
-                    <select id="category-filter" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none font-bold text-slate-700 cursor-pointer">
-                        <option value="all">All Top Fonts</option>
-                        <option value="sans-serif">Modern Sans Serif</option>
-                        <option value="serif">Classic Serif</option>
-                        <option value="monospace">Developer Mono</option>
-                        <option value="display">Heavy Display</option>
-                        <option value="handwriting">Handwriting</option>
-                    </select>
-                </div>
-            </div>
-            <div id="font-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 min-h-[600px]"></div>
-        </section>
-
-        <section id="vs-tool" class="bg-gradient-to-b from-slate-50 to-indigo-50/50 border-y border-slate-200 py-24">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl font-black tracking-tight text-slate-900">Font VS Font Tool</h2>
-                    <p class="text-slate-500 font-medium mt-4">Select two fonts to compare legibility side-by-side.</p>
-                </div>
-                <div class="bg-white rounded-3xl p-6 md:p-10 shadow-2xl border border-slate-200/60">
-                    <div class="flex flex-col md:flex-row gap-6 mb-10">
-                        <div class="w-full md:w-2/3">
-                            <input type="text" id="vs-text" value="Optimize your UI design with fast-loading free web fonts." 
-                                onfocus="if(this.value===this.defaultValue) { this.value=''; this.dispatchEvent(new Event('input')); }" 
-                                onblur="if(this.value==='') { this.value=this.defaultValue; this.dispatchEvent(new Event('input')); }"
-                                class="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-xl text-center font-medium shadow-inner">
-                        </div>
-                        <div class="w-full md:w-1/3 flex flex-col justify-center bg-slate-50 border border-slate-200 rounded-xl px-6 py-2 shadow-inner">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">VS Size</span>
-                                <span id="vs-size-label" class="text-indigo-600 font-bold text-sm">16px</span>
-                            </div>
-                            <input type="range" id="vs-font-size" min="10" max="96" value="16" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 divide-y md:divide-y-0 md:divide-x divide-slate-100">
-                        <div class="md:pr-10 pt-6 md:pt-0 flex flex-col h-full">
-                            <select id="vs-font-a" class="w-full p-4 mb-6 bg-white border-2 border-slate-100 rounded-xl font-black text-slate-800 text-lg shadow-sm cursor-pointer"></select>
-                            <div class="flex-grow flex items-center min-h-[150px]"><p id="vs-preview-a" class="text-slate-900 break-words leading-tight" style="font-size: 16px;">Loading...</p></div>
-                            <button onclick="openModalFromVS('a')" class="w-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold uppercase tracking-widest py-4 rounded-xl transition shadow-md mt-8">GET FONT CODE &rarr;</button>
-                        </div>
-                        <div class="md:pl-10 pt-6 md:pt-0 flex flex-col h-full">
-                            <select id="vs-font-b" class="w-full p-4 mb-6 bg-white border-2 border-slate-100 rounded-xl font-black text-slate-800 text-lg shadow-sm cursor-pointer"></select>
-                            <div class="flex-grow flex items-center min-h-[150px]"><p id="vs-preview-b" class="text-slate-900 break-words leading-tight" style="font-size: 16px;">Loading...</p></div>
-                            <button onclick="openModalFromVS('b')" class="w-full bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold uppercase tracking-widest py-4 rounded-xl transition shadow-md mt-8">GET FONT CODE &rarr;</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="editor-desk" class="bg-slate-900 text-white py-24 relative overflow-hidden">
-            <div class="max-w-4xl mx-auto px-6 relative z-10">
-                <div class="flex justify-between items-start mb-8 border-b border-slate-800 pb-6 relative">
-                    <div>
-                        <span id="date-badge" class="text-indigo-400 text-xs font-black uppercase tracking-[0.3em] block mb-2">Latest Release</span>
-                        <h3 class="text-4xl md:text-5xl font-black tracking-tight" id="tip-heading">Loading...</h3>
-                    </div>
-                    <div class="relative">
-                        <button onclick="document.getElementById('share-menu').classList.toggle('hidden')" class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest transition shadow-lg border border-slate-700">Share</button>
-                        <div id="share-menu" class="hidden absolute right-0 mt-3 w-48 bg-white rounded-xl shadow-2xl overflow-hidden z-50 border border-slate-200">
-                            <button onclick="shareSocial('x')" class="w-full text-left px-4 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 border-b border-slate-100">Share on X</button>
-                            <button onclick="shareSocial('copy')" class="w-full text-left px-4 py-3 text-sm font-black text-indigo-600 hover:bg-indigo-50">Copy Link</button>
-                        </div>
-                    </div>
-                </div>
-                <p class="text-slate-400 text-xl leading-relaxed mb-10" id="tip-text">Accessing...</p>
-                <div class="relative bg-slate-950 rounded-xl p-8 border border-slate-800 shadow-2xl">
-                    <pre class="font-mono text-sm text-indigo-300 overflow-x-auto no-scrollbar"><code id="css-block">/* Loading... */</code></pre>
-                    <button onclick="copyElementText('css-block')" class="absolute top-6 right-6 bg-white text-slate-950 px-4 py-2 rounded-lg text-xs font-black hover:bg-indigo-50 uppercase tracking-tighter">Copy</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="guides" class="max-w-5xl mx-auto px-6 py-20">
-            <h3 class="text-sm font-black text-slate-400 uppercase tracking-[0.2em] mb-10 border-b border-slate-200 pb-4">Guides & Insights</h3>
-            <div class="mb-12">
-                <h4 class="text-2xl font-black text-slate-900 mb-6 tracking-tight">Top HTML Font Tutorials</h4>
-                <div id="article-list" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <a href="/article/how-to-change-font-size-in-html.html" class="text-sm font-bold text-indigo-600 hover:underline p-4 bg-white rounded-xl border border-slate-200 shadow-sm">How to change font size in HTML</a>
-                    <a href="/article/how-to-add-google-fonts-to-html.html" class="text-sm font-bold text-indigo-600 hover:underline p-4 bg-white rounded-xl border border-slate-200 shadow-sm">How to add Google Fonts to HTML</a>
-                    <a href="/article/best-css-font-pairings.html" class="text-sm font-bold text-indigo-600 hover:underline p-4 bg-white rounded-xl border border-slate-200 shadow-sm">Best CSS Font Pairings</a>
-                </div>
-            </div>
-            <div id="history-list" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
-        </section>
-    </main>
-
-    <div id="code-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-xl p-8 relative modal-enter" id="modal-content">
-            <button onclick="closeModal('code-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 bg-slate-50 rounded-full p-2">✕</button>
-            <h3 class="text-3xl font-black text-slate-900 tracking-tighter mb-8" id="modal-font-name">Font Detail</h3>
-            <div class="space-y-6">
-                <div>
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">1. Add to HTML Head</label>
-                    <div class="bg-slate-900 rounded-xl p-4 relative group">
-                        <code id="modal-html" class="text-xs font-mono text-indigo-300 break-all block"></code>
-                        <button onclick="copyElementText('modal-html')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY HTML</button>
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">2. Apply CSS Rule</label>
-                    <div class="bg-slate-900 rounded-xl p-4 relative group">
-                        <code id="modal-css" class="text-xs font-mono text-indigo-300 block"></code>
-                        <button onclick="copyElementText('modal-css')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY CSS</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer class="bg-white border-t border-slate-200 py-12">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center text-xs font-bold text-slate-500 uppercase tracking-widest">
-            <p>&copy; <script>document.write(new Date().getFullYear())</script> htmlfonts</p>
-            <a href="https://x.com/HtmlFonts" target="_blank" class="hover:text-indigo-600 text-indigo-500">@HtmlFonts</a>
-        </div>
-    </footer>
-
-    <script>
-        // FONT LIST (Sorted Alphabetically automatically in Script)
-        let fontsRaw = [
-            { name: "Arial", type: "sans-serif", css: "Arial, Helvetica, sans-serif", link: null },
-            { name: "Helvetica", type: "sans-serif", css: "Helvetica, Arial, sans-serif", link: null },
-            { name: "Times New Roman", type: "serif", css: "'Times New Roman', Times, serif", link: null },
-            { name: "Georgia", type: "serif", css: "Georgia, serif", link: null },
-            { name: "Verdana", type: "sans-serif", css: "Verdana, Geneva, sans-serif", link: null },
-            { name: "Courier New", type: "monospace", css: "'Courier New', Courier, monospace", link: null },
-            { name: "Inter", type: "sans-serif", css: "'Inter', sans-serif", link: "Inter:wght@400;600;800" },
-            { name: "Roboto", type: "sans-serif", css: "'Roboto', sans-serif", link: "Roboto:wght@400;500;700" },
-            { name: "Open Sans", type: "sans-serif", css: "'Open Sans', sans-serif", link: "Open+Sans:wght@400;600;700" },
-            { name: "Montserrat", type: "sans-serif", css: "'Montserrat', sans-serif", link: "Montserrat:wght@400;600;700;900" },
-            { name: "Poppins", type: "sans-serif", css: "'Poppins', sans-serif", link: "Poppins:wght@400;600;700;800" },
-            { name: "Lato", type: "sans-serif", css: "'Lato', sans-serif", link: "Lato:wght@400;700;900" },
-            { name: "Raleway", type: "sans-serif", css: "'Raleway', sans-serif", link: "Raleway:wght@400;600;700" },
-            { name: "Oswald", type: "sans-serif", css: "'Oswald', sans-serif", link: "Oswald:wght@400;600;700" },
-            { name: "Ubuntu", type: "sans-serif", css: "'Ubuntu', sans-serif", link: "Ubuntu:wght@400;500;700" },
-            { name: "Nunito", type: "sans-serif", css: "'Nunito', sans-serif", link: "Nunito:wght@400;600;700" },
-            { name: "Outfit", type: "sans-serif", css: "'Outfit', sans-serif", link: "Outfit:wght@400;600;700" },
-            { name: "Lexend", type: "sans-serif", css: "'Lexend', sans-serif", link: "Lexend:wght@400;600;700" },
-            { name: "Rubik", type: "sans-serif", css: "'Rubik', sans-serif", link: "Rubik:wght@400;500;700" },
-            { name: "Karla", type: "sans-serif", css: "'Karla', sans-serif", link: "Karla:wght@400;700" },
-            { name: "Work Sans", type: "sans-serif", css: "'Work Sans', sans-serif", link: "Work+Sans:wght@400;600;700" },
-            { name: "Fira Sans", type: "sans-serif", css: "'Fira Sans', sans-serif", link: "Fira+Sans:wght@400;500;700" },
-            { name: "Barlow", type: "sans-serif", css: "'Barlow', sans-serif", link: "Barlow:wght@400;500;700" },
-            { name: "Space Grotesk", type: "sans-serif", css: "'Space Grotesk', sans-serif", link: "Space+Grotesk:wght@400;600;700" },
-            { name: "Public Sans", type: "sans-serif", css: "'Public Sans', sans-serif", link: "Public+Sans:wght@400;600;700" },
-            { name: "DM Sans", type: "sans-serif", css: "'DM Sans', sans-serif", link: "DM+Sans:wght@400;500;700" },
-            { name: "Noto Sans", type: "sans-serif", css: "'Noto Sans', sans-serif", link: "Noto+Sans:wght@400;600;700" },
-            { name: "PT Sans", type: "sans-serif", css: "'PT Sans', sans-serif", link: "PT+Sans:wght@400;700" },
-            { name: "Quicksand", type: "sans-serif", css: "'Quicksand', sans-serif", link: "Quicksand:wght@400;600;700" },
-            { name: "Mukta", type: "sans-serif", css: "'Mukta', sans-serif", link: "Mukta:wght@400;600;700" },
-            { name: "Heebo", type: "sans-serif", css: "'Heebo', sans-serif", link: "Heebo:wght@400;600;700" },
-            { name: "Anton", type: "sans-serif", css: "'Anton', sans-serif", link: "Anton" },
-            { name: "Bebas Neue", type: "sans-serif", css: "'Bebas Neue', sans-serif", link: "Bebas+Neue" },
-            { name: "Teko", type: "sans-serif", css: "'Teko', sans-serif", link: "Teko:wght@400;600;700" },
-            { name: "Playfair Display", type: "serif", css: "'Playfair Display', serif", link: "Playfair+Display:wght@400;600;700;800" },
-            { name: "Merriweather", type: "serif", css: "'Merriweather', serif", link: "Merriweather:wght@400;700;900" },
-            { name: "Lora", type: "serif", css: "'Lora', serif", link: "Lora:wght@400;500;600;700" },
-            { name: "PT Serif", type: "serif", css: "'PT Serif', serif", link: "PT+Serif:wght@400;700" },
-            { name: "Crimson Text", type: "serif", css: "'Crimson Text', serif", link: "Crimson+Text:wght@400;600;700" },
-            { name: "Cormorant", type: "serif", css: "'Cormorant', serif", link: "Cormorant:wght@400;600;700" },
-            { name: "Bitter", type: "serif", css: "'Bitter', serif", link: "Bitter:wght@400;600;700" },
-            { name: "Noto Serif", type: "serif", css: "'Noto Serif', serif", link: "Noto+Serif:wght@400;600;700" },
-            { name: "Crimson Pro", type: "serif", css: "'Crimson Pro', serif", link: "Crimson+Pro:wght@400;600;700" },
-            { name: "Zilla Slab", type: "serif", css: "'Zilla Slab', serif", link: "Zilla+Slab:wght@400;600;700" },
-            { name: "Libre Baskerville", type: "serif", css: "'Libre Baskerville', serif", link: "Libre+Baskerville:wght@400;700" },
-            { name: "EB Garamond", type: "serif", css: "'EB Garamond', serif", link: "EB+Garamond:wght@400;600;700" },
-            { name: "Arvo", type: "serif", css: "'Arvo', serif", link: "Arvo:wght@400;700" },
-            { name: "Josefin Slab", type: "serif", css: "'Josefin Slab', serif", link: "Josefin+Slab:wght@400;600;700" },
-            { name: "Rokkitt", type: "serif", css: "'Rokkitt', serif", link: "Rokkitt:wght@400;600;700" },
-            { name: "Fira Code", type: "monospace", css: "'Fira Code', monospace", link: "Fira+Code:wght@400;500;600;700" },
-            { name: "JetBrains Mono", type: "monospace", css: "'JetBrains Mono', monospace", link: "JetBrains+Mono:wght@400;500;700;800" },
-            { name: "Source Code Pro", type: "monospace", css: "'Source Code Pro', monospace", link: "Source+Code+Pro:wght@400;500;600;700" },
-            { name: "Inconsolata", type: "monospace", css: "'Inconsolata', monospace", link: "Inconsolata:wght@400;500;700" },
-            { name: "IBM Plex Mono", type: "monospace", css: "'IBM Plex Mono', monospace", link: "IBM+Plex+Mono:wght@400;500;600;700" },
-            { name: "Space Mono", type: "monospace", css: "'Space Mono', monospace", link: "Space+Mono:wght@400;700" },
-            { name: "Roboto Mono", type: "monospace", css: "'Roboto Mono', monospace", link: "Roboto+Mono:wght@400;500;600;700" },
-            { name: "Ubuntu Mono", type: "monospace", css: "'Ubuntu Mono', monospace", link: "Ubuntu+Mono:wght@400;700" },
-            { name: "PT Mono", type: "monospace", css: "'PT Mono', monospace", link: "PT+Mono" },
-            { name: "Pacifico", type: "handwriting", css: "'Pacifico', cursive", link: "Pacifico" },
-            { name: "Dancing Script", type: "handwriting", css: "'Dancing Script', cursive", link: "Dancing+Script:wght@400;500;600;700" },
-            { name: "Caveat", type: "handwriting", css: "'Caveat', cursive", link: "Caveat:wght@400;500;600;700" },
-            { name: "Satisfy", type: "handwriting", css: "'Satisfy', cursive", link: "Satisfy" },
-            { name: "Great Vibes", type: "handwriting", css: "'Great Vibes', cursive", link: "Great+Vibes" },
-            { name: "Amatic SC", type: "handwriting", css: "'Amatic SC', cursive", link: "Amatic+SC:wght@400;700" },
-            { name: "Indie Flower", type: "handwriting", css: "'Indie Flower', cursive", link: "Indie+Flower" },
-            { name: "Shadows Into Light", type: "handwriting", css: "'Shadows Into Light', cursive", link: "Shadows+Into+Light" },
-            { name: "Comfortaa", type: "display", css: "'Comfortaa', display", link: "Comfortaa:wght@400;500;600;700" },
-            { name: "Righteous", type: "display", css: "'Righteous', display", link: "Righteous" },
-            { name: "Lobster", type: "display", css: "'Lobster', display", link: "Lobster" },
-            { name: "Abril Fatface", type: "display", css: "'Abril Fatface', display", link: "Abril+Fatface" },
-            { name: "Cinzel", type: "display", css: "'Cinzel', serif", link: "Cinzel:wght@400;500;600;700;800" },
-            { name: "Bangers", type: "display", css: "'Bangers', display", link: "Bangers" },
-            { name: "Fredoka One", type: "display", css: "'Fredoka One', display", link: "Fredoka+One" }
-        ].sort((a, b) => a.name.localeCompare(b.name));
-
-        const loadedFonts = new Set();
-        function loadFont(link) {
-            if (!link || loadedFonts.has(link)) return;
-            const el = document.createElement('link'); el.rel = "stylesheet"; el.href = `https://fonts.googleapis.com/css2?family=${link}&display=swap`;
-            document.head.appendChild(el); loadedFonts.add(link);
-        }
-
-        function openFontModal(fontObj) {
-            document.getElementById('modal-font-name').innerText = fontObj.name;
-            document.getElementById('modal-html').textContent = fontObj.link ? `<link href="https://fonts.googleapis.com/css2?family=${fontObj.link}&display=swap" rel="stylesheet">` : ``;
-            document.getElementById('modal-css').textContent = `font-family: ${fontObj.css};`;
-            document.getElementById('code-modal').classList.remove('hidden');
-            setTimeout(() => document.getElementById('modal-content').classList.add('modal-active'), 10);
-        }
-
-        let renderedFonts = [];
-        function createGrid() {
-            const filter = document.getElementById('category-filter').value;
-            const grid = document.getElementById('font-grid'); grid.innerHTML = ''; renderedFonts = [];
-            fontsRaw.forEach((f) => {
-                if (filter !== 'all' && f.type !== filter) return;
-                loadFont(f.link);
-                const card = document.createElement('div');
-                card.className = "bg-white border border-slate-200 rounded-3xl p-8 hover:shadow-2xl transition-all cursor-pointer flex flex-col h-[280px]";
-                card.onclick = () => openFontModal(f);
-                const p = document.createElement('p'); p.className = "text-slate-900"; p.style.fontFamily = f.css; renderedFonts.push(p);
-                card.innerHTML = `<div class="flex justify-between items-center mb-6"><span class="text-xs font-black">${f.name}</span><span class="text-[9px] bg-slate-100 px-2 py-1 rounded">${f.type}</span></div>`;
-                const cont = document.createElement('div'); cont.className = "flex-grow flex items-center overflow-hidden"; cont.appendChild(p);
-                card.appendChild(cont); grid.appendChild(card);
-            });
-            updateGridText();
-        }
-
-        function updateGridText() {
-            const val = document.getElementById('preview-text').value || document.getElementById('preview-text').defaultValue;
-            const sz = document.getElementById('font-size').value;
-            document.getElementById('size-label').innerText = sz + 'px';
-            renderedFonts.forEach(p => { p.innerText = val; p.style.fontSize = sz + 'px'; });
-        }
-
-        let vsData = { a: null, b: null };
-        function initVSTool() {
-            const sA = document.getElementById('vs-font-a'); const sB = document.getElementById('vs-font-b');
-            fontsRaw.forEach((f, i) => { sA.add(new Option(f.name, i)); sB.add(new Option(f.name, i)); });
-            sA.selectedIndex = 0; sB.selectedIndex = 1;
-            function updateVS() {
-                const text = document.getElementById('vs-text').value || document.getElementById('vs-text').defaultValue;
-                const sz = document.getElementById('vs-font-size').value;
-                document.getElementById('vs-size-label').innerText = sz + 'px';
-                vsData.a = fontsRaw[sA.value]; vsData.b = fontsRaw[sB.value];
-                loadFont(vsData.a.link); loadFont(vsData.b.link);
-                document.getElementById('vs-preview-a').style.fontFamily = vsData.a.css;
-                document.getElementById('vs-preview-a').style.fontSize = sz + 'px';
-                document.getElementById('vs-preview-a').innerText = text;
-                document.getElementById('vs-preview-b').style.fontFamily = vsData.b.css;
-                document.getElementById('vs-preview-b').style.fontSize = sz + 'px';
-                document.getElementById('vs-preview-b').innerText = text;
-            }
-            sA.onchange = updateVS; sB.onchange = updateVS;
-            document.getElementById('vs-text').oninput = updateVS;
-            document.getElementById('vs-font-size').oninput = updateVS;
-            updateVS();
-        }
-
-        function openModalFromVS(side) { openFontModal(side === 'a' ? vsData.a : vsData.b); }
-
-        function triggerToast(msg = "Copied! 🚀") {
-            const t = document.getElementById('toast'); document.getElementById('toast-msg').innerText = msg;
-            t.classList.remove('hidden'); setTimeout(() => t.classList.add('toast-active'), 10);
-            setTimeout(() => { t.classList.remove('toast-active'); setTimeout(() => t.classList.add('hidden'), 300); }, 3000);
-        }
-
-        function copyElementText(id) {
-            const txt = document.getElementById(id).textContent;
-            navigator.clipboard.writeText(txt).then(() => triggerToast()).catch(() => {
-                const el = document.createElement('textarea'); el.value = txt; document.body.appendChild(el);
-                el.select(); document.execCommand('copy'); document.body.removeChild(el); triggerToast();
-            });
-        }
-
-        let currentTipSlug = "";
-        function shareSocial(p) {
-            const url = window.location.origin + '/compare/' + currentTipSlug + '.html';
-            document.getElementById('share-menu').classList.add('hidden');
-            if (p === 'x') window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`, '_blank');
-            if (p === 'copy') { navigator.clipboard.writeText(url); triggerToast("Link Copied! 🔗"); }
-        }
-
-        document.getElementById('preview-text').oninput = updateGridText;
-        document.getElementById('font-size').oninput = updateGridText;
+    # Loop 2: Comparisons
+    for font_a, font_b, css_a, css_b, link_a, link_b in top_comparisons:
+        slug = f"{font_a.lower().replace(' ', '-')}-vs-{font_b.lower().replace(' ', '-')}"
+        imp_a = f"<link href='[https://fonts.googleapis.com/css2?family=](https://fonts.googleapis.com/css2?family=){link_a}&display=swap' rel='stylesheet'>" if link_a else ""
+        imp_b = f"<link href='[https://fonts.googleapis.com/css2?family=](https://fonts.googleapis.com/css2?family=){link_b}&display=swap' rel='stylesheet'>" if link_b else ""
+        safe_a = imp_a.replace('<', '&lt;').replace('>', '&gt;')
+        safe_b = imp_b.replace('<', '&lt;').replace('>', '&gt;')
         
-        // NEW FIX: Scroll to the top of the explorer section when the grid height changes
-        document.getElementById('category-filter').onchange = () => {
-            createGrid();
-            document.getElementById('explorer').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        };
+        vs_html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>{font_a} vs {font_b} | Comparison</title><script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>{imp_a}{imp_b}<style>body {{ font-family: system-ui, sans-serif; }} .toast-active {{ opacity: 1; transform: translate(-50%, 0); transition: all 0.3s; }}</style></head><body class="bg-slate-50 min-h-screen flex flex-col"><div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase">Copied! 🚀</div><header class="bg-white border-b py-4 px-6 text-center"><a href="/" class="text-indigo-600 font-black text-2xl">htmlfonts</a></header><div class="max-w-6xl mx-auto px-4 py-16 w-full"><div class="text-center mb-12"><a href="/font-vs-font-comparison-tool.html" class="text-indigo-600 font-bold text-xs uppercase">&larr; Back to Tool</a><h1 class="text-5xl font-black mt-6 tracking-tight text-slate-900">{font_a} vs {font_b}</h1></div><div class="bg-white rounded-3xl p-12 shadow-2xl border"><input type="text" id="vs-text" value="Optimize your UI design with fast-loading fonts." oninput="u()" class="w-full mb-10 px-6 py-4 bg-slate-50 border rounded-xl text-xl text-center"><div class="grid grid-cols-1 md:grid-cols-2 gap-10 divide-x divide-slate-100"><div><h3 class="text-2xl font-black mb-6">{font_a}</h3><p id="pa" class="text-5xl leading-tight" style="font-family: {css_a};">Optimize your UI design with fast-loading fonts.</p><div class="mt-8 bg-slate-900 p-4 rounded-xl relative group"><code id="ha" class="text-xs text-indigo-300 font-mono">{safe_a}</code><button onclick="c('ha')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100">COPY</button></div><div class="mt-4 bg-slate-900 p-4 rounded-xl relative group"><code id="ca" class="text-xs text-indigo-300 font-mono">font-family: {css_a};</code><button onclick="c('ca')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100">COPY</button></div></div><div><h3 class="text-2xl font-black mb-6">{font_b}</h3><p id="pb" class="text-5xl leading-tight" style="font-family: {css_b};">Optimize your UI design with fast-loading fonts.</p><div class="mt-8 bg-slate-900 p-4 rounded-xl relative group"><code id="hb" class="text-xs text-indigo-300 font-mono">{safe_b}</code><button onclick="c('hb')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100">COPY</button></div><div class="mt-4 bg-slate-900 p-4 rounded-xl relative group"><code id="cb" class="text-xs text-indigo-300 font-mono">font-family: {css_b};</code><button onclick="c('cb')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100">COPY</button></div></div></div></div></div><script>function u() {{ const v = document.getElementById('vs-text').value; document.getElementById('pa').innerText = v; document.getElementById('pb').innerText = v; }} function c(id) {{ const t = document.getElementById(id).textContent; navigator.clipboard.writeText(t).then(() => {{ const ts = document.getElementById('toast'); ts.classList.remove('hidden'); setTimeout(() => ts.classList.add('toast-active'), 10); setTimeout(() => {{ ts.classList.remove('toast-active'); setTimeout(() => ts.classList.add('hidden'), 300); }}, 3000); }}); }}</script></body></html>"""
+        with open(f"compare/{slug}.html", 'w', encoding='utf-8') as f: f.write(vs_html)
+        sitemap += f"  <url><loc>[https://htmlfonts.com/compare/](https://htmlfonts.com/compare/){slug}.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>\n"
 
-        createGrid(); initVSTool();
-        function closeModal(id) { document.getElementById('modal-content').classList.remove('modal-active'); setTimeout(() => document.getElementById(id).classList.add('hidden'), 200); }
-        fetch('content.json').then(r => r.json()).then(d => {
-            currentTipSlug = d.slug; document.getElementById('tip-heading').innerText = d.title;
-            document.getElementById('tip-text').innerText = d.tip; document.getElementById('css-block').textContent = d.css_snippet;
-        }).catch(() => {});
-    </script>
-</body>
-</html>
+    # Daily Tip Archive
+    sitemap += f"  <url><loc>[https://htmlfonts.com/article/](https://htmlfonts.com/article/){new_data['slug']}.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>\n"
+
+    # Finalize Sitemap
+    sitemap += '</urlset>'
+    with open('sitemap.xml', 'w', encoding='utf-8') as f: f.write(sitemap)
+    print("✅ Build Successful: Sitemap, 30 Articles, 30 Comparisons.")
+
+except Exception as e:
+    print(f"❌ Error: {e}")
+    exit(1)
+
+# 4. POST TO X
+try:
+    client_x = tweepy.Client(consumer_key=os.environ["X_API_KEY"], consumer_secret=os.environ["X_API_SECRET"], access_token=os.environ["X_ACCESS_TOKEN"], access_token_secret=os.environ["X_ACCESS_TOKEN_SECRET"])
+    client_x.create_tweet(text=f"{new_data['tweet']}\n\nRead more: [https://htmlfonts.com/article/](https://htmlfonts.com/article/){new_data['slug']}.html")
+    print("✅ X Post Successful.")
+except Exception as e: pass
