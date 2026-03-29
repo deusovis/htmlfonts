@@ -4,40 +4,59 @@ import datetime
 import google.generativeai as genai
 import tweepy
 
-# 1. Setup Gemini API (Using 1.5 Flash for reliable, fast, free-tier text generation)
+# 1. Setup Gemini API (1.5 Flash - Bulletproof Free Tier)
 genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 model = genai.GenerativeModel('gemini-1.5-flash')
 
-# 2. Generate Content
-prompt = """
-You are an expert web developer and typographer. 
-Provide a unique, modern web typography tip or font pairing for frontend developers.
-Respond ONLY in valid JSON format with three keys: 
-"tweet" (A short, engaging tweet about the tip, max 250 chars, including #CSS #WebDesign), 
-"tip" (A 2-3 sentence explanation of the font pairing or typography trick), 
-"css_snippet" (The actual CSS code block to implement it).
+# 2. SEO-Tuned Prompt
+# We are forcing Gemini to use 2026 SEO keywords that developers actually search for.
+seo_prompt = """
+You are a Senior SEO Expert and Lead Frontend Developer. 
+Generate a high-utility 'Daily Font Insight' for the website htmlfonts.com.
+
+TARGET KEYWORDS: Fluid Typography, CSS clamp(), Variable Fonts performance, 
+System UI font stacks, Font-display swap, A11y typography, modern web-safe fonts.
+
+OUTPUT FORMAT: You must return ONLY a raw JSON object with these exact keys:
+{
+  "tweet": "A viral-style tweet (max 240 chars) with 3 relevant hashtags.",
+  "tip": "A 2-paragraph expert explanation of a modern CSS typography technique.",
+  "css_snippet": "A clean, copy-pasteable CSS code block using modern 2026 standards.",
+  "seo_keywords": "5 comma-separated keywords for meta tags"
+}
+
+GUIDELINES:
+- Focus on performance (Core Web Vitals).
+- No old HTML tags (like <font>); use only modern CSS.
+- Ensure the CSS snippet is useful for a professional project.
 """
 
-response = model.generate_content(prompt)
+response = model.generate_content(seo_prompt)
 
 # Clean and parse JSON response
 try:
-    response_text = response.text.strip()
-    if response_text.startswith("```json"):
-        response_text = response_text[7:-3]
-    content_data = json.loads(response_text)
+    # Handle potential markdown formatting in AI response
+    raw_text = response.text.strip()
+    if raw_text.startswith("```json"):
+        raw_text = raw_text[7:-3].strip()
+    
+    content_data = json.loads(raw_text)
+    content_data["date"] = datetime.datetime.now().strftime("%B %d, %Y")
 except Exception as e:
     print(f"Error parsing Gemini response: {e}")
-    exit(1)
+    # Fallback content to prevent site breakage
+    content_data = {
+        "tweet": "Optimize your web performance with system font stacks! #WebDev #CSS #Performance",
+        "tip": "System font stacks are the ultimate choice for performance-first web design in 2026.",
+        "css_snippet": "body { font-family: system-ui, -apple-system, sans-serif; }",
+        "date": datetime.datetime.now().strftime("%B %d, %Y")
+    }
 
-content_data["date"] = datetime.datetime.now().strftime("%Y-%m-%d")
-
-# 3. Update Website JSON
+# 3. Update Website JSON File
 with open('content.json', 'w') as f:
     json.dump(content_data, f, indent=4)
-print("Website content.json updated successfully.")
 
-# 4. Post to X.com
+# 4. Post to X (Twitter)
 try:
     client = tweepy.Client(
         consumer_key=os.environ["X_API_KEY"],
@@ -46,7 +65,6 @@ try:
         access_token_secret=os.environ["X_ACCESS_TOKEN_SECRET"]
     )
     client.create_tweet(text=content_data["tweet"])
-    print("Tweet posted successfully.")
+    print("SEO Tweet deployed.")
 except Exception as e:
-    print(f"Error posting to X: {e}")
-    # We don't exit(1) here so the GitHub action still commits the website update even if X fails.
+    print(f"X.com API Error: {e}")
