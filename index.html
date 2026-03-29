@@ -73,6 +73,8 @@
                 <p class="text-xl text-slate-500 leading-relaxed font-medium">Test and instantly copy HTML and CSS codes for the top-rated typography on the internet.</p>
             </div>
             
+            <div id="filter-anchor"></div>
+            
             <div id="filter-bar" class="sticky top-20 z-30 bg-white/95 backdrop-blur border border-slate-200 rounded-2xl p-4 md:p-6 shadow-xl mb-12 flex flex-col md:flex-row gap-6 items-center">
                 <div class="w-full md:w-1/2">
                     <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Live Preview Text</label>
@@ -376,29 +378,31 @@
         document.getElementById('preview-text').oninput = updateGridText;
         document.getElementById('font-size').oninput = updateGridText;
         
-        // NEW FIX: Lock height to prevent browser layout thrashing, then scroll exactly to the sticky bar
+        // NEW FIX: Invisible anchor targeting + Height locking to completely stop layout thrashing
         document.getElementById('category-filter').onchange = () => {
-            const filterBar = document.getElementById('filter-bar');
+            const grid = document.getElementById('font-grid');
+            const anchor = document.getElementById('filter-anchor');
             
-            // Calculate where the bar is *right now*
-            const absoluteY = filterBar.getBoundingClientRect().top + window.scrollY;
+            // 1. Lock grid height so the page physically cannot shrink and yank the user down
+            grid.style.minHeight = grid.offsetHeight + 'px';
             
-            // Lock the body height so the browser cannot yank the user down
-            document.body.style.minHeight = document.body.scrollHeight + 'px';
-            
-            // Update the fonts grid
+            // 2. Generate the new grid (which will shrink, but our lock prevents the browser from noticing yet)
             createGrid();
             
-            // Instantly snap the screen so the filter bar sits at its sticky spot (80px from top)
+            // 3. Find the exact static Y coordinate using the invisible anchor
+            // Subtract 80px to account for the "top-20" sticky offset
+            const targetY = anchor.getBoundingClientRect().top + window.scrollY - 80;
+            
+            // 4. Snap to the perfect coordinate instantly
             window.scrollTo({
-                top: absoluteY - 80,
+                top: targetY,
                 behavior: 'auto'
             });
             
-            // Unlock the body height on the very next frame once the scroll has resolved
-            requestAnimationFrame(() => {
-                document.body.style.minHeight = '';
-            });
+            // 5. Release the height lock safely after the scroll is finished
+            setTimeout(() => {
+                grid.style.minHeight = '';
+            }, 50);
         };
 
         createGrid(); initVSTool();
