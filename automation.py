@@ -35,106 +35,12 @@ try:
 
     # Setup Directory Structure
     os.makedirs('compare', exist_ok=True)
-    os.makedirs('article', exist_ok=True)
     
     # Initialize XML Sitemap
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="[http://www.sitemaps.org/schemas/sitemap/0.9](http://www.sitemaps.org/schemas/sitemap/0.9)">\n'
     sitemap += '  <url>\n    <loc>[https://htmlfonts.com/](https://htmlfonts.com/)</loc>\n    <changefreq>daily</changefreq>\n    <priority>1.0</priority>\n  </url>\n'
 
-    # 2. GENERATE DAILY TIP PAGE (Saves to /article/)
-    tip_html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{new_data['title']} | htmlfonts.com</title>
-    <meta name="description" content="{new_data['tip'][:150]}...">
-    <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
-    <style>body {{ font-family: system-ui, sans-serif; }}</style>
-</head>
-<body class="bg-slate-50 text-slate-900 min-h-screen py-12 px-6">
-    <div class="max-w-3xl mx-auto">
-        <a href="/#editor-desk" class="text-indigo-600 font-bold uppercase tracking-widest text-xs hover:underline">&larr; Back to Directory</a>
-        <article class="bg-white p-8 md:p-12 rounded-3xl shadow-xl mt-8 border border-slate-200">
-            <span class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-4 block">{new_data['date']}</span>
-            <h1 class="text-4xl md:text-5xl font-black mb-6 tracking-tight">{new_data['title']}</h1>
-            <p class="text-lg text-slate-700 leading-relaxed mb-10">{new_data['tip']}</p>
-            <div class="bg-slate-950 rounded-2xl p-6 overflow-x-auto shadow-inner">
-                <pre class="text-indigo-300 font-mono text-sm"><code>{new_data['css_snippet']}</code></pre>
-            </div>
-        </article>
-    </div>
-</body>
-</html>"""
-    with open(f"article/{new_data['slug']}.html", 'w', encoding='utf-8') as f: 
-        f.write(tip_html)
-
-    # 3. GENERATE THE TOP 30 "HOW TO" ARTICLES
-    print("Generating Top 30 How-To SEO Guides...")
-    top_guides = [
-        ("how-to-change-font-size-in-html", "How to Change Font Size in HTML", "Learn the fastest way to change font sizes in HTML using CSS property font-size, rems, and ems.", "font-size: 24px;"),
-        ("how-to-change-font-color-in-html", "How to Change Font Color in HTML", "Discover how to alter text colors in HTML with CSS hex codes, RGB, and color names.", "color: #4f46e5;"),
-        ("how-to-add-google-fonts-to-html", "How to Add Google Fonts to HTML", "The definitive guide to embedding free Google Fonts into your website's head tag.", "<link href='[https://fonts.googleapis.com/css2?family=Inter&display=swap](https://fonts.googleapis.com/css2?family=Inter&display=swap)' rel='stylesheet'>"),
-        ("how-to-bold-text-in-html", "How to Bold Text in HTML", "Use the CSS font-weight property or HTML strong tags to bolden your typography.", "font-weight: bold;"),
-        ("how-to-italicize-text-in-html", "How to Italicize Text in HTML", "Apply CSS font-style to italicize paragraphs and headings effortlessly.", "font-style: italic;"),
-        ("how-to-center-text-in-html", "How to Center Text in HTML", "Align your web fonts perfectly to the center using the CSS text-align property.", "text-align: center;"),
-        ("what-is-the-best-font-for-reading-on-screen", "Best Fonts for Screen Reading", "A breakdown of why Sans-Serif fonts like Inter and Roboto are best for UI design.", "font-family: 'Inter', sans-serif;"),
-        ("how-to-use-custom-fonts-in-css", "How to Use Custom Fonts in CSS", "Load local custom fonts using the @font-face CSS rule for unique branding.", "@font-face {\n  font-family: 'MyFont';\n  src: url('font.woff2');\n}"),
-        ("how-to-add-shadow-to-text-in-html", "How to Add Shadow to Text in HTML", "Create beautiful typography depth using the CSS text-shadow property.", "text-shadow: 2px 2px 4px rgba(0,0,0,0.5);"),
-        ("how-to-change-font-family-in-html", "How to Change Font Family in HTML", "Assign different typefaces to specific HTML elements using font-family.", "font-family: 'Arial', sans-serif;"),
-        ("how-to-underline-text-in-html", "How to Underline Text in HTML", "Apply text-decoration properties to create stylish underlines for links and headers.", "text-decoration: underline;"),
-        ("how-to-strike-through-text-in-html", "How to Strikethrough Text in HTML", "Use line-through styling to cross out prices or outdated text.", "text-decoration: line-through;"),
-        ("how-to-change-line-spacing-in-html", "How to Change Line Spacing in HTML", "Improve legibility by adjusting the CSS line-height property.", "line-height: 1.6;"),
-        ("how-to-change-letter-spacing-in-html", "How to Change Letter Spacing in HTML", "Adjust the tracking of your fonts using letter-spacing for better UI headers.", "letter-spacing: 0.05em;"),
-        ("how-to-make-text-uppercase-in-html", "How to Make Text Uppercase in HTML", "Force all text to be capitals using the text-transform property without altering HTML.", "text-transform: uppercase;"),
-        ("how-to-make-fluid-typography", "How to Create Fluid Typography", "Make your fonts scale automatically on mobile and desktop using CSS clamp().", "font-size: clamp(1rem, 2.5vw, 2rem);"),
-        ("how-to-add-gradient-to-text-in-css", "How to Add Gradients to Text", "Create modern gradient text using background-clip and transparent colors.", "background: linear-gradient(90deg, #4f46e5, #ec4899);\n-webkit-background-clip: text;\ncolor: transparent;"),
-        ("what-are-web-safe-fonts", "What Are Web Safe Fonts?", "An explanation of fonts pre-installed on all computers, like Arial and Times New Roman.", "font-family: Arial, Helvetica, sans-serif;"),
-        ("how-to-use-rem-vs-em-in-css", "Rem vs Em in CSS Font Sizing", "Understand the difference between relative sizing units for accessible web design.", "font-size: 1.5rem; /* 24px relative to root */"),
-        ("how-to-create-drop-caps-in-html", "How to Create Drop Caps in HTML", "Style the first letter of a paragraph using the ::first-letter pseudo-element.", "p::first-letter {\n  font-size: 3rem;\n  font-weight: bold;\n  float: left;\n}"),
-        ("how-to-change-font-weight-in-html", "How to Change Font Weight in HTML", "Control font thickness using numeric values from 100 to 900.", "font-weight: 600;"),
-        ("how-to-fix-blurry-fonts-on-web", "How to Fix Blurry Fonts on the Web", "Use font-smoothing CSS properties to make typography render sharper on Mac and PC.", "-webkit-font-smoothing: antialiased;\n-moz-osx-font-smoothing: grayscale;"),
-        ("how-to-import-adobe-fonts-to-html", "How to Import Adobe Fonts", "A quick guide on integrating Adobe Typekit into your web projects.", "<link rel='stylesheet' href='[https://use.typekit.net/xyz.css](https://use.typekit.net/xyz.css)'>"),
-        ("how-to-optimize-web-fonts-for-speed", "How to Optimize Web Fonts for Speed", "Use font-display: swap to prevent render-blocking and speed up page loads.", "font-display: swap;"),
-        ("how-to-align-text-justify-in-html", "How to Justify Text in HTML", "Create clean, newspaper-style blocks of text using text-align justify.", "text-align: justify;"),
-        ("how-to-prevent-text-wrapping-in-html", "How to Prevent Text Wrapping", "Keep text on a single line using white-space nowrap.", "white-space: nowrap;"),
-        ("how-to-use-variable-fonts-in-css", "How to Use Variable Fonts", "Control weight, width, and slant from a single font file using font-variation-settings.", "font-variation-settings: 'wght' 700, 'wdth' 100;"),
-        ("how-to-highlight-text-in-html", "How to Highlight Text", "Use the HTML mark tag or CSS background-color to create a highlight effect.", "background-color: #fef08a;"),
-        ("how-to-create-text-columns-in-css", "How to Create Text Columns", "Split paragraphs into multiple magazine-style columns using column-count.", "column-count: 2;\ncolumn-gap: 2rem;"),
-        ("best-css-font-pairings", "Best CSS Font Pairings", "The ultimate guide to pairing serif headers with sans-serif body text.", "h1 { font-family: 'Playfair Display', serif; }\np { font-family: 'Inter', sans-serif; }")
-    ]
-
-    for slug, title, desc, code in top_guides:
-        # Escape HTML characters for the code block
-        safe_code = code.replace('<', '&lt;').replace('>', '&gt;')
-        
-        guide_html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{title} | htmlfonts.com Guides</title>
-    <meta name="description" content="{desc}">
-    <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
-    <style>body {{ font-family: system-ui, sans-serif; }}</style>
-</head>
-<body class="bg-slate-50 text-slate-900 min-h-screen py-16 px-6">
-    <div class="max-w-3xl mx-auto">
-        <a href="/#guides" class="text-indigo-600 font-bold uppercase tracking-widest text-xs hover:underline">&larr; Back to Guides</a>
-        <article class="bg-white p-10 md:p-16 mt-8 rounded-3xl shadow-xl border border-slate-200">
-            <h1 class="text-4xl md:text-5xl font-black mb-6 tracking-tight">{title}</h1>
-            <p class="text-xl text-slate-600 mb-10 leading-relaxed">{desc}</p>
-            <div class="bg-slate-900 p-8 rounded-2xl shadow-inner overflow-x-auto">
-                <code class="text-indigo-300 font-mono text-sm leading-relaxed whitespace-pre">{safe_code}</code>
-            </div>
-        </article>
-    </div>
-</body>
-</html>"""
-        with open(f"article/{slug}.html", 'w', encoding='utf-8') as f: 
-            f.write(guide_html)
-            
-        sitemap += f"  <url>\n    <loc>[https://htmlfonts.com/article/](https://htmlfonts.com/article/){slug}.html</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n"
-
-    # 4. GENERATE THE TOP 30 FONT VS FONT COMPARISON PAGES
+    # 2. GENERATE THE TOP 30 FONT VS FONT COMPARISON PAGES
     print("Generating Top 30 Font VS Font Pages...")
     top_comparisons = [
         ("Arial", "Helvetica", "Arial, sans-serif", "Helvetica, Arial, sans-serif", "", ""), 
@@ -172,7 +78,7 @@ try:
     for font_a, font_b, css_a, css_b, link_a, link_b in top_comparisons:
         slug = f"{font_a.lower().replace(' ', '-')}-vs-{font_b.lower().replace(' ', '-')}"
         
-        # Format HTML tags carefully to avoid Python f-string bracket confusion
+        # Determine correct HTML or System Comment
         html_import_a = f"<link href='[https://fonts.googleapis.com/css2?family=](https://fonts.googleapis.com/css2?family=){link_a}&display=swap' rel='stylesheet'>" if link_a else ""
         html_import_b = f"<link href='[https://fonts.googleapis.com/css2?family=](https://fonts.googleapis.com/css2?family=){link_b}&display=swap' rel='stylesheet'>" if link_b else ""
 
@@ -197,7 +103,7 @@ try:
 <body class="bg-slate-50 min-h-screen flex flex-col">
     <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black tracking-widest uppercase toast-enter border border-slate-700 flex items-center gap-3">
         <svg class="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-        <span>Copied to clipboard!</span>
+        <span>Code copied! 🚀</span>
     </div>
 
     <header class="bg-white border-b border-slate-200 py-4 px-6 text-center shadow-sm">
@@ -261,54 +167,61 @@ try:
             document.getElementById('preview-a').innerText = val;
             document.getElementById('preview-b').innerText = val;
         }}
+        
+        // Bulletproof copy logic for generated pages
+        function fallbackCopy(text) {{
+            var textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            document.body.appendChild(textArea);
+            textArea.focus(); textArea.select();
+            try {{ document.execCommand('copy'); }} catch (err) {{ }}
+            document.body.removeChild(textArea);
+        }}
+        
         function copyData(id) {{
-            const text = document.getElementById(id).innerText;
-            navigator.clipboard.writeText(text).then(() => {{
-                const toast = document.getElementById('toast');
-                toast.classList.remove('hidden');
-                setTimeout(() => toast.classList.add('toast-active'), 10);
-                setTimeout(() => {{ 
-                    toast.classList.remove('toast-active'); 
-                    setTimeout(() => toast.classList.add('hidden'), 300);
-                }}, 3000);
-            }});
+            const text = document.getElementById(id).textContent;
+            if (!navigator.clipboard) {{ fallbackCopy(text); }} 
+            else {{ navigator.clipboard.writeText(text).catch(() => fallbackCopy(text)); }}
+            
+            const toast = document.getElementById('toast');
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('toast-active'), 10);
+            setTimeout(() => {{ 
+                toast.classList.remove('toast-active'); 
+                setTimeout(() => toast.classList.add('hidden'), 300);
+            }}, 3000);
         }}
     </script>
 </body>
 </html>"""
         
-        # Save the VS page and append to sitemap
         with open(f"compare/{slug}.html", 'w', encoding='utf-8') as f:
             f.write(vs_html)
         
         sitemap += f"  <url>\n    <loc>[https://htmlfonts.com/compare/](https://htmlfonts.com/compare/){slug}.html</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.9</priority>\n  </url>\n"
 
+    # Save daily tip page so old links keep working
+    with open(f"compare/{new_data['slug']}.html", 'w', encoding='utf-8') as f:
+        f.write(f"<!DOCTYPE html><html><head><title>{new_data['title']} | htmlfonts.com</title><script src='[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)'></script></head><body class='bg-slate-50 p-10'><a href='/' class='text-indigo-600 font-bold'>&larr; Back Home</a><h1 class='text-4xl font-black mt-8'>{new_data['title']}</h1><p class='mt-4 text-xl'>{new_data['tip']}</p></body></html>")
+    
     # Add History Article Archives to Sitemap
     for item in history:
         if 'slug' in item: 
-            sitemap += f"  <url>\n    <loc>[https://htmlfonts.com/article/](https://htmlfonts.com/article/){item['slug']}.html</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n"
+            sitemap += f"  <url>\n    <loc>[https://htmlfonts.com/compare/](https://htmlfonts.com/compare/){item['slug']}.html</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n"
     
-    # Close and save Sitemap
     sitemap += '</urlset>'
     with open('sitemap.xml', 'w', encoding='utf-8') as f: 
         f.write(sitemap)
     
-    print("✅ System update complete: JSON, Articles, Comparison Pages, and Sitemap successfully generated.")
+    print("✅ System update complete: JSON, Comparison Pages, and Sitemap successfully generated.")
 
 except Exception as e:
     print(f"❌ Error during generation: {e}")
     exit(1)
 
-# 5. Post Daily Update to X.com
+# 3. Post to X.com
 try:
-    client_x = tweepy.Client(
-        consumer_key=os.environ["X_API_KEY"], 
-        consumer_secret=os.environ["X_API_SECRET"], 
-        access_token=os.environ["X_ACCESS_TOKEN"], 
-        access_token_secret=os.environ["X_ACCESS_TOKEN_SECRET"]
-    )
-    tweet_text = f"{new_data['tweet']}\n\nRead more: [https://htmlfonts.com/article/](https://htmlfonts.com/article/){new_data['slug']}.html"
-    client_x.create_tweet(text=tweet_text)
-    print("✅ X.com Tweet successfully posted.")
-except Exception as e: 
-    print(f"⚠️ X.com Error (Non-Fatal): {e}")
+    client_x = tweepy.Client(consumer_key=os.environ["X_API_KEY"], consumer_secret=os.environ["X_API_SECRET"], access_token=os.environ["X_ACCESS_TOKEN"], access_token_secret=os.environ["X_ACCESS_TOKEN_SECRET"])
+    client_x.create_tweet(text=f"{new_data['tweet']}\n\nRead more: [https://htmlfonts.com/compare/](https://htmlfonts.com/compare/){new_data['slug']}.html")
+except Exception as e: pass
