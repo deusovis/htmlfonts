@@ -2,28 +2,26 @@ name: Daily Typography SEO Automation
 
 on:
   schedule:
-    - cron: '0 8 * * *' # Executes every day at 08:00 UTC
-  workflow_dispatch:      # Allows you to trigger it manually for testing
+    - cron: '0 8 * * *'
+  workflow_dispatch:
 
 jobs:
   update-content:
     runs-on: ubuntu-latest
     permissions:
-      contents: write     # Crucial for the bot to push JSON updates
+      contents: write
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.12' # Upgraded from 3.10
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install google-generativeai tweepy
+        run: pip install -r requirements.txt
 
       - name: Run Automation Script
         env:
@@ -34,10 +32,10 @@ jobs:
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
         run: python automation.py
 
-      - name: Commit and Push Changes
+      - name: Commit and Push
         run: |
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add content.json
-          git commit -m "Automated SEO update: New Typography Tip" || exit 0
+          git commit -m "Automated SEO Update: $(date)" || exit 0
           git push
