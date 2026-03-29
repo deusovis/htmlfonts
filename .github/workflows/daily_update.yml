@@ -11,17 +11,12 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      
       - name: Set up Python 3.12
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
       - name: Install Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
+        run: pip install google-genai tweepy
       - name: Run Automation
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -30,11 +25,10 @@ jobs:
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
         run: python automation.py
-
       - name: Commit & Push Changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add content.json history.json tips/ sitemap.xml
-          git commit -m "SEO Automation: New page & sitemap update $(date +'%Y-%m-%d')" || exit 0
+          git add content.json history.json tips/ compare/ sitemap.xml
+          git commit -m "SEO Build: Tips and Comparisons $(date +'%Y-%m-%d')" || exit 0
           git push
