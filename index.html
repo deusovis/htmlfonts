@@ -13,6 +13,8 @@
         body { font-family: 'Inter', system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .modal-enter { opacity: 0; transform: scale(0.95) translateY(10px); }
+        .modal-active { opacity: 1; transform: scale(1) translateY(0); transition: all 0.2s ease-out; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col selection:bg-indigo-200">
@@ -148,6 +150,14 @@
         </section>
     </main>
 
+    <div id="info-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-lg p-8 relative">
+            <button onclick="document.getElementById('info-modal').classList.add('hidden')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 bg-slate-50 rounded-full p-2">✕</button>
+            <h3 id="info-title" class="text-2xl font-black mb-4">Information</h3>
+            <p id="info-body" class="text-slate-600 leading-relaxed">Loading...</p>
+        </div>
+    </div>
+
     <div id="code-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl shadow-2xl w-full max-w-xl p-8 relative modal-enter" id="modal-content">
             <button onclick="closeModal('code-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 bg-slate-50 rounded-full p-2">✕</button>
@@ -175,6 +185,7 @@
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs font-bold text-slate-500 uppercase tracking-widest">
             <p>&copy; <script>document.write(new Date().getFullYear())</script> htmlfonts</p>
             <div class="flex space-x-8 mt-6 md:mt-0">
+                <button onclick="showInfo('Licensing', 'All fonts listed are Open Source under the SIL Open Font License (OFL) or Apache License. They are free for commercial and personal use.')" class="hover:text-indigo-600">Licensing</button>
                 <a href="https://x.com/HtmlFonts" target="_blank" class="hover:text-indigo-600 text-indigo-500 flex items-center">
                     <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> @HtmlFonts
                 </a>
@@ -183,12 +194,15 @@
     </footer>
 
     <script>
-        // EXPANDED MASSIVE FONT DATABASE (Lazy Loaded)
         const fonts = [
             { name: "System Sans", type: "sans-serif", css: "system-ui, -apple-system, sans-serif", link: null },
             { name: "System Serif", type: "serif", css: "Charter, Cambria, serif", link: null },
             { name: "Arial", type: "sans-serif", css: "Arial, Helvetica, sans-serif", link: null },
             { name: "Georgia", type: "serif", css: "Georgia, serif", link: null },
+            { name: "Helvetica", type: "sans-serif", css: "Helvetica, Arial, sans-serif", link: null },
+            { name: "Times New Roman", type: "serif", css: "'Times New Roman', Times, serif", link: null },
+            { name: "Courier New", type: "monospace", css: "'Courier New', Courier, monospace", link: null },
+            { name: "Impact", type: "display", css: "Impact, fantasy", link: null },
             { name: "Inter", type: "sans-serif", css: "'Inter', sans-serif", link: "Inter:wght@400;600;800" },
             { name: "Roboto", type: "sans-serif", css: "'Roboto', sans-serif", link: "Roboto:wght@400;500;700" },
             { name: "Open Sans", type: "sans-serif", css: "'Open Sans', sans-serif", link: "Open+Sans:wght@400;600" },
@@ -236,10 +250,22 @@
             { name: "Comfortaa", type: "display", css: "'Comfortaa', display", link: "Comfortaa:wght@400;600;700" },
             { name: "Pacifico", type: "handwriting", css: "'Pacifico', cursive", link: "Pacifico" },
             { name: "Dancing Script", type: "handwriting", css: "'Dancing Script', cursive", link: "Dancing+Script:wght@400;600;700" },
-            { name: "Caveat", type: "handwriting", css: "'Caveat', cursive", link: "Caveat:wght@400;600;700" }
+            { name: "Caveat", type: "handwriting", css: "'Caveat', cursive", link: "Caveat:wght@400;600;700" },
+            { name: "Signika", type: "sans-serif", css: "'Signika', sans-serif", link: "Signika:wght@400;600" },
+            { name: "Teko", type: "display", css: "'Teko', sans-serif", link: "Teko:wght@400;600" },
+            { name: "Kanit", type: "sans-serif", css: "'Kanit', sans-serif", link: "Kanit:wght@400;600" },
+            { name: "Dosis", type: "sans-serif", css: "'Dosis', sans-serif", link: "Dosis:wght@400;600" },
+            { name: "Exo 2", type: "sans-serif", css: "'Exo 2', sans-serif", link: "Exo+2:wght@400;600" },
+            { name: "Cabin", type: "sans-serif", css: "'Cabin', sans-serif", link: "Cabin:wght@400;600" },
+            { name: "Cairo", type: "sans-serif", css: "'Cairo', sans-serif", link: "Cairo:wght@400;600" },
+            { name: "Asap", type: "sans-serif", css: "'Asap', sans-serif", link: "Asap:wght@400;600" },
+            { name: "Varela Round", type: "sans-serif", css: "'Varela Round', sans-serif", link: "Varela+Round" },
+            { name: "Crimson Pro", type: "serif", css: "'Crimson Pro', serif", link: "Crimson+Pro:wght@400;600" },
+            { name: "Zilla Slab", type: "serif", css: "'Zilla Slab', serif", link: "Zilla+Slab:wght@400;600" },
+            { name: "Cinzel", type: "serif", css: "'Cinzel', serif", link: "Cinzel:wght@400;600" },
+            { name: "Crete Round", type: "serif", css: "'Crete Round', serif", link: "Crete+Round" }
         ];
 
-        // ENGINE: Lazy Loading
         const loadedFonts = new Set();
         function loadFont(link) {
             if (!link || loadedFonts.has(link)) return;
@@ -276,12 +302,11 @@
             });
         }
 
-        // ENGINE: VS Tool (With Copy functions)
         let vsData = { a: null, b: null };
         function initVSTool() {
             const selA = document.getElementById('vs-font-a'); const selB = document.getElementById('vs-font-b');
             fonts.forEach((f, i) => { selA.add(new Option(f.name, i)); selB.add(new Option(f.name, i)); });
-            selA.selectedIndex = 4; selB.selectedIndex = 5; // Default Inter vs Roboto
+            selA.selectedIndex = 8; selB.selectedIndex = 9; // Default Inter vs Roboto
             
             function updateVS() {
                 const inputEl = document.getElementById('vs-text');
@@ -300,34 +325,30 @@
 
         function copyVsCode(side, type) {
             const f = side === 'a' ? vsData.a : vsData.b;
-            const text = type === 'html' 
-                ? (f.link ? `<link href="https://fonts.googleapis.com/css2?family=${f.link}&display=swap" rel="stylesheet">` : ``)
-                : `font-family: ${f.css};`;
-            navigator.clipboard.writeText(text);
-            showToast();
+            const text = type === 'html' ? (f.link ? `<link href="https://fonts.googleapis.com/css2?family=${f.link}&display=swap" rel="stylesheet">` : ``) : `font-family: ${f.css};`;
+            navigator.clipboard.writeText(text); showToast();
         }
 
-        // INIT UI
         document.getElementById('preview-text').addEventListener('input', renderGrid);
         document.getElementById('category-filter').addEventListener('change', renderGrid);
         document.getElementById('font-size').addEventListener('input', renderGrid);
         renderGrid(); initVSTool();
 
-        // UTILS
         function closeModal(id) {
             document.getElementById('modal-content').classList.remove('modal-active');
             setTimeout(() => document.getElementById(id).classList.add('hidden'), 200);
+        }
+        function showInfo(title, body) {
+            document.getElementById('info-title').innerText = title;
+            document.getElementById('info-body').innerText = body;
+            document.getElementById('info-modal').classList.remove('hidden');
         }
         function showToast() {
             const t = document.getElementById('toast'); t.classList.remove('hidden');
             setTimeout(() => t.classList.add('hidden'), 2500);
         }
-        async function copyRaw(id) {
-            await navigator.clipboard.writeText(document.getElementById(id).innerText);
-            showToast();
-        }
+        async function copyRaw(id) { await navigator.clipboard.writeText(document.getElementById(id).innerText); showToast(); }
 
-        // CONTENT FETCH (SEO Jamstack)
         fetch('content.json').then(r => r.json()).then(d => {
             document.getElementById('tip-heading').innerText = d.title;
             document.getElementById('tip-text').innerText = d.tip;
