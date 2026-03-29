@@ -73,7 +73,7 @@
                 <p class="text-xl text-slate-500 leading-relaxed font-medium">Test and instantly copy HTML and CSS codes for the top-rated typography on the internet.</p>
             </div>
             
-            <div class="sticky top-20 z-30 bg-white/95 backdrop-blur border border-slate-200 rounded-2xl p-4 md:p-6 shadow-xl mb-12 flex flex-col md:flex-row gap-6 items-center">
+            <div id="filter-bar" class="sticky top-20 z-30 bg-white/95 backdrop-blur border border-slate-200 rounded-2xl p-4 md:p-6 shadow-xl mb-12 flex flex-col md:flex-row gap-6 items-center">
                 <div class="w-full md:w-1/2">
                     <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Live Preview Text</label>
                     <input type="text" id="preview-text" value="Optimize your UI design with fast-loading free web fonts." 
@@ -375,7 +375,20 @@
 
         document.getElementById('preview-text').oninput = updateGridText;
         document.getElementById('font-size').oninput = updateGridText;
-        document.getElementById('category-filter').onchange = createGrid;
+        
+        // NEW FIX: Calculate exact pixel placement before layout collapse and snap to it
+        document.getElementById('category-filter').onchange = () => {
+            const filterBar = document.getElementById('filter-bar');
+            const targetPos = filterBar.getBoundingClientRect().top + window.scrollY - 80; // 80px accounts for the top-20 sticky offset
+            
+            createGrid();
+            
+            window.scrollTo({
+                top: targetPos,
+                behavior: 'auto' // 'auto' ensures an instant snap without a visible jumping glitch
+            });
+        };
+
         createGrid(); initVSTool();
         function closeModal(id) { document.getElementById('modal-content').classList.remove('modal-active'); setTimeout(() => document.getElementById(id).classList.add('hidden'), 200); }
         fetch('content.json').then(r => r.json()).then(d => {
