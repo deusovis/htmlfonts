@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htmlfonts | Daily Typography Pairings</title>
+    <style>
+        body { font-family: -apple-system, sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; color: #333; }
+        .article { border-bottom: 1px solid #eee; padding: 40px 0; }
+        .fonts-badge { background: #f0f0f0; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+        h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .meta { color: #666; font-size: 0.9rem; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>htmlfonts</h1>
+        <p>AI-Powered Typography Insights</p>
+    </header>
+    <div id="content">Loading latest pairings...</div>
+
+    <script>
+        async function loadContent() {
+            try {
+                // Fetch the JSON file the bot is updating
+                const response = await fetch('./frontend/src/data.json');
+                const data = await response.json();
+                const container = document.getElementById('content');
+                
+                container.innerHTML = data.map(article => `
+                    <div class="article">
+                        <span class="fonts-badge">${article.fonts.join(' + ')}</span>
+                        <h2>${article.title}</h2>
+                        <div class="meta">Published on ${new Date(article.date).toLocaleDateString()}</div>
+                        <div>${article.content_body.replace(/\n/g, '<p>')}</div>
+                    </div>
+                `).join('');
+            } catch (e) {
+                document.getElementById('content').innerHTML = "No articles found yet. Run the automation script to generate one!";
+            }
+        }
+        loadContent();
+    </script>
+</body>
+</html>
