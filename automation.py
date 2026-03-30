@@ -292,16 +292,19 @@ try:
         f_type = font["type"]
         f_link = f"<link href='{GFONTS}?family={font['link']}&display=swap' rel='stylesheet'>" if font["link"] else ""
         
-        # UPDATED: Use font category/type instead of "Typeface Profile"
+        # UPDATED: Interactive Card Structure with 'data-default' and 'Learn More' link
         directory_grid_html += f"""
-        <a href="/font/{slug}.html" class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative">
+        <a href="/font/{slug}.html" class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <div>
-                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-4 group-hover:text-indigo-500 transition-colors">{f_type}</span>
-                <p class="text-4xl text-slate-900 break-words leading-tight" style="font-family: {f_css};">{f_name}</p>
+            <div class="flex-grow flex flex-col">
+                <div class="flex justify-between items-center mb-4 shrink-0">
+                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest group-hover:text-indigo-500 transition-colors">{f_type}</span>
+                    <span class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">{f_name}</span>
+                </div>
+                <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: {f_css};" data-default="{f_name}">{f_name}</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest">
-                <span>View Details</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
+                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
                 <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
             </div>
         </a>"""
@@ -412,7 +415,7 @@ try:
     # 4. BUILD THE HOME PAGE (INDEX.HTML)
     print("Generating new Home Page (index.html)...")
     
-    # UPDATED: Reduced padding and restored old Hero wording.
+    # UPDATED: Interactive directory layout with Javascript driver
     home_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -447,8 +450,13 @@ try:
     </div>
 
     <main class="flex-grow py-24 px-4 md:px-6 max-w-7xl mx-auto w-full">
-        <div class="flex items-center justify-between mb-12">
-            <h2 class="text-3xl font-black text-slate-900 tracking-tight">The Typeface Encyclopedia</h2>
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
+            <h2 class="text-3xl font-black text-slate-900 tracking-tight shrink-0">The Typeface Encyclopedia</h2>
+            
+            <div class="w-full md:max-w-md bg-white border border-slate-200 rounded-2xl py-3 px-4 shadow-sm flex items-center gap-3 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:border-indigo-500 transition-all relative">
+                <svg class="w-5 h-5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                <input type="text" id="global-preview-input" placeholder="Type here to preview all fonts..." class="w-full bg-transparent outline-none text-base font-medium text-slate-800 placeholder-slate-400">
+            </div>
         </div>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -462,6 +470,18 @@ try:
             <a href="https://x.com/HtmlFonts" target="_blank" class="text-xs font-bold text-indigo-500 hover:text-indigo-600 uppercase tracking-widest transition">Follow @HtmlFonts</a>
         </div>
     </footer>
+    
+    <script>
+        const previewInput = document.getElementById('global-preview-input');
+        const previewTexts = document.querySelectorAll('.font-preview-text');
+        
+        previewInput.addEventListener('input', (e) => {{
+            const val = e.target.value;
+            previewTexts.forEach(p => {{
+                p.textContent = val ? val : p.getAttribute('data-default');
+            }});
+        }});
+    </script>
 </body>
 </html>"""
     with open("index.html", 'w', encoding='utf-8') as f: f.write(home_html)
@@ -614,7 +634,6 @@ try:
                     else:
                         break
 
-        # UPDATED: Changed pt-10 to p-6 to move text 15% higher inside comparison boxes
         vs_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
