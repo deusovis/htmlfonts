@@ -10,6 +10,15 @@ DOMAIN = "https://htmlfonts.com"
 TAILWIND = "https://cdn.tailwindcss.com"
 GFONTS = "https://fonts.googleapis.com/css2"
 
+# Safely inject the GA tracking script with double braces {{ }} to prevent f-string KeyError
+GA_CODE = """    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKESX7E20P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){{dataLayer.push(arguments);}}
+      gtag('js', new Date());
+      gtag('config', 'G-TKESX7E20P');
+    </script>"""
+
 client_gemini = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
 seo_prompt = """Generate a high-value JSON object for a web typography expert blog. 
@@ -149,6 +158,7 @@ try:
     <title>{title} | htmlfonts Guides</title>
     <meta name="description" content="{concept}">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{GA_CODE}
     <script src="{TAILWIND}"></script>
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
@@ -187,7 +197,7 @@ try:
             </article>
         </div>
     </main>
-    <footer class="bg-white border-t py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
+    <footer class="bg-white border-t border-slate-200 py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
         <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
     </footer>
 </body>
@@ -212,6 +222,7 @@ try:
     <title>HTML & CSS Font Guides | htmlfonts</title>
     <meta name="description" content="Master web typography with our comprehensive CSS and HTML font guides.">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{GA_CODE}
     <script src="{TAILWIND}"></script>
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
@@ -226,7 +237,7 @@ try:
             {guides_cards_html}
         </div>
     </main>
-    <footer class="bg-white border-t py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
+    <footer class="bg-white border-t border-slate-200 py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
         <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
     </footer>
 </body>
@@ -256,6 +267,7 @@ try:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{font_a} vs {font_b} | Side-by-Side Comparison</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{GA_CODE}
     <script src="{TAILWIND}"></script>
     {imp_a}
     {imp_b}
@@ -348,6 +360,7 @@ try:
     <title>{new_data['title']} | Editor's Desk</title>
     <meta name="description" content="{new_data['tip']}">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{GA_CODE}
     <script src="{TAILWIND}"></script>
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
@@ -394,6 +407,7 @@ try:
     <title>Editor's Desk Archive | htmlfonts</title>
     <meta name="description" content="Daily CSS typography tips and web design insights.">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{GA_CODE}
     <script src="{TAILWIND}"></script>
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
