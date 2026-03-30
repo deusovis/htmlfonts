@@ -291,13 +291,17 @@ try:
         f_link = f"<link href='{GFONTS}?family={font['link']}&display=swap' rel='stylesheet'>" if font["link"] else ""
         f_url = f"{GFONTS}?family={font['link']}&display=swap" if font["link"] else ""
         
-        safe_name = html.escape(f_name).replace("'", "\\'")
-        safe_css = html.escape(f_css).replace("'", "\\'")
-        safe_url = html.escape(f_url).replace("'", "\\'")
+        # BUG FIX: Safely encode data to HTML Attributes (No inline JS escaping needed)
+        safe_name = html.escape(f_name, quote=True)
+        safe_css = html.escape(f_css, quote=True)
+        safe_url = html.escape(f_url, quote=True)
         
-        # UPDATED: Interactive Cards. Entire card opens code modal, specific anchor navigates to page.
         directory_grid_html += f"""
-        <div onclick="openFontModal('{safe_name}', '{safe_css}', '{safe_url}')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="{f_url}">
+        <div class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" 
+             data-font-link="{f_url}"
+             data-font-name="{safe_name}"
+             data-font-css="{safe_css}"
+             data-font-url="{safe_url}">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -307,7 +311,7 @@ try:
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: {f_css};" data-default="{f_name}">{f_name}</p>
             </div>
             <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
-                <a href="/font/{slug}.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                <a href="/font/{slug}.html" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link z-20 relative">
                     <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
                 </a>
                 <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
@@ -322,7 +326,6 @@ try:
             pass
         else:
             print(f"Generating NEW epic SEO profile for {f_name}...")
-            # UPGRADED: Powerful SEO query for Individual Fonts
             prompt = f"""You are a master SEO copywriter and expert UI typographer. Write a comprehensive, fascinating, and highly educational article about the '{f_name}' web font specifically targeting the most searched Google queries (e.g., '{f_name} font history', 'best uses for {f_name}', '{f_name} UI design best practices', and '{f_name} font pairings'). 
             
             Your response must include:
@@ -341,7 +344,7 @@ try:
             
             for attempt in range(3):
                 try:
-                    time.sleep(6) # PACED TO 10 REQUESTS PER MINUTE
+                    time.sleep(6)
                     resp = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=prompt)
                     ai_content = resp.text.replace('```html', '').replace('```', '').strip()
                     profile_cache[slug] = ai_content
@@ -417,7 +420,6 @@ try:
     # 4. BUILD THE HOME PAGE (INDEX.HTML)
     print("Generating new Home Page (index.html)...")
     
-    # ADDED: Code Modal HTML injected directly into home page
     home_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -523,7 +525,19 @@ try:
             }});
         }}, {{ rootMargin: '350px' }});
 
-        document.querySelectorAll('.font-card').forEach(card => observer.observe(card));
+        // Add event listeners completely free from quote-escaping issues
+        document.querySelectorAll('.font-card').forEach(card => {{
+            observer.observe(card);
+            card.addEventListener('click', function(e) {{
+                // Ignore clicks on the 'Learn More' link so it navigates correctly
+                if (e.target.closest('a')) return;
+                
+                const name = this.getAttribute('data-font-name');
+                const css = this.getAttribute('data-font-css');
+                const url = this.getAttribute('data-font-url');
+                openFontModal(name, css, url);
+            }});
+        }});
 
         function openFontModal(name, css, url) {{
             document.getElementById('modal-font-name').innerText = name;
@@ -700,9 +714,6 @@ try:
         html_a = imp_a if imp_a else sys_msg
         html_b = imp_b if imp_b else sys_msg
 
-        safe_ha = html_a.replace("'", "\\'").replace('"', '&quot;')
-        safe_hb = html_b.replace("'", "\\'").replace('"', '&quot;')
-
         cache_key = f"{font_a}_vs_{font_b}"
         seo_description = f"<h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between {font_a} and {font_b}</h2><p class='mb-4 leading-relaxed'>Compare the typography of {font_a} and {font_b}.</p>"
         
@@ -712,7 +723,6 @@ try:
             pass 
         else:
             print(f"Generating comparison description: {font_a} vs {font_b}...")
-            # UPGRADED: Powerful SEO query for Comparisons
             desc_prompt = f"""You are a master SEO copywriter and expert UI typographer. Write an incredible, highly engaging comparison between {font_a} vs {font_b} specifically targeting the most searched Google queries (e.g., '{font_a} vs {font_b} differences', 'which is better {font_a} or {font_b}?', '{font_a} vs {font_b} history'). 
 
             Your response must include:
