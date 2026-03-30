@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate Your UI: Mastering `font-display` for Flawless Web Font Performance & UX",
+        "slug": "elevate-ui-mastering-font-display-flawless-web-font-performance-ux",
+        "tweet": "Boost your #WebFonts UX & performance! Learn how `font-display` prevents layout shifts and invisible text. Essential #CSSTypography for modern #UIDesign, ensuring a smoother user experience. #WebDev",
+        "tip": "To prevent the dreaded Flash of Invisible Text (FOIT) or sudden layout shifts (FOUT) that severely degrade user experience, always include `font-display` in your `@font-face` declarations. For most cases, `font-display: swap;` is an excellent choice: it ensures text is visible immediately using a fallback font, then gracefully swaps to your custom web font once loaded. This dramatically improves perceived loading speed and overall UI stability.",
+        "css_snippet": "@font-face {\n  font-family: 'Inter';\n  src: url('/fonts/inter-regular.woff2') format('woff2'),\n       url('/fonts/inter-regular.woff') format('woff');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Essential for optimal web font UX */\n}\n\nbody {\n  font-family: 'Inter', system-ui, sans-serif;\n  line-height: 1.6;\n  letter-spacing: -0.01em;\n}",
+        "date": "March 30, 2026"
+    },
+    {
         "title": "Mastering Fluid Typography with CSS `clamp()`: The Secret to Responsive & Readable UI",
         "slug": "mastering-fluid-typography-css-clamp-responsive-readable-ui",
         "tweet": "Stop juggling font sizes! \ud83e\udd2f Discover how CSS `clamp()` creates perfectly fluid, responsive typography that adapts seamlessly across all screen sizes. Boost your #UIDesign & #UX with fewer media queries! #CSSTypography #WebFonts",
