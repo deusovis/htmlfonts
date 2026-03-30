@@ -46,81 +46,81 @@ Target Keywords: CSS typography, UI design, web fonts, user experience.
 Keys MUST exactly match: "title", "slug", "tweet", "tip", "css_snippet".
 Return ONLY raw JSON."""
 
-# 2. FULL DATA ARRAYS
+# 2. FULL DATA ARRAYS (Added 'type' for categorization)
 master_fonts = [
-    {"name": "Abril Fatface", "css": "'Abril Fatface', display", "link": "Abril+Fatface"},
-    {"name": "Amatic SC", "css": "'Amatic SC', cursive", "link": "Amatic+SC:wght@400;700"},
-    {"name": "Anton", "css": "'Anton', sans-serif", "link": "Anton"},
-    {"name": "Arial", "css": "Arial, Helvetica, sans-serif", "link": None},
-    {"name": "Arvo", "css": "'Arvo', serif", "link": "Arvo:wght@400;700"},
-    {"name": "Bangers", "css": "'Bangers', display", "link": "Bangers"},
-    {"name": "Barlow", "css": "'Barlow', sans-serif", "link": "Barlow:wght@400;500;700"},
-    {"name": "Bebas Neue", "css": "'Bebas Neue', sans-serif", "link": "Bebas+Neue"},
-    {"name": "Bitter", "css": "'Bitter', serif", "link": "Bitter:wght@400;600;700"},
-    {"name": "Caveat", "css": "'Caveat', cursive", "link": "Caveat:wght@400;500;600;700"},
-    {"name": "Cinzel", "css": "'Cinzel', serif", "link": "Cinzel:wght@400;500;600;700;800"},
-    {"name": "Comfortaa", "css": "'Comfortaa', display", "link": "Comfortaa:wght@400;500;600;700"},
-    {"name": "Cormorant", "css": "'Cormorant', serif", "link": "Cormorant:wght@400;600;700"},
-    {"name": "Courier New", "css": "'Courier New', Courier, monospace", "link": None},
-    {"name": "Crimson Pro", "css": "'Crimson Pro', serif", "link": "Crimson+Pro:wght@400;600;700"},
-    {"name": "Crimson Text", "css": "'Crimson Text', serif", "link": "Crimson+Text:wght@400;600;700"},
-    {"name": "Dancing Script", "css": "'Dancing Script', cursive", "link": "Dancing+Script:wght@400;500;600;700"},
-    {"name": "DM Sans", "css": "'DM Sans', sans-serif", "link": "DM+Sans:wght@400;500;700"},
-    {"name": "EB Garamond", "css": "'EB Garamond', serif", "link": "EB+Garamond:wght@400;600;700"},
-    {"name": "Fira Code", "css": "'Fira Code', monospace", "link": "Fira+Code:wght@400;500;600;700"},
-    {"name": "Fira Sans", "css": "'Fira Sans', sans-serif", "link": "Fira+Sans:wght@400;500;700"},
-    {"name": "Fredoka One", "css": "'Fredoka One', display", "link": "Fredoka+One"},
-    {"name": "Georgia", "css": "Georgia, serif", "link": None},
-    {"name": "Great Vibes", "css": "'Great Vibes', cursive", "link": "Great+Vibes"},
-    {"name": "Heebo", "css": "'Heebo', sans-serif", "link": "Heebo:wght@400;600;700"},
-    {"name": "Helvetica", "css": "Helvetica, Arial, sans-serif", "link": None},
-    {"name": "IBM Plex Mono", "css": "'IBM Plex Mono', monospace", "link": "IBM+Plex+Mono:wght@400;500;600;700"},
-    {"name": "Inconsolata", "css": "'Inconsolata', monospace", "link": "Inconsolata:wght@400;500;700"},
-    {"name": "Indie Flower", "css": "'Indie Flower', cursive", "link": "Indie+Flower"},
-    {"name": "Inter", "css": "'Inter', sans-serif", "link": "Inter:wght@400;600;800;900"},
-    {"name": "JetBrains Mono", "css": "'JetBrains Mono', monospace", "link": "JetBrains+Mono:wght@400;500;700;800"},
-    {"name": "Josefin Slab", "css": "'Josefin Slab', serif", "link": "Josefin+Slab:wght@400;600;700"},
-    {"name": "Karla", "css": "'Karla', sans-serif", "link": "Karla:wght@400;700"},
-    {"name": "Lato", "css": "'Lato', sans-serif", "link": "Lato:wght@400;700;900"},
-    {"name": "Lexend", "css": "'Lexend', sans-serif", "link": "Lexend:wght@400;600;700"},
-    {"name": "Libre Baskerville", "css": "'Libre Baskerville', serif", "link": "Libre+Baskerville:wght@400;700"},
-    {"name": "Lobster", "css": "'Lobster', display", "link": "Lobster"},
-    {"name": "Lora", "css": "'Lora', serif", "link": "Lora:wght@400;500;600;700"},
-    {"name": "Merriweather", "css": "'Merriweather', serif", "link": "Merriweather:wght@400;700;900"},
-    {"name": "Montserrat", "css": "'Montserrat', sans-serif", "link": "Montserrat:wght@400;600;700;900"},
-    {"name": "Mukta", "css": "'Mukta', sans-serif", "link": "Mukta:wght@400;600;700"},
-    {"name": "Noto Sans", "css": "'Noto Sans', sans-serif", "link": "Noto+Sans:wght@400;600;700"},
-    {"name": "Noto Serif", "css": "'Noto Serif', serif", "link": "Noto+Serif:wght@400;600;700"},
-    {"name": "Nunito", "css": "'Nunito', sans-serif", "link": "Nunito:wght@400;600;700"},
-    {"name": "Open Sans", "css": "'Open Sans', sans-serif", "link": "Open+Sans:wght@400;600;700"},
-    {"name": "Oswald", "css": "'Oswald', sans-serif", "link": "Oswald:wght@400;600;700"},
-    {"name": "Outfit", "css": "'Outfit', sans-serif", "link": "Outfit:wght@400;600;700"},
-    {"name": "Pacifico", "css": "'Pacifico', cursive", "link": "Pacifico"},
-    {"name": "Playfair Display", "css": "'Playfair Display', serif", "link": "Playfair+Display:wght@400;600;700;800"},
-    {"name": "Poppins", "css": "'Poppins', sans-serif", "link": "Poppins:wght@400;600;700;800"},
-    {"name": "PT Mono", "css": "'PT Mono', monospace", "link": "PT+Mono"},
-    {"name": "PT Sans", "css": "'PT Sans', sans-serif", "link": "PT+Sans:wght@400;700"},
-    {"name": "PT Serif", "css": "'PT Serif', serif", "link": "PT+Serif:wght@400;700"},
-    {"name": "Public Sans", "css": "'Public Sans', sans-serif", "link": "Public+Sans:wght@400;600;700"},
-    {"name": "Quicksand", "css": "'Quicksand', sans-serif", "link": "Quicksand:wght@400;600;700"},
-    {"name": "Raleway", "css": "'Raleway', sans-serif", "link": "Raleway:wght@400;600;700"},
-    {"name": "Righteous", "css": "'Righteous', display", "link": "Righteous"},
-    {"name": "Roboto", "css": "'Roboto', sans-serif", "link": "Roboto:wght@400;500;700"},
-    {"name": "Roboto Mono", "css": "'Roboto Mono', monospace", "link": "Roboto+Mono:wght@400;500;600;700"},
-    {"name": "Rokkitt", "css": "'Rokkitt', serif", "link": "Rokkitt:wght@400;600;700"},
-    {"name": "Rubik", "css": "'Rubik', sans-serif", "link": "Rubik:wght@400;500;700"},
-    {"name": "Satisfy", "css": "'Satisfy', cursive", "link": "Satisfy"},
-    {"name": "Shadows Into Light", "css": "'Shadows Into Light', cursive", "link": "Shadows+Into+Light"},
-    {"name": "Source Code Pro", "css": "'Source Code Pro', monospace", "link": "Source+Code+Pro:wght@400;500;600;700"},
-    {"name": "Space Grotesk", "css": "'Space Grotesk', sans-serif", "link": "Space+Grotesk:wght@400;600;700"},
-    {"name": "Space Mono", "css": "'Space Mono', monospace", "link": "Space+Mono:wght@400;700"},
-    {"name": "Teko", "css": "'Teko', sans-serif", "link": "Teko:wght@400;600;700"},
-    {"name": "Times New Roman", "css": "'Times New Roman', Times, serif", "link": None},
-    {"name": "Ubuntu", "css": "'Ubuntu', sans-serif", "link": "Ubuntu:wght@400;500;700"},
-    {"name": "Ubuntu Mono", "css": "'Ubuntu Mono', monospace", "link": "Ubuntu+Mono:wght@400;700"},
-    {"name": "Verdana", "css": "Verdana, Geneva, sans-serif", "link": None},
-    {"name": "Work Sans", "css": "'Work Sans', sans-serif", "link": "Work+Sans:wght@400;600;700"},
-    {"name": "Zilla Slab", "css": "'Zilla Slab', serif", "link": "Zilla+Slab:wght@400;600;700"}
+    {"name": "Abril Fatface", "css": "'Abril Fatface', display", "link": "Abril+Fatface", "type": "Display"},
+    {"name": "Amatic SC", "css": "'Amatic SC', cursive", "link": "Amatic+SC:wght@400;700", "type": "Handwriting"},
+    {"name": "Anton", "css": "'Anton', sans-serif", "link": "Anton", "type": "Sans-Serif"},
+    {"name": "Arial", "css": "Arial, Helvetica, sans-serif", "link": None, "type": "Sans-Serif"},
+    {"name": "Arvo", "css": "'Arvo', serif", "link": "Arvo:wght@400;700", "type": "Serif"},
+    {"name": "Bangers", "css": "'Bangers', display", "link": "Bangers", "type": "Display"},
+    {"name": "Barlow", "css": "'Barlow', sans-serif", "link": "Barlow:wght@400;500;700", "type": "Sans-Serif"},
+    {"name": "Bebas Neue", "css": "'Bebas Neue', sans-serif", "link": "Bebas+Neue", "type": "Sans-Serif"},
+    {"name": "Bitter", "css": "'Bitter', serif", "link": "Bitter:wght@400;600;700", "type": "Serif"},
+    {"name": "Caveat", "css": "'Caveat', cursive", "link": "Caveat:wght@400;500;600;700", "type": "Handwriting"},
+    {"name": "Cinzel", "css": "'Cinzel', serif", "link": "Cinzel:wght@400;500;600;700;800", "type": "Serif"},
+    {"name": "Comfortaa", "css": "'Comfortaa', display", "link": "Comfortaa:wght@400;500;600;700", "type": "Display"},
+    {"name": "Cormorant", "css": "'Cormorant', serif", "link": "Cormorant:wght@400;600;700", "type": "Serif"},
+    {"name": "Courier New", "css": "'Courier New', Courier, monospace", "link": None, "type": "Monospace"},
+    {"name": "Crimson Pro", "css": "'Crimson Pro', serif", "link": "Crimson+Pro:wght@400;600;700", "type": "Serif"},
+    {"name": "Crimson Text", "css": "'Crimson Text', serif", "link": "Crimson+Text:wght@400;600;700", "type": "Serif"},
+    {"name": "Dancing Script", "css": "'Dancing Script', cursive", "link": "Dancing+Script:wght@400;500;600;700", "type": "Handwriting"},
+    {"name": "DM Sans", "css": "'DM Sans', sans-serif", "link": "DM+Sans:wght@400;500;700", "type": "Sans-Serif"},
+    {"name": "EB Garamond", "css": "'EB Garamond', serif", "link": "EB+Garamond:wght@400;600;700", "type": "Serif"},
+    {"name": "Fira Code", "css": "'Fira Code', monospace", "link": "Fira+Code:wght@400;500;600;700", "type": "Monospace"},
+    {"name": "Fira Sans", "css": "'Fira Sans', sans-serif", "link": "Fira+Sans:wght@400;500;700", "type": "Sans-Serif"},
+    {"name": "Fredoka One", "css": "'Fredoka One', display", "link": "Fredoka+One", "type": "Display"},
+    {"name": "Georgia", "css": "Georgia, serif", "link": None, "type": "Serif"},
+    {"name": "Great Vibes", "css": "'Great Vibes', cursive", "link": "Great+Vibes", "type": "Handwriting"},
+    {"name": "Heebo", "css": "'Heebo', sans-serif", "link": "Heebo:wght@400;600;700", "type": "Sans-Serif"},
+    {"name": "Helvetica", "css": "Helvetica, Arial, sans-serif", "link": None, "type": "Sans-Serif"},
+    {"name": "IBM Plex Mono", "css": "'IBM Plex Mono', monospace", "link": "IBM+Plex+Mono:wght@400;500;600;700", "type": "Monospace"},
+    {"name": "Inconsolata", "css": "'Inconsolata', monospace", "link": "Inconsolata:wght@400;500;700", "type": "Monospace"},
+    {"name": "Indie Flower", "css": "'Indie Flower', cursive", "link": "Indie+Flower", "type": "Handwriting"},
+    {"name": "Inter", "css": "'Inter', sans-serif", "link": "Inter:wght@400;600;800;900", "type": "Sans-Serif"},
+    {"name": "JetBrains Mono", "css": "'JetBrains Mono', monospace", "link": "JetBrains+Mono:wght@400;500;700;800", "type": "Monospace"},
+    {"name": "Josefin Slab", "css": "'Josefin Slab', serif", "link": "Josefin+Slab:wght@400;600;700", "type": "Serif"},
+    {"name": "Karla", "css": "'Karla', sans-serif", "link": "Karla:wght@400;700", "type": "Sans-Serif"},
+    {"name": "Lato", "css": "'Lato', sans-serif", "link": "Lato:wght@400;700;900", "type": "Sans-Serif"},
+    {"name": "Lexend", "css": "'Lexend', sans-serif", "link": "Lexend:wght@400;600;700", "type": "Sans-Serif"},
+    {"name": "Libre Baskerville", "css": "'Libre Baskerville', serif", "link": "Libre+Baskerville:wght@400;700", "type": "Serif"},
+    {"name": "Lobster", "css": "'Lobster', display", "link": "Lobster", "type": "Display"},
+    {"name": "Lora", "css": "'Lora', serif", "link": "Lora:wght@400;500;600;700", "type": "Serif"},
+    {"name": "Merriweather", "css": "'Merriweather', serif", "link": "Merriweather:wght@400;700;900", "type": "Serif"},
+    {"name": "Montserrat", "css": "'Montserrat', sans-serif", "link": "Montserrat:wght@400;600;700;900", "type": "Sans-Serif"},
+    {"name": "Mukta", "css": "'Mukta', sans-serif", "link": "Mukta:wght@400;600;700", "type": "Sans-Serif"},
+    {"name": "Noto Sans", "css": "'Noto Sans', sans-serif", "link": "Noto+Sans:wght@400;600;700", "type": "Sans-Serif"},
+    {"name": "Noto Serif", "css": "'Noto Serif', serif", "link": "Noto+Serif:wght@400;600;700", "type": "Serif"},
+    {"name": "Nunito", "css": "'Nunito', sans-serif", "link": "Nunito:wght@400;600;700", "type": "Sans-Serif"},
+    {"name": "Open Sans", "css": "'Open Sans', sans-serif", "link": "Open+Sans:wght@400;600;700", "type": "Sans-Serif"},
+    {"name": "Oswald", "css": "'Oswald', sans-serif", "link": "Oswald:wght@400;600;700", "type": "Sans-Serif"},
+    {"name": "Outfit", "css": "'Outfit', sans-serif", "link": "Outfit:wght@400;600;700", "type": "Sans-Serif"},
+    {"name": "Pacifico", "css": "'Pacifico', cursive", "link": "Pacifico", "type": "Handwriting"},
+    {"name": "Playfair Display", "css": "'Playfair Display', serif", "link": "Playfair+Display:wght@400;600;700;800", "type": "Serif"},
+    {"name": "Poppins", "css": "'Poppins', sans-serif", "link": "Poppins:wght@400;600;700;800", "type": "Sans-Serif"},
+    {"name": "PT Mono", "css": "'PT Mono', monospace", "link": "PT+Mono", "type": "Monospace"},
+    {"name": "PT Sans", "css": "'PT Sans', sans-serif", "link": "PT+Sans:wght@400;700", "type": "Sans-Serif"},
+    {"name": "PT Serif", "css": "'PT Serif', serif", "link": "PT+Serif:wght@400;700", "type": "Serif"},
+    {"name": "Public Sans", "css": "'Public Sans', sans-serif", "link": "Public+Sans:wght@400;600;700", "type": "Sans-Serif"},
+    {"name": "Quicksand", "css": "'Quicksand', sans-serif", "link": "Quicksand:wght@400;600;700", "type": "Sans-Serif"},
+    {"name": "Raleway", "css": "'Raleway', sans-serif", "link": "Raleway:wght@400;600;700", "type": "Sans-Serif"},
+    {"name": "Righteous", "css": "'Righteous', display", "link": "Righteous", "type": "Display"},
+    {"name": "Roboto", "css": "'Roboto', sans-serif", "link": "Roboto:wght@400;500;700", "type": "Sans-Serif"},
+    {"name": "Roboto Mono", "css": "'Roboto Mono', monospace", "link": "Roboto+Mono:wght@400;500;600;700", "type": "Monospace"},
+    {"name": "Rokkitt", "css": "'Rokkitt', serif", "link": "Rokkitt:wght@400;600;700", "type": "Serif"},
+    {"name": "Rubik", "css": "'Rubik', sans-serif", "link": "Rubik:wght@400;500;700", "type": "Sans-Serif"},
+    {"name": "Satisfy", "css": "'Satisfy', cursive", "link": "Satisfy", "type": "Handwriting"},
+    {"name": "Shadows Into Light", "css": "'Shadows Into Light', cursive", "link": "Shadows+Into+Light", "type": "Handwriting"},
+    {"name": "Source Code Pro", "css": "'Source Code Pro', monospace", "link": "Source+Code+Pro:wght@400;500;600;700", "type": "Monospace"},
+    {"name": "Space Grotesk", "css": "'Space Grotesk', sans-serif", "link": "Space+Grotesk:wght@400;600;700", "type": "Sans-Serif"},
+    {"name": "Space Mono", "css": "'Space Mono', monospace", "link": "Space+Mono:wght@400;700", "type": "Monospace"},
+    {"name": "Teko", "css": "'Teko', sans-serif", "link": "Teko:wght@400;600;700", "type": "Sans-Serif"},
+    {"name": "Times New Roman", "css": "'Times New Roman', Times, serif", "link": None, "type": "Serif"},
+    {"name": "Ubuntu", "css": "'Ubuntu', sans-serif", "link": "Ubuntu:wght@400;500;700", "type": "Sans-Serif"},
+    {"name": "Ubuntu Mono", "css": "'Ubuntu Mono', monospace", "link": "Ubuntu+Mono:wght@400;700", "type": "Monospace"},
+    {"name": "Verdana", "css": "Verdana, Geneva, sans-serif", "link": None, "type": "Sans-Serif"},
+    {"name": "Work Sans", "css": "'Work Sans', sans-serif", "link": "Work+Sans:wght@400;600;700", "type": "Sans-Serif"},
+    {"name": "Zilla Slab", "css": "'Zilla Slab', serif", "link": "Zilla+Slab:wght@400;600;700", "type": "Serif"}
 ]
 master_fonts.sort(key=lambda x: x['name'])
 
@@ -262,7 +262,6 @@ try:
         new_data = {}
         
     if not new_data or "title" not in new_data:
-        # Fallback Editor Tip if API fails completely
         new_data = {
             "title": f"Typography Tip {datetime.datetime.now().strftime('%b %d')}",
             "slug": f"typography-tip-{int(time.time())}",
@@ -290,13 +289,15 @@ try:
         f_name = font["name"]
         slug = f_name.lower().replace(' ', '-')
         f_css = font["css"]
+        f_type = font["type"]
         f_link = f"<link href='{GFONTS}?family={font['link']}&display=swap' rel='stylesheet'>" if font["link"] else ""
         
+        # UPDATED: Use font category/type instead of "Typeface Profile"
         directory_grid_html += f"""
         <a href="/font/{slug}.html" class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div>
-                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-4 group-hover:text-indigo-500 transition-colors">Typeface Profile</span>
+                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-4 group-hover:text-indigo-500 transition-colors">{f_type}</span>
                 <p class="text-4xl text-slate-900 break-words leading-tight" style="font-family: {f_css};">{f_name}</p>
             </div>
             <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest">
@@ -307,8 +308,9 @@ try:
 
         ai_content = f"<p class='text-lg text-slate-600 mb-6 font-medium'>Explore the typography, history, and optimal usage of {f_name}. Check back later for the complete expert design breakdown.</p>"
 
+        # GUARANTEE: Never call Gemini API if text is in cache.
         if slug in profile_cache:
-            print(f"Loading cached profile for {f_name}...")
+            print(f"✅ Skipping API call: Loaded cached profile for {f_name}.")
             ai_content = profile_cache[slug]
         elif api_exhausted:
             print(f"⏭️ Skipping API call for {f_name} (Quota Exhausted, using fallback)")
@@ -338,7 +340,7 @@ try:
                     ai_content = resp.text.replace('```html', '').replace('```', '').strip()
                     profile_cache[slug] = ai_content
                     save_profile_cache()
-                    print(f"✅ Success for {f_name}")
+                    print(f"✅ API Success for {f_name}")
                     break
                 except Exception as e:
                     err_str = str(e)
@@ -409,6 +411,8 @@ try:
 
     # 4. BUILD THE HOME PAGE (INDEX.HTML)
     print("Generating new Home Page (index.html)...")
+    
+    # UPDATED: Reduced padding and restored old Hero wording.
     home_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -429,10 +433,10 @@ try:
     
     <div class="bg-white border-b border-slate-200 overflow-hidden relative">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-white to-white"></div>
-        <div class="max-w-7xl mx-auto px-6 py-24 md:py-32 relative z-10 text-center">
-            <span class="inline-block bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-[0.2em] mb-8 shadow-sm">Typography For Developers</span>
+        <div class="max-w-7xl mx-auto px-6 pt-12 pb-24 md:pt-16 md:pb-32 relative z-10 text-center">
+            <span class="inline-block bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-[0.2em] mb-8 shadow-sm">Most Popular</span>
             <h1 class="text-6xl md:text-8xl font-black tracking-tighter text-slate-900 mb-8 leading-[1.1]">
-                Master Web <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Typography.</span>
+                Free Web <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Fonts.</span>
             </h1>
             <p class="text-xl md:text-2xl text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed mb-12">The ultimate hub for UI designers and developers. Compare fonts side-by-side, explore typeface history, and learn CSS typography.</p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -445,7 +449,6 @@ try:
     <main class="flex-grow py-24 px-4 md:px-6 max-w-7xl mx-auto w-full">
         <div class="flex items-center justify-between mb-12">
             <h2 class="text-3xl font-black text-slate-900 tracking-tight">The Typeface Encyclopedia</h2>
-            <span class="text-sm font-bold text-slate-400 uppercase tracking-widest">{len(master_fonts)} Fonts</span>
         </div>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -581,10 +584,11 @@ try:
         cache_key = f"{font_a}_vs_{font_b}"
         seo_description = f"<h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between {font_a} and {font_b}</h2><p class='mb-4 leading-relaxed'>Compare the typography of {font_a} and {font_b}.</p>"
         
+        # GUARANTEE: Never call Gemini API if text is in cache.
         if cache_key in seo_cache:
             seo_description = seo_cache[cache_key]
         elif api_exhausted:
-            pass # Skip API completely for this loop
+            pass 
         else:
             print(f"Generating NEW comparison description for {font_a} vs {font_b}...")
             desc_prompt = f"Please create an amazing description (short helpful history and key differences) for: {font_a} vs {font_b}. Return ONLY raw HTML. Structure it with an <h2 class='text-2xl font-black text-slate-900 mb-4'> for the title, and <p class='mb-4 leading-relaxed'> for the text."
@@ -610,6 +614,7 @@ try:
                     else:
                         break
 
+        # UPDATED: Changed pt-10 to p-6 to move text 15% higher inside comparison boxes
         vs_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -665,7 +670,7 @@ try:
                             <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-indigo-200 uppercase">A</span>
                             <h3 class="text-2xl font-black">{font_a}</h3>
                         </div>
-                        <div class="flex-grow flex items-start pt-10 px-6 pb-6 min-h-[250px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50">
+                        <div class="flex-grow flex items-start p-6 min-h-[250px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50">
                             <p id="pa" class="comparison-text text-black break-words leading-tight w-full" style="font-family: {css_a}; font-size: 32px;">Optimize your UI design with fast-loading free web fonts.</p>
                         </div>
                         <button onclick="openModal('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-xl shadow-indigo-100 mt-8 group">
@@ -678,7 +683,7 @@ try:
                             <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-violet-200 uppercase">B</span>
                             <h3 class="text-2xl font-black">{font_b}</h3>
                         </div>
-                        <div class="flex-grow flex items-start pt-10 px-6 pb-6 min-h-[250px] bg-violet-50/20 rounded-2xl border border-violet-100/50">
+                        <div class="flex-grow flex items-start p-6 min-h-[250px] bg-violet-50/20 rounded-2xl border border-violet-100/50">
                             <p id="pb" class="comparison-text text-black break-words leading-tight w-full" style="font-family: {css_b}; font-size: 32px;">Optimize your UI design with fast-loading free web fonts.</p>
                         </div>
                         <button onclick="openModal('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-xl shadow-violet-100 mt-8 group">
