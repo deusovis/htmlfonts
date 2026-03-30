@@ -5,6 +5,7 @@ import sys
 import math
 import html
 import re
+import time
 from google import genai
 import tweepy
 
@@ -30,6 +31,7 @@ Return ONLY raw JSON."""
 
 try:
     # Daily Tip Generation
+    print("Generating Daily Tip...")
     response = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=seo_prompt)
     raw_text = response.text.strip()
     
@@ -59,7 +61,7 @@ try:
     sitemap += f'  <url><loc>{DOMAIN}/editors-desk.html</loc><priority>0.9</priority></url>\n'
     sitemap += f'  <url><loc>{DOMAIN}/html-css-font-guides.html</loc><priority>0.9</priority></url>\n'
 
-    # 2. INCREDIBLE GUIDES DATA (Exactly 30 Items, Fully Populated)
+    # 2. INCREDIBLE GUIDES DATA
     top_guides = [
         ("how-to-change-font-size-in-html", "How to Change Font Size in HTML", "Responsive Typography", "In modern web design, hard-coding pixel sizes creates accessibility issues. You should use relative units like REM or fluid functions like clamp() to dynamically scale your text.", "font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);", "Always set your root html font-size to 100% and use REMs for paragraphs."),
         ("how-to-add-google-fonts-to-html", "How to Add Google Fonts to HTML", "Performance Optimization", "Embedding external fonts requires a link tag in your document head. To ensure your page doesn't suffer from layout shifts, always include display=swap.", "<link href='[https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap)' rel='stylesheet'>", "Preconnect to the Google Fonts server to shave 100ms off your load time."),
@@ -254,7 +256,7 @@ try:
 </html>"""
     with open("html-css-font-guides.html", 'w', encoding='utf-8') as f: f.write(guides_page_html)
 
-    # Generate COMPARISONS with UI matching exactly the main tool
+    # Generate COMPARISONS with UI matching exactly the main tool + AI DESCRIPTIONS
     comparison_grid_links = ""
     for font_a, font_b, css_a, css_b, link_a, link_b in top_comparisons:
         slug = f"{font_a.lower().replace(' ', '-')}-vs-{font_b.lower().replace(' ', '-')}"
@@ -271,6 +273,17 @@ try:
         # Safe injection for JavaScript strings
         safe_ha = html_a.replace("'", "\\'").replace('"', '&quot;')
         safe_hb = html_b.replace("'", "\\'").replace('"', '&quot;')
+
+        # GENERATE SEO DESCRIPTION VIA GEMINI
+        print(f"Generating SEO description for {font_a} vs {font_b}...")
+        desc_prompt = f"You are amazing, absolutely the best SEO and Projects specialist. Please create an amazing description (short helpful history of these two font pairs and key differences between them) for these fonts: {font_a} vs {font_b}. Return ONLY raw HTML (no markdown blocks, no ```html). Structure it with an <h2 class='text-2xl font-black text-slate-900 mb-4'> for the title, and <p class='mb-4 leading-relaxed'> for the text. Use <strong> for emphasis."
+        try:
+            resp = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=desc_prompt)
+            seo_description = resp.text.replace('```html', '').replace('```', '').strip()
+            time.sleep(2) # Prevent API rate limits
+        except Exception as e:
+            print(f"Error generating description: {e}")
+            seo_description = f"<h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between {font_a} and {font_b}</h2><p class='mb-4 leading-relaxed'>Compare the typography, legibility, and modern UI capabilities of {font_a} and {font_b}.</p>"
 
         vs_html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -349,6 +362,11 @@ try:
                     </div>
                 </div>
             </div>
+
+            <div class="mt-12 bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 text-slate-600">
+                {seo_description}
+            </div>
+
         </section>
     </main>
     
@@ -406,14 +424,15 @@ try:
             const copyBtn = document.getElementById('copy-html-btn');
             const htmlLabel = document.getElementById('modal-html-label');
             
-            htmlCode.innerHTML = data.html; 
-            
+            // BUG FIX: Switch to textContent for standard HTML, innerHTML for system font spans
             if (data.html.includes('System font')) {{
                 htmlLabel.innerText = "Info: Instant Deployment";
+                htmlCode.innerHTML = data.html; 
                 htmlCode.className = "text-xs block";
                 copyBtn.style.display = 'none';
             }} else {{
                 htmlLabel.innerText = "1. Add to HTML Head";
+                htmlCode.textContent = data.html; 
                 htmlCode.className = "text-xs font-mono text-indigo-300 break-all block";
                 copyBtn.style.display = 'block';
             }}
