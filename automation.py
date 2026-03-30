@@ -22,7 +22,7 @@ GA_CODE = """    <script async src="https://www.googletagmanager.com/gtag/js?id=
       gtag('config', 'G-TKESX7E20P');
     </script>"""
 
-client_gemini = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+client_gemini = genai.Client(api_key=os.environ.get("GEMINI_API_KEY", ""))
 
 # LOAD CACHES TO PROTECT API RATE LIMITS & ENABLE INCREMENTAL BUILDS
 CACHE_FILE = 'seo_descriptions_cache.json'
@@ -46,7 +46,7 @@ Target Keywords: CSS typography, UI design, web fonts, user experience.
 Keys MUST exactly match: "title", "slug", "tweet", "tip", "css_snippet".
 Return ONLY raw JSON."""
 
-# 2. FULL DATA ARRAYS (Added 'type' for categorization)
+# 2. FULL DATA ARRAYS
 master_fonts = [
     {"name": "Abril Fatface", "css": "'Abril Fatface', display", "link": "Abril+Fatface", "type": "Display"},
     {"name": "Amatic SC", "css": "'Amatic SC', cursive", "link": "Amatic+SC:wght@400;700", "type": "Handwriting"},
@@ -217,7 +217,6 @@ header_html = """    <header class="bg-white/90 backdrop-blur-md border-b border
     </header>"""
 
 try:
-    # GLOBAL SAFETY SWITCH TO PREVENT ENDLESS LOOPING IF DAILY QUOTA IS HIT
     api_exhausted = False
     
     os.makedirs('compare', exist_ok=True)
@@ -230,11 +229,11 @@ try:
     sitemap += f'  <url><loc>{DOMAIN}/editors-desk.html</loc><priority>0.9</priority></url>\n'
     sitemap += f'  <url><loc>{DOMAIN}/html-css-font-guides.html</loc><priority>0.9</priority></url>\n'
 
-    # Daily Tip Generation
     print("Generating Daily Tip...")
     raw_text = ""
     for attempt in range(3):
         try:
+            if not os.environ.get("GEMINI_API_KEY"): break
             response = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=seo_prompt)
             raw_text = response.text.strip()
             break
@@ -242,11 +241,9 @@ try:
             err_str = str(e)
             if "429" in err_str:
                 if "GenerateRequestsPerDay" in err_str or "limit: 20" in err_str:
-                    print("🚨 Daily API limit hit during Daily Tip!")
                     api_exhausted = True
                     break
                 elif attempt < 2:
-                    print("API busy. Waiting 65s...")
                     time.sleep(65)
                 else:
                     api_exhausted = True
@@ -272,7 +269,6 @@ try:
         
     new_data["date"] = datetime.datetime.now().strftime("%B %d, %Y")
 
-    # Sync Archives Safely
     history = []
     if os.path.exists('history.json'):
         with open('history.json', 'r', encoding='utf-8') as f: 
@@ -291,10 +287,10 @@ try:
         f_css = font["css"]
         f_type = font["type"]
         f_link = f"<link href='{GFONTS}?family={font['link']}&display=swap' rel='stylesheet'>" if font["link"] else ""
+        f_url = f"{GFONTS}?family={font['link']}&display=swap" if font["link"] else ""
         
-        # UPDATED: Interactive Card Structure with 'data-default' and 'Learn More' link
         directory_grid_html += f"""
-        <a href="/font/{slug}.html" class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]">
+        <a href="/font/{slug}.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="{f_url}">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -311,30 +307,12 @@ try:
 
         ai_content = f"<p class='text-lg text-slate-600 mb-6 font-medium'>Explore the typography, history, and optimal usage of {f_name}. Check back later for the complete expert design breakdown.</p>"
 
-        # GUARANTEE: Never call Gemini API if text is in cache.
         if slug in profile_cache:
-            print(f"✅ Skipping API call: Loaded cached profile for {f_name}.")
             ai_content = profile_cache[slug]
-        elif api_exhausted:
-            print(f"⏭️ Skipping API call for {f_name} (Quota Exhausted, using fallback)")
+        elif api_exhausted or not os.environ.get("GEMINI_API_KEY"):
+            pass
         else:
-            print(f"Generating NEW epic SEO profile for {f_name}...")
-            prompt = f"""You are the world's absolute best SEO specialist and typography expert. Write a comprehensive, fascinating, and highly educational article about the '{f_name}' web font to rank #1 on Google for queries like '{f_name} font history', 'best uses for {f_name}', and '{f_name} font pairings'.
-            
-            Return ONLY RAW HTML. DO NOT include ```html markdown blocks. DO NOT include <html>, <head>, or <body> tags. Just the inner content.
-            
-            Structure Requirements (Use these exact Tailwind classes):
-            - Main Section Titles: <h2 class="text-3xl md:text-4xl font-black text-slate-900 mt-16 mb-8 tracking-tight">
-            - Sub Titles: <h3 class="text-2xl font-bold text-slate-800 mt-10 mb-4 tracking-tight">
-            - Paragraphs: <p class="text-lg text-slate-600 leading-relaxed mb-6 font-medium">
-            - Lists: <ul class="list-disc list-inside text-lg text-slate-600 mb-8 space-y-3 font-medium bg-slate-50 p-6 rounded-2xl border border-slate-100">
-            - Highlight terms using <strong class="text-slate-900">.
-            
-            Content Must Include:
-            1. The fascinating history and origin of {f_name}.
-            2. Key geometric and design characteristics.
-            3. Best Use Cases.
-            4. The absolute best 3 CSS font pairings for {f_name}."""
+            prompt = f"""You are the world's absolute best SEO specialist and typography expert. Write a comprehensive, fascinating, and highly educational article about the '{f_name}' web font to rank #1 on Google for queries like '{f_name} font history', 'best uses for {f_name}', and '{f_name} font pairings'. Return ONLY RAW HTML. Structure Requirements: - Main Section Titles: <h2 class="text-3xl md:text-4xl font-black text-slate-900 mt-16 mb-8 tracking-tight"> - Sub Titles: <h3 class="text-2xl font-bold text-slate-800 mt-10 mb-4 tracking-tight"> - Paragraphs: <p class="text-lg text-slate-600 leading-relaxed mb-6 font-medium"> - Lists: <ul class="list-disc list-inside text-lg text-slate-600 mb-8 space-y-3 font-medium bg-slate-50 p-6 rounded-2xl border border-slate-100"> - Highlight terms using <strong class="text-slate-900">. Content Must Include: 1. The fascinating history and origin of {f_name}. 2. Key geometric and design characteristics. 3. Best Use Cases. 4. The absolute best 3 CSS font pairings for {f_name}."""
             
             for attempt in range(3):
                 try:
@@ -343,18 +321,14 @@ try:
                     ai_content = resp.text.replace('```html', '').replace('```', '').strip()
                     profile_cache[slug] = ai_content
                     save_profile_cache()
-                    print(f"✅ API Success for {f_name}")
                     break
                 except Exception as e:
                     err_str = str(e)
-                    print(f"⚠️ Error on {f_name}: {err_str.split('.')[0]}")
                     if "429" in err_str:
                         if "GenerateRequestsPerDay" in err_str or "limit: 20" in err_str:
-                            print("🚨 Daily Rate Limit hit! Switching completely to fallback mode.")
                             api_exhausted = True
                             break
                         elif attempt < 2:
-                            print("⏳ Waiting 65s for per-minute reset...")
                             time.sleep(65)
                         else:
                             api_exhausted = True
@@ -415,7 +389,6 @@ try:
     # 4. BUILD THE HOME PAGE (INDEX.HTML)
     print("Generating new Home Page (index.html)...")
     
-    # UPDATED: Interactive directory layout with Javascript driver
     home_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -426,9 +399,9 @@ try:
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 {GA_CODE}
     <script src="{TAILWIND}"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700;900&family=Roboto:wght@400;700&family=Montserrat:wght@700;900&family=Oswald:wght@700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+    <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700;900&family=Roboto:wght@400;700&family=Montserrat:wght@700;900&family=Oswald:wght@700&family=Fira+Code:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700;900&family=Roboto:wght@400;700&family=Montserrat:wght@700;900&family=Oswald:wght@700&family=Fira+Code:wght@400;700&display=swap)" rel="stylesheet">
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
@@ -436,15 +409,15 @@ try:
     
     <div class="bg-white border-b border-slate-200 overflow-hidden relative">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-white to-white"></div>
-        <div class="max-w-7xl mx-auto px-6 pt-12 pb-24 md:pt-16 md:pb-32 relative z-10 text-center">
-            <span class="inline-block bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-[0.2em] mb-8 shadow-sm">Most Popular</span>
-            <h1 class="text-6xl md:text-8xl font-black tracking-tighter text-slate-900 mb-8 leading-[1.1]">
-                Free Web <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Fonts.</span>
+        <div class="max-w-7xl mx-auto px-6 py-12 md:py-20 relative z-10 text-center">
+            <span class="inline-block bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-[0.2em] mb-4 shadow-sm">Most Popular</span>
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4">
+                Free Web <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Fonts.</span>
             </h1>
-            <p class="text-xl md:text-2xl text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed mb-12">The ultimate hub for UI designers and developers. Compare fonts side-by-side, explore typeface history, and learn CSS typography.</p>
+            <p class="text-lg text-slate-500 font-medium max-w-2xl mx-auto mt-4 mb-10">The ultimate hub for UI designers and developers. Compare fonts side-by-side, explore typeface history, and learn CSS typography.</p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="/font-vs-font-comparison-tool.html" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-black text-sm uppercase tracking-widest px-8 py-5 rounded-2xl transition shadow-xl shadow-indigo-200 hover:-translate-y-1">Open Comparison Tool</a>
-                <a href="/html-css-font-guides.html" class="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-black text-sm uppercase tracking-widest px-8 py-5 rounded-2xl transition shadow-sm hover:shadow-md hover:-translate-y-1">Read The Guides</a>
+                <a href="/font-vs-font-comparison-tool.html" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-black text-sm uppercase tracking-widest px-8 py-4 rounded-2xl transition shadow-xl shadow-indigo-200 hover:-translate-y-1">Open Comparison Tool</a>
+                <a href="/html-css-font-guides.html" class="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-black text-sm uppercase tracking-widest px-8 py-4 rounded-2xl transition shadow-sm hover:shadow-md hover:-translate-y-1">Read The Guides</a>
             </div>
         </div>
     </div>
@@ -467,7 +440,7 @@ try:
     <footer class="bg-white border-t border-slate-200 py-16 mt-auto">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">&copy; {datetime.datetime.now().year} htmlfonts. All rights reserved.</p>
-            <a href="https://x.com/HtmlFonts" target="_blank" class="text-xs font-bold text-indigo-500 hover:text-indigo-600 uppercase tracking-widest transition">Follow @HtmlFonts</a>
+            <a href="[https://x.com/HtmlFonts](https://x.com/HtmlFonts)" target="_blank" class="text-xs font-bold text-indigo-500 hover:text-indigo-600 uppercase tracking-widest transition">Follow @HtmlFonts</a>
         </div>
     </footer>
     
@@ -481,6 +454,25 @@ try:
                 p.textContent = val ? val : p.getAttribute('data-default');
             }});
         }});
+
+        const observer = new IntersectionObserver((entries, obs) => {{
+            entries.forEach(entry => {{
+                if(entry.isIntersecting) {{
+                    const card = entry.target;
+                    const fontUrl = card.getAttribute('data-font-link');
+                    
+                    if(fontUrl && !document.querySelector(`link[href="${{fontUrl}}"]`)) {{
+                        const link = document.createElement('link');
+                        link.rel = 'stylesheet';
+                        link.href = fontUrl;
+                        document.head.appendChild(link);
+                    }}
+                    obs.unobserve(card); 
+                }}
+            }});
+        }}, {{ rootMargin: '350px' }});
+
+        document.querySelectorAll('.font-card').forEach(card => observer.observe(card));
     </script>
 </body>
 </html>"""
@@ -604,15 +596,12 @@ try:
         cache_key = f"{font_a}_vs_{font_b}"
         seo_description = f"<h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between {font_a} and {font_b}</h2><p class='mb-4 leading-relaxed'>Compare the typography of {font_a} and {font_b}.</p>"
         
-        # GUARANTEE: Never call Gemini API if text is in cache.
         if cache_key in seo_cache:
             seo_description = seo_cache[cache_key]
-        elif api_exhausted:
+        elif api_exhausted or not os.environ.get("GEMINI_API_KEY"):
             pass 
         else:
-            print(f"Generating NEW comparison description for {font_a} vs {font_b}...")
             desc_prompt = f"Please create an amazing description (short helpful history and key differences) for: {font_a} vs {font_b}. Return ONLY raw HTML. Structure it with an <h2 class='text-2xl font-black text-slate-900 mb-4'> for the title, and <p class='mb-4 leading-relaxed'> for the text."
-            
             for attempt in range(3):
                 try:
                     time.sleep(4) 
@@ -934,16 +923,17 @@ except Exception as e:
 
 # 10. POST TO X
 try:
-    print("Attempting to authenticate with X.com...")
-    client_x = tweepy.Client(
-        consumer_key=os.environ["X_API_KEY"],
-        consumer_secret=os.environ["X_API_SECRET"],
-        access_token=os.environ["X_ACCESS_TOKEN"],
-        access_token_secret=os.environ["X_ACCESS_TOKEN_SECRET"]
-    )
-    tweet_text = f"{new_data.get('tweet', 'Check out our latest web typography tip!')}\n\nRead Tip: {DOMAIN}/article/{new_data.get('slug', 'fallback')}.html #webdesign #typography"
-    response = client_x.create_tweet(text=tweet_text)
-    print(f"✅ X Post Successful. Status ID: {response.data['id']}")
+    if os.environ.get("X_API_KEY"):
+        print("Attempting to authenticate with X.com...")
+        client_x = tweepy.Client(
+            consumer_key=os.environ["X_API_KEY"],
+            consumer_secret=os.environ["X_API_SECRET"],
+            access_token=os.environ["X_ACCESS_TOKEN"],
+            access_token_secret=os.environ["X_ACCESS_TOKEN_SECRET"]
+        )
+        tweet_text = f"{new_data.get('tweet', 'Check out our latest web typography tip!')}\n\nRead Tip: {DOMAIN}/article/{new_data.get('slug', 'fallback')}.html #webdesign #typography"
+        response = client_x.create_tweet(text=tweet_text)
+        print(f"✅ X Post Successful. Status ID: {response.data['id']}")
 except Exception as e:
     print(f"❌ X Post Failed: {e}")
 
