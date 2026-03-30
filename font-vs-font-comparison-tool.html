@@ -34,24 +34,25 @@
 
     <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center">
-            <a href="/" class="font-black text-2xl tracking-tighter">
-                <span class="text-indigo-600">html</span>fonts
-            </a>
+            <a href="/" class="font-black text-2xl tracking-tighter"><span class="text-indigo-600">html</span>fonts</a>
+            
             <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
                 <a href="/" class="hover:text-indigo-600 transition">Directory</a>
                 <a href="/font-vs-font-comparison-tool.html" class="text-indigo-600 transition">Font VS Font</a>
                 <a href="/editors-desk.html" class="hover:text-indigo-600 transition">Editor's Desk</a>
                 <a href="/html-css-font-guides.html" class="hover:text-indigo-600 transition">Guides</a>
             </nav>
+            
             <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden p-2 text-slate-600 hover:text-indigo-600">
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden absolute w-full bg-white border-b border-slate-200 shadow-xl z-30 px-6 py-6 space-y-4 md:hidden">
-            <a href="/" class="block text-sm font-bold text-slate-700">Directory</a>
-            <a href="/font-vs-font-comparison-tool.html" class="block text-sm font-bold text-indigo-600">Font VS Font</a>
-            <a href="/editors-desk.html" class="block text-sm font-bold text-slate-700">Editor's Desk</a>
-            <a href="/html-css-font-guides.html" class="block text-sm font-bold text-slate-700">Guides</a>
+        
+        <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-white border-b border-slate-200 shadow-xl z-30 px-6 py-6 space-y-4 md:hidden">
+            <a href="/" class="block text-sm font-bold text-slate-700 hover:text-indigo-600">Directory</a>
+            <a href="/font-vs-font-comparison-tool.html" class="block text-sm font-bold text-indigo-600 hover:text-indigo-600">Font VS Font</a>
+            <a href="/editors-desk.html" class="block text-sm font-bold text-slate-700 hover:text-indigo-600">Editor's Desk</a>
+            <a href="/html-css-font-guides.html" class="block text-sm font-bold text-slate-700 hover:text-indigo-600">Guides</a>
         </div>
     </header>
 
