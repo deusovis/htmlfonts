@@ -237,8 +237,11 @@ try:
             break
         except Exception as e:
             if "429" in str(e) or "503" in str(e):
-                print("API busy. Waiting 60 seconds before retrying...")
-                time.sleep(60)
+                if attempt < 2:
+                    print("API busy. Waiting 65 seconds before retrying...")
+                    time.sleep(65)
+                else:
+                    raise e
             else:
                 raise e
 
@@ -302,22 +305,25 @@ try:
             3. Best Use Cases.
             4. The absolute best 3 CSS font pairings for {f_name}."""
             
-            try:
-                time.sleep(4) 
-                resp = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=prompt)
-                ai_content = resp.text.replace('```html', '').replace('```', '').strip()
-                profile_cache[slug] = ai_content
-                save_profile_cache()
-            except Exception as e:
-                print(f"Error on {f_name}: {e}")
-                if "429" in str(e):
-                    time.sleep(60)
+            ai_content = f"<p class='text-lg text-slate-600 mb-6 font-medium'>Explore the typography of {f_name}.</p>" # Default safe fallback
+            for attempt in range(3):
+                try:
+                    time.sleep(5) 
                     resp = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=prompt)
                     ai_content = resp.text.replace('```html', '').replace('```', '').strip()
                     profile_cache[slug] = ai_content
                     save_profile_cache()
-                else:
-                    ai_content = f"<p class='text-lg text-slate-600'>Explore the typography of {f_name}.</p>"
+                    print(f"✅ Success for {f_name}")
+                    break
+                except Exception as e:
+                    print(f"⚠️ Attempt {attempt+1} failed for {f_name}: {e}")
+                    if "429" in str(e) or "503" in str(e):
+                        if attempt < 2:
+                            wait_time = 65
+                            print(f"Waiting {wait_time} seconds before retrying...")
+                            time.sleep(wait_time)
+                    else:
+                        break # Break on other non-rate-limit errors
 
         font_page_html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -547,21 +553,23 @@ try:
         else:
             print(f"Generating NEW comparison description for {font_a} vs {font_b}...")
             desc_prompt = f"Please create an amazing description (short helpful history and key differences) for: {font_a} vs {font_b}. Return ONLY raw HTML. Structure it with an <h2 class='text-2xl font-black text-slate-900 mb-4'> for the title, and <p class='mb-4 leading-relaxed'> for the text."
-            try:
-                time.sleep(4) 
-                resp = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=desc_prompt)
-                seo_description = resp.text.replace('```html', '').replace('```', '').strip()
-                seo_cache[cache_key] = seo_description
-                save_cache()
-            except Exception as e:
-                if "429" in str(e):
-                    time.sleep(60)
+            
+            seo_description = f"<h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between {font_a} and {font_b}</h2><p class='mb-4 leading-relaxed'>Compare the typography of {font_a} and {font_b}.</p>"
+            for attempt in range(3):
+                try:
+                    time.sleep(5) 
                     resp = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=desc_prompt)
                     seo_description = resp.text.replace('```html', '').replace('```', '').strip()
                     seo_cache[cache_key] = seo_description
                     save_cache()
-                else:
-                    seo_description = f"<h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between {font_a} and {font_b}</h2><p class='mb-4 leading-relaxed'>Compare the typography of {font_a} and {font_b}.</p>"
+                    break
+                except Exception as e:
+                    if "429" in str(e) or "503" in str(e):
+                        if attempt < 2:
+                            print("⚠️ Rate limit hit. Waiting 65s before retrying...")
+                            time.sleep(65)
+                    else:
+                        break # Break on other non-rate-limit errors
 
         vs_html = f"""<!DOCTYPE html>
 <html lang="en">
