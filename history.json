@@ -1,5 +1,13 @@
 [
     {
+        "title": "Leveraging Variable Fonts for Dynamic UI, Peak Performance, and Superior UX",
+        "slug": "variable-fonts-dynamic-ui-performance-ux",
+        "tweet": "\ud83d\ude80 Revolutionize your web typography! Discover how Variable Fonts empower dynamic UI, boost performance, and craft exceptional UX. A must-read for #CSSTypography & #WebDesign pros! #WebFonts #UIDesign #UserExperience",
+        "tip": "Embrace Variable Fonts to gain granular control over typographic styles (weight, width, optical size, etc.) using a single font file. This dramatically reduces HTTP requests and file sizes compared to traditional static fonts, leading to faster page loads and a more performant user experience. Beyond performance, they enable truly responsive and adaptable UI, allowing text to adjust seamlessly across various screen sizes and user preferences, enhancing readability and design integrity.",
+        "css_snippet": "/* Define a variable font custom property for easier management */\n:root {\n  --font-display-wght: 400; /* Default weight */\n  --font-display-wdth: 100; /* Default width (often 100 for normal) */\n}\n\n/* Apply variable font and settings */\nh1 {\n  font-family: 'Inter Variable', sans-serif;\n  /* Use font-variation-settings for precise control */\n  font-variation-settings: \n    'wght' var(--font-display-wght), \n    'wdth' var(--font-display-wdth);\n  /* Fallbacks for older browsers or explicit control */\n  font-weight: var(--font-display-wght); \n  font-stretch: var(--font-display-wdth); /* Corresponds to 'wdth' */\n  line-height: 1.1;\n  letter-spacing: -0.02em;\n}\n\n/* Example of responsive adjustments using media queries */\n@media (max-width: 768px) {\n  :root {\n    --font-display-wght: 600; /* Bolder on smaller screens for emphasis */\n    --font-display-wdth: 90;  /* Slightly narrower on smaller screens for space */\n  }\n}\n\n/* Example of user preference adjustment (e.g., in dark mode) */\n@media (prefers-color-scheme: dark) {\n  h1 {\n    font-variation-settings: \n      'wght' calc(var(--font-display-wght) + 50); /* Slightly bolder in dark mode */\n  }\n}\n",
+        "date": "March 30, 2026"
+    },
+    {
         "title": "Mastering Font Loading for Superior UX: The Power of `font-display: swap`",
         "slug": "font-loading-performance-font-display-swap-ux",
         "tweet": "Stop FOUT! \ud83d\udeab Improve web font loading UX with `font-display: swap`. Deliver readable content faster and enhance user perception. #WebFonts #CSSTypography #UIUX",
