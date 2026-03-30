@@ -389,6 +389,7 @@ try:
     # 4. BUILD THE HOME PAGE (INDEX.HTML)
     print("Generating new Home Page (index.html)...")
     
+    # UPDATED: Aggressively reduced vertical padding in the Hero (py-12 -> py-8) and Main section (py-24 -> pt-10 pb-24)
     home_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -409,12 +410,12 @@ try:
     
     <div class="bg-white border-b border-slate-200 overflow-hidden relative">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-white to-white"></div>
-        <div class="max-w-7xl mx-auto px-6 py-12 md:py-20 relative z-10 text-center">
+        <div class="max-w-7xl mx-auto px-6 pt-10 pb-12 md:pt-12 md:pb-16 relative z-10 text-center">
             <span class="inline-block bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-[0.2em] mb-4 shadow-sm">Most Popular</span>
             <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4">
                 Free Web <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Fonts.</span>
             </h1>
-            <p class="text-lg text-slate-500 font-medium max-w-2xl mx-auto mt-4 mb-10">The ultimate hub for UI designers and developers. Compare fonts side-by-side, explore typeface history, and learn CSS typography.</p>
+            <p class="text-lg text-slate-500 font-medium max-w-2xl mx-auto mt-4 mb-8">The ultimate hub for UI designers and developers. Compare fonts side-by-side, explore typeface history, and learn CSS typography.</p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="/font-vs-font-comparison-tool.html" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-black text-sm uppercase tracking-widest px-8 py-4 rounded-2xl transition shadow-xl shadow-indigo-200 hover:-translate-y-1">Open Comparison Tool</a>
                 <a href="/html-css-font-guides.html" class="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-black text-sm uppercase tracking-widest px-8 py-4 rounded-2xl transition shadow-sm hover:shadow-md hover:-translate-y-1">Read The Guides</a>
@@ -422,8 +423,8 @@ try:
         </div>
     </div>
 
-    <main class="flex-grow py-24 px-4 md:px-6 max-w-7xl mx-auto w-full">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
+    <main class="flex-grow pt-10 pb-24 px-4 md:px-6 max-w-7xl mx-auto w-full">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
             <h2 class="text-3xl font-black text-slate-900 tracking-tight shrink-0">The Typeface Encyclopedia</h2>
             
             <div class="w-full md:max-w-md bg-white border border-slate-200 rounded-2xl py-3 px-4 shadow-sm flex items-center gap-3 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:border-indigo-500 transition-all relative">
@@ -563,7 +564,7 @@ try:
 {header_html}
     <main class="flex-grow py-16 px-6 max-w-7xl mx-auto w-full">
         <div class="text-center mb-16 max-w-3xl mx-auto">
-            <h1 class="text-5xl md:text-6xl font-black tracking-tight mb-6"><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Typography Guides</span></h1>
+            <h1 class="text-5xl md:text-6xl font-black tracking-tight mb-6"><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Font Guides</span></h1>
             <p class="text-xl text-slate-500 font-medium leading-relaxed">Master CSS typography and build better web interfaces with our deep-dive technical tutorials.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
