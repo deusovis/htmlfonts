@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering Fluid Typography with CSS `clamp()`: The Secret to Responsive & Readable UI",
+        "slug": "mastering-fluid-typography-css-clamp-responsive-readable-ui",
+        "tweet": "Stop juggling font sizes! \ud83e\udd2f Discover how CSS `clamp()` creates perfectly fluid, responsive typography that adapts seamlessly across all screen sizes. Boost your #UIDesign & #UX with fewer media queries! #CSSTypography #WebFonts",
+        "tip": "Leverage CSS `clamp()` to set a minimum, preferred (fluid), and maximum font size. This technique ensures your text scales gracefully between breakpoints, improving readability and reducing the need for extensive media queries for typography, leading to a superior user experience with minimal effort.",
+        "css_snippet": "/* Define fluid font sizes using CSS `clamp()` variables */\n\n:root {\n  /* Base font scaling */\n  --fluid-min-font: 1rem; /* Smallest font size (e.g., on mobile) */\n  --fluid-max-font: 1.25rem; /* Largest font size (e.g., on desktop) */\n  \n  /* Viewport widths for scaling */\n  --viewport-min: 20rem; /* Viewport width where scaling begins (e.g., 320px) */\n  --viewport-max: 80rem; /* Viewport width where scaling ends (e.g., 1280px) */\n}\n\nbody {\n  font-size: clamp(var(--fluid-min-font),\n                   calc(var(--fluid-min-font) + (var(--fluid-max-font) - var(--fluid-min-font)) * ((100vw - var(--viewport-min)) / (var(--viewport-max) - var(--viewport-min)))),\n                   var(--fluid-max-font));\n  line-height: 1.6; /* Optimal for readability */\n  font-family: 'Inter', sans-serif; /* Example web font for modern UI */\n  color: #333; /* Good contrast for UX */\n}\n\n/* Example for a heading (h1) to also be fluid */\nh1 {\n  --h1-min-font: 2.5rem;\n  --h1-max-font: 4rem;\n  font-size: clamp(var(--h1-min-font),\n                   calc(var(--h1-min-font) + (var(--h1-max-font) - var(--h1-min-font)) * ((100vw - var(--viewport-min)) / (var(--viewport-max) - var(--viewport-min)))),\n                   var(--h1-max-font));\n  line-height: 1.1;\n  font-weight: 700;\n  margin-block-start: 1.5em; /* Better vertical rhythm */\n  margin-block-end: 0.5em;\n}",
+        "date": "March 30, 2026"
+    },
+    {
         "title": "Mastering Variable Fonts: Elevating UI/UX with Performance & Precision",
         "slug": "mastering-variable-fonts-ui-ux-performance",
         "tweet": "Unlock next-level #WebTypography! \ud83d\ude80 Variable fonts offer incredible flexibility & performance for your #UIDesign. Ditch multiple font files for one and boost #UserExperience. Learn to implement this powerful #CSS technique! #WebFonts",
