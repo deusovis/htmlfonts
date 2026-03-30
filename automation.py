@@ -10,7 +10,6 @@ DOMAIN = "https://htmlfonts.com"
 TAILWIND = "https://cdn.tailwindcss.com"
 GFONTS = "https://fonts.googleapis.com/css2"
 
-# Safely inject the GA tracking script with double braces {{ }} to prevent f-string KeyError
 GA_CODE = """    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKESX7E20P"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -124,9 +123,9 @@ try:
         ("Teko", "Bebas Neue", "'Teko', sans-serif", "'Bebas Neue', sans-serif", "Teko:wght@400;600", "Bebas+Neue")
     ]
 
-    # UNIVERSAL HEADER TEMPLATE (Logo and Mobile Menu Fixed)
-    header_html = """    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center">
+    # UNIVERSAL HEADER TEMPLATE
+    header_html = """    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6 shadow-sm">
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
             <a href="/" class="font-black text-2xl tracking-tighter"><span class="text-indigo-600">html</span>fonts</a>
             <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
                 <a href="/" class="hover:text-indigo-600 transition">Directory</a>
@@ -149,6 +148,8 @@ try:
     # Generate 30 INCREDIBLE Guide Articles
     guides_cards_html = ""
     for slug, title, subtitle, concept, code, protip in top_guides:
+        # SANITIZE HTML TO PREVENT BROKEN META TAGS
+        safe_desc = concept.replace('"', '&quot;')
         safe_code = code.replace('<', '&lt;').replace('>', '&gt;')
         html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -156,7 +157,7 @@ try:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title} | htmlfonts Guides</title>
-    <meta name="description" content="{concept}">
+    <meta name="description" content="{safe_desc}">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 {GA_CODE}
     <script src="{TAILWIND}"></script>
@@ -266,6 +267,7 @@ try:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{font_a} vs {font_b} | Side-by-Side Comparison</title>
+    <meta name="description" content="Compare {font_a} and {font_b} web fonts side-by-side. Test legibility and generate CSS HTML code instantly.">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 {GA_CODE}
     <script src="{TAILWIND}"></script>
@@ -351,14 +353,17 @@ try:
         sitemap += f"  <url><loc>{DOMAIN}/compare/{slug}.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>\n"
 
     # Generate Today's Editor's Desk Tip Article
+    # SANITIZE HTML TO PREVENT BROKEN META TAGS
+    tip_safe_desc = new_data['tip'].replace('"', '&quot;')
     tip_safe_code = new_data['css_snippet'].replace('<', '&lt;').replace('>', '&gt;')
+    
     tip_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{new_data['title']} | Editor's Desk</title>
-    <meta name="description" content="{new_data['tip']}">
+    <meta name="description" content="{tip_safe_desc}">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 {GA_CODE}
     <script src="{TAILWIND}"></script>
