@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevating Web Text: Advanced CSS Typography for Better User Experience",
+        "slug": "elevating-web-text-advanced-css-typography-ux",
+        "tweet": "Boost your UI/UX! Learn how advanced CSS typography techniques like `font-display` & fluid sizing with `clamp()` can make your web text shine and improve user experience. #CSSTypography #WebFonts #UIDesign #UserExperience",
+        "tip": "For a truly superior user experience, combine `font-display: swap;` for optimal web font loading performance with modern fluid typography using `clamp()`. `font-display: swap;` prevents blank text flashes (FOIT) by immediately rendering fallback fonts, then swapping in your custom web font once loaded. Simultaneously, `clamp()` allows you to define a minimum, preferred, and maximum font size, enabling fluid scaling that adapts beautifully across screen sizes without complex media queries. This dual approach ensures both visual consistency and excellent legibility, significantly enhancing your UI's responsiveness and perceived speed.",
+        "css_snippet": "/* 1. Optimize Web Font Loading with font-display */\n@font-face {\n  font-family: 'Inter-Regular';\n  src: url('/fonts/Inter-Regular.woff2') format('woff2');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Critical for perceived performance and UX */\n}\n\n/* 2. Implement Fluid Typography with clamp() for Responsive Sizing */\nbody {\n  font-family: 'Inter-Regular', sans-serif;\n  /* clamp(minimum, preferred, maximum) */\n  /* Example: Font size fluidly scales between 1rem (16px) and 1.25rem (20px) */\n  font-size: clamp(1rem, 2vw + 0.5rem, 1.25rem);\n  line-height: 1.6;\n  color: #2c3e50;\n}\n\nh1 {\n  /* Example: Heading size fluidly scales between 2rem (32px) and 3.5rem (56px) */\n  font-size: clamp(2rem, 5vw + 1rem, 3.5rem);\n  line-height: 1.15;\n  margin-bottom: 0.75em;\n}",
+        "date": "March 30, 2026"
+    },
+    {
         "title": "Optimize Web Font Loading with `font-display`: Boost UI & UX",
         "slug": "optimize-web-font-loading-font-display-ui-ux",
         "tweet": "Don't let slow fonts ruin your UI! Learn how `font-display` improves web font loading & user experience, preventing FOUT/FOIT. Essential #CSSTypography tip! #WebFonts #UXDesign",
