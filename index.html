@@ -35,8 +35,8 @@
 
     <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center">
-            <a href="/" class="flex items-center gap-2 font-black text-2xl tracking-tighter">
-                <span class="text-indigo-600">html</span><span>fonts</span>
+            <a href="/" class="font-black text-2xl tracking-tighter">
+                <span class="text-indigo-600">html</span>fonts
             </a>
             
             <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
@@ -99,7 +99,7 @@
                 <span class="text-indigo-300 font-black tracking-widest uppercase text-xs mb-4 block">Today's Typography Tip</span>
                 <h2 id="daily-tip-title" class="text-3xl font-black mb-4">Loading...</h2>
                 <p id="daily-tip-desc" class="text-xl text-indigo-100 mb-8 font-medium">Fetching the latest expert advice from the Editor's Desk...</p>
-                <a href="/editors-desk.html" class="inline-block bg-indigo-500 hover:bg-indigo-400 text-white font-bold py-3 px-8 rounded-full transition-all shadow-lg">Read Full Archive &rarr;</a>
+                <a id="daily-tip-link" href="/editors-desk.html" class="inline-block bg-indigo-500 hover:bg-indigo-400 text-white font-bold py-3 px-8 rounded-full transition-all shadow-lg">Read Full Archive &rarr;</a>
             </div>
         </section>
     </main>
@@ -285,12 +285,14 @@
         
         function closeModal(id) { document.getElementById('modal-content').classList.remove('modal-active'); setTimeout(() => document.getElementById(id).classList.add('hidden'), 200); }
 
-        // Fetch Daily Tip Data
+        // Fetch Daily Tip Data and dynamically link to the actual article
         fetch('/content.json')
             .then(response => response.json())
             .then(data => {
                 document.getElementById('daily-tip-title').innerText = data.title;
                 document.getElementById('daily-tip-desc').innerText = data.tip;
+                document.getElementById('daily-tip-link').href = '/article/' + data.slug + '.html';
+                document.getElementById('daily-tip-link').innerHTML = "Read Today's Tip &rarr;";
             })
             .catch(error => {
                 document.getElementById('daily-tip-title').innerText = "Explore the Editor's Desk";
