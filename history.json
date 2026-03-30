@@ -1,0 +1,10 @@
+[
+    {
+        "title": "Achieve Optical Harmony with `font-size-adjust`",
+        "slug": "achieve-optical-harmony-font-size-adjust-web-typography",
+        "tweet": "\ud83e\udd2f Stop guessing font sizes! Use `font-size-adjust` to achieve perfect optical harmony between different web fonts. Ensure consistent x-heights for a polished UI & superior UX. Your designs will thank you! \u2728 #CSSTypography #WebFonts #UIDesign",
+        "tip": "Stop matching font sizes by visual appearance alone; instead, ensure consistent x-heights for harmonious inter-font typography. Use `font-size-adjust` to programmatically normalize different font's actual body sizes, creating a unified optical rhythm across your UI.",
+        "css_snippet": "/* Ensure optical size consistency across diverse web fonts */\nbody {\n  font-family: 'Inter', sans-serif;\n  font-size: 1rem;\n  /* Example: Inter's x-height ratio might be ~0.52 */\n}\n\nh1 {\n  font-family: 'Playfair Display', serif; /* A font with a naturally different x-height */\n  font-size: 2.5rem;\n  font-size-adjust: 0.52; /* Set to the target x-height ratio (e.g., from your body font) */\n  /* This scales Playfair Display's font-size so its x-height visually matches 52% of its computed font-size,\n     creating better optical balance with other fonts like Inter, even at different declared font-sizes. */\n}",
+        "date": "March 30, 2026"
+    }
+]
