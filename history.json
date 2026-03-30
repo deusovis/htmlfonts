@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering Fluid Responsive Typography with CSS `clamp()` for Superior UI/UX",
+        "slug": "mastering-fluid-responsive-typography-css-clamp-ui-ux",
+        "tweet": "Unlock fluid, responsive typography with CSS `clamp()`. Define min, preferred, and max font sizes for elegant scaling across all devices, enhancing UI & UX. No more fixed pixels or complex media queries! #CSSTypography #UIDesign #WebFonts #ResponsiveDesign",
+        "tip": "Leverage the CSS `clamp()` function to create truly fluid and responsive typography that adapts seamlessly to any screen size. By defining a `min`, `preferred` (often a `vw` unit combined with `rem` for robust scaling), and `max` value for your `font-size`, `clamp()` intelligently scales your text. This modern approach eliminates the need for numerous media queries, prevents text from becoming too small on mobile or excessively large on desktops, and significantly improves both the visual consistency (UI design) and readability (user experience) of your web application. It's a performance-efficient solution for dynamic text scaling and a cornerstone of effective web fonts implementation.",
+        "css_snippet": "h2 {\n  /* \n   * CSS clamp() provides a fluid range:\n   * 1.5rem = minimum font size (e.g., on small mobile screens)\n   * 3vw + 1rem = preferred fluid size (scales with viewport width)\n   * 3.5rem = maximum font size (e.g., on very large desktop screens)\n   */\n  font-size: clamp(1.5rem, 3vw + 1rem, 3.5rem);\n  line-height: 1.2;\n  font-family: 'Inter', sans-serif; /* Example web font for modern UI */\n  margin-bottom: 0.8em;\n}",
+        "date": "March 30, 2026"
+    },
+    {
         "title": "Elevating Web Text: Advanced CSS Typography for Better User Experience",
         "slug": "elevating-web-text-advanced-css-typography-ux",
         "tweet": "Boost your UI/UX! Learn how advanced CSS typography techniques like `font-display` & fluid sizing with `clamp()` can make your web text shine and improve user experience. #CSSTypography #WebFonts #UIDesign #UserExperience",
