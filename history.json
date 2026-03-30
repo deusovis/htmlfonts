@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering `font-display`: The Key to Seamless Web Font Loading & UX",
+        "slug": "mastering-font-display-seamless-web-font-loading-ux",
+        "tweet": "Enhance #WebFonts #UX! Learn how `font-display` in #CSS is crucial for smooth loading and preventing FOUT/FOIT. A must-know for better #UIDesign and #CSStypography. #webdev",
+        "tip": "To significantly improve perceived performance and user experience, always include the `font-display` property in your `@font-face` rules. Using `font-display: swap;` is often the optimal choice, as it renders text immediately with a fallback font and swaps to the custom font once loaded, avoiding invisible text (FOIT) and a harsh flash of unstyled text (FOUT). This ensures content is readable faster, a core aspect of good UI design.",
+        "css_snippet": "@font-face {\n  font-family: 'Inter Bold';\n  src: url('/fonts/Inter-Bold.woff2') format('woff2'),\n       url('/fonts/Inter-Bold.woff') format('woff');\n  font-weight: 700;\n  font-style: normal;\n  font-display: swap; /* Ensures immediate fallback rendering */\n}\n\nbody {\n  font-family: 'Inter Bold', Helvetica, Arial, sans-serif;\n  line-height: 1.6;\n  color: #333;\n}",
+        "date": "March 30, 2026"
+    },
+    {
         "title": "Mastering `font-display` for Flawless Web Font Loading & UI Stability",
         "slug": "mastering-font-display-web-fonts-ui-stability",
         "tweet": "Stop layout shifts! \ud83d\ude80 Learn how `font-display` revolutionizes web font loading for superior #UIDesign & #UserExperience. A must-read for #CSSTypography pros. #WebFonts",
