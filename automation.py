@@ -2,6 +2,7 @@ import os
 import json
 import datetime
 import sys
+import html  # Native library to sanitize AI text and prevent HTML breaks
 from google import genai
 import tweepy
 
@@ -123,7 +124,7 @@ try:
         ("Teko", "Bebas Neue", "'Teko', sans-serif", "'Bebas Neue', sans-serif", "Teko:wght@400;600", "Bebas+Neue")
     ]
 
-    # UNIVERSAL HEADER TEMPLATE (Logo Restored)
+    # UNIVERSAL HEADER TEMPLATE (Logo and Mobile Menu Fixed)
     header_html = """    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center">
             
@@ -155,9 +156,11 @@ try:
     # Generate 30 INCREDIBLE Guide Articles
     guides_cards_html = ""
     for slug, title, subtitle, concept, code, protip in top_guides:
-        safe_desc = concept.replace('"', '&quot;')
-        safe_code = code.replace('<', '&lt;').replace('>', '&gt;')
-        html = f"""<!DOCTYPE html>
+        # BULLETPROOF SANITIZATION: Escapes quotes, brackets, and ampersands
+        safe_desc = html.escape(concept)
+        safe_code = html.escape(code)
+        
+        html_page = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -209,7 +212,7 @@ try:
     </footer>
 </body>
 </html>"""
-        with open(f"article/{slug}.html", 'w', encoding='utf-8') as f: f.write(html)
+        with open(f"article/{slug}.html", 'w', encoding='utf-8') as f: f.write(html_page)
         sitemap += f"  <url><loc>{DOMAIN}/article/{slug}.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>\n"
         
         guides_cards_html += f"""
@@ -256,11 +259,14 @@ try:
         slug = f"{font_a.lower().replace(' ', '-')}-vs-{font_b.lower().replace(' ', '-')}"
         imp_a = f"<link href='{GFONTS}?family={link_a}&display=swap' rel='stylesheet'>" if link_a else ""
         imp_b = f"<link href='{GFONTS}?family={link_b}&display=swap' rel='stylesheet'>" if link_b else ""
-        safe_a = imp_a.replace('<', '&lt;').replace('>', '&gt;')
-        safe_b = imp_b.replace('<', '&lt;').replace('>', '&gt;')
+        
         sys_msg = '<span class="font-sans font-medium text-emerald-600">✨ System font. No HTML import required!</span>'
-        html_a = safe_a if safe_a else sys_msg
-        html_b = safe_b if safe_b else sys_msg
+        html_a = imp_a if imp_a else sys_msg
+        html_b = imp_b if imp_b else sys_msg
+
+        # Using html.escape on the UI block code
+        safe_ha = html.escape(html_a)
+        safe_hb = html.escape(html_b)
 
         btn_ha = '<button onclick="c(\'ha\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition shadow-sm">COPY</button>' if link_a else ''
         btn_hb = '<button onclick="c(\'hb\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition shadow-sm">COPY</button>' if link_b else ''
@@ -302,7 +308,7 @@ try:
                             <p id="pa" class="text-5xl leading-tight text-black w-full" style="font-family: {css_a};">Optimize your UI design with fast-loading fonts.</p>
                         </div>
                         <div class="mt-8 bg-slate-50 p-4 rounded-xl relative group text-left border border-slate-200 shadow-sm">
-                            <code id="ha" class="text-xs text-slate-800 font-mono block">{html_a}</code>
+                            <code id="ha" class="text-xs text-slate-800 font-mono block">{safe_ha}</code>
                             {btn_ha}
                         </div>
                         <div class="mt-4 bg-slate-50 p-4 rounded-xl relative group text-left border border-slate-200 shadow-sm">
@@ -319,7 +325,7 @@ try:
                             <p id="pb" class="text-5xl leading-tight text-black w-full" style="font-family: {css_b};">Optimize your UI design with fast-loading fonts.</p>
                         </div>
                         <div class="md:ml-10 mt-8 bg-slate-50 p-4 rounded-xl relative group text-left border border-slate-200 shadow-sm">
-                            <code id="hb" class="text-xs text-slate-800 font-mono block">{html_b}</code>
+                            <code id="hb" class="text-xs text-slate-800 font-mono block">{safe_hb}</code>
                             {btn_hb}
                         </div>
                         <div class="md:ml-10 mt-4 bg-slate-50 p-4 rounded-xl relative group text-left border border-slate-200 shadow-sm">
@@ -359,8 +365,9 @@ try:
         sitemap += f"  <url><loc>{DOMAIN}/compare/{slug}.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>\n"
 
     # Generate Today's Editor's Desk Tip Article
-    tip_safe_desc = new_data['tip'].replace('"', '&quot;')
-    tip_safe_code = new_data['css_snippet'].replace('<', '&lt;').replace('>', '&gt;')
+    # BULLETPROOF SANITIZATION: Escapes quotes, brackets, and ampersands
+    tip_safe_desc = html.escape(new_data['tip'])
+    tip_safe_code = html.escape(new_data['css_snippet'])
     
     tip_html = f"""<!DOCTYPE html>
 <html lang="en">
