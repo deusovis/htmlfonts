@@ -291,7 +291,6 @@ try:
         f_link = f"<link href='{GFONTS}?family={font['link']}&display=swap' rel='stylesheet'>" if font["link"] else ""
         f_url = f"{GFONTS}?family={font['link']}&display=swap" if font["link"] else ""
         
-        # BUG FIX: Safely encode data to HTML Attributes (No inline JS escaping needed)
         safe_name = html.escape(f_name, quote=True)
         safe_css = html.escape(f_css, quote=True)
         safe_url = html.escape(f_url, quote=True)
@@ -525,11 +524,9 @@ try:
             }});
         }}, {{ rootMargin: '350px' }});
 
-        // Add event listeners completely free from quote-escaping issues
         document.querySelectorAll('.font-card').forEach(card => {{
             observer.observe(card);
             card.addEventListener('click', function(e) {{
-                // Ignore clicks on the 'Learn More' link so it navigates correctly
                 if (e.target.closest('a')) return;
                 
                 const name = this.getAttribute('data-font-name');
@@ -714,6 +711,9 @@ try:
         html_a = imp_a if imp_a else sys_msg
         html_b = imp_b if imp_b else sys_msg
 
+        safe_ha = html_a.replace("'", "\\'").replace('"', '&quot;')
+        safe_hb = html_b.replace("'", "\\'").replace('"', '&quot;')
+
         cache_key = f"{font_a}_vs_{font_b}"
         seo_description = f"<h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between {font_a} and {font_b}</h2><p class='mb-4 leading-relaxed'>Compare the typography of {font_a} and {font_b}.</p>"
         
@@ -735,7 +735,7 @@ try:
             
             for attempt in range(3):
                 try:
-                    time.sleep(6) # STRICT LIMIT TO GUARANTEE 10/MIN (PREVENTS 429 ERRORS)
+                    time.sleep(6) 
                     resp = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=desc_prompt)
                     seo_description = resp.text.replace('```html', '').replace('```', '').strip()
                     seo_cache[cache_key] = seo_description
@@ -1033,19 +1033,263 @@ try:
         with open(file_name, 'w', encoding='utf-8') as f: f.write(archive_html)
         sitemap += f"  <url><loc>{DOMAIN}/{file_name}</loc><changefreq>daily</changefreq><priority>0.8</priority></url>\n"
 
-    # 9. FIX ORPHAN PAGES (comparison-tool)
-    if os.path.exists('font-vs-font-comparison-tool.html'):
-        with open('font-vs-font-comparison-tool.html', 'r', encoding='utf-8') as f:
-            tool_page_content = f.read()
+    # 9. BUILD FONT VS FONT COMPARISON TOOL PAGE
+    print("Generating Font Comparison Tool Page...")
+    
+    tool_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Font Comparison Tool | Test Web Fonts Side-by-Side</title>
+    <meta name="description" content="Compare popular free web fonts side-by-side. Test legibility, size, and instantly copy HTML/CSS codes for your UI design.">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{GA_CODE}
+    <script src="{TAILWIND}"></script>
+    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+    <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap)" rel="stylesheet">
+    <style>
+        body {{ font-family: 'Inter', system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }}
+        .toast-active {{ opacity: 1; transform: translate(-50%, 0); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }}
+        .modal-active {{ opacity: 1; transform: scale(1) translateY(0); transition: all 0.2s ease-out; }}
+        .comparison-text {{ transition: font-size 0.2s ease; }}
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
 
-        pattern = r'(<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">)(.*?)(</div>\s*</div>\s*</section>)'
-        updated_tool_content = re.sub(pattern, rf'\1\n{comparison_grid_links}                \3', tool_page_content, flags=re.DOTALL)
+    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3">
+        <span>Code copied! 🚀</span>
+    </div>
 
-        with open('font-vs-font-comparison-tool.html', 'w', encoding='utf-8') as f:
-            f.write(updated_tool_content)
-        print("✅ SEO Architecture Fixed: Injected comparison links into main tool page.")
-    else:
-        print("⚠️ Warning: font-vs-font-comparison-tool.html not found to inject links.")
+{header_html}
+
+    <main class="flex-grow w-full py-12 md:py-20">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6">
+            
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-4">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Font Comparison Tool</span>
+                </h1>
+                <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto">Compare legibility and design aesthetics side-by-side.</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 md:p-10 shadow-2xl border border-slate-200/60">
+                
+                <div class="flex flex-col md:flex-row gap-6 mb-12 items-stretch">
+                    <div class="w-full md:w-2/3 bg-slate-50 border border-slate-200 rounded-2xl py-4 px-6 shadow-inner flex flex-col justify-center focus-within:ring-2 focus-within:ring-indigo-500 focus-within:bg-white transition-all">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 px-1">Testing Playground</label>
+                        <input type="text" id="vs-text" value="Optimize your UI design with fast-loading free web fonts." 
+                            onfocus="if(this.value===this.defaultValue) this.value='';" 
+                            onblur="if(this.value==='') {{ this.value=this.defaultValue; u(); }}"
+                            oninput="u()"
+                            class="w-full bg-transparent px-1 outline-none text-lg md:text-xl font-medium text-slate-800 placeholder-slate-300">
+                    </div>
+                    
+                    <div class="w-full md:w-1/3 bg-slate-50 border border-slate-200 rounded-2xl py-4 px-6 shadow-inner flex flex-col justify-center">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Compare Size</span>
+                            <span id="vs-size-label" class="bg-indigo-100 text-indigo-700 font-black text-[10px] px-2 py-1 rounded-md">32px</span>
+                        </div>
+                        <input type="range" id="vs-font-size" min="12" max="120" value="32" oninput="u()" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                    <div class="md:pr-10 pt-6 md:pt-0 flex flex-col h-full">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-indigo-200 uppercase">A</span>
+                            <select id="vs-font-a" class="w-full p-3 bg-white border border-slate-200 rounded-xl font-bold text-slate-800 text-lg shadow-sm cursor-pointer hover:border-indigo-400 transition-colors outline-none focus:ring-2 focus:ring-indigo-500"></select>
+                        </div>
+                        
+                        <div class="flex-grow flex items-start pt-4 px-6 pb-6 min-h-[250px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50">
+                            <p id="vs-preview-a" class="comparison-text text-black break-words leading-tight w-full"></p>
+                        </div>
+                        
+                        <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-xl shadow-indigo-100 mt-8 group">
+                            GET CODE FOR FONT A <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+                        </button>
+                    </div>
+
+                    <div class="md:pl-10 pt-10 md:pt-0 flex flex-col h-full">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-violet-200 uppercase">B</span>
+                            <select id="vs-font-b" class="w-full p-3 bg-white border border-slate-200 rounded-xl font-bold text-slate-800 text-lg shadow-sm cursor-pointer hover:border-violet-400 transition-colors outline-none focus:ring-2 focus:ring-violet-500"></select>
+                        </div>
+                        
+                        <div class="flex-grow flex items-start pt-4 px-6 pb-6 min-h-[250px] bg-violet-50/20 rounded-2xl border border-violet-100/50">
+                            <p id="vs-preview-b" class="comparison-text text-black break-words leading-tight w-full"></p>
+                        </div>
+                        
+                        <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-xl shadow-violet-100 mt-8 group">
+                            GET CODE FOR FONT B <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-24">
+            <div class="border-t border-slate-200 pt-16">
+                <h2 class="text-3xl font-black text-slate-900 mb-8 text-center tracking-tight">Most Searched Comparisons</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+{comparison_grid_links}
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="code-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-xl p-8 relative transform scale-95 transition-all duration-300" id="modal-content">
+            <button onclick="closeModal('code-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 bg-slate-50 rounded-full p-2">✕</button>
+            <h3 class="text-3xl font-black text-slate-900 tracking-tighter mb-8" id="modal-font-name">Font Detail</h3>
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2" id="modal-html-label">1. Add to HTML Head</label>
+                    <div class="bg-slate-900 rounded-xl p-4 relative group">
+                        <code id="modal-html" class="text-xs text-indigo-300 font-mono break-all block"></code>
+                        <button id="copy-html-btn" onclick="copyElementText('modal-html')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY HTML</button>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">2. Apply CSS Rule</label>
+                    <div class="bg-slate-900 rounded-xl p-4 relative group border-2 border-indigo-500/30">
+                        <code id="modal-css" class="text-xs font-mono text-indigo-300 block"></code>
+                        <button onclick="copyElementText('modal-css')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY CSS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-white border-t border-slate-200 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center text-xs font-bold text-slate-500 uppercase tracking-widest">
+            <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
+            <a href="[https://x.com/HtmlFonts](https://x.com/HtmlFonts)" target="_blank" class="hover:text-indigo-600 text-indigo-500">@HtmlFonts</a>
+        </div>
+    </footer>
+
+    <script>
+        let fontsRaw = {json.dumps(master_fonts)};
+        
+        const loadedFonts = new Set();
+        function loadFont(link) {{
+            if (!link || loadedFonts.has(link)) return;
+            const el = document.createElement('link'); el.rel = "stylesheet"; el.href = `https://fonts.googleapis.com/css2?family=${{link}}&display=swap`;
+            document.head.appendChild(el); loadedFonts.add(link);
+        }}
+
+        function openFontModal(fontObj) {{
+            document.getElementById('modal-font-name').innerText = fontObj.name;
+            const htmlCode = document.getElementById('modal-html');
+            const copyBtn = document.getElementById('copy-html-btn');
+            const htmlLabel = document.getElementById('modal-html-label');
+            
+            htmlLabel.innerText = "1. Add to HTML Head";
+            
+            if (fontObj.link) {{
+                htmlCode.textContent = `<link href="https://fonts.googleapis.com/css2?family=${{fontObj.link}}&display=swap" rel="stylesheet">`;
+                htmlCode.className = "text-xs font-mono text-indigo-300 break-all block";
+                copyBtn.style.display = 'block';
+            }} else {{
+                htmlCode.innerHTML = `<span class="font-sans font-medium text-emerald-400 select-none">✨ Web-safe system font. Pre-installed on all devices for zero-latency loading. No HTML import required!</span>`;
+                htmlCode.className = "text-xs block";
+                copyBtn.style.display = 'none';
+            }}
+            
+            document.getElementById('modal-css').textContent = `font-family: ${{fontObj.css}};`;
+            
+            const modal = document.getElementById('code-modal');
+            const modalContent = document.getElementById('modal-content');
+            modal.classList.remove('hidden');
+            
+            void modal.offsetWidth; // Trigger reflow
+            
+            modal.classList.remove('opacity-0');
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+        }}
+
+        let vsData = {{ a: null, b: null }};
+        function initVSTool() {{
+            const sA = document.getElementById('vs-font-a'); const sB = document.getElementById('vs-font-b');
+            fontsRaw.forEach((f, i) => {{ 
+                const idx = fontsRaw.findIndex(x => x.name === f.name);
+                sA.add(new Option(f.name, idx)); 
+                sB.add(new Option(f.name, idx)); 
+            }});
+            
+            let interIdx = fontsRaw.findIndex(f => f.name === "Inter");
+            let robotoIdx = fontsRaw.findIndex(f => f.name === "Roboto");
+            sA.selectedIndex = interIdx !== -1 ? interIdx : 0;
+            sB.selectedIndex = robotoIdx !== -1 ? robotoIdx : 1;
+
+            sA.onchange = updateVS; sB.onchange = updateVS;
+            updateVS();
+        }}
+
+        function updateVS() {{
+            const text = document.getElementById('vs-text').value || 'Optimize your UI design with fast-loading free web fonts.';
+            const sz = document.getElementById('vs-font-size').value;
+            document.getElementById('vs-size-label').innerText = sz + 'px';
+            
+            vsData.a = fontsRaw[document.getElementById('vs-font-a').value]; 
+            vsData.b = fontsRaw[document.getElementById('vs-font-b').value];
+            loadFont(vsData.a.link); loadFont(vsData.b.link);
+            
+            const pA = document.getElementById('vs-preview-a');
+            pA.style.fontFamily = vsData.a.css;
+            pA.style.fontSize = sz + 'px';
+            pA.innerText = text;
+
+            const pB = document.getElementById('vs-preview-b');
+            pB.style.fontFamily = vsData.b.css;
+            pB.style.fontSize = sz + 'px';
+            pB.innerText = text;
+        }}
+
+        function u() {{ updateVS(); }}
+
+        function openModalFromVS(side) {{ openFontModal(side === 'a' ? vsData.a : vsData.b); }}
+
+        function triggerToast() {{
+            const t = document.getElementById('toast'); 
+            t.classList.remove('hidden'); 
+            void t.offsetWidth; // Reflow
+            t.classList.remove('opacity-0', 'translate-y-4');
+            setTimeout(() => {{ 
+                t.classList.add('opacity-0', 'translate-y-4'); 
+                setTimeout(() => t.classList.add('hidden'), 300); 
+            }}, 3000);
+        }}
+
+        function copyElementText(id) {{
+            const txt = document.getElementById(id).textContent;
+            navigator.clipboard.writeText(txt).then(() => triggerToast()).catch(() => {{
+                const el = document.createElement('textarea'); el.value = txt; document.body.appendChild(el);
+                el.select(); document.execCommand('copy'); document.body.removeChild(el); triggerToast();
+            }});
+        }}
+
+        initVSTool();
+        
+        function closeModal(id) {{ 
+            const modal = document.getElementById(id);
+            const modalContent = document.getElementById('modal-content');
+            
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            
+            setTimeout(() => modal.classList.add('hidden'), 300); 
+        }}
+    </script>
+</body>
+</html>"""
+
+    with open('font-vs-font-comparison-tool.html', 'w', encoding='utf-8') as f:
+        f.write(tool_html)
+    print("✅ Generated Font VS Font Comparison Tool.")
 
     sitemap += '</urlset>'
     with open('sitemap.xml', 'w', encoding='utf-8') as f: f.write(sitemap)
