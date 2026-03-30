@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering Web Font Loading: Optimizing for Performance and User Experience",
+        "slug": "mastering-web-font-loading-performance-ux",
+        "tweet": "Stop FOIT & FOUC! Learn how to combine `font-display` with `<link rel='preload'>` for lightning-fast #WebFonts, eliminating CLS & boosting #UX. #CSSTypography #UIDesign",
+        "tip": "To achieve superior performance and a smooth user experience with web fonts, always combine `font-display: swap;` (or `optional;`) within your `@font-face` rule with a `<link rel='preload' as='font' type='font/woff2' crossorigin href='your-font.woff2'>` tag in your HTML `<head>`. This dual strategy ensures fonts are fetched early, a fallback font is immediately displayed (preventing invisible text), and the custom font seamlessly swaps in once loaded, drastically reducing Cumulative Layout Shift (CLS) and perceived load times.",
+        "css_snippet": "@font-face {\n  font-family: 'CustomBrandFont';\n  src: url('/fonts/CustomBrandFont-Regular.woff2') format('woff2') tech('woff2-variations'),\n       url('/fonts/CustomBrandFont-Regular.woff') format('woff'); /* Fallback WOFF */\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Crucial for UX: Displays fallback text while loading */\n}\n\nbody {\n  font-family: 'CustomBrandFont', 'Helvetica Neue', sans-serif; /* Define font stack with fallbacks */\n  line-height: 1.5;\n  letter-spacing: -0.01em; /* Subtle adjustments for readability */\n}\n\n/* Example of corresponding HTML preload in <head>:\n<link rel=\"preload\" as=\"font\" type=\"font/woff2\" crossorigin href=\"/fonts/CustomBrandFont-Regular.woff2\">\n*/",
+        "date": "March 30, 2026"
+    },
+    {
         "title": "Mastering Fluid Typography with CSS clamp() for Superior UI/UX",
         "slug": "fluid-typography-css-clamp-ui-ux",
         "tweet": "Unlock truly responsive text sizes with CSS `clamp()`! Improve readability & UI design across all devices by creating fluid typography without endless media queries. A game-changer for #CSSTypography & #UX. #WebFonts",
