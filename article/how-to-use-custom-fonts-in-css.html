@@ -14,33 +14,45 @@
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
             <a href="/" class="font-black text-2xl group"><span class="text-indigo-600">html</span>fonts</a>
             <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
-                <a href="/">Directory</a>
-                <a href="/font-vs-font-comparison-tool.html">Font VS Font</a>
-                <a href="/editors-desk.html">Editor's Desk</a>
-                <a href="/html-css-font-guides.html" class="text-indigo-600">Guides</a>
+                <a href="/" class="hover:text-indigo-600 transition">Directory</a>
+                <a href="/font-vs-font-comparison-tool.html" class="hover:text-indigo-600 transition">Font VS Font</a>
+                <a href="/editors-desk.html" class="hover:text-indigo-600 transition">Editor's Desk</a>
+                <a href="/html-css-font-guides.html" class="text-indigo-600 transition">Guides</a>
             </nav>
         </div>
     </header>
-    <main class="flex-grow py-16 px-6">
+    <main class="flex-grow py-16 px-4">
         <div class="max-w-4xl mx-auto">
-            <a href="/html-css-font-guides.html" class="text-indigo-600 font-bold uppercase tracking-widest text-xs">&larr; Back to Guides Directory</a>
-            <article class="bg-white p-12 mt-8 rounded-3xl shadow-xl border border-slate-200">
-                <span class="bg-indigo-100 text-indigo-800 text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">Asset Hosting</span>
-                <h1 class="text-5xl font-black mt-6 mb-8 tracking-tight text-slate-900">How to Use Custom Fonts in CSS</h1>
+            <a href="/html-css-font-guides.html" class="text-indigo-600 font-bold uppercase tracking-widest text-xs hover:text-indigo-800 transition">&larr; Back to Guides Directory</a>
+            
+            <article class="bg-white p-8 md:p-14 mt-8 rounded-[2rem] shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-indigo-500 to-violet-500"></div>
+                
+                <span class="inline-block bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-[0.2em] mb-4">Asset Hosting</span>
+                <h1 class="text-4xl md:text-5xl font-black mt-2 mb-10 tracking-tight text-slate-900 leading-tight">How to Use Custom Fonts in CSS</h1>
+                
                 <div class="prose prose-lg text-slate-600 max-w-none">
-                    <h2 class="text-2xl font-bold text-slate-800 mb-4">The Concept</h2>
-                    <p class="mb-8 leading-relaxed">The @font-face rule allows you to host your own typography files. Always serve modern formats like WOFF2 for maximum compression.</p>
-                    <h2 class="text-2xl font-bold text-slate-800 mb-4">Production-Ready Code</h2>
-                    <div class="bg-slate-900 p-6 rounded-2xl overflow-x-auto mb-8 border border-slate-800 shadow-inner">
-                        <code class="text-indigo-300 font-mono text-sm whitespace-pre">@font-face {
+                    <h2 class="text-2xl font-black text-slate-800 mb-4 flex items-center gap-3">
+                        <span class="text-indigo-500">01.</span> The Concept
+                    </h2>
+                    <p class="mb-12 text-lg leading-relaxed font-medium">The @font-face rule allows you to host your own typography files. Always serve modern formats like WOFF2 for maximum compression.</p>
+                    
+                    <h2 class="text-2xl font-black text-slate-800 mb-4 flex items-center gap-3">
+                        <span class="text-violet-500">02.</span> Production-Ready Code
+                    </h2>
+                    <div class="bg-indigo-950 p-6 md:p-8 rounded-2xl overflow-x-auto mb-12 border border-indigo-900 shadow-inner">
+                        <code class="text-indigo-200 font-mono text-sm whitespace-pre block">@font-face {
   font-family: 'MyBrandFont';
   src: url('/fonts/myfont.woff2') format('woff2');
   font-display: swap;
 }</code>
                     </div>
-                    <div class="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-2xl">
-                        <h3 class="text-emerald-800 font-black text-sm uppercase tracking-widest mb-2">💡 Pro Typography Tip</h3>
-                        <p class="text-emerald-700 font-medium m-0">Always include a web-safe fallback stack to prevent invisible text during loading.</p>
+                    
+                    <div class="bg-gradient-to-r from-violet-50 to-indigo-50 border-l-4 border-indigo-500 p-8 rounded-r-2xl shadow-sm">
+                        <h3 class="text-indigo-900 font-black text-xs uppercase tracking-widest mb-3 flex items-center gap-2">
+                            <span>💡</span> Pro Typography Tip
+                        </h3>
+                        <p class="text-indigo-800 font-semibold m-0 leading-relaxed">Always include a web-safe fallback stack to prevent invisible text during loading.</p>
                     </div>
                 </div>
             </article>
