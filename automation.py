@@ -159,14 +159,13 @@ try:
         with open(f"article/{slug}.html", 'w', encoding='utf-8') as f: f.write(html)
         sitemap += f"  <url><loc>{DOMAIN}/article/{slug}.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>\n"
         
-        # Build the card for the master index page
         guides_cards_html += f"""
         <a href="/article/{slug}.html" class="block bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:border-indigo-300 transition-all group">
             <h3 class="text-xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors">{title}</h3>
             <p class="text-slate-500 mt-2 font-medium leading-relaxed">{desc}</p>
         </a>"""
 
-    # Generate the MASTER GUIDES Directory Page (html-css-font-guides.html)
+    # Generate the MASTER GUIDES Directory Page
     guides_page_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -213,6 +212,13 @@ try:
         html_a = safe_a if safe_a else sys_msg
         html_b = safe_b if safe_b else sys_msg
 
+        # FIX: Clean button variables extracted OUTSIDE the f-string block
+        btn_ha = '<button onclick="c(\'ha\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">COPY</button>' if link_a else ''
+        btn_hb = '<button onclick="c(\'hb\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">COPY</button>' if link_b else ''
+        
+        btn_ca = '<button onclick="c(\'ca\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">COPY</button>'
+        btn_cb = '<button onclick="c(\'cb\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">COPY</button>'
+
         vs_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -257,11 +263,11 @@ try:
                         </div>
                         <div class="mt-8 bg-slate-900 p-4 rounded-xl relative group text-left">
                             <code id="ha" class="text-xs text-indigo-300 font-mono block">{html_a}</code>
-                            {f'<button onclick="c(\\'ha\\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">COPY</button>' if link_a else ''}
+                            {btn_ha}
                         </div>
                         <div class="mt-4 bg-slate-900 p-4 rounded-xl relative group text-left">
                             <code id="ca" class="text-xs text-indigo-300 font-mono">font-family: {css_a};</code>
-                            <button onclick="c('ca')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">COPY</button>
+                            {btn_ca}
                         </div>
                     </div>
                     <div>
@@ -274,11 +280,11 @@ try:
                         </div>
                         <div class="md:ml-10 mt-8 bg-slate-900 p-4 rounded-xl relative group text-left">
                             <code id="hb" class="text-xs text-indigo-300 font-mono block">{html_b}</code>
-                            {f'<button onclick="c(\\'hb\\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">COPY</button>' if link_b else ''}
+                            {btn_hb}
                         </div>
                         <div class="md:ml-10 mt-4 bg-slate-900 p-4 rounded-xl relative group text-left">
                             <code id="cb" class="text-xs text-indigo-300 font-mono">font-family: {css_b};</code>
-                            <button onclick="c('cb')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">COPY</button>
+                            {btn_cb}
                         </div>
                     </div>
                 </div>
