@@ -24,7 +24,7 @@ GA_CODE = """    <script async src="https://www.googletagmanager.com/gtag/js?id=
 
 client_gemini = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-# LOAD CACHES TO PROTECT API RATE LIMITS
+# LOAD CACHES TO PROTECT API RATE LIMITS & ENABLE INCREMENTAL BUILDS
 CACHE_FILE = 'seo_descriptions_cache.json'
 PROFILE_CACHE_FILE = 'font_profiles_cache.json'
 
@@ -217,7 +217,9 @@ header_html = """    <header class="bg-white/90 backdrop-blur-md border-b border
     </header>"""
 
 try:
-    # Generate Necessary Folders
+    # GLOBAL SAFETY SWITCH TO PREVENT ENDLESS LOOPING IF DAILY QUOTA IS HIT
+    api_exhausted = False
+    
     os.makedirs('compare', exist_ok=True)
     os.makedirs('article', exist_ok=True)
     os.makedirs('font', exist_ok=True)
@@ -230,25 +232,45 @@ try:
 
     # Daily Tip Generation
     print("Generating Daily Tip...")
+    raw_text = ""
     for attempt in range(3):
         try:
             response = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=seo_prompt)
             raw_text = response.text.strip()
             break
         except Exception as e:
-            if "429" in str(e) or "503" in str(e):
-                if attempt < 2:
-                    print("API busy. Waiting 65 seconds before retrying...")
+            err_str = str(e)
+            if "429" in err_str:
+                if "GenerateRequestsPerDay" in err_str or "limit: 20" in err_str:
+                    print("🚨 Daily API limit hit during Daily Tip!")
+                    api_exhausted = True
+                    break
+                elif attempt < 2:
+                    print("API busy. Waiting 65s...")
                     time.sleep(65)
                 else:
-                    raise e
+                    api_exhausted = True
             else:
-                raise e
+                break
 
-    if raw_text.startswith('```json'):
+    if raw_text and raw_text.startswith('```json'):
         raw_text = raw_text.replace('```json', '').replace('```', '').strip()
         
-    new_data = json.loads(raw_text)
+    try:
+        new_data = json.loads(raw_text) if raw_text else {}
+    except:
+        new_data = {}
+        
+    if not new_data or "title" not in new_data:
+        # Fallback Editor Tip if API fails completely
+        new_data = {
+            "title": f"Typography Tip {datetime.datetime.now().strftime('%b %d')}",
+            "slug": f"typography-tip-{int(time.time())}",
+            "tweet": "Check out today's CSS typography tip! #webdesign #css",
+            "tip": "To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.",
+            "css_snippet": "body {\n  line-height: 1.5;\n}"
+        }
+        
     new_data["date"] = datetime.datetime.now().strftime("%B %d, %Y")
 
     # Sync Archives Safely
@@ -283,9 +305,13 @@ try:
             </div>
         </a>"""
 
+        ai_content = f"<p class='text-lg text-slate-600 mb-6 font-medium'>Explore the typography, history, and optimal usage of {f_name}. Check back later for the complete expert design breakdown.</p>"
+
         if slug in profile_cache:
             print(f"Loading cached profile for {f_name}...")
             ai_content = profile_cache[slug]
+        elif api_exhausted:
+            print(f"⏭️ Skipping API call for {f_name} (Quota Exhausted, using fallback)")
         else:
             print(f"Generating NEW epic SEO profile for {f_name}...")
             prompt = f"""You are the world's absolute best SEO specialist and typography expert. Write a comprehensive, fascinating, and highly educational article about the '{f_name}' web font to rank #1 on Google for queries like '{f_name} font history', 'best uses for {f_name}', and '{f_name} font pairings'.
@@ -305,10 +331,9 @@ try:
             3. Best Use Cases.
             4. The absolute best 3 CSS font pairings for {f_name}."""
             
-            ai_content = f"<p class='text-lg text-slate-600 mb-6 font-medium'>Explore the typography of {f_name}.</p>" # Default safe fallback
             for attempt in range(3):
                 try:
-                    time.sleep(5) 
+                    time.sleep(4) 
                     resp = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=prompt)
                     ai_content = resp.text.replace('```html', '').replace('```', '').strip()
                     profile_cache[slug] = ai_content
@@ -316,14 +341,20 @@ try:
                     print(f"✅ Success for {f_name}")
                     break
                 except Exception as e:
-                    print(f"⚠️ Attempt {attempt+1} failed for {f_name}: {e}")
-                    if "429" in str(e) or "503" in str(e):
-                        if attempt < 2:
-                            wait_time = 65
-                            print(f"Waiting {wait_time} seconds before retrying...")
-                            time.sleep(wait_time)
+                    err_str = str(e)
+                    print(f"⚠️ Error on {f_name}: {err_str.split('.')[0]}")
+                    if "429" in err_str:
+                        if "GenerateRequestsPerDay" in err_str or "limit: 20" in err_str:
+                            print("🚨 Daily Rate Limit hit! Switching completely to fallback mode.")
+                            api_exhausted = True
+                            break
+                        elif attempt < 2:
+                            print("⏳ Waiting 65s for per-minute reset...")
+                            time.sleep(65)
+                        else:
+                            api_exhausted = True
                     else:
-                        break # Break on other non-rate-limit errors
+                        break
 
         font_page_html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -548,28 +579,36 @@ try:
         safe_hb = html_b.replace("'", "\\'").replace('"', '&quot;')
 
         cache_key = f"{font_a}_vs_{font_b}"
+        seo_description = f"<h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between {font_a} and {font_b}</h2><p class='mb-4 leading-relaxed'>Compare the typography of {font_a} and {font_b}.</p>"
+        
         if cache_key in seo_cache:
             seo_description = seo_cache[cache_key]
+        elif api_exhausted:
+            pass # Skip API completely for this loop
         else:
             print(f"Generating NEW comparison description for {font_a} vs {font_b}...")
             desc_prompt = f"Please create an amazing description (short helpful history and key differences) for: {font_a} vs {font_b}. Return ONLY raw HTML. Structure it with an <h2 class='text-2xl font-black text-slate-900 mb-4'> for the title, and <p class='mb-4 leading-relaxed'> for the text."
             
-            seo_description = f"<h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between {font_a} and {font_b}</h2><p class='mb-4 leading-relaxed'>Compare the typography of {font_a} and {font_b}.</p>"
             for attempt in range(3):
                 try:
-                    time.sleep(5) 
+                    time.sleep(4) 
                     resp = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=desc_prompt)
                     seo_description = resp.text.replace('```html', '').replace('```', '').strip()
                     seo_cache[cache_key] = seo_description
                     save_cache()
                     break
                 except Exception as e:
-                    if "429" in str(e) or "503" in str(e):
-                        if attempt < 2:
-                            print("⚠️ Rate limit hit. Waiting 65s before retrying...")
+                    err_str = str(e)
+                    if "429" in err_str:
+                        if "GenerateRequestsPerDay" in err_str or "limit: 20" in err_str:
+                            api_exhausted = True
+                            break
+                        elif attempt < 2:
                             time.sleep(65)
+                        else:
+                            api_exhausted = True
                     else:
-                        break # Break on other non-rate-limit errors
+                        break
 
         vs_html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -757,7 +796,7 @@ try:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{new_data['title']} | Editor's Desk</title>
+    <title>{new_data.get('title', 'Typography Tip')} | Editor's Desk</title>
     <meta name="description" content="{tip_safe_desc}">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 {GA_CODE}
@@ -772,8 +811,8 @@ try:
             <article class="bg-white p-8 md:p-14 mt-8 rounded-[2rem] shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-indigo-500 to-violet-500"></div>
                 <span class="inline-block bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-[0.2em] mb-4">{new_data['date']}</span>
-                <h1 class="text-4xl md:text-5xl font-black mt-2 mb-8 tracking-tight text-slate-900 leading-tight">{new_data['title']}</h1>
-                <p class="text-xl text-slate-600 mb-10 font-medium leading-relaxed">{new_data['tip']}</p>
+                <h1 class="text-4xl md:text-5xl font-black mt-2 mb-8 tracking-tight text-slate-900 leading-tight">{new_data.get('title', '')}</h1>
+                <p class="text-xl text-slate-600 mb-10 font-medium leading-relaxed">{new_data.get('tip', '')}</p>
                 <div class="bg-slate-50 p-6 md:p-8 rounded-2xl overflow-x-auto border border-slate-200 shadow-sm">
                     <pre class="text-slate-800 font-mono text-sm whitespace-pre block"><code>{tip_safe_code}</code></pre>
                 </div>
@@ -785,8 +824,8 @@ try:
     </footer>
 </body>
 </html>"""
-    with open(f"article/{new_data['slug']}.html", 'w', encoding='utf-8') as f: f.write(tip_html)
-    sitemap += f"  <url><loc>{DOMAIN}/article/{new_data['slug']}.html</loc><priority>0.7</priority></url>\n"
+    with open(f"article/{new_data.get('slug', 'fallback')}.html", 'w', encoding='utf-8') as f: f.write(tip_html)
+    sitemap += f"  <url><loc>{DOMAIN}/article/{new_data.get('slug', 'fallback')}.html</loc><priority>0.7</priority></url>\n"
 
     # 8. BUILD PAGINATED ARCHIVE (editors-desk.html)
     items_per_page = 10
@@ -801,11 +840,11 @@ try:
         archive_cards = ""
         for item in page_items:
             archive_cards += f"""
-            <a href="/article/{item['slug']}.html" class="block bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-50 hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group relative overflow-hidden">
+            <a href="/article/{item.get('slug', '')}.html" class="block bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-50 hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">{item['date']}</span>
-                <h3 class="text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">{item['title']}</h3>
-                <p class="text-slate-500 font-medium leading-relaxed">{item['tip']}</p>
+                <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">{item.get('date', '')}</span>
+                <h3 class="text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">{item.get('title', '')}</h3>
+                <p class="text-slate-500 font-medium leading-relaxed">{item.get('tip', '')}</p>
             </a>"""
 
         pagination_html = '<div class="flex justify-center flex-wrap gap-2 mt-12">'
@@ -878,7 +917,7 @@ try:
         access_token=os.environ["X_ACCESS_TOKEN"],
         access_token_secret=os.environ["X_ACCESS_TOKEN_SECRET"]
     )
-    tweet_text = f"{new_data['tweet']}\n\nRead Tip: {DOMAIN}/article/{new_data['slug']}.html #webdesign #typography"
+    tweet_text = f"{new_data.get('tweet', 'Check out our latest web typography tip!')}\n\nRead Tip: {DOMAIN}/article/{new_data.get('slug', 'fallback')}.html #webdesign #typography"
     response = client_x.create_tweet(text=tweet_text)
     print(f"✅ X Post Successful. Status ID: {response.data['id']}")
 except Exception as e:
