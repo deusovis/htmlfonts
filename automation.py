@@ -289,7 +289,6 @@ try:
         f_link = f"<link href='{GFONTS}?family={font['link']}&display=swap' rel='stylesheet'>" if font["link"] else ""
         f_url = f"{GFONTS}?family={font['link']}&display=swap" if font["link"] else ""
         
-        # INCREASED FONT NAME CONTRAST: Changed text-slate-300 to text-slate-500
         directory_grid_html += f"""
         <a href="/font/{slug}.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="{f_url}">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -390,7 +389,7 @@ try:
     # 4. BUILD THE HOME PAGE (INDEX.HTML)
     print("Generating new Home Page (index.html)...")
     
-    # REMOVED "The Typeface Encyclopedia" and ALIGNED search box to left
+    # REVISED: Button sizing brought down to match typography scales (px-6 py-3.5 text-xs)
     home_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -418,8 +417,8 @@ try:
             </h1>
             <p class="text-lg text-slate-500 font-medium max-w-2xl mx-auto mt-4 mb-8">The ultimate hub for UI designers and developers. Compare fonts side-by-side, explore typeface history, and learn CSS typography.</p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="/font-vs-font-comparison-tool.html" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-black text-sm uppercase tracking-widest px-8 py-4 rounded-2xl transition shadow-xl shadow-indigo-200 hover:-translate-y-1">Open Comparison Tool</a>
-                <a href="/html-css-font-guides.html" class="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-black text-sm uppercase tracking-widest px-8 py-4 rounded-2xl transition shadow-sm hover:shadow-md hover:-translate-y-1">Read The Guides</a>
+                <a href="/font-vs-font-comparison-tool.html" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs uppercase tracking-widest px-6 py-3.5 rounded-xl transition shadow-lg shadow-indigo-200 hover:-translate-y-1">Open Comparison Tool</a>
+                <a href="/html-css-font-guides.html" class="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-bold text-xs uppercase tracking-widest px-6 py-3.5 rounded-xl transition shadow-sm hover:shadow-md hover:-translate-y-1">Read The Guides</a>
             </div>
         </div>
     </div>
@@ -547,6 +546,7 @@ try:
             <p class="text-slate-500 font-medium leading-relaxed">{concept[:110]}...</p>
         </a>"""
 
+    # REVISED: Heading text sizes normalized across views to 4xl/5xl
     guides_page_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -563,8 +563,8 @@ try:
 {header_html}
     <main class="flex-grow py-16 px-6 max-w-7xl mx-auto w-full">
         <div class="text-center mb-16 max-w-3xl mx-auto">
-            <h1 class="text-5xl md:text-6xl font-black tracking-tight mb-6"><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Font Guides</span></h1>
-            <p class="text-xl text-slate-500 font-medium leading-relaxed">Master CSS typography and build better web interfaces with our deep-dive technical tutorials.</p>
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-4"><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Font Guides</span></h1>
+            <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto">Master CSS typography and build better web interfaces with our deep-dive technical tutorials.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {guides_cards_html}
@@ -867,6 +867,7 @@ try:
             pagination_html += f'<a href="/{page_link}" class="w-10 h-10 flex items-center justify-center rounded-xl font-bold {active_class} transition-all">{p}</a>'
         pagination_html += '</div>'
 
+        # REVISED: Heading normalized
         archive_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -883,8 +884,8 @@ try:
 {header_html}
     <main class="flex-grow py-16 px-6 max-w-4xl mx-auto w-full">
         <div class="text-center mb-16">
-            <h1 class="text-5xl md:text-6xl font-black tracking-tight mb-6"><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Editor's Desk</span></h1>
-            <p class="text-xl text-slate-500 font-medium leading-relaxed">Every CSS typography tip, design trick, and code snippet we've ever published.</p>
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-4"><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Editor's Desk</span></h1>
+            <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto">Every CSS typography tip, design trick, and code snippet we've ever published.</p>
         </div>
         <div class="space-y-6">{archive_cards}</div>
         {pagination_html if total_pages > 1 else ""}
