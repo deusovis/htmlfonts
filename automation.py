@@ -48,7 +48,7 @@ try:
     sitemap += f'  <url><loc>{DOMAIN}/editors-desk.html</loc><priority>0.9</priority></url>\n'
     sitemap += f'  <url><loc>{DOMAIN}/html-css-font-guides.html</loc><priority>0.9</priority></url>\n'
 
-    # 2. INCREDIBLE GUIDES DATA (Exactly 30 Items)
+    # 2. INCREDIBLE GUIDES DATA (Exactly 30 Items, Fully Populated)
     top_guides = [
         ("how-to-change-font-size-in-html", "How to Change Font Size in HTML", "Responsive Typography", "In modern web design, hard-coding pixel sizes creates accessibility issues. You should use relative units like REM or fluid functions like clamp() to dynamically scale your text.", "font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);", "Always set your root html font-size to 100% and use REMs for paragraphs."),
         ("how-to-add-google-fonts-to-html", "How to Add Google Fonts to HTML", "Performance Optimization", "Embedding external fonts requires a link tag in your document head. To ensure your page doesn't suffer from layout shifts, always include display=swap.", "<link href='[https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap)' rel='stylesheet'>", "Preconnect to the Google Fonts server to shave 100ms off your load time."),
@@ -115,8 +115,8 @@ try:
         ("Teko", "Bebas Neue", "'Teko', sans-serif", "'Bebas Neue', sans-serif", "Teko:wght@400;600", "Bebas+Neue")
     ]
 
-    # Shared Header Template
-    header_html = f"""<header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+    # UNIVERSAL HEADER TEMPLATE (Logo and Mobile Menu Fixed)
+    header_html = """    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center">
             <a href="/" class="font-black text-2xl tracking-tighter"><span class="text-indigo-600">html</span>fonts</a>
             <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
@@ -153,7 +153,7 @@ try:
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
-    {header_html}
+{header_html}
     <main class="flex-grow py-16 px-4">
         <div class="max-w-4xl mx-auto">
             <a href="/html-css-font-guides.html" class="text-indigo-600 font-bold uppercase tracking-widest text-xs hover:text-indigo-800 transition">&larr; Back to Guides Directory</a>
@@ -187,7 +187,7 @@ try:
             </article>
         </div>
     </main>
-    <footer class="bg-white border-t border-slate-200 py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
+    <footer class="bg-white border-t py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
         <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
     </footer>
 </body>
@@ -216,7 +216,7 @@ try:
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
-    {header_html}
+{header_html}
     <main class="flex-grow py-16 px-6 max-w-7xl mx-auto w-full">
         <div class="text-center mb-16 max-w-3xl mx-auto">
             <h1 class="text-5xl md:text-6xl font-black tracking-tight mb-6"><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Typography Guides</span></h1>
@@ -226,7 +226,7 @@ try:
             {guides_cards_html}
         </div>
     </main>
-    <footer class="bg-white border-t border-slate-200 py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
+    <footer class="bg-white border-t py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
         <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
     </footer>
 </body>
@@ -263,7 +263,7 @@ try:
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
     <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase">Copied! 🚀</div>
-    {header_html}
+{header_html}
     <main class="flex-grow py-16 px-4">
         <div class="max-w-6xl mx-auto w-full">
             <div class="text-center mb-12">
@@ -352,7 +352,7 @@ try:
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
-    {header_html}
+{header_html}
     <main class="flex-grow py-16 px-4">
         <div class="max-w-4xl mx-auto">
             <a href="/editors-desk.html" class="text-indigo-600 font-bold uppercase tracking-widest text-xs hover:text-indigo-800 transition">&larr; Back to Archive</a>
@@ -398,7 +398,7 @@ try:
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
-    {header_html}
+{header_html}
     <main class="flex-grow py-16 px-6 max-w-4xl mx-auto w-full">
         <div class="text-center mb-16">
             <h1 class="text-5xl md:text-6xl font-black tracking-tight mb-6"><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Editor's Desk</span></h1>
