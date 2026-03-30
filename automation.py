@@ -241,9 +241,11 @@ try:
             err_str = str(e)
             if "429" in err_str:
                 if "GenerateRequestsPerDay" in err_str or "limit: 20" in err_str:
+                    print("🚨 Daily API limit hit during Daily Tip!")
                     api_exhausted = True
                     break
                 elif attempt < 2:
+                    print("API busy. Waiting 65s...")
                     time.sleep(65)
                 else:
                     api_exhausted = True
@@ -278,7 +280,7 @@ try:
     with open('history.json', 'w', encoding='utf-8') as f: json.dump(history, f, indent=4)
     with open('content.json', 'w', encoding='utf-8') as f: json.dump(new_data, f, indent=4)
 
-    # 3. BUILD INDIVIDUAL SEO FONT PAGES
+    # 3. BUILD INDIVIDUAL SEO FONT PAGES & DIRECTORY CARDS
     directory_grid_html = ""
 
     for font in master_fonts:
@@ -289,8 +291,13 @@ try:
         f_link = f"<link href='{GFONTS}?family={font['link']}&display=swap' rel='stylesheet'>" if font["link"] else ""
         f_url = f"{GFONTS}?family={font['link']}&display=swap" if font["link"] else ""
         
+        safe_name = html.escape(f_name).replace("'", "\\'")
+        safe_css = html.escape(f_css).replace("'", "\\'")
+        safe_url = html.escape(f_url).replace("'", "\\'")
+        
+        # UPDATED: Interactive Cards. Entire card opens code modal, specific anchor navigates to page.
         directory_grid_html += f"""
-        <a href="/font/{slug}.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="{f_url}">
+        <div onclick="openFontModal('{safe_name}', '{safe_css}', '{safe_url}')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="{f_url}">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -299,11 +306,13 @@ try:
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: {f_css};" data-default="{f_name}">{f_name}</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/{slug}.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>"""
+        </div>"""
 
         ai_content = f"<p class='text-lg text-slate-600 mb-6 font-medium'>Explore the typography, history, and optimal usage of {f_name}. Check back later for the complete expert design breakdown.</p>"
 
@@ -312,23 +321,42 @@ try:
         elif api_exhausted or not os.environ.get("GEMINI_API_KEY"):
             pass
         else:
-            prompt = f"""You are the world's absolute best SEO specialist and typography expert. Write a comprehensive, fascinating, and highly educational article about the '{f_name}' web font to rank #1 on Google for queries like '{f_name} font history', 'best uses for {f_name}', and '{f_name} font pairings'. Return ONLY RAW HTML. Structure Requirements: - Main Section Titles: <h2 class="text-3xl md:text-4xl font-black text-slate-900 mt-16 mb-8 tracking-tight"> - Sub Titles: <h3 class="text-2xl font-bold text-slate-800 mt-10 mb-4 tracking-tight"> - Paragraphs: <p class="text-lg text-slate-600 leading-relaxed mb-6 font-medium"> - Lists: <ul class="list-disc list-inside text-lg text-slate-600 mb-8 space-y-3 font-medium bg-slate-50 p-6 rounded-2xl border border-slate-100"> - Highlight terms using <strong class="text-slate-900">. Content Must Include: 1. The fascinating history and origin of {f_name}. 2. Key geometric and design characteristics. 3. Best Use Cases. 4. The absolute best 3 CSS font pairings for {f_name}."""
+            print(f"Generating NEW epic SEO profile for {f_name}...")
+            # UPGRADED: Powerful SEO query for Individual Fonts
+            prompt = f"""You are a master SEO copywriter and expert UI typographer. Write a comprehensive, fascinating, and highly educational article about the '{f_name}' web font specifically targeting the most searched Google queries (e.g., '{f_name} font history', 'best uses for {f_name}', '{f_name} UI design best practices', and '{f_name} font pairings'). 
+            
+            Your response must include:
+            1. The fascinating history and origin of the {f_name} brand/font.
+            2. Key geometric and design characteristics.
+            3. UI design best practices and optimal use cases (e.g., headings vs body text, web vs mobile).
+            4. The absolute best 3 CSS font pairings for {f_name}.
+
+            Return ONLY RAW HTML. Structure Requirements:
+            - Main Section Titles: <h2 class="text-3xl md:text-4xl font-black text-slate-900 mt-16 mb-8 tracking-tight">
+            - Sub Titles: <h3 class="text-2xl font-bold text-slate-800 mt-10 mb-4 tracking-tight">
+            - Paragraphs: <p class="text-lg text-slate-600 leading-relaxed mb-6 font-medium">
+            - Lists: <ul class="list-disc list-inside text-lg text-slate-600 mb-8 space-y-3 font-medium bg-slate-50 p-6 rounded-2xl border border-slate-100">
+            - Highlight terms using <strong class="text-slate-900">.
+            Do not use markdown blocks."""
             
             for attempt in range(3):
                 try:
-                    time.sleep(5) # INCREASED TO 5 SECONDS TO PREVENT RATE LIMIT
+                    time.sleep(6) # PACED TO 10 REQUESTS PER MINUTE
                     resp = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=prompt)
                     ai_content = resp.text.replace('```html', '').replace('```', '').strip()
                     profile_cache[slug] = ai_content
                     save_profile_cache()
+                    print(f"✅ Success for {f_name}")
                     break
                 except Exception as e:
                     err_str = str(e)
                     if "429" in err_str:
                         if "GenerateRequestsPerDay" in err_str or "limit: 20" in err_str:
+                            print(f"🚨 Daily Rate Limit hit on {f_name}! Switching to fallback.")
                             api_exhausted = True
                             break
                         elif attempt < 2:
+                            print(f"⏳ Rate limit hit on {f_name}. Waiting 65s...")
                             time.sleep(65)
                         else:
                             api_exhausted = True
@@ -389,6 +417,7 @@ try:
     # 4. BUILD THE HOME PAGE (INDEX.HTML)
     print("Generating new Home Page (index.html)...")
     
+    # ADDED: Code Modal HTML injected directly into home page
     home_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -405,6 +434,7 @@ try:
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
+    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3 transition-all duration-300 opacity-0 translate-y-4">Copied! 🚀</div>
 {header_html}
     
     <div class="bg-white border-b border-slate-200 overflow-hidden relative">
@@ -434,6 +464,29 @@ try:
             {directory_grid_html}
         </div>
     </main>
+
+    <div id="code-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-xl p-8 relative transform scale-95 transition-all duration-300" id="modal-content">
+            <button onclick="closeModal('code-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 bg-slate-50 rounded-full p-2">✕</button>
+            <h3 class="text-3xl font-black text-slate-900 tracking-tighter mb-8" id="modal-font-name">Font Detail</h3>
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2" id="modal-html-label">1. Add to HTML Head</label>
+                    <div class="bg-slate-900 rounded-xl p-4 relative group">
+                        <code id="modal-html" class="text-xs text-indigo-300 font-mono break-all block"></code>
+                        <button id="copy-html-btn" onclick="copyElementText('modal-html')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY HTML</button>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">2. Apply CSS Rule</label>
+                    <div class="bg-slate-900 rounded-xl p-4 relative group border-2 border-indigo-500/30">
+                        <code id="modal-css" class="text-xs font-mono text-indigo-300 block"></code>
+                        <button onclick="copyElementText('modal-css')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY CSS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="bg-white border-t border-slate-200 py-16 mt-auto">
         <div class="max-w-7xl mx-auto px-6 text-center">
@@ -471,6 +524,64 @@ try:
         }}, {{ rootMargin: '350px' }});
 
         document.querySelectorAll('.font-card').forEach(card => observer.observe(card));
+
+        function openFontModal(name, css, url) {{
+            document.getElementById('modal-font-name').innerText = name;
+            const htmlCode = document.getElementById('modal-html');
+            const copyBtn = document.getElementById('copy-html-btn');
+            
+            if (!url || url === "") {{
+                htmlCode.innerHTML = '<span class="font-sans font-medium text-emerald-400 select-none">✨ Web-safe system font. Pre-installed on all devices for zero-latency loading. No HTML import required!</span>';
+                htmlCode.className = "text-xs block";
+                copyBtn.style.display = 'none';
+            }} else {{
+                htmlCode.textContent = `<link href='${{url}}' rel='stylesheet'>`;
+                htmlCode.className = "text-xs font-mono text-indigo-300 break-all block";
+                copyBtn.style.display = 'block';
+            }}
+            
+            document.getElementById('modal-css').innerText = `font-family: ${{css}};`;
+            
+            const modal = document.getElementById('code-modal');
+            const modalContent = document.getElementById('modal-content');
+            modal.classList.remove('hidden');
+            
+            void modal.offsetWidth; // Trigger reflow
+            
+            modal.classList.remove('opacity-0');
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+        }}
+        
+        function closeModal(id) {{ 
+            const modal = document.getElementById(id);
+            const modalContent = document.getElementById('modal-content');
+            
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            
+            setTimeout(() => modal.classList.add('hidden'), 300); 
+        }}
+        
+        function triggerToast() {{
+            const t = document.getElementById('toast'); 
+            t.classList.remove('hidden'); 
+            void t.offsetWidth; // Reflow
+            t.classList.remove('opacity-0', 'translate-y-4');
+            setTimeout(() => {{ 
+                t.classList.add('opacity-0', 'translate-y-4'); 
+                setTimeout(() => t.classList.add('hidden'), 300); 
+            }}, 3000);
+        }}
+        
+        function copyElementText(id) {{
+            const txt = document.getElementById(id).textContent;
+            navigator.clipboard.writeText(txt).then(() => triggerToast()).catch(() => {{
+                const el = document.createElement('textarea'); el.value = txt; document.body.appendChild(el);
+                el.select(); document.execCommand('copy'); document.body.removeChild(el); triggerToast();
+            }});
+        }}
     </script>
 </body>
 </html>"""
@@ -576,6 +687,7 @@ try:
     with open("html-css-font-guides.html", 'w', encoding='utf-8') as f: f.write(guides_page_html)
 
     # 6. GENERATE COMPARISONS
+    print("Generating Font Comparisons...")
     comparison_grid_links = ""
     for font_a, font_b, css_a, css_b, link_a, link_b in top_comparisons:
         slug = f"{font_a.lower().replace(' ', '-')}-vs-{font_b.lower().replace(' ', '-')}"
@@ -588,6 +700,9 @@ try:
         html_a = imp_a if imp_a else sys_msg
         html_b = imp_b if imp_b else sys_msg
 
+        safe_ha = html_a.replace("'", "\\'").replace('"', '&quot;')
+        safe_hb = html_b.replace("'", "\\'").replace('"', '&quot;')
+
         cache_key = f"{font_a}_vs_{font_b}"
         seo_description = f"<h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between {font_a} and {font_b}</h2><p class='mb-4 leading-relaxed'>Compare the typography of {font_a} and {font_b}.</p>"
         
@@ -596,22 +711,36 @@ try:
         elif api_exhausted or not os.environ.get("GEMINI_API_KEY"):
             pass 
         else:
-            desc_prompt = f"Please create an amazing description (short helpful history and key differences) for: {font_a} vs {font_b}. Return ONLY raw HTML. Structure it with an <h2 class='text-2xl font-black text-slate-900 mb-4'> for the title, and <p class='mb-4 leading-relaxed'> for the text."
+            print(f"Generating comparison description: {font_a} vs {font_b}...")
+            # UPGRADED: Powerful SEO query for Comparisons
+            desc_prompt = f"""You are a master SEO copywriter and expert UI typographer. Write an incredible, highly engaging comparison between {font_a} vs {font_b} specifically targeting the most searched Google queries (e.g., '{font_a} vs {font_b} differences', 'which is better {font_a} or {font_b}?', '{font_a} vs {font_b} history'). 
+
+            Your response must include:
+            1. A fascinating short history of both fonts.
+            2. The key geometric and design differences.
+            3. A legibility analysis for web and mobile UI.
+            4. The best use cases for each font.
+
+            Return ONLY raw HTML. Structure it with an <h2 class='text-2xl font-black text-slate-900 mb-6'> for the main title, <h3 class='text-xl font-bold text-slate-800 mt-8 mb-4'> for section subtitles, and <p class='mb-5 text-slate-600 leading-relaxed'> for the paragraphs. Do not use markdown blocks."""
+            
             for attempt in range(3):
                 try:
-                    time.sleep(5) # INCREASED TO 5 SECONDS TO PREVENT RATE LIMIT
+                    time.sleep(6) # STRICT LIMIT TO GUARANTEE 10/MIN (PREVENTS 429 ERRORS)
                     resp = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=desc_prompt)
                     seo_description = resp.text.replace('```html', '').replace('```', '').strip()
                     seo_cache[cache_key] = seo_description
                     save_cache()
+                    print(f"✅ Success: {font_a} vs {font_b}")
                     break
                 except Exception as e:
                     err_str = str(e)
                     if "429" in err_str:
                         if "GenerateRequestsPerDay" in err_str or "limit: 20" in err_str:
+                            print(f"🚨 Daily Limit Reached during {font_a} vs {font_b}! Stopping API calls.")
                             api_exhausted = True
                             break
                         elif attempt < 2:
+                            print(f"⏳ Rate limit hit. Waiting 65 seconds...")
                             time.sleep(65)
                         else:
                             api_exhausted = True
