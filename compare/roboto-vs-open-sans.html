@@ -105,6 +105,23 @@
                     </div>
                 </div>
             </div>
+
+            <div class="mt-12 bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 text-slate-600">
+                <h2 class='text-2xl font-black text-slate-900 mb-4'>Roboto vs Open Sans: A Tale of Two Modern Sans-Serifs</h2>
+<p class='mb-4 leading-relaxed'>
+  Ah, <strong>Roboto</strong> and <strong>Open Sans</strong> – two titans of the digital typography world, both commissioned by Google and released in the same year (2011), yet each with its own distinct charm and purpose. Their pervasive presence makes them almost invisible, but understanding their origins and nuances reveals why they're so exceptionally effective.
+</p>
+<p class='mb-4 leading-relaxed'>
+  <strong>Roboto</strong> was born as the system font for Google's Android operating system, debuting with Ice Cream Sandwich. Designed by Christian Robertson, its primary goal was to be a modern, yet approachable typeface for user interfaces. It strikes a remarkable balance between a geometric foundation (think clean, crisp shapes) and humanist characteristics (warm, inviting curves). This "robot-like but friendly" aesthetic gives Roboto a slightly more structured, tech-savvy feel while retaining excellent legibility on screens of all sizes, making it an ideal choice for digital products and app design. Its open curves and rhythmic structure contribute to its readability even in condensed spaces.
+</p>
+<p class='mb-4 leading-relaxed'>
+  In contrast, <strong>Open Sans</strong>, crafted by Steve Matteson of Ascender Corp., was conceived as a highly versatile, humanist sans-serif intended for broader web and print use. Its design philosophy centers around maximum readability and neutrality. With wide apertures, a generous x-height, and consistent stroke widths, Open Sans excels at being clear and legible even at very small sizes or in long blocks of text. It's an exceptionally friendly, open, and inviting font that steps back to let content shine, making it a go-to for body text, websites, and print materials where clarity and approachability are paramount.
+</p>
+<p class='mb-4 leading-relaxed'>
+  The <strong>key differences</strong> lie in their subtle stylistic leanings and primary design intent. While both are highly legible and performant, <strong>Roboto</strong> leans slightly more towards a modern, engineered aesthetic, often feeling more at home in digital interfaces and alongside technical content. Its slightly more condensed forms can be efficient for UI. <strong>Open Sans</strong>, on the other hand, embraces a more overtly humanist and organic feel. Its wider, more open letterforms give it a slightly warmer, more traditional readability that makes it a powerhouse for extensive textual content across virtually any medium. In essence, Roboto is the clean-cut, efficient UI specialist, while Open Sans is the approachable, universally readable content workhorse. Both are exemplary in their own right, providing designers with powerful tools for effective communication.
+</p>
+            </div>
+
         </section>
     </main>
     
@@ -162,14 +179,15 @@
             const copyBtn = document.getElementById('copy-html-btn');
             const htmlLabel = document.getElementById('modal-html-label');
             
-            htmlCode.innerHTML = data.html; 
-            
+            // BUG FIX: Switch to textContent for standard HTML, innerHTML for system font spans
             if (data.html.includes('System font')) {
                 htmlLabel.innerText = "Info: Instant Deployment";
+                htmlCode.innerHTML = data.html; 
                 htmlCode.className = "text-xs block";
                 copyBtn.style.display = 'none';
             } else {
                 htmlLabel.innerText = "1. Add to HTML Head";
+                htmlCode.textContent = data.html; 
                 htmlCode.className = "text-xs font-mono text-indigo-300 break-all block";
                 copyBtn.style.display = 'block';
             }

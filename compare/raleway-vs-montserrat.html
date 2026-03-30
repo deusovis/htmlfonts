@@ -105,6 +105,14 @@
                     </div>
                 </div>
             </div>
+
+            <div class="mt-12 bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 text-slate-600">
+                <h2 class='text-2xl font-black text-slate-900 mb-4'>Raleway vs Montserrat: A Tale of Two Modern Sans-Serifs</h2>
+<p class='mb-4 leading-relaxed'><strong>Raleway</strong> and <strong>Montserrat</strong> are two of the most ubiquitous and beloved sans-serif typefaces in modern web design, both offering clean, geometric aesthetics yet possessing distinct personalities. Raleway began its journey as a single thin-weight display typeface designed by Matt McInerney in 2010. It was later expanded into a full 9-weight family by the LibreOffice team, including Pablo Impallari, Rodrigo Fuenzalida, and Santiago Orozco. Raleway is known for its <strong>elegant, slightly geometric yet humanist design</strong>, featuring distinctive characters like its unique 'W', a diagonal 'L', and a prominent 'R'. It exudes a sense of sophistication and refined clarity.</p>
+<p class='mb-4 leading-relaxed'><strong>Montserrat</strong>, on the other hand, was conceived by Julieta Ulanovsky in 2010 (released in 2011) as a tribute to the old posters, signs, and lettering from the traditional Montserrat neighborhood of Buenos Aires, where she lives. Her goal was to rescue the beauty of urban typography that was slowly disappearing. This inspiration gives Montserrat a <strong>robust, urban, and straightforward character</strong>. It's a very legible and versatile typeface, often compared to popular commercial fonts like Gotham or Proxima Nova, and has quickly become a go-to choice for both headlines and extensive body text.</p>
+<p class='mb-4 leading-relaxed'>The <strong>key differences</strong> lie in their stylistic nuances and perceived utility. While both are geometric sans-serifs, <strong>Raleway</strong> often feels more <strong>formal and display-oriented</strong> due to its distinctive letterforms, making it excellent for headlines, logos, and branding where a touch of elegance is desired. Its unique character set can add significant personality. <strong>Montserrat</strong>, however, offers a more <strong>unassuming and utilitarian charm</strong>. Its cleaner, more uniform letterforms make it an exceptional workhorse for both large headlines and small body copy, delivering a consistent, modern, and highly legible experience across diverse applications. Choosing between them often comes down to whether you seek a touch of unique elegance (Raleway) or robust, urban reliability (Montserrat).</p>
+            </div>
+
         </section>
     </main>
     
@@ -162,14 +170,15 @@
             const copyBtn = document.getElementById('copy-html-btn');
             const htmlLabel = document.getElementById('modal-html-label');
             
-            htmlCode.innerHTML = data.html; 
-            
+            // BUG FIX: Switch to textContent for standard HTML, innerHTML for system font spans
             if (data.html.includes('System font')) {
                 htmlLabel.innerText = "Info: Instant Deployment";
+                htmlCode.innerHTML = data.html; 
                 htmlCode.className = "text-xs block";
                 copyBtn.style.display = 'none';
             } else {
                 htmlLabel.innerText = "1. Add to HTML Head";
+                htmlCode.textContent = data.html; 
                 htmlCode.className = "text-xs font-mono text-indigo-300 break-all block";
                 copyBtn.style.display = 'block';
             }
