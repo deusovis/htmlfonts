@@ -289,13 +289,14 @@ try:
         f_link = f"<link href='{GFONTS}?family={font['link']}&display=swap' rel='stylesheet'>" if font["link"] else ""
         f_url = f"{GFONTS}?family={font['link']}&display=swap" if font["link"] else ""
         
+        # INCREASED FONT NAME CONTRAST: Changed text-slate-300 to text-slate-500
         directory_grid_html += f"""
         <a href="/font/{slug}.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="{f_url}">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
                     <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest group-hover:text-indigo-500 transition-colors">{f_type}</span>
-                    <span class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">{f_name}</span>
+                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{f_name}</span>
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: {f_css};" data-default="{f_name}">{f_name}</p>
             </div>
@@ -389,7 +390,7 @@ try:
     # 4. BUILD THE HOME PAGE (INDEX.HTML)
     print("Generating new Home Page (index.html)...")
     
-    # UPDATED: Aggressively reduced vertical padding in the Hero (py-12 -> py-8) and Main section (py-24 -> pt-10 pb-24)
+    # REMOVED "The Typeface Encyclopedia" and ALIGNED search box to left
     home_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -424,10 +425,8 @@ try:
     </div>
 
     <main class="flex-grow pt-10 pb-24 px-4 md:px-6 max-w-7xl mx-auto w-full">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
-            <h2 class="text-3xl font-black text-slate-900 tracking-tight shrink-0">The Typeface Encyclopedia</h2>
-            
-            <div class="w-full md:max-w-md bg-white border border-slate-200 rounded-2xl py-3 px-4 shadow-sm flex items-center gap-3 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:border-indigo-500 transition-all relative">
+        <div class="mb-8">
+            <div class="w-full max-w-md bg-white border border-slate-200 rounded-2xl py-3 px-4 shadow-sm flex items-center gap-3 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:border-indigo-500 transition-all relative">
                 <svg class="w-5 h-5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
                 <input type="text" id="global-preview-input" placeholder="Type here to preview all fonts..." class="w-full bg-transparent outline-none text-base font-medium text-slate-800 placeholder-slate-400">
             </div>
