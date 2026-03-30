@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering `font-display` for Flawless Web Font Loading & UI Stability",
+        "slug": "mastering-font-display-web-fonts-ui-stability",
+        "tweet": "Stop layout shifts! \ud83d\ude80 Learn how `font-display` revolutionizes web font loading for superior #UIDesign & #UserExperience. A must-read for #CSSTypography pros. #WebFonts",
+        "tip": "Optimize font loading by strategically choosing `font-display` values. For most body text, `swap` ensures quick content visibility. For critical brand fonts or icons, consider `fallback` or `optional` combined with `<link rel=\"preload\">` to minimize render-blocking and avoid flashes of unstyled text (FOUT) or invisible text (FOIT), boosting perceived performance and UI stability.",
+        "css_snippet": "/* For general text, prioritizing content visibility */\n@font-face {\n  font-family: 'Inter Sans';\n  src: url('/fonts/Inter-Regular.woff2') format('woff2');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Provides a fallback font immediately, swaps when web font loads */\n}\n\n/* For brand-critical headlines, prioritizing font aesthetic but with a short block period */\n@font-face {\n  font-family: 'Brand Display';\n  src: url('/fonts/BrandDisplay-Bold.woff2') format('woff2');\n  font-weight: 700;\n  font-style: normal;\n  font-display: fallback; /* Short block, then swap if not loaded; avoids extreme FOUT */\n}\n\n/* For non-essential fonts (e.g., specific icons), prioritizing no layout shift */\n@font-face {\n  font-family: 'Icon Set';\n  src: url('/fonts/IconSet.woff2') format('woff2');\n  font-weight: normal;\n  font-style: normal;\n  font-display: optional; /* Uses the font only if it's available without causing a layout shift */\n}",
+        "date": "March 30, 2026"
+    },
+    {
         "title": "Mastering Fluid Responsive Typography with CSS `clamp()` for Superior UI/UX",
         "slug": "mastering-fluid-responsive-typography-css-clamp-ui-ux",
         "tweet": "Unlock fluid, responsive typography with CSS `clamp()`. Define min, preferred, and max font sizes for elegant scaling across all devices, enhancing UI & UX. No more fixed pixels or complex media queries! #CSSTypography #UIDesign #WebFonts #ResponsiveDesign",
