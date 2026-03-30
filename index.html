@@ -326,7 +326,6 @@
         createGrid();
         function closeModal(id) { document.getElementById('modal-content').classList.remove('modal-active'); setTimeout(() => document.getElementById(id).classList.add('hidden'), 200); }
         
-        // Fetch Daily Tip Logic restored to homepage
         fetch('content.json').then(r => r.json()).then(d => {
             currentTipSlug = d.slug; document.getElementById('tip-heading').innerText = d.title;
             document.getElementById('tip-text').innerText = d.tip; document.getElementById('css-block').textContent = d.css_snippet;
