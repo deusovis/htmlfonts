@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering `font-display` for Superior Web Font Performance & UX",
+        "slug": "mastering-font-display-web-font-performance-ux",
+        "tweet": "Boost your site's performance & user experience! Learn how to effectively use `font-display` for web fonts to prevent FOIT/FOUT. Your typography will thank you. #CSSTypography #WebFonts #UIDesign #UX",
+        "tip": "Optimize your web font loading strategy by thoughtfully implementing the `font-display` CSS property within your `@font-face` declarations. Instead of relying on the default 'auto' (which often behaves like 'block' leading to a Flash of Invisible Text - FOIT), consider 'swap' for rapid content display, or 'fallback' for a short block period before swapping to prevent abrupt layout shifts. For less critical fonts, 'optional' can defer loading until the connection is stable, ensuring a smooth experience. This significantly improves perceived performance and prevents jarring layout shifts, enhancing the overall user experience and core web vitals.",
+        "css_snippet": "@font-face {\n  font-family: 'Inter V';\n  src: url('/fonts/Inter-V.woff2') format('woff2');\n  font-weight: 100 900;\n  font-style: normal;\n  font-display: swap; /* Recommended for body text to prioritize content */\n}\n\n@font-face {\n  font-family: 'Brand Display';\n  src: url('/fonts/BrandDisplay-Bold.woff2') format('woff2');\n  font-weight: 700;\n  font-style: normal;\n  font-display: fallback; /* Short block period, then swap. Good for prominent titles. */\n}\n\n/* Example for a less critical, decorative font */\n@font-face {\n  font-family: 'Decorative Script';\n  src: url('/fonts/DecorativeScript.woff2') format('woff2');\n  font-weight: 400;\n  font-style: normal;\n  font-display: optional; /* Font is only loaded if connection is good and cached. */\n}",
+        "date": "March 30, 2026"
+    },
+    {
         "title": "Mastering Variable Fonts: Elevating UI/UX, Performance, and Adaptive Typography",
         "slug": "mastering-variable-fonts-ui-ux-performance-adaptive-typography",
         "tweet": "Unlock the true potential of #WebFonts with Variable Fonts! \ud83d\ude80 Discover how they revolutionize #UIDesign, boost performance, and enhance #UX through adaptive #CSSTypography. A game-changer for responsive layouts! #FrontendDev #WebDesign",
