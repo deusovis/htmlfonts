@@ -34,36 +34,36 @@
   <url><loc>https://htmlfonts.com/article/how-to-import-adobe-fonts.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://htmlfonts.com/article/what-is-x-height-typography.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://htmlfonts.com/article/how-to-add-font-fallback-stacks.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://htmlfonts.com/compare/arial-vs-helvetica.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/inter-vs-roboto.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/open-sans-vs-lato.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/montserrat-vs-raleway.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/playfair-display-vs-merriweather.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/fira-code-vs-jetbrains-mono.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/oswald-vs-bebas-neue.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/ubuntu-vs-quicksand.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/lora-vs-pt-serif.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/nunito-vs-poppins.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/outfit-vs-lexend.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/rubik-vs-karla.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://htmlfonts.com/compare/roboto-vs-open-sans.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/arial-vs-helvetica.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://htmlfonts.com/compare/montserrat-vs-poppins.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/lato-vs-roboto.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/lato-vs-open-sans.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/inter-vs-roboto.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/playfair-display-vs-merriweather.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/nunito-vs-poppins.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/raleway-vs-montserrat.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/times-new-roman-vs-georgia.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/lora-vs-pt-serif.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://htmlfonts.com/compare/work-sans-vs-fira-sans.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/rubik-vs-karla.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/fira-code-vs-source-code-pro.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/jetbrains-mono-vs-fira-code.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/dm-sans-vs-poppins.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/crimson-text-vs-lora.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/quicksand-vs-nunito.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/inconsolata-vs-roboto-mono.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/pt-sans-vs-open-sans.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/noto-sans-vs-roboto.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/bitter-vs-roboto-slab.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/zilla-slab-vs-roboto-slab.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/outfit-vs-lexend.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://htmlfonts.com/compare/barlow-vs-rubik.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://htmlfonts.com/compare/space-grotesk-vs-lexend.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://htmlfonts.com/compare/public-sans-vs-dm-sans.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/crimson-text-vs-cormorant.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/bitter-vs-noto-serif.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/source-code-pro-vs-inconsolata.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/anton-vs-oswald.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/cormorant-vs-playfair-display.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://htmlfonts.com/compare/pacifico-vs-dancing-script.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/caveat-vs-pacifico.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/comfortaa-vs-quicksand.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/righteous-vs-anton.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/compare/oswald-vs-bebas-neue.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://htmlfonts.com/compare/ibm-plex-mono-vs-space-mono.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/crimson-pro-vs-zilla-slab.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/compare/teko-vs-bebas-neue.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/article/elevate-ui-mastering-font-display-flawless-web-font-performance-ux.html</loc><priority>0.7</priority></url>
+  <url><loc>https://htmlfonts.com/article/mastering-fluid-typography-css-clamp-ui-ux.html</loc><priority>0.7</priority></url>
   <url><loc>https://htmlfonts.com/editors-desk.html</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
 </urlset>
