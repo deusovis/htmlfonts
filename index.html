@@ -20,6 +20,7 @@
     <style>body { font-family: system-ui, sans-serif; }</style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
+    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3 transition-all duration-300 opacity-0 translate-y-4">Copied! 🚀</div>
     <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6 shadow-sm">
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
             <a href="/" class="flex items-center gap-2 group">
@@ -71,7 +72,7 @@
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             
-        <a href="/font/abril-fatface.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap">
+        <div onclick="openFontModal('Abril Fatface', '&#x27;Abril Fatface&#x27;, display', 'https://fonts.googleapis.com/css2?family=Abril+Fatface&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -80,12 +81,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Abril Fatface', display;" data-default="Abril Fatface">Abril Fatface</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/abril-fatface.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/amatic-sc.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Amatic SC', '&#x27;Amatic SC&#x27;, cursive', 'https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -94,12 +97,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Amatic SC', cursive;" data-default="Amatic SC">Amatic SC</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/amatic-sc.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/anton.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+        </div>
+        <div onclick="openFontModal('Anton', '&#x27;Anton&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Anton&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Anton&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -108,12 +113,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Anton', sans-serif;" data-default="Anton">Anton</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/anton.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/arial.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="">
+        </div>
+        <div onclick="openFontModal('Arial', 'Arial, Helvetica, sans-serif', '')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -122,12 +129,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: Arial, Helvetica, sans-serif;" data-default="Arial">Arial</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/arial.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/arvo.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Arvo', '&#x27;Arvo&#x27;, serif', 'https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -136,12 +145,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Arvo', serif;" data-default="Arvo">Arvo</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/arvo.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/bangers.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Bangers&display=swap">
+        </div>
+        <div onclick="openFontModal('Bangers', '&#x27;Bangers&#x27;, display', 'https://fonts.googleapis.com/css2?family=Bangers&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Bangers&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -150,12 +161,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Bangers', display;" data-default="Bangers">Bangers</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/bangers.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/barlow.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Barlow', '&#x27;Barlow&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -164,12 +177,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Barlow', sans-serif;" data-default="Barlow">Barlow</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/barlow.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/bebas-neue.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
+        </div>
+        <div onclick="openFontModal('Bebas Neue', '&#x27;Bebas Neue&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -178,12 +193,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Bebas Neue', sans-serif;" data-default="Bebas Neue">Bebas Neue</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/bebas-neue.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/bitter.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Bitter', '&#x27;Bitter&#x27;, serif', 'https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -192,12 +209,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Bitter', serif;" data-default="Bitter">Bitter</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/bitter.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/caveat.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Caveat', '&#x27;Caveat&#x27;, cursive', 'https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -206,12 +225,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Caveat', cursive;" data-default="Caveat">Caveat</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/caveat.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/cinzel.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&display=swap">
+        </div>
+        <div onclick="openFontModal('Cinzel', '&#x27;Cinzel&#x27;, serif', 'https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -220,12 +241,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Cinzel', serif;" data-default="Cinzel">Cinzel</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/cinzel.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/comfortaa.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Comfortaa', '&#x27;Comfortaa&#x27;, display', 'https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -234,12 +257,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Comfortaa', display;" data-default="Comfortaa">Comfortaa</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/comfortaa.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/cormorant.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Cormorant', '&#x27;Cormorant&#x27;, serif', 'https://fonts.googleapis.com/css2?family=Cormorant:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -248,12 +273,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Cormorant', serif;" data-default="Cormorant">Cormorant</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/cormorant.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/courier-new.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="">
+        </div>
+        <div onclick="openFontModal('Courier New', '&#x27;Courier New&#x27;, Courier, monospace', '')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -262,12 +289,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Courier New', Courier, monospace;" data-default="Courier New">Courier New</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/courier-new.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/crimson-pro.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Crimson Pro', '&#x27;Crimson Pro&#x27;, serif', 'https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -276,12 +305,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Crimson Pro', serif;" data-default="Crimson Pro">Crimson Pro</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/crimson-pro.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/crimson-text.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Crimson Text', '&#x27;Crimson Text&#x27;, serif', 'https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -290,12 +321,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Crimson Text', serif;" data-default="Crimson Text">Crimson Text</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/crimson-text.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/dm-sans.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
+        </div>
+        <div onclick="openFontModal('DM Sans', '&#x27;DM Sans&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -304,12 +337,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'DM Sans', sans-serif;" data-default="DM Sans">DM Sans</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/dm-sans.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/dancing-script.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Dancing Script', '&#x27;Dancing Script&#x27;, cursive', 'https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -318,12 +353,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Dancing Script', cursive;" data-default="Dancing Script">Dancing Script</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/dancing-script.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/eb-garamond.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('EB Garamond', '&#x27;EB Garamond&#x27;, serif', 'https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -332,12 +369,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'EB Garamond', serif;" data-default="EB Garamond">EB Garamond</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/eb-garamond.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/fira-code.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Fira Code', '&#x27;Fira Code&#x27;, monospace', 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -346,12 +385,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Fira Code', monospace;" data-default="Fira Code">Fira Code</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/fira-code.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/fira-sans.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Fira Sans', '&#x27;Fira Sans&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -360,12 +401,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Fira Sans', sans-serif;" data-default="Fira Sans">Fira Sans</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/fira-sans.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/fredoka-one.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap">
+        </div>
+        <div onclick="openFontModal('Fredoka One', '&#x27;Fredoka One&#x27;, display', 'https://fonts.googleapis.com/css2?family=Fredoka+One&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -374,12 +417,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Fredoka One', display;" data-default="Fredoka One">Fredoka One</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/fredoka-one.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/georgia.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="">
+        </div>
+        <div onclick="openFontModal('Georgia', 'Georgia, serif', '')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -388,12 +433,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: Georgia, serif;" data-default="Georgia">Georgia</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/georgia.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/great-vibes.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
+        </div>
+        <div onclick="openFontModal('Great Vibes', '&#x27;Great Vibes&#x27;, cursive', 'https://fonts.googleapis.com/css2?family=Great+Vibes&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -402,12 +449,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Great Vibes', cursive;" data-default="Great Vibes">Great Vibes</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/great-vibes.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/heebo.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Heebo', '&#x27;Heebo&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -416,12 +465,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Heebo', sans-serif;" data-default="Heebo">Heebo</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/heebo.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/helvetica.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="">
+        </div>
+        <div onclick="openFontModal('Helvetica', 'Helvetica, Arial, sans-serif', '')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -430,12 +481,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: Helvetica, Arial, sans-serif;" data-default="Helvetica">Helvetica</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/helvetica.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/ibm-plex-mono.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('IBM Plex Mono', '&#x27;IBM Plex Mono&#x27;, monospace', 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -444,12 +497,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'IBM Plex Mono', monospace;" data-default="IBM Plex Mono">IBM Plex Mono</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/ibm-plex-mono.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/inconsolata.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Inconsolata', '&#x27;Inconsolata&#x27;, monospace', 'https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -458,12 +513,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Inconsolata', monospace;" data-default="Inconsolata">Inconsolata</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/inconsolata.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/indie-flower.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap">
+        </div>
+        <div onclick="openFontModal('Indie Flower', '&#x27;Indie Flower&#x27;, cursive', 'https://fonts.googleapis.com/css2?family=Indie+Flower&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -472,12 +529,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Indie Flower', cursive;" data-default="Indie Flower">Indie Flower</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/indie-flower.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/inter.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap">
+        </div>
+        <div onclick="openFontModal('Inter', '&#x27;Inter&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -486,12 +545,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Inter', sans-serif;" data-default="Inter">Inter</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/inter.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/jetbrains-mono.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap">
+        </div>
+        <div onclick="openFontModal('JetBrains Mono', '&#x27;JetBrains Mono&#x27;, monospace', 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -500,12 +561,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'JetBrains Mono', monospace;" data-default="JetBrains Mono">JetBrains Mono</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/jetbrains-mono.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/josefin-slab.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Josefin Slab', '&#x27;Josefin Slab&#x27;, serif', 'https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -514,12 +577,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Josefin Slab', serif;" data-default="Josefin Slab">Josefin Slab</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/josefin-slab.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/karla.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Karla', '&#x27;Karla&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Karla:wght@400;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -528,12 +593,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Karla', sans-serif;" data-default="Karla">Karla</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/karla.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/lato.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap">
+        </div>
+        <div onclick="openFontModal('Lato', '&#x27;Lato&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -542,12 +609,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Lato', sans-serif;" data-default="Lato">Lato</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/lato.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/lexend.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Lexend', '&#x27;Lexend&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -556,12 +625,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Lexend', sans-serif;" data-default="Lexend">Lexend</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/lexend.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/libre-baskerville.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Libre Baskerville', '&#x27;Libre Baskerville&#x27;, serif', 'https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -570,12 +641,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Libre Baskerville', serif;" data-default="Libre Baskerville">Libre Baskerville</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/libre-baskerville.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/lobster.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Lobster&display=swap">
+        </div>
+        <div onclick="openFontModal('Lobster', '&#x27;Lobster&#x27;, display', 'https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Lobster&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -584,12 +657,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Lobster', display;" data-default="Lobster">Lobster</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/lobster.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/lora.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Lora', '&#x27;Lora&#x27;, serif', 'https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -598,12 +673,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Lora', serif;" data-default="Lora">Lora</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/lora.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/merriweather.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&display=swap">
+        </div>
+        <div onclick="openFontModal('Merriweather', '&#x27;Merriweather&#x27;, serif', 'https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -612,12 +689,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Merriweather', serif;" data-default="Merriweather">Merriweather</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/merriweather.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/montserrat.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap">
+        </div>
+        <div onclick="openFontModal('Montserrat', '&#x27;Montserrat&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -626,12 +705,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Montserrat', sans-serif;" data-default="Montserrat">Montserrat</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/montserrat.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/mukta.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Mukta', '&#x27;Mukta&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -640,12 +721,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Mukta', sans-serif;" data-default="Mukta">Mukta</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/mukta.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/noto-sans.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Noto Sans', '&#x27;Noto Sans&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -654,12 +737,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Noto Sans', sans-serif;" data-default="Noto Sans">Noto Sans</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/noto-sans.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/noto-serif.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Noto Serif', '&#x27;Noto Serif&#x27;, serif', 'https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -668,12 +753,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Noto Serif', serif;" data-default="Noto Serif">Noto Serif</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/noto-serif.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/nunito.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Nunito', '&#x27;Nunito&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -682,12 +769,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Nunito', sans-serif;" data-default="Nunito">Nunito</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/nunito.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/open-sans.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Open Sans', '&#x27;Open Sans&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -696,12 +785,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Open Sans', sans-serif;" data-default="Open Sans">Open Sans</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/open-sans.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/oswald.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Oswald', '&#x27;Oswald&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -710,12 +801,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Oswald', sans-serif;" data-default="Oswald">Oswald</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/oswald.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/outfit.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Outfit', '&#x27;Outfit&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -724,12 +817,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Outfit', sans-serif;" data-default="Outfit">Outfit</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/outfit.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/pt-mono.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap">
+        </div>
+        <div onclick="openFontModal('PT Mono', '&#x27;PT Mono&#x27;, monospace', 'https://fonts.googleapis.com/css2?family=PT+Mono&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -738,12 +833,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'PT Mono', monospace;" data-default="PT Mono">PT Mono</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/pt-mono.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/pt-sans.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap">
+        </div>
+        <div onclick="openFontModal('PT Sans', '&#x27;PT Sans&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -752,12 +849,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'PT Sans', sans-serif;" data-default="PT Sans">PT Sans</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/pt-sans.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/pt-serif.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap">
+        </div>
+        <div onclick="openFontModal('PT Serif', '&#x27;PT Serif&#x27;, serif', 'https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -766,12 +865,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'PT Serif', serif;" data-default="PT Serif">PT Serif</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/pt-serif.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/pacifico.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+        </div>
+        <div onclick="openFontModal('Pacifico', '&#x27;Pacifico&#x27;, cursive', 'https://fonts.googleapis.com/css2?family=Pacifico&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -780,12 +881,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Pacifico', cursive;" data-default="Pacifico">Pacifico</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/pacifico.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/playfair-display.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap">
+        </div>
+        <div onclick="openFontModal('Playfair Display', '&#x27;Playfair Display&#x27;, serif', 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -794,12 +897,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Playfair Display', serif;" data-default="Playfair Display">Playfair Display</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/playfair-display.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/poppins.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap">
+        </div>
+        <div onclick="openFontModal('Poppins', '&#x27;Poppins&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -808,12 +913,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Poppins', sans-serif;" data-default="Poppins">Poppins</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/poppins.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/public-sans.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Public Sans', '&#x27;Public Sans&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -822,12 +929,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Public Sans', sans-serif;" data-default="Public Sans">Public Sans</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/public-sans.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/quicksand.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Quicksand', '&#x27;Quicksand&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -836,12 +945,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Quicksand', sans-serif;" data-default="Quicksand">Quicksand</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/quicksand.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/raleway.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Raleway', '&#x27;Raleway&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -850,12 +961,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Raleway', sans-serif;" data-default="Raleway">Raleway</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/raleway.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/righteous.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Righteous&display=swap">
+        </div>
+        <div onclick="openFontModal('Righteous', '&#x27;Righteous&#x27;, display', 'https://fonts.googleapis.com/css2?family=Righteous&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Righteous&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -864,12 +977,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Righteous', display;" data-default="Righteous">Righteous</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/righteous.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/roboto.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Roboto', '&#x27;Roboto&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -878,12 +993,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Roboto', sans-serif;" data-default="Roboto">Roboto</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/roboto.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/roboto-mono.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Roboto Mono', '&#x27;Roboto Mono&#x27;, monospace', 'https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -892,12 +1009,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Roboto Mono', monospace;" data-default="Roboto Mono">Roboto Mono</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/roboto-mono.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/rokkitt.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Rokkitt', '&#x27;Rokkitt&#x27;, serif', 'https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -906,12 +1025,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Rokkitt', serif;" data-default="Rokkitt">Rokkitt</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/rokkitt.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/rubik.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Rubik', '&#x27;Rubik&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -920,12 +1041,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Rubik', sans-serif;" data-default="Rubik">Rubik</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/rubik.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/satisfy.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Satisfy&display=swap">
+        </div>
+        <div onclick="openFontModal('Satisfy', '&#x27;Satisfy&#x27;, cursive', 'https://fonts.googleapis.com/css2?family=Satisfy&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Satisfy&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -934,12 +1057,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Satisfy', cursive;" data-default="Satisfy">Satisfy</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/satisfy.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/shadows-into-light.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap">
+        </div>
+        <div onclick="openFontModal('Shadows Into Light', '&#x27;Shadows Into Light&#x27;, cursive', 'https://fonts.googleapis.com/css2?family=Shadows+Into+Light&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -948,12 +1073,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Shadows Into Light', cursive;" data-default="Shadows Into Light">Shadows Into Light</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/shadows-into-light.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/source-code-pro.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Source Code Pro', '&#x27;Source Code Pro&#x27;, monospace', 'https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -962,12 +1089,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Source Code Pro', monospace;" data-default="Source Code Pro">Source Code Pro</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/source-code-pro.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/space-grotesk.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Space Grotesk', '&#x27;Space Grotesk&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -976,12 +1105,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Space Grotesk', sans-serif;" data-default="Space Grotesk">Space Grotesk</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/space-grotesk.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/space-mono.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Space Mono', '&#x27;Space Mono&#x27;, monospace', 'https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -990,12 +1121,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Space Mono', monospace;" data-default="Space Mono">Space Mono</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/space-mono.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/teko.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Teko:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Teko', '&#x27;Teko&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Teko:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Teko:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1004,12 +1137,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Teko', sans-serif;" data-default="Teko">Teko</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/teko.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/times-new-roman.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="">
+        </div>
+        <div onclick="openFontModal('Times New Roman', '&#x27;Times New Roman&#x27;, Times, serif', '')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1018,12 +1153,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Times New Roman', Times, serif;" data-default="Times New Roman">Times New Roman</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/times-new-roman.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/ubuntu.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Ubuntu', '&#x27;Ubuntu&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1032,12 +1169,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Ubuntu', sans-serif;" data-default="Ubuntu">Ubuntu</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/ubuntu.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/ubuntu-mono.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Ubuntu Mono', '&#x27;Ubuntu Mono&#x27;, monospace', 'https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1046,12 +1185,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Ubuntu Mono', monospace;" data-default="Ubuntu Mono">Ubuntu Mono</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/ubuntu-mono.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/verdana.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="">
+        </div>
+        <div onclick="openFontModal('Verdana', 'Verdana, Geneva, sans-serif', '')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1060,12 +1201,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: Verdana, Geneva, sans-serif;" data-default="Verdana">Verdana</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/verdana.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/work-sans.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Work Sans', '&#x27;Work Sans&#x27;, sans-serif', 'https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1074,12 +1217,14 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Work Sans', sans-serif;" data-default="Work Sans">Work Sans</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/work-sans.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
-        <a href="/font/zilla-slab.html" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px]" data-font-link="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&display=swap">
+        </div>
+        <div onclick="openFontModal('Zilla Slab', '&#x27;Zilla Slab&#x27;, serif', 'https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&amp;display=swap')" class="font-card bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between overflow-hidden relative min-h-[220px] cursor-pointer" data-font-link="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&display=swap">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1088,13 +1233,38 @@
                 </div>
                 <p class="font-preview-text text-4xl text-slate-900 break-words leading-tight flex-grow flex items-center" style="font-family: 'Zilla Slab', serif;" data-default="Zilla Slab">Zilla Slab</p>
             </div>
-            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0">
-                <span class="group-hover:text-indigo-600 transition-colors">Learn More</span>
-                <span class="text-indigo-500 group-hover:translate-x-2 transition-transform">&rarr;</span>
+            <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-widest shrink-0 relative z-10">
+                <a href="/font/zilla-slab.html" onclick="event.stopPropagation();" class="hover:text-indigo-600 transition-colors flex items-center gap-1 group/link">
+                    <span>Learn More</span> <span class="text-indigo-500 group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                </a>
+                <span class="text-[10px] font-bold bg-slate-50 text-slate-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">&lt;/&gt; Get Code</span>
             </div>
-        </a>
+        </div>
         </div>
     </main>
+
+    <div id="code-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-xl p-8 relative transform scale-95 transition-all duration-300" id="modal-content">
+            <button onclick="closeModal('code-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 bg-slate-50 rounded-full p-2">✕</button>
+            <h3 class="text-3xl font-black text-slate-900 tracking-tighter mb-8" id="modal-font-name">Font Detail</h3>
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2" id="modal-html-label">1. Add to HTML Head</label>
+                    <div class="bg-slate-900 rounded-xl p-4 relative group">
+                        <code id="modal-html" class="text-xs text-indigo-300 font-mono break-all block"></code>
+                        <button id="copy-html-btn" onclick="copyElementText('modal-html')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY HTML</button>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">2. Apply CSS Rule</label>
+                    <div class="bg-slate-900 rounded-xl p-4 relative group border-2 border-indigo-500/30">
+                        <code id="modal-css" class="text-xs font-mono text-indigo-300 block"></code>
+                        <button onclick="copyElementText('modal-css')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY CSS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="bg-white border-t border-slate-200 py-16 mt-auto">
         <div class="max-w-7xl mx-auto px-6 text-center">
@@ -1132,6 +1302,64 @@
         }, { rootMargin: '350px' });
 
         document.querySelectorAll('.font-card').forEach(card => observer.observe(card));
+
+        function openFontModal(name, css, url) {
+            document.getElementById('modal-font-name').innerText = name;
+            const htmlCode = document.getElementById('modal-html');
+            const copyBtn = document.getElementById('copy-html-btn');
+            
+            if (!url || url === "") {
+                htmlCode.innerHTML = '<span class="font-sans font-medium text-emerald-400 select-none">✨ Web-safe system font. Pre-installed on all devices for zero-latency loading. No HTML import required!</span>';
+                htmlCode.className = "text-xs block";
+                copyBtn.style.display = 'none';
+            } else {
+                htmlCode.textContent = `<link href='${url}' rel='stylesheet'>`;
+                htmlCode.className = "text-xs font-mono text-indigo-300 break-all block";
+                copyBtn.style.display = 'block';
+            }
+            
+            document.getElementById('modal-css').innerText = `font-family: ${css};`;
+            
+            const modal = document.getElementById('code-modal');
+            const modalContent = document.getElementById('modal-content');
+            modal.classList.remove('hidden');
+            
+            void modal.offsetWidth; // Trigger reflow
+            
+            modal.classList.remove('opacity-0');
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+        }
+        
+        function closeModal(id) { 
+            const modal = document.getElementById(id);
+            const modalContent = document.getElementById('modal-content');
+            
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            
+            setTimeout(() => modal.classList.add('hidden'), 300); 
+        }
+        
+        function triggerToast() {
+            const t = document.getElementById('toast'); 
+            t.classList.remove('hidden'); 
+            void t.offsetWidth; // Reflow
+            t.classList.remove('opacity-0', 'translate-y-4');
+            setTimeout(() => { 
+                t.classList.add('opacity-0', 'translate-y-4'); 
+                setTimeout(() => t.classList.add('hidden'), 300); 
+            }, 3000);
+        }
+        
+        function copyElementText(id) {
+            const txt = document.getElementById(id).textContent;
+            navigator.clipboard.writeText(txt).then(() => triggerToast()).catch(() => {
+                const el = document.createElement('textarea'); el.value = txt; document.body.appendChild(el);
+                el.select(); document.execCommand('copy'); document.body.removeChild(el); triggerToast();
+            });
+        }
     </script>
 </body>
 </html>
