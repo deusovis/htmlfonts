@@ -26,7 +26,7 @@
         .comparison-text { transition: font-size 0.2s ease; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col selection:bg-indigo-200">
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
 
     <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3">
         <span>Code copied! 🚀</span>
@@ -68,23 +68,23 @@
                 
                 <div class="flex flex-col md:flex-row gap-6 mb-12 items-stretch">
                     
-                    <div class="w-full md:w-2/3 bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-inner flex flex-col justify-center focus-within:ring-2 focus-within:ring-indigo-500 focus-within:bg-white transition-all">
-                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Testing Playground</label>
+                    <div class="w-full md:w-2/3 bg-slate-50 border border-slate-200 rounded-2xl py-4 px-6 shadow-inner flex flex-col justify-center focus-within:ring-2 focus-within:ring-indigo-500 focus-within:bg-white transition-all">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 px-1">Testing Playground</label>
                         <input type="text" id="vs-text" value="Optimize your UI design with fast-loading free web fonts." 
                             onfocus="if(this.value===this.defaultValue) this.value='';" 
                             onblur="if(this.value==='') { this.value=this.defaultValue; u(); }"
                             oninput="u()"
-                            class="w-full bg-transparent outline-none text-xl md:text-2xl font-semibold text-slate-800 placeholder-slate-300">
+                            class="w-full bg-transparent px-1 outline-none text-lg md:text-xl font-medium text-slate-800 placeholder-slate-300">
                     </div>
                     
-                    <div class="w-full md:w-1/3 bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-inner flex flex-col justify-center">
-                        <div class="flex justify-between items-center mb-5">
+                    <div class="w-full md:w-1/3 bg-slate-50 border border-slate-200 rounded-2xl py-4 px-6 shadow-inner flex flex-col justify-center">
+                        <div class="flex justify-between items-center mb-3">
                             <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Compare Size</span>
-                            <span id="vs-size-label" class="bg-indigo-100 text-indigo-700 font-black text-xs px-2 py-1 rounded-md">32px</span>
+                            <span id="vs-size-label" class="bg-indigo-100 text-indigo-700 font-black text-[10px] px-2 py-1 rounded-md">32px</span>
                         </div>
                         <input type="range" id="vs-font-size" min="12" max="120" value="32" oninput="u()" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
                     </div>
-
+                    
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10 divide-y md:divide-y-0 md:divide-x divide-slate-100">
@@ -93,9 +93,11 @@
                             <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-indigo-200 uppercase">A</span>
                             <select id="vs-font-a" class="w-full p-3 bg-white border border-slate-200 rounded-xl font-bold text-slate-800 text-lg shadow-sm cursor-pointer hover:border-indigo-400 transition-colors outline-none focus:ring-2 focus:ring-indigo-500"></select>
                         </div>
-                        <div class="flex-grow flex items-center min-h-[250px] p-6 bg-indigo-50/20 rounded-2xl border border-indigo-100/50">
+                        
+                        <div class="flex-grow flex items-start pt-10 px-6 pb-6 min-h-[250px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50">
                             <p id="vs-preview-a" class="comparison-text text-indigo-900 break-words leading-tight w-full"></p>
                         </div>
+                        
                         <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-xl shadow-indigo-100 mt-8 group">
                             GET CODE FOR FONT A <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
                         </button>
@@ -106,9 +108,11 @@
                             <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-violet-200 uppercase">B</span>
                             <select id="vs-font-b" class="w-full p-3 bg-white border border-slate-200 rounded-xl font-bold text-slate-800 text-lg shadow-sm cursor-pointer hover:border-violet-400 transition-colors outline-none focus:ring-2 focus:ring-violet-500"></select>
                         </div>
-                        <div class="flex-grow flex items-center min-h-[250px] p-6 bg-violet-50/20 rounded-2xl border border-violet-100/50">
+                        
+                        <div class="flex-grow flex items-start pt-10 px-6 pb-6 min-h-[250px] bg-violet-50/20 rounded-2xl border border-violet-100/50">
                             <p id="vs-preview-b" class="comparison-text text-violet-900 break-words leading-tight w-full"></p>
                         </div>
+                        
                         <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-xl shadow-violet-100 mt-8 group">
                             GET CODE FOR FONT B <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
                         </button>
@@ -126,7 +130,7 @@
                 <div>
                     <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2" id="modal-html-label">1. Add to HTML Head</label>
                     <div class="bg-slate-900 rounded-xl p-4 relative group">
-                        <code id="modal-html" class="text-xs block"></code>
+                        <code id="modal-html" class="text-xs text-indigo-300 font-mono break-all block"></code>
                         <button id="copy-html-btn" onclick="copyElementText('modal-html')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY HTML</button>
                     </div>
                 </div>
