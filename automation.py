@@ -24,17 +24,37 @@ GA_CODE = """    <script async src="https://www.googletagmanager.com/gtag/js?id=
 
 client_gemini = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
+# LOAD SEO CACHE (This ensures we never ask Gemini twice for the same fonts)
+CACHE_FILE = 'seo_descriptions_cache.json'
+seo_cache = {}
+if os.path.exists(CACHE_FILE):
+    with open(CACHE_FILE, 'r', encoding='utf-8') as f:
+        seo_cache = json.load(f)
+
+def save_cache():
+    with open(CACHE_FILE, 'w', encoding='utf-8') as f:
+        json.dump(seo_cache, f, indent=4)
+
 seo_prompt = """Generate a high-value JSON object for a web typography expert blog. 
 Target Keywords: CSS typography, UI design, web fonts, user experience. 
 Keys MUST exactly match: "title", "slug", "tweet", "tip", "css_snippet".
 Return ONLY raw JSON."""
 
 try:
-    # Daily Tip Generation
+    # Daily Tip Generation (With 1-minute retry for rate limits)
     print("Generating Daily Tip...")
-    response = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=seo_prompt)
-    raw_text = response.text.strip()
-    
+    for attempt in range(3):
+        try:
+            response = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=seo_prompt)
+            raw_text = response.text.strip()
+            break
+        except Exception as e:
+            if "429" in str(e) or "503" in str(e):
+                print("API busy. Waiting 60 seconds before retrying...")
+                time.sleep(60)
+            else:
+                raise e
+
     if raw_text.startswith('```json'):
         raw_text = raw_text.replace('```json', '').replace('```', '').strip()
         
@@ -256,34 +276,50 @@ try:
 </html>"""
     with open("html-css-font-guides.html", 'w', encoding='utf-8') as f: f.write(guides_page_html)
 
-    # Generate COMPARISONS with UI matching exactly the main tool + AI DESCRIPTIONS
+    # Generate COMPARISONS with UI matching exactly the main tool + CACHED AI DESCRIPTIONS
     comparison_grid_links = ""
     for font_a, font_b, css_a, css_b, link_a, link_b in top_comparisons:
         slug = f"{font_a.lower().replace(' ', '-')}-vs-{font_b.lower().replace(' ', '-')}"
         imp_a = f"<link href='{GFONTS}?family={link_a}&display=swap' rel='stylesheet'>" if link_a else ""
         imp_b = f"<link href='{GFONTS}?family={link_b}&display=swap' rel='stylesheet'>" if link_b else ""
         
-        # Build the URL links that will be injected into your main tool page
         comparison_grid_links += f'                    <a href="/compare/{slug}.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">{font_a} vs {font_b}</a>\n'
 
-        sys_msg = '<span class="font-sans font-medium text-emerald-600">✨ System font. No HTML import required!</span>'
+        # UPDATED: Added select-none class and your exact text for the system font message
+        sys_msg = '<span class="font-sans font-medium text-emerald-400 select-none">✨ Web-safe system font. Pre-installed on all devices for zero-latency loading. No HTML import required!</span>'
         html_a = imp_a if imp_a else sys_msg
         html_b = imp_b if imp_b else sys_msg
 
-        # Safe injection for JavaScript strings
         safe_ha = html_a.replace("'", "\\'").replace('"', '&quot;')
         safe_hb = html_b.replace("'", "\\'").replace('"', '&quot;')
 
-        # GENERATE SEO DESCRIPTION VIA GEMINI
-        print(f"Generating SEO description for {font_a} vs {font_b}...")
-        desc_prompt = f"You are amazing, absolutely the best SEO and Projects specialist. Please create an amazing description (short helpful history of these two font pairs and key differences between them) for these fonts: {font_a} vs {font_b}. Return ONLY raw HTML (no markdown blocks, no ```html). Structure it with an <h2 class='text-2xl font-black text-slate-900 mb-4'> for the title, and <p class='mb-4 leading-relaxed'> for the text. Use <strong> for emphasis."
-        try:
-            resp = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=desc_prompt)
-            seo_description = resp.text.replace('```html', '').replace('```', '').strip()
-            time.sleep(2) # Prevent API rate limits
-        except Exception as e:
-            print(f"Error generating description: {e}")
-            seo_description = f"<h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between {font_a} and {font_b}</h2><p class='mb-4 leading-relaxed'>Compare the typography, legibility, and modern UI capabilities of {font_a} and {font_b}.</p>"
+        # GENERATE OR LOAD SEO DESCRIPTION
+        cache_key = f"{font_a}_vs_{font_b}"
+        if cache_key in seo_cache:
+            print(f"Loading cached SEO description for {font_a} vs {font_b}...")
+            seo_description = seo_cache[cache_key]
+        else:
+            print(f"Generating NEW SEO description for {font_a} vs {font_b}...")
+            desc_prompt = f"You are amazing, absolutely the best SEO and Projects specialist. Please create an amazing description (short helpful history of these two font pairs and key differences between them) for these fonts: {font_a} vs {font_b}. Return ONLY raw HTML (no markdown blocks, no ```html). Structure it with an <h2 class='text-2xl font-black text-slate-900 mb-4'> for the title, and <p class='mb-4 leading-relaxed'> for the text. Use <strong> for emphasis."
+            try:
+                # Add a 4 second pause before asking to stay under the 15 per minute free tier limit
+                time.sleep(4) 
+                resp = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=desc_prompt)
+                seo_description = resp.text.replace('```html', '').replace('```', '').strip()
+                seo_cache[cache_key] = seo_description
+                save_cache() # Save immediately so we don't lose it if it crashes later!
+            except Exception as e:
+                print(f"Error generating description: {e}")
+                if "429" in str(e):
+                    print("⚠️ Hit the rate limit. Waiting 60 seconds and trying this one again...")
+                    time.sleep(60)
+                    # Retry once more after waiting
+                    resp = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=desc_prompt)
+                    seo_description = resp.text.replace('```html', '').replace('```', '').strip()
+                    seo_cache[cache_key] = seo_description
+                    save_cache()
+                else:
+                    seo_description = f"<h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between {font_a} and {font_b}</h2><p class='mb-4 leading-relaxed'>Compare the typography, legibility, and modern UI capabilities of {font_a} and {font_b}.</p>"
 
         vs_html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -424,14 +460,15 @@ try:
             const copyBtn = document.getElementById('copy-html-btn');
             const htmlLabel = document.getElementById('modal-html-label');
             
-            // BUG FIX: Switch to textContent for standard HTML, innerHTML for system font spans
-            if (data.html.includes('System font')) {{
-                htmlLabel.innerText = "Info: Instant Deployment";
+            // UPDATED: Label ALWAYS stays as "1. Add to HTML Head"
+            htmlLabel.innerText = "1. Add to HTML Head";
+            
+            // UPDATED: Check for the exact new text you provided
+            if (data.html.includes('Web-safe system font')) {{
                 htmlCode.innerHTML = data.html; 
                 htmlCode.className = "text-xs block";
                 copyBtn.style.display = 'none';
             }} else {{
-                htmlLabel.innerText = "1. Add to HTML Head";
                 htmlCode.textContent = data.html; 
                 htmlCode.className = "text-xs font-mono text-indigo-300 break-all block";
                 copyBtn.style.display = 'block';
@@ -464,8 +501,8 @@ try:
         sitemap += f"  <url><loc>{DOMAIN}/compare/{slug}.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>\n"
 
     # Generate Today's Editor's Desk Tip Article
-    tip_safe_desc = html.escape(new_data['tip'])
-    tip_safe_code = html.escape(new_data['css_snippet'])
+    tip_safe_desc = html.escape(str(new_data.get('tip', '')))
+    tip_safe_code = html.escape(str(new_data.get('css_snippet', '')))
     
     tip_html = f"""<!DOCTYPE html>
 <html lang="en">
