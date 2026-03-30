@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering Font Loading for Superior UX: The Power of `font-display: swap`",
+        "slug": "font-loading-performance-font-display-swap-ux",
+        "tweet": "Stop FOUT! \ud83d\udeab Improve web font loading UX with `font-display: swap`. Deliver readable content faster and enhance user perception. #WebFonts #CSSTypography #UIUX",
+        "tip": "One of the biggest culprits of poor web typography UX is the 'Flash of Unstyled Text' (FOUT) or 'Flash of Invisible Text' (FOIT). To combat this, always include `font-display: swap` in your `@font-face` rules. This tells the browser to immediately display a fallback system font while your custom web font loads, then 'swap' it in once available. This ensures text is always readable, prioritizing content accessibility and perceived performance over aesthetic perfection during initial load. Combine this with `<link rel='preload' as='font'>` for critical fonts to further optimize performance.",
+        "css_snippet": "@font-face {\n  font-family: 'YourCustomFont';\n  src: url('/fonts/YourCustomFont-Regular.woff2') format('woff2'),\n       url('/fonts/YourCustomFont-Regular.woff') format('woff');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Ensures immediate text visibility with a fallback */\n}\n\nbody {\n  font-family: 'YourCustomFont', sans-serif;\n  line-height: 1.6;\n  color: #333;\n  /* Other foundational typography styles */\n}",
+        "date": "March 30, 2026"
+    },
+    {
         "title": "Mastering font-display: Optimizing Web Font Loading for Superior User Experience",
         "slug": "mastering-font-display-optimize-web-font-loading-ux",
         "tweet": "Improve your site's perceived performance and #UX! Master `font-display` for efficient #WebFonts loading and eliminate FOUT/FOIT. A critical #CSSTypography tip for better #UIDesign. Check it out! \ud83d\udc47",

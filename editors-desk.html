@@ -48,6 +48,12 @@
             <p class="text-xl text-slate-500 font-medium leading-relaxed">Every CSS typography tip, design trick, and code snippet we've ever published.</p>
         </div>
         <div class="space-y-6">
+            <a href="/article/font-loading-performance-font-display-swap-ux.html" class="block bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-50 hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">March 30, 2026</span>
+                <h3 class="text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">Mastering Font Loading for Superior UX: The Power of `font-display: swap`</h3>
+                <p class="text-slate-500 font-medium leading-relaxed">One of the biggest culprits of poor web typography UX is the 'Flash of Unstyled Text' (FOUT) or 'Flash of Invisible Text' (FOIT). To combat this, always include `font-display: swap` in your `@font-face` rules. This tells the browser to immediately display a fallback system font while your custom web font loads, then 'swap' it in once available. This ensures text is always readable, prioritizing content accessibility and perceived performance over aesthetic perfection during initial load. Combine this with `<link rel='preload' as='font'>` for critical fonts to further optimize performance.</p>
+            </a>
             <a href="/article/mastering-font-display-optimize-web-font-loading-ux.html" class="block bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-50 hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">March 30, 2026</span>
@@ -101,14 +107,8 @@
                 <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">March 30, 2026</span>
                 <h3 class="text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">Mastering Fluid Typography with CSS `clamp()`: The Secret to Responsive & Readable UI</h3>
                 <p class="text-slate-500 font-medium leading-relaxed">Leverage CSS `clamp()` to set a minimum, preferred (fluid), and maximum font size. This technique ensures your text scales gracefully between breakpoints, improving readability and reducing the need for extensive media queries for typography, leading to a superior user experience with minimal effort.</p>
-            </a>
-            <a href="/article/mastering-variable-fonts-ui-ux-performance.html" class="block bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-50 hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">March 30, 2026</span>
-                <h3 class="text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">Mastering Variable Fonts: Elevating UI/UX with Performance & Precision</h3>
-                <p class="text-slate-500 font-medium leading-relaxed">Leverage Variable Fonts to dramatically reduce HTTP requests and enable fine-grained typographic control (e.g., optical sizing, weight interpolation, or custom axes) within a single font file. This not only boosts performance but also enhances #UIDesign adaptability, allowing for subtle, responsive adjustments directly via CSS without needing JavaScript or loading multiple static font variants.</p>
             </a></div>
-        
+        <div class="flex justify-center flex-wrap gap-2 mt-12"><a href="/editors-desk.html" class="w-10 h-10 flex items-center justify-center rounded-xl font-bold bg-indigo-600 text-white shadow-md transition-all">1</a><a href="/editors-desk-2.html" class="w-10 h-10 flex items-center justify-center rounded-xl font-bold bg-white text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 border border-slate-200 transition-all">2</a></div>
     </main>
     <footer class="bg-white border-t border-slate-200 py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
         <p>&copy; 2026 htmlfonts</p>
