@@ -107,19 +107,7 @@
             </div>
 
             <div class="mt-12 bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 text-slate-600">
-                <h2 class='text-2xl font-black text-slate-900 mb-4'>Times New Roman vs. Georgia: A Tale of Print and Pixels</h2>
-<p class='mb-4 leading-relaxed'>
-  The typographic landscape is rich with choice, but few serif fonts are as recognized and widely used as <strong>Times New Roman</strong> and <strong>Georgia</strong>. While both lend an air of tradition and gravitas with their elegant "feet" (serifs) that guide the eye across lines, their fascinating histories and design philosophies reveal a fundamental divergence in purpose: one built for the press, the other for the screen.
-</p>
-<p class='mb-4 leading-relaxed'>
-  <strong>Times New Roman</strong> was born out of necessity in 1931, commissioned by the British newspaper <em>The Times</em>. Designed by Stanley Morison and Victor Lardent, its primary objective was to improve readability and optimize space economy in newspaper print. It rapidly became a global standard for print publications and, famously, a default font for Microsoft Word, cementing its status as a formal, authoritative, and ubiquitous typeface. Key characteristics include a <strong>relatively compact letterform</strong>, a <strong>high contrast between thick and thin strokes</strong>, and <strong>fine, sharp serifs</strong>, all optimized for ink on paper.
-</p>
-<p class='mb-4 leading-relaxed'>
-  In stark contrast, <strong>Georgia</strong> emerged much later in 1993, meticulously crafted by Matthew Carter for Microsoft. Its raison d'être was singular: to provide exceptional clarity and legibility on the then-low-resolution computer screens. Georgia was engineered for the digital environment, designed to withstand the pixelation inherent in early monitors without losing definition. It features a <strong>larger x-height</strong> (the height of lowercase letters like 'x'), <strong>more robust and sturdy serifs</strong>, and <strong>lower stroke contrast</strong> compared to Times New Roman. These attributes ensure that its characters remain distinct and easy to read even at small sizes on a screen, where the finer details of a print-optimized font might "muddy" or disappear.
-</p>
-<p class='mb-4 leading-relaxed'>
-  The <strong>key differences</strong> boil down to their intended medium: Times New Roman is the venerable workhorse of <strong>print</strong>, offering classic elegance, formality, and excellent readability on paper. Georgia is the digital champion, specifically engineered for superior <strong>on-screen readability</strong>, with design choices that prioritize clarity and robustness in a pixelated world. While Times New Roman can appear thin or cramped on screens, Georgia maintains its open, friendly, and highly legible structure, making it the preferred choice for comfortable digital reading. Your choice often reflects whether your message is destined for the tangible page or the glowing screen.
-</p>
+                <h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between Times New Roman and Georgia</h2><p class='mb-4 leading-relaxed'>Compare the typography of Times New Roman and Georgia.</p>
             </div>
 
         </section>
@@ -154,8 +142,8 @@
     
     <script>
         const fontData = {
-            'a': { name: "Times New Roman", css: "'Times New Roman', Times, serif", html: '<span class=&quot;font-sans font-medium text-emerald-600&quot;>✨ System font. No HTML import required!</span>' },
-            'b': { name: "Georgia", css: "Georgia, serif", html: '<span class=&quot;font-sans font-medium text-emerald-600&quot;>✨ System font. No HTML import required!</span>' }
+            'a': { name: "Times New Roman", css: "'Times New Roman', Times, serif", html: '<span class=&quot;font-sans font-medium text-emerald-400 select-none&quot;>✨ Web-safe system font. Pre-installed on all devices for zero-latency loading. No HTML import required!</span>' },
+            'b': { name: "Georgia", css: "Georgia, serif", html: '<span class=&quot;font-sans font-medium text-emerald-400 select-none&quot;>✨ Web-safe system font. Pre-installed on all devices for zero-latency loading. No HTML import required!</span>' }
         };
 
         function u() { 
@@ -179,14 +167,13 @@
             const copyBtn = document.getElementById('copy-html-btn');
             const htmlLabel = document.getElementById('modal-html-label');
             
-            // BUG FIX: Switch to textContent for standard HTML, innerHTML for system font spans
-            if (data.html.includes('System font')) {
-                htmlLabel.innerText = "Info: Instant Deployment";
+            htmlLabel.innerText = "1. Add to HTML Head";
+            
+            if (data.html.includes('Web-safe system font')) {
                 htmlCode.innerHTML = data.html; 
                 htmlCode.className = "text-xs block";
                 copyBtn.style.display = 'none';
             } else {
-                htmlLabel.innerText = "1. Add to HTML Head";
                 htmlCode.textContent = data.html; 
                 htmlCode.className = "text-xs font-mono text-indigo-300 break-all block";
                 copyBtn.style.display = 'block';

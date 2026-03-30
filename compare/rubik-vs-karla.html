@@ -107,10 +107,7 @@
             </div>
 
             <div class="mt-12 bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 text-slate-600">
-                <h2 class='text-2xl font-black text-slate-900 mb-4'>Rubik vs. Karla: A Tale of Two Modern Sans-Serifs</h2>
-<p class='mb-4 leading-relaxed'><strong>Rubik</strong> is a geometric sans-serif typeface designed by Philipp Hubert and Sebastian Fischer. Originally commissioned as part of the Chrome OS user interface font collection, it was released around 2013-2015. Its design features slightly rounded corners and a geometric skeleton, giving it a friendly, modern, and somewhat blocky appearance, evocative of its namesake, the Rubik's Cube. It excels in headlines, UI elements, and branding where a strong, contemporary, and approachable presence is desired.</p>
-<p class='mb-4 leading-relaxed'><strong>Karla</strong>, designed by Jonny Pinhorn and released around 2012, is a grotesque sans-serif with subtle humanist influences. Developed to be a versatile and highly readable text face, particularly for digital screens, it features open apertures and generous counters. Karla's primary strength lies in its exceptional clarity and readability at small sizes, making it an outstanding choice for body text, long-form content, and any application where extended reading comfort is paramount.</p>
-<p class='mb-4 leading-relaxed'>The key differences lie in their core design intentions and visual characteristics: <strong>Rubik</strong> offers a more distinct, display-oriented feel with its geometric structure and softened edges, making it ideal for impactful statements. In contrast, <strong>Karla</strong> prioritizes legibility and versatility, appearing more open and less rigid, thus excelling as a workhorse typeface for continuous reading. While both are modern sans-serifs, Rubik leans towards dynamic branding and UI, whereas Karla shines as a highly functional and approachable text font.</p>
+                <h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between Rubik and Karla</h2><p class='mb-4 leading-relaxed'>Compare the typography of Rubik and Karla.</p>
             </div>
 
         </section>
@@ -170,14 +167,13 @@
             const copyBtn = document.getElementById('copy-html-btn');
             const htmlLabel = document.getElementById('modal-html-label');
             
-            // BUG FIX: Switch to textContent for standard HTML, innerHTML for system font spans
-            if (data.html.includes('System font')) {
-                htmlLabel.innerText = "Info: Instant Deployment";
+            htmlLabel.innerText = "1. Add to HTML Head";
+            
+            if (data.html.includes('Web-safe system font')) {
                 htmlCode.innerHTML = data.html; 
                 htmlCode.className = "text-xs block";
                 copyBtn.style.display = 'none';
             } else {
-                htmlLabel.innerText = "1. Add to HTML Head";
                 htmlCode.textContent = data.html; 
                 htmlCode.className = "text-xs font-mono text-indigo-300 break-all block";
                 copyBtn.style.display = 'block';

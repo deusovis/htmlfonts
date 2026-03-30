@@ -107,12 +107,7 @@
             </div>
 
             <div class="mt-12 bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 text-slate-600">
-                <h2 class='text-2xl font-black text-slate-900 mb-4'>Inter vs Roboto: A Tale of Two Modern Sans-Serifs</h2>
-<p class='mb-4 leading-relaxed'>Navigating the world of web typography often leads to the esteemed paths of <strong>Inter</strong> and <strong>Roboto</strong>, two powerhouse sans-serif fonts that have redefined digital readability. Both are open-source, highly versatile, and staples in modern UI/UX design, yet they possess distinct personalities forged by their origins and design philosophies.</p>
-<p class='mb-4 leading-relaxed'><strong>Roboto</strong>, Google's brainchild, first emerged in 2011 as the default typeface for Android's Material Design. Conceived by Christian Robertson, its initial description by Google as an "unholy mix of grotesque and humanist" aptly captured its unique blend of geometric precision with subtle, warm curves. It was meticulously crafted to be a versatile 'workhorse' font, highly readable across diverse screen sizes and resolutions, embodying a clean, straightforward, and slightly industrial aesthetic that has made it ubiquitous across Google's ecosystem and beyond.</p>
-<p class='mb-4 leading-relaxed'>Conversely, <strong>Inter</strong> was designed by Rasmus Andersson, specifically with user interfaces in mind. Debuting a few years later, Inter quickly gained traction for its unparalleled focus on legibility and optimization for screen usage, even at small text sizes. It's a humanist sans-serif that prioritizes clarity, offering numerous OpenType features, extensive language support, and a variable font version that makes it incredibly adaptable for dynamic web applications and responsive designs.</p>
-<p class='mb-4 leading-relaxed'>The <strong>key differences</strong> lie in their subtle nuances and core optimizations. <strong>Roboto</strong> often presents a more neutral, almost mechanical feel, with uniform stroke widths and a slightly more geometric structure. It's incredibly balanced and performs excellently as a general-purpose font that doesn't demand attention, making it a safe and reliable choice for broad application.</p>
-<p class='mb-4 leading-relaxed'><strong>Inter</strong>, on the other hand, leans into a more 'human' or 'friendly' aesthetic. It typically boasts a slightly larger x-height, which significantly enhances readability in UI contexts, particularly at smaller font sizes. Its subtle humanist touches, distinct glyph shapes (like the lower-case 'g'), and meticulous pixel-grid alignment make it feel purpose-built for the demands of modern digital interfaces, offering a more contemporary and refined user experience. While both are fantastic choices, <strong>Inter</strong> often shines when absolute on-screen clarity and a nuanced, modern feel are paramount, whereas <strong>Roboto</strong> continues to be a robust, universally accepted standard for its sheer versatility and neutrality.</p>
+                <h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between Inter and Roboto</h2><p class='mb-4 leading-relaxed'>Compare the typography of Inter and Roboto.</p>
             </div>
 
         </section>
@@ -172,14 +167,13 @@
             const copyBtn = document.getElementById('copy-html-btn');
             const htmlLabel = document.getElementById('modal-html-label');
             
-            // BUG FIX: Switch to textContent for standard HTML, innerHTML for system font spans
-            if (data.html.includes('System font')) {
-                htmlLabel.innerText = "Info: Instant Deployment";
+            htmlLabel.innerText = "1. Add to HTML Head";
+            
+            if (data.html.includes('Web-safe system font')) {
                 htmlCode.innerHTML = data.html; 
                 htmlCode.className = "text-xs block";
                 copyBtn.style.display = 'none';
             } else {
-                htmlLabel.innerText = "1. Add to HTML Head";
                 htmlCode.textContent = data.html; 
                 htmlCode.className = "text-xs font-mono text-indigo-300 break-all block";
                 copyBtn.style.display = 'block';

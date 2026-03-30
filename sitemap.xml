@@ -1,9 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="[http://www.sitemaps.org/schemas/sitemap/0.9](http://www.sitemaps.org/schemas/sitemap/0.9)">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://htmlfonts.com/</loc><priority>1.0</priority></url>
   <url><loc>https://htmlfonts.com/font-vs-font-comparison-tool.html</loc><priority>0.9</priority></url>
   <url><loc>https://htmlfonts.com/editors-desk.html</loc><priority>0.9</priority></url>
   <url><loc>https://htmlfonts.com/html-css-font-guides.html</loc><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/abril-fatface.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/amatic-sc.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/anton.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/arial.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/arvo.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/bangers.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/barlow.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/bebas-neue.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/bitter.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/caveat.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/cinzel.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/comfortaa.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/cormorant.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/courier-new.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/crimson-pro.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/crimson-text.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/dm-sans.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/dancing-script.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/eb-garamond.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/fira-code.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/fira-sans.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/fredoka-one.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/georgia.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/great-vibes.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/heebo.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/helvetica.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/ibm-plex-mono.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/inconsolata.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/indie-flower.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/inter.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/jetbrains-mono.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/josefin-slab.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/karla.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/lato.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/lexend.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/libre-baskerville.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/lobster.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/lora.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/merriweather.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/montserrat.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/mukta.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/noto-sans.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/noto-serif.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/nunito.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/open-sans.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/oswald.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/outfit.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/pt-mono.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/pt-sans.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/pt-serif.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/pacifico.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/playfair-display.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/poppins.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/public-sans.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/quicksand.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/raleway.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/righteous.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/roboto.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/roboto-mono.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/rokkitt.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/rubik.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/satisfy.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/shadows-into-light.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/source-code-pro.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/space-grotesk.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/space-mono.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/teko.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/times-new-roman.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/ubuntu.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/ubuntu-mono.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/verdana.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/work-sans.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://htmlfonts.com/font/zilla-slab.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://htmlfonts.com/article/how-to-change-font-size-in-html.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://htmlfonts.com/article/how-to-add-google-fonts-to-html.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://htmlfonts.com/article/best-css-font-pairings.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -64,6 +137,6 @@
   <url><loc>https://htmlfonts.com/compare/pacifico-vs-dancing-script.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://htmlfonts.com/compare/oswald-vs-bebas-neue.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://htmlfonts.com/compare/ibm-plex-mono-vs-space-mono.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://htmlfonts.com/article/mastering-fluid-typography-css-clamp-ui-ux.html</loc><priority>0.7</priority></url>
+  <url><loc>https://htmlfonts.com/article/typography-tip-1774892207.html</loc><priority>0.7</priority></url>
   <url><loc>https://htmlfonts.com/editors-desk.html</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
 </urlset>

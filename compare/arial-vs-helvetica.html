@@ -107,7 +107,7 @@
             </div>
 
             <div class="mt-12 bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 text-slate-600">
-                <h2 class='text-2xl font-black text-slate-900 mb-4'>Arial vs Helvetica: Decoding Two Ubiquitous Sans-Serifs</h2><p class='mb-4 leading-relaxed'>These two sans-serif giants are arguably the most recognized and often confused typefaces in the world. Their histories, though intertwined through competition, reveal distinct origins and design philosophies. <strong>Helvetica</strong>, designed in Switzerland in 1957 by Max Miedinger and Eduard Hoffmann (originally called *Neue Haas Grotesk*, renamed in 1960 from *Helvetia*, the Latin name for Switzerland), was conceived as a neutral, clear, and modern typeface suitable for international use. It quickly became a hallmark of the modernist movement, celebrated for its precision and universal appeal.</p><p class='mb-4 leading-relaxed'><strong>Arial</strong>, on the other hand, was developed in 1982 by Robin Nicholas and Patricia Saunders for Monotype. Its primary purpose was to be a metric-compatible, but importantly, royalty-free alternative to Helvetica. It achieved immense popularity by being bundled with Microsoft Windows 3.1, making it a ubiquitous default for digital documents and websites, effectively democratizing a look similar to Helvetica without the licensing costs.</p><p class='mb-4 leading-relaxed'>The key differences lie in their design details. <strong>Helvetica</strong> often appears more <strong>geometric</strong>, with a more uniform stroke width, very tight spacing, and distinct squared-off terminals (especially noticeable on the 't'). Its 'R' features a straight leg, and the 'C' and 'G' bowls are typically less open. <strong>Arial</strong>, by contrast, incorporates more <strong>humanist</strong> characteristics, featuring slightly varied stroke widths, more open spacing, and angled terminals (particularly on the 't' and 's'). Its 'R' has a characteristic curved leg, and characters like 'a' and 'g' have smoother transitions from bowl to stem, giving it a slightly softer, less rigid appearance than its Swiss counterpart. While superficially similar, these subtle distinctions make them unique, reflecting their different origins and design optimizations.</p>
+                <h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between Arial and Helvetica</h2><p class='mb-4 leading-relaxed'>Compare the typography of Arial and Helvetica.</p>
             </div>
 
         </section>
@@ -142,8 +142,8 @@
     
     <script>
         const fontData = {
-            'a': { name: "Arial", css: "Arial, sans-serif", html: '<span class=&quot;font-sans font-medium text-emerald-600&quot;>✨ System font. No HTML import required!</span>' },
-            'b': { name: "Helvetica", css: "Helvetica, Arial, sans-serif", html: '<span class=&quot;font-sans font-medium text-emerald-600&quot;>✨ System font. No HTML import required!</span>' }
+            'a': { name: "Arial", css: "Arial, sans-serif", html: '<span class=&quot;font-sans font-medium text-emerald-400 select-none&quot;>✨ Web-safe system font. Pre-installed on all devices for zero-latency loading. No HTML import required!</span>' },
+            'b': { name: "Helvetica", css: "Helvetica, Arial, sans-serif", html: '<span class=&quot;font-sans font-medium text-emerald-400 select-none&quot;>✨ Web-safe system font. Pre-installed on all devices for zero-latency loading. No HTML import required!</span>' }
         };
 
         function u() { 
@@ -167,14 +167,13 @@
             const copyBtn = document.getElementById('copy-html-btn');
             const htmlLabel = document.getElementById('modal-html-label');
             
-            // BUG FIX: Switch to textContent for standard HTML, innerHTML for system font spans
-            if (data.html.includes('System font')) {
-                htmlLabel.innerText = "Info: Instant Deployment";
+            htmlLabel.innerText = "1. Add to HTML Head";
+            
+            if (data.html.includes('Web-safe system font')) {
                 htmlCode.innerHTML = data.html; 
                 htmlCode.className = "text-xs block";
                 copyBtn.style.display = 'none';
             } else {
-                htmlLabel.innerText = "1. Add to HTML Head";
                 htmlCode.textContent = data.html; 
                 htmlCode.className = "text-xs font-mono text-indigo-300 break-all block";
                 copyBtn.style.display = 'block';

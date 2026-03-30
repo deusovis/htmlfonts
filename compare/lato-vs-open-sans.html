@@ -107,7 +107,7 @@
             </div>
 
             <div class="mt-12 bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 text-slate-600">
-                <h2 class='text-2xl font-black text-slate-900 mb-4'>Lato vs Open Sans: A Tale of Two Modern Humanist Sans-Serifs</h2><p class='mb-4 leading-relaxed'>Born in 2010 from the vision of Polish designer Łukasz Dziedzic, <strong>Lato</strong>, meaning 'summer' in Polish, quickly became a beloved humanist sans-serif. It was crafted to be transparent in small text yet possess a distinct personality in larger sizes, characterized by its <strong>subtly rounded details</strong> that lend a remarkable sense of <strong>warmth and friendliness</strong> without sacrificing professionalism. Lato feels modern, approachable, and slightly more personal.</p><p class='mb-4 leading-relaxed'>Also launched in 2010, <strong>Open Sans</strong> was meticulously designed by Steve Matteson for Google. Its primary goal was universal readability across print, web, and mobile interfaces. Known for its <strong>neutral aesthetic</strong>, wide apertures, and open counters, it excels in ensuring <strong>supreme legibility</strong>, even at very small sizes, making it an incredibly versatile and ubiquitous choice for long-form content. Open Sans is the epitome of clear, unpretentious communication.</p><p class='mb-4 leading-relaxed'>The key distinction lies in their nuanced personalities: <strong>Lato offers a warmer, more approachable human touch</strong>, with its gentle curves providing a unique, friendly character that evokes a subtle sense of ease. In contrast, <strong>Open Sans prioritizes neutrality and clarity above all</strong>, presenting a slightly more formal and universally adaptable face that fades into the background, allowing content to shine. While both are outstanding for digital use, Lato injects a subtle spark of individuality, whereas Open Sans stands out for its steadfast, unpretentious readability across virtually any application.</p>
+                <h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between Lato and Open Sans</h2><p class='mb-4 leading-relaxed'>Compare the typography of Lato and Open Sans.</p>
             </div>
 
         </section>
@@ -167,14 +167,13 @@
             const copyBtn = document.getElementById('copy-html-btn');
             const htmlLabel = document.getElementById('modal-html-label');
             
-            // BUG FIX: Switch to textContent for standard HTML, innerHTML for system font spans
-            if (data.html.includes('System font')) {
-                htmlLabel.innerText = "Info: Instant Deployment";
+            htmlLabel.innerText = "1. Add to HTML Head";
+            
+            if (data.html.includes('Web-safe system font')) {
                 htmlCode.innerHTML = data.html; 
                 htmlCode.className = "text-xs block";
                 copyBtn.style.display = 'none';
             } else {
-                htmlLabel.innerText = "1. Add to HTML Head";
                 htmlCode.textContent = data.html; 
                 htmlCode.className = "text-xs font-mono text-indigo-300 break-all block";
                 copyBtn.style.display = 'block';

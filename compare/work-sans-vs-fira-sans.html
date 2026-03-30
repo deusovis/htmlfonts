@@ -107,12 +107,7 @@
             </div>
 
             <div class="mt-12 bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 text-slate-600">
-                <h2 class='text-2xl font-black text-slate-900 mb-4'>Work Sans vs Fira Sans: A Tale of Two Modern Sans-Serifs</h2>
-<p class='mb-4 leading-relaxed'>Both <strong>Work Sans</strong> and <strong>Fira Sans</strong> are popular, open-source sans-serif typefaces celebrated for their legibility on digital screens. While often grouped, they stem from different design philosophies, offering distinct personalities for your projects.</p>
-<p class='mb-4 leading-relaxed'><strong>Work Sans</strong>, designed by Wei Huang, draws inspiration from the classic grotesque sans-serifs of the late 19th and early 20th centuries, such as Akzidenz-Grotesk. Conceived specifically for use on computer screens, its history is rooted in a desire for a neutral, clean, and highly functional typeface that remains legible at various sizes. It embodies a contemporary reinterpretation of a timeless style, built for maximum utility.</p>
-<p class='mb-4 leading-relaxed'><strong>Fira Sans</strong>, on the other hand, was commissioned by Mozilla and designed by Erik Spiekermann’s TypeTogether team (specifically, Ralph du Carrois and Botio Nikolov) for the Firefox OS. Its origin story is tied to creating a robust, clear, and friendly typeface for a mobile operating system, making it inherently optimized for screen display and readability. As a <strong>humanist sans-serif</strong>, it carries a subtle calligraphic influence that gives it a warmer, more approachable feel compared to pure grotesques.</p>
-<p class='mb-4 leading-relaxed'>The <strong>key differences</strong> lie in their stylistic approaches. <strong>Work Sans</strong> leans into a more geometric, slightly industrial aesthetic, characterized by a uniform stroke width, open apertures, and a robust, no-nonsense presence. It's highly adaptable, often disappearing into the content due to its neutrality, making it excellent for large blocks of text and universal UI elements.</p>
-<p class='mb-4 leading-relaxed'>Conversely, <strong>Fira Sans</strong> exhibits more distinctive character shapes, particularly noticeable in its letterforms like the 'a', 'g', and 'e', which possess a more fluid, humanistic touch. It has a slightly wider stance and a more pronounced personality, giving content a modern, friendly, and highly readable tone. While both are fantastic choices for web and UI design, <strong>Work Sans</strong> offers understated elegance and broad versatility, while <strong>Fira Sans</strong> brings a touch more character and contemporary warmth, particularly well-suited for brand identities seeking a friendly yet professional edge.</p>
+                <h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between Work Sans and Fira Sans</h2><p class='mb-4 leading-relaxed'>Compare the typography of Work Sans and Fira Sans.</p>
             </div>
 
         </section>
@@ -172,14 +167,13 @@
             const copyBtn = document.getElementById('copy-html-btn');
             const htmlLabel = document.getElementById('modal-html-label');
             
-            // BUG FIX: Switch to textContent for standard HTML, innerHTML for system font spans
-            if (data.html.includes('System font')) {
-                htmlLabel.innerText = "Info: Instant Deployment";
+            htmlLabel.innerText = "1. Add to HTML Head";
+            
+            if (data.html.includes('Web-safe system font')) {
                 htmlCode.innerHTML = data.html; 
                 htmlCode.className = "text-xs block";
                 copyBtn.style.display = 'none';
             } else {
-                htmlLabel.innerText = "1. Add to HTML Head";
                 htmlCode.textContent = data.html; 
                 htmlCode.className = "text-xs font-mono text-indigo-300 break-all block";
                 copyBtn.style.display = 'block';

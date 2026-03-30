@@ -107,12 +107,7 @@
             </div>
 
             <div class="mt-12 bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 text-slate-600">
-                <h2 class='text-2xl font-black text-slate-900 mb-4'>Montserrat vs Poppins: A Deep Dive into Two Modern Sans-Serifs</h2>
-<p class='mb-4 leading-relaxed'>As an SEO and Projects specialist, understanding the subtle nuances of typography is crucial for brand identity and user experience. When it comes to modern sans-serifs, <strong>Montserrat</strong> and <strong>Poppins</strong> frequently emerge as top contenders. While both share a geometric foundation, their origins and subtle design cues offer distinct personalities.</p>
-<p class='mb-4 leading-relaxed'><strong>Montserrat</strong>, designed by Julieta Ulanovsky, burst onto the scene in 2010. Its creation was a passionate endeavor to rescue the beauty of urban typography from the first half of the twentieth century, specifically inspired by old posters, signs, and lettering found in the traditional Montserrat neighborhood of Buenos Aires. This historical influence gives Montserrat a charming, authentic, and slightly more organic feel despite its geometric structure. It's known for its generous x-height, open counters, and a friendly yet assertive presence that makes it incredibly readable and versatile for both headlines and body text.</p>
-<p class='mb-4 leading-relaxed'><strong>Poppins</strong>, on the other hand, arrived later in 2017, designed by the Indian Type Foundry. It stands out as one of the first sans-serif typefaces released by Google Fonts to support both the Latin and Devanagari scripts, making it a truly global player from its inception. Poppins is a celebration of pure geometry; its characters are meticulously constructed using near-perfect circles and straight lines, giving it a distinct monolinear appearance. This design philosophy results in a typeface that feels incredibly clean, symmetrical, balanced, and effortlessly modern.</p>
-<p class='mb-4 leading-relaxed'>The <strong>key differences</strong> lie in their underlying philosophy and execution. While both are geometric sans-serifs, <strong>Montserrat</strong> carries a subtle warmth and a touch of historical character from its urban inspiration. Its geometry feels a bit more natural or "found." In contrast, <strong>Poppins</strong> leans into a more rigorous, almost mathematical, geometric perfection. Its perfectly circular 'o' and clean, consistent stroke widths create a sense of pristine modernism. For instance, the 'g' in Montserrat often has a slightly more traditional loop, whereas Poppins features a simpler, single-story form that reinforces its geometric purity.</p>
-<p class='mb-4 leading-relaxed'>In practical application, <strong>Montserrat</strong> often conveys a sense of approachable professionalism, trustworthiness, and a timeless appeal, making it excellent for brands seeking a friendly yet solid voice. <strong>Poppins</strong>, with its undeniable crispness and precise forms, excels in contexts demanding extreme clarity, minimalism, and a very contemporary, almost technological aesthetic. Both are outstanding choices, but your project's specific brand voice—whether leaning towards historical warmth or ultra-modern precision—will guide you to the perfect fit.</p>
+                <h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between Montserrat and Poppins</h2><p class='mb-4 leading-relaxed'>Compare the typography of Montserrat and Poppins.</p>
             </div>
 
         </section>
@@ -172,14 +167,13 @@
             const copyBtn = document.getElementById('copy-html-btn');
             const htmlLabel = document.getElementById('modal-html-label');
             
-            // BUG FIX: Switch to textContent for standard HTML, innerHTML for system font spans
-            if (data.html.includes('System font')) {
-                htmlLabel.innerText = "Info: Instant Deployment";
+            htmlLabel.innerText = "1. Add to HTML Head";
+            
+            if (data.html.includes('Web-safe system font')) {
                 htmlCode.innerHTML = data.html; 
                 htmlCode.className = "text-xs block";
                 copyBtn.style.display = 'none';
             } else {
-                htmlLabel.innerText = "1. Add to HTML Head";
                 htmlCode.textContent = data.html; 
                 htmlCode.className = "text-xs font-mono text-indigo-300 break-all block";
                 copyBtn.style.display = 'block';
