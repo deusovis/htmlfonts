@@ -140,7 +140,7 @@
                 <div>
                     <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">1. Add to HTML Head</label>
                     <div class="bg-slate-900 rounded-xl p-4 relative group">
-                        <code id="modal-html" class="text-xs font-mono text-indigo-300 break-all block"></code>
+                        <code id="modal-html" class="text-xs block"></code>
                         <button id="copy-html-btn" onclick="copyElementText('modal-html')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY HTML</button>
                     </div>
                 </div>
@@ -253,9 +253,11 @@
             
             if (fontObj.link) {
                 htmlCode.textContent = `<link href="https://fonts.googleapis.com/css2?family=${fontObj.link}&display=swap" rel="stylesheet">`;
+                htmlCode.className = "text-xs font-mono text-indigo-300 break-all block";
                 copyBtn.style.display = 'block';
             } else {
-                htmlCode.textContent = ``;
+                htmlCode.innerHTML = `<span class="font-sans font-medium text-emerald-400">✨ Web-safe system font. Pre-installed on all devices for zero-latency loading. No HTML import required!</span>`;
+                htmlCode.className = "text-xs block";
                 copyBtn.style.display = 'none';
             }
             
