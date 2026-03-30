@@ -123,10 +123,17 @@ try:
         ("Teko", "Bebas Neue", "'Teko', sans-serif", "'Bebas Neue', sans-serif", "Teko:wght@400;600", "Bebas+Neue")
     ]
 
-    # UNIVERSAL HEADER TEMPLATE
-    header_html = """    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6 shadow-sm">
-        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
-            <a href="/" class="font-black text-2xl tracking-tighter"><span class="text-indigo-600">html</span>fonts</a>
+    # UNIVERSAL HEADER TEMPLATE (Logo Restored)
+    header_html = """    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center">
+            
+            <a href="/" class="flex items-center gap-2 group">
+                <div class="bg-gradient-to-br from-indigo-600 to-violet-600 text-white p-1.5 rounded-lg shadow-md group-hover:scale-105 transition-transform">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h8m-8 6h16"></path></svg>
+                </div>
+                <div class="font-black text-2xl tracking-tighter"><span class="text-indigo-600">html</span>fonts</div>
+            </a>
+            
             <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
                 <a href="/" class="hover:text-indigo-600 transition">Directory</a>
                 <a href="/font-vs-font-comparison-tool.html" class="hover:text-indigo-600 transition">Font VS Font</a>
@@ -148,7 +155,6 @@ try:
     # Generate 30 INCREDIBLE Guide Articles
     guides_cards_html = ""
     for slug, title, subtitle, concept, code, protip in top_guides:
-        # SANITIZE HTML TO PREVENT BROKEN META TAGS
         safe_desc = concept.replace('"', '&quot;')
         safe_code = code.replace('<', '&lt;').replace('>', '&gt;')
         html = f"""<!DOCTYPE html>
@@ -353,7 +359,6 @@ try:
         sitemap += f"  <url><loc>{DOMAIN}/compare/{slug}.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>\n"
 
     # Generate Today's Editor's Desk Tip Article
-    # SANITIZE HTML TO PREVENT BROKEN META TAGS
     tip_safe_desc = new_data['tip'].replace('"', '&quot;')
     tip_safe_code = new_data['css_snippet'].replace('<', '&lt;').replace('>', '&gt;')
     
