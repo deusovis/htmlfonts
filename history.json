@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering Fluid Typography with CSS clamp() for Superior UI/UX",
+        "slug": "mastering-fluid-typography-css-clamp-superior-ui-ux",
+        "tweet": "Stop breakpoint juggling! Learn how CSS `clamp()` creates truly fluid typography, adapting beautifully to every screen size. A game-changer for #UIDesign & #UserExperience. #CSSTypography #WebFonts",
+        "tip": "Leverage CSS `clamp()` to define a minimum, preferred (relative), and maximum font size. This creates truly fluid typography that scales gracefully with the viewport, drastically improving readability and maintaining consistent UI aesthetics across all devices without relying on complex media queries. It's a cornerstone for modern responsive design, enhancing both user experience and accessibility.",
+        "css_snippet": "body {\n  /* Defines a fluid font size that ranges from 1rem to 1.5rem, \n     scaling between viewport widths of 30em and 80em. */\n  font-size: clamp(\n    1rem, \n    calc(1rem + (1.5 - 1) * ((100vw - 30em) / (80 - 30))),\n    1.5rem\n  );\n  line-height: 1.6;\n  font-family: 'Inter', sans-serif; /* Example web font */\n}\n\nh1 {\n  /* Larger fluid font example for headings */\n  font-size: clamp(2.5rem, 6vw + 1rem, 5rem);\n  line-height: 1.1;\n  letter-spacing: -0.03em;\n}",
+        "date": "March 30, 2026"
+    },
+    {
         "title": "Mastering `font-display` for Optimal Web Font Performance & UX",
         "slug": "mastering-font-display-web-font-performance-ux",
         "tweet": "Boost your site's UX & performance! Learn how `font-display` values like `swap` or `optional` can prevent FOIT/FOUT and optimize web font loading. Essential #CSSTypography #WebFonts #UIDesign tip! #FrontendDev",

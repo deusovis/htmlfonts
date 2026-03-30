@@ -1593,11 +1593,9 @@
             });
         }, { rootMargin: '350px' });
 
-        // Add event listeners completely free from quote-escaping issues
         document.querySelectorAll('.font-card').forEach(card => {
             observer.observe(card);
             card.addEventListener('click', function(e) {
-                // Ignore clicks on the 'Learn More' link so it navigates correctly
                 if (e.target.closest('a')) return;
                 
                 const name = this.getAttribute('data-font-name');

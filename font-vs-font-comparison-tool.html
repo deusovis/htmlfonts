@@ -6,7 +6,6 @@
     <title>Font Comparison Tool | Test Web Fonts Side-by-Side</title>
     <meta name="description" content="Compare popular free web fonts side-by-side. Test legibility, size, and instantly copy HTML/CSS codes for your UI design.">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKESX7E20P"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -14,11 +13,10 @@
       gtag('js', new Date());
       gtag('config', 'G-TKESX7E20P');
     </script>
-
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+    <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap)" rel="stylesheet">
     <style>
         body { font-family: 'Inter', system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }
         .toast-active { opacity: 1; transform: translate(-50%, 0); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
@@ -32,31 +30,27 @@
         <span>Code copied! 🚀</span>
     </div>
 
-    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center">
-            
+    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6 shadow-sm">
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
             <a href="/" class="flex items-center gap-2 group">
                 <div class="bg-gradient-to-br from-indigo-600 to-violet-600 text-white p-1.5 rounded-lg shadow-md group-hover:scale-105 transition-transform">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h8m-8 6h16"></path></svg>
                 </div>
                 <div class="font-black text-2xl tracking-tighter"><span class="text-indigo-600">html</span>fonts</div>
             </a>
-            
             <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
                 <a href="/" class="hover:text-indigo-600 transition">Directory</a>
-                <a href="/font-vs-font-comparison-tool.html" class="text-indigo-600 transition">Font VS Font</a>
+                <a href="/font-vs-font-comparison-tool.html" class="hover:text-indigo-600 transition">Font VS Font</a>
                 <a href="/editors-desk.html" class="hover:text-indigo-600 transition">Editor's Desk</a>
                 <a href="/html-css-font-guides.html" class="hover:text-indigo-600 transition">Guides</a>
             </nav>
-            
             <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden p-2 text-slate-600 hover:text-indigo-600">
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
         </div>
-        
         <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-white border-b border-slate-200 shadow-xl z-30 px-6 py-6 space-y-4 md:hidden">
             <a href="/" class="block text-sm font-bold text-slate-700 hover:text-indigo-600">Directory</a>
-            <a href="/font-vs-font-comparison-tool.html" class="block text-sm font-bold text-indigo-600 hover:text-indigo-600">Font VS Font</a>
+            <a href="/font-vs-font-comparison-tool.html" class="block text-sm font-bold text-slate-700 hover:text-indigo-600">Font VS Font</a>
             <a href="/editors-desk.html" class="block text-sm font-bold text-slate-700 hover:text-indigo-600">Editor's Desk</a>
             <a href="/html-css-font-guides.html" class="block text-sm font-bold text-slate-700 hover:text-indigo-600">Guides</a>
         </div>
@@ -161,13 +155,14 @@
                     <a href="/compare/pacifico-vs-dancing-script.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Pacifico vs Dancing Script</a>
                     <a href="/compare/oswald-vs-bebas-neue.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Oswald vs Bebas Neue</a>
                     <a href="/compare/ibm-plex-mono-vs-space-mono.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">IBM Plex Mono vs Space Mono</a>
+
                 </div>
             </div>
         </section>
     </main>
 
-    <div id="code-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-xl p-8 relative modal-enter" id="modal-content">
+    <div id="code-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-xl p-8 relative transform scale-95 transition-all duration-300" id="modal-content">
             <button onclick="closeModal('code-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 bg-slate-50 rounded-full p-2">✕</button>
             <h3 class="text-3xl font-black text-slate-900 tracking-tighter mb-8" id="modal-font-name">Font Detail</h3>
             <div class="space-y-6">
@@ -191,88 +186,14 @@
 
     <footer class="bg-white border-t border-slate-200 py-12 mt-auto">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center text-xs font-bold text-slate-500 uppercase tracking-widest">
-            <p>&copy; <script>document.write(new Date().getFullYear())</script> htmlfonts</p>
-            <a href="https://x.com/HtmlFonts" target="_blank" class="hover:text-indigo-600 text-indigo-500">@HtmlFonts</a>
+            <p>&copy; 2026 htmlfonts</p>
+            <a href="[https://x.com/HtmlFonts](https://x.com/HtmlFonts)" target="_blank" class="hover:text-indigo-600 text-indigo-500">@HtmlFonts</a>
         </div>
     </footer>
 
     <script>
-        let fontsRaw = [
-            { name: "Arial", type: "sans-serif", css: "Arial, Helvetica, sans-serif", link: null },
-            { name: "Helvetica", type: "sans-serif", css: "Helvetica, Arial, sans-serif", link: null },
-            { name: "Times New Roman", type: "serif", css: "'Times New Roman', Times, serif", link: null },
-            { name: "Georgia", type: "serif", css: "Georgia, serif", link: null },
-            { name: "Verdana", type: "sans-serif", css: "Verdana, Geneva, sans-serif", link: null },
-            { name: "Courier New", type: "monospace", css: "'Courier New', Courier, monospace", link: null },
-            { name: "Inter", type: "sans-serif", css: "'Inter', sans-serif", link: "Inter:wght@400;600;800" },
-            { name: "Roboto", type: "sans-serif", css: "'Roboto', sans-serif", link: "Roboto:wght@400;500;700" },
-            { name: "Open Sans", type: "sans-serif", css: "'Open Sans', sans-serif", link: "Open+Sans:wght@400;600;700" },
-            { name: "Montserrat", type: "sans-serif", css: "'Montserrat', sans-serif", link: "Montserrat:wght@400;600;700;900" },
-            { name: "Poppins", type: "sans-serif", css: "'Poppins', sans-serif", link: "Poppins:wght@400;600;700;800" },
-            { name: "Lato", type: "sans-serif", css: "'Lato', sans-serif", link: "Lato:wght@400;700;900" },
-            { name: "Raleway", type: "sans-serif", css: "'Raleway', sans-serif", link: "Raleway:wght@400;600;700" },
-            { name: "Oswald", type: "sans-serif", css: "'Oswald', sans-serif", link: "Oswald:wght@400;600;700" },
-            { name: "Ubuntu", type: "sans-serif", css: "'Ubuntu', sans-serif", link: "Ubuntu:wght@400;500;700" },
-            { name: "Nunito", type: "sans-serif", css: "'Nunito', sans-serif", link: "Nunito:wght@400;600;700" },
-            { name: "Outfit", type: "sans-serif", css: "'Outfit', sans-serif", link: "Outfit:wght@400;600;700" },
-            { name: "Lexend", type: "sans-serif", css: "'Lexend', sans-serif", link: "Lexend:wght@400;600;700" },
-            { name: "Rubik", type: "sans-serif", css: "'Rubik', sans-serif", link: "Rubik:wght@400;500;700" },
-            { name: "Karla", type: "sans-serif", css: "'Karla', sans-serif", link: "Karla:wght@400;700" },
-            { name: "Work Sans", type: "sans-serif", css: "'Work Sans', sans-serif", link: "Work+Sans:wght@400;600;700" },
-            { name: "Fira Sans", type: "sans-serif", css: "'Fira Sans', sans-serif", link: "Fira+Sans:wght@400;500;700" },
-            { name: "Barlow", type: "sans-serif", css: "'Barlow', sans-serif", link: "Barlow:wght@400;500;700" },
-            { name: "Space Grotesk", type: "sans-serif", css: "'Space Grotesk', sans-serif", link: "Space+Grotesk:wght@400;600;700" },
-            { name: "Public Sans", type: "sans-serif", css: "'Public Sans', sans-serif", link: "Public+Sans:wght@400;600;700" },
-            { name: "DM Sans", type: "sans-serif", css: "'DM Sans', sans-serif", link: "DM+Sans:wght@400;500;700" },
-            { name: "Noto Sans", type: "sans-serif", css: "'Noto Sans', sans-serif", link: "Noto+Sans:wght@400;600;700" },
-            { name: "PT Sans", type: "sans-serif", css: "'PT Sans', sans-serif", link: "PT+Sans:wght@400;700" },
-            { name: "Quicksand", type: "sans-serif", css: "'Quicksand', sans-serif", link: "Quicksand:wght@400;600;700" },
-            { name: "Mukta", type: "sans-serif", css: "'Mukta', sans-serif", link: "Mukta:wght@400;600;700" },
-            { name: "Heebo", type: "sans-serif", css: "'Heebo', sans-serif", link: "Heebo:wght@400;600;700" },
-            { name: "Anton", type: "sans-serif", css: "'Anton', sans-serif", link: "Anton" },
-            { name: "Bebas Neue", type: "sans-serif", css: "'Bebas Neue', sans-serif", link: "Bebas+Neue" },
-            { name: "Teko", type: "sans-serif", css: "'Teko', sans-serif", link: "Teko:wght@400;600;700" },
-            { name: "Playfair Display", type: "serif", css: "'Playfair Display', serif", link: "Playfair+Display:wght@400;600;700;800" },
-            { name: "Merriweather", type: "serif", css: "'Merriweather', serif", link: "Merriweather:wght@400;700;900" },
-            { name: "Lora", type: "serif", css: "'Lora', serif", link: "Lora:wght@400;500;600;700" },
-            { name: "PT Serif", type: "serif", css: "'PT Serif', serif", link: "PT+Serif:wght@400;700" },
-            { name: "Crimson Text", type: "serif", css: "'Crimson Text', serif", link: "Crimson+Text:wght@400;600;700" },
-            { name: "Cormorant", type: "serif", css: "'Cormorant', serif", link: "Cormorant:wght@400;600;700" },
-            { name: "Bitter", type: "serif", css: "'Bitter', serif", link: "Bitter:wght@400;600;700" },
-            { name: "Noto Serif", type: "serif", css: "'Noto Serif', serif", link: "Noto+Serif:wght@400;600;700" },
-            { name: "Crimson Pro", type: "serif", css: "'Crimson Pro', serif", link: "Crimson+Pro:wght@400;600;700" },
-            { name: "Zilla Slab", type: "serif", css: "'Zilla Slab', serif", link: "Zilla+Slab:wght@400;600;700" },
-            { name: "Libre Baskerville", type: "serif", css: "'Libre Baskerville', serif", link: "Libre+Baskerville:wght@400;700" },
-            { name: "EB Garamond", type: "serif", css: "'EB Garamond', serif", link: "EB+Garamond:wght@400;600;700" },
-            { name: "Arvo", type: "serif", css: "'Arvo', serif", link: "Arvo:wght@400;700" },
-            { name: "Josefin Slab", type: "serif", css: "'Josefin Slab', serif", link: "Josefin+Slab:wght@400;600;700" },
-            { name: "Rokkitt", type: "serif", css: "'Rokkitt', serif", link: "Rokkitt:wght@400;600;700" },
-            { name: "Fira Code", type: "monospace", css: "'Fira Code', monospace", link: "Fira+Code:wght@400;500;600;700" },
-            { name: "JetBrains Mono", type: "monospace", css: "'JetBrains Mono', monospace", link: "JetBrains+Mono:wght@400;500;700;800" },
-            { name: "Source Code Pro", type: "monospace", css: "'Source Code Pro', monospace", link: "Source+Code+Pro:wght@400;500;600;700" },
-            { name: "Inconsolata", type: "monospace", css: "'Inconsolata', monospace", link: "Inconsolata:wght@400;500;700" },
-            { name: "IBM Plex Mono", type: "monospace", css: "'IBM Plex Mono', monospace", link: "IBM+Plex+Mono:wght@400;500;600;700" },
-            { name: "Space Mono", type: "monospace", css: "'Space Mono', monospace", link: "Space+Mono:wght@400;700" },
-            { name: "Roboto Mono", type: "monospace", css: "'Roboto Mono', monospace", link: "Roboto+Mono:wght@400;500;600;700" },
-            { name: "Ubuntu Mono", type: "monospace", css: "'Ubuntu Mono', monospace", link: "Ubuntu+Mono:wght@400;700" },
-            { name: "PT Mono", type: "monospace", css: "'PT Mono', monospace", link: "PT+Mono" },
-            { name: "Pacifico", type: "handwriting", css: "'Pacifico', cursive", link: "Pacifico" },
-            { name: "Dancing Script", type: "handwriting", css: "'Dancing Script', cursive", link: "Dancing+Script:wght@400;500;600;700" },
-            { name: "Caveat", type: "handwriting", css: "'Caveat', cursive", link: "Caveat:wght@400;500;600;700" },
-            { name: "Satisfy", type: "handwriting", css: "'Satisfy', cursive", link: "Satisfy" },
-            { name: "Great Vibes", type: "handwriting", css: "'Great Vibes', cursive", link: "Great+Vibes" },
-            { name: "Amatic SC", type: "handwriting", css: "'Amatic SC', cursive", link: "Amatic+SC:wght@400;700" },
-            { name: "Indie Flower", type: "handwriting", css: "'Indie Flower', cursive", link: "Indie+Flower" },
-            { name: "Shadows Into Light", type: "handwriting", css: "'Shadows Into Light', cursive", link: "Shadows+Into+Light" },
-            { name: "Comfortaa", type: "display", css: "'Comfortaa', display", link: "Comfortaa:wght@400;500;600;700" },
-            { name: "Righteous", type: "display", css: "'Righteous', display", link: "Righteous" },
-            { name: "Lobster", type: "display", css: "'Lobster', display", link: "Lobster" },
-            { name: "Abril Fatface", type: "display", css: "'Abril Fatface', display", link: "Abril+Fatface" },
-            { name: "Cinzel", type: "display", css: "'Cinzel', serif", link: "Cinzel:wght@400;500;600;700;800" },
-            { name: "Bangers", type: "display", css: "'Bangers', display", link: "Bangers" },
-            { name: "Fredoka One", type: "display", css: "'Fredoka One', display", link: "Fredoka+One" }
-        ].sort((a, b) => a.name.localeCompare(b.name));
-
+        let fontsRaw = [{"name": "Abril Fatface", "css": "'Abril Fatface', display", "link": "Abril+Fatface", "type": "Display"}, {"name": "Amatic SC", "css": "'Amatic SC', cursive", "link": "Amatic+SC:wght@400;700", "type": "Handwriting"}, {"name": "Anton", "css": "'Anton', sans-serif", "link": "Anton", "type": "Sans-Serif"}, {"name": "Arial", "css": "Arial, Helvetica, sans-serif", "link": null, "type": "Sans-Serif"}, {"name": "Arvo", "css": "'Arvo', serif", "link": "Arvo:wght@400;700", "type": "Serif"}, {"name": "Bangers", "css": "'Bangers', display", "link": "Bangers", "type": "Display"}, {"name": "Barlow", "css": "'Barlow', sans-serif", "link": "Barlow:wght@400;500;700", "type": "Sans-Serif"}, {"name": "Bebas Neue", "css": "'Bebas Neue', sans-serif", "link": "Bebas+Neue", "type": "Sans-Serif"}, {"name": "Bitter", "css": "'Bitter', serif", "link": "Bitter:wght@400;600;700", "type": "Serif"}, {"name": "Caveat", "css": "'Caveat', cursive", "link": "Caveat:wght@400;500;600;700", "type": "Handwriting"}, {"name": "Cinzel", "css": "'Cinzel', serif", "link": "Cinzel:wght@400;500;600;700;800", "type": "Serif"}, {"name": "Comfortaa", "css": "'Comfortaa', display", "link": "Comfortaa:wght@400;500;600;700", "type": "Display"}, {"name": "Cormorant", "css": "'Cormorant', serif", "link": "Cormorant:wght@400;600;700", "type": "Serif"}, {"name": "Courier New", "css": "'Courier New', Courier, monospace", "link": null, "type": "Monospace"}, {"name": "Crimson Pro", "css": "'Crimson Pro', serif", "link": "Crimson+Pro:wght@400;600;700", "type": "Serif"}, {"name": "Crimson Text", "css": "'Crimson Text', serif", "link": "Crimson+Text:wght@400;600;700", "type": "Serif"}, {"name": "DM Sans", "css": "'DM Sans', sans-serif", "link": "DM+Sans:wght@400;500;700", "type": "Sans-Serif"}, {"name": "Dancing Script", "css": "'Dancing Script', cursive", "link": "Dancing+Script:wght@400;500;600;700", "type": "Handwriting"}, {"name": "EB Garamond", "css": "'EB Garamond', serif", "link": "EB+Garamond:wght@400;600;700", "type": "Serif"}, {"name": "Fira Code", "css": "'Fira Code', monospace", "link": "Fira+Code:wght@400;500;600;700", "type": "Monospace"}, {"name": "Fira Sans", "css": "'Fira Sans', sans-serif", "link": "Fira+Sans:wght@400;500;700", "type": "Sans-Serif"}, {"name": "Fredoka One", "css": "'Fredoka One', display", "link": "Fredoka+One", "type": "Display"}, {"name": "Georgia", "css": "Georgia, serif", "link": null, "type": "Serif"}, {"name": "Great Vibes", "css": "'Great Vibes', cursive", "link": "Great+Vibes", "type": "Handwriting"}, {"name": "Heebo", "css": "'Heebo', sans-serif", "link": "Heebo:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Helvetica", "css": "Helvetica, Arial, sans-serif", "link": null, "type": "Sans-Serif"}, {"name": "IBM Plex Mono", "css": "'IBM Plex Mono', monospace", "link": "IBM+Plex+Mono:wght@400;500;600;700", "type": "Monospace"}, {"name": "Inconsolata", "css": "'Inconsolata', monospace", "link": "Inconsolata:wght@400;500;700", "type": "Monospace"}, {"name": "Indie Flower", "css": "'Indie Flower', cursive", "link": "Indie+Flower", "type": "Handwriting"}, {"name": "Inter", "css": "'Inter', sans-serif", "link": "Inter:wght@400;600;800;900", "type": "Sans-Serif"}, {"name": "JetBrains Mono", "css": "'JetBrains Mono', monospace", "link": "JetBrains+Mono:wght@400;500;700;800", "type": "Monospace"}, {"name": "Josefin Slab", "css": "'Josefin Slab', serif", "link": "Josefin+Slab:wght@400;600;700", "type": "Serif"}, {"name": "Karla", "css": "'Karla', sans-serif", "link": "Karla:wght@400;700", "type": "Sans-Serif"}, {"name": "Lato", "css": "'Lato', sans-serif", "link": "Lato:wght@400;700;900", "type": "Sans-Serif"}, {"name": "Lexend", "css": "'Lexend', sans-serif", "link": "Lexend:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Libre Baskerville", "css": "'Libre Baskerville', serif", "link": "Libre+Baskerville:wght@400;700", "type": "Serif"}, {"name": "Lobster", "css": "'Lobster', display", "link": "Lobster", "type": "Display"}, {"name": "Lora", "css": "'Lora', serif", "link": "Lora:wght@400;500;600;700", "type": "Serif"}, {"name": "Merriweather", "css": "'Merriweather', serif", "link": "Merriweather:wght@400;700;900", "type": "Serif"}, {"name": "Montserrat", "css": "'Montserrat', sans-serif", "link": "Montserrat:wght@400;600;700;900", "type": "Sans-Serif"}, {"name": "Mukta", "css": "'Mukta', sans-serif", "link": "Mukta:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Noto Sans", "css": "'Noto Sans', sans-serif", "link": "Noto+Sans:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Noto Serif", "css": "'Noto Serif', serif", "link": "Noto+Serif:wght@400;600;700", "type": "Serif"}, {"name": "Nunito", "css": "'Nunito', sans-serif", "link": "Nunito:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Open Sans", "css": "'Open Sans', sans-serif", "link": "Open+Sans:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Oswald", "css": "'Oswald', sans-serif", "link": "Oswald:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Outfit", "css": "'Outfit', sans-serif", "link": "Outfit:wght@400;600;700", "type": "Sans-Serif"}, {"name": "PT Mono", "css": "'PT Mono', monospace", "link": "PT+Mono", "type": "Monospace"}, {"name": "PT Sans", "css": "'PT Sans', sans-serif", "link": "PT+Sans:wght@400;700", "type": "Sans-Serif"}, {"name": "PT Serif", "css": "'PT Serif', serif", "link": "PT+Serif:wght@400;700", "type": "Serif"}, {"name": "Pacifico", "css": "'Pacifico', cursive", "link": "Pacifico", "type": "Handwriting"}, {"name": "Playfair Display", "css": "'Playfair Display', serif", "link": "Playfair+Display:wght@400;600;700;800", "type": "Serif"}, {"name": "Poppins", "css": "'Poppins', sans-serif", "link": "Poppins:wght@400;600;700;800", "type": "Sans-Serif"}, {"name": "Public Sans", "css": "'Public Sans', sans-serif", "link": "Public+Sans:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Quicksand", "css": "'Quicksand', sans-serif", "link": "Quicksand:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Raleway", "css": "'Raleway', sans-serif", "link": "Raleway:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Righteous", "css": "'Righteous', display", "link": "Righteous", "type": "Display"}, {"name": "Roboto", "css": "'Roboto', sans-serif", "link": "Roboto:wght@400;500;700", "type": "Sans-Serif"}, {"name": "Roboto Mono", "css": "'Roboto Mono', monospace", "link": "Roboto+Mono:wght@400;500;600;700", "type": "Monospace"}, {"name": "Rokkitt", "css": "'Rokkitt', serif", "link": "Rokkitt:wght@400;600;700", "type": "Serif"}, {"name": "Rubik", "css": "'Rubik', sans-serif", "link": "Rubik:wght@400;500;700", "type": "Sans-Serif"}, {"name": "Satisfy", "css": "'Satisfy', cursive", "link": "Satisfy", "type": "Handwriting"}, {"name": "Shadows Into Light", "css": "'Shadows Into Light', cursive", "link": "Shadows+Into+Light", "type": "Handwriting"}, {"name": "Source Code Pro", "css": "'Source Code Pro', monospace", "link": "Source+Code+Pro:wght@400;500;600;700", "type": "Monospace"}, {"name": "Space Grotesk", "css": "'Space Grotesk', sans-serif", "link": "Space+Grotesk:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Space Mono", "css": "'Space Mono', monospace", "link": "Space+Mono:wght@400;700", "type": "Monospace"}, {"name": "Teko", "css": "'Teko', sans-serif", "link": "Teko:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Times New Roman", "css": "'Times New Roman', Times, serif", "link": null, "type": "Serif"}, {"name": "Ubuntu", "css": "'Ubuntu', sans-serif", "link": "Ubuntu:wght@400;500;700", "type": "Sans-Serif"}, {"name": "Ubuntu Mono", "css": "'Ubuntu Mono', monospace", "link": "Ubuntu+Mono:wght@400;700", "type": "Monospace"}, {"name": "Verdana", "css": "Verdana, Geneva, sans-serif", "link": null, "type": "Sans-Serif"}, {"name": "Work Sans", "css": "'Work Sans', sans-serif", "link": "Work+Sans:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Zilla Slab", "css": "'Zilla Slab', serif", "link": "Zilla+Slab:wght@400;600;700", "type": "Serif"}];
+        
         const loadedFonts = new Set();
         function loadFont(link) {
             if (!link || loadedFonts.has(link)) return;
@@ -299,8 +220,16 @@
             }
             
             document.getElementById('modal-css').textContent = `font-family: ${fontObj.css};`;
-            document.getElementById('code-modal').classList.remove('hidden');
-            setTimeout(() => document.getElementById('modal-content').classList.add('modal-active'), 10);
+            
+            const modal = document.getElementById('code-modal');
+            const modalContent = document.getElementById('modal-content');
+            modal.classList.remove('hidden');
+            
+            void modal.offsetWidth; // Trigger reflow
+            
+            modal.classList.remove('opacity-0');
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
         }
 
         let vsData = { a: null, b: null };
@@ -311,8 +240,11 @@
                 sA.add(new Option(f.name, idx)); 
                 sB.add(new Option(f.name, idx)); 
             });
-            sA.selectedIndex = fontsRaw.findIndex(f => f.name === "Inter");
-            sB.selectedIndex = fontsRaw.findIndex(f => f.name === "Roboto");
+            
+            let interIdx = fontsRaw.findIndex(f => f.name === "Inter");
+            let robotoIdx = fontsRaw.findIndex(f => f.name === "Roboto");
+            sA.selectedIndex = interIdx !== -1 ? interIdx : 0;
+            sB.selectedIndex = robotoIdx !== -1 ? robotoIdx : 1;
 
             sA.onchange = updateVS; sB.onchange = updateVS;
             updateVS();
@@ -342,10 +274,15 @@
 
         function openModalFromVS(side) { openFontModal(side === 'a' ? vsData.a : vsData.b); }
 
-        function triggerToast(msg = "Copied! 🚀") {
+        function triggerToast() {
             const t = document.getElementById('toast'); 
-            t.classList.remove('hidden'); setTimeout(() => t.classList.add('toast-active'), 10);
-            setTimeout(() => { t.classList.remove('toast-active'); setTimeout(() => t.classList.add('hidden'), 300); }, 3000);
+            t.classList.remove('hidden'); 
+            void t.offsetWidth; // Reflow
+            t.classList.remove('opacity-0', 'translate-y-4');
+            setTimeout(() => { 
+                t.classList.add('opacity-0', 'translate-y-4'); 
+                setTimeout(() => t.classList.add('hidden'), 300); 
+            }, 3000);
         }
 
         function copyElementText(id) {
@@ -357,7 +294,17 @@
         }
 
         initVSTool();
-        function closeModal(id) { document.getElementById('modal-content').classList.remove('modal-active'); setTimeout(() => document.getElementById(id).classList.add('hidden'), 200); }
+        
+        function closeModal(id) { 
+            const modal = document.getElementById(id);
+            const modalContent = document.getElementById('modal-content');
+            
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            
+            setTimeout(() => modal.classList.add('hidden'), 300); 
+        }
     </script>
 </body>
 </html>
