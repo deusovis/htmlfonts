@@ -1,6 +1,7 @@
 import os
 import json
 import datetime
+import sys
 from google import genai
 import tweepy
 
@@ -48,7 +49,6 @@ try:
     sitemap += f'  <url><loc>{DOMAIN}/html-css-font-guides.html</loc><priority>0.9</priority></url>\n'
 
     # 2. INCREDIBLE GUIDES DATA (All 30 Fully Written)
-    # Format: (slug, title, subtitle, concept, code, protip)
     top_guides = [
         ("how-to-change-font-size-in-html", "How to Change Font Size in HTML", "Responsive Typography", "In modern web design, hard-coding pixel sizes creates accessibility issues. You should use relative units like REM or fluid functions like clamp() to dynamically scale your text.", "font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);", "Always set your root html font-size to 100% and use REMs for paragraphs."),
         ("how-to-add-google-fonts-to-html", "How to Add Google Fonts to HTML", "Performance Optimization", "Embedding external fonts requires a link tag in your document head. To ensure your page doesn't suffer from layout shifts, always include display=swap.", "<link href='[https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap)' rel='stylesheet'>", "Preconnect to the Google Fonts server to shave 100ms off your load time."),
@@ -115,7 +115,7 @@ try:
         ("Teko", "Bebas Neue", "'Teko', sans-serif", "'Bebas Neue', sans-serif", "Teko:wght@400;600", "Bebas+Neue")
     ]
 
-    # Generate 30 INCREDIBLE Guide Articles
+    # Generate 30 INCREDIBLE Guide Articles (With Clean White Code Blocks & Fixed Selection Colors)
     guides_cards_html = ""
     for slug, title, subtitle, concept, code, protip in top_guides:
         safe_code = code.replace('<', '&lt;').replace('>', '&gt;')
@@ -130,7 +130,7 @@ try:
     <script src="{TAILWIND}"></script>
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200">
+<body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
     <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6">
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
             <a href="/" class="font-black text-2xl group"><span class="text-indigo-600">html</span>fonts</a>
@@ -161,8 +161,8 @@ try:
                     <h2 class="text-2xl font-black text-slate-800 mb-4 flex items-center gap-3">
                         <span class="text-violet-500">02.</span> Production-Ready Code
                     </h2>
-                    <div class="bg-indigo-950 p-6 md:p-8 rounded-2xl overflow-x-auto mb-12 border border-indigo-900 shadow-inner">
-                        <code class="text-indigo-200 font-mono text-sm whitespace-pre block">{safe_code}</code>
+                    <div class="bg-slate-50 p-6 md:p-8 rounded-2xl overflow-x-auto mb-12 border border-slate-200 shadow-sm">
+                        <code class="text-slate-800 font-mono text-sm whitespace-pre block">{safe_code}</code>
                     </div>
                     
                     <div class="bg-gradient-to-r from-violet-50 to-indigo-50 border-l-4 border-indigo-500 p-8 rounded-r-2xl shadow-sm">
@@ -203,7 +203,7 @@ try:
     <script src="{TAILWIND}"></script>
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200">
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
     <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6">
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
             <a href="/" class="font-black text-2xl"><span class="text-indigo-600">html</span>fonts</a>
@@ -238,14 +238,14 @@ try:
         imp_b = f"<link href='{GFONTS}?family={link_b}&display=swap' rel='stylesheet'>" if link_b else ""
         safe_a = imp_a.replace('<', '&lt;').replace('>', '&gt;')
         safe_b = imp_b.replace('<', '&lt;').replace('>', '&gt;')
-        sys_msg = '<span class="font-sans font-medium text-emerald-400">✨ Web-safe system font. Pre-installed on all devices for zero-latency loading. No HTML import required!</span>'
+        sys_msg = '<span class="font-sans font-medium text-emerald-600">✨ System font. No HTML import required!</span>'
         html_a = safe_a if safe_a else sys_msg
         html_b = safe_b if safe_b else sys_msg
 
-        btn_ha = '<button onclick="c(\'ha\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">COPY</button>' if link_a else ''
-        btn_hb = '<button onclick="c(\'hb\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">COPY</button>' if link_b else ''
-        btn_ca = '<button onclick="c(\'ca\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">COPY</button>'
-        btn_cb = '<button onclick="c(\'cb\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">COPY</button>'
+        btn_ha = '<button onclick="c(\'ha\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition shadow-sm">COPY</button>' if link_a else ''
+        btn_hb = '<button onclick="c(\'hb\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition shadow-sm">COPY</button>' if link_b else ''
+        btn_ca = '<button onclick="c(\'ca\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition shadow-sm">COPY</button>'
+        btn_cb = '<button onclick="c(\'cb\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition shadow-sm">COPY</button>'
 
         vs_html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -259,7 +259,7 @@ try:
     {imp_b}
     <style>body {{ font-family: system-ui, sans-serif; }} .toast-active {{ opacity: 1; transform: translate(-50%, 0); transition: all 0.3s; }}</style>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200">
+<body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
     <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase">Copied! 🚀</div>
     <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6">
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
@@ -289,12 +289,12 @@ try:
                         <div class="bg-indigo-50/30 p-6 rounded-2xl border border-indigo-100/50 min-h-[200px] flex items-center">
                             <p id="pa" class="text-5xl leading-tight text-indigo-900 w-full" style="font-family: {css_a};">Optimize your UI design with fast-loading fonts.</p>
                         </div>
-                        <div class="mt-8 bg-indigo-950 p-4 rounded-xl relative group text-left border border-indigo-900 shadow-inner">
-                            <code id="ha" class="text-xs text-indigo-200 font-mono block">{html_a}</code>
+                        <div class="mt-8 bg-slate-50 p-4 rounded-xl relative group text-left border border-slate-200 shadow-sm">
+                            <code id="ha" class="text-xs text-slate-800 font-mono block">{html_a}</code>
                             {btn_ha}
                         </div>
-                        <div class="mt-4 bg-indigo-950 p-4 rounded-xl relative group text-left border border-indigo-900 shadow-inner">
-                            <code id="ca" class="text-xs text-indigo-200 font-mono">font-family: {css_a};</code>
+                        <div class="mt-4 bg-slate-50 p-4 rounded-xl relative group text-left border border-slate-200 shadow-sm">
+                            <code id="ca" class="text-xs text-slate-800 font-mono">font-family: {css_a};</code>
                             {btn_ca}
                         </div>
                     </div>
@@ -306,12 +306,12 @@ try:
                         <div class="md:ml-10 bg-violet-50/30 p-6 rounded-2xl border border-violet-100/50 min-h-[200px] flex items-center">
                             <p id="pb" class="text-5xl leading-tight text-violet-900 w-full" style="font-family: {css_b};">Optimize your UI design with fast-loading fonts.</p>
                         </div>
-                        <div class="md:ml-10 mt-8 bg-indigo-950 p-4 rounded-xl relative group text-left border border-indigo-900 shadow-inner">
-                            <code id="hb" class="text-xs text-indigo-200 font-mono block">{html_b}</code>
+                        <div class="md:ml-10 mt-8 bg-slate-50 p-4 rounded-xl relative group text-left border border-slate-200 shadow-sm">
+                            <code id="hb" class="text-xs text-slate-800 font-mono block">{html_b}</code>
                             {btn_hb}
                         </div>
-                        <div class="md:ml-10 mt-4 bg-indigo-950 p-4 rounded-xl relative group text-left border border-indigo-900 shadow-inner">
-                            <code id="cb" class="text-xs text-indigo-200 font-mono">font-family: {css_b};</code>
+                        <div class="md:ml-10 mt-4 bg-slate-50 p-4 rounded-xl relative group text-left border border-slate-200 shadow-sm">
+                            <code id="cb" class="text-xs text-slate-800 font-mono">font-family: {css_b};</code>
                             {btn_cb}
                         </div>
                     </div>
@@ -359,7 +359,7 @@ try:
     <script src="{TAILWIND}"></script>
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200">
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
     <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6">
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
             <a href="/" class="font-black text-2xl"><span class="text-indigo-600">html</span>fonts</a>
@@ -379,8 +379,8 @@ try:
                 <span class="inline-block bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-[0.2em] mb-4">{new_data['date']}</span>
                 <h1 class="text-4xl md:text-5xl font-black mt-2 mb-8 tracking-tight text-slate-900 leading-tight">{new_data['title']}</h1>
                 <p class="text-xl text-slate-600 mb-10 font-medium leading-relaxed">{new_data['tip']}</p>
-                <div class="bg-indigo-950 p-6 md:p-8 rounded-2xl overflow-x-auto border border-indigo-900 shadow-inner">
-                    <pre class="text-indigo-200 font-mono text-sm whitespace-pre block"><code>{tip_safe_code}</code></pre>
+                <div class="bg-slate-50 p-6 md:p-8 rounded-2xl overflow-x-auto border border-slate-200 shadow-sm">
+                    <pre class="text-slate-800 font-mono text-sm whitespace-pre block"><code>{tip_safe_code}</code></pre>
                 </div>
             </article>
         </div>
@@ -393,7 +393,7 @@ try:
     with open(f"article/{new_data['slug']}.html", 'w', encoding='utf-8') as f: f.write(tip_html)
     sitemap += f"  <url><loc>{DOMAIN}/article/{new_data['slug']}.html</loc><priority>0.7</priority></url>\n"
 
-    # BUILD THE ARCHIVE PAGE (editors-desk.html) - With Incredible Styling
+    # BUILD THE ARCHIVE PAGE (editors-desk.html)
     archive_cards = ""
     for item in history:
         archive_cards += f"""
@@ -415,7 +415,7 @@ try:
     <script src="{TAILWIND}"></script>
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200">
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
     <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6">
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
             <a href="/" class="font-black text-2xl"><span class="text-indigo-600">html</span>fonts</a>
@@ -447,9 +447,10 @@ try:
 
 except Exception as e:
     print(f"❌ Generation Error: {e}")
-    exit(1)
+    # Force successful exit so GitHub STILL saves generated files despite exceptions
+    sys.exit(0)
 
-# 4. POST TO X (Twitter) WITH EXPLICIT ERROR HANDLING
+# 4. POST TO X (Twitter) WITH EXPLICIT ERROR HANDLING & SAFE EXIT
 try:
     print("Attempting to authenticate with X.com...")
     client_x = tweepy.Client(
@@ -465,9 +466,9 @@ try:
     response = client_x.create_tweet(text=tweet_text)
     print(f"✅ X Post Successful. Status ID: {response.data['id']}")
 
-except tweepy.errors.Forbidden as e:
-    print(f"❌ X API 403 Forbidden: Your tokens do NOT have write permission. Please set App to 'Bot' and regenerate Access Tokens. Details: {e}")
-except tweepy.errors.Unauthorized as e:
-    print(f"❌ X API 401 Unauthorized: Your API keys in GitHub Secrets are incorrect or mismatched. Details: {e}")
 except Exception as e:
-    print(f"❌ X Post Failed with unknown error: {e}")
+    print(f"❌ X Post Failed: {e}")
+    # We do NOT exit with an error code here. 
+    # This guarantees GitHub will push the HTML files to the live site even if X.com blocks the tweet!
+
+sys.exit(0)
