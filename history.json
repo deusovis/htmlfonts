@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering `font-display`: Boost Web Font Performance & UI Experience",
+        "slug": "mastering-font-display-performance-ui-experience",
+        "tweet": "Eliminate FOIT & enhance #UserExperience! Learn how `font-display: swap;` revolutionizes #WebFonts loading for superior #CSS_typography & #UI_design. Read the expert tip! #webdev",
+        "tip": "For optimal #UserExperience with #WebFonts, eliminate the 'flash of invisible text' (FOIT) by leveraging `font-display: swap;` in your `@font-face` rules. This CSS typography property ensures your content remains readable with a fallback font immediately, then seamlessly swaps to your preferred web font once loaded. This significantly boosts perceived performance, making your #UI_design feel faster and more responsive, especially on slower connections. It's a non-negotiable for modern web development.",
+        "css_snippet": "@font-face {\n  font-family: 'Inter';\n  src: url('/fonts/Inter-Regular.woff2') format('woff2'),\n       url('/fonts/Inter-Regular.woff') format('woff');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Crucial for better UX with web fonts */\n}\n\nbody {\n  font-family: 'Inter', sans-serif;\n  line-height: 1.6;\n  color: #333;\n}",
+        "date": "March 30, 2026"
+    },
+    {
         "title": "Optimizing Web Font Loading for Flawless UI & User Experience with CSS `font-display`",
         "slug": "optimize-web-font-loading-css-font-display-ui-ux",
         "tweet": "Eliminate FOIT/FOUT and create a seamless UI! Dive deep into CSS `font-display` strategies to optimize web font loading, boost performance, and enhance #UXDesign. A must-read for #CSSTypography experts! #WebFonts #Performance",
