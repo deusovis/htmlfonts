@@ -2,7 +2,8 @@ import os
 import json
 import datetime
 import sys
-import html  # Native library to sanitize AI text and prevent HTML breaks
+import math
+import html
 from google import genai
 import tweepy
 
@@ -124,17 +125,15 @@ try:
         ("Teko", "Bebas Neue", "'Teko', sans-serif", "'Bebas Neue', sans-serif", "Teko:wght@400;600", "Bebas+Neue")
     ]
 
-    # UNIVERSAL HEADER TEMPLATE (Logo and Mobile Menu Fixed)
-    header_html = """    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center">
-            
+    # UNIVERSAL HEADER TEMPLATE
+    header_html = """    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6 shadow-sm">
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
             <a href="/" class="flex items-center gap-2 group">
                 <div class="bg-gradient-to-br from-indigo-600 to-violet-600 text-white p-1.5 rounded-lg shadow-md group-hover:scale-105 transition-transform">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h8m-8 6h16"></path></svg>
                 </div>
                 <div class="font-black text-2xl tracking-tighter"><span class="text-indigo-600">html</span>fonts</div>
             </a>
-            
             <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
                 <a href="/" class="hover:text-indigo-600 transition">Directory</a>
                 <a href="/font-vs-font-comparison-tool.html" class="hover:text-indigo-600 transition">Font VS Font</a>
@@ -156,7 +155,6 @@ try:
     # Generate 30 INCREDIBLE Guide Articles
     guides_cards_html = ""
     for slug, title, subtitle, concept, code, protip in top_guides:
-        # BULLETPROOF SANITIZATION: Escapes quotes, brackets, and ampersands
         safe_desc = html.escape(concept)
         safe_code = html.escape(code)
         
@@ -254,7 +252,7 @@ try:
 </html>"""
     with open("html-css-font-guides.html", 'w', encoding='utf-8') as f: f.write(guides_page_html)
 
-    # Generate Comparisons
+    # Generate COMPARISONS with UI matching exactly the main tool
     for font_a, font_b, css_a, css_b, link_a, link_b in top_comparisons:
         slug = f"{font_a.lower().replace(' ', '-')}-vs-{font_b.lower().replace(' ', '-')}"
         imp_a = f"<link href='{GFONTS}?family={link_a}&display=swap' rel='stylesheet'>" if link_a else ""
@@ -264,14 +262,9 @@ try:
         html_a = imp_a if imp_a else sys_msg
         html_b = imp_b if imp_b else sys_msg
 
-        # Using html.escape on the UI block code
-        safe_ha = html.escape(html_a)
-        safe_hb = html.escape(html_b)
-
-        btn_ha = '<button onclick="c(\'ha\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition shadow-sm">COPY</button>' if link_a else ''
-        btn_hb = '<button onclick="c(\'hb\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition shadow-sm">COPY</button>' if link_b else ''
-        btn_ca = '<button onclick="c(\'ca\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition shadow-sm">COPY</button>'
-        btn_cb = '<button onclick="c(\'cb\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition shadow-sm">COPY</button>'
+        # Safe injection for JavaScript strings
+        safe_ha = html_a.replace("'", "\\'").replace('"', '&quot;')
+        safe_hb = html_b.replace("'", "\\'").replace('"', '&quot;')
 
         vs_html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -285,78 +278,159 @@ try:
     <script src="{TAILWIND}"></script>
     {imp_a}
     {imp_b}
-    <style>body {{ font-family: system-ui, sans-serif; }} .toast-active {{ opacity: 1; transform: translate(-50%, 0); transition: all 0.3s; }}</style>
+    <style>
+        body {{ font-family: system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }}
+        .toast-active {{ opacity: 1; transform: translate(-50%, 0); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }}
+        .modal-active {{ opacity: 1; transform: scale(1) translateY(0); transition: all 0.2s ease-out; }}
+        .comparison-text {{ transition: font-size 0.2s ease; }}
+    </style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
-    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase">Copied! 🚀</div>
+    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3">Copied! 🚀</div>
 {header_html}
-    <main class="flex-grow py-16 px-4">
-        <div class="max-w-6xl mx-auto w-full">
+    <main class="flex-grow w-full py-16 md:py-24">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="text-center mb-12">
                 <a href="/font-vs-font-comparison-tool.html" class="text-indigo-600 font-bold text-xs uppercase tracking-widest hover:text-indigo-800 transition">&larr; Back to Tool</a>
-                <h1 class="text-5xl font-black mt-6 tracking-tight text-slate-900">{font_a} <span class="text-slate-300">vs</span> {font_b}</h1>
+                <h1 class="text-4xl md:text-5xl font-black mt-6 tracking-tight text-slate-900">{font_a} <span class="text-slate-300">vs</span> {font_b}</h1>
             </div>
-            <div class="bg-white rounded-3xl p-10 shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100">
-                <input type="text" id="vs-text" value="Optimize your UI design with fast-loading fonts." onfocus="if(this.value==='Optimize your UI design with fast-loading fonts.') this.value=''" onblur="if(this.value==='') this.value='Optimize your UI design with fast-loading fonts.'" oninput="u()" class="w-full mb-10 px-6 py-4 bg-slate-50 border border-slate-200 rounded-xl text-xl text-center font-medium shadow-inner outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
+            
+            <div class="bg-white rounded-3xl p-6 md:p-10 shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100">
+                <div class="flex flex-col md:flex-row gap-6 mb-12 items-stretch">
+                    <div class="w-full md:w-2/3 bg-slate-50 border border-slate-200 rounded-2xl py-4 px-6 shadow-inner flex flex-col justify-center focus-within:ring-2 focus-within:ring-indigo-500 focus-within:bg-white transition-all">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 px-1">Testing Playground</label>
+                        <input type="text" id="vs-text" value="Optimize your UI design with fast-loading free web fonts." 
+                            onfocus="if(this.value===this.defaultValue) this.value='';" 
+                            onblur="if(this.value==='') {{ this.value=this.defaultValue; u(); }}"
+                            oninput="u()"
+                            class="w-full bg-transparent px-1 outline-none text-lg md:text-xl font-medium text-slate-800 placeholder-slate-300">
+                    </div>
+                    
+                    <div class="w-full md:w-1/3 bg-slate-50 border border-slate-200 rounded-2xl py-4 px-6 shadow-inner flex flex-col justify-center">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Compare Size</span>
+                            <span id="vs-size-label" class="bg-indigo-100 text-indigo-700 font-black text-[10px] px-2 py-1 rounded-md">32px</span>
+                        </div>
+                        <input type="range" id="vs-font-size" min="12" max="120" value="32" oninput="u()" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
+                    </div>
+                </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10 divide-y md:divide-y-0 md:divide-x divide-slate-100">
-                    <div>
-                        <div class="flex items-center gap-2 mb-6">
-                            <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-lg shadow-indigo-200">A</span>
+                    <div class="md:pr-10 pt-6 md:pt-0 flex flex-col h-full">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-indigo-200 uppercase">A</span>
                             <h3 class="text-2xl font-black">{font_a}</h3>
                         </div>
                         <div class="flex-grow flex items-start pt-10 px-6 pb-6 min-h-[250px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50">
-                            <p id="pa" class="text-5xl leading-tight text-black w-full" style="font-family: {css_a};">Optimize your UI design with fast-loading fonts.</p>
+                            <p id="pa" class="comparison-text text-black break-words leading-tight w-full" style="font-family: {css_a}; font-size: 32px;">Optimize your UI design with fast-loading free web fonts.</p>
                         </div>
-                        <div class="mt-8 bg-slate-50 p-4 rounded-xl relative group text-left border border-slate-200 shadow-sm">
-                            <code id="ha" class="text-xs text-slate-800 font-mono block">{safe_ha}</code>
-                            {btn_ha}
-                        </div>
-                        <div class="mt-4 bg-slate-50 p-4 rounded-xl relative group text-left border border-slate-200 shadow-sm">
-                            <code id="ca" class="text-xs text-slate-800 font-mono">font-family: {css_a};</code>
-                            {btn_ca}
-                        </div>
+                        <button onclick="openModal('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-xl shadow-indigo-100 mt-8 group">
+                            GET CODE FOR FONT A <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+                        </button>
                     </div>
-                    <div>
-                        <div class="flex items-center gap-2 mb-6 md:ml-10">
-                            <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-lg shadow-violet-200">B</span>
+
+                    <div class="md:pl-10 pt-10 md:pt-0 flex flex-col h-full">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-violet-200 uppercase">B</span>
                             <h3 class="text-2xl font-black">{font_b}</h3>
                         </div>
-                        <div class="md:ml-10 flex-grow flex items-start pt-10 px-6 pb-6 min-h-[250px] bg-violet-50/20 rounded-2xl border border-violet-100/50">
-                            <p id="pb" class="text-5xl leading-tight text-black w-full" style="font-family: {css_b};">Optimize your UI design with fast-loading fonts.</p>
+                        <div class="flex-grow flex items-start pt-10 px-6 pb-6 min-h-[250px] bg-violet-50/20 rounded-2xl border border-violet-100/50">
+                            <p id="pb" class="comparison-text text-black break-words leading-tight w-full" style="font-family: {css_b}; font-size: 32px;">Optimize your UI design with fast-loading free web fonts.</p>
                         </div>
-                        <div class="md:ml-10 mt-8 bg-slate-50 p-4 rounded-xl relative group text-left border border-slate-200 shadow-sm">
-                            <code id="hb" class="text-xs text-slate-800 font-mono block">{safe_hb}</code>
-                            {btn_hb}
-                        </div>
-                        <div class="md:ml-10 mt-4 bg-slate-50 p-4 rounded-xl relative group text-left border border-slate-200 shadow-sm">
-                            <code id="cb" class="text-xs text-slate-800 font-mono">font-family: {css_b};</code>
-                            {btn_cb}
-                        </div>
+                        <button onclick="openModal('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-xl shadow-violet-100 mt-8 group">
+                            GET CODE FOR FONT B <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+    
+    <div id="code-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-xl p-8 relative modal-enter" id="modal-content">
+            <button onclick="closeModal('code-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 bg-slate-50 rounded-full p-2">✕</button>
+            <h3 class="text-3xl font-black text-slate-900 tracking-tighter mb-8" id="modal-font-name">Font Detail</h3>
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2" id="modal-html-label">1. Add to HTML Head</label>
+                    <div class="bg-slate-900 rounded-xl p-4 relative group">
+                        <code id="modal-html" class="text-xs text-indigo-300 font-mono break-all block"></code>
+                        <button id="copy-html-btn" onclick="copyElementText('modal-html')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY HTML</button>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">2. Apply CSS Rule</label>
+                    <div class="bg-slate-900 rounded-xl p-4 relative group border-2 border-indigo-500/30">
+                        <code id="modal-css" class="text-xs font-mono text-indigo-300 block"></code>
+                        <button onclick="copyElementText('modal-css')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY CSS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <footer class="bg-white border-t border-slate-200 py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
         <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
     </footer>
+    
     <script>
+        const fontData = {{
+            'a': {{ name: "{font_a}", css: "{css_a}", html: '{safe_ha}' }},
+            'b': {{ name: "{font_b}", css: "{css_b}", html: '{safe_hb}' }}
+        }};
+
         function u() {{ 
-            const v = document.getElementById('vs-text').value; 
-            document.getElementById('pa').innerText = v; 
-            document.getElementById('pb').innerText = v; 
+            const v = document.getElementById('vs-text').value || 'Optimize your UI design with fast-loading free web fonts.'; 
+            const sz = document.getElementById('vs-font-size').value;
+            document.getElementById('vs-size-label').innerText = sz + 'px';
+            
+            const pa = document.getElementById('pa');
+            pa.innerText = v;
+            pa.style.fontSize = sz + 'px';
+            
+            const pb = document.getElementById('pb');
+            pb.innerText = v;
+            pb.style.fontSize = sz + 'px';
         }} 
-        function c(id) {{ 
-            const t = document.getElementById(id).textContent; 
-            navigator.clipboard.writeText(t).then(() => {{ 
-                const ts = document.getElementById('toast'); 
-                ts.classList.remove('hidden'); 
-                setTimeout(() => ts.classList.add('toast-active'), 10); 
-                setTimeout(() => {{ 
-                    ts.classList.remove('toast-active'); 
-                    setTimeout(() => ts.classList.add('hidden'), 300); 
-                }}, 3000); 
-            }}); 
+        
+        function openModal(side) {{
+            const data = fontData[side];
+            document.getElementById('modal-font-name').innerText = data.name;
+            const htmlCode = document.getElementById('modal-html');
+            const copyBtn = document.getElementById('copy-html-btn');
+            const htmlLabel = document.getElementById('modal-html-label');
+            
+            htmlCode.innerHTML = data.html; 
+            
+            if (data.html.includes('System font')) {{
+                htmlLabel.innerText = "Info: Instant Deployment";
+                htmlCode.className = "text-xs block";
+                copyBtn.style.display = 'none';
+            }} else {{
+                htmlLabel.innerText = "1. Add to HTML Head";
+                htmlCode.className = "text-xs font-mono text-indigo-300 break-all block";
+                copyBtn.style.display = 'block';
+            }}
+            
+            document.getElementById('modal-css').innerText = `font-family: ${{data.css}};`;
+            document.getElementById('code-modal').classList.remove('hidden');
+            setTimeout(() => document.getElementById('modal-content').classList.add('modal-active'), 10);
+        }}
+        
+        function closeModal(id) {{ document.getElementById('modal-content').classList.remove('modal-active'); setTimeout(() => document.getElementById(id).classList.add('hidden'), 200); }}
+        
+        function triggerToast(msg = "Copied! 🚀") {{
+            const t = document.getElementById('toast'); 
+            t.classList.remove('hidden'); setTimeout(() => t.classList.add('toast-active'), 10);
+            setTimeout(() => {{ t.classList.remove('toast-active'); setTimeout(() => t.classList.add('hidden'), 300); }}, 3000);
+        }}
+        
+        function copyElementText(id) {{
+            const txt = document.getElementById(id).textContent;
+            navigator.clipboard.writeText(txt).then(() => triggerToast()).catch(() => {{
+                const el = document.createElement('textarea'); el.value = txt; document.body.appendChild(el);
+                el.select(); document.execCommand('copy'); document.body.removeChild(el); triggerToast();
+            }});
         }}
     </script>
 </body>
@@ -365,7 +439,6 @@ try:
         sitemap += f"  <url><loc>{DOMAIN}/compare/{slug}.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>\n"
 
     # Generate Today's Editor's Desk Tip Article
-    # BULLETPROOF SANITIZATION: Escapes quotes, brackets, and ampersands
     tip_safe_desc = html.escape(new_data['tip'])
     tip_safe_code = html.escape(new_data['css_snippet'])
     
@@ -405,24 +478,42 @@ try:
     with open(f"article/{new_data['slug']}.html", 'w', encoding='utf-8') as f: f.write(tip_html)
     sitemap += f"  <url><loc>{DOMAIN}/article/{new_data['slug']}.html</loc><priority>0.7</priority></url>\n"
 
-    # BUILD THE ARCHIVE PAGE (editors-desk.html)
-    archive_cards = ""
-    for item in history:
-        archive_cards += f"""
-        <a href="/article/{item['slug']}.html" class="block bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-50 hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">{item['date']}</span>
-            <h3 class="text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">{item['title']}</h3>
-            <p class="text-slate-500 font-medium leading-relaxed">{item['tip']}</p>
-        </a>"""
-    
-    archive_html = f"""<!DOCTYPE html>
+    # BUILD THE PAGINATED ARCHIVE (editors-desk.html)
+    items_per_page = 10
+    total_items = len(history)
+    total_pages = max(1, math.ceil(total_items / items_per_page))
+
+    for page_num in range(1, total_pages + 1):
+        start_idx = (page_num - 1) * items_per_page
+        end_idx = start_idx + items_per_page
+        page_items = history[start_idx:end_idx]
+
+        archive_cards = ""
+        for item in page_items:
+            archive_cards += f"""
+            <a href="/article/{item['slug']}.html" class="block bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-50 hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">{item['date']}</span>
+                <h3 class="text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">{item['title']}</h3>
+                <p class="text-slate-500 font-medium leading-relaxed">{item['tip']}</p>
+            </a>"""
+
+        # Build Pagination Controls
+        pagination_html = '<div class="flex justify-center flex-wrap gap-2 mt-12">'
+        for p in range(1, total_pages + 1):
+            page_link = "editors-desk.html" if p == 1 else f"editors-desk-{p}.html"
+            active_class = "bg-indigo-600 text-white shadow-md" if p == page_num else "bg-white text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 border border-slate-200"
+            pagination_html += f'<a href="/{page_link}" class="w-10 h-10 flex items-center justify-center rounded-xl font-bold {active_class} transition-all">{p}</a>'
+        pagination_html += '</div>'
+
+        # Generate HTML for this specific page
+        archive_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editor's Desk Archive | htmlfonts</title>
-    <meta name="description" content="Daily CSS typography tips and web design insights.">
+    <title>Editor's Desk Archive - Page {page_num} | htmlfonts</title>
+    <meta name="description" content="Daily CSS typography tips and web design insights. Page {page_num}.">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 {GA_CODE}
     <script src="{TAILWIND}"></script>
@@ -436,17 +527,21 @@ try:
             <p class="text-xl text-slate-500 font-medium leading-relaxed">Every CSS typography tip, design trick, and code snippet we've ever published.</p>
         </div>
         <div class="space-y-6">{archive_cards}</div>
+        {pagination_html if total_pages > 1 else ""}
     </main>
     <footer class="bg-white border-t border-slate-200 py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
         <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
     </footer>
 </body>
 </html>"""
-    with open("editors-desk.html", 'w', encoding='utf-8') as f: f.write(archive_html)
+        
+        file_name = "editors-desk.html" if page_num == 1 else f"editors-desk-{page_num}.html"
+        with open(file_name, 'w', encoding='utf-8') as f: f.write(archive_html)
+        sitemap += f"  <url><loc>{DOMAIN}/{file_name}</loc><changefreq>daily</changefreq><priority>0.8</priority></url>\n"
 
     sitemap += '</urlset>'
     with open('sitemap.xml', 'w', encoding='utf-8') as f: f.write(sitemap)
-    print(f"✅ Build Successful: Created Guides, Comparisons, and Editor Archive.")
+    print(f"✅ Build Successful: Created Guides, Comparisons, and {total_pages} Paginated Editor Archive pages.")
 
 except Exception as e:
     print(f"❌ Generation Error: {e}")
