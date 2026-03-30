@@ -1,5 +1,13 @@
 [
     {
+        "title": "Unlock Superior UI & UX with Fluid Typography",
+        "slug": "fluid-typography-superior-ui-ux",
+        "tweet": "Stop rigidly defining font sizes! \ud83d\uded1 Master fluid typography with `clamp()` for truly responsive UI design. Your users will love the adaptable readability across all devices. \u2728 Get the CSS snippet! #CSSTypography #WebFonts #UIDesign #UX",
+        "tip": "Stop relying on fixed `px` font sizes; they create rigid, device-specific experiences. Instead, embrace fluid typography using `clamp()` to ensure your text scales perfectly, enhancing readability and user delight on every screen.",
+        "css_snippet": "/* Implement fluid typography for adaptive text scaling */\nbody {\n  /* min-size, preferred-size (viewport-based), max-size */\n  font-size: clamp(1rem, 2vw + 0.5rem, 1.25rem);\n  line-height: 1.6;\n}\n\nh1 {\n  font-size: clamp(2.5rem, 8vw + 1rem, 5rem);\n  line-height: 1.1;\n  font-weight: 700;\n}",
+        "date": "March 30, 2026"
+    },
+    {
         "title": "Achieve Optical Harmony with `font-size-adjust`",
         "slug": "achieve-optical-harmony-font-size-adjust-web-typography",
         "tweet": "\ud83e\udd2f Stop guessing font sizes! Use `font-size-adjust` to achieve perfect optical harmony between different web fonts. Ensure consistent x-heights for a polished UI & superior UX. Your designs will thank you! \u2728 #CSSTypography #WebFonts #UIDesign",

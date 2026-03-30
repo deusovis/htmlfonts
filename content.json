@@ -1,8 +1,8 @@
 {
-    "title": "Achieve Optical Harmony with `font-size-adjust`",
-    "slug": "achieve-optical-harmony-font-size-adjust-web-typography",
-    "tweet": "\ud83e\udd2f Stop guessing font sizes! Use `font-size-adjust` to achieve perfect optical harmony between different web fonts. Ensure consistent x-heights for a polished UI & superior UX. Your designs will thank you! \u2728 #CSSTypography #WebFonts #UIDesign",
-    "tip": "Stop matching font sizes by visual appearance alone; instead, ensure consistent x-heights for harmonious inter-font typography. Use `font-size-adjust` to programmatically normalize different font's actual body sizes, creating a unified optical rhythm across your UI.",
-    "css_snippet": "/* Ensure optical size consistency across diverse web fonts */\nbody {\n  font-family: 'Inter', sans-serif;\n  font-size: 1rem;\n  /* Example: Inter's x-height ratio might be ~0.52 */\n}\n\nh1 {\n  font-family: 'Playfair Display', serif; /* A font with a naturally different x-height */\n  font-size: 2.5rem;\n  font-size-adjust: 0.52; /* Set to the target x-height ratio (e.g., from your body font) */\n  /* This scales Playfair Display's font-size so its x-height visually matches 52% of its computed font-size,\n     creating better optical balance with other fonts like Inter, even at different declared font-sizes. */\n}",
+    "title": "Unlock Superior UI & UX with Fluid Typography",
+    "slug": "fluid-typography-superior-ui-ux",
+    "tweet": "Stop rigidly defining font sizes! \ud83d\uded1 Master fluid typography with `clamp()` for truly responsive UI design. Your users will love the adaptable readability across all devices. \u2728 Get the CSS snippet! #CSSTypography #WebFonts #UIDesign #UX",
+    "tip": "Stop relying on fixed `px` font sizes; they create rigid, device-specific experiences. Instead, embrace fluid typography using `clamp()` to ensure your text scales perfectly, enhancing readability and user delight on every screen.",
+    "css_snippet": "/* Implement fluid typography for adaptive text scaling */\nbody {\n  /* min-size, preferred-size (viewport-based), max-size */\n  font-size: clamp(1rem, 2vw + 0.5rem, 1.25rem);\n  line-height: 1.6;\n}\n\nh1 {\n  font-size: clamp(2.5rem, 8vw + 1rem, 5rem);\n  line-height: 1.1;\n  font-weight: 700;\n}",
     "date": "March 30, 2026"
 }
