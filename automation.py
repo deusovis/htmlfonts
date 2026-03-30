@@ -4,7 +4,7 @@ import datetime
 from google import genai
 import tweepy
 
-# 1. SETUP & CONSTANTS (To prevent Markdown auto-linking bugs in editors)
+# 1. SETUP & CONSTANTS
 DOMAIN = "https://htmlfonts.com"
 TAILWIND = "https://cdn.tailwindcss.com"
 GFONTS = "https://fonts.googleapis.com/css2"
@@ -45,6 +45,7 @@ try:
     sitemap += f'  <url><loc>{DOMAIN}/</loc><priority>1.0</priority></url>\n'
     sitemap += f'  <url><loc>{DOMAIN}/font-vs-font-comparison-tool.html</loc><priority>0.9</priority></url>\n'
     sitemap += f'  <url><loc>{DOMAIN}/editors-desk.html</loc><priority>0.9</priority></url>\n'
+    sitemap += f'  <url><loc>{DOMAIN}/html-css-font-guides.html</loc><priority>0.9</priority></url>\n'
 
     # 2. CONTENT DEFINITIONS (All 60 Items)
     top_guides = [
@@ -113,7 +114,8 @@ try:
         ("Teko", "Bebas Neue", "'Teko', sans-serif", "'Bebas Neue', sans-serif", "Teko:wght@400;600", "Bebas+Neue")
     ]
 
-    # Generate Guides
+    # Generate Individual 30 Guide Articles
+    guides_cards_html = ""
     for slug, title, desc, code in top_guides:
         safe_code = code.replace('<', '&lt;').replace('>', '&gt;')
         html = f"""<!DOCTYPE html>
@@ -133,12 +135,13 @@ try:
                 <a href="/" class="hover:text-indigo-600 transition">Directory</a>
                 <a href="/font-vs-font-comparison-tool.html" class="hover:text-indigo-600 transition">Font VS Font</a>
                 <a href="/editors-desk.html" class="hover:text-indigo-600 transition">Editor's Desk</a>
+                <a href="/html-css-font-guides.html" class="hover:text-indigo-600 transition">Guides</a>
             </nav>
         </div>
     </header>
     <main class="flex-grow py-16 px-6">
         <div class="max-w-3xl mx-auto">
-            <a href="/" class="text-indigo-600 font-bold uppercase tracking-widest text-xs">&larr; Back to Directory</a>
+            <a href="/html-css-font-guides.html" class="text-indigo-600 font-bold uppercase tracking-widest text-xs">&larr; Back to Guides</a>
             <article class="bg-white p-10 mt-8 rounded-3xl shadow-lg border border-slate-200">
                 <h1 class="text-4xl font-black mb-4 tracking-tight text-slate-900">{title}</h1>
                 <p class="text-xl text-slate-600 mb-8">{desc}</p>
@@ -155,6 +158,49 @@ try:
 </html>"""
         with open(f"article/{slug}.html", 'w', encoding='utf-8') as f: f.write(html)
         sitemap += f"  <url><loc>{DOMAIN}/article/{slug}.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>\n"
+        
+        # Build the card for the master index page
+        guides_cards_html += f"""
+        <a href="/article/{slug}.html" class="block bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:border-indigo-300 transition-all group">
+            <h3 class="text-xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors">{title}</h3>
+            <p class="text-slate-500 mt-2 font-medium leading-relaxed">{desc}</p>
+        </a>"""
+
+    # Generate the MASTER GUIDES Directory Page (html-css-font-guides.html)
+    guides_page_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HTML & CSS Font Guides | htmlfonts</title>
+    <meta name="description" content="Master web typography with our comprehensive CSS and HTML font guides.">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <script src="{TAILWIND}"></script>
+    <style>body {{ font-family: system-ui, sans-serif; }}</style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200">
+    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6">
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
+            <a href="/" class="font-black text-2xl"><span class="text-indigo-600">html</span>fonts</a>
+            <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
+                <a href="/">Directory</a>
+                <a href="/font-vs-font-comparison-tool.html">Font VS Font</a>
+                <a href="/editors-desk.html">Editor's Desk</a>
+                <a href="/html-css-font-guides.html" class="text-indigo-600">Guides</a>
+            </nav>
+        </div>
+    </header>
+    <main class="flex-grow py-16 px-6 max-w-5xl mx-auto w-full">
+        <h1 class="text-5xl font-black tracking-tight text-slate-900 mb-4">Typography Guides</h1>
+        <p class="text-xl text-slate-500 mb-12">Master CSS typography with our 30 essential guides.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {guides_cards_html}
+        </div>
+    </main>
+    <footer class="bg-white border-t py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest">
+        <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
+    </footer>
+</body>
+</html>"""
+    with open("html-css-font-guides.html", 'w', encoding='utf-8') as f: f.write(guides_page_html)
 
     # Generate Comparisons
     for font_a, font_b, css_a, css_b, link_a, link_b in top_comparisons:
@@ -188,6 +234,7 @@ try:
                 <a href="/" class="hover:text-indigo-600 transition">Directory</a>
                 <a href="/font-vs-font-comparison-tool.html" class="hover:text-indigo-600 transition">Font VS Font</a>
                 <a href="/editors-desk.html" class="hover:text-indigo-600 transition">Editor's Desk</a>
+                <a href="/html-css-font-guides.html" class="hover:text-indigo-600 transition">Guides</a>
             </nav>
         </div>
     </header>
@@ -265,7 +312,7 @@ try:
         with open(f"compare/{slug}.html", 'w', encoding='utf-8') as f: f.write(vs_html)
         sitemap += f"  <url><loc>{DOMAIN}/compare/{slug}.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>\n"
 
-    # Generate Today's Deep Dive Article
+    # Generate Today's Editor's Desk Tip Article
     tip_safe_code = new_data['css_snippet'].replace('<', '&lt;').replace('>', '&gt;')
     tip_html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -284,6 +331,7 @@ try:
                 <a href="/">Directory</a>
                 <a href="/font-vs-font-comparison-tool.html">Font VS Font</a>
                 <a href="/editors-desk.html" class="text-indigo-600">Editor's Desk</a>
+                <a href="/html-css-font-guides.html">Guides</a>
             </nav>
         </div>
     </header>
@@ -335,6 +383,7 @@ try:
                 <a href="/">Directory</a>
                 <a href="/font-vs-font-comparison-tool.html">Font VS Font</a>
                 <a href="/editors-desk.html" class="text-indigo-600">Editor's Desk</a>
+                <a href="/html-css-font-guides.html">Guides</a>
             </nav>
         </div>
     </header>
@@ -352,7 +401,7 @@ try:
 
     sitemap += '</urlset>'
     with open('sitemap.xml', 'w', encoding='utf-8') as f: f.write(sitemap)
-    print(f"✅ Build Successful: Created {len(history)} archive items.")
+    print(f"✅ Build Successful: Created Guides, Comparisons, and Editor Archive.")
 
 except Exception as e:
     print(f"❌ Generation Error: {e}")
