@@ -48,7 +48,7 @@ try:
     sitemap += f'  <url><loc>{DOMAIN}/editors-desk.html</loc><priority>0.9</priority></url>\n'
     sitemap += f'  <url><loc>{DOMAIN}/html-css-font-guides.html</loc><priority>0.9</priority></url>\n'
 
-    # 2. INCREDIBLE GUIDES DATA (Exactly 30 Items, Fully Populated)
+    # 2. INCREDIBLE GUIDES DATA (Exactly 30 Items)
     top_guides = [
         ("how-to-change-font-size-in-html", "How to Change Font Size in HTML", "Responsive Typography", "In modern web design, hard-coding pixel sizes creates accessibility issues. You should use relative units like REM or fluid functions like clamp() to dynamically scale your text.", "font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);", "Always set your root html font-size to 100% and use REMs for paragraphs."),
         ("how-to-add-google-fonts-to-html", "How to Add Google Fonts to HTML", "Performance Optimization", "Embedding external fonts requires a link tag in your document head. To ensure your page doesn't suffer from layout shifts, always include display=swap.", "<link href='[https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap)' rel='stylesheet'>", "Preconnect to the Google Fonts server to shave 100ms off your load time."),
@@ -115,6 +115,28 @@ try:
         ("Teko", "Bebas Neue", "'Teko', sans-serif", "'Bebas Neue', sans-serif", "Teko:wght@400;600", "Bebas+Neue")
     ]
 
+    # Shared Header Template
+    header_html = f"""<header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center">
+            <a href="/" class="font-black text-2xl tracking-tighter"><span class="text-indigo-600">html</span>fonts</a>
+            <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
+                <a href="/" class="hover:text-indigo-600 transition">Directory</a>
+                <a href="/font-vs-font-comparison-tool.html" class="hover:text-indigo-600 transition">Font VS Font</a>
+                <a href="/editors-desk.html" class="hover:text-indigo-600 transition">Editor's Desk</a>
+                <a href="/html-css-font-guides.html" class="hover:text-indigo-600 transition">Guides</a>
+            </nav>
+            <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden p-2 text-slate-600 hover:text-indigo-600">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-white border-b border-slate-200 shadow-xl z-30 px-6 py-6 space-y-4 md:hidden">
+            <a href="/" class="block text-sm font-bold text-slate-700 hover:text-indigo-600">Directory</a>
+            <a href="/font-vs-font-comparison-tool.html" class="block text-sm font-bold text-slate-700 hover:text-indigo-600">Font VS Font</a>
+            <a href="/editors-desk.html" class="block text-sm font-bold text-slate-700 hover:text-indigo-600">Editor's Desk</a>
+            <a href="/html-css-font-guides.html" class="block text-sm font-bold text-slate-700 hover:text-indigo-600">Guides</a>
+        </div>
+    </header>"""
+
     # Generate 30 INCREDIBLE Guide Articles
     guides_cards_html = ""
     for slug, title, subtitle, concept, code, protip in top_guides:
@@ -131,17 +153,7 @@ try:
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
-    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6">
-        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
-            <a href="/" class="font-black text-2xl tracking-tighter"><span class="text-indigo-600">html</span>fonts</a>
-            <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
-                <a href="/" class="hover:text-indigo-600 transition">Directory</a>
-                <a href="/font-vs-font-comparison-tool.html" class="hover:text-indigo-600 transition">Font VS Font</a>
-                <a href="/editors-desk.html" class="hover:text-indigo-600 transition">Editor's Desk</a>
-                <a href="/html-css-font-guides.html" class="text-indigo-600 transition">Guides</a>
-            </nav>
-        </div>
-    </header>
+    {header_html}
     <main class="flex-grow py-16 px-4">
         <div class="max-w-4xl mx-auto">
             <a href="/html-css-font-guides.html" class="text-indigo-600 font-bold uppercase tracking-widest text-xs hover:text-indigo-800 transition">&larr; Back to Guides Directory</a>
@@ -175,7 +187,7 @@ try:
             </article>
         </div>
     </main>
-    <footer class="bg-white border-t py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest">
+    <footer class="bg-white border-t border-slate-200 py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
         <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
     </footer>
 </body>
@@ -204,17 +216,7 @@ try:
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
-    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6">
-        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
-            <a href="/" class="font-black text-2xl tracking-tighter"><span class="text-indigo-600">html</span>fonts</a>
-            <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
-                <a href="/">Directory</a>
-                <a href="/font-vs-font-comparison-tool.html">Font VS Font</a>
-                <a href="/editors-desk.html">Editor's Desk</a>
-                <a href="/html-css-font-guides.html" class="text-indigo-600">Guides</a>
-            </nav>
-        </div>
-    </header>
+    {header_html}
     <main class="flex-grow py-16 px-6 max-w-7xl mx-auto w-full">
         <div class="text-center mb-16 max-w-3xl mx-auto">
             <h1 class="text-5xl md:text-6xl font-black tracking-tight mb-6"><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Typography Guides</span></h1>
@@ -224,7 +226,7 @@ try:
             {guides_cards_html}
         </div>
     </main>
-    <footer class="bg-white border-t py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest">
+    <footer class="bg-white border-t border-slate-200 py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
         <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
     </footer>
 </body>
@@ -261,17 +263,7 @@ try:
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
     <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase">Copied! 🚀</div>
-    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6">
-        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
-            <a href="/" class="font-black text-2xl tracking-tighter"><span class="text-indigo-600">html</span>fonts</a>
-            <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
-                <a href="/" class="hover:text-indigo-600 transition">Directory</a>
-                <a href="/font-vs-font-comparison-tool.html" class="hover:text-indigo-600 transition">Font VS Font</a>
-                <a href="/editors-desk.html" class="hover:text-indigo-600 transition">Editor's Desk</a>
-                <a href="/html-css-font-guides.html" class="hover:text-indigo-600 transition">Guides</a>
-            </nav>
-        </div>
-    </header>
+    {header_html}
     <main class="flex-grow py-16 px-4">
         <div class="max-w-6xl mx-auto w-full">
             <div class="text-center mb-12">
@@ -319,7 +311,7 @@ try:
             </div>
         </div>
     </main>
-    <footer class="bg-white border-t py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest">
+    <footer class="bg-white border-t border-slate-200 py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
         <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
     </footer>
     <script>
@@ -360,17 +352,7 @@ try:
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
-    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6">
-        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
-            <a href="/" class="font-black text-2xl tracking-tighter"><span class="text-indigo-600">html</span>fonts</a>
-            <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
-                <a href="/">Directory</a>
-                <a href="/font-vs-font-comparison-tool.html">Font VS Font</a>
-                <a href="/editors-desk.html" class="text-indigo-600">Editor's Desk</a>
-                <a href="/html-css-font-guides.html">Guides</a>
-            </nav>
-        </div>
-    </header>
+    {header_html}
     <main class="flex-grow py-16 px-4">
         <div class="max-w-4xl mx-auto">
             <a href="/editors-desk.html" class="text-indigo-600 font-bold uppercase tracking-widest text-xs hover:text-indigo-800 transition">&larr; Back to Archive</a>
@@ -385,7 +367,7 @@ try:
             </article>
         </div>
     </main>
-    <footer class="bg-white border-t py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest">
+    <footer class="bg-white border-t border-slate-200 py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
         <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
     </footer>
 </body>
@@ -416,17 +398,7 @@ try:
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
-    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6">
-        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
-            <a href="/" class="font-black text-2xl tracking-tighter"><span class="text-indigo-600">html</span>fonts</a>
-            <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
-                <a href="/">Directory</a>
-                <a href="/font-vs-font-comparison-tool.html">Font VS Font</a>
-                <a href="/editors-desk.html" class="text-indigo-600">Editor's Desk</a>
-                <a href="/html-css-font-guides.html">Guides</a>
-            </nav>
-        </div>
-    </header>
+    {header_html}
     <main class="flex-grow py-16 px-6 max-w-4xl mx-auto w-full">
         <div class="text-center mb-16">
             <h1 class="text-5xl md:text-6xl font-black tracking-tight mb-6"><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Editor's Desk</span></h1>
@@ -434,7 +406,7 @@ try:
         </div>
         <div class="space-y-6">{archive_cards}</div>
     </main>
-    <footer class="bg-white border-t py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest">
+    <footer class="bg-white border-t border-slate-200 py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
         <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
     </footer>
 </body>
