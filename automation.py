@@ -47,40 +47,42 @@ try:
     sitemap += f'  <url><loc>{DOMAIN}/editors-desk.html</loc><priority>0.9</priority></url>\n'
     sitemap += f'  <url><loc>{DOMAIN}/html-css-font-guides.html</loc><priority>0.9</priority></url>\n'
 
-    # 2. CONTENT DEFINITIONS (All 60 Items)
+    # 2. INCREDIBLE GUIDES DATA (Full 30 Items, No Placeholders)
+    # Format: (slug, title, subtitle, concept, code, protip)
     top_guides = [
-        ("how-to-change-font-size-in-html", "How to Change Font Size in HTML", "Learn to use the CSS font-size property with px, rem, and em units.", "font-size: 16px;"),
-        ("how-to-add-google-fonts-to-html", "How to Add Google Fonts to HTML", "Step-by-step guide to embedding external fonts via the link tag.", "<link href='...' rel='stylesheet'>"),
-        ("how-to-change-font-color-in-html", "How to Change Font Color in HTML", "Use CSS hex codes and RGB values to style your web typography.", "color: #4f46e5;"),
-        ("how-to-bold-text-in-html", "How to Bold Text in HTML", "Master the font-weight property for stronger visual hierarchy.", "font-weight: 800;"),
-        ("how-to-center-text-in-html", "How to Center Text in HTML", "The best ways to align text using CSS text-align and flexbox.", "text-align: center;"),
-        ("what-is-the-best-font-for-reading", "The Best Fonts for On-Screen Reading", "Why high x-height fonts like Inter and Roboto lead the industry.", "font-family: 'Inter', sans-serif;"),
-        ("how-to-use-custom-fonts-in-css", "How to Use Custom Fonts in CSS", "Tutorial on @font-face for self-hosting your own font files.", "@font-face { font-family: 'MyFont'; src: url('...'); }"),
-        ("how-to-add-text-shadow-in-css", "How to Add Text Shadow in CSS", "Create depth with the text-shadow property and rgba colors.", "text-shadow: 2px 2px 5px rgba(0,0,0,0.1);"),
-        ("how-to-import-local-fonts", "How to Import Local Fonts in HTML", "Using system-ui and locally installed typefaces for speed.", "font-family: system-ui, sans-serif;"),
-        ("how-to-underline-text-in-css", "How to Underline Text in CSS", "Beyond the u tag: modern text-decoration styling.", "text-decoration: underline;"),
-        ("how-to-make-fluid-typography", "Creating Fluid Typography in CSS", "Using clamp() to make fonts responsive across all devices.", "font-size: clamp(1rem, 5vw, 2rem);"),
-        ("rem-vs-em-css-guide", "REM vs EM: Which CSS Unit is Best?", "A comparison of relative units for modern web accessibility.", "font-size: 1.25rem;"),
-        ("how-to-change-line-height-in-css", "Improving Readability with Line Height", "How to adjust vertical spacing between lines of text.", "line-height: 1.6;"),
-        ("how-to-style-drop-caps-in-html", "How to Style Drop Caps in HTML", "Using the ::first-letter pseudo-element for editorial design.", "p::first-letter { font-size: 3em; }"),
-        ("how-to-add-letter-spacing-in-css", "How to Adjust Letter Spacing (Tracking)", "Fine-tuning the horizontal space between characters.", "letter-spacing: 0.05em;"),
-        ("how-to-use-variable-fonts-in-html", "How to Use Variable Fonts in HTML", "Control multiple font weights with a single file import.", "font-variation-settings: 'wght' 600;"),
-        ("how-to-prevent-text-wrapping-css", "Preventing Text Wrapping in CSS", "Using white-space properties to keep text on one line.", "white-space: nowrap;"),
-        ("how-to-create-gradient-text-css", "How to Create Gradient Text in CSS", "Modern techniques using background-clip and transparent text.", "background-clip: text; color: transparent;"),
-        ("best-fonts-for-mobile-apps", "The Best Fonts for Mobile App UI", "Choosing legible typefaces for small screen environments.", "font-family: 'Outfit', sans-serif;"),
-        ("how-to-load-fonts-asynchronously", "How to Load Fonts Asynchronously", "Speed up your site using font-display: swap and preloading.", "font-display: swap;"),
-        ("how-to-use-monospace-fonts-for-coding", "Best Monospace Fonts for Developers", "Top picks for code editors and technical documentation.", "font-family: 'Fira Code', monospace;"),
-        ("how-to-italicize-text-in-css", "How to Italicize Text in CSS", "The difference between font-style: italic and oblique.", "font-style: italic;"),
-        ("how-to-change-font-weight-numerically", "Font Weight 100 to 900 Explained", "A guide to numerical font weights for CSS developers.", "font-weight: 900;"),
-        ("how-to-capitalize-first-letter-css", "Capitalizing First Letters with CSS", "Automating text transformations without changing HTML.", "text-transform: capitalize;"),
-        ("how-to-add-columns-to-text", "Creating Newspaper Columns in CSS", "Using column-count for multi-column text layouts.", "column-count: 3;"),
-        ("how-to-fix-blurry-fonts-on-browser", "How to Fix Blurry Fonts in Chrome", "Optimizing font rendering for high-DPI displays.", "-webkit-font-smoothing: antialiased;"),
-        ("how-to-import-adobe-fonts", "How to Import Adobe Typekit Fonts", "Integrating Creative Cloud fonts into your web project.", "<script src='...typekit...'></script>"),
-        ("what-is-x-height-typography", "Understanding X-Height in Typography", "How vertical proportions affect font legibility on web.", "/* Concept Guide */"),
-        ("best-serif-fonts-for-minimalist-web", "Best Serif Fonts for Minimalism", "Top serif choices for modern, clean web interfaces.", "font-family: 'Lora', serif;"),
-        ("how-to-add-font-fallback-stacks", "Creating Bulletproof Font Stacks", "How to ensure your site looks good even if fonts fail.", "font-family: 'Inter', Arial, sans-serif;")
+        ("how-to-change-font-size-in-html", "How to Change Font Size in HTML", "Responsive Typography", "In modern web design, hard-coding pixel sizes creates accessibility issues. You should use relative units like REM or fluid functions like clamp() to dynamically scale your text.", "font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);", "Always set your root html font-size to 100% and use REMs for paragraphs."),
+        ("how-to-add-google-fonts-to-html", "How to Add Google Fonts to HTML", "Performance Optimization", "Embedding external fonts requires a <link> tag in your document head. To ensure your page doesn't suffer from layout shifts, always include display=swap.", "<link href='[https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap)' rel='stylesheet'>", "Preconnect to the Google Fonts server to shave 100ms off your load time."),
+        ("best-css-font-pairings", "Best CSS Font Pairings", "Visual Hierarchy", "The secret to beautiful UI design is pairing a highly legible Sans-Serif for body text with a high-contrast Serif or Display font for headings.", "h1 { font-family: 'Playfair Display', serif; } \np { font-family: 'Inter', sans-serif; }", "Never use more than two font families on a single project."),
+        ("how-to-change-font-color-in-html", "How to Change Font Color in HTML", "Color Theory", "Changing text color is done via the CSS 'color' property. For modern, accessible design, ensure your text has at least a 4.5:1 contrast ratio against its background.", "color: #1e293b; /* Deep Slate */", "Avoid pure black (#000000) on pure white; use dark grays to reduce eye strain."),
+        ("how-to-bold-text-in-html", "How to Bold Text in HTML", "Font Weights", "Instead of using the outdated <b> tag, use the CSS font-weight property. A weight of 400 is standard, 700 is bold, and 900 is black.", "font-weight: 700;", "Only import the font weights you actually use to save bandwidth."),
+        ("how-to-center-text-in-html", "How to Center Text in HTML", "Layout Alignment", "Centering text horizontally is easy with text-align, but for perfect vertical centering, Flexbox or CSS Grid is the modern standard.", ".center-box {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}", "Avoid using line-height equal to container height for multi-line text."),
+        ("what-is-the-best-font-for-reading", "The Best Fonts for On-Screen Reading", "Accessibility", "Fonts with a large x-height, open counters, and distinct letterforms (like differentiating 'Il1') drastically improve reading speeds on digital screens.", "font-family: 'Inter', system-ui, sans-serif;", "Test your body text at 14px; if it's hard to read, pick a different font."),
+        ("how-to-use-custom-fonts-in-css", "How to Use Custom Fonts in CSS", "Asset Hosting", "The @font-face rule allows you to host your own typography files. Always serve modern formats like WOFF2 for maximum compression.", "@font-face {\n  font-family: 'MyBrandFont';\n  src: url('/fonts/myfont.woff2') format('woff2');\n  font-display: swap;\n}", "Always include a web-safe fallback stack to prevent invisible text during loading."),
+        ("how-to-add-text-shadow-in-css", "How to Add Text Shadow in CSS", "Visual Depth", "Text shadows add depth and improve contrast over noisy backgrounds. The syntax takes X-offset, Y-offset, blur radius, and color.", "text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);", "Use subtle, low-opacity shadows for modern UI; harsh shadows look dated."),
+        ("how-to-import-local-fonts", "How to Import Local Fonts in HTML", "Performance", "To completely eliminate layout shifts and download times, you can tell CSS to use the fonts already installed on the user's operating system.", "font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;", "System fonts are the secret to achieving a perfect 100 Lighthouse performance score."),
+        ("how-to-underline-text-in-css", "How to Underline Text in CSS", "Text Decoration", "The classic text-decoration property has been upgraded. You can now control the color, style, and thickness of underlines independently of the text.", "text-decoration: underline;\ntext-decoration-color: #4f46e5;\ntext-decoration-thickness: 2px;", "Use text-underline-offset to give your links a little breathing room."),
+        ("how-to-make-fluid-typography", "Creating Fluid Typography in CSS", "Responsive Design", "Instead of writing dozens of media queries, CSS clamp() allows your font size to smoothly scale based on the viewport width.", "font-size: clamp(1rem, 2.5vw, 2rem);", "Use fluid typography for main headings, but keep body text mostly static for readability."),
+        ("rem-vs-em-css-guide", "REM vs EM: Which CSS Unit is Best?", "Relative Sizing", "EMs compound based on their parent elements, which can lead to unpredictable sizes. REMs always scale relative to the root HTML element.", "padding: 2rem;\nfont-size: 1.125rem;", "Set your browser default to 100% (usually 16px) and use REMs for all typography."),
+        ("how-to-change-line-height-in-css", "Improving Readability with Line Height", "Vertical Rhythm", "Line-height (leading) controls the vertical space between lines. The golden rule for body copy is a line-height between 1.4 and 1.6.", "p {\n  line-height: 1.6;\n}", "Never use fixed pixel values for line-height; always use unitless multipliers."),
+        ("how-to-style-drop-caps-in-html", "How to Style Drop Caps in HTML", "Editorial Design", "You can create gorgeous, magazine-style drop caps using the ::first-letter pseudo-element without adding extra spans to your HTML.", "p::first-letter {\n  font-size: 3.5em;\n  font-weight: bold;\n  float: left;\n  margin-right: 0.1em;\n}", "Ensure your drop cap aligns perfectly with the baseline of the adjacent text lines."),
+        ("how-to-add-letter-spacing-in-css", "How to Adjust Letter Spacing (Tracking)", "Kerning & Tracking", "Letter-spacing adds horizontal space between characters. It's fantastic for uppercase headings but can destroy the legibility of lowercase body text.", "h1.eyebrow {\n  text-transform: uppercase;\n  letter-spacing: 0.1em;\n}", "As font size increases, letter-spacing should generally decrease (tighter tracking)."),
+        ("how-to-use-variable-fonts-in-html", "How to Use Variable Fonts in HTML", "Advanced Typography", "Variable fonts contain multiple variations (weight, width, slant) in a single file, drastically reducing HTTP requests and page weight.", "font-family: 'Inter Variable';\nfont-variation-settings: 'wght' 650, 'slnt' -5;", "Check browser support before relying entirely on custom font-variation axes."),
+        ("how-to-prevent-text-wrapping-css", "Preventing Text Wrapping in CSS", "UI Control", "Sometimes you need a button or badge to stay on a single line regardless of the container width. The white-space property handles this.", ".badge {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}", "Always combine nowrap with text-overflow: ellipsis to handle extreme edge cases gracefully."),
+        ("how-to-create-gradient-text-css", "How to Create Gradient Text in CSS", "Modern Styling", "To create a gradient text effect, you apply a background gradient, clip it to the text, and make the actual text color transparent.", "background: linear-gradient(to right, #4f46e5, #7c3aed);\n-webkit-background-clip: text;\ncolor: transparent;", "Provide a solid fallback color for older browsers that don't support background-clip."),
+        ("best-fonts-for-mobile-apps", "The Best Fonts for Mobile App UI", "Interface Design", "Mobile screens require fonts with highly legible numerals, distinct geometry, and excellent rendering at small sizes (12px - 14px).", "font-family: 'Roboto', 'San Francisco', sans-serif;", "Rely on the native OS fonts (San Francisco on iOS, Roboto on Android) for the most native feel."),
+        ("how-to-load-fonts-asynchronously", "How to Load Fonts Asynchronously", "Web Vitals", "Custom fonts can block page rendering. Using font-display: swap tells the browser to show a fallback font immediately until the custom font loads.", "@font-face {\n  font-display: swap;\n}", "Preload your critical above-the-fold fonts in the HTML <head>."),
+        ("how-to-use-monospace-fonts-for-coding", "Best Monospace Fonts for Developers", "Code Aesthetics", "Monospace fonts allocate the exact same width to every character, making them essential for code editors, tabular data, and technical blogs.", "font-family: 'Fira Code', 'JetBrains Mono', monospace;", "Enable CSS font-variant-ligatures if your monospace font supports coding ligatures."),
+        ("how-to-italicize-text-in-css", "How to Italicize Text in CSS", "Emphasis", "The font-style property is used to italicize text. Note that 'italic' uses specially drawn glyphs, while 'oblique' just artificially slants the regular font.", "em, i {\n  font-style: italic;\n}", "Use true italics whenever the font family supports them, rather than relying on browser-generated obliques."),
+        ("how-to-change-font-weight-numerically", "Font Weight 100 to 900 Explained", "Typography Scales", "CSS font weights range from 100 (Thin) to 900 (Black). 400 maps to 'normal' and 700 maps to 'bold'.", "font-weight: 600; /* Semi-Bold */", "Skip weights to create contrast. Pair a 300 Light with a 700 Bold, rather than 400 and 500."),
+        ("how-to-capitalize-first-letter-css", "Capitalizing First Letters with CSS", "Text Transformation", "CSS can automatically change the casing of your text without modifying the source HTML using the text-transform property.", "text-transform: capitalize;\n/* OR */\ntext-transform: uppercase;", "Use text-transform instead of typing ALL CAPS in your HTML for better screen reader accessibility."),
+        ("how-to-add-columns-to-text", "Creating Newspaper Columns in CSS", "Advanced Layout", "The CSS column-count property automatically flows your text into multiple columns, just like a newspaper, automatically balancing the height.", "p.article {\n  column-count: 2;\n  column-gap: 2rem;\n}", "Avoid using columns on mobile devices; set column-count to 1 for screens under 768px."),
+        ("how-to-fix-blurry-fonts-on-browser", "How to Fix Blurry Fonts in Chrome", "Rendering Optimization", "On MacOS, you can toggle the subpixel rendering engine to make light text on dark backgrounds appear crisper and less bulky.", "-webkit-font-smoothing: antialiased;\n-moz-osx-font-smoothing: grayscale;", "Only use antialiased smoothing for light text on dark backgrounds; it makes dark text on light backgrounds too thin."),
+        ("how-to-import-adobe-fonts", "How to Import Adobe Fonts", "Premium Typography", "Adobe Fonts (formerly Typekit) are integrated using a <link> stylesheet exactly like Google Fonts, utilizing your specific project ID.", "<link rel='stylesheet' href='[https://use.typekit.net/your_id.css](https://use.typekit.net/your_id.css)'>", "Adobe Fonts do not support the same subsetting parameters via URL as Google Fonts."),
+        ("what-is-x-height-typography", "Understanding X-Height in Typography", "Design Theory", "The x-height is the distance between the baseline and the median line (the height of a lowercase 'x'). Large x-heights improve legibility at small sizes.", "/* Conceptual - choose fonts like Inter or Helvetica */", "When pairing fonts, try to match their x-heights to create visual harmony across the page."),
+        ("how-to-add-font-fallback-stacks", "Creating Bulletproof Font Stacks", "Resilience", "A font stack is a list of fallback fonts. The browser will try each one in order until it finds one installed on the user's system.", "font-family: 'MyCustomFont', 'Helvetica Neue', Arial, sans-serif;", "Always end your font stack with a generic family name like 'sans-serif' or 'serif'.")
     ]
 
+    # Full 30 Comparisons
     top_comparisons = [
         ("Arial", "Helvetica", "Arial, sans-serif", "Helvetica, Arial, sans-serif", "", ""), 
         ("Inter", "Roboto", "'Inter', sans-serif", "'Roboto', sans-serif", "Inter:wght@400;700", "Roboto:wght@400;700"), 
@@ -116,13 +118,15 @@ try:
 
     # Generate Individual 30 Guide Articles
     guides_cards_html = ""
-    for slug, title, desc, code in top_guides:
+    for slug, title, subtitle, concept, code, protip in top_guides:
         safe_code = code.replace('<', '&lt;').replace('>', '&gt;')
         html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title} | htmlfonts Guides</title>
-    <meta name="description" content="{desc}">
+    <meta name="description" content="{concept}">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <script src="{TAILWIND}"></script>
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
@@ -132,21 +136,30 @@ try:
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
             <a href="/" class="font-black text-2xl group"><span class="text-indigo-600">html</span>fonts</a>
             <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
-                <a href="/" class="hover:text-indigo-600 transition">Directory</a>
-                <a href="/font-vs-font-comparison-tool.html" class="hover:text-indigo-600 transition">Font VS Font</a>
-                <a href="/editors-desk.html" class="hover:text-indigo-600 transition">Editor's Desk</a>
-                <a href="/html-css-font-guides.html" class="hover:text-indigo-600 transition">Guides</a>
+                <a href="/">Directory</a>
+                <a href="/font-vs-font-comparison-tool.html">Font VS Font</a>
+                <a href="/editors-desk.html">Editor's Desk</a>
+                <a href="/html-css-font-guides.html" class="text-indigo-600">Guides</a>
             </nav>
         </div>
     </header>
     <main class="flex-grow py-16 px-6">
-        <div class="max-w-3xl mx-auto">
-            <a href="/html-css-font-guides.html" class="text-indigo-600 font-bold uppercase tracking-widest text-xs">&larr; Back to Guides</a>
-            <article class="bg-white p-10 mt-8 rounded-3xl shadow-lg border border-slate-200">
-                <h1 class="text-4xl font-black mb-4 tracking-tight text-slate-900">{title}</h1>
-                <p class="text-xl text-slate-600 mb-8">{desc}</p>
-                <div class="bg-slate-900 p-6 rounded-xl overflow-x-auto">
-                    <code class="text-indigo-300 font-mono text-sm whitespace-pre">{safe_code}</code>
+        <div class="max-w-4xl mx-auto">
+            <a href="/html-css-font-guides.html" class="text-indigo-600 font-bold uppercase tracking-widest text-xs">&larr; Back to Guides Directory</a>
+            <article class="bg-white p-12 mt-8 rounded-3xl shadow-xl border border-slate-200">
+                <span class="bg-indigo-100 text-indigo-800 text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">{subtitle}</span>
+                <h1 class="text-5xl font-black mt-6 mb-8 tracking-tight text-slate-900">{title}</h1>
+                <div class="prose prose-lg text-slate-600 max-w-none">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-4">The Concept</h2>
+                    <p class="mb-8 leading-relaxed">{concept}</p>
+                    <h2 class="text-2xl font-bold text-slate-800 mb-4">Production-Ready Code</h2>
+                    <div class="bg-slate-900 p-6 rounded-2xl overflow-x-auto mb-8 border border-slate-800 shadow-inner">
+                        <code class="text-indigo-300 font-mono text-sm whitespace-pre">{safe_code}</code>
+                    </div>
+                    <div class="bg-emerald-50 border-l-4 border-emerald-500 p-6 rounded-r-2xl">
+                        <h3 class="text-emerald-800 font-black text-sm uppercase tracking-widest mb-2">💡 Pro Typography Tip</h3>
+                        <p class="text-emerald-700 font-medium m-0">{protip}</p>
+                    </div>
                 </div>
             </article>
         </div>
@@ -160,15 +173,18 @@ try:
         sitemap += f"  <url><loc>{DOMAIN}/article/{slug}.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>\n"
         
         guides_cards_html += f"""
-        <a href="/article/{slug}.html" class="block bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:border-indigo-300 transition-all group">
-            <h3 class="text-xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors">{title}</h3>
-            <p class="text-slate-500 mt-2 font-medium leading-relaxed">{desc}</p>
+        <a href="/article/{slug}.html" class="block bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:border-indigo-300 transition-all group">
+            <span class="text-[10px] font-black text-indigo-600 uppercase tracking-widest block mb-2">{subtitle}</span>
+            <h3 class="text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">{title}</h3>
+            <p class="text-slate-500 font-medium leading-relaxed">{concept[:100]}...</p>
         </a>"""
 
     # Generate the MASTER GUIDES Directory Page
     guides_page_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML & CSS Font Guides | htmlfonts</title>
     <meta name="description" content="Master web typography with our comprehensive CSS and HTML font guides.">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -187,10 +203,10 @@ try:
             </nav>
         </div>
     </header>
-    <main class="flex-grow py-16 px-6 max-w-5xl mx-auto w-full">
-        <h1 class="text-5xl font-black tracking-tight text-slate-900 mb-4">Typography Guides</h1>
-        <p class="text-xl text-slate-500 mb-12">Master CSS typography with our 30 essential guides.</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <main class="flex-grow py-16 px-6 max-w-6xl mx-auto w-full">
+        <h1 class="text-6xl font-black tracking-tight text-slate-900 mb-6">Typography Guides</h1>
+        <p class="text-2xl text-slate-500 mb-16 max-w-3xl">Master CSS typography and build better web interfaces with our deep-dive technical tutorials.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {guides_cards_html}
         </div>
     </main>
@@ -212,7 +228,6 @@ try:
         html_a = safe_a if safe_a else sys_msg
         html_b = safe_b if safe_b else sys_msg
 
-        # FIX: Clean button variables extracted OUTSIDE the f-string block
         btn_ha = '<button onclick="c(\'ha\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">COPY</button>' if link_a else ''
         btn_hb = '<button onclick="c(\'hb\')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition">COPY</button>' if link_b else ''
         
@@ -237,10 +252,10 @@ try:
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
             <a href="/" class="font-black text-2xl group"><span class="text-indigo-600">html</span>fonts</a>
             <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
-                <a href="/" class="hover:text-indigo-600 transition">Directory</a>
-                <a href="/font-vs-font-comparison-tool.html" class="hover:text-indigo-600 transition">Font VS Font</a>
-                <a href="/editors-desk.html" class="hover:text-indigo-600 transition">Editor's Desk</a>
-                <a href="/html-css-font-guides.html" class="hover:text-indigo-600 transition">Guides</a>
+                <a href="/">Directory</a>
+                <a href="/font-vs-font-comparison-tool.html">Font VS Font</a>
+                <a href="/editors-desk.html">Editor's Desk</a>
+                <a href="/html-css-font-guides.html">Guides</a>
             </nav>
         </div>
     </header>
@@ -323,6 +338,8 @@ try:
     tip_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{new_data['title']} | Editor's Desk</title>
     <meta name="description" content="{new_data['tip']}">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -342,13 +359,13 @@ try:
         </div>
     </header>
     <main class="flex-grow py-16 px-6">
-        <div class="max-w-3xl mx-auto">
+        <div class="max-w-4xl mx-auto">
             <a href="/editors-desk.html" class="text-indigo-600 font-bold uppercase tracking-widest text-xs">&larr; Back to Archive</a>
-            <article class="bg-white p-10 mt-8 rounded-3xl shadow-lg border border-slate-200">
-                <span class="text-indigo-600 text-xs font-black uppercase tracking-widest">{new_data['date']}</span>
-                <h1 class="text-4xl font-black mt-2 mb-4 tracking-tight text-slate-900">{new_data['title']}</h1>
-                <p class="text-xl text-slate-600 mb-8 font-medium leading-relaxed">{new_data['tip']}</p>
-                <div class="bg-slate-900 p-8 rounded-2xl overflow-x-auto border border-slate-800">
+            <article class="bg-white p-12 mt-8 rounded-3xl shadow-xl border border-slate-200">
+                <span class="bg-indigo-100 text-indigo-800 text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">{new_data['date']}</span>
+                <h1 class="text-5xl font-black mt-6 mb-8 tracking-tight text-slate-900">{new_data['title']}</h1>
+                <p class="text-2xl text-slate-600 mb-10 font-medium leading-relaxed">{new_data['tip']}</p>
+                <div class="bg-slate-900 p-8 rounded-2xl overflow-x-auto border border-slate-800 shadow-inner">
                     <pre class="text-indigo-300 font-mono text-sm"><code>{tip_safe_code}</code></pre>
                 </div>
             </article>
@@ -375,6 +392,8 @@ try:
     archive_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editor's Desk Archive | htmlfonts</title>
     <meta name="description" content="Daily CSS typography tips and web design insights.">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -413,8 +432,9 @@ except Exception as e:
     print(f"❌ Generation Error: {e}")
     exit(1)
 
-# 4. POST TO X (Twitter)
+# 4. POST TO X (Twitter) WITH EXPLICIT ERROR HANDLING
 try:
+    print("Attempting to authenticate with X.com...")
     client_x = tweepy.Client(
         consumer_key=os.environ["X_API_KEY"],
         consumer_secret=os.environ["X_API_SECRET"],
@@ -423,7 +443,14 @@ try:
     )
     
     tweet_text = f"{new_data['tweet']}\n\nRead Tip: {DOMAIN}/article/{new_data['slug']}.html #webdesign #typography"
-    client_x.create_tweet(text=tweet_text)
-    print("✅ X Post Successful.")
+    print(f"Tweeting: {tweet_text}")
+    
+    response = client_x.create_tweet(text=tweet_text)
+    print(f"✅ X Post Successful. Status ID: {response.data['id']}")
+
+except tweepy.errors.Forbidden as e:
+    print(f"❌ X API 403 Forbidden: Your tokens do NOT have write permission. Please set App to 'Bot' and regenerate Access Tokens. Details: {e}")
+except tweepy.errors.Unauthorized as e:
+    print(f"❌ X API 401 Unauthorized: Your API keys in GitHub Secrets are incorrect or mismatched. Details: {e}")
 except Exception as e:
-    print(f"❌ X Post Failed: {e}")
+    print(f"❌ X Post Failed with unknown error: {e}")
