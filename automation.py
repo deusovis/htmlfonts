@@ -13,7 +13,7 @@ Keys MUST exactly match: "title", "slug", "tweet", "tip", "css_snippet".
 Return ONLY raw JSON."""
 
 try:
-    # Fetch Daily Tip from Gemini
+    # Fetch Daily Tip from Gemini 3 Flash
     response = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=seo_prompt)
     raw_text = response.text.strip()
     if raw_text.startswith("```json"): 
@@ -34,7 +34,7 @@ try:
     os.makedirs('compare', exist_ok=True)
     os.makedirs('article', exist_ok=True)
     
-    # Start Sitemap (Added new core pages for SEO)
+    # Start Sitemap (Adding new URLs)
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="[http://www.sitemaps.org/schemas/sitemap/0.9](http://www.sitemaps.org/schemas/sitemap/0.9)">\n'
     sitemap += '  <url><loc>[https://htmlfonts.com/](https://htmlfonts.com/)</loc><priority>1.0</priority></url>\n'
     sitemap += '  <url><loc>[https://htmlfonts.com/font-vs-font-comparison-tool.html](https://htmlfonts.com/font-vs-font-comparison-tool.html)</loc><priority>0.9</priority></url>\n'
@@ -114,6 +114,7 @@ try:
     # Loop 1: Articles
     for slug, title, desc, code in top_guides:
         safe_code = code.replace('<', '&lt;').replace('>', '&gt;')
+        # Notice the back link points directly to /html-css-font-guides.html
         html = f"""<!DOCTYPE html><html lang="en"><head><title>{title} | htmlfonts Guides</title><meta name="description" content="{desc}"><script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script><style>body {{ font-family: system-ui, sans-serif; }}</style></head><body class="bg-slate-50 py-16 px-6"><div class="max-w-3xl mx-auto"><a href="/html-css-font-guides.html" class="text-indigo-600 font-bold uppercase tracking-widest text-xs">&larr; Back to Guides</a><article class="bg-white p-10 mt-8 rounded-3xl shadow-lg border border-slate-200"><h1 class="text-4xl font-black mb-4 tracking-tight">{title}</h1><p class="text-xl text-slate-600 mb-8">{desc}</p><div class="bg-slate-900 p-6 rounded-xl overflow-x-auto"><code class="text-indigo-300 font-mono text-sm whitespace-pre">{safe_code}</code></div></article></div></body></html>"""
         with open(f"article/{slug}.html", 'w', encoding='utf-8') as f: f.write(html)
         sitemap += f"  <url><loc>[https://htmlfonts.com/article/](https://htmlfonts.com/article/){slug}.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>\n"
@@ -126,6 +127,7 @@ try:
         safe_a = imp_a.replace('<', '&lt;').replace('>', '&gt;')
         safe_b = imp_b.replace('<', '&lt;').replace('>', '&gt;')
         
+        # Notice the back link points directly to /font-vs-font-comparison-tool.html
         vs_html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>{font_a} vs {font_b} | Comparison</title><script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>{imp_a}{imp_b}<style>body {{ font-family: system-ui, sans-serif; }} .toast-active {{ opacity: 1; transform: translate(-50%, 0); transition: all 0.3s; }}</style></head><body class="bg-slate-50 min-h-screen flex flex-col"><div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase">Copied! 🚀</div><header class="bg-white border-b py-4 px-6 text-center"><a href="/" class="text-indigo-600 font-black text-2xl">htmlfonts</a></header><div class="max-w-6xl mx-auto px-4 py-16 w-full"><div class="text-center mb-12"><a href="/font-vs-font-comparison-tool.html" class="text-indigo-600 font-bold text-xs uppercase">&larr; Back to Tool</a><h1 class="text-5xl font-black mt-6 tracking-tight text-slate-900">{font_a} vs {font_b}</h1></div><div class="bg-white rounded-3xl p-12 shadow-2xl border"><input type="text" id="vs-text" value="Optimize your UI design with fast-loading fonts." oninput="u()" class="w-full mb-10 px-6 py-4 bg-slate-50 border rounded-xl text-xl text-center"><div class="grid grid-cols-1 md:grid-cols-2 gap-10 divide-x divide-slate-100"><div><h3 class="text-2xl font-black mb-6">{font_a}</h3><p id="pa" class="text-5xl leading-tight" style="font-family: {css_a};">Optimize your UI design with fast-loading fonts.</p><div class="mt-8 bg-slate-900 p-4 rounded-xl relative group"><code id="ha" class="text-xs text-indigo-300 font-mono">{safe_a}</code><button onclick="c('ha')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100">COPY</button></div><div class="mt-4 bg-slate-900 p-4 rounded-xl relative group"><code id="ca" class="text-xs text-indigo-300 font-mono">font-family: {css_a};</code><button onclick="c('ca')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100">COPY</button></div></div><div><h3 class="text-2xl font-black mb-6">{font_b}</h3><p id="pb" class="text-5xl leading-tight" style="font-family: {css_b};">Optimize your UI design with fast-loading fonts.</p><div class="mt-8 bg-slate-900 p-4 rounded-xl relative group"><code id="hb" class="text-xs text-indigo-300 font-mono">{safe_b}</code><button onclick="c('hb')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100">COPY</button></div><div class="mt-4 bg-slate-900 p-4 rounded-xl relative group"><code id="cb" class="text-xs text-indigo-300 font-mono">font-family: {css_b};</code><button onclick="c('cb')" class="absolute top-2 right-2 bg-indigo-600 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100">COPY</button></div></div></div></div></div><script>function u() {{ const v = document.getElementById('vs-text').value; document.getElementById('pa').innerText = v; document.getElementById('pb').innerText = v; }} function c(id) {{ const t = document.getElementById(id).textContent; navigator.clipboard.writeText(t).then(() => {{ const ts = document.getElementById('toast'); ts.classList.remove('hidden'); setTimeout(() => ts.classList.add('toast-active'), 10); setTimeout(() => {{ ts.classList.remove('toast-active'); setTimeout(() => ts.classList.add('hidden'), 300); }}, 3000); }}); }}</script></body></html>"""
         with open(f"compare/{slug}.html", 'w', encoding='utf-8') as f: f.write(vs_html)
         sitemap += f"  <url><loc>[https://htmlfonts.com/compare/](https://htmlfonts.com/compare/){slug}.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>\n"
