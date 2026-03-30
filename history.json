@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering `font-display` for Optimal Web Font Performance & UX",
+        "slug": "mastering-font-display-web-font-performance-ux",
+        "tweet": "Boost your site's UX & performance! Learn how `font-display` values like `swap` or `optional` can prevent FOIT/FOUT and optimize web font loading. Essential #CSSTypography #WebFonts #UIDesign tip! #FrontendDev",
+        "tip": "To significantly improve perceived performance and user experience, always specify a `font-display` property within your `@font-face` rules. For most body text, `font-display: swap;` is ideal, allowing fallback text to show immediately and swapping once the custom font loads, preventing a 'flash of invisible text' (FOIT). For decorative or less critical fonts, consider `font-display: optional;` to avoid layout shifts if the font is slow to load, prioritizing system fonts for a smoother experience.",
+        "css_snippet": "@font-face {\n  font-family: 'YourCustomFont';\n  src: url('/fonts/YourCustomFont-Regular.woff2') format('woff2'),\n       url('/fonts/YourCustomFont-Regular.woff') format('woff');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Or 'block', 'fallback', 'optional' */\n}\n\nbody {\n  font-family: 'YourCustomFont', 'Helvetica Neue', Arial, sans-serif;\n  line-height: 1.5;\n  letter-spacing: 0.01em;\n}\n\nh1 {\n  font-family: 'AnotherDisplayFont', Georgia, serif;\n  font-weight: 700;\n  font-display: optional; /* Prioritize fast load over custom font */\n}",
+        "date": "March 30, 2026"
+    },
+    {
         "title": "Typography Tip Mar 30",
         "slug": "typography-tip-1774910453",
         "tweet": "Check out today's CSS typography tip! #webdesign #css",
