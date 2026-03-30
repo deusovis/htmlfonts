@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering Variable Fonts: Elevating UI/UX with Performance & Precision",
+        "slug": "mastering-variable-fonts-ui-ux-performance",
+        "tweet": "Unlock next-level #WebTypography! \ud83d\ude80 Variable fonts offer incredible flexibility & performance for your #UIDesign. Ditch multiple font files for one and boost #UserExperience. Learn to implement this powerful #CSS technique! #WebFonts",
+        "tip": "Leverage Variable Fonts to dramatically reduce HTTP requests and enable fine-grained typographic control (e.g., optical sizing, weight interpolation, or custom axes) within a single font file. This not only boosts performance but also enhances #UIDesign adaptability, allowing for subtle, responsive adjustments directly via CSS without needing JavaScript or loading multiple static font variants.",
+        "css_snippet": "/* Define a variable font */\n@font-face {\n  font-family: 'Inter Variable';\n  src: url('/fonts/Inter-roman.var.woff2') format('woff2-variations');\n  font-weight: 100 900; /* Define the weight range */\n  font-display: swap;\n}\n\nbody {\n  font-family: 'Inter Variable', sans-serif;\n  font-weight: 450; /* Use an intermediate weight */\n}\n\nh1 {\n  /* Apply specific variation settings for weight and optical size */\n  font-variation-settings: 'wght' 700, 'opsz' 36;\n  letter-spacing: -0.02em;\n}\n\n.fine-tuned-text {\n  /* Adjust slant and width for specific elements */\n  font-variation-settings: 'slnt' -10, 'wdth' 95;\n}",
+        "date": "March 30, 2026"
+    },
+    {
         "title": "Mastering `font-display`: The Key to Seamless Web Font Loading & UX",
         "slug": "mastering-font-display-seamless-web-font-loading-ux",
         "tweet": "Enhance #WebFonts #UX! Learn how `font-display` in #CSS is crucial for smooth loading and preventing FOUT/FOIT. A must-know for better #UIDesign and #CSStypography. #webdev",
