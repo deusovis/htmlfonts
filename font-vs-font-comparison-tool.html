@@ -25,8 +25,7 @@
         .toast-active { opacity: 1; transform: translate(-50%, 0); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .modal-enter { opacity: 0; transform: scale(0.95) translateY(10px); }
         .modal-active { opacity: 1; transform: scale(1) translateY(0); transition: all 0.2s ease-out; }
-        /* Premium Gradient Text Shadow for better contrast */
-        .comparison-text { text-shadow: 0 4px 12px rgba(0,0,0,0.02); transition: color 0.3s ease; }
+        .comparison-text { transition: all 0.2s ease; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col selection:bg-indigo-200">
@@ -46,7 +45,6 @@
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">html</span><span class="text-slate-900">fonts</span>
                 </span>
             </a>
-            
             <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
                 <a href="/" class="hover:text-indigo-600 transition">Directory</a>
                 <a href="/font-vs-font-comparison-tool.html" class="text-indigo-600 transition">Font VS Font</a>
@@ -65,58 +63,58 @@
         </div>
     </header>
 
-    <main class="flex-grow w-full">
-        <section id="vs-tool" class="bg-gradient-to-b from-slate-50 to-indigo-50/50 py-16 md:py-24">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6">
-                <div class="text-center mb-12">
-                    <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900">
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Font VS Font</span> Tool
-                    </h1>
-                    <p class="text-slate-500 font-medium mt-4 text-lg">Compare legibility and design aesthetics side-by-side.</p>
+    <main class="flex-grow w-full py-16 md:py-24">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Font VS Font</span> Tool
+                </h1>
+                <p class="text-slate-500 font-medium mt-4 text-lg">Compare legibility and design aesthetics side-by-side.</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 md:p-10 shadow-2xl border border-slate-200/60">
+                <div class="flex flex-col md:flex-row gap-6 mb-12">
+                    <div class="w-full md:w-2/3">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 px-1">Testing Playground</label>
+                        <input type="text" id="vs-text" value="Optimize your UI design with fast-loading free web fonts." 
+                            onfocus="if(this.value===this.defaultValue) { this.value=''; this.dispatchEvent(new Event('input')); }" 
+                            onblur="if(this.value==='') { this.value=this.defaultValue; this.dispatchEvent(new Event('input')); }"
+                            class="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-xl font-medium shadow-inner transition-all">
+                    </div>
+                    <div class="w-full md:w-1/3 flex flex-col justify-center bg-slate-50 border border-slate-200 rounded-xl px-6 py-2 shadow-inner">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Compare Size</span>
+                            <span id="vs-size-label" class="text-indigo-600 font-bold text-sm">32px</span>
+                        </div>
+                        <input type="range" id="vs-font-size" min="12" max="120" value="32" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
+                    </div>
                 </div>
 
-                <div class="bg-white rounded-3xl p-6 md:p-10 shadow-2xl border border-slate-200/60 overflow-hidden relative">
-                    <div class="flex flex-col md:flex-row gap-6 mb-12 relative z-10">
-                        <div class="w-full md:w-2/3">
-                            <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 px-1">Testing Playground</label>
-                            <input type="text" id="vs-text" value="Optimize your UI design with fast-loading free web fonts." 
-                                class="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-xl font-medium shadow-inner transition-all">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                    <div class="md:pr-10 pt-6 md:pt-0 flex flex-col h-full">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-indigo-200 uppercase">A</span>
+                            <select id="vs-font-a" class="w-full p-3 bg-white border border-slate-200 rounded-xl font-bold text-slate-800 text-lg shadow-sm cursor-pointer hover:border-indigo-400 transition-colors"></select>
                         </div>
-                        <div class="w-full md:w-1/3 flex flex-col justify-center bg-slate-50 border border-slate-200 rounded-xl px-6 py-2 shadow-inner">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Compare Size</span>
-                                <span id="vs-size-label" class="text-indigo-600 font-bold text-sm">32px</span>
-                            </div>
-                            <input type="range" id="vs-font-size" min="12" max="120" value="32" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
+                        <div class="flex-grow flex items-center min-h-[250px] p-6 bg-indigo-50/20 rounded-2xl border border-indigo-100/50">
+                            <p id="vs-preview-a" class="comparison-text text-indigo-900 break-words leading-tight w-full"></p>
                         </div>
+                        <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-xl shadow-indigo-100 mt-8 group">
+                            GET CODE FOR FONT A <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+                        </button>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 divide-y md:divide-y-0 md:divide-x divide-slate-100">
-                        <div class="md:pr-10 pt-6 md:pt-0 flex flex-col h-full">
-                            <div class="flex items-center gap-3 mb-6">
-                                <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-indigo-200 uppercase">A</span>
-                                <select id="vs-font-a" class="w-full p-3 bg-white border border-slate-200 rounded-xl font-bold text-slate-800 text-lg shadow-sm cursor-pointer hover:border-indigo-400 transition-colors"></select>
-                            </div>
-                            <div class="flex-grow flex items-center min-h-[250px] p-6 bg-indigo-50/20 rounded-2xl border border-indigo-100/50">
-                                <p id="vs-preview-a" class="comparison-text text-indigo-900 break-words leading-tight w-full"></p>
-                            </div>
-                            <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-xl shadow-indigo-100 mt-8 group">
-                                GET CODE FOR FONT A <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
-                            </button>
+                    <div class="md:pl-10 pt-10 md:pt-0 flex flex-col h-full">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-violet-200 uppercase">B</span>
+                            <select id="vs-font-b" class="w-full p-3 bg-white border border-slate-200 rounded-xl font-bold text-slate-800 text-lg shadow-sm cursor-pointer hover:border-violet-400 transition-colors"></select>
                         </div>
-
-                        <div class="md:pl-10 pt-10 md:pt-0 flex flex-col h-full">
-                            <div class="flex items-center gap-3 mb-6">
-                                <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-violet-200 uppercase">B</span>
-                                <select id="vs-font-b" class="w-full p-3 bg-white border border-slate-200 rounded-xl font-bold text-slate-800 text-lg shadow-sm cursor-pointer hover:border-violet-400 transition-colors"></select>
-                            </div>
-                            <div class="flex-grow flex items-center min-h-[250px] p-6 bg-violet-50/20 rounded-2xl border border-violet-100/50">
-                                <p id="vs-preview-b" class="comparison-text text-violet-900 break-words leading-tight w-full"></p>
-                            </div>
-                            <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-xl shadow-violet-100 mt-8 group">
-                                GET CODE FOR FONT B <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
-                            </button>
+                        <div class="flex-grow flex items-center min-h-[250px] p-6 bg-violet-50/20 rounded-2xl border border-violet-100/50">
+                            <p id="vs-preview-b" class="comparison-text text-violet-900 break-words leading-tight w-full"></p>
                         </div>
+                        <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-xl shadow-violet-100 mt-8 group">
+                            GET CODE FOR FONT B <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -129,15 +127,15 @@
             <h3 class="text-3xl font-black text-slate-900 tracking-tighter mb-8" id="modal-font-name">Font Detail</h3>
             <div class="space-y-6">
                 <div>
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">1. Add to HTML Head</label>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2" id="modal-html-label">1. Add to HTML Head</label>
                     <div class="bg-slate-900 rounded-xl p-4 relative group">
-                        <code id="modal-html" class="text-xs font-mono text-indigo-300 break-all block"></code>
+                        <code id="modal-html" class="text-xs block"></code>
                         <button id="copy-html-btn" onclick="copyElementText('modal-html')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY HTML</button>
                     </div>
                 </div>
                 <div>
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">2. Apply CSS Rule</label>
-                    <div class="bg-slate-900 rounded-xl p-4 relative group">
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">2. Apply CSS Rule (The Code that Activates Font)</label>
+                    <div class="bg-slate-900 rounded-xl p-4 relative group border-2 border-indigo-500/30">
                         <code id="modal-css" class="text-xs font-mono text-indigo-300 block"></code>
                         <button onclick="copyElementText('modal-css')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY CSS</button>
                     </div>
@@ -241,12 +239,15 @@
             document.getElementById('modal-font-name').innerText = fontObj.name;
             const htmlCode = document.getElementById('modal-html');
             const copyBtn = document.getElementById('copy-html-btn');
+            const htmlLabel = document.getElementById('modal-html-label');
             
             if (fontObj.link) {
+                htmlLabel.innerText = "1. Add to HTML Head";
                 htmlCode.textContent = `<link href="https://fonts.googleapis.com/css2?family=${fontObj.link}&display=swap" rel="stylesheet">`;
                 htmlCode.className = "text-xs font-mono text-indigo-300 break-all block";
                 copyBtn.style.display = 'block';
             } else {
+                htmlLabel.innerText = "Info: Instant Deployment";
                 htmlCode.innerHTML = `<span class="font-sans font-medium text-emerald-400">✨ Web-safe system font. Pre-installed on all devices for zero-latency loading. No HTML import required!</span>`;
                 htmlCode.className = "text-xs block";
                 copyBtn.style.display = 'none';
