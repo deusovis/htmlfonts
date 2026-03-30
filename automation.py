@@ -316,7 +316,7 @@ try:
             
             for attempt in range(3):
                 try:
-                    time.sleep(4) 
+                    time.sleep(5) # INCREASED TO 5 SECONDS TO PREVENT RATE LIMIT
                     resp = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=prompt)
                     ai_content = resp.text.replace('```html', '').replace('```', '').strip()
                     profile_cache[slug] = ai_content
@@ -389,7 +389,6 @@ try:
     # 4. BUILD THE HOME PAGE (INDEX.HTML)
     print("Generating new Home Page (index.html)...")
     
-    # REVISED: Button sizing brought down to match typography scales (px-6 py-3.5 text-xs)
     home_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -546,7 +545,6 @@ try:
             <p class="text-slate-500 font-medium leading-relaxed">{concept[:110]}...</p>
         </a>"""
 
-    # REVISED: Heading text sizes normalized across views to 4xl/5xl
     guides_page_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -590,9 +588,6 @@ try:
         html_a = imp_a if imp_a else sys_msg
         html_b = imp_b if imp_b else sys_msg
 
-        safe_ha = html_a.replace("'", "\\'").replace('"', '&quot;')
-        safe_hb = html_b.replace("'", "\\'").replace('"', '&quot;')
-
         cache_key = f"{font_a}_vs_{font_b}"
         seo_description = f"<h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between {font_a} and {font_b}</h2><p class='mb-4 leading-relaxed'>Compare the typography of {font_a} and {font_b}.</p>"
         
@@ -604,7 +599,7 @@ try:
             desc_prompt = f"Please create an amazing description (short helpful history and key differences) for: {font_a} vs {font_b}. Return ONLY raw HTML. Structure it with an <h2 class='text-2xl font-black text-slate-900 mb-4'> for the title, and <p class='mb-4 leading-relaxed'> for the text."
             for attempt in range(3):
                 try:
-                    time.sleep(4) 
+                    time.sleep(5) # INCREASED TO 5 SECONDS TO PREVENT RATE LIMIT
                     resp = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=desc_prompt)
                     seo_description = resp.text.replace('```html', '').replace('```', '').strip()
                     seo_cache[cache_key] = seo_description
@@ -867,7 +862,6 @@ try:
             pagination_html += f'<a href="/{page_link}" class="w-10 h-10 flex items-center justify-center rounded-xl font-bold {active_class} transition-all">{p}</a>'
         pagination_html += '</div>'
 
-        # REVISED: Heading normalized
         archive_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
