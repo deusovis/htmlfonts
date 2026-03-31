@@ -1,5 +1,13 @@
 [
     {
+        "title": "Typography Tip Mar 31",
+        "slug": "typography-tip-1774917816",
+        "tweet": "Check out today's CSS typography tip! #webdesign #css",
+        "tip": "To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.",
+        "css_snippet": "body {\n  line-height: 1.5;\n}",
+        "date": "March 31, 2026"
+    },
+    {
         "title": "Typographic Scale & Harmony: Elevating UI Design with Modern CSS",
         "slug": "typographic-scale-harmony-css-ui-design-ux",
         "tweet": "Unlock #WebTypography secrets! Learn how to create harmonious typographic scales with #CSS for stunning #UIDesign and better #UX. Dive into our latest expert tip and level up your web fonts mastery! #WebDev #TypographyTips",
