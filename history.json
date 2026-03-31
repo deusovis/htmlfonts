@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering Fluid Typography for Legible UI/UX on All Devices",
+        "slug": "mastering-fluid-typography-legible-ui-ux-clamp",
+        "tweet": "Boost your #UI design & #userExperience with fluid #CSStypography! Learn how to make #webfonts beautifully legible on any screen using `clamp()` for optimal `font-size` and `line-height`. #WebDev #TypographyTips",
+        "tip": "Achieving truly responsive and accessible typography across a myriad of devices is a common challenge for web UI designers. Fixed font sizes or simple media queries often lead to awkward scaling or a 'jumpy' user experience. The key to superior legibility and a seamless user experience lies in fluid typography, specifically leveraging CSS's `clamp()` function for both `font-size` and `line-height`. This allows you to define a minimum, preferred (fluid), and maximum size, ensuring your text scales gracefully. This prevents text from becoming too small on mobile or overwhelmingly large on wide screens, maintaining optimal reading comfort and aesthetic balance. This approach is crucial for a consistent and high-quality UI design, enhancing user engagement with your chosen web fonts on any display.",
+        "css_snippet": "/* Enhance legibility and user experience with fluid typography */\nbody {\n  font-family: 'Inter', sans-serif; /* Example web font */\n  /* \n   * Scales font-size between 1rem (min) and 1.5rem (max).\n   * calc(1rem + 2vw) is the preferred fluid value, scaling with viewport width.\n   * This ensures text is never too small or too large.\n   */\n  font-size: clamp(1rem, calc(1rem + 2vw), 1.5rem); \n\n  /* \n   * Scales line-height between 1.4 (min) and 1.6 (max).\n   * calc(1em + 0.2vw) provides fluid line spacing relative to font size and viewport.\n   * Crucial for maintaining optimal vertical rhythm and readability.\n   */\n  line-height: clamp(1.4, calc(1em + 0.2vw), 1.6);\n  color: #333;\n}\n\n/* Example for a heading with more pronounced scaling */\nh1 {\n  font-size: clamp(2rem, calc(2rem + 4vw), 4rem);\n  line-height: 1.1;\n  margin-bottom: 0.5em;\n}",
+        "date": "March 31, 2026"
+    },
+    {
         "title": "Typography Tip Mar 31",
         "slug": "typography-tip-1774999614",
         "tweet": "Check out today's CSS typography tip! #webdesign #css",

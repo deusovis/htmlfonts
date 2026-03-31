@@ -66,6 +66,32 @@
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
                 </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering font-display for Superior Web Font Loading and User Experience</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">Always include a `font-display` descriptor in your `@font-face` rules. For most body text, `font-display: swap;` offers the best balance, showing a fallback quickly and swapping in your custom font when ready. For critical hero text, `block` might be acceptable, but for secondary elements, consider `fallback` or `optional` to minimize layout shifts (CLS) and ensure a fast initial render, prioritizing readability.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">@font-face {
+  font-family: &#x27;Inter&#x27;;
+  src: url(&#x27;/fonts/Inter-Regular.woff2&#x27;) format(&#x27;woff2&#x27;),
+       url(&#x27;/fonts/Inter-Regular.woff&#x27;) format(&#x27;woff&#x27;);
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; /* Ensures text is visible immediately with a fallback */
+}
+
+@font-face {
+  font-family: &#x27;Open Sans&#x27;;
+  src: url(&#x27;/fonts/OpenSans-Bold.woff2&#x27;) format(&#x27;woff2&#x27;);
+  font-weight: 700;
+  font-style: normal;
+  font-display: fallback; /* Shows fallback for a short period, then swaps */
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
                 <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Typography Tip Mar 31</h2>
                 <p class="text-slate-600 font-medium leading-relaxed mb-6">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
                 <div class="bg-slate-900 rounded-xl p-4 relative">
@@ -246,19 +272,6 @@ h1 {
 
 /* In your HTML &lt;head&gt; for critical fonts */
 &lt;link rel=&quot;preload&quot; href=&quot;/fonts/OpenSans-Regular.woff2&quot; as=&quot;font&quot; type=&quot;font/woff2&quot; crossorigin&gt;</code></pre>
-                </div>
-            </article>
-            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
-                </div>
-                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Typography Tip Mar 31</h2>
-                <p class="text-slate-600 font-medium leading-relaxed mb-6">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
-                <div class="bg-slate-900 rounded-xl p-4 relative">
-                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">body {
-  line-height: 1.5;
-}</code></pre>
                 </div>
             </article>
         

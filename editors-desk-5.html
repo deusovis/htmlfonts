@@ -64,6 +64,59 @@
             <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
                 <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Typographic Scale & Harmony: Elevating UI Design with Modern CSS</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">To achieve superior readability and a professional UI design, move beyond arbitrary font sizes. Implement a modular typographic scale (e.g., using a 'Major Third' or 'Perfect Fifth' ratio) with CSS Custom Properties and `rem` units. This ensures consistency and responsiveness across devices, while pairing `line-height` values thoughtfully (ideally a multiple of your baseline grid) will create a harmonious vertical rhythm, significantly boosting user experience.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">:root {
+  --font-base: 1rem; /* Base font size, typically 16px */
+  --typographic-scale: 1.25; /* Major Third scale */
+
+  --font-size-sm: calc(var(--font-base) / var(--typographic-scale));
+  --font-size-md: var(--font-base);
+  --font-size-lg: calc(var(--font-base) * var(--typographic-scale));
+  --font-size-xl: calc(var(--font-size-lg) * var(--typographic-scale));
+  --font-size-xxl: calc(var(--font-size-xl) * var(--typographic-scale));
+  --font-size-xxxl: calc(var(--font-size-xxl) * var(--typographic-scale));
+
+  --line-height-body: 1.6;
+  --line-height-heading: 1.2;
+}
+
+body {
+  font-family: &#x27;Inter&#x27;, sans-serif; /* Example web font */
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-body);
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: &#x27;Lora&#x27;, serif; /* Another example web font for headings */
+  line-height: var(--line-height-heading);
+  margin-top: calc(var(--line-height-body) * 1.5em); /* Top margin aligned to baseline */
+  margin-bottom: calc(var(--line-height-body) * 0.5em);
+}
+
+h1 { font-size: var(--font-size-xxxl); }
+h2 { font-size: var(--font-size-xxl); }
+h3 { font-size: var(--font-size-xl); }
+h4 { font-size: var(--font-size-lg); }
+h5 { font-size: var(--font-size-md); }
+h6 { font-size: var(--font-size-sm); }
+
+/* Responsive adjustments for larger screens */
+@media (min-width: 768px) {
+  :root {
+    --typographic-scale: 1.333; /* Perfect Fourth for desktop */
+    --font-base: 1.125rem; /* Slightly larger base font */
+  }
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
                     <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 30, 2026</span>
                 </div>
                 <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering Fluid Typography with CSS clamp() for Superior UI/UX</h2>
@@ -304,19 +357,6 @@ body {
   line-height: 1.6; /* Essential for readability with fluid text */
   font-family: &#x27;Inter&#x27;, sans-serif; /* Example web font */
   text-rendering: optimizeLegibility; /* Enhance font rendering */
-}</code></pre>
-                </div>
-            </article>
-            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 30, 2026</span>
-                </div>
-                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Typography Tip Mar 30</h2>
-                <p class="text-slate-600 font-medium leading-relaxed mb-6">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
-                <div class="bg-slate-900 rounded-xl p-4 relative">
-                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">body {
-  line-height: 1.5;
 }</code></pre>
                 </div>
             </article>

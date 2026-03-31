@@ -66,6 +66,41 @@
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
                 </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering Fluid Typography for Legible UI/UX on All Devices</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">Achieving truly responsive and accessible typography across a myriad of devices is a common challenge for web UI designers. Fixed font sizes or simple media queries often lead to awkward scaling or a 'jumpy' user experience. The key to superior legibility and a seamless user experience lies in fluid typography, specifically leveraging CSS's `clamp()` function for both `font-size` and `line-height`. This allows you to define a minimum, preferred (fluid), and maximum size, ensuring your text scales gracefully. This prevents text from becoming too small on mobile or overwhelmingly large on wide screens, maintaining optimal reading comfort and aesthetic balance. This approach is crucial for a consistent and high-quality UI design, enhancing user engagement with your chosen web fonts on any display.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">/* Enhance legibility and user experience with fluid typography */
+body {
+  font-family: &#x27;Inter&#x27;, sans-serif; /* Example web font */
+  /* 
+   * Scales font-size between 1rem (min) and 1.5rem (max).
+   * calc(1rem + 2vw) is the preferred fluid value, scaling with viewport width.
+   * This ensures text is never too small or too large.
+   */
+  font-size: clamp(1rem, calc(1rem + 2vw), 1.5rem); 
+
+  /* 
+   * Scales line-height between 1.4 (min) and 1.6 (max).
+   * calc(1em + 0.2vw) provides fluid line spacing relative to font size and viewport.
+   * Crucial for maintaining optimal vertical rhythm and readability.
+   */
+  line-height: clamp(1.4, calc(1em + 0.2vw), 1.6);
+  color: #333;
+}
+
+/* Example for a heading with more pronounced scaling */
+h1 {
+  font-size: clamp(2rem, calc(2rem + 4vw), 4rem);
+  line-height: 1.1;
+  margin-bottom: 0.5em;
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
                 <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Typography Tip Mar 31</h2>
                 <p class="text-slate-600 font-medium leading-relaxed mb-6">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
                 <div class="bg-slate-900 rounded-xl p-4 relative">
@@ -258,32 +293,6 @@ h1 {
 
 p {
   max-width: 70ch; /* Optimal line length for readability */
-}</code></pre>
-                </div>
-            </article>
-            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
-                </div>
-                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering font-display for Superior Web Font Loading and User Experience</h2>
-                <p class="text-slate-600 font-medium leading-relaxed mb-6">Always include a `font-display` descriptor in your `@font-face` rules. For most body text, `font-display: swap;` offers the best balance, showing a fallback quickly and swapping in your custom font when ready. For critical hero text, `block` might be acceptable, but for secondary elements, consider `fallback` or `optional` to minimize layout shifts (CLS) and ensure a fast initial render, prioritizing readability.</p>
-                <div class="bg-slate-900 rounded-xl p-4 relative">
-                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">@font-face {
-  font-family: &#x27;Inter&#x27;;
-  src: url(&#x27;/fonts/Inter-Regular.woff2&#x27;) format(&#x27;woff2&#x27;),
-       url(&#x27;/fonts/Inter-Regular.woff&#x27;) format(&#x27;woff&#x27;);
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap; /* Ensures text is visible immediately with a fallback */
-}
-
-@font-face {
-  font-family: &#x27;Open Sans&#x27;;
-  src: url(&#x27;/fonts/OpenSans-Bold.woff2&#x27;) format(&#x27;woff2&#x27;);
-  font-weight: 700;
-  font-style: normal;
-  font-display: fallback; /* Shows fallback for a short period, then swaps */
 }</code></pre>
                 </div>
             </article>
