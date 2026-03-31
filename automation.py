@@ -799,15 +799,15 @@ try:
             <a href="/font-vs-font-comparison-tool.html" class="text-indigo-600 font-bold text-xs uppercase tracking-widest hover:text-indigo-800 transition">&larr; Back to Tool</a>
         </div>
         
-        <div class="bg-white rounded-3xl p-6 md:p-10 shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100">
-            <div class="flex flex-col md:flex-row gap-6 mb-12 items-stretch">
+        <div class="bg-white rounded-3xl p-4 md:p-10 shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100">
+            <div class="flex flex-col md:flex-row gap-4 md:gap-6 mb-8 md:mb-12 items-stretch">
                 <div class="w-full md:w-2/3 bg-slate-50 border border-slate-200 rounded-2xl py-4 px-6 shadow-inner flex flex-col justify-center focus-within:ring-2 focus-within:ring-indigo-500 focus-within:bg-white transition-all">
                     <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 px-1">Testing Playground</label>
                     <input type="text" id="vs-text" value="Optimize your UI design with fast-loading free web fonts." 
                         onfocus="if(this.value==='Optimize your UI design with fast-loading free web fonts.') this.value='';" 
                         onblur="if(this.value==='') {{ this.value='Optimize your UI design with fast-loading free web fonts.'; u(); }}"
                         oninput="u()"
-                        class="w-full bg-transparent px-1 outline-none text-lg md:text-xl font-medium text-slate-800 placeholder-slate-300">
+                        class="w-full bg-transparent px-1 outline-none text-base md:text-lg font-medium text-slate-800 placeholder-slate-300">
                 </div>
                 
                 <div class="w-full md:w-1/3 bg-slate-50 border border-slate-200 rounded-2xl py-4 px-6 shadow-inner flex flex-col justify-center">
@@ -819,13 +819,13 @@ try:
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 divide-y md:divide-y-0 md:divide-x divide-slate-100">
-                <div class="md:pr-10 pt-6 md:pt-0 flex flex-col h-full">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                <div class="md:pr-10 pt-4 md:pt-0 flex flex-col h-full">
                     <div class="flex items-center gap-3 mb-6">
                         <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-indigo-200 uppercase">A</span>
                         <h3 class="text-2xl font-black">{font_a}</h3>
                     </div>
-                    <div class="flex-grow flex items-start p-6 min-h-[250px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50">
+                    <div class="flex-grow flex items-start p-4 md:p-6 min-h-[150px] md:min-h-[250px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50">
                         <p id="pa" class="comparison-text text-black break-words leading-tight w-full" style="font-family: {css_a}; font-size: 32px;">Optimize your UI design with fast-loading free web fonts.</p>
                     </div>
                     <button onclick="openModal('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-xl shadow-indigo-100 mt-8 group">
@@ -838,7 +838,7 @@ try:
                         <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-violet-200 uppercase">B</span>
                         <h3 class="text-2xl font-black">{font_b}</h3>
                     </div>
-                    <div class="flex-grow flex items-start p-6 min-h-[250px] bg-violet-50/20 rounded-2xl border border-violet-100/50">
+                    <div class="flex-grow flex items-start p-4 md:p-6 min-h-[150px] md:min-h-[250px] bg-violet-50/20 rounded-2xl border border-violet-100/50">
                         <p id="pb" class="comparison-text text-black break-words leading-tight w-full" style="font-family: {css_b}; font-size: 32px;">Optimize your UI design with fast-loading free web fonts.</p>
                     </div>
                     <button onclick="openModal('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-xl shadow-violet-100 mt-8 group">
@@ -1068,10 +1068,9 @@ try:
         .toast-active {{ opacity: 1; transform: translate(-50%, 0); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }}
         .modal-active {{ opacity: 1; transform: scale(1) translateY(0); transition: all 0.2s ease-out; }}
         .comparison-text {{ transition: font-size 0.2s ease, font-weight 0.2s ease, line-height 0.2s ease, letter-spacing 0.2s ease; }}
-        .preview-dark {{ background-color: #0f172a !important; border-color: #1e293b !important; color: #f8fafc !important; }}
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
 
     <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-emerald-500 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3">
         <span>CSS Code Copied! 🚀</span>
@@ -1091,7 +1090,7 @@ try:
 
     <main class="flex-grow py-12 px-6 max-w-7xl mx-auto w-full">
 
-        <div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl border border-slate-200/60 mb-10">
+        <div class="bg-white rounded-3xl p-4 md:p-8 shadow-xl border border-slate-200/60 mb-6 md:mb-10">
             
             <div class="mb-8">
                 <label class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-3">Testing Copy</label>
@@ -1099,7 +1098,7 @@ try:
                     onfocus="if(this.value==='Optimize your UI design with fast-loading free web fonts.') this.value='';" 
                     onblur="if(this.value==='') {{ this.value='Optimize your UI design with fast-loading free web fonts.'; u(); }}"
                     oninput="u()"
-                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-4 outline-none text-lg font-medium text-slate-800 focus:ring-2 focus:ring-indigo-500 transition-all">
+                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 md:px-5 md:py-4 outline-none text-base md:text-lg font-medium text-slate-800 focus:ring-2 focus:ring-indigo-500 transition-all">
                 
                 <div class="flex flex-wrap gap-2 mt-3">
                     <button onclick="setTxt('Optimize your UI design with fast-loading free web fonts.')" class="bg-slate-100 hover:bg-slate-200 text-slate-600 text-[10px] font-bold px-3 py-1.5 rounded-lg uppercase tracking-wider transition">UI Copy</button>
@@ -1109,8 +1108,8 @@ try:
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-                <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4">
+                <div class="bg-slate-50 rounded-xl p-3 md:p-4 border border-slate-100">
                     <div class="flex justify-between items-center mb-2">
                         <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Size</span>
                         <span id="lbl-size" class="text-indigo-600 font-bold text-xs">32px</span>
@@ -1118,7 +1117,7 @@ try:
                     <input type="range" id="vs-font-size" min="12" max="120" value="32" oninput="u()" class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
                 </div>
                 
-                <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                <div class="bg-slate-50 rounded-xl p-3 md:p-4 border border-slate-100">
                     <div class="flex justify-between items-center mb-2">
                         <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Line Height</span>
                         <span id="lbl-lh" class="text-indigo-600 font-bold text-xs">1.5</span>
@@ -1126,7 +1125,7 @@ try:
                     <input type="range" id="vs-lh" min="1.0" max="2.5" step="0.1" value="1.5" oninput="u()" class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
                 </div>
 
-                <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                <div class="bg-slate-50 rounded-xl p-3 md:p-4 border border-slate-100">
                     <div class="flex justify-between items-center mb-2">
                         <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Tracking</span>
                         <span id="lbl-ls" class="text-indigo-600 font-bold text-xs">0em</span>
@@ -1134,14 +1133,14 @@ try:
                     <input type="range" id="vs-ls" min="-0.10" max="0.30" step="0.01" value="0" oninput="u()" class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
                 </div>
 
-                <div class="flex items-center justify-center bg-slate-50 rounded-xl p-4 border border-slate-100 cursor-pointer hover:bg-slate-100 transition" onclick="toggleDarkMode()">
+                <div class="flex items-center justify-center bg-slate-50 rounded-xl p-3 md:p-4 border border-slate-100 cursor-pointer hover:bg-slate-100 transition" onclick="toggleDarkMode()">
                     <div class="flex flex-col items-center">
                         <svg class="w-5 h-5 text-slate-600 mb-1" id="icon-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                         <span id="lbl-dark" class="text-[10px] font-black text-slate-500 uppercase tracking-widest text-center">Dark Mode</span>
                     </div>
                 </div>
 
-                <div id="btn-xray" class="flex items-center justify-center bg-slate-50 rounded-xl p-4 border border-slate-100 cursor-pointer hover:bg-slate-100 transition relative overflow-hidden" onclick="toggleXRay()">
+                <div id="btn-xray" class="col-span-2 md:col-span-1 flex items-center justify-center bg-slate-50 rounded-xl p-3 md:p-4 border border-slate-100 cursor-pointer hover:bg-slate-100 transition relative overflow-hidden" onclick="toggleXRay()">
                     <div class="flex flex-col items-center z-10 relative">
                         <svg class="w-5 h-5 text-slate-600 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                         <span id="lbl-xray" class="text-[10px] font-black text-slate-500 uppercase tracking-widest text-center">X-Ray Off</span>
@@ -1150,7 +1149,7 @@ try:
             </div>
         </div>
 
-        <div id="xray-arena" class="hidden relative w-full min-h-[400px] bg-white rounded-3xl border border-slate-200 shadow-inner overflow-hidden mb-10 p-10 flex items-center justify-center transition-colors">
+        <div id="xray-arena" class="hidden relative w-full min-h-[250px] md:min-h-[400px] bg-white rounded-3xl border border-slate-200 shadow-inner overflow-hidden mb-10 p-6 md:p-10 flex items-center justify-center transition-colors">
             <div class="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:16px_16px] opacity-50 pointer-events-none" id="xray-bg-pattern"></div>
             <div class="relative w-full max-w-4xl flex justify-center text-center items-center z-10">
                 <p id="xray-preview-a" class="absolute comparison-text break-words w-full top-1/2 -translate-y-1/2 left-0"></p>
@@ -1158,10 +1157,10 @@ try:
             </div>
         </div>
 
-        <div id="compare-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8 transition-all">
+        <div id="compare-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 transition-all">
             
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 flex flex-col h-full transition-colors" id="panel-a">
-                <div class="flex flex-col sm:flex-row gap-3 mb-6">
+            <div class="bg-white p-4 md:p-6 rounded-[2rem] shadow-sm border border-slate-200 flex flex-col h-full transition-colors" id="panel-a">
+                <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6">
                     <div class="flex-grow flex items-center bg-indigo-50 px-3 rounded-xl border border-indigo-100 focus-within:ring-2 focus-within:ring-indigo-400 transition-colors" id="tab-a">
                         <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-sm uppercase mr-3">A</span>
                         <select id="vs-font-a" class="w-full bg-transparent py-3 font-bold text-slate-800 outline-none cursor-pointer text-sm"></select>
@@ -1169,18 +1168,18 @@ try:
                     <select id="vs-weight-a" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
                 
-                <div id="wrap-a" class="flex-grow flex items-start pt-4 px-6 pb-6 min-h-[300px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden">
+                <div id="wrap-a" class="flex-grow flex items-start p-4 md:p-6 min-h-[140px] md:min-h-[300px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden">
                     <p id="vs-preview-a" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
                 
-                <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-lg shadow-indigo-200 mt-6 group flex justify-center items-center gap-2">
+                <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-indigo-200 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     Copy Fluid CSS
                 </button>
             </div>
 
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 flex flex-col h-full transition-colors" id="panel-b">
-                <div class="flex flex-col sm:flex-row gap-3 mb-6">
+            <div class="bg-white p-4 md:p-6 rounded-[2rem] shadow-sm border border-slate-200 flex flex-col h-full transition-colors" id="panel-b">
+                <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6">
                     <div class="flex-grow flex items-center bg-violet-50 px-3 rounded-xl border border-violet-100 focus-within:ring-2 focus-within:ring-violet-400 transition-colors" id="tab-b">
                         <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-sm uppercase mr-3">B</span>
                         <select id="vs-font-b" class="w-full bg-transparent py-3 font-bold text-slate-800 outline-none cursor-pointer text-sm"></select>
@@ -1188,11 +1187,11 @@ try:
                     <select id="vs-weight-b" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
                 
-                <div id="wrap-b" class="flex-grow flex items-start pt-4 px-6 pb-6 min-h-[300px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden">
+                <div id="wrap-b" class="flex-grow flex items-start p-4 md:p-6 min-h-[140px] md:min-h-[300px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden">
                     <p id="vs-preview-b" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
                 
-                <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-xl shadow-violet-100 mt-6 group flex justify-center items-center gap-2">
+                <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-violet-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     Copy Fluid CSS
                 </button>
