@@ -219,7 +219,7 @@ header_html = """    <header class="bg-white/90 backdrop-blur-md border-b border
 
 footer_html = f"""    <footer class="bg-white border-t border-slate-200 py-16 mt-auto">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">&copy; 2026 htmlfonts. All rights reserved.</p>
+            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">&copy; {datetime.datetime.now().year} htmlfonts. All rights reserved.</p>
             <a href="https://x.com/HtmlFonts" target="_blank" class="text-xs font-bold text-indigo-500 hover:text-indigo-600 uppercase tracking-widest transition">Follow @HtmlFonts</a>
         </div>
     </footer>"""
@@ -773,15 +773,32 @@ try:
 
         posts_html = ""
         for post in current_posts:
-            safe_css = html.escape(post.get('css_snippet', ''))
+            if not isinstance(post, dict): continue
+            
+            css_raw = post.get('css_snippet', '')
+            if isinstance(css_raw, dict) or isinstance(css_raw, list): 
+                css_raw = json.dumps(css_raw, indent=2)
+            elif not isinstance(css_raw, str): 
+                css_raw = str(css_raw)
+            safe_css = html.escape(css_raw)
+            
+            title_raw = post.get('title', 'Typography Tip')
+            if not isinstance(title_raw, str): title_raw = str(title_raw)
+            
+            tip_raw = post.get('tip', '')
+            if not isinstance(tip_raw, str): tip_raw = str(tip_raw)
+            
+            date_raw = post.get('date', 'Recent')
+            if not isinstance(date_raw, str): date_raw = str(date_raw)
+            
             posts_html += f"""
             <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
                 <div class="flex items-center justify-between mb-4">
-                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">{post.get('date', 'Recent')}</span>
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">{date_raw}</span>
                 </div>
-                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">{post.get('title', 'Typography Tip')}</h2>
-                <p class="text-slate-600 font-medium leading-relaxed mb-6">{post.get('tip', '')}</p>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">{title_raw}</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">{tip_raw}</p>
                 <div class="bg-slate-900 rounded-xl p-4 relative">
                     <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">{safe_css}</code></pre>
                 </div>
@@ -1565,17 +1582,20 @@ try:
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 transition-all items-start" id="compare-grid">
+            
             <div class="bg-white p-4 md:p-6 rounded-[2rem] shadow-sm border border-slate-200 flex flex-col transition-colors" id="panel-a">
-                <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6 items-center justify-between">
-                    <div class="flex items-center">
-                        <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-indigo-200 uppercase mr-3">A</span>
+                <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6">
+                    <div class="flex-grow flex items-center bg-indigo-50 px-3 rounded-xl border border-indigo-100 focus-within:ring-2 focus-within:ring-indigo-400 transition-colors w-full sm:w-auto mb-2 sm:mb-0" id="tab-a">
+                        <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-sm uppercase mr-3">A</span>
                         <select id="vs-font-a" class="w-full bg-transparent py-3 font-bold text-slate-800 outline-none cursor-pointer text-sm transition-colors"></select>
                     </div>
                     <select id="vs-weight-a" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
+                
                 <div id="wrap-a" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden relative">
                     <p id="vs-preview-a" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
+                
                 <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-indigo-200 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     Copy HTML / CSS
@@ -1583,28 +1603,35 @@ try:
             </div>
 
             <div class="bg-white p-4 md:p-6 rounded-[2rem] shadow-sm border border-slate-200 flex flex-col transition-colors" id="panel-b">
-                <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6 items-center justify-between">
-                    <div class="flex items-center">
-                        <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-violet-200 uppercase mr-3">B</span>
-                        <h3 id="title-b" class="text-2xl font-black text-slate-800 transition-colors">{font_b}</h3>
+                <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6">
+                    <div class="flex-grow flex items-center bg-violet-50 px-3 rounded-xl border border-violet-100 focus-within:ring-2 focus-within:ring-violet-400 transition-colors w-full sm:w-auto mb-2 sm:mb-0" id="tab-b">
+                        <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-sm uppercase mr-3">B</span>
+                        <select id="vs-font-b" class="w-full bg-transparent py-3 font-bold text-slate-800 outline-none cursor-pointer text-sm transition-colors"></select>
                     </div>
                     <select id="vs-weight-b" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
+                
                 <div id="wrap-b" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden relative">
                     <p id="vs-preview-b" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
+                
                 <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-violet-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     Copy HTML / CSS
                 </button>
             </div>
+
+        </div>
+        
+        <div class="border-t border-slate-200 pt-16 mt-24">
+            <h2 class="text-3xl font-black text-slate-900 mb-8 text-center tracking-tight">Most Searched Comparisons</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+{comparison_grid_links}
+            </div>
         </div>
 
-        <div class="mt-12 bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 text-slate-600">
-            {seo_description}
-        </div>
     </main>
-    
+
     <div id="code-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
         <div class="bg-white rounded-3xl shadow-2xl w-full max-w-2xl p-6 md:p-8 relative transform scale-95 transition-all duration-300" id="modal-content">
             <button onclick="closeModal('code-modal')" class="absolute top-4 right-4 md:top-6 md:right-6 text-slate-400 hover:text-slate-900 bg-slate-50 hover:bg-slate-100 rounded-full p-2 transition">✕</button>
@@ -1864,8 +1891,8 @@ try:
             document.getElementById('lbl-lh').innerText = lh;
             document.getElementById('lbl-ls').innerText = ls + 'em';
             
-            const wA = document.getElementById('vs-weight-a').value;
-            const wB = document.getElementById('vs-weight-b').value;
+            const wA = document.getElementById('vs-weight-a').value || '400';
+            const wB = document.getElementById('vs-weight-b').value || '400';
             
             const txtColor = isDark ? '#ffffff' : '#0f172a';
 
