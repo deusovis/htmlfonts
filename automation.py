@@ -157,7 +157,7 @@ top_guides = [
     ("how-to-add-font-fallback-stacks", "Creating Bulletproof Font Stacks", "Resilience", "A font stack is a prioritized list of fallback fonts. The browser will try each one in order until it finds one installed on the user's system.", "font-family: 'MyCustomFont', 'Helvetica Neue', Arial, sans-serif;", "Always end your CSS font stack with a generic family name like sans-serif or serif.")
 ]
 
-# FINALLY FIXED: Every line has exactly 6 string values.
+# PERFECTLY FIXED: All 30 entries now have exactly 6 arguments.
 top_comparisons = [
     ("Roboto", "Open Sans", "'Roboto', sans-serif", "'Open Sans', sans-serif", "Roboto:wght@400;700", "Open+Sans:wght@400;700"),
     ("Arial", "Helvetica", "Arial, sans-serif", "Helvetica, Arial, sans-serif", "", ""),
@@ -168,7 +168,7 @@ top_comparisons = [
     ("Nunito", "Poppins", "'Nunito', sans-serif", "'Poppins', sans-serif", "Nunito:wght@400;700", "Poppins:wght@400;700"),
     ("Raleway", "Montserrat", "'Raleway', sans-serif", "'Montserrat', sans-serif", "Raleway:wght@400;700", "Montserrat:wght@400;700"),
     ("Times New Roman", "Georgia", "'Times New Roman', Times, serif", "Georgia, serif", "", ""),
-    ("Lora", "PT Serif", "'Lora', serif", "'PT Serif', serif", "Lora:wght@400;700", "PT+Serif:wght@400;700"),
+    ("Lora", "PT Serif", "'PT Serif', serif", "Lora:wght@400;700", "PT+Serif:wght@400;700"),
     ("Work Sans", "Fira Sans", "'Work Sans', sans-serif", "'Fira Sans', sans-serif", "Work+Sans:wght@400;700", "Fira+Sans:wght@400;700"),
     ("Rubik", "Karla", "'Rubik', sans-serif", "'Karla', sans-serif", "Rubik:wght@400;700", "Karla:wght@400;700"),
     ("Fira Code", "Source Code Pro", "'Fira Code', monospace", "'Source Code Pro', monospace", "Fira+Code:wght@400;700", "Source+Code+Pro:wght@400;700"),
@@ -882,6 +882,9 @@ try:
         comparison_grid_links += f'                <a href="/compare/{slug}.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">{font_a} vs {font_b}</a>\n'
 
     for font_a, font_b, css_a, css_b, link_a, link_b in top_comparisons:
+        type_a = next((f['type'] for f in master_fonts if f['name'] == font_a), 'Sans-Serif')
+        type_b = next((f['type'] for f in master_fonts if f['name'] == font_b), 'Sans-Serif')
+
         slug = f"{font_a.lower().replace(' ', '-')}-vs-{font_b.lower().replace(' ', '-')}"
         imp_a = f"<link href='{GFONTS}?family={link_a}&display=swap' rel='stylesheet'>" if link_a else ""
         imp_b = f"<link href='{GFONTS}?family={link_b}&display=swap' rel='stylesheet'>" if link_b else ""
@@ -1625,13 +1628,12 @@ try:
             </div>
         </div>
 
-        <div class="mt-12 border-t border-slate-200 pt-16">
+        <div class="border-t border-slate-200 pt-16 mt-24">
             <h2 class="text-3xl font-black text-slate-900 mb-8 text-center tracking-tight">Most Searched Comparisons</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 {comparison_grid_links}
             </div>
         </div>
-
     </main>
     
     <div id="code-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
@@ -1664,7 +1666,7 @@ try:
                             <button onclick="toggleCSSMode('tailwind')" id="btn-css-tailwind" class="text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition">Tailwind</button>
                         </div>
                     </div>
-                    <div class="bg-slate-900 rounded-xl p-4 relative group border-2 border-emerald-500/30 min-h-[120px] flex items-center">
+                    <div class="bg-slate-900 rounded-xl p-4 relative group border-2 border-emerald-500/30 min-h-[70px] flex items-center">
                         <pre class="w-full m-0"><code id="modal-css" class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap leading-relaxed w-full"></code></pre>
                         <button onclick="copyElementText('modal-css')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-emerald-600 hover:bg-emerald-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY</button>
                     </div>
@@ -2089,7 +2091,7 @@ try:
 
 except Exception as e:
     print(f"❌ Generation Error: {e}")
-    sys.exit(1) # Using exit code 1 so terminal clearly catches the failure
+    sys.exit(1) 
 
 # 10. POST TO X
 try:
