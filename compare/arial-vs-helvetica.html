@@ -297,8 +297,11 @@
         }
 
         function setTxt(txt) {
-            document.getElementById('vs-text').value = txt;
-            u();
+            const textEl = document.getElementById('vs-text');
+            if(textEl) {
+                textEl.value = txt;
+                u();
+            }
         }
 
         function toggleDarkMode() {
@@ -318,14 +321,14 @@
             const lbl = document.getElementById('lbl-dark');
             
             if(isDark) {
-                if(wrapA.classList.contains('bg-indigo-50/20')) { wrapA.classList.remove('bg-indigo-50/20', 'border-indigo-100/50'); }
-                if(wrapB.classList.contains('bg-violet-50/20')) { wrapB.classList.remove('bg-violet-50/20', 'border-violet-100/50'); }
-                panelA.classList.remove('bg-white', 'border-slate-200');
-                panelB.classList.remove('bg-white', 'border-slate-200');
+                if(wrapA && wrapA.classList.contains('bg-indigo-50/20')) { wrapA.classList.remove('bg-indigo-50/20', 'border-indigo-100/50'); }
+                if(wrapB && wrapB.classList.contains('bg-violet-50/20')) { wrapB.classList.remove('bg-violet-50/20', 'border-violet-100/50'); }
+                if(panelA) panelA.classList.remove('bg-white', 'border-slate-200');
+                if(panelB) panelB.classList.remove('bg-white', 'border-slate-200');
                 if(tabA) tabA.classList.remove('bg-indigo-50', 'border-indigo-100');
                 if(tabB) tabB.classList.remove('bg-violet-50', 'border-violet-100');
-                weightA.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
-                weightB.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                if(weightA) weightA.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                if(weightB) weightB.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
                 if(fontA) fontA.classList.remove('text-slate-800');
                 if(fontB) fontB.classList.remove('text-slate-800');
                 
@@ -334,30 +337,30 @@
                 if(titleA) titleA.classList.replace('text-slate-800', 'text-white');
                 if(titleB) titleB.classList.replace('text-slate-800', 'text-white');
                 
-                pa.classList.replace('text-slate-900', 'text-white');
-                pb.classList.replace('text-slate-900', 'text-white');
+                if(pa) pa.classList.replace('text-slate-900', 'text-white');
+                if(pb) pb.classList.replace('text-slate-900', 'text-white');
                 
-                wrapA.classList.add('bg-slate-900', 'border-slate-700');
-                wrapB.classList.add('bg-slate-900', 'border-slate-700');
-                panelA.classList.add('bg-slate-800', 'border-slate-700');
-                panelB.classList.add('bg-slate-800', 'border-slate-700');
+                if(wrapA) wrapA.classList.add('bg-slate-900', 'border-slate-700');
+                if(wrapB) wrapB.classList.add('bg-slate-900', 'border-slate-700');
+                if(panelA) panelA.classList.add('bg-slate-800', 'border-slate-700');
+                if(panelB) panelB.classList.add('bg-slate-800', 'border-slate-700');
                 if(tabA) tabA.classList.add('bg-slate-800', 'border-slate-700');
                 if(tabB) tabB.classList.add('bg-slate-800', 'border-slate-700');
-                weightA.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
-                weightB.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
+                if(weightA) weightA.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
+                if(weightB) weightB.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
                 if(fontA) fontA.classList.add('text-white');
                 if(fontB) fontB.classList.add('text-white');
                 
-                lbl.innerText = "Light Mode";
+                if(lbl) lbl.innerText = "Light Mode";
             } else {
-                wrapA.classList.remove('bg-slate-900', 'border-slate-700');
-                wrapB.classList.remove('bg-slate-900', 'border-slate-700');
-                panelA.classList.remove('bg-slate-800', 'border-slate-700');
-                panelB.classList.remove('bg-slate-800', 'border-slate-700');
+                if(wrapA) wrapA.classList.remove('bg-slate-900', 'border-slate-700');
+                if(wrapB) wrapB.classList.remove('bg-slate-900', 'border-slate-700');
+                if(panelA) panelA.classList.remove('bg-slate-800', 'border-slate-700');
+                if(panelB) panelB.classList.remove('bg-slate-800', 'border-slate-700');
                 if(tabA) tabA.classList.remove('bg-slate-800', 'border-slate-700');
                 if(tabB) tabB.classList.remove('bg-slate-800', 'border-slate-700');
-                weightA.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
-                weightB.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
+                if(weightA) weightA.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
+                if(weightB) weightB.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
                 if(fontA) fontA.classList.remove('text-white');
                 if(fontB) fontB.classList.remove('text-white');
                 
@@ -366,21 +369,21 @@
                 if(titleA) titleA.classList.replace('text-white', 'text-slate-800');
                 if(titleB) titleB.classList.replace('text-white', 'text-slate-800');
                 
-                pa.classList.replace('text-white', 'text-slate-900');
-                pb.classList.replace('text-white', 'text-slate-900');
+                if(pa) pa.classList.replace('text-white', 'text-slate-900');
+                if(pb) pb.classList.replace('text-white', 'text-slate-900');
 
-                wrapA.classList.add('bg-indigo-50/20', 'border-indigo-100/50');
-                wrapB.classList.add('bg-violet-50/20', 'border-violet-100/50');
-                panelA.classList.add('bg-white', 'border-slate-200');
-                panelB.classList.add('bg-white', 'border-slate-200');
+                if(wrapA) wrapA.classList.add('bg-indigo-50/20', 'border-indigo-100/50');
+                if(wrapB) wrapB.classList.add('bg-violet-50/20', 'border-violet-100/50');
+                if(panelA) panelA.classList.add('bg-white', 'border-slate-200');
+                if(panelB) panelB.classList.add('bg-white', 'border-slate-200');
                 if(tabA) tabA.classList.add('bg-indigo-50', 'border-indigo-100');
                 if(tabB) tabB.classList.add('bg-violet-50', 'border-violet-100');
-                weightA.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-600');
-                weightB.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                if(weightA) weightA.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                if(weightB) weightB.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-600');
                 if(fontA) fontA.classList.add('text-slate-800');
                 if(fontB) fontB.classList.add('text-slate-800');
                 
-                lbl.innerText = "Dark Mode";
+                if(lbl) lbl.innerText = "Dark Mode";
             }
             u();
         }
@@ -393,15 +396,15 @@
             const lbl = document.getElementById('lbl-xray');
 
             if(isXray) {
-                grid.classList.add('hidden');
-                xrayArena.classList.remove('hidden');
-                btn.classList.add('bg-indigo-100', 'border-indigo-300');
-                lbl.innerText = "X-Ray On";
+                if(grid) grid.classList.add('hidden');
+                if(xrayArena) xrayArena.classList.remove('hidden');
+                if(btn) btn.classList.add('bg-indigo-100', 'border-indigo-300');
+                if(lbl) lbl.innerText = "X-Ray On";
             } else {
-                grid.classList.remove('hidden');
-                xrayArena.classList.add('hidden');
-                btn.classList.remove('bg-indigo-100', 'border-indigo-300');
-                lbl.innerText = "X-Ray Off";
+                if(grid) grid.classList.remove('hidden');
+                if(xrayArena) xrayArena.classList.add('hidden');
+                if(btn) btn.classList.remove('bg-indigo-100', 'border-indigo-300');
+                if(lbl) lbl.innerText = "X-Ray Off";
             }
             u();
         }
@@ -415,6 +418,7 @@
 
         function populateWeights(selectId, fontObj) {
             const sel = document.getElementById(selectId);
+            if(!sel) return;
             const currentVal = sel.value; 
             sel.innerHTML = '';
             
@@ -435,7 +439,7 @@
             const sA = document.getElementById('vs-font-a'); 
             const sB = document.getElementById('vs-font-b');
             
-            if (sA && sB) {
+            if (sA && sB && typeof fontsRaw !== 'undefined') {
                 fontsRaw.forEach((f, i) => { 
                     sA.add(new Option(f.name, i)); 
                     sB.add(new Option(f.name, i)); 
@@ -473,9 +477,11 @@
         }
 
         function initComparePage() {
-            populateWeights('vs-weight-a', fontData['a']);
-            populateWeights('vs-weight-b', fontData['b']);
-            u();
+            if(typeof fontData !== 'undefined') {
+                populateWeights('vs-weight-a', fontData['a']);
+                populateWeights('vs-weight-b', fontData['b']);
+                u();
+            }
         }
 
         function u() {
@@ -491,16 +497,23 @@
             const lh = lhEl.value;
             const ls = lsEl.value;
             
-            document.getElementById('lbl-size').innerText = sz + 'px';
-            document.getElementById('lbl-lh').innerText = lh;
-            document.getElementById('lbl-ls').innerText = ls + 'em';
+            const lblSize = document.getElementById('lbl-size');
+            const lblLh = document.getElementById('lbl-lh');
+            const lblLs = document.getElementById('lbl-ls');
             
-            const wA = document.getElementById('vs-weight-a').value || '400';
-            const wB = document.getElementById('vs-weight-b').value || '400';
+            if(lblSize) lblSize.innerText = sz + 'px';
+            if(lblLh) lblLh.innerText = lh;
+            if(lblLs) lblLs.innerText = ls + 'em';
+            
+            const wAEl = document.getElementById('vs-weight-a');
+            const wBEl = document.getElementById('vs-weight-b');
+            
+            const wA = wAEl ? wAEl.value : '400';
+            const wB = wBEl ? wBEl.value : '400';
             
             const txtColor = isDark ? '#ffffff' : '#0f172a';
 
-            // Determine data source (dynamic tool vs static page)
+            // Safely get data from either individual page OR main tool
             let currA = (typeof fontData !== 'undefined' && fontData['a']) ? fontData['a'] : vsData.a;
             let currB = (typeof fontData !== 'undefined' && fontData['b']) ? fontData['b'] : vsData.b;
             
@@ -508,27 +521,33 @@
 
             if (!isXray) {
                 const pA = document.getElementById('vs-preview-a');
-                pA.style.color = txtColor;
-                pA.style.fontFamily = currA.css;
-                pA.style.fontSize = sz + 'px';
-                pA.style.fontWeight = wA;
-                pA.style.lineHeight = lh;
-                pA.style.letterSpacing = ls + 'em';
-                pA.innerText = text;
+                if(pA) {
+                    pA.style.color = txtColor;
+                    pA.style.fontFamily = currA.css;
+                    pA.style.fontSize = sz + 'px';
+                    pA.style.fontWeight = wA;
+                    pA.style.lineHeight = lh;
+                    pA.style.letterSpacing = ls + 'em';
+                    pA.innerText = text;
+                }
 
                 const pB = document.getElementById('vs-preview-b');
-                pB.style.color = txtColor;
-                pB.style.fontFamily = currB.css;
-                pB.style.fontSize = sz + 'px';
-                pB.style.fontWeight = wB;
-                pB.style.lineHeight = lh;
-                pB.style.letterSpacing = ls + 'em';
-                pB.innerText = text;
+                if(pB) {
+                    pB.style.color = txtColor;
+                    pB.style.fontFamily = currB.css;
+                    pB.style.fontSize = sz + 'px';
+                    pB.style.fontWeight = wB;
+                    pB.style.lineHeight = lh;
+                    pB.style.letterSpacing = ls + 'em';
+                    pB.innerText = text;
+                }
             } else {
                 const xa = document.getElementById('xray-preview-a');
                 const xb = document.getElementById('xray-preview-b');
                 const arena = document.getElementById('xray-arena');
                 
+                if(!xa || !xb || !arena) return;
+
                 if (isDark) {
                     arena.classList.replace('bg-white', 'bg-slate-900');
                     xa.style.mixBlendMode = 'screen';
@@ -561,20 +580,23 @@
 
         function updateModalDisplay() {
             const htmlCode = document.getElementById('modal-html');
+            const copyBtn = document.getElementById('copy-html-btn');
+            const cssEl = document.getElementById('modal-css');
+            if(!htmlCode || !cssEl) return;
+
             if (activeModalData.link) {
                 if (importMode === 'html') {
                     htmlCode.textContent = `<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=${activeModalData.link}&display=swap" rel="stylesheet">`;
                 } else {
                     htmlCode.textContent = `@import url('https://fonts.googleapis.com/css2?family=${activeModalData.link}&display=swap');`;
                 }
-                document.getElementById('copy-html-btn').style.display = 'block';
+                if(copyBtn) copyBtn.style.display = 'block';
             } else {
                 htmlCode.innerHTML = `<span class="font-sans font-medium text-emerald-400 select-none">✨ System Font. No import required!</span>`;
-                document.getElementById('copy-html-btn').style.display = 'none';
+                if(copyBtn) copyBtn.style.display = 'none';
             }
 
             const fontStack = `"${activeModalData.name}", ${getFallbackStack(activeModalData.type)}`;
-            const cssEl = document.getElementById('modal-css');
             
             let minSize = Math.max(12, Math.round(activeModalData.sz * 0.6));
             let remMin = (minSize / 16).toFixed(3).replace(/\.?0+$/, '');
@@ -604,11 +626,11 @@
             const btnCss = document.getElementById('btn-imp-css');
             
             if (mode === 'html') {
-                btnHtml.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition";
-                btnCss.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
+                if(btnHtml) btnHtml.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition";
+                if(btnCss) btnCss.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
             } else {
-                btnCss.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition";
-                btnHtml.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
+                if(btnCss) btnCss.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition";
+                if(btnHtml) btnHtml.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
             }
             updateModalDisplay();
         }
@@ -619,66 +641,86 @@
             const btnTw = document.getElementById('btn-css-tailwind');
             
             if (mode === 'vanilla') {
-                btnVan.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-emerald-600 transition";
-                btnTw.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
+                if(btnVan) btnVan.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-emerald-600 transition";
+                if(btnTw) btnTw.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
             } else {
-                btnTw.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-emerald-600 transition";
-                btnVan.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
+                if(btnTw) btnTw.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-emerald-600 transition";
+                if(btnVan) btnVan.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
             }
             updateModalDisplay();
         }
 
         function openModalFromVS(side) { 
             const currObj = (typeof fontData !== 'undefined' && fontData[side]) ? fontData[side] : vsData[side];
-            
+            if(!currObj) return;
+
+            const wEl = document.getElementById(side === 'a' ? 'vs-weight-a' : 'vs-weight-b');
+            const szEl = document.getElementById('vs-font-size');
+            const lhEl = document.getElementById('vs-lh');
+            const lsEl = document.getElementById('vs-ls');
+
             activeModalData = {
                 name: currObj.name,
                 link: currObj.link,
                 cssObj: currObj.css,
                 type: currObj.type,
-                weight: document.getElementById(side === 'a' ? 'vs-weight-a' : 'vs-weight-b').value,
-                sz: parseInt(document.getElementById('vs-font-size').value),
-                lh: document.getElementById('vs-lh').value,
-                ls: document.getElementById('vs-ls').value
+                weight: wEl ? wEl.value : '400',
+                sz: szEl ? parseInt(szEl.value) : 32,
+                lh: lhEl ? lhEl.value : '1.5',
+                ls: lsEl ? lsEl.value : '0'
             };
 
-            document.getElementById('modal-font-name').innerText = activeModalData.name + ' (' + activeModalData.weight + ')';
+            const titleEl = document.getElementById('modal-font-name');
+            if(titleEl) titleEl.innerText = activeModalData.name + ' (' + activeModalData.weight + ')';
             
             updateModalDisplay();
             
             const modal = document.getElementById('code-modal');
             const modalContent = document.getElementById('modal-content');
-            modal.classList.remove('hidden');
-            void modal.offsetWidth;
-            modal.classList.remove('opacity-0');
-            modalContent.classList.remove('scale-95');
-            modalContent.classList.add('scale-100');
+            if(modal && modalContent) {
+                modal.classList.remove('hidden');
+                void modal.offsetWidth;
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }
         }
 
         function closeModal(id) { 
             const modal = document.getElementById(id);
             const modalContent = document.getElementById('modal-content');
-            modal.classList.add('opacity-0');
-            modalContent.classList.remove('scale-100');
-            modalContent.classList.add('scale-95');
-            setTimeout(() => modal.classList.add('hidden'), 300); 
+            if(modal && modalContent) {
+                modal.classList.add('opacity-0');
+                modalContent.classList.remove('scale-100');
+                modalContent.classList.add('scale-95');
+                setTimeout(() => modal.classList.add('hidden'), 300); 
+            }
         }
         
         function triggerToast(msg = "Copied! 🚀") {
             const t = document.getElementById('toast'); 
-            t.classList.remove('hidden'); 
-            void t.offsetWidth;
-            t.classList.remove('opacity-0', 'translate-y-4');
-            setTimeout(() => { 
-                t.classList.add('opacity-0', 'translate-y-4'); 
-                setTimeout(() => t.classList.add('hidden'), 300); 
-            }, 3000);
+            if(t) {
+                t.classList.remove('hidden'); 
+                void t.offsetWidth;
+                t.classList.remove('opacity-0', 'translate-y-4');
+                setTimeout(() => { 
+                    t.classList.add('opacity-0', 'translate-y-4'); 
+                    setTimeout(() => t.classList.add('hidden'), 300); 
+                }, 3000);
+            }
         }
         
         function copyElementText(id) {
-            const txt = document.getElementById(id).textContent;
+            const el = document.getElementById(id);
+            if(!el) return;
+            const txt = el.textContent;
             navigator.clipboard.writeText(txt).then(() => triggerToast()).catch(() => {
-                const el = document.createElement('textarea'); el.value = txt; document.body.appendChild(el);
-                el.select(); document.execCommand('copy'); document.body.removeChild(el); triggerToast();
+                const ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta);
+                ta.select(); document.execCommand('copy'); document.body.removeChild(ta); triggerToast();
             });
         }
+
+        initComparePage();
+    </script>
+</body>
+</html>

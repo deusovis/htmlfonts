@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate Your UI: Mastering Fluid Typography with CSS `clamp()` for Superior UX",
+        "slug": "elevate-ui-mastering-fluid-typography-css-clamp-superior-ux",
+        "tweet": "Boost your site's #UIUX! Discover how CSS `clamp()` creates truly responsive, fluid typography for optimal readability on any screen. Includes a pro tip & snippet! #CSSTypography #WebDesign #WebFonts",
+        "tip": "To achieve truly adaptable and user-friendly typography, leverage the CSS `clamp()` function for `font-size`. This allows you to define a minimum font size, a preferred fluid size (often based on viewport units like `vw`), and a maximum font size. This approach prevents text from becoming too small on mobile or excessively large on large screens, ensuring consistent legibility and a superior reading experience across all devices without relying on complex media queries for basic font scaling. Remember to also optimize your `line-height` for enhanced readability.",
+        "css_snippet": "/* Apply fluid font-size to body text for optimal responsiveness */\nbody {\n    font-family: 'Inter', sans-serif;\n    font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem); /* Min 16px, fluid (2vw+8px), Max 24px */\n    line-height: 1.6;\n    color: #333;\n}\n\n/* Example for a primary heading (h1) */\nh1 {\n    font-size: clamp(2rem, 5vw + 1rem, 4rem); /* Min 32px, fluid (5vw+16px), Max 64px */\n    line-height: 1.1;\n    font-weight: 700;\n    margin-bottom: 0.5em;\n}\n\n/* Ensure smooth font rendering for web fonts */\nbody, h1, h2, h3, h4, h5, h6 {\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}",
+        "date": "March 31, 2026"
+    },
+    {
         "title": "Mastering `font-display` for Superior Web Font Loading & UX",
         "slug": "mastering-font-display-web-fonts-ux",
         "tweet": "Boost your website's perceived performance and #UX! Learn how `font-display` CSS property elegantly manages web font loading, preventing unsightly Flash of Invisible Text (FOIT) or Flash of Unstyled Text (FOUT). #CSSTypography #WebFonts #UIDesign",
