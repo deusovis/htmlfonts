@@ -782,13 +782,21 @@ try:
         .comparison-text {{ transition: font-size 0.2s ease; }}
     </style>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
+<body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
     <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3">Copied! 🚀</div>
 {header_html}
-    <main class="flex-grow w-full pt-10 pb-24 px-6 md:pt-12 max-w-7xl mx-auto">
+    <div class="bg-white border-b border-slate-200 overflow-hidden relative">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-white to-white"></div>
+        <div class="max-w-7xl mx-auto px-6 pt-10 pb-12 md:pt-12 md:pb-16 relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">{font_a} vs {font_b}</span>
+            </h1>
+            <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mt-4 mb-8">Compare legibility and design aesthetics side-by-side.</p>
+        </div>
+    </div>
+    <main class="flex-grow w-full py-12 px-6 max-w-7xl mx-auto">
         <div class="text-center mb-12 max-w-3xl mx-auto">
             <a href="/font-vs-font-comparison-tool.html" class="text-indigo-600 font-bold text-xs uppercase tracking-widest hover:text-indigo-800 transition">&larr; Back to Tool</a>
-            <h1 class="text-4xl md:text-5xl font-black mt-4 tracking-tight text-slate-900 mb-4">{font_a} <span class="text-slate-300">vs</span> {font_b}</h1>
         </div>
         
         <div class="bg-white rounded-3xl p-6 md:p-10 shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100">
@@ -1060,9 +1068,10 @@ try:
         .toast-active {{ opacity: 1; transform: translate(-50%, 0); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }}
         .modal-active {{ opacity: 1; transform: scale(1) translateY(0); transition: all 0.2s ease-out; }}
         .comparison-text {{ transition: font-size 0.2s ease, font-weight 0.2s ease, line-height 0.2s ease, letter-spacing 0.2s ease; }}
+        .preview-dark {{ background-color: #0f172a !important; border-color: #1e293b !important; color: #f8fafc !important; }}
     </style>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
 
     <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-emerald-500 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3">
         <span>CSS Code Copied! 🚀</span>
@@ -1157,7 +1166,7 @@ try:
                         <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-sm uppercase mr-3">A</span>
                         <select id="vs-font-a" class="w-full bg-transparent py-3 font-bold text-slate-800 outline-none cursor-pointer text-sm"></select>
                     </div>
-                    <select id="vs-weight-a" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors" id="weight-tab-a"></select>
+                    <select id="vs-weight-a" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
                 
                 <div id="wrap-a" class="flex-grow flex items-start pt-4 px-6 pb-6 min-h-[300px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden">
@@ -1176,7 +1185,7 @@ try:
                         <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-sm uppercase mr-3">B</span>
                         <select id="vs-font-b" class="w-full bg-transparent py-3 font-bold text-slate-800 outline-none cursor-pointer text-sm"></select>
                     </div>
-                    <select id="vs-weight-b" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors" id="weight-tab-b"></select>
+                    <select id="vs-weight-b" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
                 
                 <div id="wrap-b" class="flex-grow flex items-start pt-4 px-6 pb-6 min-h-[300px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden">
@@ -1265,8 +1274,8 @@ try:
             const panelB = document.getElementById('panel-b');
             const tabA = document.getElementById('tab-a');
             const tabB = document.getElementById('tab-b');
-            const weightA = document.getElementById('weight-tab-a');
-            const weightB = document.getElementById('weight-tab-b');
+            const weightA = document.getElementById('vs-weight-a');
+            const weightB = document.getElementById('vs-weight-b');
             const lbl = document.getElementById('lbl-dark');
             
             if(isDark) {{
