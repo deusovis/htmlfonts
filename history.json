@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering Fluid Typography with CSS `clamp()` for Superior UI/UX",
+        "slug": "mastering-fluid-typography-css-clamp-ui-ux",
+        "tweet": "Elevate your web typography with CSS `clamp()`! \ud83d\ude80 Learn to create truly fluid, responsive text that scales perfectly across all devices, drastically improving UI design & user experience. Includes a practical CSS snippet! #CSSTypography #WebDesign #UIDesign #UX #WebFonts",
+        "tip": "To achieve truly responsive and accessible typography without endless media queries, leverage the `clamp()` CSS function. It allows you to set a minimum, preferred (fluid), and maximum size for your fonts, ensuring text adapts gracefully to different screen sizes while maintaining readability and preventing overflow or underflow. This approach drastically improves UI consistency and user experience across diverse devices.",
+        "css_snippet": "/* --- Fluid Typography Examples with clamp() --- */\n\n/* Heading Example (e.g., H2) */\nh2 {\n    /* \n     * clamp(MIN_SIZE, IDEAL_FLUID_SIZE, MAX_SIZE)\n     * \n     * MIN_SIZE: Smallest font size (e.g., on mobile - 2rem = 32px)\n     * IDEAL_FLUID_SIZE: Scales with viewport width (e.g., 3vw + 1rem)\n     * MAX_SIZE: Largest font size (e.g., on large desktop - 4rem = 64px)\n     */\n    font-size: clamp(2rem, 3vw + 1rem, 4rem);\n    line-height: 1.15;\n    font-family: 'Montserrat', sans-serif; /* Example: Google Web Font */\n    font-weight: 700;\n    margin-bottom: 0.75em;\n    color: #2c3e50; /* Dark blue for strong contrast */\n}\n\n/* Paragraph Example */\np {\n    font-size: clamp(1rem, 1.2vw + 0.5rem, 1.25rem);\n    line-height: 1.6;\n    font-family: 'Open Sans', sans-serif; /* Example: Google Web Font */\n    color: #34495e; /* Softer dark blue for readability */\n    margin-bottom: 1em;\n}\n\n/* Small Text / Caption Example */\nsmall {\n    font-size: clamp(0.75rem, 0.9vw + 0.3rem, 0.9rem);\n    line-height: 1.4;\n    font-family: 'Open Sans', sans-serif;\n    color: #7f8c8d; /* Muted gray for secondary info */\n}\n\n/* Best practice: Define custom properties for easier management */\n/*\n:root {\n    --fluid-min: 1rem;\n    --fluid-max: 1.25rem;\n    --fluid-scale: 2vw;\n}\n\np {\n    font-size: clamp(var(--fluid-min), calc(var(--fluid-scale) + var(--fluid-min)), var(--fluid-max));\n}\n*/",
+        "date": "March 31, 2026"
+    },
+    {
         "title": "Typography Tip Mar 31",
         "slug": "typography-tip-1774978683",
         "tweet": "Check out today's CSS typography tip! #webdesign #css",
