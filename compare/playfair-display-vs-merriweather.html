@@ -296,6 +296,7 @@
             const lbl = document.getElementById('lbl-dark');
             
             if(isDark) {
+                // Remove Light Mode Styles
                 wrapA.classList.replace('bg-indigo-50/20', 'bg-slate-900');
                 wrapA.classList.replace('border-indigo-100/50', 'border-slate-700');
                 wrapB.classList.replace('bg-violet-50/20', 'bg-slate-900');
@@ -321,16 +322,12 @@
                 pb.classList.replace('text-slate-900', 'text-white');
                 lbl.innerText = "Light Mode";
             } else {
-                wrapA.classList.replace('bg-slate-900', 'bg-indigo-50/20');
-                wrapA.classList.replace('border-slate-700', 'border-indigo-100/50');
-                wrapB.classList.replace('bg-slate-900', 'bg-violet-50/20');
-                wrapB.classList.replace('border-slate-700', 'border-violet-100/50');
+                // Remove Dark Mode Styles
+                wrapA.classList.replace('bg-slate-900', 'border-slate-700');
+                wrapB.classList.replace('bg-slate-900', 'border-slate-700');
+                panelA.classList.replace('bg-slate-800', 'border-slate-700');
+                panelB.classList.replace('bg-slate-800', 'border-slate-700');
                 
-                panelA.classList.replace('bg-slate-800', 'bg-white');
-                panelA.classList.replace('border-slate-700', 'border-slate-200');
-                panelB.classList.replace('bg-slate-800', 'bg-white');
-                panelB.classList.replace('border-slate-700', 'border-slate-200');
-
                 titleA.classList.replace('text-white', 'text-slate-800');
                 titleB.classList.replace('text-white', 'text-slate-800');
                 
@@ -376,7 +373,6 @@
             const lh = document.getElementById('vs-lh').value;
             const ls = document.getElementById('vs-ls').value;
             
-            document.getElementById('vs-size-label').innerText = sz + 'px';
             document.getElementById('lbl-size').innerText = sz + 'px';
             document.getElementById('lbl-lh').innerText = lh;
             document.getElementById('lbl-ls').innerText = ls + 'em';
@@ -515,14 +511,14 @@
         }
 
         function openModalFromVS(side) { 
-            const fontObj = fontData[side];
+            const fontObj = side === 'a' ? fontData['a'] : fontData['b'];
             
             activeModalData = {
                 name: fontObj.name,
                 link: fontObj.link,
                 cssObj: fontObj.css,
                 type: fontObj.type,
-                weight: document.getElementById(side === 'a' ? 'vs-weight-a' : 'vs-weight-b').value || '400',
+                weight: document.getElementById(side === 'a' ? 'vs-weight-a' : 'vs-weight-b').value,
                 sz: parseInt(document.getElementById('vs-font-size').value),
                 lh: document.getElementById('vs-lh').value,
                 ls: document.getElementById('vs-ls').value

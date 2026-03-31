@@ -1,8 +1,8 @@
 {
-    "title": "Typography Tip Mar 31",
-    "slug": "typography-tip-1774977022",
-    "tweet": "Check out today's CSS typography tip! #webdesign #css",
-    "tip": "To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.",
-    "css_snippet": "body {\n  line-height: 1.5;\n}",
+    "title": "Mastering Fluid Type: Variable Fonts & Advanced CSS Typography",
+    "slug": "mastering-fluid-type-variable-fonts-advanced-css-typography",
+    "tweet": "Elevate your #UIDesign with variable fonts! Learn how `font-variation-settings` unlocks dynamic control over #WebFonts, boosting #UserExperience and performance. #CSSTypography",
+    "tip": "Harness the power of variable fonts and `font-variation-settings` for unparalleled typographic control and efficiency. Instead of loading multiple static font files (e.g., light, regular, bold), a single variable font file contains all axis variations (weight, width, optical size, slant, etc.). This drastically reduces HTTP requests and overall font file size, leading to faster page loads and a smoother #UserExperience. Combine with CSS `clamp()` for truly responsive, fluid typography that adapts perfectly across all screen sizes without media queries for every breakpoint.",
+    "css_snippet": "@font-face {\n  font-family: 'Inter Variable';\n  src: url('/fonts/Inter-VariableFont.woff2') format('woff2-variations');\n  font-weight: 100 900; /* Define the available weight range */\n  font-display: swap; /* Optimize font loading for better UX */\n}\n\nbody {\n  font-family: 'Inter Variable', sans-serif;\n  font-variation-settings: 'wght' var(--body-weight, 400);\n  font-size: clamp(1rem, 2vw + 0.5rem, 1.25rem); /* Fluid font sizing */\n  line-height: 1.6;\n}\n\nh1 {\n  font-family: 'Inter Variable', sans-serif;\n  font-variation-settings: 'wght' var(--heading-weight, 700), 'slnt' var(--heading-slant, 0);\n  font-size: clamp(2.5rem, 5vw + 1rem, 4rem);\n  line-height: 1.1;\n  letter-spacing: -0.02em;\n}",
     "date": "March 31, 2026"
 }
