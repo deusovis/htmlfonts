@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering Responsive Typography with `ch` Units for Superior UI/UX",
+        "slug": "responsive-typography-ch-units-superior-ui-ux",
+        "tweet": "Boost readability & accessibility! Learn how `ch` units revolutionize responsive typography, ensuring optimal line lengths for stellar #UIDesign & #UX. Get the expert tip & #CSS snippet now! #WebFonts #CSSTypography",
+        "tip": "For unparalleled readability across devices, utilize `ch` (character) units when setting the `max-width` of your main text containers (e.g., `max-width: 70ch;`). This ensures line lengths consistently fall within the ideal 45-75 character range, independent of `font-size`, significantly reducing eye strain and enhancing the user experience, a core principle of advanced web typography.",
+        "css_snippet": "body {\n  font-family: 'Inter var', sans-serif; /* Example variable font for performance */\n  font-size: 1.125rem;\n  line-height: 1.6;\n  color: #333;\n}\n\n.main-content {\n  max-width: 70ch; /* Optimal line length for readability */\n  margin-left: auto;\n  margin-right: auto;\n  padding: 1.5rem;\n  box-sizing: border-box;\n  text-rendering: optimizeLegibility; /* Improves kerning & ligatures */\n  -webkit-font-smoothing: antialiased; /* Ensure smooth text rendering */\n  -moz-osx-font-smoothing: grayscale;\n}\n\n@font-face {\n  font-family: 'Inter var';\n  src: url('/fonts/Inter-roman.var.woff2') format('woff2');\n  font-weight: 100 900;\n  font-display: swap; /* Prioritize content, then load font */\n}",
+        "date": "March 31, 2026"
+    },
+    {
         "title": "Typography Tip Mar 31",
         "slug": "typography-tip-1774927768",
         "tweet": "Check out today's CSS typography tip! #webdesign #css",
