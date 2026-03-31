@@ -154,7 +154,7 @@ top_guides = [
     ("how-to-fix-blurry-fonts-on-browser", "How to Fix Blurry Fonts in Chrome", "Rendering Optimization", "On MacOS, you can toggle the subpixel rendering engine to make light text on dark backgrounds appear crisper and less bulky.", "-webkit-font-smoothing: antialiased;\n-moz-osx-font-smoothing: grayscale;", "Only use antialiased smoothing for light text on dark backgrounds; it hurts dark text legibility."),
     ("how-to-import-adobe-fonts", "How to Import Adobe Fonts", "Premium Typography", "Adobe Fonts are integrated using a stylesheet exactly like Google Fonts, utilizing your specific project ID in the link tag.", "<link rel='stylesheet' href='https://use.typekit.net/your_id.css'>", "Adobe Fonts do not support the exact same subsetting parameters via URL as Google Fonts."),
     ("what-is-x-height-typography", "Understanding X-Height in Typography", "Design Theory", "The x-height is the vertical distance between the baseline and the median line of lowercase letters. Large x-heights improve legibility at small sizes.", "/* Conceptual Design Rule */", "When pairing fonts, try to match their x-heights to create visual harmony across the interface."),
-    ("how-to-add-font-fallback-stacks", "Creating Bulletproof Font Stacks", "Resilience", "A font stack is a prioritized list of fallback fonts. The browser will try each one in order until it finds one installed on the user's system.", "font-family: 'MyCustomFont', 'Helvetica Neue', Arial, sans-serif;", "Always end your CSS font stack with a generic family name like sans-serif or serif.")
+    ("how-to-add-font-fallback-stacks", "Creating Bulletproof Font Stacks", "Resilience", "A font stack is a prioritized list of fallback fonts. The browser will try each one in order until it finds one installed on the users system.", "font-family: 'MyCustomFont', 'Helvetica Neue', Arial, sans-serif;", "Always end your CSS font stack with a generic family name like sans-serif or serif.")
 ]
 
 top_comparisons = [
@@ -790,8 +790,8 @@ try:
                 <div class="w-full md:w-2/3 bg-slate-50 border border-slate-200 rounded-2xl py-4 px-6 shadow-inner flex flex-col justify-center focus-within:ring-2 focus-within:ring-indigo-500 focus-within:bg-white transition-all">
                     <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 px-1">Testing Playground</label>
                     <input type="text" id="vs-text" value="Optimize your UI design with fast-loading free web fonts." 
-                        onfocus="if(this.value===this.defaultValue) this.value='';" 
-                        onblur="if(this.value==='') {{ this.value=this.defaultValue; u(); }}"
+                        onfocus="if(this.value==='Optimize your UI design with fast-loading free web fonts.') this.value='';" 
+                        onblur="if(this.value==='') {{ this.value='Optimize your UI design with fast-loading free web fonts.'; u(); }}"
                         oninput="u()"
                         class="w-full bg-transparent px-1 outline-none text-lg md:text-xl font-medium text-slate-800 placeholder-slate-300">
                 </div>
@@ -1014,7 +1014,7 @@ try:
 {header_html}
     <main class="flex-grow pt-10 pb-24 px-6 md:pt-12 max-w-4xl mx-auto w-full">
         <div class="text-center mb-12 max-w-3xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4"><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Editor's Desk</span></h1>
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-4"><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Editor's Desk</span></h1>
             <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mt-4 mb-8">Every CSS typography tip, design trick, and code snippet we've ever published.</p>
         </div>
         <div class="space-y-6">{archive_cards}</div>
@@ -1076,6 +1076,8 @@ try:
             <div class="mb-8">
                 <label class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-3">Testing Copy</label>
                 <input type="text" id="vs-text" value="Optimize your UI design with fast-loading free web fonts." 
+                    onfocus="if(this.value==='Optimize your UI design with fast-loading free web fonts.') this.value='';" 
+                    onblur="if(this.value==='') {{ this.value='Optimize your UI design with fast-loading free web fonts.'; u(); }}"
                     oninput="u()"
                     class="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-4 outline-none text-lg font-medium text-slate-800 focus:ring-2 focus:ring-indigo-500 transition-all">
                 
@@ -1087,7 +1089,7 @@ try:
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
                 <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
                     <div class="flex justify-between items-center mb-2">
                         <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Size</span>
@@ -1114,16 +1116,31 @@ try:
 
                 <div class="flex items-center justify-center bg-slate-50 rounded-xl p-4 border border-slate-100 cursor-pointer hover:bg-slate-100 transition" onclick="toggleDarkMode()">
                     <div class="flex flex-col items-center">
-                        <svg class="w-6 h-6 text-slate-600 mb-1" id="icon-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                        <span id="lbl-dark" class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Dark Mode</span>
+                        <svg class="w-5 h-5 text-slate-600 mb-1" id="icon-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <span id="lbl-dark" class="text-[10px] font-black text-slate-500 uppercase tracking-widest text-center">Dark Mode</span>
+                    </div>
+                </div>
+
+                <div id="btn-xray" class="flex items-center justify-center bg-slate-50 rounded-xl p-4 border border-slate-100 cursor-pointer hover:bg-slate-100 transition relative overflow-hidden" onclick="toggleXRay()">
+                    <div class="flex flex-col items-center z-10 relative">
+                        <svg class="w-5 h-5 text-slate-600 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                        <span id="lbl-xray" class="text-[10px] font-black text-slate-500 uppercase tracking-widest text-center">X-Ray Off</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div id="xray-arena" class="hidden relative w-full min-h-[400px] bg-white rounded-3xl border border-slate-200 shadow-inner overflow-hidden mb-10 p-10 flex items-center justify-center">
+            <div class="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:16px_16px] opacity-50 pointer-events-none"></div>
+            <div class="relative w-full max-w-4xl flex justify-center text-center items-center z-10">
+                <p id="xray-preview-a" class="absolute comparison-text text-[#0ea5e9] mix-blend-multiply opacity-60 break-words w-full top-1/2 -translate-y-1/2 left-0"></p>
+                <p id="xray-preview-b" class="absolute comparison-text text-[#f43f5e] mix-blend-multiply opacity-60 break-words w-full top-1/2 -translate-y-1/2 left-0"></p>
+            </div>
+        </div>
+
+        <div id="compare-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8 transition-all">
             
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 flex flex-col h-full">
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 flex flex-col h-full transition-colors" id="panel-a">
                 <div class="flex flex-col sm:flex-row gap-3 mb-6">
                     <div class="flex-grow flex items-center bg-indigo-50 px-3 rounded-xl border border-indigo-100 focus-within:ring-2 focus-within:ring-indigo-400">
                         <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-sm uppercase mr-3">A</span>
@@ -1138,11 +1155,11 @@ try:
                 
                 <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-lg shadow-indigo-200 mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                    Copy Pro CSS
+                    Copy Fluid CSS
                 </button>
             </div>
 
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 flex flex-col h-full">
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 flex flex-col h-full transition-colors" id="panel-b">
                 <div class="flex flex-col sm:flex-row gap-3 mb-6">
                     <div class="flex-grow flex items-center bg-violet-50 px-3 rounded-xl border border-violet-100 focus-within:ring-2 focus-within:ring-violet-400">
                         <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-sm uppercase mr-3">B</span>
@@ -1157,7 +1174,7 @@ try:
                 
                 <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-lg shadow-violet-100 mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                    Copy Pro CSS
+                    Copy Fluid CSS
                 </button>
             </div>
 
@@ -1169,6 +1186,7 @@ try:
 {comparison_grid_links}
             </div>
         </div>
+
     </main>
 
     <div id="code-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
@@ -1179,17 +1197,17 @@ try:
             
             <div class="space-y-6">
                 <div>
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">1. Add to HTML Head</label>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2" id="modal-html-label">1. Add to HTML Head</label>
                     <div class="bg-slate-900 rounded-xl p-4 relative group">
                         <code id="modal-html" class="text-xs text-indigo-300 font-mono break-all block"></code>
                         <button id="copy-html-btn" onclick="copyElementText('modal-html')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY</button>
                     </div>
                 </div>
                 <div>
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">2. Apply Custom CSS Rule</label>
-                    <div class="bg-slate-900 rounded-xl p-4 relative group border-2 border-indigo-500/30">
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2 flex items-center gap-2">2. Apply Responsive CSS Rule <span class="bg-emerald-500 text-white px-2 py-0.5 rounded-full text-[8px]">FLUID ENABLED</span></label>
+                    <div class="bg-slate-900 rounded-xl p-4 relative group border-2 border-emerald-500/30">
                         <pre><code id="modal-css" class="text-xs font-mono text-emerald-400 block whitespace-pre-wrap leading-relaxed"></code></pre>
-                        <button onclick="copyElementText('modal-css')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY</button>
+                        <button onclick="copyElementText('modal-css')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-emerald-600 hover:bg-emerald-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY</button>
                     </div>
                 </div>
             </div>
@@ -1206,13 +1224,21 @@ try:
     <script>
         let fontsRaw = {json.dumps(master_fonts)};
         let isDark = false;
+        let isXray = false;
         let vsData = {{ a: null, b: null }};
         const loadedFonts = new Set();
+        let loadedCount = 0; // Async race condition safety
 
-        function loadFont(link) {{
-            if (!link || loadedFonts.has(link)) return;
-            const el = document.createElement('link'); el.rel = "stylesheet"; el.href = `https://fonts.googleapis.com/css2?family=${{link}}&display=swap`;
-            document.head.appendChild(el); loadedFonts.add(link);
+        function loadFont(link, callback) {{
+            if (!link || loadedFonts.has(link)) {{
+                if(callback) callback();
+                return;
+            }}
+            const el = document.createElement('link'); 
+            el.rel = "stylesheet"; 
+            el.href = `https://fonts.googleapis.com/css2?family=${{link}}&display=swap`;
+            el.onload = () => {{ loadedFonts.add(link); if(callback) callback(); }};
+            document.head.appendChild(el); 
         }}
 
         function setTxt(txt) {{
@@ -1224,17 +1250,44 @@ try:
             isDark = !isDark;
             const wrapA = document.getElementById('wrap-a');
             const wrapB = document.getElementById('wrap-b');
+            const panelA = document.getElementById('panel-a');
+            const panelB = document.getElementById('panel-b');
             const lbl = document.getElementById('lbl-dark');
             
             if(isDark) {{
                 wrapA.classList.add('preview-dark');
                 wrapB.classList.add('preview-dark');
+                panelA.classList.add('bg-slate-800', 'border-slate-700');
+                panelB.classList.add('bg-slate-800', 'border-slate-700');
                 lbl.innerText = "Light Mode";
             }} else {{
                 wrapA.classList.remove('preview-dark');
                 wrapB.classList.remove('preview-dark');
+                panelA.classList.remove('bg-slate-800', 'border-slate-700');
+                panelB.classList.remove('bg-slate-800', 'border-slate-700');
                 lbl.innerText = "Dark Mode";
             }}
+        }}
+
+        function toggleXRay() {{
+            isXray = !isXray;
+            const grid = document.getElementById('compare-grid');
+            const xrayArena = document.getElementById('xray-arena');
+            const btn = document.getElementById('btn-xray');
+            const lbl = document.getElementById('lbl-xray');
+
+            if(isXray) {{
+                grid.classList.add('hidden');
+                xrayArena.classList.remove('hidden');
+                btn.classList.add('bg-indigo-100', 'border-indigo-300');
+                lbl.innerText = "X-Ray On";
+            }} else {{
+                grid.classList.remove('hidden');
+                xrayArena.classList.add('hidden');
+                btn.classList.remove('bg-indigo-100', 'border-indigo-300');
+                lbl.innerText = "X-Ray Off";
+            }}
+            u();
         }}
 
         function parseWeights(link) {{
@@ -1274,25 +1327,35 @@ try:
             sA.selectedIndex = interIdx !== -1 ? interIdx : 0;
             sB.selectedIndex = robotoIdx !== -1 ? robotoIdx : 1;
 
+            const checkAndDraw = () => {{
+                loadedCount++;
+                if (loadedCount >= 2) {{ u(); loadedCount = 0; }}
+            }};
+
             sA.onchange = () => {{
                 vsData.a = fontsRaw[sA.value];
-                loadFont(vsData.a.link);
                 populateWeights('vs-weight-a', vsData.a);
-                u();
+                loadFont(vsData.a.link, () => {{ u(); }});
             }};
             
             sB.onchange = () => {{
                 vsData.b = fontsRaw[sB.value];
-                loadFont(vsData.b.link);
                 populateWeights('vs-weight-b', vsData.b);
-                u();
+                loadFont(vsData.b.link, () => {{ u(); }});
             }};
             
-            sA.onchange();
-            sB.onchange();
+            // Initialization Trigger
+            vsData.a = fontsRaw[sA.value];
+            vsData.b = fontsRaw[sB.value];
+            populateWeights('vs-weight-a', vsData.a);
+            populateWeights('vs-weight-b', vsData.b);
+            loadFont(vsData.a.link, checkAndDraw);
+            loadFont(vsData.b.link, checkAndDraw);
         }}
 
         function u() {{
+            if (!vsData.a || !vsData.b) return;
+
             const text = document.getElementById('vs-text').value;
             const sz = document.getElementById('vs-font-size').value;
             const lh = document.getElementById('vs-lh').value;
@@ -1303,28 +1366,50 @@ try:
             document.getElementById('lbl-ls').innerText = ls + 'em';
             
             const wA = document.getElementById('vs-weight-a').value;
-            const pA = document.getElementById('vs-preview-a');
-            pA.style.fontFamily = vsData.a.css;
-            pA.style.fontSize = sz + 'px';
-            pA.style.fontWeight = wA;
-            pA.style.lineHeight = lh;
-            pA.style.letterSpacing = ls + 'em';
-            pA.innerText = text;
-
             const wB = document.getElementById('vs-weight-b').value;
-            const pB = document.getElementById('vs-preview-b');
-            pB.style.fontFamily = vsData.b.css;
-            pB.style.fontSize = sz + 'px';
-            pB.style.fontWeight = wB;
-            pB.style.lineHeight = lh;
-            pB.style.letterSpacing = ls + 'em';
-            pB.innerText = text;
+
+            // STANDARD GRID RENDER
+            if (!isXray) {{
+                const pA = document.getElementById('vs-preview-a');
+                pA.style.fontFamily = vsData.a.css;
+                pA.style.fontSize = sz + 'px';
+                pA.style.fontWeight = wA;
+                pA.style.lineHeight = lh;
+                pA.style.letterSpacing = ls + 'em';
+                pA.innerText = text;
+
+                const pB = document.getElementById('vs-preview-b');
+                pB.style.fontFamily = vsData.b.css;
+                pB.style.fontSize = sz + 'px';
+                pB.style.fontWeight = wB;
+                pB.style.lineHeight = lh;
+                pB.style.letterSpacing = ls + 'em';
+                pB.innerText = text;
+            }} 
+            // X-RAY ENGINE RENDER
+            else {{
+                const xa = document.getElementById('xray-preview-a');
+                xa.style.fontFamily = vsData.a.css;
+                xa.style.fontSize = sz + 'px';
+                xa.style.fontWeight = wA;
+                xa.style.lineHeight = lh;
+                xa.style.letterSpacing = ls + 'em';
+                xa.innerText = text;
+
+                const xb = document.getElementById('xray-preview-b');
+                xb.style.fontFamily = vsData.b.css;
+                xb.style.fontSize = sz + 'px';
+                xb.style.fontWeight = wB;
+                xb.style.lineHeight = lh;
+                xb.style.letterSpacing = ls + 'em';
+                xb.innerText = text;
+            }}
         }}
 
         function openModalFromVS(side) {{ 
             const fontObj = side === 'a' ? vsData.a : vsData.b;
             const weight = document.getElementById(side === 'a' ? 'vs-weight-a' : 'vs-weight-b').value;
-            const sz = document.getElementById('vs-font-size').value;
+            const sz = parseInt(document.getElementById('vs-font-size').value);
             const lh = document.getElementById('vs-lh').value;
             const ls = document.getElementById('vs-ls').value;
 
@@ -1342,12 +1427,16 @@ try:
                 copyBtn.style.display = 'none';
             }}
             
+            // FLUID TYPOGRAPHY ARCHITECTURE
+            let minSize = Math.max(12, Math.round(sz * 0.6)); 
+            
             let cssBlock = `.my-text {{\n`;
             cssBlock += `  font-family: ${{fontObj.css}};\n`;
-            cssBlock += `  font-size: ${{sz}}px;\n`;
             cssBlock += `  font-weight: ${{weight}};\n`;
             cssBlock += `  line-height: ${{lh}};\n`;
             if (ls !== "0" && ls !== "0.00") cssBlock += `  letter-spacing: ${{ls}}em;\n`;
+            cssBlock += `\n  /* Fluid Responsive Sizing */\n`;
+            cssBlock += `  font-size: clamp(${{minSize}}px, 2vw + 0.5rem, ${{sz}}px);\n`;
             cssBlock += `}}`;
 
             document.getElementById('modal-css').textContent = cssBlock;
