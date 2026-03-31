@@ -11,7 +11,13 @@ import tweepy
 # 1. SETUP & CONSTANTS
 DOMAIN = "https://htmlfonts.com"
 TAILWIND = "https://cdn.tailwindcss.com"
-GFONTS = "https://fonts.googleapis.com/css2"
+GFONTS_API = "https://fonts.googleapis.com/css2"
+
+# Safe variables to prevent markdown copy-paste bugs
+PRECONNECT_1 = '<link rel="preconnect" href="https://fonts.googleapis.com">'
+PRECONNECT_2 = '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+MAIN_FONT_LINK = '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700;900&family=Roboto:wght@400;700&family=Montserrat:wght@700;900&family=Oswald:wght@700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">'
+TOOL_FONT_LINK = '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">'
 
 GA_CODE = """    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKESX7E20P"></script>
     <script>
@@ -156,7 +162,7 @@ top_guides = [
     ("how-to-add-font-fallback-stacks", "Creating Bulletproof Font Stacks", "Resilience", "A font stack is a prioritized list of fallback fonts. The browser will try each one in order until it finds one installed on the user's system.", "font-family: 'MyCustomFont', 'Helvetica Neue', Arial, sans-serif;", "Always end your CSS font stack with a generic family name like sans-serif or serif.")
 ]
 
-# PERFECTLY FIXED: All 30 entries now have exactly 6 arguments.
+# PERFECTLY FIXED: All 30 entries now have exactly 6 string values.
 top_comparisons = [
     ("Roboto", "Open Sans", "'Roboto', sans-serif", "'Open Sans', sans-serif", "Roboto:wght@400;700", "Open+Sans:wght@400;700"),
     ("Arial", "Helvetica", "Arial, sans-serif", "Helvetica, Arial, sans-serif", "", ""),
@@ -216,9 +222,9 @@ header_html = """    <header class="bg-white/90 backdrop-blur-md border-b border
         </div>
     </header>"""
 
-footer_html = f"""    <footer class="bg-white border-t border-slate-200 py-16 mt-auto">
+footer_html = """    <footer class="bg-white border-t border-slate-200 py-16 mt-auto">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">&copy; {datetime.datetime.now().year} htmlfonts. All rights reserved.</p>
+            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">&copy; 2026 htmlfonts. All rights reserved.</p>
             <a href="https://x.com/HtmlFonts" target="_blank" class="text-xs font-bold text-indigo-500 hover:text-indigo-600 uppercase tracking-widest transition">Follow @HtmlFonts</a>
         </div>
     </footer>"""
@@ -403,8 +409,11 @@ tool_js_raw = r"""
         }
 
         function setTxt(txt) {
-            document.getElementById('vs-text').value = txt;
-            u();
+            const textEl = document.getElementById('vs-text');
+            if(textEl) {
+                textEl.value = txt;
+                u();
+            }
         }
 
         function toggleDarkMode() {
@@ -424,14 +433,14 @@ tool_js_raw = r"""
             const lbl = document.getElementById('lbl-dark');
             
             if(isDark) {
-                if(wrapA.classList.contains('bg-indigo-50/20')) { wrapA.classList.remove('bg-indigo-50/20', 'border-indigo-100/50'); }
-                if(wrapB.classList.contains('bg-violet-50/20')) { wrapB.classList.remove('bg-violet-50/20', 'border-violet-100/50'); }
-                panelA.classList.remove('bg-white', 'border-slate-200');
-                panelB.classList.remove('bg-white', 'border-slate-200');
+                if(wrapA && wrapA.classList.contains('bg-indigo-50/20')) { wrapA.classList.remove('bg-indigo-50/20', 'border-indigo-100/50'); }
+                if(wrapB && wrapB.classList.contains('bg-violet-50/20')) { wrapB.classList.remove('bg-violet-50/20', 'border-violet-100/50'); }
+                if(panelA) panelA.classList.remove('bg-white', 'border-slate-200');
+                if(panelB) panelB.classList.remove('bg-white', 'border-slate-200');
                 if(tabA) tabA.classList.remove('bg-indigo-50', 'border-indigo-100');
                 if(tabB) tabB.classList.remove('bg-violet-50', 'border-violet-100');
-                weightA.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
-                weightB.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                if(weightA) weightA.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                if(weightB) weightB.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
                 if(fontA) fontA.classList.remove('text-slate-800');
                 if(fontB) fontB.classList.remove('text-slate-800');
                 
@@ -440,30 +449,30 @@ tool_js_raw = r"""
                 if(titleA) titleA.classList.replace('text-slate-800', 'text-white');
                 if(titleB) titleB.classList.replace('text-slate-800', 'text-white');
                 
-                pa.classList.replace('text-slate-900', 'text-white');
-                pb.classList.replace('text-slate-900', 'text-white');
+                if(pa) pa.classList.replace('text-slate-900', 'text-white');
+                if(pb) pb.classList.replace('text-slate-900', 'text-white');
                 
-                wrapA.classList.add('bg-slate-900', 'border-slate-700');
-                wrapB.classList.add('bg-slate-900', 'border-slate-700');
-                panelA.classList.add('bg-slate-800', 'border-slate-700');
-                panelB.classList.add('bg-slate-800', 'border-slate-700');
+                if(wrapA) wrapA.classList.add('bg-slate-900', 'border-slate-700');
+                if(wrapB) wrapB.classList.add('bg-slate-900', 'border-slate-700');
+                if(panelA) panelA.classList.add('bg-slate-800', 'border-slate-700');
+                if(panelB) panelB.classList.add('bg-slate-800', 'border-slate-700');
                 if(tabA) tabA.classList.add('bg-slate-800', 'border-slate-700');
                 if(tabB) tabB.classList.add('bg-slate-800', 'border-slate-700');
-                weightA.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
-                weightB.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
+                if(weightA) weightA.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
+                if(weightB) weightB.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
                 if(fontA) fontA.classList.add('text-white');
                 if(fontB) fontB.classList.add('text-white');
                 
-                lbl.innerText = "Light Mode";
+                if(lbl) lbl.innerText = "Light Mode";
             } else {
-                wrapA.classList.remove('bg-slate-900', 'border-slate-700');
-                wrapB.classList.remove('bg-slate-900', 'border-slate-700');
-                panelA.classList.remove('bg-slate-800', 'border-slate-700');
-                panelB.classList.remove('bg-slate-800', 'border-slate-700');
+                if(wrapA) wrapA.classList.remove('bg-slate-900', 'border-slate-700');
+                if(wrapB) wrapB.classList.remove('bg-slate-900', 'border-slate-700');
+                if(panelA) panelA.classList.remove('bg-slate-800', 'border-slate-700');
+                if(panelB) panelB.classList.remove('bg-slate-800', 'border-slate-700');
                 if(tabA) tabA.classList.remove('bg-slate-800', 'border-slate-700');
                 if(tabB) tabB.classList.remove('bg-slate-800', 'border-slate-700');
-                weightA.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
-                weightB.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
+                if(weightA) weightA.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
+                if(weightB) weightB.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
                 if(fontA) fontA.classList.remove('text-white');
                 if(fontB) fontB.classList.remove('text-white');
                 
@@ -472,21 +481,21 @@ tool_js_raw = r"""
                 if(titleA) titleA.classList.replace('text-white', 'text-slate-800');
                 if(titleB) titleB.classList.replace('text-white', 'text-slate-800');
                 
-                pa.classList.replace('text-white', 'text-slate-900');
-                pb.classList.replace('text-white', 'text-slate-900');
+                if(pa) pa.classList.replace('text-white', 'text-slate-900');
+                if(pb) pb.classList.replace('text-white', 'text-slate-900');
 
-                wrapA.classList.add('bg-indigo-50/20', 'border-indigo-100/50');
-                wrapB.classList.add('bg-violet-50/20', 'border-violet-100/50');
-                panelA.classList.add('bg-white', 'border-slate-200');
-                panelB.classList.add('bg-white', 'border-slate-200');
+                if(wrapA) wrapA.classList.add('bg-indigo-50/20', 'border-indigo-100/50');
+                if(wrapB) wrapB.classList.add('bg-violet-50/20', 'border-violet-100/50');
+                if(panelA) panelA.classList.add('bg-white', 'border-slate-200');
+                if(panelB) panelB.classList.add('bg-white', 'border-slate-200');
                 if(tabA) tabA.classList.add('bg-indigo-50', 'border-indigo-100');
                 if(tabB) tabB.classList.add('bg-violet-50', 'border-violet-100');
-                weightA.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-600');
-                weightB.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                if(weightA) weightA.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                if(weightB) weightB.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-600');
                 if(fontA) fontA.classList.add('text-slate-800');
                 if(fontB) fontB.classList.add('text-slate-800');
                 
-                lbl.innerText = "Dark Mode";
+                if(lbl) lbl.innerText = "Dark Mode";
             }
             u();
         }
@@ -499,15 +508,15 @@ tool_js_raw = r"""
             const lbl = document.getElementById('lbl-xray');
 
             if(isXray) {
-                grid.classList.add('hidden');
-                xrayArena.classList.remove('hidden');
-                btn.classList.add('bg-indigo-100', 'border-indigo-300');
-                lbl.innerText = "X-Ray On";
+                if(grid) grid.classList.add('hidden');
+                if(xrayArena) xrayArena.classList.remove('hidden');
+                if(btn) btn.classList.add('bg-indigo-100', 'border-indigo-300');
+                if(lbl) lbl.innerText = "X-Ray On";
             } else {
-                grid.classList.remove('hidden');
-                xrayArena.classList.add('hidden');
-                btn.classList.remove('bg-indigo-100', 'border-indigo-300');
-                lbl.innerText = "X-Ray Off";
+                if(grid) grid.classList.remove('hidden');
+                if(xrayArena) xrayArena.classList.add('hidden');
+                if(btn) btn.classList.remove('bg-indigo-100', 'border-indigo-300');
+                if(lbl) lbl.innerText = "X-Ray Off";
             }
             u();
         }
@@ -521,6 +530,7 @@ tool_js_raw = r"""
 
         function populateWeights(selectId, fontObj) {
             const sel = document.getElementById(selectId);
+            if(!sel) return;
             const currentVal = sel.value; 
             sel.innerHTML = '';
             
@@ -541,7 +551,7 @@ tool_js_raw = r"""
             const sA = document.getElementById('vs-font-a'); 
             const sB = document.getElementById('vs-font-b');
             
-            if (sA && sB) {
+            if (sA && sB && typeof fontsRaw !== 'undefined') {
                 fontsRaw.forEach((f, i) => { 
                     sA.add(new Option(f.name, i)); 
                     sB.add(new Option(f.name, i)); 
@@ -579,9 +589,11 @@ tool_js_raw = r"""
         }
 
         function initComparePage() {
-            populateWeights('vs-weight-a', fontData['a']);
-            populateWeights('vs-weight-b', fontData['b']);
-            u();
+            if(typeof fontData !== 'undefined') {
+                populateWeights('vs-weight-a', fontData['a']);
+                populateWeights('vs-weight-b', fontData['b']);
+                u();
+            }
         }
 
         function u() {
@@ -597,16 +609,23 @@ tool_js_raw = r"""
             const lh = lhEl.value;
             const ls = lsEl.value;
             
-            document.getElementById('lbl-size').innerText = sz + 'px';
-            document.getElementById('lbl-lh').innerText = lh;
-            document.getElementById('lbl-ls').innerText = ls + 'em';
+            const lblSize = document.getElementById('lbl-size');
+            const lblLh = document.getElementById('lbl-lh');
+            const lblLs = document.getElementById('lbl-ls');
             
-            const wA = document.getElementById('vs-weight-a').value || '400';
-            const wB = document.getElementById('vs-weight-b').value || '400';
+            if(lblSize) lblSize.innerText = sz + 'px';
+            if(lblLh) lblLh.innerText = lh;
+            if(lblLs) lblLs.innerText = ls + 'em';
+            
+            const wAEl = document.getElementById('vs-weight-a');
+            const wBEl = document.getElementById('vs-weight-b');
+            
+            const wA = wAEl ? wAEl.value : '400';
+            const wB = wBEl ? wBEl.value : '400';
             
             const txtColor = isDark ? '#ffffff' : '#0f172a';
 
-            // Determine data source (dynamic tool vs static page)
+            // Safely get data from either individual page OR main tool
             let currA = (typeof fontData !== 'undefined' && fontData['a']) ? fontData['a'] : vsData.a;
             let currB = (typeof fontData !== 'undefined' && fontData['b']) ? fontData['b'] : vsData.b;
             
@@ -614,27 +633,33 @@ tool_js_raw = r"""
 
             if (!isXray) {
                 const pA = document.getElementById('vs-preview-a');
-                pA.style.color = txtColor;
-                pA.style.fontFamily = currA.css;
-                pA.style.fontSize = sz + 'px';
-                pA.style.fontWeight = wA;
-                pA.style.lineHeight = lh;
-                pA.style.letterSpacing = ls + 'em';
-                pA.innerText = text;
+                if(pA) {
+                    pA.style.color = txtColor;
+                    pA.style.fontFamily = currA.css;
+                    pA.style.fontSize = sz + 'px';
+                    pA.style.fontWeight = wA;
+                    pA.style.lineHeight = lh;
+                    pA.style.letterSpacing = ls + 'em';
+                    pA.innerText = text;
+                }
 
                 const pB = document.getElementById('vs-preview-b');
-                pB.style.color = txtColor;
-                pB.style.fontFamily = currB.css;
-                pB.style.fontSize = sz + 'px';
-                pB.style.fontWeight = wB;
-                pB.style.lineHeight = lh;
-                pB.style.letterSpacing = ls + 'em';
-                pB.innerText = text;
+                if(pB) {
+                    pB.style.color = txtColor;
+                    pB.style.fontFamily = currB.css;
+                    pB.style.fontSize = sz + 'px';
+                    pB.style.fontWeight = wB;
+                    pB.style.lineHeight = lh;
+                    pB.style.letterSpacing = ls + 'em';
+                    pB.innerText = text;
+                }
             } else {
                 const xa = document.getElementById('xray-preview-a');
                 const xb = document.getElementById('xray-preview-b');
                 const arena = document.getElementById('xray-arena');
                 
+                if(!xa || !xb || !arena) return;
+
                 if (isDark) {
                     arena.classList.replace('bg-white', 'bg-slate-900');
                     xa.style.mixBlendMode = 'screen';
@@ -667,20 +692,23 @@ tool_js_raw = r"""
 
         function updateModalDisplay() {
             const htmlCode = document.getElementById('modal-html');
+            const copyBtn = document.getElementById('copy-html-btn');
+            const cssEl = document.getElementById('modal-css');
+            if(!htmlCode || !cssEl) return;
+
             if (activeModalData.link) {
                 if (importMode === 'html') {
                     htmlCode.textContent = `<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=${activeModalData.link}&display=swap" rel="stylesheet">`;
                 } else {
                     htmlCode.textContent = `@import url('https://fonts.googleapis.com/css2?family=${activeModalData.link}&display=swap');`;
                 }
-                document.getElementById('copy-html-btn').style.display = 'block';
+                if(copyBtn) copyBtn.style.display = 'block';
             } else {
                 htmlCode.innerHTML = `<span class="font-sans font-medium text-emerald-400 select-none">✨ System Font. No import required!</span>`;
-                document.getElementById('copy-html-btn').style.display = 'none';
+                if(copyBtn) copyBtn.style.display = 'none';
             }
 
             const fontStack = `"${activeModalData.name}", ${getFallbackStack(activeModalData.type)}`;
-            const cssEl = document.getElementById('modal-css');
             
             let minSize = Math.max(12, Math.round(activeModalData.sz * 0.6));
             let remMin = (minSize / 16).toFixed(3).replace(/\.?0+$/, '');
@@ -710,11 +738,11 @@ tool_js_raw = r"""
             const btnCss = document.getElementById('btn-imp-css');
             
             if (mode === 'html') {
-                btnHtml.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition";
-                btnCss.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
+                if(btnHtml) btnHtml.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition";
+                if(btnCss) btnCss.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
             } else {
-                btnCss.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition";
-                btnHtml.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
+                if(btnCss) btnCss.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition";
+                if(btnHtml) btnHtml.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
             }
             updateModalDisplay();
         }
@@ -725,67 +753,82 @@ tool_js_raw = r"""
             const btnTw = document.getElementById('btn-css-tailwind');
             
             if (mode === 'vanilla') {
-                btnVan.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-emerald-600 transition";
-                btnTw.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
+                if(btnVan) btnVan.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-emerald-600 transition";
+                if(btnTw) btnTw.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
             } else {
-                btnTw.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-emerald-600 transition";
-                btnVan.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
+                if(btnTw) btnTw.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-emerald-600 transition";
+                if(btnVan) btnVan.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
             }
             updateModalDisplay();
         }
 
         function openModalFromVS(side) { 
             const currObj = (typeof fontData !== 'undefined' && fontData[side]) ? fontData[side] : vsData[side];
-            
+            if(!currObj) return;
+
+            const wEl = document.getElementById(side === 'a' ? 'vs-weight-a' : 'vs-weight-b');
+            const szEl = document.getElementById('vs-font-size');
+            const lhEl = document.getElementById('vs-lh');
+            const lsEl = document.getElementById('vs-ls');
+
             activeModalData = {
                 name: currObj.name,
                 link: currObj.link,
                 cssObj: currObj.css,
                 type: currObj.type,
-                weight: document.getElementById(side === 'a' ? 'vs-weight-a' : 'vs-weight-b').value,
-                sz: parseInt(document.getElementById('vs-font-size').value),
-                lh: document.getElementById('vs-lh').value,
-                ls: document.getElementById('vs-ls').value
+                weight: wEl ? wEl.value : '400',
+                sz: szEl ? parseInt(szEl.value) : 32,
+                lh: lhEl ? lhEl.value : '1.5',
+                ls: lsEl ? lsEl.value : '0'
             };
 
-            document.getElementById('modal-font-name').innerText = activeModalData.name + ' (' + activeModalData.weight + ')';
+            const titleEl = document.getElementById('modal-font-name');
+            if(titleEl) titleEl.innerText = activeModalData.name + ' (' + activeModalData.weight + ')';
             
             updateModalDisplay();
             
             const modal = document.getElementById('code-modal');
             const modalContent = document.getElementById('modal-content');
-            modal.classList.remove('hidden');
-            void modal.offsetWidth;
-            modal.classList.remove('opacity-0');
-            modalContent.classList.remove('scale-95');
-            modalContent.classList.add('scale-100');
+            if(modal && modalContent) {
+                modal.classList.remove('hidden');
+                void modal.offsetWidth;
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }
         }
 
         function closeModal(id) { 
             const modal = document.getElementById(id);
             const modalContent = document.getElementById('modal-content');
-            modal.classList.add('opacity-0');
-            modalContent.classList.remove('scale-100');
-            modalContent.classList.add('scale-95');
-            setTimeout(() => modal.classList.add('hidden'), 300); 
+            if(modal && modalContent) {
+                modal.classList.add('opacity-0');
+                modalContent.classList.remove('scale-100');
+                modalContent.classList.add('scale-95');
+                setTimeout(() => modal.classList.add('hidden'), 300); 
+            }
         }
         
         function triggerToast(msg = "Copied! 🚀") {
             const t = document.getElementById('toast'); 
-            t.classList.remove('hidden'); 
-            void t.offsetWidth;
-            t.classList.remove('opacity-0', 'translate-y-4');
-            setTimeout(() => { 
-                t.classList.add('opacity-0', 'translate-y-4'); 
-                setTimeout(() => t.classList.add('hidden'), 300); 
-            }, 3000);
+            if(t) {
+                t.classList.remove('hidden'); 
+                void t.offsetWidth;
+                t.classList.remove('opacity-0', 'translate-y-4');
+                setTimeout(() => { 
+                    t.classList.add('opacity-0', 'translate-y-4'); 
+                    setTimeout(() => t.classList.add('hidden'), 300); 
+                }, 3000);
+            }
         }
         
         function copyElementText(id) {
-            const txt = document.getElementById(id).textContent;
+            const el = document.getElementById(id);
+            if(!el) return;
+            const txt = el.textContent;
             navigator.clipboard.writeText(txt).then(() => triggerToast()).catch(() => {
-                const el = document.createElement('textarea'); el.value = txt; document.body.appendChild(el);
-                el.select(); document.execCommand('copy'); document.body.removeChild(el); triggerToast();
+                const ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta);
+                ta.select(); document.execCommand('copy'); document.body.removeChild(ta); triggerToast();
             });
         }
 """
@@ -862,8 +905,12 @@ try:
         slug = f_name.lower().replace(' ', '-')
         f_css = font["css"]
         f_type = font["type"]
-        f_link = f"<link href='{GFONTS}?family={font['link']}&display=swap' rel='stylesheet'>" if font["link"] else ""
-        f_url = f"{GFONTS}?family={font['link']}&display=swap" if font["link"] else ""
+        
+        f_link = ""
+        f_url = ""
+        if font["link"]:
+            f_link = f'<link href="{GFONTS_API}?family={font["link"]}&display=swap" rel="stylesheet">'
+            f_url = f'{GFONTS_API}?family={font["link"]}&display=swap'
         
         safe_name = html.escape(f_name, quote=True)
         safe_css = html.escape(f_css, quote=True)
@@ -949,6 +996,8 @@ try:
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 {GA_CODE}
     <script src="{TAILWIND}"></script>
+    {PRECONNECT_1}
+    {PRECONNECT_2}
     {f_link}
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
@@ -990,9 +1039,9 @@ try:
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 {GA_CODE}
     <script src="{TAILWIND}"></script>
-    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
-    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-    <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700;900&family=Roboto:wght@400;700&family=Montserrat:wght@700;900&family=Oswald:wght@700&family=Fira+Code:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700;900&family=Roboto:wght@400;700&family=Montserrat:wght@700;900&family=Oswald:wght@700&family=Fira+Code:wght@400;700&display=swap)" rel="stylesheet">
+    {PRECONNECT_1}
+    {PRECONNECT_2}
+    {MAIN_FONT_LINK}
     <style>
         body {{ font-family: system-ui, sans-serif; }}
         .custom-scrollbar::-webkit-scrollbar {{ width: 6px; }}
@@ -1080,10 +1129,9 @@ try:
             </div>
         </div>
     </div>
-
-{footer_html}
-{home_js_raw}
-"""
+""" + footer_html + home_js_raw + """
+</body>
+</html>"""
     with open("index.html", 'w', encoding='utf-8') as f: f.write(home_html)
 
     # 5. GENERATE GUIDES
@@ -1278,7 +1326,7 @@ try:
     <div class="bg-white border-b border-slate-200 overflow-hidden relative">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-white to-white"></div>
         <div class="max-w-7xl mx-auto px-6 pt-10 pb-12 md:pt-12 md:pb-16 relative z-10 text-center">
-            <span class="inline-block bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-[0.2em] mb-4 shadow-sm">Daily Updates</span>
+            <span class="inline-block bg-indigo-50 border border-slate-100 text-indigo-700 text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-[0.2em] mb-4 shadow-sm">Daily Updates</span>
             <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4">
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Editor's Desk</span>
             </h1>
@@ -1312,8 +1360,10 @@ try:
         type_b = next((f['type'] for f in master_fonts if f['name'] == font_b), 'Sans-Serif')
 
         slug = f"{font_a.lower().replace(' ', '-')}-vs-{font_b.lower().replace(' ', '-')}"
-        imp_a = f"<link href='{GFONTS}?family={link_a}&display=swap' rel='stylesheet'>" if link_a else ""
-        imp_b = f"<link href='{GFONTS}?family={link_b}&display=swap' rel='stylesheet'>" if link_b else ""
+        
+        # Build raw links safely
+        imp_a = f'<link href="{GFONTS_API}?family={link_a}&display=swap" rel="stylesheet">' if link_a else ""
+        imp_b = f'<link href="{GFONTS_API}?family={link_b}&display=swap" rel="stylesheet">' if link_b else ""
 
         sys_msg = '<span class="font-sans font-medium text-emerald-400 select-none">✨ Web-safe system font. Pre-installed on all devices for zero-latency loading. No HTML import required!</span>'
         html_a = imp_a if imp_a else sys_msg
@@ -1566,7 +1616,11 @@ try:
             'a': {{ name: "{font_a}", css: "{css_a}", link: "{safe_link_a}", type: "{type_a}" }},
             'b': {{ name: "{font_b}", css: "{css_b}", link: "{safe_link_b}", type: "{type_b}" }}
         }};
-""" + tool_js_raw
+""" + tool_js_raw + f"""
+        initComparePage();
+    </script>
+</body>
+</html>"""
 
         with open(f"compare/{slug}.html", 'w', encoding='utf-8') as f: f.write(vs_html)
         sitemap += f"  <url><loc>{DOMAIN}/compare/{slug}.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>\n"
@@ -1584,9 +1638,9 @@ try:
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 {GA_CODE}
     <script src="{TAILWIND}"></script>
-    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
-    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-    <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap)" rel="stylesheet">
+    {PRECONNECT_1}
+    {PRECONNECT_2}
+    {TOOL_FONT_LINK}
     <style>
         body {{ font-family: system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }}
         .toast-active {{ opacity: 1; transform: translate(-50%, 0); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }}
@@ -1683,20 +1737,17 @@ try:
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 transition-all items-start" id="compare-grid">
-            
             <div class="bg-white p-4 md:p-6 rounded-[2rem] shadow-sm border border-slate-200 flex flex-col transition-colors" id="panel-a">
-                <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6">
-                    <div class="flex-grow flex items-center bg-indigo-50 px-3 rounded-xl border border-indigo-100 focus-within:ring-2 focus-within:ring-indigo-400 transition-colors w-full sm:w-auto mb-2 sm:mb-0" id="tab-a">
-                        <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-sm uppercase mr-3">A</span>
+                <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6 items-center justify-between">
+                    <div class="flex items-center">
+                        <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-indigo-200 uppercase mr-3">A</span>
                         <select id="vs-font-a" class="w-full bg-transparent py-3 font-bold text-slate-800 outline-none cursor-pointer text-sm transition-colors"></select>
                     </div>
                     <select id="vs-weight-a" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
-                
                 <div id="wrap-a" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden relative">
                     <p id="vs-preview-a" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
-                
                 <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-indigo-200 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     Copy HTML / CSS
@@ -1704,33 +1755,29 @@ try:
             </div>
 
             <div class="bg-white p-4 md:p-6 rounded-[2rem] shadow-sm border border-slate-200 flex flex-col transition-colors" id="panel-b">
-                <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6">
-                    <div class="flex-grow flex items-center bg-violet-50 px-3 rounded-xl border border-violet-100 focus-within:ring-2 focus-within:ring-violet-400 transition-colors w-full sm:w-auto mb-2 sm:mb-0" id="tab-b">
-                        <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-sm uppercase mr-3">B</span>
-                        <select id="vs-font-b" class="w-full bg-transparent py-3 font-bold text-slate-800 outline-none cursor-pointer text-sm transition-colors"></select>
+                <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6 items-center justify-between">
+                    <div class="flex items-center">
+                        <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-violet-200 uppercase mr-3">B</span>
+                        <h3 id="title-b" class="text-2xl font-black text-slate-800 transition-colors">{font_b}</h3>
                     </div>
                     <select id="vs-weight-b" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
-                
                 <div id="wrap-b" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden relative">
                     <p id="vs-preview-b" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
-                
                 <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-violet-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     Copy HTML / CSS
                 </button>
             </div>
-
         </div>
-        
-        <div class="border-t border-slate-200 pt-16 mt-24">
+
+        <div class="mt-12 border-t border-slate-200 pt-16">
             <h2 class="text-3xl font-black text-slate-900 mb-8 text-center tracking-tight">Most Searched Comparisons</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 {comparison_grid_links}
             </div>
         </div>
-
     </main>
     
     <div id="code-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
@@ -1774,7 +1821,11 @@ try:
 """ + footer_html + f"""
     <script>
         let fontsRaw = {json.dumps(master_fonts)};
-""" + tool_js_raw
+""" + tool_js_raw + f"""
+        initVSTool();
+    </script>
+</body>
+</html>"""
 
     with open('font-vs-font-comparison-tool.html', 'w', encoding='utf-8') as f:
         f.write(tool_html)
