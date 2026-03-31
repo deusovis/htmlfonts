@@ -66,6 +66,44 @@
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
                 </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Optimizing Web Font Loading with `font-display: optional` for Superior UX</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">For web typography experts, one of the most impactful ways to enhance user experience and UI design is by carefully managing font loading. While `font-display: swap` is common for a quick FOUT (Flash of Unstyled Text) to render content quickly with a fallback, it often leads to jarring layout shifts once the custom web font loads. To prioritize stability and a seamless user experience, particularly on slower connections, leverage `font-display: optional`. This setting tells the browser to use the custom font only if it loads within a very short timeframe (typically 100ms). If not, the browser will permanently use the fallback font for that page load, preventing any layout shifts or FOUT. This approach guarantees a consistent and fast visual experience, making it an excellent choice for critical UI elements where content stability is paramount. Combine it with font subsetting and preloading for a truly optimized web font strategy.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">/* Defining a custom web font with optional display */
+@font-face {
+  font-family: &#x27;Merriweather&#x27;;
+  src: url(&#x27;/fonts/Merriweather-Regular.woff2&#x27;) format(&#x27;woff2&#x27;),
+       url(&#x27;/fonts/Merriweather-Regular.woff&#x27;) format(&#x27;woff&#x27;);
+  font-weight: 400;
+  font-style: normal;
+  font-display: optional; /* Crucial for UX: uses fallback if not loaded quickly */
+}
+
+/* Applying the font to critical UI elements */
+h1,
+.hero-title {
+  font-family: &#x27;Merriweather&#x27;, serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #2c3e50;
+  /* Further CSS typography refinements */
+  text-rendering: optimizeLegibility;
+}
+
+p {
+  font-family: &#x27;Merriweather&#x27;, serif; /* Or another body font */
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #34495e;
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
                 <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Elevate Your UI: Advanced CSS Typography for Readability & Performance</h2>
                 <p class="text-slate-600 font-medium leading-relaxed mb-6">Implement a fluid type scale using CSS `clamp()` to ensure your headings and body text adapt seamlessly across all screen sizes. This technique enhances both UI aesthetics and readability, eliminating the need for numerous media queries for font-size adjustments.</p>
                 <div class="bg-slate-900 rounded-xl p-4 relative">
@@ -290,40 +328,6 @@ h1 {
     font-size: 4rem;
     line-height: 1.1;
   }
-}</code></pre>
-                </div>
-            </article>
-            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
-                </div>
-                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering Responsive Typography with `ch` Units for Superior UI/UX</h2>
-                <p class="text-slate-600 font-medium leading-relaxed mb-6">For unparalleled readability across devices, utilize `ch` (character) units when setting the `max-width` of your main text containers (e.g., `max-width: 70ch;`). This ensures line lengths consistently fall within the ideal 45-75 character range, independent of `font-size`, significantly reducing eye strain and enhancing the user experience, a core principle of advanced web typography.</p>
-                <div class="bg-slate-900 rounded-xl p-4 relative">
-                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">body {
-  font-family: &#x27;Inter var&#x27;, sans-serif; /* Example variable font for performance */
-  font-size: 1.125rem;
-  line-height: 1.6;
-  color: #333;
-}
-
-.main-content {
-  max-width: 70ch; /* Optimal line length for readability */
-  margin-left: auto;
-  margin-right: auto;
-  padding: 1.5rem;
-  box-sizing: border-box;
-  text-rendering: optimizeLegibility; /* Improves kerning &amp; ligatures */
-  -webkit-font-smoothing: antialiased; /* Ensure smooth text rendering */
-  -moz-osx-font-smoothing: grayscale;
-}
-
-@font-face {
-  font-family: &#x27;Inter var&#x27;;
-  src: url(&#x27;/fonts/Inter-roman.var.woff2&#x27;) format(&#x27;woff2&#x27;);
-  font-weight: 100 900;
-  font-display: swap; /* Prioritize content, then load font */
 }</code></pre>
                 </div>
             </article>
