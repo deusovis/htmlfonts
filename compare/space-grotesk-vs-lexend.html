@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Space Grotesk vs Lexend | Side-by-Side Comparison</title>
     <meta name="description" content="Compare Space Grotesk and Lexend web fonts side-by-side. Test legibility and generate CSS HTML code instantly.">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -20,12 +20,14 @@
         body { font-family: system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }
         .toast-active { opacity: 1; transform: translate(-50%, 0); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .modal-active { opacity: 1; transform: scale(1) translateY(0); transition: all 0.2s ease-out; }
-        .comparison-text { transition: font-size 0.2s ease; }
+        .comparison-text { transition: font-size 0.2s ease, font-weight 0.2s ease, line-height 0.2s ease, letter-spacing 0.2s ease; }
         option { background-color: #ffffff; color: #0f172a; }
     </style>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
-    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3">Copied! 🚀</div>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
+    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-emerald-500 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3">
+        <span>CSS Code Copied! 🚀</span>
+    </div>
     <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6 shadow-sm">
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
             <a href="/" class="flex items-center gap-2 group">
@@ -60,65 +62,112 @@
             <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mt-4 mb-8">Compare legibility and design aesthetics side-by-side.</p>
         </div>
     </div>
+    
     <main class="flex-grow w-full pb-24 px-6 max-w-7xl mx-auto relative z-20 -mt-8 md:-mt-12">
         <div class="text-center mb-8 max-w-3xl mx-auto">
-            <a href="/font-vs-font-comparison-tool.html" class="text-indigo-600 font-bold text-xs uppercase tracking-widest hover:text-indigo-800 transition">&larr; Back to Tool</a>
+            <a href="/font-vs-font-comparison-tool.html" class="text-indigo-600 font-bold text-xs uppercase tracking-widest hover:text-indigo-800 transition">&larr; Back to Full Tool</a>
         </div>
         
-        <div class="bg-white rounded-3xl p-4 md:p-10 shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100">
-            <div class="flex flex-col md:flex-row gap-4 md:gap-6 mb-8 md:mb-12 items-stretch">
-                <div class="w-full md:w-2/3 bg-slate-50 border border-slate-200 rounded-2xl py-4 px-6 shadow-inner flex flex-col justify-center focus-within:ring-2 focus-within:ring-indigo-500 focus-within:bg-white transition-all">
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 px-1">Testing Playground</label>
-                    <input type="text" id="vs-text" value="Optimize your UI design with fast-loading free web fonts." 
-                        onfocus="if(this.value==='Optimize your UI design with fast-loading free web fonts.') this.value='';" 
-                        onblur="if(this.value==='') { this.value='Optimize your UI design with fast-loading free web fonts.'; u(); }"
-                        oninput="u()"
-                        class="w-full bg-transparent px-1 outline-none text-base md:text-lg font-medium text-slate-800 placeholder-slate-300">
-                </div>
+        <div class="bg-white rounded-3xl p-4 md:p-8 shadow-xl border border-slate-200/60 mb-6 md:mb-10">
+            
+            <div class="mb-8">
+                <label class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-3">Testing Copy</label>
+                <input type="text" id="vs-text" value="Optimize your UI design with fast-loading free web fonts." 
+                    onfocus="if(this.value==='Optimize your UI design with fast-loading free web fonts.') this.value='';" 
+                    onblur="if(this.value==='') { this.value='Optimize your UI design with fast-loading free web fonts.'; u(); }"
+                    oninput="u()"
+                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 md:px-5 md:py-4 outline-none text-base md:text-lg font-medium text-slate-800 focus:ring-2 focus:ring-indigo-500 transition-all">
                 
-                <div class="w-full md:w-1/3 bg-slate-50 border border-slate-200 rounded-2xl py-4 px-6 shadow-inner flex flex-col justify-center">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Compare Size</span>
-                        <span id="vs-size-label" class="bg-indigo-100 text-indigo-700 font-black text-[10px] px-2 py-1 rounded-md">32px</span>
-                    </div>
-                    <input type="range" id="vs-font-size" min="12" max="120" value="32" oninput="u()" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
+                <div class="flex flex-wrap gap-2 mt-3">
+                    <button onclick="setTxt('Optimize your UI design with fast-loading free web fonts.')" class="bg-slate-100 hover:bg-slate-200 text-slate-600 text-[10px] font-bold px-3 py-1.5 rounded-lg uppercase tracking-wider transition">UI Copy</button>
+                    <button onclick="setTxt('The quick brown fox jumps over the lazy dog.')" class="bg-slate-100 hover:bg-slate-200 text-slate-600 text-[10px] font-bold px-3 py-1.5 rounded-lg uppercase tracking-wider transition">Pangram</button>
+                    <button onclick="setTxt('ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz')" class="bg-slate-100 hover:bg-slate-200 text-slate-600 text-[10px] font-bold px-3 py-1.5 rounded-lg uppercase tracking-wider transition">Alphabet</button>
+                    <button onclick="setTxt('0123456789 !@#$%^&*()_+-=[]{}|;:,.<>?/')" class="bg-slate-100 hover:bg-slate-200 text-slate-600 text-[10px] font-bold px-3 py-1.5 rounded-lg uppercase tracking-wider transition">Characters</button>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 divide-y md:divide-y-0 md:divide-x divide-slate-100 items-start" id="compare-grid">
-                <div class="md:pr-10 pt-4 md:pt-0 flex flex-col transition-colors" id="panel-a">
-                    <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6 items-center justify-between">
-                        <div class="flex items-center">
-                            <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-indigo-200 uppercase mr-3">A</span>
-                            <h3 id="title-a" class="text-2xl font-black text-slate-800 transition-colors">Space Grotesk</h3>
-                        </div>
-                        <select id="vs-weight-a" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-4">
+                <div class="bg-slate-50 rounded-xl p-3 md:p-4 border border-slate-100">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Size</span>
+                        <span id="lbl-size" class="text-indigo-600 font-bold text-xs">32px</span>
                     </div>
-                    <div id="wrap-a" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden relative">
-                        <p id="pa" class="comparison-text text-black break-words leading-tight w-full" style="font-family: 'Space Grotesk', sans-serif; font-size: 32px;">Optimize your UI design with fast-loading free web fonts.</p>
+                    <input type="range" id="vs-font-size" min="12" max="120" value="32" oninput="u()" class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
+                </div>
+                
+                <div class="bg-slate-50 rounded-xl p-3 md:p-4 border border-slate-100">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Line Height</span>
+                        <span id="lbl-lh" class="text-indigo-600 font-bold text-xs">1.5</span>
                     </div>
-                    <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-xl shadow-indigo-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                        Copy Fluid CSS
-                    </button>
+                    <input type="range" id="vs-lh" min="1.0" max="2.5" step="0.1" value="1.5" oninput="u()" class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
                 </div>
 
-                <div class="md:pl-10 pt-10 md:pt-0 flex flex-col transition-colors" id="panel-b">
-                    <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6 items-center justify-between">
-                        <div class="flex items-center">
-                            <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-violet-200 uppercase mr-3">B</span>
-                            <h3 id="title-b" class="text-2xl font-black text-slate-800 transition-colors">Lexend</h3>
-                        </div>
-                        <select id="vs-weight-b" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
+                <div class="bg-slate-50 rounded-xl p-3 md:p-4 border border-slate-100">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Tracking</span>
+                        <span id="lbl-ls" class="text-indigo-600 font-bold text-xs">0em</span>
                     </div>
-                    <div id="wrap-b" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden relative">
-                        <p id="pb" class="comparison-text text-black break-words leading-tight w-full" style="font-family: 'Lexend', sans-serif; font-size: 32px;">Optimize your UI design with fast-loading free web fonts.</p>
-                    </div>
-                    <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-xl shadow-violet-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                        Copy Fluid CSS
-                    </button>
+                    <input type="range" id="vs-ls" min="-0.10" max="0.30" step="0.01" value="0" oninput="u()" class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
                 </div>
+
+                <div class="flex items-center justify-center bg-slate-50 rounded-xl p-3 md:p-4 border border-slate-100 cursor-pointer hover:bg-slate-100 transition" onclick="toggleDarkMode()">
+                    <div class="flex flex-col items-center">
+                        <svg class="w-5 h-5 text-slate-600 mb-1" id="icon-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <span id="lbl-dark" class="text-[10px] font-black text-slate-500 uppercase tracking-widest text-center">Dark Mode</span>
+                    </div>
+                </div>
+
+                <div id="btn-xray" class="col-span-2 md:col-span-1 flex items-center justify-center bg-slate-50 rounded-xl p-3 md:p-4 border border-slate-100 cursor-pointer hover:bg-slate-100 transition relative overflow-hidden" onclick="toggleXRay()">
+                    <div class="flex flex-col items-center z-10 relative">
+                        <svg class="w-5 h-5 text-slate-600 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                        <span id="lbl-xray" class="text-[10px] font-black text-slate-500 uppercase tracking-widest text-center">X-Ray Off</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="xray-arena" class="hidden relative w-full min-h-[250px] md:min-h-[400px] bg-white rounded-3xl border border-slate-200 shadow-inner overflow-hidden mb-10 p-6 md:p-10 flex items-center justify-center transition-colors">
+            <div class="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:16px_16px] opacity-50 pointer-events-none" id="xray-bg-pattern"></div>
+            <div class="relative w-full max-w-4xl flex justify-center text-center items-center z-10">
+                <p id="xray-preview-a" class="absolute comparison-text break-words w-full top-1/2 -translate-y-1/2 left-0"></p>
+                <p id="xray-preview-b" class="absolute comparison-text break-words w-full top-1/2 -translate-y-1/2 left-0"></p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 transition-all items-start" id="compare-grid">
+            <div class="bg-white p-4 md:p-6 rounded-[2rem] shadow-sm border border-slate-200 flex flex-col transition-colors" id="panel-a">
+                <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6 items-center justify-between">
+                    <div class="flex items-center">
+                        <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-indigo-200 uppercase mr-3">A</span>
+                        <h3 id="title-a" class="text-2xl font-black text-slate-800 transition-colors">Space Grotesk</h3>
+                    </div>
+                    <select id="vs-weight-a" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
+                </div>
+                <div id="wrap-a" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden relative">
+                    <p id="vs-preview-a" class="comparison-text break-words w-full text-slate-900"></p>
+                </div>
+                <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-indigo-200 mt-4 md:mt-6 group flex justify-center items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    Copy HTML / CSS
+                </button>
+            </div>
+
+            <div class="bg-white p-4 md:p-6 rounded-[2rem] shadow-sm border border-slate-200 flex flex-col transition-colors" id="panel-b">
+                <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6 items-center justify-between">
+                    <div class="flex items-center">
+                        <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-violet-200 uppercase mr-3">B</span>
+                        <h3 id="title-b" class="text-2xl font-black text-slate-800 transition-colors">Lexend</h3>
+                    </div>
+                    <select id="vs-weight-b" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
+                </div>
+                <div id="wrap-b" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden relative">
+                    <p id="vs-preview-b" class="comparison-text break-words w-full text-slate-900"></p>
+                </div>
+                <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-violet-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    Copy HTML / CSS
+                </button>
             </div>
         </div>
 
@@ -177,6 +226,7 @@
         };
 
         let isDark = false;
+        let isXray = false;
         let importMode = 'html'; 
         let cssMode = 'vanilla'; 
         
@@ -220,21 +270,11 @@
             populateWeights('vs-weight-b', fontData['b']);
             u();
         }
-
-        function u() { 
-            const v = document.getElementById('vs-text').value || 'Optimize your UI design with fast-loading free web fonts.'; 
-            const sz = document.getElementById('vs-font-size').value;
-            
-            document.getElementById('vs-size-label').innerText = sz + 'px';
-            
-            const pa = document.getElementById('pa');
-            pa.innerText = v;
-            pa.style.fontSize = sz + 'px';
-            
-            const pb = document.getElementById('pb');
-            pb.innerText = v;
-            pb.style.fontSize = sz + 'px';
-        } 
+        
+        function setTxt(txt) {
+            document.getElementById('vs-text').value = txt;
+            u();
+        }
 
         function toggleDarkMode() {
             isDark = !isDark;
@@ -246,8 +286,8 @@
             const titleB = document.getElementById('title-b');
             const weightA = document.getElementById('vs-weight-a');
             const weightB = document.getElementById('vs-weight-b');
-            const pa = document.getElementById('pa');
-            const pb = document.getElementById('pb');
+            const pa = document.getElementById('vs-preview-a');
+            const pb = document.getElementById('vs-preview-b');
             const lbl = document.getElementById('lbl-dark');
             
             if(isDark) {
@@ -300,6 +340,97 @@
                 pa.classList.replace('text-white', 'text-slate-900');
                 pb.classList.replace('text-white', 'text-slate-900');
                 lbl.innerText = "Dark Mode";
+            }
+            u();
+        }
+        
+        function toggleXRay() {
+            isXray = !isXray;
+            const grid = document.getElementById('compare-grid');
+            const xrayArena = document.getElementById('xray-arena');
+            const btn = document.getElementById('btn-xray');
+            const lbl = document.getElementById('lbl-xray');
+
+            if(isXray) {
+                grid.classList.add('hidden');
+                xrayArena.classList.remove('hidden');
+                btn.classList.add('bg-indigo-100', 'border-indigo-300');
+                lbl.innerText = "X-Ray On";
+            } else {
+                grid.classList.remove('hidden');
+                xrayArena.classList.add('hidden');
+                btn.classList.remove('bg-indigo-100', 'border-indigo-300');
+                lbl.innerText = "X-Ray Off";
+            }
+            u();
+        }
+
+        function u() {
+            const text = document.getElementById('vs-text').value;
+            const sz = document.getElementById('vs-font-size').value;
+            const lh = document.getElementById('vs-lh').value;
+            const ls = document.getElementById('vs-ls').value;
+            
+            document.getElementById('vs-size-label').innerText = sz + 'px';
+            document.getElementById('lbl-size').innerText = sz + 'px';
+            document.getElementById('lbl-lh').innerText = lh;
+            document.getElementById('lbl-ls').innerText = ls + 'em';
+            
+            const wA = document.getElementById('vs-weight-a').value || '400';
+            const wB = document.getElementById('vs-weight-b').value || '400';
+            
+            const txtColor = isDark ? '#ffffff' : '#0f172a';
+
+            if (!isXray) {
+                const pA = document.getElementById('vs-preview-a');
+                pA.style.color = txtColor;
+                pA.style.fontFamily = fontData['a'].css;
+                pA.style.fontSize = sz + 'px';
+                pA.style.fontWeight = wA;
+                pA.style.lineHeight = lh;
+                pA.style.letterSpacing = ls + 'em';
+                pA.innerText = text;
+
+                const pB = document.getElementById('vs-preview-b');
+                pB.style.color = txtColor;
+                pB.style.fontFamily = fontData['b'].css;
+                pB.style.fontSize = sz + 'px';
+                pB.style.fontWeight = wB;
+                pB.style.lineHeight = lh;
+                pB.style.letterSpacing = ls + 'em';
+                pB.innerText = text;
+            } else {
+                const xa = document.getElementById('xray-preview-a');
+                const xb = document.getElementById('xray-preview-b');
+                const arena = document.getElementById('xray-arena');
+                
+                if (isDark) {
+                    arena.classList.replace('bg-white', 'bg-slate-900');
+                    xa.style.mixBlendMode = 'screen';
+                    xb.style.mixBlendMode = 'screen';
+                    xa.style.color = '#0ff'; 
+                    xb.style.color = '#f0f'; 
+                } else {
+                    arena.classList.replace('bg-slate-900', 'bg-white');
+                    xa.style.mixBlendMode = 'multiply';
+                    xb.style.mixBlendMode = 'multiply';
+                    xa.style.color = '#0ea5e9'; 
+                    xb.style.color = '#f43f5e'; 
+                }
+
+                xa.style.fontFamily = fontData['a'].css;
+                xa.style.fontSize = sz + 'px';
+                xa.style.fontWeight = wA;
+                xa.style.lineHeight = lh;
+                xa.style.letterSpacing = ls + 'em';
+                xa.innerText = text;
+
+                xb.style.fontFamily = fontData['b'].css;
+                xb.style.fontSize = sz + 'px';
+                xb.style.fontWeight = wB;
+                xb.style.lineHeight = lh;
+                xb.style.letterSpacing = ls + 'em';
+                xb.innerText = text;
             }
         }
 
@@ -387,8 +518,8 @@
                 type: fontObj.type,
                 weight: document.getElementById(side === 'a' ? 'vs-weight-a' : 'vs-weight-b').value || '400',
                 sz: parseInt(document.getElementById('vs-font-size').value),
-                lh: '1.5',
-                ls: '0'
+                lh: document.getElementById('vs-lh').value,
+                ls: document.getElementById('vs-ls').value
             };
 
             document.getElementById('modal-font-name').innerText = activeModalData.name + ' (' + activeModalData.weight + ')';
