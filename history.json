@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering Responsive Type Scales for Superior UI/UX with CSS `clamp()`",
+        "slug": "mastering-responsive-type-scales-superior-ui-ux-css-clamp",
+        "tweet": "Revolutionize your #UIDesign with responsive type scales using CSS `clamp()`! Achieve perfect #WebFonts and boost #UserExperience across all devices without complex media queries. Dive into advanced #CSSTypography today! #Accessibility",
+        "tip": "Harness the power of CSS `clamp()` for truly fluid and responsive typography. It lets you define a minimum, preferred (fluid viewport-based), and maximum font size, gracefully scaling text while maintaining readability and consistency, significantly enhancing your UI/UX design.",
+        "css_snippet": "body {\n  /* Sets font size to be at least 1rem, at most 1.25rem, \n     and fluidly scales between them based on viewport width. */\n  font-size: clamp(1rem, 2vw + 0.5rem, 1.25rem);\n  line-height: 1.6;\n  font-family: 'Inter', sans-serif;\n  text-rendering: optimizeLegibility; /* Enhances text rendering for better clarity */\n  -webkit-font-smoothing: antialiased; /* macOS font smoothing */\n  -moz-osx-font-smoothing: grayscale; /* macOS font smoothing */\n}\n\nh1 {\n  /* Larger fluid scale for headings */\n  font-size: clamp(2rem, 5vw + 1rem, 3.5rem);\n  line-height: 1.2;\n}",
+        "date": "March 31, 2026"
+    },
+    {
         "title": "Optimizing Web Font Loading for Superior UI/UX with CSS",
         "slug": "optimizing-web-font-loading-css-ui-ux",
         "tweet": "Boost your website's performance and user experience! Learn how to optimize web font loading with `font-display: swap` to prevent layout shifts and ensure crisp text rendering from the start. #CSSTypography #WebFonts #UIDesign #UXTips",
