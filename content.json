@@ -1,8 +1,8 @@
 {
-    "title": "Mastering `font-display` for Superior Web Font Performance & UX",
-    "slug": "mastering-font-display-web-font-performance-ux",
-    "tweet": "Boost your website's performance and UX! Learn how to use `font-display` effectively to control web font loading behavior, eliminate FOIT/FOUT, and ensure a smooth user experience. #WebTypography #CSS #UXDesign #WebFonts #UIDesign",
-    "tip": "To prevent Flash of Invisible Text (FOIT) or Flash of Unstyled Text (FOUT) and significantly improve user experience, strategically employ the `font-display` CSS property within your `@font-face` rules. For primary content fonts, `font-display: swap;` offers a good balance, displaying fallback text immediately and swapping to the web font once loaded. For less critical fonts or when absolute performance is paramount, consider `font-display: optional;` to avoid network requests if the font isn't already cached, ensuring zero layout shift.",
-    "css_snippet": "@font-face {\n  font-family: 'MyAwesomeWebFont';\n  src: url('/fonts/MyAwesomeWebFont-Regular.woff2') format('woff2'),\n       url('/fonts/MyAwesomeWebFont-Regular.woff') format('woff');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Recommended for critical fonts to avoid FOIT */\n}\n\n@font-face {\n  font-family: 'IconFont';\n  src: url('/fonts/IconFont.woff2') format('woff2');\n  font-weight: normal;\n  font-style: normal;\n  font-display: optional; /* For non-critical fonts, prioritize speed */\n}",
+    "title": "Mastering `font-display` for Superior Web Font Loading & UX",
+    "slug": "mastering-font-display-web-fonts-ux",
+    "tweet": "Boost your website's perceived performance and #UX! Learn how `font-display` CSS property elegantly manages web font loading, preventing unsightly Flash of Invisible Text (FOIT) or Flash of Unstyled Text (FOUT). #CSSTypography #WebFonts #UIDesign",
+    "tip": "Always declare `font-display` within your `@font-face` rules. Using `font-display: swap;` is often the optimal choice for primary content fonts, allowing the browser to render text immediately with a fallback font and swap to the custom web font once loaded. This significantly improves perceived performance and user experience by avoiding a blank screen or layout shift.",
+    "css_snippet": "@font-face {\n  font-family: 'CustomFontName';\n  src: url('/fonts/CustomFontName-Regular.woff2') format('woff2'),\n       url('/fonts/CustomFontName-Regular.woff') format('woff');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Key to better UX */\n}\n\nbody {\n  font-family: 'CustomFontName', sans-serif;\n}",
     "date": "March 31, 2026"
 }

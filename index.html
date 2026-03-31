@@ -1668,7 +1668,7 @@
             <a href="https://x.com/HtmlFonts" target="_blank" class="text-xs font-bold text-indigo-500 hover:text-indigo-600 uppercase tracking-widest transition">Follow @HtmlFonts</a>
         </div>
     </footer>
-    
+
     <script>
         const previewInput = document.getElementById('global-preview-input');
         const previewTexts = document.querySelectorAll('.font-preview-text');
@@ -1719,7 +1719,6 @@
             const cssCode = document.getElementById('modal-css');
             const copyBtn = document.getElementById('copy-html-btn');
             
-            // Render Import
             if (!idxState.url || idxState.url === "") {
                 htmlCode.innerHTML = '<span class="font-sans font-medium text-emerald-400 select-none">✨ System font. Pre-installed on all devices. No import required!</span>';
                 copyBtn.style.display = 'none';
@@ -1732,7 +1731,6 @@
                 }
             }
             
-            // Render CSS
             if (idxState.cssMode === 'vanilla') {
                 cssCode.textContent = `font-family: ${idxState.css};`;
             } else {
@@ -1808,5 +1806,4 @@
             });
         }
     </script>
-</body>
-</html>
+
