@@ -157,6 +157,7 @@ top_guides = [
     ("how-to-add-font-fallback-stacks", "Creating Bulletproof Font Stacks", "Resilience", "A font stack is a prioritized list of fallback fonts. The browser will try each one in order until it finds one installed on the user's system.", "font-family: 'MyCustomFont', 'Helvetica Neue', Arial, sans-serif;", "Always end your CSS font stack with a generic family name like sans-serif or serif.")
 ]
 
+# Ensure every tuple has exactly 6 elements to prevent unpacking crash
 top_comparisons = [
     ("Roboto", "Open Sans", "'Roboto', sans-serif", "'Open Sans', sans-serif", "Roboto:wght@400;700", "Open+Sans:wght@400;700"),
     ("Arial", "Helvetica", "Arial, sans-serif", "Helvetica, Arial, sans-serif", "", ""),
@@ -801,7 +802,7 @@ try:
             <a href="/font-vs-font-comparison-tool.html" class="text-indigo-600 font-bold text-xs uppercase tracking-widest hover:text-indigo-800 transition">&larr; Back to Tool</a>
         </div>
         
-        <div class="bg-white rounded-3xl p-4 md:p-10 shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 mb-6 md:mb-10">
+        <div class="bg-white rounded-3xl p-4 md:p-10 shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100">
             <div class="flex flex-col md:flex-row gap-4 md:gap-6 mb-8 md:mb-12 items-stretch">
                 <div class="w-full md:w-2/3 bg-slate-50 border border-slate-200 rounded-2xl py-4 px-6 shadow-inner flex flex-col justify-center focus-within:ring-2 focus-within:ring-indigo-500 focus-within:bg-white transition-all">
                     <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 px-1">Testing Playground</label>
@@ -823,30 +824,36 @@ try:
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 divide-y md:divide-y-0 md:divide-x divide-slate-100 items-start" id="compare-grid">
                 <div class="md:pr-10 pt-4 md:pt-0 flex flex-col transition-colors" id="panel-a">
-                    <div class="flex items-center gap-3 mb-6">
-                        <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-indigo-200 uppercase">A</span>
-                        <h3 id="title-a" class="text-2xl font-black text-slate-800 transition-colors">{font_a}</h3>
+                    <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6 items-center justify-between">
+                        <div class="flex items-center">
+                            <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-indigo-200 uppercase mr-3">A</span>
+                            <h3 id="title-a" class="text-2xl font-black text-slate-800 transition-colors">{font_a}</h3>
+                        </div>
+                        <select id="vs-weight-a" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                     </div>
-                    <div id="wrap-a" class="w-full flex items-center p-4 md:p-6 min-h-[80px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden relative">
+                    <div id="wrap-a" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden relative">
                         <p id="pa" class="comparison-text text-black break-words leading-tight w-full" style="font-family: {css_a}; font-size: 32px;">Optimize your UI design with fast-loading free web fonts.</p>
                     </div>
                     <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-xl shadow-indigo-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                        Copy HTML / CSS
+                        Copy Fluid CSS
                     </button>
                 </div>
 
                 <div class="md:pl-10 pt-10 md:pt-0 flex flex-col transition-colors" id="panel-b">
-                    <div class="flex items-center gap-3 mb-6">
-                        <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-violet-200 uppercase">B</span>
-                        <h3 id="title-b" class="text-2xl font-black text-slate-800 transition-colors">{font_b}</h3>
+                    <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6 items-center justify-between">
+                        <div class="flex items-center">
+                            <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-violet-200 uppercase mr-3">B</span>
+                            <h3 id="title-b" class="text-2xl font-black text-slate-800 transition-colors">{font_b}</h3>
+                        </div>
+                        <select id="vs-weight-b" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                     </div>
-                    <div id="wrap-b" class="w-full flex items-center p-4 md:p-6 min-h-[80px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden relative">
+                    <div id="wrap-b" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden relative">
                         <p id="pb" class="comparison-text text-black break-words leading-tight w-full" style="font-family: {css_b}; font-size: 32px;">Optimize your UI design with fast-loading free web fonts.</p>
                     </div>
                     <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-xl shadow-violet-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                        Copy HTML / CSS
+                        Copy Fluid CSS
                     </button>
                 </div>
             </div>
@@ -922,7 +929,32 @@ try:
             return "system-ui, sans-serif"; 
         }}
 
+        function parseWeights(link) {{
+            if (!link) return ['400', '700'];
+            const match = link.match(/wght@([\\d;]+)/);
+            if (match) return match[1].split(';');
+            return ['400']; 
+        }}
+
+        function populateWeights(selectId, fontObj) {{
+            const sel = document.getElementById(selectId);
+            sel.innerHTML = '';
+            
+            const weightNames = {{ '100':'Thin', '200':'ExtraLight', '300':'Light', '400':'Regular', '500':'Medium', '600':'SemiBold', '700':'Bold', '800':'ExtraBold', '900':'Black' }};
+            const weights = parseWeights(fontObj.link);
+            
+            weights.forEach(w => {{
+                let label = weightNames[w] ? `${{w}} (${{weightNames[w]}})` : w;
+                sel.add(new Option(label, w));
+            }});
+            
+            if (weights.includes('400')) sel.value = '400';
+            else sel.selectedIndex = 0;
+        }}
+
         function initComparePage() {{
+            populateWeights('vs-weight-a', fontData['a']);
+            populateWeights('vs-weight-b', fontData['b']);
             u();
         }}
 
@@ -949,8 +981,11 @@ try:
             const panelB = document.getElementById('panel-b');
             const titleA = document.getElementById('title-a');
             const titleB = document.getElementById('title-b');
+            const weightA = document.getElementById('vs-weight-a');
+            const weightB = document.getElementById('vs-weight-b');
             const pa = document.getElementById('pa');
             const pb = document.getElementById('pb');
+            const lbl = document.getElementById('lbl-dark');
             
             if(isDark) {{
                 wrapA.classList.replace('bg-indigo-50/20', 'bg-slate-900');
@@ -965,8 +1000,18 @@ try:
                 
                 titleA.classList.replace('text-slate-800', 'text-white');
                 titleB.classList.replace('text-slate-800', 'text-white');
+                
+                weightA.classList.replace('bg-slate-50', 'bg-slate-800');
+                weightA.classList.replace('border-slate-200', 'border-slate-700');
+                weightA.classList.replace('text-slate-600', 'text-white');
+                
+                weightB.classList.replace('bg-slate-50', 'bg-slate-800');
+                weightB.classList.replace('border-slate-200', 'border-slate-700');
+                weightB.classList.replace('text-slate-600', 'text-white');
+                
                 pa.classList.replace('text-slate-900', 'text-white');
                 pb.classList.replace('text-slate-900', 'text-white');
+                lbl.innerText = "Light Mode";
             }} else {{
                 wrapA.classList.replace('bg-slate-900', 'bg-indigo-50/20');
                 wrapA.classList.replace('border-slate-700', 'border-indigo-100/50');
@@ -980,8 +1025,18 @@ try:
 
                 titleA.classList.replace('text-white', 'text-slate-800');
                 titleB.classList.replace('text-white', 'text-slate-800');
+                
+                weightA.classList.replace('bg-slate-800', 'bg-slate-50');
+                weightA.classList.replace('border-slate-700', 'border-slate-200');
+                weightA.classList.replace('text-white', 'text-slate-600');
+                
+                weightB.classList.replace('bg-slate-800', 'bg-slate-50');
+                weightB.classList.replace('border-slate-700', 'border-slate-200');
+                weightB.classList.replace('text-white', 'text-slate-600');
+                
                 pa.classList.replace('text-white', 'text-slate-900');
                 pb.classList.replace('text-white', 'text-slate-900');
+                lbl.innerText = "Dark Mode";
             }}
         }}
 
@@ -1061,7 +1116,7 @@ try:
                 link: fontObj.link,
                 cssObj: fontObj.css,
                 type: fontObj.type,
-                weight: '400',
+                weight: document.getElementById(side === 'a' ? 'vs-weight-a' : 'vs-weight-b').value || '400',
                 sz: parseInt(document.getElementById('vs-font-size').value),
                 lh: '1.5',
                 ls: '0'
@@ -1115,112 +1170,7 @@ try:
         with open(f"compare/{slug}.html", 'w', encoding='utf-8') as f: f.write(vs_html)
         sitemap += f"  <url><loc>{DOMAIN}/compare/{slug}.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>\n"
 
-    # 7. GENERATE TODAY'S EDITOR TIP
-    tip_safe_desc = html.escape(str(new_data.get('tip', '')))
-    tip_safe_code = html.escape(str(new_data.get('css_snippet', '')))
-    
-    tip_html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{new_data.get('title', 'Typography Tip')} | Editor's Desk</title>
-    <meta name="description" content="{tip_safe_desc}">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-{GA_CODE}
-    <script src="{TAILWIND}"></script>
-    <style>body {{ font-family: system-ui, sans-serif; }}</style>
-</head>
-<body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
-{header_html}
-    <main class="flex-grow py-16 px-4">
-        <div class="max-w-4xl mx-auto">
-            <a href="/editors-desk.html" class="text-indigo-600 font-bold uppercase tracking-widest text-xs hover:text-indigo-800 transition">&larr; Back to Archive</a>
-            <article class="bg-white p-8 md:p-14 mt-8 rounded-[2rem] shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-indigo-500 to-violet-500"></div>
-                <span class="inline-block bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-[0.2em] mb-4">{new_data['date']}</span>
-                <h1 class="text-4xl md:text-5xl font-black mt-2 mb-8 tracking-tight text-slate-900 leading-tight">{new_data.get('title', '')}</h1>
-                <p class="text-xl text-slate-600 mb-10 font-medium leading-relaxed">{new_data.get('tip', '')}</p>
-                <div class="bg-slate-50 p-6 md:p-8 rounded-2xl overflow-x-auto border border-slate-200 shadow-sm">
-                    <pre class="text-slate-800 font-mono text-sm whitespace-pre block"><code>{tip_safe_code}</code></pre>
-                </div>
-            </article>
-        </div>
-    </main>
-    <footer class="bg-white border-t border-slate-200 py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
-        <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
-    </footer>
-</body>
-</html>"""
-    with open(f"article/{new_data.get('slug', 'fallback')}.html", 'w', encoding='utf-8') as f: f.write(tip_html)
-    sitemap += f"  <url><loc>{DOMAIN}/article/{new_data.get('slug', 'fallback')}.html</loc><priority>0.7</priority></url>\n"
-
-    # 8. BUILD PAGINATED ARCHIVE (editors-desk.html)
-    items_per_page = 10
-    total_items = len(history)
-    total_pages = max(1, math.ceil(total_items / items_per_page))
-
-    for page_num in range(1, total_pages + 1):
-        start_idx = (page_num - 1) * items_per_page
-        end_idx = start_idx + items_per_page
-        page_items = history[start_idx:end_idx]
-
-        archive_cards = ""
-        for item in page_items:
-            archive_cards += f"""
-            <a href="/article/{item.get('slug', '')}.html" class="block bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-50 hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">{item.get('date', '')}</span>
-                <h3 class="text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">{item.get('title', '')}</h3>
-                <p class="text-slate-500 font-medium leading-relaxed">{item.get('tip', '')}</p>
-            </a>"""
-
-        pagination_html = '<div class="flex justify-center flex-wrap gap-2 mt-12">'
-        for p in range(1, total_pages + 1):
-            page_link = "editors-desk.html" if p == 1 else f"editors-desk-{p}.html"
-            active_class = "bg-indigo-600 text-white shadow-md" if p == page_num else "bg-white text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 border border-slate-200"
-            pagination_html += f'<a href="/{page_link}" class="w-10 h-10 flex items-center justify-center rounded-xl font-bold {active_class} transition-all">{p}</a>'
-        pagination_html += '</div>'
-
-        archive_html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editor's Desk Archive - Page {page_num} | htmlfonts</title>
-    <meta name="description" content="Daily CSS typography tips and web design insights. Page {page_num}.">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-{GA_CODE}
-    <script src="{TAILWIND}"></script>
-    <style>body {{ font-family: system-ui, sans-serif; }}</style>
-</head>
-<body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
-{header_html}
-    <div class="bg-white border-b border-slate-200 overflow-hidden relative">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-white to-white"></div>
-        <div class="max-w-7xl mx-auto px-6 pt-10 pb-12 md:pt-12 md:pb-16 relative z-10 text-center">
-            <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Editor's Desk</span>
-            </h1>
-            <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mt-4 mb-8">Every CSS typography tip, design trick, and code snippet we've ever published.</p>
-        </div>
-    </div>
-    
-    <main class="flex-grow py-12 px-6 max-w-4xl mx-auto w-full">
-        <div class="space-y-6">{archive_cards}</div>
-        {pagination_html if total_pages > 1 else ""}
-    </main>
-    <footer class="bg-white border-t border-slate-200 py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
-        <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
-    </footer>
-</body>
-</html>"""
-        
-        file_name = "editors-desk.html" if page_num == 1 else f"editors-desk-{page_num}.html"
-        with open(file_name, 'w', encoding='utf-8') as f: f.write(archive_html)
-        sitemap += f"  <url><loc>{DOMAIN}/{file_name}</loc><changefreq>daily</changefreq><priority>0.8</priority></url>\n"
-
-    # 9. BUILD FONT VS FONT COMPARISON TOOL PAGE (WITH BULLETPROOF STACK & CLAMP GENERATOR)
+    # 9. BUILD FONT VS FONT COMPARISON TOOL PAGE 
     print("Generating Font Comparison Tool Page...")
     
     tool_html = f"""<!DOCTYPE html>
@@ -1331,7 +1281,7 @@ try:
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 divide-y md:divide-y-0 md:divide-x divide-slate-100 items-start" id="compare-grid">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 transition-all items-start" id="compare-grid">
             
             <div class="bg-white p-4 md:p-6 rounded-[2rem] shadow-sm border border-slate-200 flex flex-col transition-colors" id="panel-a">
                 <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6">
@@ -1342,13 +1292,13 @@ try:
                     <select id="vs-weight-a" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
                 
-                <div id="wrap-a" class="w-full flex items-center p-4 md:p-6 min-h-[80px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden relative">
+                <div id="wrap-a" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden relative">
                     <p id="vs-preview-a" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
                 
                 <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-indigo-200 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                    Copy Fluid CSS
+                    Copy HTML / CSS
                 </button>
             </div>
 
@@ -1361,16 +1311,23 @@ try:
                     <select id="vs-weight-b" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
                 
-                <div id="wrap-b" class="w-full flex items-center p-4 md:p-6 min-h-[80px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden relative">
+                <div id="wrap-b" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden relative">
                     <p id="vs-preview-b" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
                 
                 <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-violet-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                    Copy Fluid CSS
+                    Copy HTML / CSS
                 </button>
             </div>
 
+        </div>
+        
+        <div class="border-t border-slate-200 pt-16 mt-24">
+            <h2 class="text-3xl font-black text-slate-900 mb-8 text-center tracking-tight">Most Searched Comparisons</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+{comparison_grid_links}
+            </div>
         </div>
 
     </main>
@@ -1473,67 +1430,69 @@ try:
             const fontB = document.getElementById('vs-font-b');
             const weightA = document.getElementById('vs-weight-a');
             const weightB = document.getElementById('vs-weight-b');
-            const lbl = document.getElementById('lbl-dark');
             const pa = document.getElementById('vs-preview-a');
             const pb = document.getElementById('vs-preview-b');
+            const lbl = document.getElementById('lbl-dark');
             
             if(isDark) {{
+                // Remove Light Mode Styles
                 wrapA.classList.remove('bg-indigo-50/20', 'border-indigo-100/50');
                 wrapB.classList.remove('bg-violet-50/20', 'border-violet-100/50');
                 panelA.classList.remove('bg-white', 'border-slate-200');
                 panelB.classList.remove('bg-white', 'border-slate-200');
                 tabA.classList.remove('bg-indigo-50', 'border-indigo-100');
                 tabB.classList.remove('bg-violet-50', 'border-violet-100');
-                fontA.classList.remove('bg-transparent');
-                fontB.classList.remove('bg-transparent');
+                weightA.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                weightB.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                fontA.classList.remove('text-slate-800');
+                fontB.classList.remove('text-slate-800');
+                pa.classList.remove('text-slate-900');
+                pb.classList.remove('text-slate-900');
                 
-                fontA.classList.replace('text-slate-800', 'text-white');
-                fontB.classList.replace('text-slate-800', 'text-white');
-                weightA.classList.replace('text-slate-600', 'text-slate-200');
-                weightB.classList.replace('text-slate-600', 'text-slate-200');
-                pa.classList.replace('text-slate-900', 'text-white');
-                pb.classList.replace('text-slate-900', 'text-white');
-                
+                // Add Dark Mode Styles
                 wrapA.classList.add('bg-slate-900', 'border-slate-700');
                 wrapB.classList.add('bg-slate-900', 'border-slate-700');
                 panelA.classList.add('bg-slate-800', 'border-slate-700');
                 panelB.classList.add('bg-slate-800', 'border-slate-700');
-                tabA.classList.add('bg-slate-900', 'border-slate-700');
-                tabB.classList.add('bg-slate-900', 'border-slate-700');
-                fontA.classList.add('bg-slate-800');
-                fontB.classList.add('bg-slate-800');
-                weightA.classList.add('bg-slate-900', 'border-slate-700');
-                weightB.classList.add('bg-slate-900', 'border-slate-700');
+                tabA.classList.add('bg-slate-800', 'border-slate-700');
+                tabB.classList.add('bg-slate-800', 'border-slate-700');
+                weightA.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
+                weightB.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
+                fontA.classList.add('text-white');
+                fontB.classList.add('text-white');
+                pa.classList.add('text-white');
+                pb.classList.add('text-white');
+                
                 lbl.innerText = "Light Mode";
             }} else {{
+                // Remove Dark Mode Styles
                 wrapA.classList.remove('bg-slate-900', 'border-slate-700');
                 wrapB.classList.remove('bg-slate-900', 'border-slate-700');
                 panelA.classList.remove('bg-slate-800', 'border-slate-700');
                 panelB.classList.remove('bg-slate-800', 'border-slate-700');
-                tabA.classList.remove('bg-slate-900', 'border-slate-700');
-                tabB.classList.remove('bg-slate-900', 'border-slate-700');
-                fontA.classList.remove('bg-slate-800');
-                fontB.classList.remove('bg-slate-800');
-                weightA.classList.remove('bg-slate-900', 'border-slate-700');
-                weightB.classList.remove('bg-slate-900', 'border-slate-700');
+                tabA.classList.remove('bg-slate-800', 'border-slate-700');
+                tabB.classList.remove('bg-slate-800', 'border-slate-700');
+                weightA.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
+                weightB.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
+                fontA.classList.remove('text-white');
+                fontB.classList.remove('text-white');
+                pa.classList.remove('text-white');
+                pb.classList.remove('text-white');
 
-                fontA.classList.replace('text-white', 'text-slate-800');
-                fontB.classList.replace('text-white', 'text-slate-800');
-                weightA.classList.replace('text-slate-200', 'text-slate-600');
-                weightB.classList.replace('text-slate-200', 'text-slate-600');
-                pa.classList.replace('text-white', 'text-slate-900');
-                pb.classList.replace('text-white', 'text-slate-900');
-
+                // Restore Light Mode Styles
                 wrapA.classList.add('bg-indigo-50/20', 'border-indigo-100/50');
                 wrapB.classList.add('bg-violet-50/20', 'border-violet-100/50');
                 panelA.classList.add('bg-white', 'border-slate-200');
                 panelB.classList.add('bg-white', 'border-slate-200');
                 tabA.classList.add('bg-indigo-50', 'border-indigo-100');
                 tabB.classList.add('bg-violet-50', 'border-violet-100');
-                fontA.classList.add('bg-transparent');
-                fontB.classList.add('bg-transparent');
-                weightA.classList.add('bg-slate-50', 'border-slate-200');
-                weightB.classList.add('bg-slate-50', 'border-slate-200');
+                weightA.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                weightB.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                fontA.classList.add('text-slate-800');
+                fontB.classList.add('text-slate-800');
+                pa.classList.add('text-slate-900');
+                pb.classList.add('text-slate-900');
+                
                 lbl.innerText = "Dark Mode";
             }}
             u();
@@ -1670,14 +1629,14 @@ try:
                     arena.classList.replace('bg-white', 'bg-slate-900');
                     xa.style.mixBlendMode = 'screen';
                     xb.style.mixBlendMode = 'screen';
-                    xa.style.color = '#0ff'; 
-                    xb.style.color = '#f0f'; 
+                    xa.style.color = '#0ff'; // Bright Cyan
+                    xb.style.color = '#f0f'; // Bright Magenta
                 }} else {{
                     arena.classList.replace('bg-slate-900', 'bg-white');
                     xa.style.mixBlendMode = 'multiply';
                     xb.style.mixBlendMode = 'multiply';
-                    xa.style.color = '#0ea5e9'; 
-                    xb.style.color = '#f43f5e'; 
+                    xa.style.color = '#0ea5e9'; // Sky
+                    xb.style.color = '#f43f5e'; // Rose
                 }}
 
                 xa.style.fontFamily = vsData.a.css;
