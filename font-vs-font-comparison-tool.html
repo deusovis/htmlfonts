@@ -71,6 +71,8 @@
             <div class="mb-8">
                 <label class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-3">Testing Copy</label>
                 <input type="text" id="vs-text" value="Optimize your UI design with fast-loading free web fonts." 
+                    onfocus="if(this.value==='Optimize your UI design with fast-loading free web fonts.') this.value='';" 
+                    onblur="if(this.value==='') { this.value='Optimize your UI design with fast-loading free web fonts.'; u(); }"
                     oninput="u()"
                     class="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-4 outline-none text-lg font-medium text-slate-800 focus:ring-2 focus:ring-indigo-500 transition-all">
                 
@@ -82,7 +84,7 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
                 <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
                     <div class="flex justify-between items-center mb-2">
                         <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Size</span>
@@ -109,16 +111,31 @@
 
                 <div class="flex items-center justify-center bg-slate-50 rounded-xl p-4 border border-slate-100 cursor-pointer hover:bg-slate-100 transition" onclick="toggleDarkMode()">
                     <div class="flex flex-col items-center">
-                        <svg class="w-6 h-6 text-slate-600 mb-1" id="icon-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                        <span id="lbl-dark" class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Dark Mode</span>
+                        <svg class="w-5 h-5 text-slate-600 mb-1" id="icon-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <span id="lbl-dark" class="text-[10px] font-black text-slate-500 uppercase tracking-widest text-center">Dark Mode</span>
+                    </div>
+                </div>
+
+                <div id="btn-xray" class="flex items-center justify-center bg-slate-50 rounded-xl p-4 border border-slate-100 cursor-pointer hover:bg-slate-100 transition relative overflow-hidden" onclick="toggleXRay()">
+                    <div class="flex flex-col items-center z-10 relative">
+                        <svg class="w-5 h-5 text-slate-600 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                        <span id="lbl-xray" class="text-[10px] font-black text-slate-500 uppercase tracking-widest text-center">X-Ray Off</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div id="xray-arena" class="hidden relative w-full min-h-[400px] bg-white rounded-3xl border border-slate-200 shadow-inner overflow-hidden mb-10 p-10 flex items-center justify-center">
+            <div class="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:16px_16px] opacity-50 pointer-events-none"></div>
+            <div class="relative w-full max-w-4xl flex justify-center text-center items-center z-10">
+                <p id="xray-preview-a" class="absolute comparison-text text-[#0ea5e9] mix-blend-multiply opacity-60 break-words w-full top-1/2 -translate-y-1/2 left-0"></p>
+                <p id="xray-preview-b" class="absolute comparison-text text-[#f43f5e] mix-blend-multiply opacity-60 break-words w-full top-1/2 -translate-y-1/2 left-0"></p>
+            </div>
+        </div>
+
+        <div id="compare-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8 transition-all">
             
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 flex flex-col h-full">
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 flex flex-col h-full transition-colors" id="panel-a">
                 <div class="flex flex-col sm:flex-row gap-3 mb-6">
                     <div class="flex-grow flex items-center bg-indigo-50 px-3 rounded-xl border border-indigo-100 focus-within:ring-2 focus-within:ring-indigo-400">
                         <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-sm uppercase mr-3">A</span>
@@ -133,11 +150,11 @@
                 
                 <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-lg shadow-indigo-200 mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                    Copy Pro CSS
+                    Copy Fluid CSS
                 </button>
             </div>
 
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 flex flex-col h-full">
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 flex flex-col h-full transition-colors" id="panel-b">
                 <div class="flex flex-col sm:flex-row gap-3 mb-6">
                     <div class="flex-grow flex items-center bg-violet-50 px-3 rounded-xl border border-violet-100 focus-within:ring-2 focus-within:ring-violet-400">
                         <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-sm uppercase mr-3">B</span>
@@ -152,7 +169,7 @@
                 
                 <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-lg shadow-violet-100 mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                    Copy Pro CSS
+                    Copy Fluid CSS
                 </button>
             </div>
 
@@ -194,6 +211,7 @@
 
             </div>
         </div>
+
     </main>
 
     <div id="code-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
@@ -204,17 +222,17 @@
             
             <div class="space-y-6">
                 <div>
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">1. Add to HTML Head</label>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2" id="modal-html-label">1. Add to HTML Head</label>
                     <div class="bg-slate-900 rounded-xl p-4 relative group">
                         <code id="modal-html" class="text-xs text-indigo-300 font-mono break-all block"></code>
                         <button id="copy-html-btn" onclick="copyElementText('modal-html')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY</button>
                     </div>
                 </div>
                 <div>
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">2. Apply Custom CSS Rule</label>
-                    <div class="bg-slate-900 rounded-xl p-4 relative group border-2 border-indigo-500/30">
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2 flex items-center gap-2">2. Apply Responsive CSS Rule <span class="bg-emerald-500 text-white px-2 py-0.5 rounded-full text-[8px]">FLUID ENABLED</span></label>
+                    <div class="bg-slate-900 rounded-xl p-4 relative group border-2 border-emerald-500/30">
                         <pre><code id="modal-css" class="text-xs font-mono text-emerald-400 block whitespace-pre-wrap leading-relaxed"></code></pre>
-                        <button onclick="copyElementText('modal-css')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY</button>
+                        <button onclick="copyElementText('modal-css')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-emerald-600 hover:bg-emerald-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY</button>
                     </div>
                 </div>
             </div>
@@ -231,13 +249,21 @@
     <script>
         let fontsRaw = [{"name": "Abril Fatface", "css": "'Abril Fatface', display", "link": "Abril+Fatface", "type": "Display"}, {"name": "Amatic SC", "css": "'Amatic SC', cursive", "link": "Amatic+SC:wght@400;700", "type": "Handwriting"}, {"name": "Anton", "css": "'Anton', sans-serif", "link": "Anton", "type": "Sans-Serif"}, {"name": "Arial", "css": "Arial, Helvetica, sans-serif", "link": null, "type": "Sans-Serif"}, {"name": "Arvo", "css": "'Arvo', serif", "link": "Arvo:wght@400;700", "type": "Serif"}, {"name": "Bangers", "css": "'Bangers', display", "link": "Bangers", "type": "Display"}, {"name": "Barlow", "css": "'Barlow', sans-serif", "link": "Barlow:wght@400;500;700", "type": "Sans-Serif"}, {"name": "Bebas Neue", "css": "'Bebas Neue', sans-serif", "link": "Bebas+Neue", "type": "Sans-Serif"}, {"name": "Bitter", "css": "'Bitter', serif", "link": "Bitter:wght@400;600;700", "type": "Serif"}, {"name": "Caveat", "css": "'Caveat', cursive", "link": "Caveat:wght@400;500;600;700", "type": "Handwriting"}, {"name": "Cinzel", "css": "'Cinzel', serif", "link": "Cinzel:wght@400;500;600;700;800", "type": "Serif"}, {"name": "Comfortaa", "css": "'Comfortaa', display", "link": "Comfortaa:wght@400;500;600;700", "type": "Display"}, {"name": "Cormorant", "css": "'Cormorant', serif", "link": "Cormorant:wght@400;600;700", "type": "Serif"}, {"name": "Courier New", "css": "'Courier New', Courier, monospace", "link": null, "type": "Monospace"}, {"name": "Crimson Pro", "css": "'Crimson Pro', serif", "link": "Crimson+Pro:wght@400;600;700", "type": "Serif"}, {"name": "Crimson Text", "css": "'Crimson Text', serif", "link": "Crimson+Text:wght@400;600;700", "type": "Serif"}, {"name": "DM Sans", "css": "'DM Sans', sans-serif", "link": "DM+Sans:wght@400;500;700", "type": "Sans-Serif"}, {"name": "Dancing Script", "css": "'Dancing Script', cursive", "link": "Dancing+Script:wght@400;500;600;700", "type": "Handwriting"}, {"name": "EB Garamond", "css": "'EB Garamond', serif", "link": "EB+Garamond:wght@400;600;700", "type": "Serif"}, {"name": "Fira Code", "css": "'Fira Code', monospace", "link": "Fira+Code:wght@400;500;600;700", "type": "Monospace"}, {"name": "Fira Sans", "css": "'Fira Sans', sans-serif", "link": "Fira+Sans:wght@400;500;700", "type": "Sans-Serif"}, {"name": "Fredoka One", "css": "'Fredoka One', display", "link": "Fredoka+One", "type": "Display"}, {"name": "Georgia", "css": "Georgia, serif", "link": null, "type": "Serif"}, {"name": "Great Vibes", "css": "'Great Vibes', cursive", "link": "Great+Vibes", "type": "Handwriting"}, {"name": "Heebo", "css": "'Heebo', sans-serif", "link": "Heebo:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Helvetica", "css": "Helvetica, Arial, sans-serif", "link": null, "type": "Sans-Serif"}, {"name": "IBM Plex Mono", "css": "'IBM Plex Mono', monospace", "link": "IBM+Plex+Mono:wght@400;500;600;700", "type": "Monospace"}, {"name": "Inconsolata", "css": "'Inconsolata', monospace", "link": "Inconsolata:wght@400;500;700", "type": "Monospace"}, {"name": "Indie Flower", "css": "'Indie Flower', cursive", "link": "Indie+Flower", "type": "Handwriting"}, {"name": "Inter", "css": "'Inter', sans-serif", "link": "Inter:wght@400;600;800;900", "type": "Sans-Serif"}, {"name": "JetBrains Mono", "css": "'JetBrains Mono', monospace", "link": "JetBrains+Mono:wght@400;500;700;800", "type": "Monospace"}, {"name": "Josefin Slab", "css": "'Josefin Slab', serif", "link": "Josefin+Slab:wght@400;600;700", "type": "Serif"}, {"name": "Karla", "css": "'Karla', sans-serif", "link": "Karla:wght@400;700", "type": "Sans-Serif"}, {"name": "Lato", "css": "'Lato', sans-serif", "link": "Lato:wght@400;700;900", "type": "Sans-Serif"}, {"name": "Lexend", "css": "'Lexend', sans-serif", "link": "Lexend:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Libre Baskerville", "css": "'Libre Baskerville', serif", "link": "Libre+Baskerville:wght@400;700", "type": "Serif"}, {"name": "Lobster", "css": "'Lobster', display", "link": "Lobster", "type": "Display"}, {"name": "Lora", "css": "'Lora', serif", "link": "Lora:wght@400;500;600;700", "type": "Serif"}, {"name": "Merriweather", "css": "'Merriweather', serif", "link": "Merriweather:wght@400;700;900", "type": "Serif"}, {"name": "Montserrat", "css": "'Montserrat', sans-serif", "link": "Montserrat:wght@400;600;700;900", "type": "Sans-Serif"}, {"name": "Mukta", "css": "'Mukta', sans-serif", "link": "Mukta:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Noto Sans", "css": "'Noto Sans', sans-serif", "link": "Noto+Sans:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Noto Serif", "css": "'Noto Serif', serif", "link": "Noto+Serif:wght@400;600;700", "type": "Serif"}, {"name": "Nunito", "css": "'Nunito', sans-serif", "link": "Nunito:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Open Sans", "css": "'Open Sans', sans-serif", "link": "Open+Sans:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Oswald", "css": "'Oswald', sans-serif", "link": "Oswald:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Outfit", "css": "'Outfit', sans-serif", "link": "Outfit:wght@400;600;700", "type": "Sans-Serif"}, {"name": "PT Mono", "css": "'PT Mono', monospace", "link": "PT+Mono", "type": "Monospace"}, {"name": "PT Sans", "css": "'PT Sans', sans-serif", "link": "PT+Sans:wght@400;700", "type": "Sans-Serif"}, {"name": "PT Serif", "css": "'PT Serif', serif", "link": "PT+Serif:wght@400;700", "type": "Serif"}, {"name": "Pacifico", "css": "'Pacifico', cursive", "link": "Pacifico", "type": "Handwriting"}, {"name": "Playfair Display", "css": "'Playfair Display', serif", "link": "Playfair+Display:wght@400;600;700;800", "type": "Serif"}, {"name": "Poppins", "css": "'Poppins', sans-serif", "link": "Poppins:wght@400;600;700;800", "type": "Sans-Serif"}, {"name": "Public Sans", "css": "'Public Sans', sans-serif", "link": "Public+Sans:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Quicksand", "css": "'Quicksand', sans-serif", "link": "Quicksand:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Raleway", "css": "'Raleway', sans-serif", "link": "Raleway:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Righteous", "css": "'Righteous', display", "link": "Righteous", "type": "Display"}, {"name": "Roboto", "css": "'Roboto', sans-serif", "link": "Roboto:wght@400;500;700", "type": "Sans-Serif"}, {"name": "Roboto Mono", "css": "'Roboto Mono', monospace", "link": "Roboto+Mono:wght@400;500;600;700", "type": "Monospace"}, {"name": "Rokkitt", "css": "'Rokkitt', serif", "link": "Rokkitt:wght@400;600;700", "type": "Serif"}, {"name": "Rubik", "css": "'Rubik', sans-serif", "link": "Rubik:wght@400;500;700", "type": "Sans-Serif"}, {"name": "Satisfy", "css": "'Satisfy', cursive", "link": "Satisfy", "type": "Handwriting"}, {"name": "Shadows Into Light", "css": "'Shadows Into Light', cursive", "link": "Shadows+Into+Light", "type": "Handwriting"}, {"name": "Source Code Pro", "css": "'Source Code Pro', monospace", "link": "Source+Code+Pro:wght@400;500;600;700", "type": "Monospace"}, {"name": "Space Grotesk", "css": "'Space Grotesk', sans-serif", "link": "Space+Grotesk:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Space Mono", "css": "'Space Mono', monospace", "link": "Space+Mono:wght@400;700", "type": "Monospace"}, {"name": "Teko", "css": "'Teko', sans-serif", "link": "Teko:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Times New Roman", "css": "'Times New Roman', Times, serif", "link": null, "type": "Serif"}, {"name": "Ubuntu", "css": "'Ubuntu', sans-serif", "link": "Ubuntu:wght@400;500;700", "type": "Sans-Serif"}, {"name": "Ubuntu Mono", "css": "'Ubuntu Mono', monospace", "link": "Ubuntu+Mono:wght@400;700", "type": "Monospace"}, {"name": "Verdana", "css": "Verdana, Geneva, sans-serif", "link": null, "type": "Sans-Serif"}, {"name": "Work Sans", "css": "'Work Sans', sans-serif", "link": "Work+Sans:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Zilla Slab", "css": "'Zilla Slab', serif", "link": "Zilla+Slab:wght@400;600;700", "type": "Serif"}];
         let isDark = false;
+        let isXray = false;
         let vsData = { a: null, b: null };
         const loadedFonts = new Set();
+        let loadedCount = 0; // Async race condition safety
 
-        function loadFont(link) {
-            if (!link || loadedFonts.has(link)) return;
-            const el = document.createElement('link'); el.rel = "stylesheet"; el.href = `https://fonts.googleapis.com/css2?family=${link}&display=swap`;
-            document.head.appendChild(el); loadedFonts.add(link);
+        function loadFont(link, callback) {
+            if (!link || loadedFonts.has(link)) {
+                if(callback) callback();
+                return;
+            }
+            const el = document.createElement('link'); 
+            el.rel = "stylesheet"; 
+            el.href = `https://fonts.googleapis.com/css2?family=${link}&display=swap`;
+            el.onload = () => { loadedFonts.add(link); if(callback) callback(); };
+            document.head.appendChild(el); 
         }
 
         function setTxt(txt) {
@@ -249,17 +275,44 @@
             isDark = !isDark;
             const wrapA = document.getElementById('wrap-a');
             const wrapB = document.getElementById('wrap-b');
+            const panelA = document.getElementById('panel-a');
+            const panelB = document.getElementById('panel-b');
             const lbl = document.getElementById('lbl-dark');
             
             if(isDark) {
                 wrapA.classList.add('preview-dark');
                 wrapB.classList.add('preview-dark');
+                panelA.classList.add('bg-slate-800', 'border-slate-700');
+                panelB.classList.add('bg-slate-800', 'border-slate-700');
                 lbl.innerText = "Light Mode";
             } else {
                 wrapA.classList.remove('preview-dark');
                 wrapB.classList.remove('preview-dark');
+                panelA.classList.remove('bg-slate-800', 'border-slate-700');
+                panelB.classList.remove('bg-slate-800', 'border-slate-700');
                 lbl.innerText = "Dark Mode";
             }
+        }
+
+        function toggleXRay() {
+            isXray = !isXray;
+            const grid = document.getElementById('compare-grid');
+            const xrayArena = document.getElementById('xray-arena');
+            const btn = document.getElementById('btn-xray');
+            const lbl = document.getElementById('lbl-xray');
+
+            if(isXray) {
+                grid.classList.add('hidden');
+                xrayArena.classList.remove('hidden');
+                btn.classList.add('bg-indigo-100', 'border-indigo-300');
+                lbl.innerText = "X-Ray On";
+            } else {
+                grid.classList.remove('hidden');
+                xrayArena.classList.add('hidden');
+                btn.classList.remove('bg-indigo-100', 'border-indigo-300');
+                lbl.innerText = "X-Ray Off";
+            }
+            u();
         }
 
         function parseWeights(link) {
@@ -299,25 +352,35 @@
             sA.selectedIndex = interIdx !== -1 ? interIdx : 0;
             sB.selectedIndex = robotoIdx !== -1 ? robotoIdx : 1;
 
+            const checkAndDraw = () => {
+                loadedCount++;
+                if (loadedCount >= 2) { u(); loadedCount = 0; }
+            };
+
             sA.onchange = () => {
                 vsData.a = fontsRaw[sA.value];
-                loadFont(vsData.a.link);
                 populateWeights('vs-weight-a', vsData.a);
-                u();
+                loadFont(vsData.a.link, () => { u(); });
             };
             
             sB.onchange = () => {
                 vsData.b = fontsRaw[sB.value];
-                loadFont(vsData.b.link);
                 populateWeights('vs-weight-b', vsData.b);
-                u();
+                loadFont(vsData.b.link, () => { u(); });
             };
             
-            sA.onchange();
-            sB.onchange();
+            // Initialization Trigger
+            vsData.a = fontsRaw[sA.value];
+            vsData.b = fontsRaw[sB.value];
+            populateWeights('vs-weight-a', vsData.a);
+            populateWeights('vs-weight-b', vsData.b);
+            loadFont(vsData.a.link, checkAndDraw);
+            loadFont(vsData.b.link, checkAndDraw);
         }
 
         function u() {
+            if (!vsData.a || !vsData.b) return;
+
             const text = document.getElementById('vs-text').value;
             const sz = document.getElementById('vs-font-size').value;
             const lh = document.getElementById('vs-lh').value;
@@ -328,28 +391,50 @@
             document.getElementById('lbl-ls').innerText = ls + 'em';
             
             const wA = document.getElementById('vs-weight-a').value;
-            const pA = document.getElementById('vs-preview-a');
-            pA.style.fontFamily = vsData.a.css;
-            pA.style.fontSize = sz + 'px';
-            pA.style.fontWeight = wA;
-            pA.style.lineHeight = lh;
-            pA.style.letterSpacing = ls + 'em';
-            pA.innerText = text;
-
             const wB = document.getElementById('vs-weight-b').value;
-            const pB = document.getElementById('vs-preview-b');
-            pB.style.fontFamily = vsData.b.css;
-            pB.style.fontSize = sz + 'px';
-            pB.style.fontWeight = wB;
-            pB.style.lineHeight = lh;
-            pB.style.letterSpacing = ls + 'em';
-            pB.innerText = text;
+
+            // STANDARD GRID RENDER
+            if (!isXray) {
+                const pA = document.getElementById('vs-preview-a');
+                pA.style.fontFamily = vsData.a.css;
+                pA.style.fontSize = sz + 'px';
+                pA.style.fontWeight = wA;
+                pA.style.lineHeight = lh;
+                pA.style.letterSpacing = ls + 'em';
+                pA.innerText = text;
+
+                const pB = document.getElementById('vs-preview-b');
+                pB.style.fontFamily = vsData.b.css;
+                pB.style.fontSize = sz + 'px';
+                pB.style.fontWeight = wB;
+                pB.style.lineHeight = lh;
+                pB.style.letterSpacing = ls + 'em';
+                pB.innerText = text;
+            } 
+            // X-RAY ENGINE RENDER
+            else {
+                const xa = document.getElementById('xray-preview-a');
+                xa.style.fontFamily = vsData.a.css;
+                xa.style.fontSize = sz + 'px';
+                xa.style.fontWeight = wA;
+                xa.style.lineHeight = lh;
+                xa.style.letterSpacing = ls + 'em';
+                xa.innerText = text;
+
+                const xb = document.getElementById('xray-preview-b');
+                xb.style.fontFamily = vsData.b.css;
+                xb.style.fontSize = sz + 'px';
+                xb.style.fontWeight = wB;
+                xb.style.lineHeight = lh;
+                xb.style.letterSpacing = ls + 'em';
+                xb.innerText = text;
+            }
         }
 
         function openModalFromVS(side) { 
             const fontObj = side === 'a' ? vsData.a : vsData.b;
             const weight = document.getElementById(side === 'a' ? 'vs-weight-a' : 'vs-weight-b').value;
-            const sz = document.getElementById('vs-font-size').value;
+            const sz = parseInt(document.getElementById('vs-font-size').value);
             const lh = document.getElementById('vs-lh').value;
             const ls = document.getElementById('vs-ls').value;
 
@@ -367,17 +452,23 @@
                 copyBtn.style.display = 'none';
             }
             
+            // FLUID TYPOGRAPHY ARCHITECTURE
+            let minSize = Math.max(12, Math.round(sz * 0.6)); 
+            
             let cssBlock = `.my-text {
 `;
             cssBlock += `  font-family: ${fontObj.css};
-`;
-            cssBlock += `  font-size: ${sz}px;
 `;
             cssBlock += `  font-weight: ${weight};
 `;
             cssBlock += `  line-height: ${lh};
 `;
             if (ls !== "0" && ls !== "0.00") cssBlock += `  letter-spacing: ${ls}em;
+`;
+            cssBlock += `
+  /* Fluid Responsive Sizing */
+`;
+            cssBlock += `  font-size: clamp(${minSize}px, 2vw + 0.5rem, ${sz}px);
 `;
             cssBlock += `}`;
 

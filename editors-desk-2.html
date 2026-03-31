@@ -44,10 +44,16 @@
     </header>
     <main class="flex-grow pt-10 pb-24 px-6 md:pt-12 max-w-4xl mx-auto w-full">
         <div class="text-center mb-12 max-w-3xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4"><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Editor's Desk</span></h1>
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-4"><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Editor's Desk</span></h1>
             <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mt-4 mb-8">Every CSS typography tip, design trick, and code snippet we've ever published.</p>
         </div>
         <div class="space-y-6">
+            <a href="/article/mastering-web-font-loading-performance-ux.html" class="block bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-50 hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">March 30, 2026</span>
+                <h3 class="text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">Mastering Web Font Loading: Optimizing for Performance and User Experience</h3>
+                <p class="text-slate-500 font-medium leading-relaxed">To achieve superior performance and a smooth user experience with web fonts, always combine `font-display: swap;` (or `optional;`) within your `@font-face` rule with a `<link rel='preload' as='font' type='font/woff2' crossorigin href='your-font.woff2'>` tag in your HTML `<head>`. This dual strategy ensures fonts are fetched early, a fallback font is immediately displayed (preventing invisible text), and the custom font seamlessly swaps in once loaded, drastically reducing Cumulative Layout Shift (CLS) and perceived load times.</p>
+            </a>
             <a href="/article/fluid-typography-css-clamp-ui-ux.html" class="block bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-50 hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">March 30, 2026</span>
