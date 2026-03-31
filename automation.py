@@ -453,7 +453,7 @@ try:
         </div>
     </div>
 
-    <main class="flex-grow pt-10 pb-24 px-4 md:px-6 max-w-7xl mx-auto w-full">
+    <main class="flex-grow py-12 px-6 max-w-7xl mx-auto w-full">
         <div class="mb-8">
             <div class="w-full max-w-md bg-white border border-slate-200 rounded-2xl py-3 px-4 shadow-sm flex items-center gap-3 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:border-indigo-500 transition-all relative">
                 <svg class="w-5 h-5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
@@ -468,21 +468,21 @@ try:
 
     <div id="code-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
         <div class="bg-white rounded-3xl shadow-2xl w-full max-w-xl p-8 relative transform scale-95 transition-all duration-300" id="modal-content">
-            <button onclick="closeModal('code-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 bg-slate-50 rounded-full p-2">✕</button>
+            <button onclick="closeModal('code-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 bg-slate-50 hover:bg-slate-100 rounded-full p-2 transition">✕</button>
             <h3 class="text-3xl font-black text-slate-900 tracking-tighter mb-8" id="modal-font-name">Font Detail</h3>
             <div class="space-y-6">
                 <div>
                     <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2" id="modal-html-label">1. Add to HTML Head</label>
                     <div class="bg-slate-900 rounded-xl p-4 relative group">
                         <code id="modal-html" class="text-xs text-indigo-300 font-mono break-all block"></code>
-                        <button id="copy-html-btn" onclick="copyElementText('modal-html')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY HTML</button>
+                        <button id="copy-html-btn" onclick="copyElementText('modal-html')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY HTML</button>
                     </div>
                 </div>
                 <div>
                     <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">2. Apply CSS Rule</label>
                     <div class="bg-slate-900 rounded-xl p-4 relative group border-2 border-indigo-500/30">
                         <code id="modal-css" class="text-xs font-mono text-indigo-300 block"></code>
-                        <button onclick="copyElementText('modal-css')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY CSS</button>
+                        <button onclick="copyElementText('modal-css')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY CSS</button>
                     </div>
                 </div>
             </div>
@@ -681,11 +681,17 @@ try:
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
 {header_html}
-    <main class="flex-grow pt-10 pb-24 px-6 md:pt-12 max-w-7xl mx-auto w-full">
-        <div class="text-center mb-12 max-w-3xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4"><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Font Guides</span></h1>
+    <div class="bg-white border-b border-slate-200 overflow-hidden relative">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-white to-white"></div>
+        <div class="max-w-7xl mx-auto px-6 pt-10 pb-12 md:pt-12 md:pb-16 relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Font Guides</span>
+            </h1>
             <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mt-4 mb-8">Master CSS typography and build better web interfaces with our deep-dive technical tutorials.</p>
         </div>
+    </div>
+    
+    <main class="flex-grow py-12 px-6 max-w-7xl mx-auto w-full">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {guides_cards_html}
         </div>
@@ -779,7 +785,7 @@ try:
 <body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
     <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3">Copied! 🚀</div>
 {header_html}
-    <main class="flex-grow w-full pt-10 pb-24 px-6 md:pt-12 max-w-7xl mx-auto">
+    <main class="flex-grow w-full py-16 md:py-24 px-6 max-w-7xl mx-auto">
         <div class="text-center mb-12 max-w-3xl mx-auto">
             <a href="/font-vs-font-comparison-tool.html" class="text-indigo-600 font-bold text-xs uppercase tracking-widest hover:text-indigo-800 transition">&larr; Back to Tool</a>
             <h1 class="text-4xl md:text-5xl font-black mt-4 tracking-tight text-slate-900 mb-4">{font_a} <span class="text-slate-300">vs</span> {font_b}</h1>
@@ -1012,11 +1018,17 @@ try:
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
 {header_html}
-    <main class="flex-grow pt-10 pb-24 px-6 md:pt-12 max-w-4xl mx-auto w-full">
-        <div class="text-center mb-12 max-w-3xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-4"><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Editor's Desk</span></h1>
+    <div class="bg-white border-b border-slate-200 overflow-hidden relative">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-white to-white"></div>
+        <div class="max-w-7xl mx-auto px-6 pt-10 pb-12 md:pt-12 md:pb-16 relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Editor's Desk</span>
+            </h1>
             <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mt-4 mb-8">Every CSS typography tip, design trick, and code snippet we've ever published.</p>
         </div>
+    </div>
+    
+    <main class="flex-grow py-12 px-6 max-w-4xl mx-auto w-full">
         <div class="space-y-6">{archive_cards}</div>
         {pagination_html if total_pages > 1 else ""}
     </main>
@@ -1061,14 +1073,17 @@ try:
 
 {header_html}
 
-    <main class="flex-grow pt-10 pb-24 px-6 md:pt-12 max-w-7xl mx-auto w-full">
-        
-        <div class="text-center mb-12 max-w-3xl mx-auto">
+    <div class="bg-white border-b border-slate-200 overflow-hidden relative">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-white to-white"></div>
+        <div class="max-w-7xl mx-auto px-6 pt-10 pb-12 md:pt-12 md:pb-16 relative z-10 text-center">
             <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4">
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Font Comparison Tool</span>
             </h1>
             <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mt-4 mb-8">Compare legibility and design aesthetics side-by-side.</p>
         </div>
+    </div>
+
+    <main class="flex-grow py-12 px-6 max-w-7xl mx-auto w-full">
 
         <div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl border border-slate-200/60 mb-10">
             
@@ -1141,15 +1156,15 @@ try:
             
             <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 flex flex-col h-full transition-colors" id="panel-a">
                 <div class="flex flex-col sm:flex-row gap-3 mb-6">
-                    <div class="flex-grow flex items-center bg-indigo-50 px-3 rounded-xl border border-indigo-100 focus-within:ring-2 focus-within:ring-indigo-400">
+                    <div class="flex-grow flex items-center bg-indigo-50 px-3 rounded-xl border border-indigo-100 focus-within:ring-2 focus-within:ring-indigo-400 transition-colors" id="tab-a">
                         <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-sm uppercase mr-3">A</span>
                         <select id="vs-font-a" class="w-full bg-transparent py-3 font-bold text-slate-800 outline-none cursor-pointer text-sm"></select>
                     </div>
-                    <select id="vs-weight-a" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300"></select>
+                    <select id="vs-weight-a" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors" id="weight-tab-a"></select>
                 </div>
                 
                 <div id="wrap-a" class="flex-grow flex items-start pt-4 px-6 pb-6 min-h-[300px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden">
-                    <p id="vs-preview-a" class="comparison-text break-words w-full"></p>
+                    <p id="vs-preview-a" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
                 
                 <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-lg shadow-indigo-200 mt-6 group flex justify-center items-center gap-2">
@@ -1160,15 +1175,15 @@ try:
 
             <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 flex flex-col h-full transition-colors" id="panel-b">
                 <div class="flex flex-col sm:flex-row gap-3 mb-6">
-                    <div class="flex-grow flex items-center bg-violet-50 px-3 rounded-xl border border-violet-100 focus-within:ring-2 focus-within:ring-violet-400">
+                    <div class="flex-grow flex items-center bg-violet-50 px-3 rounded-xl border border-violet-100 focus-within:ring-2 focus-within:ring-violet-400 transition-colors" id="tab-b">
                         <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-sm uppercase mr-3">B</span>
                         <select id="vs-font-b" class="w-full bg-transparent py-3 font-bold text-slate-800 outline-none cursor-pointer text-sm"></select>
                     </div>
-                    <select id="vs-weight-b" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300"></select>
+                    <select id="vs-weight-b" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors" id="weight-tab-b"></select>
                 </div>
                 
                 <div id="wrap-b" class="flex-grow flex items-start pt-4 px-6 pb-6 min-h-[300px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden">
-                    <p id="vs-preview-b" class="comparison-text break-words w-full"></p>
+                    <p id="vs-preview-b" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
                 
                 <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-lg shadow-violet-100 mt-6 group flex justify-center items-center gap-2">
@@ -1251,19 +1266,53 @@ try:
             const wrapB = document.getElementById('wrap-b');
             const panelA = document.getElementById('panel-a');
             const panelB = document.getElementById('panel-b');
+            const tabA = document.getElementById('tab-a');
+            const tabB = document.getElementById('tab-b');
+            const weightA = document.getElementById('weight-tab-a');
+            const weightB = document.getElementById('weight-tab-b');
             const lbl = document.getElementById('lbl-dark');
             
             if(isDark) {{
-                wrapA.classList.add('bg-slate-900', 'border-slate-800');
-                wrapB.classList.add('bg-slate-900', 'border-slate-800');
+                // Remove Light Mode Styles
+                wrapA.classList.remove('bg-indigo-50/20', 'border-indigo-100/50');
+                wrapB.classList.remove('bg-violet-50/20', 'border-violet-100/50');
+                panelA.classList.remove('bg-white', 'border-slate-200');
+                panelB.classList.remove('bg-white', 'border-slate-200');
+                tabA.classList.remove('bg-indigo-50', 'border-indigo-100');
+                tabB.classList.remove('bg-violet-50', 'border-violet-100');
+                weightA.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                weightB.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                
+                // Add Dark Mode Styles
+                wrapA.classList.add('bg-slate-900', 'border-slate-700');
+                wrapB.classList.add('bg-slate-900', 'border-slate-700');
                 panelA.classList.add('bg-slate-800', 'border-slate-700');
                 panelB.classList.add('bg-slate-800', 'border-slate-700');
+                tabA.classList.add('bg-slate-900', 'border-slate-700', 'text-white');
+                tabB.classList.add('bg-slate-900', 'border-slate-700', 'text-white');
+                weightA.classList.add('bg-slate-900', 'border-slate-700', 'text-white');
+                weightB.classList.add('bg-slate-900', 'border-slate-700', 'text-white');
                 lbl.innerText = "Light Mode";
             }} else {{
-                wrapA.classList.remove('bg-slate-900', 'border-slate-800');
-                wrapB.classList.remove('bg-slate-900', 'border-slate-800');
+                // Remove Dark Mode Styles
+                wrapA.classList.remove('bg-slate-900', 'border-slate-700');
+                wrapB.classList.remove('bg-slate-900', 'border-slate-700');
                 panelA.classList.remove('bg-slate-800', 'border-slate-700');
                 panelB.classList.remove('bg-slate-800', 'border-slate-700');
+                tabA.classList.remove('bg-slate-900', 'border-slate-700', 'text-white');
+                tabB.classList.remove('bg-slate-900', 'border-slate-700', 'text-white');
+                weightA.classList.remove('bg-slate-900', 'border-slate-700', 'text-white');
+                weightB.classList.remove('bg-slate-900', 'border-slate-700', 'text-white');
+
+                // Restore Light Mode Styles
+                wrapA.classList.add('bg-indigo-50/20', 'border-indigo-100/50');
+                wrapB.classList.add('bg-violet-50/20', 'border-violet-100/50');
+                panelA.classList.add('bg-white', 'border-slate-200');
+                panelB.classList.add('bg-white', 'border-slate-200');
+                tabA.classList.add('bg-indigo-50', 'border-indigo-100');
+                tabB.classList.add('bg-violet-50', 'border-violet-100');
+                weightA.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                weightB.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-600');
                 lbl.innerText = "Dark Mode";
             }}
             u();
@@ -1370,13 +1419,13 @@ try:
             const wA = document.getElementById('vs-weight-a').value;
             const wB = document.getElementById('vs-weight-b').value;
             
-            // Handle Text Colors for Standard Grid
-            const textColor = isDark ? '#ffffff' : '#0f172a';
+            // Text color dynamic based on mode
+            const txtColor = isDark ? '#ffffff' : '#0f172a';
 
             // STANDARD GRID RENDER
             if (!isXray) {{
                 const pA = document.getElementById('vs-preview-a');
-                pA.style.color = textColor;
+                pA.style.color = txtColor;
                 pA.style.fontFamily = vsData.a.css;
                 pA.style.fontSize = sz + 'px';
                 pA.style.fontWeight = wA;
@@ -1385,7 +1434,7 @@ try:
                 pA.innerText = text;
 
                 const pB = document.getElementById('vs-preview-b');
-                pB.style.color = textColor;
+                pB.style.color = txtColor;
                 pB.style.fontFamily = vsData.b.css;
                 pB.style.fontSize = sz + 'px';
                 pB.style.fontWeight = wB;
@@ -1409,8 +1458,8 @@ try:
                     arena.classList.replace('bg-slate-900', 'bg-white');
                     xa.style.mixBlendMode = 'multiply';
                     xb.style.mixBlendMode = 'multiply';
-                    xa.style.color = '#0ea5e9'; // Tailwind sky-500
-                    xb.style.color = '#f43f5e'; // Tailwind rose-500
+                    xa.style.color = '#0ea5e9'; // Sky
+                    xb.style.color = '#f43f5e'; // Rose
                 }}
 
                 xa.style.fontFamily = vsData.a.css;
