@@ -1,5 +1,13 @@
 [
     {
+        "title": "Optimizing Web Font Loading for Superior UI/UX with CSS",
+        "slug": "optimizing-web-font-loading-css-ui-ux",
+        "tweet": "Boost your website's performance and user experience! Learn how to optimize web font loading with `font-display: swap` to prevent layout shifts and ensure crisp text rendering from the start. #CSSTypography #WebFonts #UIDesign #UXTips",
+        "tip": "To drastically improve perceived performance and prevent 'Flash of Invisible Text' (FOIT) or 'Flash of Unstyled Text' (FOUT), always include `font-display: swap;` in your `@font-face` declarations. This instructs the browser to use a fallback font immediately while the custom web font loads, then swap it in once available, ensuring content is readable sooner and minimizing Cumulative Layout Shift (CLS).",
+        "css_snippet": "@font-face {\n  font-family: 'Open Sans';\n  src: url('/fonts/OpenSans-Regular.woff2') format('woff2');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Ensures immediate text visibility */\n}\n\nbody {\n  font-family: 'Open Sans', Arial, sans-serif; /* Define a robust font stack */\n  line-height: 1.6;\n  color: #333;\n  font-size: 1rem;\n}",
+        "date": "March 31, 2026"
+    },
+    {
         "title": "Mastering Fluid Typography for Responsive UI: Leveraging CSS `clamp()`",
         "slug": "mastering-fluid-typography-css-clamp-responsive-ui",
         "tweet": "Unlock truly responsive text with CSS `clamp()`! Learn how to create fluid typography that adapts perfectly to any screen size, enhancing #UI design & #UserExperience. Say goodbye to media query overload! #CSSTypography #WebFonts",
