@@ -66,6 +66,29 @@
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
                 </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Fluid Typography: Crafting Adaptive Text for Superior UI/UX</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">Leverage CSS `clamp()` for truly fluid and responsive typography, ensuring your text scales beautifully across various screen sizes without manual media queries for every breakpoint. This technique significantly enhances user experience by maintaining optimal readability and visual hierarchy, adapting your UI design effortlessly. It's a modern approach to `font-size` management, replacing the need for complex calculations or multiple breakpoints, and is crucial for contemporary web fonts implementation, providing a smooth visual flow.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">body {
+  /* Fluid typography using clamp() for responsive font sizes */
+  /* Syntax: clamp(MIN_SIZE, PREFERRED_SIZE, MAX_SIZE) */
+  font-size: clamp(1rem, 0.8rem + 0.9vw, 1.25rem); /* Body text adapts from 16px to 20px */
+  line-height: 1.6;
+  font-family: &#x27;Inter&#x27;, sans-serif; /* Example web font for modern UI */
+}
+
+h1 {
+  font-size: clamp(2.5rem, 1.8rem + 3vw, 4rem); /* H1 scales from 40px to 64px */
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
                 <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering Responsive Type Scales for Superior UI/UX with CSS `clamp()`</h2>
                 <p class="text-slate-600 font-medium leading-relaxed mb-6">Harness the power of CSS `clamp()` for truly fluid and responsive typography. It lets you define a minimum, preferred (fluid viewport-based), and maximum font size, gracefully scaling text while maintaining readability and consistency, significantly enhancing your UI/UX design.</p>
                 <div class="bg-slate-900 rounded-xl p-4 relative">
@@ -248,32 +271,6 @@ h1 {
                 <div class="bg-slate-900 rounded-xl p-4 relative">
                     <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">body {
   line-height: 1.5;
-}</code></pre>
-                </div>
-            </article>
-            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
-                </div>
-                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering `font-display` for Superior Web Font Performance & UX</h2>
-                <p class="text-slate-600 font-medium leading-relaxed mb-6">Leverage `font-display: swap;` for most body text and headings. This prioritizes content readability by immediately showing a fallback font, then swapping to your custom web font once loaded. For critical brand elements, `font-display: fallback;` or `optional;` might be suitable, but weigh the impact carefully. Always test across browsers and consider the 'Flash of Unstyled Text' (FOUT) vs. 'Flash of Invisible Text' (FOIT) implications for your users.</p>
-                <div class="bg-slate-900 rounded-xl p-4 relative">
-                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">@font-face {
-  font-family: &#x27;Inter&#x27;;
-  src: url(&#x27;/fonts/inter-v12-latin-regular.woff2&#x27;) format(&#x27;woff2&#x27;),
-       url(&#x27;/fonts/inter-v12-latin-regular.woff&#x27;) format(&#x27;woff&#x27;);
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap; /* Controls how the font loads and displays */
-}
-
-/* Apply the font to your elements */
-body {
-  font-family: &#x27;Inter&#x27;, system-ui, -apple-system, BlinkMacSystemFont, &#x27;Segoe UI&#x27;, Roboto, Helvetica, Arial, sans-serif, &#x27;Apple Color Emoji&#x27;, &#x27;Segoe UI Emoji&#x27;, &#x27;Segoe UI Symbol&#x27;;
-  font-size: 1.125rem; /* 18px */
-  line-height: 1.6;
-  color: #333;
 }</code></pre>
                 </div>
             </article>

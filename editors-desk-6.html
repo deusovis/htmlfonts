@@ -66,6 +66,30 @@
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 30, 2026</span>
                 </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Elevate Your UI: Mastering `font-display` for Flawless Web Font Performance & UX</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">To prevent the dreaded Flash of Invisible Text (FOIT) or sudden layout shifts (FOUT) that severely degrade user experience, always include `font-display` in your `@font-face` declarations. For most cases, `font-display: swap;` is an excellent choice: it ensures text is visible immediately using a fallback font, then gracefully swaps to your custom web font once loaded. This dramatically improves perceived loading speed and overall UI stability.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">@font-face {
+  font-family: &#x27;Inter&#x27;;
+  src: url(&#x27;/fonts/inter-regular.woff2&#x27;) format(&#x27;woff2&#x27;),
+       url(&#x27;/fonts/inter-regular.woff&#x27;) format(&#x27;woff&#x27;);
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; /* Essential for optimal web font UX */
+}
+
+body {
+  font-family: &#x27;Inter&#x27;, system-ui, sans-serif;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 30, 2026</span>
+                </div>
                 <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering Fluid Typography with CSS `clamp()`: The Secret to Responsive & Readable UI</h2>
                 <p class="text-slate-600 font-medium leading-relaxed mb-6">Leverage CSS `clamp()` to set a minimum, preferred (fluid), and maximum font size. This technique ensures your text scales gracefully between breakpoints, improving readability and reducing the need for extensive media queries for typography, leading to a superior user experience with minimal effort.</p>
                 <div class="bg-slate-900 rounded-xl p-4 relative">

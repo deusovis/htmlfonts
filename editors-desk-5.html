@@ -66,6 +66,40 @@
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 30, 2026</span>
                 </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Elevating UX: Mastering Fluid Typography with CSS clamp() for Responsive UI</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">Traditional fixed `font-size` values or breakpoint-heavy media queries often lead to compromises in readability and visual harmony across diverse devices. The modern CSS `clamp()` function offers a robust solution for true fluid typography, ensuring your text scales gracefully and responsively between a defined minimum and maximum size, with a preferred value in between. This approach significantly enhances user experience by maintaining optimal legibility and visual balance on any screen size without over-reliance on breakpoints. It's a game-changer for adaptable UI design, allowing web fonts to shine consistently and improve overall accessibility.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">/* For paragraph text */
+p {
+  font-size: clamp(1rem, 0.8rem + 1vw, 1.25rem);
+  line-height: clamp(1.5em, 1.3em + 1vw, 1.8em);
+  font-family: &#x27;Inter&#x27;, sans-serif; /* Example web font */
+}
+
+/* For a primary heading (h1) */
+h1 {
+  font-size: clamp(2.5rem, 1.5rem + 4vw, 4rem);
+  line-height: 1.15;
+  font-family: &#x27;Merriweather&#x27;, serif; /* Example web font */
+  text-rendering: optimizeLegibility; /* Enhances font rendering */
+}
+
+/* Explanation of clamp(min, preferred, max):
+   - min: The smallest font size allowed.
+   - preferred: The ideal size, often using viewport units (e.g., 0.8rem + 1vw, which means 0.8rem plus 1% of the viewport width).
+   - max: The largest font size allowed.
+
+   This ensures font-size never goes below &#x27;min&#x27; or above &#x27;max&#x27;,
+   and tries to scale proportionally with the viewport width in between,
+   providing a truly responsive and user-friendly typographical experience.
+*/</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 30, 2026</span>
+                </div>
                 <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Leveraging Variable Fonts for Dynamic UI, Peak Performance, and Superior UX</h2>
                 <p class="text-slate-600 font-medium leading-relaxed mb-6">Embrace Variable Fonts to gain granular control over typographic styles (weight, width, optical size, etc.) using a single font file. This dramatically reduces HTTP requests and file sizes compared to traditional static fonts, leading to faster page loads and a more performant user experience. Beyond performance, they enable truly responsive and adaptable UI, allowing text to adjust seamlessly across various screen sizes and user preferences, enhancing readability and design integrity.</p>
                 <div class="bg-slate-900 rounded-xl p-4 relative">
@@ -312,30 +346,6 @@ h2 {
   font-size: clamp(1.75rem, calc(1.5vw + 1rem), 2.5rem);
   line-height: 1.2;
   font-weight: 700;
-}</code></pre>
-                </div>
-            </article>
-            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 30, 2026</span>
-                </div>
-                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Elevate Your UI: Mastering `font-display` for Flawless Web Font Performance & UX</h2>
-                <p class="text-slate-600 font-medium leading-relaxed mb-6">To prevent the dreaded Flash of Invisible Text (FOIT) or sudden layout shifts (FOUT) that severely degrade user experience, always include `font-display` in your `@font-face` declarations. For most cases, `font-display: swap;` is an excellent choice: it ensures text is visible immediately using a fallback font, then gracefully swaps to your custom web font once loaded. This dramatically improves perceived loading speed and overall UI stability.</p>
-                <div class="bg-slate-900 rounded-xl p-4 relative">
-                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">@font-face {
-  font-family: &#x27;Inter&#x27;;
-  src: url(&#x27;/fonts/inter-regular.woff2&#x27;) format(&#x27;woff2&#x27;),
-       url(&#x27;/fonts/inter-regular.woff&#x27;) format(&#x27;woff&#x27;);
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap; /* Essential for optimal web font UX */
-}
-
-body {
-  font-family: &#x27;Inter&#x27;, system-ui, sans-serif;
-  line-height: 1.6;
-  letter-spacing: -0.01em;
 }</code></pre>
                 </div>
             </article>

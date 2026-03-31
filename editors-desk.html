@@ -66,6 +66,32 @@
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
                 </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering `font-display` for Superior Web Font Performance & UX</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">To prevent Flash of Invisible Text (FOIT) or Flash of Unstyled Text (FOUT) and significantly improve user experience, strategically employ the `font-display` CSS property within your `@font-face` rules. For primary content fonts, `font-display: swap;` offers a good balance, displaying fallback text immediately and swapping to the web font once loaded. For less critical fonts or when absolute performance is paramount, consider `font-display: optional;` to avoid network requests if the font isn't already cached, ensuring zero layout shift.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">@font-face {
+  font-family: &#x27;MyAwesomeWebFont&#x27;;
+  src: url(&#x27;/fonts/MyAwesomeWebFont-Regular.woff2&#x27;) format(&#x27;woff2&#x27;),
+       url(&#x27;/fonts/MyAwesomeWebFont-Regular.woff&#x27;) format(&#x27;woff&#x27;);
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; /* Recommended for critical fonts to avoid FOIT */
+}
+
+@font-face {
+  font-family: &#x27;IconFont&#x27;;
+  src: url(&#x27;/fonts/IconFont.woff2&#x27;) format(&#x27;woff2&#x27;);
+  font-weight: normal;
+  font-style: normal;
+  font-display: optional; /* For non-critical fonts, prioritize speed */
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
                 <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering Fluid Typography: Elevate UI Design with CSS clamp() for Superior UX</h2>
                 <p class="text-slate-600 font-medium leading-relaxed mb-6">Unlock truly fluid and responsive typography by leveraging CSS `clamp()`. This powerful function allows you to define a minimum, preferred (viewport-relative), and maximum font size, ensuring optimal readability and aesthetic balance across all screen sizes without complex media queries. This drastically improves user experience and simplifies your UI design code, especially when integrating diverse web fonts.</p>
                 <div class="bg-slate-900 rounded-xl p-4 relative">
@@ -277,19 +303,6 @@ p {
     font-size: clamp(var(--fluid-min), calc(var(--fluid-scale) + var(--fluid-min)), var(--fluid-max));
 }
 */</code></pre>
-                </div>
-            </article>
-            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
-                </div>
-                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Typography Tip Mar 31</h2>
-                <p class="text-slate-600 font-medium leading-relaxed mb-6">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
-                <div class="bg-slate-900 rounded-xl p-4 relative">
-                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">body {
-  line-height: 1.5;
-}</code></pre>
                 </div>
             </article>
         
