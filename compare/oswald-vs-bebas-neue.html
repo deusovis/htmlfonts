@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Font Comparison Tool | Test Web Fonts Side-by-Side</title>
-    <meta name="description" content="Compare popular free web fonts side-by-side. Test legibility, weight, line-height, and instantly copy dynamic HTML/CSS codes for your UI design.">
+    <title>Oswald vs Bebas Neue | Side-by-Side Comparison</title>
+    <meta name="description" content="Compare Oswald and Bebas Neue web fonts side-by-side. Test legibility and generate CSS HTML code instantly.">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKESX7E20P"></script>
     <script>
@@ -14,9 +14,8 @@
       gtag('config', 'G-TKESX7E20P');
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
-    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-    <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap)" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap' rel='stylesheet'>
     <style>
         body { font-family: system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }
         .toast-active { opacity: 1; transform: translate(-50%, 0); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
@@ -26,11 +25,9 @@
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
-
     <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-emerald-500 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3">
         <span>CSS Code Copied! 🚀</span>
     </div>
-
     <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6 shadow-sm">
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
             <a href="/" class="flex items-center gap-2 group">
@@ -56,19 +53,21 @@
             <a href="/html-css-font-guides.html" class="block text-sm font-bold text-slate-700 hover:text-indigo-600">Guides</a>
         </div>
     </header>
-
     <div class="bg-white border-b border-slate-200 overflow-hidden relative">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-white to-white"></div>
         <div class="max-w-7xl mx-auto px-6 pt-10 pb-12 md:pt-12 md:pb-16 relative z-10 text-center">
             <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Font Comparison Tool</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Oswald vs Bebas Neue</span>
             </h1>
             <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mt-4 mb-8">Compare legibility and design aesthetics side-by-side.</p>
         </div>
     </div>
-
-    <main class="flex-grow pb-24 px-6 max-w-7xl mx-auto w-full relative z-20 -mt-8 md:-mt-12">
-
+    
+    <main class="flex-grow w-full pb-24 px-6 max-w-7xl mx-auto relative z-20 -mt-8 md:-mt-12">
+        <div class="text-center mb-8 max-w-3xl mx-auto">
+            <a href="/font-vs-font-comparison-tool.html" class="text-indigo-600 font-bold text-xs uppercase tracking-widest hover:text-indigo-800 transition">&larr; Back to Full Tool</a>
+        </div>
+        
         <div class="bg-white rounded-3xl p-4 md:p-8 shadow-xl border border-slate-200/60 mb-6 md:mb-10">
             
             <div class="mb-8">
@@ -141,7 +140,7 @@
                 <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6 items-center justify-between">
                     <div class="flex items-center">
                         <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-indigo-200 uppercase mr-3">A</span>
-                        <select id="vs-font-a" class="w-full bg-transparent py-3 font-bold text-slate-800 outline-none cursor-pointer text-sm transition-colors"></select>
+                        <h3 id="title-a" class="text-2xl font-black text-slate-800 transition-colors">Oswald</h3>
                     </div>
                     <select id="vs-weight-a" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
@@ -158,7 +157,7 @@
                 <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6 items-center justify-between">
                     <div class="flex items-center">
                         <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-violet-200 uppercase mr-3">B</span>
-                        <select id="vs-font-b" class="w-full bg-transparent py-3 font-bold text-slate-800 outline-none cursor-pointer text-sm transition-colors"></select>
+                        <h3 id="title-b" class="text-2xl font-black text-slate-800 transition-colors">Bebas Neue</h3>
                     </div>
                     <select id="vs-weight-b" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
@@ -173,7 +172,7 @@
         </div>
 
         <div class="mt-12 bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 text-slate-600">
-            <h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between IBM Plex Mono and Space Mono</h2><p class='mb-4 leading-relaxed'>Compare the typography of IBM Plex Mono and Space Mono.</p>
+            <h2 class='text-2xl font-black text-slate-900 mb-4'>The Difference Between Oswald and Bebas Neue</h2><p class='mb-4 leading-relaxed'>Compare the typography of Oswald and Bebas Neue.</p>
         </div>
     </main>
     
@@ -224,7 +223,11 @@
     </footer>
 
     <script>
-        let fontsRaw = [{"name": "Abril Fatface", "css": "'Abril Fatface', display", "link": "Abril+Fatface", "type": "Display"}, {"name": "Amatic SC", "css": "'Amatic SC', cursive", "link": "Amatic+SC:wght@400;700", "type": "Handwriting"}, {"name": "Anton", "css": "'Anton', sans-serif", "link": "Anton", "type": "Sans-Serif"}, {"name": "Arial", "css": "Arial, Helvetica, sans-serif", "link": null, "type": "Sans-Serif"}, {"name": "Arvo", "css": "'Arvo', serif", "link": "Arvo:wght@400;700", "type": "Serif"}, {"name": "Bangers", "css": "'Bangers', display", "link": "Bangers", "type": "Display"}, {"name": "Barlow", "css": "'Barlow', sans-serif", "link": "Barlow:wght@400;500;700", "type": "Sans-Serif"}, {"name": "Bebas Neue", "css": "'Bebas Neue', sans-serif", "link": "Bebas+Neue", "type": "Sans-Serif"}, {"name": "Bitter", "css": "'Bitter', serif", "link": "Bitter:wght@400;600;700", "type": "Serif"}, {"name": "Caveat", "css": "'Caveat', cursive", "link": "Caveat:wght@400;500;600;700", "type": "Handwriting"}, {"name": "Cinzel", "css": "'Cinzel', serif", "link": "Cinzel:wght@400;500;600;700;800", "type": "Serif"}, {"name": "Comfortaa", "css": "'Comfortaa', display", "link": "Comfortaa:wght@400;500;600;700", "type": "Display"}, {"name": "Cormorant", "css": "'Cormorant', serif", "link": "Cormorant:wght@400;600;700", "type": "Serif"}, {"name": "Courier New", "css": "'Courier New', Courier, monospace", "link": null, "type": "Monospace"}, {"name": "Crimson Pro", "css": "'Crimson Pro', serif", "link": "Crimson+Pro:wght@400;600;700", "type": "Serif"}, {"name": "Crimson Text", "css": "'Crimson Text', serif", "link": "Crimson+Text:wght@400;600;700", "type": "Serif"}, {"name": "DM Sans", "css": "'DM Sans', sans-serif", "link": "DM+Sans:wght@400;500;700", "type": "Sans-Serif"}, {"name": "Dancing Script", "css": "'Dancing Script', cursive", "link": "Dancing+Script:wght@400;500;600;700", "type": "Handwriting"}, {"name": "EB Garamond", "css": "'EB Garamond', serif", "link": "EB+Garamond:wght@400;600;700", "type": "Serif"}, {"name": "Fira Code", "css": "'Fira Code', monospace", "link": "Fira+Code:wght@400;500;600;700", "type": "Monospace"}, {"name": "Fira Sans", "css": "'Fira Sans', sans-serif", "link": "Fira+Sans:wght@400;500;700", "type": "Sans-Serif"}, {"name": "Fredoka One", "css": "'Fredoka One', display", "link": "Fredoka+One", "type": "Display"}, {"name": "Georgia", "css": "Georgia, serif", "link": null, "type": "Serif"}, {"name": "Great Vibes", "css": "'Great Vibes', cursive", "link": "Great+Vibes", "type": "Handwriting"}, {"name": "Heebo", "css": "'Heebo', sans-serif", "link": "Heebo:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Helvetica", "css": "Helvetica, Arial, sans-serif", "link": null, "type": "Sans-Serif"}, {"name": "IBM Plex Mono", "css": "'IBM Plex Mono', monospace", "link": "IBM+Plex+Mono:wght@400;500;600;700", "type": "Monospace"}, {"name": "Inconsolata", "css": "'Inconsolata', monospace", "link": "Inconsolata:wght@400;500;700", "type": "Monospace"}, {"name": "Indie Flower", "css": "'Indie Flower', cursive", "link": "Indie+Flower", "type": "Handwriting"}, {"name": "Inter", "css": "'Inter', sans-serif", "link": "Inter:wght@400;600;800;900", "type": "Sans-Serif"}, {"name": "JetBrains Mono", "css": "'JetBrains Mono', monospace", "link": "JetBrains+Mono:wght@400;500;700;800", "type": "Monospace"}, {"name": "Josefin Slab", "css": "'Josefin Slab', serif", "link": "Josefin+Slab:wght@400;600;700", "type": "Serif"}, {"name": "Karla", "css": "'Karla', sans-serif", "link": "Karla:wght@400;700", "type": "Sans-Serif"}, {"name": "Lato", "css": "'Lato', sans-serif", "link": "Lato:wght@400;700;900", "type": "Sans-Serif"}, {"name": "Lexend", "css": "'Lexend', sans-serif", "link": "Lexend:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Libre Baskerville", "css": "'Libre Baskerville', serif", "link": "Libre+Baskerville:wght@400;700", "type": "Serif"}, {"name": "Lobster", "css": "'Lobster', display", "link": "Lobster", "type": "Display"}, {"name": "Lora", "css": "'Lora', serif", "link": "Lora:wght@400;500;600;700", "type": "Serif"}, {"name": "Merriweather", "css": "'Merriweather', serif", "link": "Merriweather:wght@400;700;900", "type": "Serif"}, {"name": "Montserrat", "css": "'Montserrat', sans-serif", "link": "Montserrat:wght@400;600;700;900", "type": "Sans-Serif"}, {"name": "Mukta", "css": "'Mukta', sans-serif", "link": "Mukta:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Noto Sans", "css": "'Noto Sans', sans-serif", "link": "Noto+Sans:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Noto Serif", "css": "'Noto Serif', serif", "link": "Noto+Serif:wght@400;600;700", "type": "Serif"}, {"name": "Nunito", "css": "'Nunito', sans-serif", "link": "Nunito:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Open Sans", "css": "'Open Sans', sans-serif", "link": "Open+Sans:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Oswald", "css": "'Oswald', sans-serif", "link": "Oswald:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Outfit", "css": "'Outfit', sans-serif", "link": "Outfit:wght@400;600;700", "type": "Sans-Serif"}, {"name": "PT Mono", "css": "'PT Mono', monospace", "link": "PT+Mono", "type": "Monospace"}, {"name": "PT Sans", "css": "'PT Sans', sans-serif", "link": "PT+Sans:wght@400;700", "type": "Sans-Serif"}, {"name": "PT Serif", "css": "'PT Serif', serif", "link": "PT+Serif:wght@400;700", "type": "Serif"}, {"name": "Pacifico", "css": "'Pacifico', cursive", "link": "Pacifico", "type": "Handwriting"}, {"name": "Playfair Display", "css": "'Playfair Display', serif", "link": "Playfair+Display:wght@400;600;700;800", "type": "Serif"}, {"name": "Poppins", "css": "'Poppins', sans-serif", "link": "Poppins:wght@400;600;700;800", "type": "Sans-Serif"}, {"name": "Public Sans", "css": "'Public Sans', sans-serif", "link": "Public+Sans:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Quicksand", "css": "'Quicksand', sans-serif", "link": "Quicksand:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Raleway", "css": "'Raleway', sans-serif", "link": "Raleway:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Righteous", "css": "'Righteous', display", "link": "Righteous", "type": "Display"}, {"name": "Roboto", "css": "'Roboto', sans-serif", "link": "Roboto:wght@400;500;700", "type": "Sans-Serif"}, {"name": "Roboto Mono", "css": "'Roboto Mono', monospace", "link": "Roboto+Mono:wght@400;500;600;700", "type": "Monospace"}, {"name": "Rokkitt", "css": "'Rokkitt', serif", "link": "Rokkitt:wght@400;600;700", "type": "Serif"}, {"name": "Rubik", "css": "'Rubik', sans-serif", "link": "Rubik:wght@400;500;700", "type": "Sans-Serif"}, {"name": "Satisfy", "css": "'Satisfy', cursive", "link": "Satisfy", "type": "Handwriting"}, {"name": "Shadows Into Light", "css": "'Shadows Into Light', cursive", "link": "Shadows+Into+Light", "type": "Handwriting"}, {"name": "Source Code Pro", "css": "'Source Code Pro', monospace", "link": "Source+Code+Pro:wght@400;500;600;700", "type": "Monospace"}, {"name": "Space Grotesk", "css": "'Space Grotesk', sans-serif", "link": "Space+Grotesk:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Space Mono", "css": "'Space Mono', monospace", "link": "Space+Mono:wght@400;700", "type": "Monospace"}, {"name": "Teko", "css": "'Teko', sans-serif", "link": "Teko:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Times New Roman", "css": "'Times New Roman', Times, serif", "link": null, "type": "Serif"}, {"name": "Ubuntu", "css": "'Ubuntu', sans-serif", "link": "Ubuntu:wght@400;500;700", "type": "Sans-Serif"}, {"name": "Ubuntu Mono", "css": "'Ubuntu Mono', monospace", "link": "Ubuntu+Mono:wght@400;700", "type": "Monospace"}, {"name": "Verdana", "css": "Verdana, Geneva, sans-serif", "link": null, "type": "Sans-Serif"}, {"name": "Work Sans", "css": "'Work Sans', sans-serif", "link": "Work+Sans:wght@400;600;700", "type": "Sans-Serif"}, {"name": "Zilla Slab", "css": "'Zilla Slab', serif", "link": "Zilla+Slab:wght@400;600;700", "type": "Serif"}];
+        const fontData = {
+            'a': { name: "Oswald", css: "'Oswald', sans-serif", link: "Oswald:wght@400;700", type: "Sans-Serif" },
+            'b': { name: "Bebas Neue", css: "'Bebas Neue', sans-serif", link: "Bebas+Neue", type: "Sans-Serif" }
+        };
+
         let isDark = false;
         let isXray = false;
         let importMode = 'html'; 
@@ -235,133 +238,11 @@
             sz: 32, lh: '1.5', ls: '0'
         };
 
-        let vsData = { a: null, b: null };
-        const loadedFonts = new Set();
-        let loadedCount = 0; 
-
         function getFallbackStack(type) {
             if (type === 'Sans-Serif') return "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
             if (type === 'Serif') return "Georgia, Cambria, 'Times New Roman', Times, serif";
             if (type === 'Monospace') return "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace";
             return "system-ui, sans-serif"; 
-        }
-
-        function loadFont(link, callback) {
-            if (!link || loadedFonts.has(link)) {
-                if(callback) callback();
-                return;
-            }
-            const el = document.createElement('link'); 
-            el.rel = "stylesheet"; 
-            el.href = `https://fonts.googleapis.com/css2?family=${link}&display=swap`;
-            el.onload = () => { loadedFonts.add(link); if(callback) callback(); };
-            document.head.appendChild(el); 
-        }
-
-        function setTxt(txt) {
-            document.getElementById('vs-text').value = txt;
-            u();
-        }
-
-        function toggleDarkMode() {
-            isDark = !isDark;
-            const wrapA = document.getElementById('wrap-a');
-            const wrapB = document.getElementById('wrap-b');
-            const panelA = document.getElementById('panel-a');
-            const panelB = document.getElementById('panel-b');
-            const tabA = document.getElementById('tab-a');
-            const tabB = document.getElementById('tab-b');
-            const fontA = document.getElementById('vs-font-a');
-            const fontB = document.getElementById('vs-font-b');
-            const weightA = document.getElementById('vs-weight-a');
-            const weightB = document.getElementById('vs-weight-b');
-            const pa = document.getElementById('vs-preview-a');
-            const pb = document.getElementById('vs-preview-b');
-            const lbl = document.getElementById('lbl-dark');
-            
-            if(isDark) {
-                // Remove Light Mode Styles
-                wrapA.classList.remove('bg-indigo-50/20', 'border-indigo-100/50');
-                wrapB.classList.remove('bg-violet-50/20', 'border-violet-100/50');
-                panelA.classList.remove('bg-white', 'border-slate-200');
-                panelB.classList.remove('bg-white', 'border-slate-200');
-                tabA.classList.remove('bg-indigo-50', 'border-indigo-100');
-                tabB.classList.remove('bg-violet-50', 'border-violet-100');
-                weightA.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
-                weightB.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
-                fontA.classList.remove('text-slate-800');
-                fontB.classList.remove('text-slate-800');
-                pa.classList.remove('text-slate-900');
-                pb.classList.remove('text-slate-900');
-                
-                // Add Dark Mode Styles
-                wrapA.classList.add('bg-slate-900', 'border-slate-700');
-                wrapB.classList.add('bg-slate-900', 'border-slate-700');
-                panelA.classList.add('bg-slate-800', 'border-slate-700');
-                panelB.classList.add('bg-slate-800', 'border-slate-700');
-                tabA.classList.add('bg-slate-800', 'border-slate-700');
-                tabB.classList.add('bg-slate-800', 'border-slate-700');
-                weightA.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
-                weightB.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
-                fontA.classList.add('text-white');
-                fontB.classList.add('text-white');
-                pa.classList.add('text-white');
-                pb.classList.add('text-white');
-                
-                lbl.innerText = "Light Mode";
-            } else {
-                // Remove Dark Mode Styles
-                wrapA.classList.replace('bg-slate-900', 'border-slate-700');
-                wrapB.classList.replace('bg-slate-900', 'border-slate-700');
-                panelA.classList.replace('bg-slate-800', 'border-slate-700');
-                panelB.classList.replace('bg-slate-800', 'border-slate-700');
-                tabA.classList.remove('bg-slate-800', 'border-slate-700');
-                tabB.classList.remove('bg-slate-800', 'border-slate-700');
-                weightA.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
-                weightB.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
-                fontA.classList.remove('text-white');
-                fontB.classList.remove('text-white');
-                pa.classList.remove('text-white');
-                pb.classList.remove('text-white');
-
-                // Restore Light Mode Styles
-                wrapA.classList.add('bg-indigo-50/20', 'border-indigo-100/50');
-                wrapB.classList.add('bg-violet-50/20', 'border-violet-100/50');
-                panelA.classList.add('bg-white', 'border-slate-200');
-                panelB.classList.add('bg-white', 'border-slate-200');
-                tabA.classList.add('bg-indigo-50', 'border-indigo-100');
-                tabB.classList.add('bg-violet-50', 'border-violet-100');
-                weightA.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-600');
-                weightB.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-600');
-                fontA.classList.add('text-slate-800');
-                fontB.classList.add('text-slate-800');
-                pa.classList.add('text-slate-900');
-                pb.classList.add('text-slate-900');
-                
-                lbl.innerText = "Dark Mode";
-            }
-            u();
-        }
-
-        function toggleXRay() {
-            isXray = !isXray;
-            const grid = document.getElementById('compare-grid');
-            const xrayArena = document.getElementById('xray-arena');
-            const btn = document.getElementById('btn-xray');
-            const lbl = document.getElementById('lbl-xray');
-
-            if(isXray) {
-                grid.classList.add('hidden');
-                xrayArena.classList.remove('hidden');
-                btn.classList.add('bg-indigo-100', 'border-indigo-300');
-                lbl.innerText = "X-Ray On";
-            } else {
-                grid.classList.remove('hidden');
-                xrayArena.classList.add('hidden');
-                btn.classList.remove('bg-indigo-100', 'border-indigo-300');
-                lbl.innerText = "X-Ray Off";
-            }
-            u();
         }
 
         function parseWeights(link) {
@@ -389,49 +270,104 @@
             else sel.selectedIndex = 0;
         }
 
-        function initVSTool() {
-            const sA = document.getElementById('vs-font-a'); 
-            const sB = document.getElementById('vs-font-b');
-            
-            fontsRaw.forEach((f, i) => { 
-                sA.add(new Option(f.name, i)); 
-                sB.add(new Option(f.name, i)); 
-            });
-            
-            let interIdx = fontsRaw.findIndex(f => f.name === "Inter");
-            let robotoIdx = fontsRaw.findIndex(f => f.name === "Roboto");
-            sA.selectedIndex = interIdx !== -1 ? interIdx : 0;
-            sB.selectedIndex = robotoIdx !== -1 ? robotoIdx : 1;
+        function initComparePage() {
+            populateWeights('vs-weight-a', fontData['a']);
+            populateWeights('vs-weight-b', fontData['b']);
+            u();
+        }
+        
+        function setTxt(txt) {
+            document.getElementById('vs-text').value = txt;
+            u();
+        }
 
-            const checkAndDraw = () => {
-                loadedCount++;
-                if (loadedCount >= 2) { u(); loadedCount = 0; }
-            };
+        function toggleDarkMode() {
+            isDark = !isDark;
+            const wrapA = document.getElementById('wrap-a');
+            const wrapB = document.getElementById('wrap-b');
+            const panelA = document.getElementById('panel-a');
+            const panelB = document.getElementById('panel-b');
+            const titleA = document.getElementById('title-a');
+            const titleB = document.getElementById('title-b');
+            const weightA = document.getElementById('vs-weight-a');
+            const weightB = document.getElementById('vs-weight-b');
+            const pa = document.getElementById('vs-preview-a');
+            const pb = document.getElementById('vs-preview-b');
+            const lbl = document.getElementById('lbl-dark');
+            
+            if(isDark) {
+                // Remove Light Mode Styles
+                wrapA.classList.replace('bg-indigo-50/20', 'bg-slate-900');
+                wrapA.classList.replace('border-indigo-100/50', 'border-slate-700');
+                wrapB.classList.replace('bg-violet-50/20', 'bg-slate-900');
+                wrapB.classList.replace('border-violet-100/50', 'border-slate-700');
+                
+                panelA.classList.replace('bg-white', 'bg-slate-800');
+                panelA.classList.replace('border-slate-200', 'border-slate-700');
+                panelB.classList.replace('bg-white', 'bg-slate-800');
+                panelB.classList.replace('border-slate-200', 'border-slate-700');
+                
+                titleA.classList.replace('text-slate-800', 'text-white');
+                titleB.classList.replace('text-slate-800', 'text-white');
+                
+                weightA.classList.replace('bg-slate-50', 'bg-slate-800');
+                weightA.classList.replace('border-slate-200', 'border-slate-700');
+                weightA.classList.replace('text-slate-600', 'text-white');
+                
+                weightB.classList.replace('bg-slate-50', 'bg-slate-800');
+                weightB.classList.replace('border-slate-200', 'border-slate-700');
+                weightB.classList.replace('text-slate-600', 'text-white');
+                
+                pa.classList.replace('text-slate-900', 'text-white');
+                pb.classList.replace('text-slate-900', 'text-white');
+                lbl.innerText = "Light Mode";
+            } else {
+                // Remove Dark Mode Styles
+                wrapA.classList.replace('bg-slate-900', 'border-slate-700');
+                wrapB.classList.replace('bg-slate-900', 'border-slate-700');
+                panelA.classList.replace('bg-slate-800', 'border-slate-700');
+                panelB.classList.replace('bg-slate-800', 'border-slate-700');
+                
+                titleA.classList.replace('text-white', 'text-slate-800');
+                titleB.classList.replace('text-white', 'text-slate-800');
+                
+                weightA.classList.replace('bg-slate-800', 'bg-slate-50');
+                weightA.classList.replace('border-slate-700', 'border-slate-200');
+                weightA.classList.replace('text-white', 'text-slate-600');
+                
+                weightB.classList.replace('bg-slate-800', 'bg-slate-50');
+                weightB.classList.replace('border-slate-700', 'border-slate-200');
+                weightB.classList.replace('text-white', 'text-slate-600');
+                
+                pa.classList.replace('text-white', 'text-slate-900');
+                pb.classList.replace('text-white', 'text-slate-900');
+                lbl.innerText = "Dark Mode";
+            }
+            u();
+        }
+        
+        function toggleXRay() {
+            isXray = !isXray;
+            const grid = document.getElementById('compare-grid');
+            const xrayArena = document.getElementById('xray-arena');
+            const btn = document.getElementById('btn-xray');
+            const lbl = document.getElementById('lbl-xray');
 
-            sA.onchange = () => {
-                vsData.a = fontsRaw[sA.value];
-                populateWeights('vs-weight-a', vsData.a);
-                loadFont(vsData.a.link, () => { u(); });
-            };
-            
-            sB.onchange = () => {
-                vsData.b = fontsRaw[sB.value];
-                populateWeights('vs-weight-b', vsData.b);
-                loadFont(vsData.b.link, () => { u(); });
-            };
-            
-            // Initialization Trigger
-            vsData.a = fontsRaw[sA.value];
-            vsData.b = fontsRaw[sB.value];
-            populateWeights('vs-weight-a', vsData.a);
-            populateWeights('vs-weight-b', vsData.b);
-            loadFont(vsData.a.link, checkAndDraw);
-            loadFont(vsData.b.link, checkAndDraw);
+            if(isXray) {
+                grid.classList.add('hidden');
+                xrayArena.classList.remove('hidden');
+                btn.classList.add('bg-indigo-100', 'border-indigo-300');
+                lbl.innerText = "X-Ray On";
+            } else {
+                grid.classList.remove('hidden');
+                xrayArena.classList.add('hidden');
+                btn.classList.remove('bg-indigo-100', 'border-indigo-300');
+                lbl.innerText = "X-Ray Off";
+            }
+            u();
         }
 
         function u() {
-            if (!vsData.a || !vsData.b) return;
-
             const text = document.getElementById('vs-text').value;
             const sz = document.getElementById('vs-font-size').value;
             const lh = document.getElementById('vs-lh').value;
@@ -449,7 +385,7 @@
             if (!isXray) {
                 const pA = document.getElementById('vs-preview-a');
                 pA.style.color = txtColor;
-                pA.style.fontFamily = vsData.a.css;
+                pA.style.fontFamily = fontData['a'].css;
                 pA.style.fontSize = sz + 'px';
                 pA.style.fontWeight = wA;
                 pA.style.lineHeight = lh;
@@ -458,14 +394,13 @@
 
                 const pB = document.getElementById('vs-preview-b');
                 pB.style.color = txtColor;
-                pB.style.fontFamily = vsData.b.css;
+                pB.style.fontFamily = fontData['b'].css;
                 pB.style.fontSize = sz + 'px';
                 pB.style.fontWeight = wB;
                 pB.style.lineHeight = lh;
                 pB.style.letterSpacing = ls + 'em';
                 pB.innerText = text;
-            } 
-            else {
+            } else {
                 const xa = document.getElementById('xray-preview-a');
                 const xb = document.getElementById('xray-preview-b');
                 const arena = document.getElementById('xray-arena');
@@ -474,24 +409,24 @@
                     arena.classList.replace('bg-white', 'bg-slate-900');
                     xa.style.mixBlendMode = 'screen';
                     xb.style.mixBlendMode = 'screen';
-                    xa.style.color = '#0ff'; // Bright Cyan
-                    xb.style.color = '#f0f'; // Bright Magenta
+                    xa.style.color = '#0ff'; 
+                    xb.style.color = '#f0f'; 
                 } else {
                     arena.classList.replace('bg-slate-900', 'bg-white');
                     xa.style.mixBlendMode = 'multiply';
                     xb.style.mixBlendMode = 'multiply';
-                    xa.style.color = '#0ea5e9'; // Sky
-                    xb.style.color = '#f43f5e'; // Rose
+                    xa.style.color = '#0ea5e9'; 
+                    xb.style.color = '#f43f5e'; 
                 }
 
-                xa.style.fontFamily = vsData.a.css;
+                xa.style.fontFamily = fontData['a'].css;
                 xa.style.fontSize = sz + 'px';
                 xa.style.fontWeight = wA;
                 xa.style.lineHeight = lh;
                 xa.style.letterSpacing = ls + 'em';
                 xa.innerText = text;
 
-                xb.style.fontFamily = vsData.b.css;
+                xb.style.fontFamily = fontData['b'].css;
                 xb.style.fontSize = sz + 'px';
                 xb.style.fontWeight = wB;
                 xb.style.lineHeight = lh;
@@ -576,7 +511,7 @@
         }
 
         function openModalFromVS(side) { 
-            const fontObj = side === 'a' ? vsData.a : vsData.b;
+            const fontObj = side === 'a' ? fontData['a'] : fontData['b'];
             
             activeModalData = {
                 name: fontObj.name,
@@ -630,7 +565,7 @@
             });
         }
 
-        initVSTool();
+        initComparePage();
     </script>
 </body>
 </html>

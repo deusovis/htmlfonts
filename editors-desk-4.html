@@ -92,6 +92,19 @@
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
                 </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Typography Tip Mar 31</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">body {
+  line-height: 1.5;
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
                 <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Typographic Scale & Harmony: Elevating UI Design with Modern CSS</h2>
                 <p class="text-slate-600 font-medium leading-relaxed mb-6">To achieve superior readability and a professional UI design, move beyond arbitrary font sizes. Implement a modular typographic scale (e.g., using a 'Major Third' or 'Perfect Fifth' ratio) with CSS Custom Properties and `rem` units. This ensures consistency and responsiveness across devices, while pairing `line-height` values thoughtfully (ideally a multiple of your baseline grid) will create a harmonious vertical rhythm, significantly boosting user experience.</p>
                 <div class="bg-slate-900 rounded-xl p-4 relative">
@@ -313,30 +326,6 @@ body {
   line-height: 1.6;
   color: #333;
   /* Other foundational typography styles */
-}</code></pre>
-                </div>
-            </article>
-            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 30, 2026</span>
-                </div>
-                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering font-display: Optimizing Web Font Loading for Superior User Experience</h2>
-                <p class="text-slate-600 font-medium leading-relaxed mb-6">To significantly enhance perceived performance and user experience, prioritize the `font-display` CSS property within your `@font-face` rules. Using `font-display: swap;` allows the browser to immediately render text using a fallback font (preventing Flash of Invisible Text - FOIT) and then seamlessly 'swaps' to your custom web font once it's loaded. This strategy ensures content is readable from the get-go, reducing user frustration during initial page load, a key factor in effective UI design.</p>
-                <div class="bg-slate-900 rounded-xl p-4 relative">
-                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">@font-face {
-  font-family: &#x27;Inter&#x27;;
-  src: url(&#x27;/fonts/inter-v3-latin-regular.woff2&#x27;) format(&#x27;woff2&#x27;),
-       url(&#x27;/fonts/inter-v3-latin-regular.woff&#x27;) format(&#x27;woff&#x27;);
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap; /* Ensures immediate text visibility with a fallback */
-}
-
-body {
-  font-family: &#x27;Inter&#x27;, sans-serif;
-  line-height: 1.6;
-  font-size: 18px;
 }</code></pre>
                 </div>
             </article>

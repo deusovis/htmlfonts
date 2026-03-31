@@ -66,6 +66,26 @@
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
                 </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering Fluid Typography for Responsive UI: Leveraging CSS `clamp()`</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">To achieve truly fluid and responsive typography, embrace the CSS `clamp()` function. It allows you to define a minimum, preferred, and maximum value for properties like `font-size`. This means your text will scale dynamically with the viewport, ensuring readability on both small and large screens without needing excessive media queries, significantly improving #UI design and #UserExperience by maintaining optimal line length and visual hierarchy.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">h1 {
+  font-size: clamp(2rem, 5vw + 1rem, 4rem);
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+}
+
+p {
+  font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);
+  line-height: 1.6;
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
                 <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Typography Tip Mar 31</h2>
                 <p class="text-slate-600 font-medium leading-relaxed mb-6">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
                 <div class="bg-slate-900 rounded-xl p-4 relative">
@@ -245,19 +265,6 @@ h2 {
   line-height: 1.3;
   margin-bottom: 0.4em;
   font-weight: 600;
-}</code></pre>
-                </div>
-            </article>
-            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
-                </div>
-                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Typography Tip Mar 31</h2>
-                <p class="text-slate-600 font-medium leading-relaxed mb-6">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
-                <div class="bg-slate-900 rounded-xl p-4 relative">
-                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">body {
-  line-height: 1.5;
 }</code></pre>
                 </div>
             </article>

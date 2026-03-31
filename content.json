@@ -1,8 +1,8 @@
 {
-    "title": "Mastering font-display for Superior Web Font Performance & UX",
-    "slug": "mastering-font-display-web-performance-ux",
-    "tweet": "\ud83d\ude80 Elevate your #webfonts UX! Use `font-display: swap;` in @font-face to eliminate FOIT & ensure immediate content readability. A must for #CSStypography & #UIDesign. #FontPerformance",
-    "tip": "To significantly enhance user experience, especially on slower connections, always include `font-display` within your `@font-face` declarations. Setting it to `swap` is often the best default, as it renders text immediately with a fallback font and swaps to the custom web font once loaded. This prevents the dreaded Flash of Invisible Text (FOIT), maintaining readability from the start and positively impacting Core Web Vitals.",
-    "css_snippet": "@font-face {\n  font-family: 'CustomWebFont';\n  src: url('/fonts/CustomWebFont-Regular.woff2') format('woff2'),\n       url('/fonts/CustomWebFont-Regular.woff') format('woff');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Crucial for better UX and perceived performance */\n}\n\nbody {\n  font-family: 'CustomWebFont', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  line-height: 1.5;\n  color: #222;\n}",
+    "title": "Typography Tip Mar 31",
+    "slug": "typography-tip-1774989884",
+    "tweet": "Check out today's CSS typography tip! #webdesign #css",
+    "tip": "To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.",
+    "css_snippet": "body {\n  line-height: 1.5;\n}",
     "date": "March 31, 2026"
 }
