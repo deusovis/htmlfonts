@@ -165,7 +165,7 @@ top_comparisons = [
     ("Inter", "Roboto", "'Inter', sans-serif", "'Roboto', sans-serif", "Inter:wght@400;700", "Roboto:wght@400;700"),
     ("Playfair Display", "Merriweather", "'Playfair Display', serif", "'Merriweather', serif", "Playfair+Display:wght@400;700", "Merriweather:wght@400;700"),
     ("Nunito", "Poppins", "'Nunito', sans-serif", "'Poppins', sans-serif", "Nunito:wght@400;700", "Poppins:wght@400;700"),
-    ("Raleway", "Montserrat", "'Montserrat', sans-serif", "Raleway:wght@400;700", "Montserrat:wght@400;700"),
+    ("Raleway", "Montserrat", "'Raleway', sans-serif", "'Montserrat', sans-serif", "Raleway:wght@400;700", "Montserrat:wght@400;700"),
     ("Times New Roman", "Georgia", "'Times New Roman', Times, serif", "Georgia, serif", "", ""),
     ("Lora", "PT Serif", "'Lora', serif", "'PT Serif', serif", "Lora:wght@400;700", "PT+Serif:wght@400;700"),
     ("Work Sans", "Fira Sans", "'Work Sans', sans-serif", "'Fira Sans', sans-serif", "Work+Sans:wght@400;700", "Fira+Sans:wght@400;700"),
@@ -324,7 +324,6 @@ try:
         elif api_exhausted or not os.environ.get("GEMINI_API_KEY"):
             pass
         else:
-            print(f"Generating NEW epic SEO profile for {f_name}...")
             prompt = f"""You are a master SEO copywriter and expert UI typographer. Write a comprehensive, fascinating, and highly educational article about the '{f_name}' web font specifically targeting the most searched Google queries (e.g., '{f_name} font history', 'best uses for {f_name}', '{f_name} UI design best practices', and '{f_name} font pairings'). 
             
             Your response must include:
@@ -348,17 +347,14 @@ try:
                     ai_content = resp.text.replace('```html', '').replace('```', '').strip()
                     profile_cache[slug] = ai_content
                     save_profile_cache()
-                    print(f"✅ Success for {f_name}")
                     break
                 except Exception as e:
                     err_str = str(e)
                     if "429" in err_str:
                         if "GenerateRequestsPerDay" in err_str or "limit: 20" in err_str:
-                            print(f"🚨 Daily Rate Limit hit on {f_name}! Switching to fallback.")
                             api_exhausted = True
                             break
                         elif attempt < 2:
-                            print(f"⏳ Rate limit hit on {f_name}. Waiting 65s...")
                             time.sleep(65)
                         else:
                             api_exhausted = True
@@ -785,9 +781,10 @@ try:
         .toast-active {{ opacity: 1; transform: translate(-50%, 0); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }}
         .modal-active {{ opacity: 1; transform: scale(1) translateY(0); transition: all 0.2s ease-out; }}
         .comparison-text {{ transition: font-size 0.2s ease; }}
+        option {{ background-color: #ffffff; color: #0f172a; }}
     </style>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
     <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3">Copied! 🚀</div>
 {header_html}
     <div class="bg-white border-b border-slate-200 overflow-hidden relative">
@@ -804,7 +801,7 @@ try:
             <a href="/font-vs-font-comparison-tool.html" class="text-indigo-600 font-bold text-xs uppercase tracking-widest hover:text-indigo-800 transition">&larr; Back to Tool</a>
         </div>
         
-        <div class="bg-white rounded-3xl p-4 md:p-10 shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100">
+        <div class="bg-white rounded-3xl p-4 md:p-10 shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 mb-6 md:mb-10">
             <div class="flex flex-col md:flex-row gap-4 md:gap-6 mb-8 md:mb-12 items-stretch">
                 <div class="w-full md:w-2/3 bg-slate-50 border border-slate-200 rounded-2xl py-4 px-6 shadow-inner flex flex-col justify-center focus-within:ring-2 focus-within:ring-indigo-500 focus-within:bg-white transition-all">
                     <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 px-1">Testing Playground</label>
@@ -824,30 +821,30 @@ try:
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 divide-y md:divide-y-0 md:divide-x divide-slate-100" id="compare-grid">
-                <div class="md:pr-10 pt-4 md:pt-0 flex flex-col h-full transition-colors" id="panel-a">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 divide-y md:divide-y-0 md:divide-x divide-slate-100 items-start" id="compare-grid">
+                <div class="md:pr-10 pt-4 md:pt-0 flex flex-col transition-colors" id="panel-a">
                     <div class="flex items-center gap-3 mb-6">
                         <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-indigo-200 uppercase">A</span>
                         <h3 id="title-a" class="text-2xl font-black text-slate-800 transition-colors">{font_a}</h3>
                     </div>
-                    <div id="wrap-a" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden relative">
-                        <p id="pa" class="comparison-text text-slate-900 break-words leading-tight w-full" style="font-family: {css_a}; font-size: 32px;">Optimize your UI design with fast-loading free web fonts.</p>
+                    <div id="wrap-a" class="w-full flex items-center p-4 md:p-6 min-h-[80px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden relative">
+                        <p id="pa" class="comparison-text text-black break-words leading-tight w-full" style="font-family: {css_a}; font-size: 32px;">Optimize your UI design with fast-loading free web fonts.</p>
                     </div>
-                    <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-indigo-200 mt-4 md:mt-6 group flex justify-center items-center gap-2">
+                    <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-xl shadow-indigo-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                         Copy HTML / CSS
                     </button>
                 </div>
 
-                <div class="md:pl-10 pt-10 md:pt-0 flex flex-col h-full transition-colors" id="panel-b">
+                <div class="md:pl-10 pt-10 md:pt-0 flex flex-col transition-colors" id="panel-b">
                     <div class="flex items-center gap-3 mb-6">
                         <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-violet-200 uppercase">B</span>
                         <h3 id="title-b" class="text-2xl font-black text-slate-800 transition-colors">{font_b}</h3>
                     </div>
-                    <div id="wrap-b" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden relative">
-                        <p id="pb" class="comparison-text text-slate-900 break-words leading-tight w-full" style="font-family: {css_b}; font-size: 32px;">Optimize your UI design with fast-loading free web fonts.</p>
+                    <div id="wrap-b" class="w-full flex items-center p-4 md:p-6 min-h-[80px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden relative">
+                        <p id="pb" class="comparison-text text-black break-words leading-tight w-full" style="font-family: {css_b}; font-size: 32px;">Optimize your UI design with fast-loading free web fonts.</p>
                     </div>
-                    <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-violet-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
+                    <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-xl shadow-violet-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                         Copy HTML / CSS
                     </button>
@@ -1244,9 +1241,10 @@ try:
         .toast-active {{ opacity: 1; transform: translate(-50%, 0); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }}
         .modal-active {{ opacity: 1; transform: scale(1) translateY(0); transition: all 0.2s ease-out; }}
         .comparison-text {{ transition: font-size 0.2s ease, font-weight 0.2s ease, line-height 0.2s ease, letter-spacing 0.2s ease; }}
+        option {{ background-color: #ffffff; color: #0f172a; }}
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
 
     <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-emerald-500 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3">
         <span>CSS Code Copied! 🚀</span>
@@ -1333,10 +1331,10 @@ try:
             </div>
         </div>
 
-        <div id="compare-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 transition-all">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 divide-y md:divide-y-0 md:divide-x divide-slate-100 items-start" id="compare-grid">
             
-            <div class="bg-white p-4 md:p-6 rounded-[2rem] shadow-sm border border-slate-200 flex flex-col h-full transition-colors" id="panel-a">
-                <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6 items-center justify-between">
+            <div class="bg-white p-4 md:p-6 rounded-[2rem] shadow-sm border border-slate-200 flex flex-col transition-colors" id="panel-a">
+                <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6">
                     <div class="flex-grow flex items-center bg-indigo-50 px-3 rounded-xl border border-indigo-100 focus-within:ring-2 focus-within:ring-indigo-400 transition-colors w-full sm:w-auto mb-2 sm:mb-0" id="tab-a">
                         <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-sm uppercase mr-3">A</span>
                         <select id="vs-font-a" class="w-full bg-transparent py-3 font-bold text-slate-800 outline-none cursor-pointer text-sm transition-colors"></select>
@@ -1344,18 +1342,18 @@ try:
                     <select id="vs-weight-a" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
                 
-                <div id="wrap-a" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden relative">
+                <div id="wrap-a" class="w-full flex items-center p-4 md:p-6 min-h-[80px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden relative">
                     <p id="vs-preview-a" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
                 
                 <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-indigo-200 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                    Copy HTML / CSS
+                    Copy Fluid CSS
                 </button>
             </div>
 
-            <div class="bg-white p-4 md:p-6 rounded-[2rem] shadow-sm border border-slate-200 flex flex-col h-full transition-colors" id="panel-b">
-                <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6 items-center justify-between">
+            <div class="bg-white p-4 md:p-6 rounded-[2rem] shadow-sm border border-slate-200 flex flex-col transition-colors" id="panel-b">
+                <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6">
                     <div class="flex-grow flex items-center bg-violet-50 px-3 rounded-xl border border-violet-100 focus-within:ring-2 focus-within:ring-violet-400 transition-colors w-full sm:w-auto mb-2 sm:mb-0" id="tab-b">
                         <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-sm uppercase mr-3">B</span>
                         <select id="vs-font-b" class="w-full bg-transparent py-3 font-bold text-slate-800 outline-none cursor-pointer text-sm transition-colors"></select>
@@ -1363,18 +1361,18 @@ try:
                     <select id="vs-weight-b" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
                 
-                <div id="wrap-b" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden relative">
+                <div id="wrap-b" class="w-full flex items-center p-4 md:p-6 min-h-[80px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden relative">
                     <p id="vs-preview-b" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
                 
                 <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-violet-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                    Copy HTML / CSS
+                    Copy Fluid CSS
                 </button>
             </div>
 
         </div>
-        
+
     </main>
 
     <div id="code-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
@@ -1480,13 +1478,14 @@ try:
             const pb = document.getElementById('vs-preview-b');
             
             if(isDark) {{
-                // Remove Light Mode Styles
                 wrapA.classList.remove('bg-indigo-50/20', 'border-indigo-100/50');
                 wrapB.classList.remove('bg-violet-50/20', 'border-violet-100/50');
                 panelA.classList.remove('bg-white', 'border-slate-200');
                 panelB.classList.remove('bg-white', 'border-slate-200');
                 tabA.classList.remove('bg-indigo-50', 'border-indigo-100');
                 tabB.classList.remove('bg-violet-50', 'border-violet-100');
+                fontA.classList.remove('bg-transparent');
+                fontB.classList.remove('bg-transparent');
                 
                 fontA.classList.replace('text-slate-800', 'text-white');
                 fontB.classList.replace('text-slate-800', 'text-white');
@@ -1495,24 +1494,26 @@ try:
                 pa.classList.replace('text-slate-900', 'text-white');
                 pb.classList.replace('text-slate-900', 'text-white');
                 
-                // Add Dark Mode Styles
                 wrapA.classList.add('bg-slate-900', 'border-slate-700');
                 wrapB.classList.add('bg-slate-900', 'border-slate-700');
                 panelA.classList.add('bg-slate-800', 'border-slate-700');
                 panelB.classList.add('bg-slate-800', 'border-slate-700');
                 tabA.classList.add('bg-slate-900', 'border-slate-700');
                 tabB.classList.add('bg-slate-900', 'border-slate-700');
+                fontA.classList.add('bg-slate-800');
+                fontB.classList.add('bg-slate-800');
                 weightA.classList.add('bg-slate-900', 'border-slate-700');
                 weightB.classList.add('bg-slate-900', 'border-slate-700');
                 lbl.innerText = "Light Mode";
             }} else {{
-                // Remove Dark Mode Styles
                 wrapA.classList.remove('bg-slate-900', 'border-slate-700');
                 wrapB.classList.remove('bg-slate-900', 'border-slate-700');
                 panelA.classList.remove('bg-slate-800', 'border-slate-700');
                 panelB.classList.remove('bg-slate-800', 'border-slate-700');
                 tabA.classList.remove('bg-slate-900', 'border-slate-700');
                 tabB.classList.remove('bg-slate-900', 'border-slate-700');
+                fontA.classList.remove('bg-slate-800');
+                fontB.classList.remove('bg-slate-800');
                 weightA.classList.remove('bg-slate-900', 'border-slate-700');
                 weightB.classList.remove('bg-slate-900', 'border-slate-700');
 
@@ -1523,13 +1524,14 @@ try:
                 pa.classList.replace('text-white', 'text-slate-900');
                 pb.classList.replace('text-white', 'text-slate-900');
 
-                // Restore Light Mode Styles
                 wrapA.classList.add('bg-indigo-50/20', 'border-indigo-100/50');
                 wrapB.classList.add('bg-violet-50/20', 'border-violet-100/50');
                 panelA.classList.add('bg-white', 'border-slate-200');
                 panelB.classList.add('bg-white', 'border-slate-200');
                 tabA.classList.add('bg-indigo-50', 'border-indigo-100');
                 tabB.classList.add('bg-violet-50', 'border-violet-100');
+                fontA.classList.add('bg-transparent');
+                fontB.classList.add('bg-transparent');
                 weightA.classList.add('bg-slate-50', 'border-slate-200');
                 weightB.classList.add('bg-slate-50', 'border-slate-200');
                 lbl.innerText = "Dark Mode";
@@ -1637,9 +1639,12 @@ try:
             
             const wA = document.getElementById('vs-weight-a').value;
             const wB = document.getElementById('vs-weight-b').value;
+            
+            const txtColor = isDark ? '#ffffff' : '#0f172a';
 
             if (!isXray) {{
                 const pA = document.getElementById('vs-preview-a');
+                pA.style.color = txtColor;
                 pA.style.fontFamily = vsData.a.css;
                 pA.style.fontSize = sz + 'px';
                 pA.style.fontWeight = wA;
@@ -1648,6 +1653,7 @@ try:
                 pA.innerText = text;
 
                 const pB = document.getElementById('vs-preview-b');
+                pB.style.color = txtColor;
                 pB.style.fontFamily = vsData.b.css;
                 pB.style.fontSize = sz + 'px';
                 pB.style.fontWeight = wB;
@@ -1722,6 +1728,7 @@ try:
                 cssBlock += `}}`;
                 cssEl.textContent = cssBlock;
             }} else {{
+                let safeName = activeModalData.name.replace(/\\s+/g, '-').toLowerCase();
                 let twStr = `font-['${{activeModalData.name}}'] font-[${{activeModalData.weight}}] text-[${{fluidClamp}}] leading-[${{activeModalData.lh}}]`;
                 if (activeModalData.ls !== "0" && activeModalData.ls !== "0.00") twStr += ` tracking-[${{activeModalData.ls}}em]`;
                 cssEl.textContent = twStr;
@@ -1794,7 +1801,7 @@ try:
             setTimeout(() => modal.classList.add('hidden'), 300); 
         }}
         
-        function triggerToast() {{
+        function triggerToast(msg = "Copied! 🚀") {{
             const t = document.getElementById('toast'); 
             t.classList.remove('hidden'); 
             void t.offsetWidth;
