@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering `font-display` for Superior Web Font Performance & UX",
+        "slug": "font-display-web-fonts-performance-ux-guide",
+        "tweet": "Boost your site's UX & performance! Learn how to harness CSS `font-display` to control web font loading behavior and eliminate FOIT/FOUT. Essential for #WebFonts #CSSTypography #UIDesign.",
+        "tip": "Leverage `font-display: swap;` for most body text and headings. This prioritizes content readability by immediately showing a fallback font, then swapping to your custom web font once loaded. For critical brand elements, `font-display: fallback;` or `optional;` might be suitable, but weigh the impact carefully. Always test across browsers and consider the 'Flash of Unstyled Text' (FOUT) vs. 'Flash of Invisible Text' (FOIT) implications for your users.",
+        "css_snippet": "@font-face {\n  font-family: 'Inter';\n  src: url('/fonts/inter-v12-latin-regular.woff2') format('woff2'),\n       url('/fonts/inter-v12-latin-regular.woff') format('woff');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Controls how the font loads and displays */\n}\n\n/* Apply the font to your elements */\nbody {\n  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';\n  font-size: 1.125rem; /* 18px */\n  line-height: 1.6;\n  color: #333;\n}",
+        "date": "March 31, 2026"
+    },
+    {
         "title": "Mastering Responsive CSS Typography for Elite UI Design and Superior User Experience",
         "slug": "mastering-responsive-css-typography-elite-ui-design-superior-user-experience",
         "tweet": "Unlock professional #CSSTypography for elite #UIDesign! Learn how responsive font sizing and optimal #WebFonts significantly boost #UserExperience. Dive into our latest expert tip and CSS snippet. #WebDev #DesignTips",
