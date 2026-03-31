@@ -1,8 +1,8 @@
 {
-    "title": "Typography Tip Mar 31",
-    "slug": "typography-tip-1774973381",
-    "tweet": "Check out today's CSS typography tip! #webdesign #css",
-    "tip": "To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.",
-    "css_snippet": "body {\n  line-height: 1.5;\n}",
+    "title": "Mastering `font-display`: Optimizing Web Font Loading for Superior UX",
+    "slug": "mastering-font-display-optimize-web-fonts-ux",
+    "tweet": "Unlock peak web font performance & prevent FOIT/FOUT! Learn how `font-display` dramatically improves #CSSTypography and #UserExperience. A must-read for #UIDesign experts! #WebFonts",
+    "tip": "Beyond `font-display: swap;`, explore `optional` for non-critical fonts to minimize network requests and improve resilience, or `fallback` for subtle font differences where a brief blank period is acceptable. Always pair your chosen `font-display` strategy with `<link rel=\"preload\" as=\"font\" crossorigin>` for critical web fonts. This combination ensures fonts are fetched early without render-blocking, drastically improving First Contentful Paint (FCP) and perceived loading speed, which is crucial for modern #UIDesign and accessibility.",
+    "css_snippet": "@font-face {\n  font-family: 'Open Sans';\n  src: url('/fonts/OpenSans-Regular.woff2') format('woff2');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Consider 'optional' for less critical fonts, or 'fallback' for minimal differences */\n}\n\n/* In your HTML <head> for critical fonts */\n<link rel=\"preload\" href=\"/fonts/OpenSans-Regular.woff2\" as=\"font\" type=\"font/woff2\" crossorigin>",
     "date": "March 31, 2026"
 }
