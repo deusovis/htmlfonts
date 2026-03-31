@@ -471,6 +471,7 @@
                 cssBlock += `}`;
                 cssEl.textContent = cssBlock;
             } else {
+                let safeName = activeModalData.name.replace(/\s+/g, '-').toLowerCase();
                 let twStr = `font-['${activeModalData.name}'] font-[${activeModalData.weight}] text-[${fluidClamp}] leading-[${activeModalData.lh}]`;
                 if (activeModalData.ls !== "0" && activeModalData.ls !== "0.00") twStr += ` tracking-[${activeModalData.ls}em]`;
                 cssEl.textContent = twStr;

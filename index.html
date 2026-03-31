@@ -17,7 +17,13 @@
     <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
     <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
     <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700;900&family=Roboto:wght@400;700&family=Montserrat:wght@700;900&family=Oswald:wght@700&family=Fira+Code:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700;900&family=Roboto:wght@400;700&family=Montserrat:wght@700;900&family=Oswald:wght@700&family=Fira+Code:wght@400;700&display=swap)" rel="stylesheet">
-    <style>body { font-family: system-ui, sans-serif; }</style>
+    <style>
+        body { font-family: system-ui, sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f8fafc; border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
     <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3 transition-all duration-300 opacity-0 translate-y-4">Copied! 🚀</div>
@@ -76,7 +82,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
              data-font-name="Abril Fatface"
              data-font-css="&#x27;Abril Fatface&#x27;, display"
-             data-font-url="https://fonts.googleapis.com/css2?family=Abril+Fatface&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Abril+Fatface&amp;display=swap"
+             data-font-slug="abril-fatface">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -96,7 +103,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap"
              data-font-name="Amatic SC"
              data-font-css="&#x27;Amatic SC&#x27;, cursive"
-             data-font-url="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&amp;display=swap"
+             data-font-slug="amatic-sc">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -116,7 +124,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Anton&display=swap"
              data-font-name="Anton"
              data-font-css="&#x27;Anton&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Anton&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Anton&amp;display=swap"
+             data-font-slug="anton">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -136,7 +145,8 @@
              data-font-link=""
              data-font-name="Arial"
              data-font-css="Arial, Helvetica, sans-serif"
-             data-font-url="">
+             data-font-url=""
+             data-font-slug="arial">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -156,7 +166,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap"
              data-font-name="Arvo"
              data-font-css="&#x27;Arvo&#x27;, serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&amp;display=swap"
+             data-font-slug="arvo">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -176,7 +187,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
              data-font-name="Bangers"
              data-font-css="&#x27;Bangers&#x27;, display"
-             data-font-url="https://fonts.googleapis.com/css2?family=Bangers&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Bangers&amp;display=swap"
+             data-font-slug="bangers">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -196,7 +208,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&display=swap"
              data-font-name="Barlow"
              data-font-css="&#x27;Barlow&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&amp;display=swap"
+             data-font-slug="barlow">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -216,7 +229,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
              data-font-name="Bebas Neue"
              data-font-css="&#x27;Bebas Neue&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap"
+             data-font-slug="bebas-neue">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -236,7 +250,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;700&display=swap"
              data-font-name="Bitter"
              data-font-css="&#x27;Bitter&#x27;, serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;700&amp;display=swap"
+             data-font-slug="bitter">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -256,7 +271,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap"
              data-font-name="Caveat"
              data-font-css="&#x27;Caveat&#x27;, cursive"
-             data-font-url="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&amp;display=swap"
+             data-font-slug="caveat">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -276,7 +292,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&display=swap"
              data-font-name="Cinzel"
              data-font-css="&#x27;Cinzel&#x27;, serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&amp;display=swap"
+             data-font-slug="cinzel">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -296,7 +313,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap"
              data-font-name="Comfortaa"
              data-font-css="&#x27;Comfortaa&#x27;, display"
-             data-font-url="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&amp;display=swap"
+             data-font-slug="comfortaa">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -316,7 +334,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;600;700&display=swap"
              data-font-name="Cormorant"
              data-font-css="&#x27;Cormorant&#x27;, serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;600;700&amp;display=swap"
+             data-font-slug="cormorant">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -336,7 +355,8 @@
              data-font-link=""
              data-font-name="Courier New"
              data-font-css="&#x27;Courier New&#x27;, Courier, monospace"
-             data-font-url="">
+             data-font-url=""
+             data-font-slug="courier-new">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -356,7 +376,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&display=swap"
              data-font-name="Crimson Pro"
              data-font-css="&#x27;Crimson Pro&#x27;, serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&amp;display=swap"
+             data-font-slug="crimson-pro">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -376,7 +397,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap"
              data-font-name="Crimson Text"
              data-font-css="&#x27;Crimson Text&#x27;, serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&amp;display=swap"
+             data-font-slug="crimson-text">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -396,7 +418,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
              data-font-name="DM Sans"
              data-font-css="&#x27;DM Sans&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;display=swap"
+             data-font-slug="dm-sans">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -416,7 +439,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
              data-font-name="Dancing Script"
              data-font-css="&#x27;Dancing Script&#x27;, cursive"
-             data-font-url="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&amp;display=swap"
+             data-font-slug="dancing-script">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -436,7 +460,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;700&display=swap"
              data-font-name="EB Garamond"
              data-font-css="&#x27;EB Garamond&#x27;, serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;700&amp;display=swap"
+             data-font-slug="eb-garamond">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -456,7 +481,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap"
              data-font-name="Fira Code"
              data-font-css="&#x27;Fira Code&#x27;, monospace"
-             data-font-url="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&amp;display=swap"
+             data-font-slug="fira-code">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -476,7 +502,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;700&display=swap"
              data-font-name="Fira Sans"
              data-font-css="&#x27;Fira Sans&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;700&amp;display=swap"
+             data-font-slug="fira-sans">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -496,7 +523,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"
              data-font-name="Fredoka One"
              data-font-css="&#x27;Fredoka One&#x27;, display"
-             data-font-url="https://fonts.googleapis.com/css2?family=Fredoka+One&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Fredoka+One&amp;display=swap"
+             data-font-slug="fredoka-one">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -516,7 +544,8 @@
              data-font-link=""
              data-font-name="Georgia"
              data-font-css="Georgia, serif"
-             data-font-url="">
+             data-font-url=""
+             data-font-slug="georgia">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -536,7 +565,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
              data-font-name="Great Vibes"
              data-font-css="&#x27;Great Vibes&#x27;, cursive"
-             data-font-url="https://fonts.googleapis.com/css2?family=Great+Vibes&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Great+Vibes&amp;display=swap"
+             data-font-slug="great-vibes">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -556,7 +586,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&display=swap"
              data-font-name="Heebo"
              data-font-css="&#x27;Heebo&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&amp;display=swap"
+             data-font-slug="heebo">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -576,7 +607,8 @@
              data-font-link=""
              data-font-name="Helvetica"
              data-font-css="Helvetica, Arial, sans-serif"
-             data-font-url="">
+             data-font-url=""
+             data-font-slug="helvetica">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -596,7 +628,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap"
              data-font-name="IBM Plex Mono"
              data-font-css="&#x27;IBM Plex Mono&#x27;, monospace"
-             data-font-url="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;display=swap"
+             data-font-slug="ibm-plex-mono">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -616,7 +649,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;700&display=swap"
              data-font-name="Inconsolata"
              data-font-css="&#x27;Inconsolata&#x27;, monospace"
-             data-font-url="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;700&amp;display=swap"
+             data-font-slug="inconsolata">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -636,7 +670,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap"
              data-font-name="Indie Flower"
              data-font-css="&#x27;Indie Flower&#x27;, cursive"
-             data-font-url="https://fonts.googleapis.com/css2?family=Indie+Flower&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Indie+Flower&amp;display=swap"
+             data-font-slug="indie-flower">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -656,7 +691,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap"
              data-font-name="Inter"
              data-font-css="&#x27;Inter&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&amp;display=swap"
+             data-font-slug="inter">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -676,7 +712,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap"
              data-font-name="JetBrains Mono"
              data-font-css="&#x27;JetBrains Mono&#x27;, monospace"
-             data-font-url="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&amp;display=swap"
+             data-font-slug="jetbrains-mono">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -696,7 +733,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;600;700&display=swap"
              data-font-name="Josefin Slab"
              data-font-css="&#x27;Josefin Slab&#x27;, serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;600;700&amp;display=swap"
+             data-font-slug="josefin-slab">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -716,7 +754,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap"
              data-font-name="Karla"
              data-font-css="&#x27;Karla&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&amp;display=swap"
+             data-font-slug="karla">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -736,7 +775,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap"
              data-font-name="Lato"
              data-font-css="&#x27;Lato&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&amp;display=swap"
+             data-font-slug="lato">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -756,7 +796,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap"
              data-font-name="Lexend"
              data-font-css="&#x27;Lexend&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&amp;display=swap"
+             data-font-slug="lexend">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -776,7 +817,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap"
              data-font-name="Libre Baskerville"
              data-font-css="&#x27;Libre Baskerville&#x27;, serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&amp;display=swap"
+             data-font-slug="libre-baskerville">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -796,7 +838,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
              data-font-name="Lobster"
              data-font-css="&#x27;Lobster&#x27;, display"
-             data-font-url="https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap"
+             data-font-slug="lobster">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -816,7 +859,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap"
              data-font-name="Lora"
              data-font-css="&#x27;Lora&#x27;, serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&amp;display=swap"
+             data-font-slug="lora">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -836,7 +880,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&display=swap"
              data-font-name="Merriweather"
              data-font-css="&#x27;Merriweather&#x27;, serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&amp;display=swap"
+             data-font-slug="merriweather">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -856,7 +901,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap"
              data-font-name="Montserrat"
              data-font-css="&#x27;Montserrat&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&amp;display=swap"
+             data-font-slug="montserrat">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -876,7 +922,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&display=swap"
              data-font-name="Mukta"
              data-font-css="&#x27;Mukta&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&amp;display=swap"
+             data-font-slug="mukta">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -896,7 +943,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap"
              data-font-name="Noto Sans"
              data-font-css="&#x27;Noto Sans&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&amp;display=swap"
+             data-font-slug="noto-sans">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -916,7 +964,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&display=swap"
              data-font-name="Noto Serif"
              data-font-css="&#x27;Noto Serif&#x27;, serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&amp;display=swap"
+             data-font-slug="noto-serif">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -936,7 +985,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"
              data-font-name="Nunito"
              data-font-css="&#x27;Nunito&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&amp;display=swap"
+             data-font-slug="nunito">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -956,7 +1006,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
              data-font-name="Open Sans"
              data-font-css="&#x27;Open Sans&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&amp;display=swap"
+             data-font-slug="open-sans">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -976,7 +1027,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap"
              data-font-name="Oswald"
              data-font-css="&#x27;Oswald&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&amp;display=swap"
+             data-font-slug="oswald">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -996,7 +1048,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap"
              data-font-name="Outfit"
              data-font-css="&#x27;Outfit&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;display=swap"
+             data-font-slug="outfit">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1016,7 +1069,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap"
              data-font-name="PT Mono"
              data-font-css="&#x27;PT Mono&#x27;, monospace"
-             data-font-url="https://fonts.googleapis.com/css2?family=PT+Mono&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=PT+Mono&amp;display=swap"
+             data-font-slug="pt-mono">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1036,7 +1090,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap"
              data-font-name="PT Sans"
              data-font-css="&#x27;PT Sans&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&amp;display=swap"
+             data-font-slug="pt-sans">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1056,7 +1111,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap"
              data-font-name="PT Serif"
              data-font-css="&#x27;PT Serif&#x27;, serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"
+             data-font-slug="pt-serif">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1076,7 +1132,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
              data-font-name="Pacifico"
              data-font-css="&#x27;Pacifico&#x27;, cursive"
-             data-font-url="https://fonts.googleapis.com/css2?family=Pacifico&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Pacifico&amp;display=swap"
+             data-font-slug="pacifico">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1096,7 +1153,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap"
              data-font-name="Playfair Display"
              data-font-css="&#x27;Playfair Display&#x27;, serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&amp;display=swap"
+             data-font-slug="playfair-display">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1116,7 +1174,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
              data-font-name="Poppins"
              data-font-css="&#x27;Poppins&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&amp;display=swap"
+             data-font-slug="poppins">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1136,7 +1195,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap"
              data-font-name="Public Sans"
              data-font-css="&#x27;Public Sans&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&amp;display=swap"
+             data-font-slug="public-sans">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1156,7 +1216,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap"
              data-font-name="Quicksand"
              data-font-css="&#x27;Quicksand&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&amp;display=swap"
+             data-font-slug="quicksand">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1176,7 +1237,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap"
              data-font-name="Raleway"
              data-font-css="&#x27;Raleway&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&amp;display=swap"
+             data-font-slug="raleway">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1196,7 +1258,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
              data-font-name="Righteous"
              data-font-css="&#x27;Righteous&#x27;, display"
-             data-font-url="https://fonts.googleapis.com/css2?family=Righteous&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Righteous&amp;display=swap"
+             data-font-slug="righteous">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1216,7 +1279,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
              data-font-name="Roboto"
              data-font-css="&#x27;Roboto&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap"
+             data-font-slug="roboto">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1236,7 +1300,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap"
              data-font-name="Roboto Mono"
              data-font-css="&#x27;Roboto Mono&#x27;, monospace"
-             data-font-url="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&amp;display=swap"
+             data-font-slug="roboto-mono">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1256,7 +1321,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;600;700&display=swap"
              data-font-name="Rokkitt"
              data-font-css="&#x27;Rokkitt&#x27;, serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;600;700&amp;display=swap"
+             data-font-slug="rokkitt">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1276,7 +1342,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
              data-font-name="Rubik"
              data-font-css="&#x27;Rubik&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&amp;display=swap"
+             data-font-slug="rubik">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1296,7 +1363,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
              data-font-name="Satisfy"
              data-font-css="&#x27;Satisfy&#x27;, cursive"
-             data-font-url="https://fonts.googleapis.com/css2?family=Satisfy&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Satisfy&amp;display=swap"
+             data-font-slug="satisfy">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1316,7 +1384,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap"
              data-font-name="Shadows Into Light"
              data-font-css="&#x27;Shadows Into Light&#x27;, cursive"
-             data-font-url="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&amp;display=swap"
+             data-font-slug="shadows-into-light">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1336,7 +1405,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap"
              data-font-name="Source Code Pro"
              data-font-css="&#x27;Source Code Pro&#x27;, monospace"
-             data-font-url="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&amp;display=swap"
+             data-font-slug="source-code-pro">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1356,7 +1426,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap"
              data-font-name="Space Grotesk"
              data-font-css="&#x27;Space Grotesk&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&amp;display=swap"
+             data-font-slug="space-grotesk">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1376,7 +1447,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
              data-font-name="Space Mono"
              data-font-css="&#x27;Space Mono&#x27;, monospace"
-             data-font-url="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"
+             data-font-slug="space-mono">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1396,7 +1468,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Teko:wght@400;600;700&display=swap"
              data-font-name="Teko"
              data-font-css="&#x27;Teko&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Teko:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Teko:wght@400;600;700&amp;display=swap"
+             data-font-slug="teko">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1416,7 +1489,8 @@
              data-font-link=""
              data-font-name="Times New Roman"
              data-font-css="&#x27;Times New Roman&#x27;, Times, serif"
-             data-font-url="">
+             data-font-url=""
+             data-font-slug="times-new-roman">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1436,7 +1510,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"
              data-font-name="Ubuntu"
              data-font-css="&#x27;Ubuntu&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&amp;display=swap"
+             data-font-slug="ubuntu">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1456,7 +1531,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap"
              data-font-name="Ubuntu Mono"
              data-font-css="&#x27;Ubuntu Mono&#x27;, monospace"
-             data-font-url="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&amp;display=swap"
+             data-font-slug="ubuntu-mono">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1476,7 +1552,8 @@
              data-font-link=""
              data-font-name="Verdana"
              data-font-css="Verdana, Geneva, sans-serif"
-             data-font-url="">
+             data-font-url=""
+             data-font-slug="verdana">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1496,7 +1573,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap"
              data-font-name="Work Sans"
              data-font-css="&#x27;Work Sans&#x27;, sans-serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&amp;display=swap"
+             data-font-slug="work-sans">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1516,7 +1594,8 @@
              data-font-link="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&display=swap"
              data-font-name="Zilla Slab"
              data-font-css="&#x27;Zilla Slab&#x27;, serif"
-             data-font-url="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&amp;display=swap">
+             data-font-url="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&amp;display=swap"
+             data-font-slug="zilla-slab">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -1536,24 +1615,49 @@
     </main>
 
     <div id="code-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
-        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-xl p-8 relative transform scale-95 transition-all duration-300" id="modal-content">
-            <button onclick="closeModal('code-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 bg-slate-50 hover:bg-slate-100 rounded-full p-2 transition">✕</button>
-            <h3 class="text-3xl font-black text-slate-900 tracking-tighter mb-8" id="modal-font-name">Font Detail</h3>
-            <div class="space-y-6">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-xl p-8 relative transform scale-95 transition-all duration-300 flex flex-col max-h-[90vh]" id="modal-content">
+            <button onclick="closeModal('code-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 bg-slate-50 hover:bg-slate-100 rounded-full p-2 transition z-10">✕</button>
+            
+            <div class="mb-6 pr-8">
+                <span class="inline-block bg-indigo-50 text-indigo-600 text-[9px] font-black px-2 py-1 rounded uppercase tracking-widest mb-2">Quick Install</span>
+                <h3 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter" id="modal-font-name">Font Detail</h3>
+            </div>
+
+            <div class="space-y-5 overflow-y-auto flex-grow pr-2 custom-scrollbar">
                 <div>
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2" id="modal-html-label">1. Add to HTML Head</label>
-                    <div class="bg-slate-900 rounded-xl p-4 relative group">
-                        <code id="modal-html" class="text-xs text-indigo-300 font-mono break-all block"></code>
-                        <button id="copy-html-btn" onclick="copyElementText('modal-html')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY HTML</button>
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">1. Import Font</label>
+                        <div class="flex bg-slate-100 p-1 rounded-lg">
+                            <button onclick="idxToggleImport('html')" id="idx-btn-html" class="text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition">HTML</button>
+                            <button onclick="idxToggleImport('css')" id="idx-btn-css" class="text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition">@import</button>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-xl p-4 relative group min-h-[70px] flex items-center">
+                        <code id="modal-html" class="text-[11px] text-indigo-300 font-mono break-all block whitespace-pre-wrap w-full pr-16"></code>
+                        <button id="copy-html-btn" onclick="copyElementText('modal-html')" class="absolute top-1/2 -translate-y-1/2 right-3 text-[10px] font-bold text-white bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY</button>
                     </div>
                 </div>
+
                 <div>
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">2. Apply CSS Rule</label>
-                    <div class="bg-slate-900 rounded-xl p-4 relative group border-2 border-indigo-500/30">
-                        <code id="modal-css" class="text-xs font-mono text-indigo-300 block"></code>
-                        <button onclick="copyElementText('modal-css')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY CSS</button>
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">2. Apply CSS</label>
+                        <div class="flex bg-slate-100 p-1 rounded-lg">
+                            <button onclick="idxToggleCss('vanilla')" id="idx-btn-vanilla" class="text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-emerald-600 transition">Vanilla</button>
+                            <button onclick="idxToggleCss('tailwind')" id="idx-btn-tailwind" class="text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition">Tailwind</button>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-xl p-4 relative group border-2 border-emerald-500/30 min-h-[70px] flex items-center">
+                        <pre class="w-full m-0"><code id="modal-css" class="text-[11px] font-mono text-emerald-400 block whitespace-pre-wrap leading-relaxed w-full pr-16"></code></pre>
+                        <button onclick="copyElementText('modal-css')" class="absolute top-1/2 -translate-y-1/2 right-3 text-[10px] font-bold text-white bg-emerald-600 hover:bg-emerald-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY</button>
                     </div>
                 </div>
+            </div>
+            
+            <div class="mt-6 pt-6 border-t border-slate-100 shrink-0">
+                <a href="#" id="modal-read-more" class="w-full flex items-center justify-center gap-2 bg-slate-50 hover:bg-indigo-50 text-slate-700 hover:text-indigo-700 font-black text-xs uppercase tracking-widest py-4 rounded-xl transition border border-slate-200 hover:border-indigo-200 group">
+                    <svg class="w-4 h-4 text-slate-400 group-hover:text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    Read Full Font Guide
+                </a>
             </div>
         </div>
     </div>
@@ -1569,6 +1673,8 @@
         const previewInput = document.getElementById('global-preview-input');
         const previewTexts = document.querySelectorAll('.font-preview-text');
         
+        let idxState = { name: '', url: '', css: '', impMode: 'html', cssMode: 'vanilla' };
+
         previewInput.addEventListener('input', (e) => {
             const val = e.target.value;
             previewTexts.forEach(p => {
@@ -1581,11 +1687,9 @@
                 if(entry.isIntersecting) {
                     const card = entry.target;
                     const fontUrl = card.getAttribute('data-font-link');
-                    
                     if(fontUrl && !document.querySelector(`link[href="${fontUrl}"]`)) {
                         const link = document.createElement('link');
-                        link.rel = 'stylesheet';
-                        link.href = fontUrl;
+                        link.rel = 'stylesheet'; link.href = fontUrl;
                         document.head.appendChild(link);
                     }
                     obs.unobserve(card); 
@@ -1598,36 +1702,79 @@
             card.addEventListener('click', function(e) {
                 if (e.target.closest('a')) return;
                 
-                const name = this.getAttribute('data-font-name');
-                const css = this.getAttribute('data-font-css');
-                const url = this.getAttribute('data-font-url');
-                openFontModal(name, css, url);
+                idxState.name = this.getAttribute('data-font-name');
+                idxState.css = this.getAttribute('data-font-css');
+                idxState.url = this.getAttribute('data-font-url');
+                const slug = this.getAttribute('data-font-slug');
+                
+                document.getElementById('modal-read-more').href = `/font/${slug}.html`;
+                
+                openFontModal();
             });
         });
 
-        function openFontModal(name, css, url) {
-            document.getElementById('modal-font-name').innerText = name;
+        function renderIdxModal() {
+            document.getElementById('modal-font-name').innerText = idxState.name;
             const htmlCode = document.getElementById('modal-html');
+            const cssCode = document.getElementById('modal-css');
             const copyBtn = document.getElementById('copy-html-btn');
             
-            if (!url || url === "") {
-                htmlCode.innerHTML = '<span class="font-sans font-medium text-emerald-400 select-none">✨ Web-safe system font. Pre-installed on all devices for zero-latency loading. No HTML import required!</span>';
-                htmlCode.className = "text-xs block";
+            // Render Import
+            if (!idxState.url || idxState.url === "") {
+                htmlCode.innerHTML = '<span class="font-sans font-medium text-emerald-400 select-none">✨ System font. Pre-installed on all devices. No import required!</span>';
                 copyBtn.style.display = 'none';
             } else {
-                htmlCode.textContent = `<link href='${url}' rel='stylesheet'>`;
-                htmlCode.className = "text-xs font-mono text-indigo-300 break-all block";
                 copyBtn.style.display = 'block';
+                if (idxState.impMode === 'html') {
+                    htmlCode.textContent = `<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="${idxState.url}" rel="stylesheet">`;
+                } else {
+                    htmlCode.textContent = `@import url('${idxState.url}');`;
+                }
             }
             
-            document.getElementById('modal-css').innerText = `font-family: ${css};`;
-            
+            // Render CSS
+            if (idxState.cssMode === 'vanilla') {
+                cssCode.textContent = `font-family: ${idxState.css};`;
+            } else {
+                const safeName = idxState.name.replace(/\s+/g, '').toLowerCase();
+                cssCode.textContent = `// tailwind.config.js\nmodule.exports = {\n  theme: {\n    extend: {\n      fontFamily: {\n        '${safeName}': [${idxState.css}]\n      }\n    }\n  }\n}`;
+            }
+        }
+
+        function idxToggleImport(mode) {
+            idxState.impMode = mode;
+            const btnHtml = document.getElementById('idx-btn-html');
+            const btnCss = document.getElementById('idx-btn-css');
+            if(mode === 'html') {
+                btnHtml.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition";
+                btnCss.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
+            } else {
+                btnCss.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition";
+                btnHtml.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
+            }
+            renderIdxModal();
+        }
+
+        function idxToggleCss(mode) {
+            idxState.cssMode = mode;
+            const btnVan = document.getElementById('idx-btn-vanilla');
+            const btnTw = document.getElementById('idx-btn-tailwind');
+            if(mode === 'vanilla') {
+                btnVan.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-emerald-600 transition";
+                btnTw.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
+            } else {
+                btnTw.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-emerald-600 transition";
+                btnVan.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
+            }
+            renderIdxModal();
+        }
+
+        function openFontModal() {
+            renderIdxModal();
             const modal = document.getElementById('code-modal');
             const modalContent = document.getElementById('modal-content');
             modal.classList.remove('hidden');
-            
-            void modal.offsetWidth; // Trigger reflow
-            
+            void modal.offsetWidth; 
             modal.classList.remove('opacity-0');
             modalContent.classList.remove('scale-95');
             modalContent.classList.add('scale-100');
@@ -1636,18 +1783,16 @@
         function closeModal(id) { 
             const modal = document.getElementById(id);
             const modalContent = document.getElementById('modal-content');
-            
             modal.classList.add('opacity-0');
             modalContent.classList.remove('scale-100');
             modalContent.classList.add('scale-95');
-            
             setTimeout(() => modal.classList.add('hidden'), 300); 
         }
         
         function triggerToast() {
             const t = document.getElementById('toast'); 
             t.classList.remove('hidden'); 
-            void t.offsetWidth; // Reflow
+            void t.offsetWidth;
             t.classList.remove('opacity-0', 'translate-y-4');
             setTimeout(() => { 
                 t.classList.add('opacity-0', 'translate-y-4'); 
