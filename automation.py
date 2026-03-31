@@ -166,7 +166,7 @@ top_comparisons = [
     ("Inter", "Roboto", "'Inter', sans-serif", "'Roboto', sans-serif", "Inter:wght@400;700", "Roboto:wght@400;700"),
     ("Playfair Display", "Merriweather", "'Playfair Display', serif", "'Merriweather', serif", "Playfair+Display:wght@400;700", "Merriweather:wght@400;700"),
     ("Nunito", "Poppins", "'Nunito', sans-serif", "'Poppins', sans-serif", "Nunito:wght@400;700", "Poppins:wght@400;700"),
-    ("Raleway", "Montserrat", "'Raleway', sans-serif", "'Montserrat', sans-serif", "Raleway:wght@400;700", "Montserrat:wght@400;700"),
+    ("Raleway", "Montserrat", "'Montserrat', sans-serif", "Raleway:wght@400;700", "Montserrat:wght@400;700"),
     ("Times New Roman", "Georgia", "'Times New Roman', Times, serif", "Georgia, serif", "", ""),
     ("Lora", "PT Serif", "'Lora', serif", "'PT Serif', serif", "Lora:wght@400;700", "PT+Serif:wght@400;700"),
     ("Work Sans", "Fira Sans", "'Work Sans', sans-serif", "'Fira Sans', sans-serif", "Work+Sans:wght@400;700", "Fira+Sans:wght@400;700"),
@@ -301,7 +301,8 @@ try:
              data-font-link="{f_url}"
              data-font-name="{safe_name}"
              data-font-css="{safe_css}"
-             data-font-url="{safe_url}">
+             data-font-url="{safe_url}"
+             data-font-slug="{slug}">
             <div class="absolute top-0 left-0 w-full h-1 bg-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <div class="flex-grow flex flex-col">
                 <div class="flex justify-between items-center mb-4 shrink-0">
@@ -429,7 +430,13 @@ try:
     <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
     <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
     <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700;900&family=Roboto:wght@400;700&family=Montserrat:wght@700;900&family=Oswald:wght@700&family=Fira+Code:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700;900&family=Roboto:wght@400;700&family=Montserrat:wght@700;900&family=Oswald:wght@700&family=Fira+Code:wght@400;700&display=swap)" rel="stylesheet">
-    <style>body {{ font-family: system-ui, sans-serif; }}</style>
+    <style>
+        body {{ font-family: system-ui, sans-serif; }}
+        .custom-scrollbar::-webkit-scrollbar {{ width: 6px; }}
+        .custom-scrollbar::-webkit-scrollbar-track {{ background: #f8fafc; border-radius: 8px; }}
+        .custom-scrollbar::-webkit-scrollbar-thumb {{ background: #cbd5e1; border-radius: 8px; }}
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {{ background: #94a3b8; }}
+    </style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
     <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3 transition-all duration-300 opacity-0 translate-y-4">Copied! 🚀</div>
@@ -464,24 +471,49 @@ try:
     </main>
 
     <div id="code-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
-        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-xl p-8 relative transform scale-95 transition-all duration-300" id="modal-content">
-            <button onclick="closeModal('code-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 bg-slate-50 hover:bg-slate-100 rounded-full p-2 transition">✕</button>
-            <h3 class="text-3xl font-black text-slate-900 tracking-tighter mb-8" id="modal-font-name">Font Detail</h3>
-            <div class="space-y-6">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-xl p-8 relative transform scale-95 transition-all duration-300 flex flex-col max-h-[90vh]" id="modal-content">
+            <button onclick="closeModal('code-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 bg-slate-50 hover:bg-slate-100 rounded-full p-2 transition z-10">✕</button>
+            
+            <div class="mb-6 pr-8">
+                <span class="inline-block bg-indigo-50 text-indigo-600 text-[9px] font-black px-2 py-1 rounded uppercase tracking-widest mb-2">Quick Install</span>
+                <h3 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter" id="modal-font-name">Font Detail</h3>
+            </div>
+
+            <div class="space-y-5 overflow-y-auto flex-grow pr-2 custom-scrollbar">
                 <div>
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2" id="modal-html-label">1. Add to HTML Head</label>
-                    <div class="bg-slate-900 rounded-xl p-4 relative group">
-                        <code id="modal-html" class="text-xs text-indigo-300 font-mono break-all block"></code>
-                        <button id="copy-html-btn" onclick="copyElementText('modal-html')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY HTML</button>
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">1. Import Font</label>
+                        <div class="flex bg-slate-100 p-1 rounded-lg">
+                            <button onclick="idxToggleImport('html')" id="idx-btn-html" class="text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition">HTML</button>
+                            <button onclick="idxToggleImport('css')" id="idx-btn-css" class="text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition">@import</button>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-xl p-4 relative group min-h-[70px] flex items-center">
+                        <code id="modal-html" class="text-[11px] text-indigo-300 font-mono break-all block whitespace-pre-wrap w-full pr-16"></code>
+                        <button id="copy-html-btn" onclick="copyElementText('modal-html')" class="absolute top-1/2 -translate-y-1/2 right-3 text-[10px] font-bold text-white bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY</button>
                     </div>
                 </div>
+
                 <div>
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">2. Apply CSS Rule</label>
-                    <div class="bg-slate-900 rounded-xl p-4 relative group border-2 border-indigo-500/30">
-                        <code id="modal-css" class="text-xs font-mono text-indigo-300 block"></code>
-                        <button onclick="copyElementText('modal-css')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY CSS</button>
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">2. Apply CSS</label>
+                        <div class="flex bg-slate-100 p-1 rounded-lg">
+                            <button onclick="idxToggleCss('vanilla')" id="idx-btn-vanilla" class="text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-emerald-600 transition">Vanilla</button>
+                            <button onclick="idxToggleCss('tailwind')" id="idx-btn-tailwind" class="text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition">Tailwind</button>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-xl p-4 relative group border-2 border-emerald-500/30 min-h-[70px] flex items-center">
+                        <pre class="w-full m-0"><code id="modal-css" class="text-[11px] font-mono text-emerald-400 block whitespace-pre-wrap leading-relaxed w-full pr-16"></code></pre>
+                        <button onclick="copyElementText('modal-css')" class="absolute top-1/2 -translate-y-1/2 right-3 text-[10px] font-bold text-white bg-emerald-600 hover:bg-emerald-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY</button>
                     </div>
                 </div>
+            </div>
+            
+            <div class="mt-6 pt-6 border-t border-slate-100 shrink-0">
+                <a href="#" id="modal-read-more" class="w-full flex items-center justify-center gap-2 bg-slate-50 hover:bg-indigo-50 text-slate-700 hover:text-indigo-700 font-black text-xs uppercase tracking-widest py-4 rounded-xl transition border border-slate-200 hover:border-indigo-200 group">
+                    <svg class="w-4 h-4 text-slate-400 group-hover:text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    Read Full Font Guide
+                </a>
             </div>
         </div>
     </div>
@@ -497,6 +529,8 @@ try:
         const previewInput = document.getElementById('global-preview-input');
         const previewTexts = document.querySelectorAll('.font-preview-text');
         
+        let idxState = {{ name: '', url: '', css: '', impMode: 'html', cssMode: 'vanilla' }};
+
         previewInput.addEventListener('input', (e) => {{
             const val = e.target.value;
             previewTexts.forEach(p => {{
@@ -509,11 +543,9 @@ try:
                 if(entry.isIntersecting) {{
                     const card = entry.target;
                     const fontUrl = card.getAttribute('data-font-link');
-                    
                     if(fontUrl && !document.querySelector(`link[href="${{fontUrl}}"]`)) {{
                         const link = document.createElement('link');
-                        link.rel = 'stylesheet';
-                        link.href = fontUrl;
+                        link.rel = 'stylesheet'; link.href = fontUrl;
                         document.head.appendChild(link);
                     }}
                     obs.unobserve(card); 
@@ -526,36 +558,79 @@ try:
             card.addEventListener('click', function(e) {{
                 if (e.target.closest('a')) return;
                 
-                const name = this.getAttribute('data-font-name');
-                const css = this.getAttribute('data-font-css');
-                const url = this.getAttribute('data-font-url');
-                openFontModal(name, css, url);
+                idxState.name = this.getAttribute('data-font-name');
+                idxState.css = this.getAttribute('data-font-css');
+                idxState.url = this.getAttribute('data-font-url');
+                const slug = this.getAttribute('data-font-slug');
+                
+                document.getElementById('modal-read-more').href = `/font/${{slug}}.html`;
+                
+                openFontModal();
             }});
         }});
 
-        function openFontModal(name, css, url) {{
-            document.getElementById('modal-font-name').innerText = name;
+        function renderIdxModal() {{
+            document.getElementById('modal-font-name').innerText = idxState.name;
             const htmlCode = document.getElementById('modal-html');
+            const cssCode = document.getElementById('modal-css');
             const copyBtn = document.getElementById('copy-html-btn');
             
-            if (!url || url === "") {{
-                htmlCode.innerHTML = '<span class="font-sans font-medium text-emerald-400 select-none">✨ Web-safe system font. Pre-installed on all devices for zero-latency loading. No HTML import required!</span>';
-                htmlCode.className = "text-xs block";
+            // Render Import
+            if (!idxState.url || idxState.url === "") {{
+                htmlCode.innerHTML = '<span class="font-sans font-medium text-emerald-400 select-none">✨ System font. Pre-installed on all devices. No import required!</span>';
                 copyBtn.style.display = 'none';
             }} else {{
-                htmlCode.textContent = `<link href='${{url}}' rel='stylesheet'>`;
-                htmlCode.className = "text-xs font-mono text-indigo-300 break-all block";
                 copyBtn.style.display = 'block';
+                if (idxState.impMode === 'html') {{
+                    htmlCode.textContent = `<link rel="preconnect" href="https://fonts.googleapis.com">\\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\\n<link href="${{idxState.url}}" rel="stylesheet">`;
+                }} else {{
+                    htmlCode.textContent = `@import url('${{idxState.url}}');`;
+                }}
             }}
             
-            document.getElementById('modal-css').innerText = `font-family: ${{css}};`;
-            
+            // Render CSS
+            if (idxState.cssMode === 'vanilla') {{
+                cssCode.textContent = `font-family: ${{idxState.css}};`;
+            }} else {{
+                const safeName = idxState.name.replace(/\\s+/g, '').toLowerCase();
+                cssCode.textContent = `// tailwind.config.js\\nmodule.exports = {{\\n  theme: {{\\n    extend: {{\\n      fontFamily: {{\\n        '${{safeName}}': [${{idxState.css}}]\\n      }}\\n    }}\\n  }}\\n}}`;
+            }}
+        }}
+
+        function idxToggleImport(mode) {{
+            idxState.impMode = mode;
+            const btnHtml = document.getElementById('idx-btn-html');
+            const btnCss = document.getElementById('idx-btn-css');
+            if(mode === 'html') {{
+                btnHtml.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition";
+                btnCss.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
+            }} else {{
+                btnCss.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition";
+                btnHtml.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
+            }}
+            renderIdxModal();
+        }}
+
+        function idxToggleCss(mode) {{
+            idxState.cssMode = mode;
+            const btnVan = document.getElementById('idx-btn-vanilla');
+            const btnTw = document.getElementById('idx-btn-tailwind');
+            if(mode === 'vanilla') {{
+                btnVan.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-emerald-600 transition";
+                btnTw.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
+            }} else {{
+                btnTw.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-emerald-600 transition";
+                btnVan.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
+            }}
+            renderIdxModal();
+        }}
+
+        function openFontModal() {{
+            renderIdxModal();
             const modal = document.getElementById('code-modal');
             const modalContent = document.getElementById('modal-content');
             modal.classList.remove('hidden');
-            
-            void modal.offsetWidth; // Trigger reflow
-            
+            void modal.offsetWidth; 
             modal.classList.remove('opacity-0');
             modalContent.classList.remove('scale-95');
             modalContent.classList.add('scale-100');
@@ -564,18 +639,16 @@ try:
         function closeModal(id) {{ 
             const modal = document.getElementById(id);
             const modalContent = document.getElementById('modal-content');
-            
             modal.classList.add('opacity-0');
             modalContent.classList.remove('scale-100');
             modalContent.classList.add('scale-95');
-            
             setTimeout(() => modal.classList.add('hidden'), 300); 
         }}
         
         function triggerToast() {{
             const t = document.getElementById('toast'); 
             t.classList.remove('hidden'); 
-            void t.offsetWidth; // Reflow
+            void t.offsetWidth;
             t.classList.remove('opacity-0', 'translate-y-4');
             setTimeout(() => {{ 
                 t.classList.add('opacity-0', 'translate-y-4'); 
@@ -1202,6 +1275,7 @@ try:
                 cssBlock += `}}`;
                 cssEl.textContent = cssBlock;
             }} else {{
+                let safeName = activeModalData.name.replace(/\\s+/g, '-').toLowerCase();
                 let twStr = `font-['${{activeModalData.name}}'] font-[${{activeModalData.weight}}] text-[${{fluidClamp}}] leading-[${{activeModalData.lh}}]`;
                 if (activeModalData.ls !== "0" && activeModalData.ls !== "0.00") twStr += ` tracking-[${{activeModalData.ls}}em]`;
                 cssEl.textContent = twStr;
@@ -1412,7 +1486,6 @@ try:
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 transition-all items-start" id="compare-grid">
-            
             <div class="bg-white p-4 md:p-6 rounded-[2rem] shadow-sm border border-slate-200 flex flex-col transition-colors" id="panel-a">
                 <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6">
                     <div class="flex-grow flex items-center bg-indigo-50 px-3 rounded-xl border border-indigo-100 focus-within:ring-2 focus-within:ring-indigo-400 transition-colors w-full sm:w-auto mb-2 sm:mb-0" id="tab-a">
@@ -1421,11 +1494,9 @@ try:
                     </div>
                     <select id="vs-weight-a" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
-                
                 <div id="wrap-a" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden relative">
                     <p id="vs-preview-a" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
-                
                 <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-indigo-200 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     Copy HTML / CSS
@@ -1440,28 +1511,21 @@ try:
                     </div>
                     <select id="vs-weight-b" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
-                
                 <div id="wrap-b" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden relative">
                     <p id="vs-preview-b" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
-                
                 <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-violet-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     Copy HTML / CSS
                 </button>
             </div>
-
-        </div>
-        
-        <div class="border-t border-slate-200 pt-16 mt-24">
-            <h2 class="text-3xl font-black text-slate-900 mb-8 text-center tracking-tight">Most Searched Comparisons</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-{comparison_grid_links}
-            </div>
         </div>
 
+        <div class="mt-12 bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 text-slate-600">
+            {seo_description}
+        </div>
     </main>
-
+    
     <div id="code-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
         <div class="bg-white rounded-3xl shadow-2xl w-full max-w-2xl p-6 md:p-8 relative transform scale-95 transition-all duration-300" id="modal-content">
             <button onclick="closeModal('code-modal')" class="absolute top-4 right-4 md:top-6 md:right-6 text-slate-400 hover:text-slate-900 bg-slate-50 hover:bg-slate-100 rounded-full p-2 transition">✕</button>
