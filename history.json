@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering font-display for Superior Web Font Loading and User Experience",
+        "slug": "font-display-web-fonts-ux-performance",
+        "tweet": "Boost your website's perceived performance and enhance user experience! Learn how to effectively use `font-display` in your `@font-face` rules to control web font loading behavior and prevent layout shifts (CLS). #CSSTypography #WebFonts #UIDesign #UX",
+        "tip": "Always include a `font-display` descriptor in your `@font-face` rules. For most body text, `font-display: swap;` offers the best balance, showing a fallback quickly and swapping in your custom font when ready. For critical hero text, `block` might be acceptable, but for secondary elements, consider `fallback` or `optional` to minimize layout shifts (CLS) and ensure a fast initial render, prioritizing readability.",
+        "css_snippet": "@font-face {\n  font-family: 'Inter';\n  src: url('/fonts/Inter-Regular.woff2') format('woff2'),\n       url('/fonts/Inter-Regular.woff') format('woff');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Ensures text is visible immediately with a fallback */\n}\n\n@font-face {\n  font-family: 'Open Sans';\n  src: url('/fonts/OpenSans-Bold.woff2') format('woff2');\n  font-weight: 700;\n  font-style: normal;\n  font-display: fallback; /* Shows fallback for a short period, then swaps */\n}",
+        "date": "March 31, 2026"
+    },
+    {
         "title": "Typography Tip Mar 31",
         "slug": "typography-tip-1774981680",
         "tweet": "Check out today's CSS typography tip! #webdesign #css",

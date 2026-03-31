@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editor's Desk Archive - Page 1 | htmlfonts</title>
-    <meta name="description" content="Daily CSS typography tips and web design insights. Page 1.">
+    <title>Editor's Desk - Page 1 | htmlfonts</title>
+    <meta name="description" content="Daily CSS typography tips, UI design tricks, and code snippets.">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKESX7E20P"></script>
     <script>
@@ -14,9 +14,15 @@
       gtag('config', 'G-TKESX7E20P');
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>body { font-family: system-ui, sans-serif; }</style>
+    <style>
+        body { font-family: system-ui, sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
+<body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
     <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6 shadow-sm">
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
             <a href="/" class="flex items-center gap-2 group">
@@ -45,79 +51,241 @@
     <div class="bg-white border-b border-slate-200 overflow-hidden relative">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-white to-white"></div>
         <div class="max-w-7xl mx-auto px-6 pt-10 pb-12 md:pt-12 md:pb-16 relative z-10 text-center">
+            <span class="inline-block bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-[0.2em] mb-4 shadow-sm">Daily Updates</span>
             <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4">
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Editor's Desk</span>
             </h1>
-            <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mt-4 mb-8">Every CSS typography tip, design trick, and code snippet we've ever published.</p>
+            <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mt-4 mb-8">Bite-sized CSS typography tips, UI design tricks, and code snippets delivered daily.</p>
         </div>
     </div>
     
-    <main class="flex-grow py-12 px-6 max-w-4xl mx-auto w-full">
-        <div class="space-y-6">
-            <a href="/article/typography-tip-1774931044.html" class="block bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-50 hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">March 31, 2026</span>
-                <h3 class="text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">Typography Tip Mar 31</h3>
-                <p class="text-slate-500 font-medium leading-relaxed">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
-            </a>
-            <a href="/article/typography-tip-1774930022.html" class="block bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-50 hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">March 31, 2026</span>
-                <h3 class="text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">Typography Tip Mar 31</h3>
-                <p class="text-slate-500 font-medium leading-relaxed">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
-            </a>
-            <a href="/article/mastering-line-height-web-readability-ui.html" class="block bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-50 hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">March 31, 2026</span>
-                <h3 class="text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">Mastering Line-Height for Superior Web Readability and UI Experience</h3>
-                <p class="text-slate-500 font-medium leading-relaxed">For optimal readability and a polished UI, establish a contextual line-height. A good starting point for body text is 1.5 to 1.7 times the font-size (using unitless values is best for scalability). However, always test and adjust based on your specific font-family's x-height and character density. Tighter line-heights often work for headings, while wider ones benefit long-form content. Prioritize comfortable eye flow over strict ratios.</p>
-            </a>
-            <a href="/article/responsive-typography-ch-units-superior-ui-ux.html" class="block bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-50 hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">March 31, 2026</span>
-                <h3 class="text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">Mastering Responsive Typography with `ch` Units for Superior UI/UX</h3>
-                <p class="text-slate-500 font-medium leading-relaxed">For unparalleled readability across devices, utilize `ch` (character) units when setting the `max-width` of your main text containers (e.g., `max-width: 70ch;`). This ensures line lengths consistently fall within the ideal 45-75 character range, independent of `font-size`, significantly reducing eye strain and enhancing the user experience, a core principle of advanced web typography.</p>
-            </a>
-            <a href="/article/typography-tip-1774927768.html" class="block bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-50 hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">March 31, 2026</span>
-                <h3 class="text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">Typography Tip Mar 31</h3>
-                <p class="text-slate-500 font-medium leading-relaxed">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
-            </a>
-            <a href="/article/typography-tip-1774927041.html" class="block bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-50 hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">March 31, 2026</span>
-                <h3 class="text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">Typography Tip Mar 31</h3>
-                <p class="text-slate-500 font-medium leading-relaxed">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
-            </a>
-            <a href="/article/font-display-web-fonts-performance-ux-guide.html" class="block bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-50 hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">March 31, 2026</span>
-                <h3 class="text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">Mastering `font-display` for Superior Web Font Performance & UX</h3>
-                <p class="text-slate-500 font-medium leading-relaxed">Leverage `font-display: swap;` for most body text and headings. This prioritizes content readability by immediately showing a fallback font, then swapping to your custom web font once loaded. For critical brand elements, `font-display: fallback;` or `optional;` might be suitable, but weigh the impact carefully. Always test across browsers and consider the 'Flash of Unstyled Text' (FOUT) vs. 'Flash of Invisible Text' (FOIT) implications for your users.</p>
-            </a>
-            <a href="/article/mastering-responsive-css-typography-elite-ui-design-superior-user-experience.html" class="block bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-50 hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">March 31, 2026</span>
-                <h3 class="text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">Mastering Responsive CSS Typography for Elite UI Design and Superior User Experience</h3>
-                <p class="text-slate-500 font-medium leading-relaxed">Implement fluid typography using `clamp()` for dynamic font scaling that adapts seamlessly across device sizes. This advanced #CSSTypography technique eliminates the need for numerous media queries, leading to more maintainable code and a consistent, yet responsive, #UserExperience. By defining minimum, preferred, and maximum font sizes, you ensure optimal readability for your #UIDesign on any screen, enhancing the overall presentation of #WebFonts without sacrificing performance.</p>
-            </a>
-            <a href="/article/typography-tip-1774922645.html" class="block bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-50 hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">March 31, 2026</span>
-                <h3 class="text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">Typography Tip Mar 31</h3>
-                <p class="text-slate-500 font-medium leading-relaxed">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
-            </a>
-            <a href="/article/typography-tip-1774919866.html" class="block bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-indigo-50 hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest block mb-3">March 31, 2026</span>
-                <h3 class="text-2xl font-black text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">Typography Tip Mar 31</h3>
-                <p class="text-slate-500 font-medium leading-relaxed">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
-            </a></div>
-        <div class="flex justify-center flex-wrap gap-2 mt-12"><a href="/editors-desk.html" class="w-10 h-10 flex items-center justify-center rounded-xl font-bold bg-indigo-600 text-white shadow-md transition-all">1</a><a href="/editors-desk-2.html" class="w-10 h-10 flex items-center justify-center rounded-xl font-bold bg-white text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 border border-slate-200 transition-all">2</a><a href="/editors-desk-3.html" class="w-10 h-10 flex items-center justify-center rounded-xl font-bold bg-white text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 border border-slate-200 transition-all">3</a></div>
+    <main class="flex-grow py-12 px-6 max-w-3xl mx-auto w-full">
+        
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering font-display for Superior Web Font Loading and User Experience</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">Always include a `font-display` descriptor in your `@font-face` rules. For most body text, `font-display: swap;` offers the best balance, showing a fallback quickly and swapping in your custom font when ready. For critical hero text, `block` might be acceptable, but for secondary elements, consider `fallback` or `optional` to minimize layout shifts (CLS) and ensure a fast initial render, prioritizing readability.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">@font-face {
+  font-family: &#x27;Inter&#x27;;
+  src: url(&#x27;/fonts/Inter-Regular.woff2&#x27;) format(&#x27;woff2&#x27;),
+       url(&#x27;/fonts/Inter-Regular.woff&#x27;) format(&#x27;woff&#x27;);
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; /* Ensures text is visible immediately with a fallback */
+}
+
+@font-face {
+  font-family: &#x27;Open Sans&#x27;;
+  src: url(&#x27;/fonts/OpenSans-Bold.woff2&#x27;) format(&#x27;woff2&#x27;);
+  font-weight: 700;
+  font-style: normal;
+  font-display: fallback; /* Shows fallback for a short period, then swaps */
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Typography Tip Mar 31</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">body {
+  line-height: 1.5;
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Typography Tip Mar 31</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">body {
+  line-height: 1.5;
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering Fluid Typography with CSS `clamp()` for Superior UI/UX</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">To achieve truly responsive and accessible typography without endless media queries, leverage the `clamp()` CSS function. It allows you to set a minimum, preferred (fluid), and maximum size for your fonts, ensuring text adapts gracefully to different screen sizes while maintaining readability and preventing overflow or underflow. This approach drastically improves UI consistency and user experience across diverse devices.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">/* --- Fluid Typography Examples with clamp() --- */
+
+/* Heading Example (e.g., H2) */
+h2 {
+    /* 
+     * clamp(MIN_SIZE, IDEAL_FLUID_SIZE, MAX_SIZE)
+     * 
+     * MIN_SIZE: Smallest font size (e.g., on mobile - 2rem = 32px)
+     * IDEAL_FLUID_SIZE: Scales with viewport width (e.g., 3vw + 1rem)
+     * MAX_SIZE: Largest font size (e.g., on large desktop - 4rem = 64px)
+     */
+    font-size: clamp(2rem, 3vw + 1rem, 4rem);
+    line-height: 1.15;
+    font-family: &#x27;Montserrat&#x27;, sans-serif; /* Example: Google Web Font */
+    font-weight: 700;
+    margin-bottom: 0.75em;
+    color: #2c3e50; /* Dark blue for strong contrast */
+}
+
+/* Paragraph Example */
+p {
+    font-size: clamp(1rem, 1.2vw + 0.5rem, 1.25rem);
+    line-height: 1.6;
+    font-family: &#x27;Open Sans&#x27;, sans-serif; /* Example: Google Web Font */
+    color: #34495e; /* Softer dark blue for readability */
+    margin-bottom: 1em;
+}
+
+/* Small Text / Caption Example */
+small {
+    font-size: clamp(0.75rem, 0.9vw + 0.3rem, 0.9rem);
+    line-height: 1.4;
+    font-family: &#x27;Open Sans&#x27;, sans-serif;
+    color: #7f8c8d; /* Muted gray for secondary info */
+}
+
+/* Best practice: Define custom properties for easier management */
+/*
+:root {
+    --fluid-min: 1rem;
+    --fluid-max: 1.25rem;
+    --fluid-scale: 2vw;
+}
+
+p {
+    font-size: clamp(var(--fluid-min), calc(var(--fluid-scale) + var(--fluid-min)), var(--fluid-max));
+}
+*/</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Typography Tip Mar 31</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">body {
+  line-height: 1.5;
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Typography Tip Mar 31</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">body {
+  line-height: 1.5;
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering Fluid Type: Variable Fonts & Advanced CSS Typography</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">Harness the power of variable fonts and `font-variation-settings` for unparalleled typographic control and efficiency. Instead of loading multiple static font files (e.g., light, regular, bold), a single variable font file contains all axis variations (weight, width, optical size, slant, etc.). This drastically reduces HTTP requests and overall font file size, leading to faster page loads and a smoother #UserExperience. Combine with CSS `clamp()` for truly responsive, fluid typography that adapts perfectly across all screen sizes without media queries for every breakpoint.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">@font-face {
+  font-family: &#x27;Inter Variable&#x27;;
+  src: url(&#x27;/fonts/Inter-VariableFont.woff2&#x27;) format(&#x27;woff2-variations&#x27;);
+  font-weight: 100 900; /* Define the available weight range */
+  font-display: swap; /* Optimize font loading for better UX */
+}
+
+body {
+  font-family: &#x27;Inter Variable&#x27;, sans-serif;
+  font-variation-settings: &#x27;wght&#x27; var(--body-weight, 400);
+  font-size: clamp(1rem, 2vw + 0.5rem, 1.25rem); /* Fluid font sizing */
+  line-height: 1.6;
+}
+
+h1 {
+  font-family: &#x27;Inter Variable&#x27;, sans-serif;
+  font-variation-settings: &#x27;wght&#x27; var(--heading-weight, 700), &#x27;slnt&#x27; var(--heading-slant, 0);
+  font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Typography Tip Mar 31</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">body {
+  line-height: 1.5;
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Typography Tip Mar 31</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">body {
+  line-height: 1.5;
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering `font-display`: Optimizing Web Font Loading for Superior UX</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">Beyond `font-display: swap;`, explore `optional` for non-critical fonts to minimize network requests and improve resilience, or `fallback` for subtle font differences where a brief blank period is acceptable. Always pair your chosen `font-display` strategy with `<link rel="preload" as="font" crossorigin>` for critical web fonts. This combination ensures fonts are fetched early without render-blocking, drastically improving First Contentful Paint (FCP) and perceived loading speed, which is crucial for modern #UIDesign and accessibility.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">@font-face {
+  font-family: &#x27;Open Sans&#x27;;
+  src: url(&#x27;/fonts/OpenSans-Regular.woff2&#x27;) format(&#x27;woff2&#x27;);
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; /* Consider &#x27;optional&#x27; for less critical fonts, or &#x27;fallback&#x27; for minimal differences */
+}
+
+/* In your HTML &lt;head&gt; for critical fonts */
+&lt;link rel=&quot;preload&quot; href=&quot;/fonts/OpenSans-Regular.woff2&quot; as=&quot;font&quot; type=&quot;font/woff2&quot; crossorigin&gt;</code></pre>
+                </div>
+            </article>
+        
+        <div class="flex items-center justify-between mt-12 pt-8 border-t border-slate-200">
+            <div></div>
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Page 1 of 5</span>
+            <a href="/editors-desk-2.html" class="bg-white border border-slate-200 text-slate-700 hover:border-indigo-300 hover:text-indigo-600 font-bold text-xs uppercase tracking-widest px-6 py-3 rounded-xl transition shadow-sm">Older Posts &rarr;</a>
+        </div>
     </main>
-    <footer class="bg-white border-t border-slate-200 py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
-        <p>&copy; 2026 htmlfonts</p>
+    <footer class="bg-white border-t border-slate-200 py-16 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">&copy; 2026 htmlfonts. All rights reserved.</p>
+            <a href="https://x.com/HtmlFonts" target="_blank" class="text-xs font-bold text-indigo-500 hover:text-indigo-600 uppercase tracking-widest transition">Follow @HtmlFonts</a>
+        </div>
     </footer>
 </body>
 </html>
