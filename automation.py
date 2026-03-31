@@ -168,7 +168,7 @@ top_comparisons = [
     ("Nunito", "Poppins", "'Nunito', sans-serif", "'Poppins', sans-serif", "Nunito:wght@400;700", "Poppins:wght@400;700"),
     ("Raleway", "Montserrat", "'Montserrat', sans-serif", "Raleway:wght@400;700", "Montserrat:wght@400;700"),
     ("Times New Roman", "Georgia", "'Times New Roman', Times, serif", "Georgia, serif", "", ""),
-    ("Lora", "PT Serif", "'Lora', serif", "'PT Serif', serif", "Lora:wght@400;700", "PT+Serif:wght@400;700"),
+    ("Lora", "PT Serif", "'PT Serif', serif", "Lora:wght@400;700", "PT+Serif:wght@400;700"),
     ("Work Sans", "Fira Sans", "'Work Sans', sans-serif", "'Fira Sans', sans-serif", "Work+Sans:wght@400;700", "Fira+Sans:wght@400;700"),
     ("Rubik", "Karla", "'Rubik', sans-serif", "'Karla', sans-serif", "Rubik:wght@400;700", "Karla:wght@400;700"),
     ("Fira Code", "Source Code Pro", "'Fira Code', monospace", "'Source Code Pro', monospace", "Fira+Code:wght@400;700", "Source+Code+Pro:wght@400;700"),
@@ -379,35 +379,21 @@ try:
 <body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
 {header_html}
 
-<div class="bg-white border-b border-slate-200 overflow-hidden relative">
+    <div class="bg-white border-b border-slate-200 overflow-hidden relative">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-white to-white"></div>
         <div class="max-w-7xl mx-auto px-6 pt-10 pb-12 md:pt-12 md:pb-16 relative z-10 text-center">
             <a href="/" class="text-indigo-600 font-bold uppercase tracking-widest text-xs hover:text-indigo-800 transition inline-block mb-6">&larr; Back to Directory</a>
-            <br>
-            <span class="inline-block bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-[0.2em] mb-4 shadow-sm">Typeface Encyclopedia</span>
-            <h1 class="text-6xl md:text-8xl font-black tracking-tight mb-4 break-words" style="font-family: {f_css};">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">{f_name}</span>
+            <h1 class="text-6xl md:text-8xl font-black tracking-tight mb-4 break-words text-slate-900" style="font-family: {f_css};">
+                {f_name}
             </h1>
             <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mt-4 mb-8">The complete typography profile, history, and usage guide.</p>
         </div>
     </div>
 
-    <main class="flex-grow py-16 px-4 md:px-6">
-        <div class="max-w-4xl mx-auto">
-            
-            <div class="bg-indigo-50 border border-indigo-100 rounded-3xl p-8 mb-16 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
-                <div>
-                    <h3 class="text-indigo-900 font-black text-xl mb-2">Want to see {f_name} in action?</h3>
-                    <p class="text-indigo-700 font-medium">Test font sizes, check legibility, and copy the exact HTML/CSS import codes instantly.</p>
-                </div>
-                <a href="/font-vs-font-comparison-tool.html" class="bg-indigo-600 hover:bg-indigo-700 text-white font-black text-sm uppercase tracking-widest px-8 py-4 rounded-xl transition shadow-lg shadow-indigo-200 whitespace-nowrap">Open Testing Tool &rarr;</a>
-            </div>
-
-            <article class="prose-lg max-w-none">
-                {ai_content}
-            </article>
-
-        </div>
+    <main class="flex-grow py-16 px-4 md:px-6 max-w-7xl mx-auto w-full">
+        <article class="prose-lg max-w-none">
+            {ai_content}
+        </article>
     </main>
     <footer class="bg-white border-t border-slate-200 py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
         <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
@@ -1027,17 +1013,16 @@ try:
             </div>
         </div>
     </div>
-    
-    <footer class="bg-white border-t border-slate-200 py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
-        <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
-    </footer>
-    
-    <script>
-        const fontData = {{
-            'a': {{ name: "{font_a}", css: "{css_a}", link: "{safe_link_a}", type: "{type_a}" }},
-            'b': {{ name: "{font_b}", css: "{css_b}", link: "{safe_link_b}", type: "{type_b}" }}
-        }};
 
+    <footer class="bg-white border-t border-slate-200 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center text-xs font-bold text-slate-500 uppercase tracking-widest">
+            <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
+            <a href="[https://x.com/HtmlFonts](https://x.com/HtmlFonts)" target="_blank" class="hover:text-indigo-600 text-indigo-500">@HtmlFonts</a>
+        </div>
+    </footer>
+
+    <script>
+        let fontsRaw = {json.dumps(master_fonts)};
         let isDark = false;
         let isXray = false;
         let importMode = 'html'; 
@@ -1048,6 +1033,10 @@ try:
             sz: 32, lh: '1.5', ls: '0'
         }};
 
+        let vsData = {{ a: null, b: null }};
+        const loadedFonts = new Set();
+        let loadedCount = 0; 
+
         function getFallbackStack(type) {{
             if (type === 'Sans-Serif') return "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
             if (type === 'Serif') return "Georgia, Cambria, 'Times New Roman', Times, serif";
@@ -1055,35 +1044,18 @@ try:
             return "system-ui, sans-serif"; 
         }}
 
-        function parseWeights(link) {{
-            if (!link) return ['400', '700'];
-            const match = link.match(/wght@([\\d;]+)/);
-            if (match) return match[1].split(';');
-            return ['400']; 
+        function loadFont(link, callback) {{
+            if (!link || loadedFonts.has(link)) {{
+                if(callback) callback();
+                return;
+            }}
+            const el = document.createElement('link'); 
+            el.rel = "stylesheet"; 
+            el.href = `https://fonts.googleapis.com/css2?family=${{link}}&display=swap`;
+            el.onload = () => {{ loadedFonts.add(link); if(callback) callback(); }};
+            document.head.appendChild(el); 
         }}
 
-        function populateWeights(selectId, fontObj) {{
-            const sel = document.getElementById(selectId);
-            sel.innerHTML = '';
-            
-            const weightNames = {{ '100':'Thin', '200':'ExtraLight', '300':'Light', '400':'Regular', '500':'Medium', '600':'SemiBold', '700':'Bold', '800':'ExtraBold', '900':'Black' }};
-            const weights = parseWeights(fontObj.link);
-            
-            weights.forEach(w => {{
-                let label = weightNames[w] ? `${{w}} (${{weightNames[w]}})` : w;
-                sel.add(new Option(label, w));
-            }});
-            
-            if (weights.includes('400')) sel.value = '400';
-            else sel.selectedIndex = 0;
-        }}
-
-        function initComparePage() {{
-            populateWeights('vs-weight-a', fontData['a']);
-            populateWeights('vs-weight-b', fontData['b']);
-            u();
-        }}
-        
         function setTxt(txt) {{
             document.getElementById('vs-text').value = txt;
             u();
@@ -1104,6 +1076,7 @@ try:
             const lbl = document.getElementById('lbl-dark');
             
             if(isDark) {{
+                // Remove Light Mode Styles
                 wrapA.classList.replace('bg-indigo-50/20', 'bg-slate-900');
                 wrapA.classList.replace('border-indigo-100/50', 'border-slate-700');
                 wrapB.classList.replace('bg-violet-50/20', 'bg-slate-900');
@@ -1129,16 +1102,12 @@ try:
                 pb.classList.replace('text-slate-900', 'text-white');
                 lbl.innerText = "Light Mode";
             }} else {{
-                wrapA.classList.replace('bg-slate-900', 'bg-indigo-50/20');
-                wrapA.classList.replace('border-slate-700', 'border-indigo-100/50');
-                wrapB.classList.replace('bg-slate-900', 'bg-violet-50/20');
-                wrapB.classList.replace('border-slate-700', 'border-violet-100/50');
+                // Remove Dark Mode Styles
+                wrapA.classList.replace('bg-slate-900', 'border-slate-700');
+                wrapB.classList.replace('bg-slate-900', 'border-slate-700');
+                panelA.classList.replace('bg-slate-800', 'border-slate-700');
+                panelB.classList.remove('bg-slate-800', 'border-slate-700');
                 
-                panelA.classList.replace('bg-slate-800', 'bg-white');
-                panelA.classList.replace('border-slate-700', 'border-slate-200');
-                panelB.classList.replace('bg-slate-800', 'bg-white');
-                panelB.classList.replace('border-slate-700', 'border-slate-200');
-
                 titleA.classList.replace('text-white', 'text-slate-800');
                 titleB.classList.replace('text-white', 'text-slate-800');
                 
@@ -1156,7 +1125,7 @@ try:
             }}
             u();
         }}
-        
+
         function toggleXRay() {{
             isXray = !isXray;
             const grid = document.getElementById('compare-grid');
@@ -1325,8 +1294,8 @@ try:
                 type: fontObj.type,
                 weight: document.getElementById(side === 'a' ? 'vs-weight-a' : 'vs-weight-b').value || '400',
                 sz: parseInt(document.getElementById('vs-font-size').value),
-                lh: document.getElementById('vs-lh').value,
-                ls: document.getElementById('vs-ls').value
+                lh: '1.5',
+                ls: '0'
             }};
 
             document.getElementById('modal-font-name').innerText = activeModalData.name + ' (' + activeModalData.weight + ')';
@@ -1489,6 +1458,7 @@ try:
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 transition-all items-start" id="compare-grid">
+            
             <div class="bg-white p-4 md:p-6 rounded-[2rem] shadow-sm border border-slate-200 flex flex-col transition-colors" id="panel-a">
                 <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6">
                     <div class="flex-grow flex items-center bg-indigo-50 px-3 rounded-xl border border-indigo-100 focus-within:ring-2 focus-within:ring-indigo-400 transition-colors w-full sm:w-auto mb-2 sm:mb-0" id="tab-a">
@@ -1497,9 +1467,11 @@ try:
                     </div>
                     <select id="vs-weight-a" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
+                
                 <div id="wrap-a" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden relative">
                     <p id="vs-preview-a" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
+                
                 <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-indigo-200 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     Copy HTML / CSS
@@ -1514,21 +1486,28 @@ try:
                     </div>
                     <select id="vs-weight-b" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
+                
                 <div id="wrap-b" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden relative">
                     <p id="vs-preview-b" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
+                
                 <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-violet-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     Copy HTML / CSS
                 </button>
             </div>
+
+        </div>
+        
+        <div class="border-t border-slate-200 pt-16 mt-24">
+            <h2 class="text-3xl font-black text-slate-900 mb-8 text-center tracking-tight">Most Searched Comparisons</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+{comparison_grid_links}
+            </div>
         </div>
 
-        <div class="mt-12 bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 text-slate-600">
-            {seo_description}
-        </div>
     </main>
-    
+
     <div id="code-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
         <div class="bg-white rounded-3xl shadow-2xl w-full max-w-2xl p-6 md:p-8 relative transform scale-95 transition-all duration-300" id="modal-content">
             <button onclick="closeModal('code-modal')" class="absolute top-4 right-4 md:top-6 md:right-6 text-slate-400 hover:text-slate-900 bg-slate-50 hover:bg-slate-100 rounded-full p-2 transition">✕</button>
