@@ -157,7 +157,7 @@ top_guides = [
     ("how-to-add-font-fallback-stacks", "Creating Bulletproof Font Stacks", "Resilience", "A font stack is a prioritized list of fallback fonts. The browser will try each one in order until it finds one installed on the user's system.", "font-family: 'MyCustomFont', 'Helvetica Neue', Arial, sans-serif;", "Always end your CSS font stack with a generic family name like sans-serif or serif.")
 ]
 
-# Ensure every tuple has exactly 6 elements to prevent unpacking crash
+# FINALLY FIXED: Every line has exactly 6 string values.
 top_comparisons = [
     ("Roboto", "Open Sans", "'Roboto', sans-serif", "'Open Sans', sans-serif", "Roboto:wght@400;700", "Open+Sans:wght@400;700"),
     ("Arial", "Helvetica", "Arial, sans-serif", "Helvetica, Arial, sans-serif", "", ""),
@@ -168,7 +168,7 @@ top_comparisons = [
     ("Nunito", "Poppins", "'Nunito', sans-serif", "'Poppins', sans-serif", "Nunito:wght@400;700", "Poppins:wght@400;700"),
     ("Raleway", "Montserrat", "'Raleway', sans-serif", "'Montserrat', sans-serif", "Raleway:wght@400;700", "Montserrat:wght@400;700"),
     ("Times New Roman", "Georgia", "'Times New Roman', Times, serif", "Georgia, serif", "", ""),
-    ("Lora", "PT Serif", "'PT Serif', serif", "Lora:wght@400;700", "PT+Serif:wght@400;700"),
+    ("Lora", "PT Serif", "'Lora', serif", "'PT Serif', serif", "Lora:wght@400;700", "PT+Serif:wght@400;700"),
     ("Work Sans", "Fira Sans", "'Work Sans', sans-serif", "'Fira Sans', sans-serif", "Work+Sans:wght@400;700", "Fira+Sans:wght@400;700"),
     ("Rubik", "Karla", "'Rubik', sans-serif", "'Karla', sans-serif", "Rubik:wght@400;700", "Karla:wght@400;700"),
     ("Fira Code", "Source Code Pro", "'Fira Code', monospace", "'Source Code Pro', monospace", "Fira+Code:wght@400;700", "Source+Code+Pro:wght@400;700"),
@@ -1625,7 +1625,7 @@ try:
             </div>
         </div>
 
-        <div class="border-t border-slate-200 pt-16 mt-24">
+        <div class="mt-12 border-t border-slate-200 pt-16">
             <h2 class="text-3xl font-black text-slate-900 mb-8 text-center tracking-tight">Most Searched Comparisons</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 {comparison_grid_links}
@@ -1731,29 +1731,33 @@ try:
             
             if(isDark) {{
                 // Remove Light Mode Styles
-                wrapA.classList.replace('bg-indigo-50/20', 'bg-slate-900');
-                wrapA.classList.replace('border-indigo-100/50', 'border-slate-700');
-                wrapB.classList.replace('bg-violet-50/20', 'bg-slate-900');
-                wrapB.classList.replace('border-violet-100/50', 'border-slate-700');
+                wrapA.classList.remove('bg-indigo-50/20', 'border-indigo-100/50');
+                wrapB.classList.remove('bg-violet-50/20', 'border-violet-100/50');
+                panelA.classList.remove('bg-white', 'border-slate-200');
+                panelB.classList.remove('bg-white', 'border-slate-200');
+                tabA.classList.remove('bg-indigo-50', 'border-indigo-100');
+                tabB.classList.remove('bg-violet-50', 'border-violet-100');
+                weightA.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                weightB.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                fontA.classList.remove('text-slate-800');
+                fontB.classList.remove('text-slate-800');
+                pa.classList.remove('text-slate-900');
+                pb.classList.remove('text-slate-900');
                 
-                panelA.classList.replace('bg-white', 'bg-slate-800');
-                panelA.classList.replace('border-slate-200', 'border-slate-700');
-                panelB.classList.replace('bg-white', 'bg-slate-800');
-                panelB.classList.replace('border-slate-200', 'border-slate-700');
+                // Add Dark Mode Styles
+                wrapA.classList.add('bg-slate-900', 'border-slate-700');
+                wrapB.classList.add('bg-slate-900', 'border-slate-700');
+                panelA.classList.add('bg-slate-800', 'border-slate-700');
+                panelB.classList.add('bg-slate-800', 'border-slate-700');
+                tabA.classList.add('bg-slate-800', 'border-slate-700');
+                tabB.classList.add('bg-slate-800', 'border-slate-700');
+                weightA.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
+                weightB.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
+                fontA.classList.add('text-white');
+                fontB.classList.add('text-white');
+                pa.classList.add('text-white');
+                pb.classList.add('text-white');
                 
-                titleA.classList.replace('text-slate-800', 'text-white');
-                titleB.classList.replace('text-slate-800', 'text-white');
-                
-                weightA.classList.replace('bg-slate-50', 'bg-slate-800');
-                weightA.classList.replace('border-slate-200', 'border-slate-700');
-                weightA.classList.replace('text-slate-600', 'text-white');
-                
-                weightB.classList.replace('bg-slate-50', 'bg-slate-800');
-                weightB.classList.replace('border-slate-200', 'border-slate-700');
-                weightB.classList.replace('text-slate-600', 'text-white');
-                
-                pa.classList.replace('text-slate-900', 'text-white');
-                pb.classList.replace('text-slate-900', 'text-white');
                 lbl.innerText = "Light Mode";
             }} else {{
                 // Remove Dark Mode Styles
@@ -1761,20 +1765,29 @@ try:
                 wrapB.classList.replace('bg-slate-900', 'border-slate-700');
                 panelA.classList.replace('bg-slate-800', 'border-slate-700');
                 panelB.classList.replace('bg-slate-800', 'border-slate-700');
+                tabA.classList.remove('bg-slate-800', 'border-slate-700');
+                tabB.classList.remove('bg-slate-800', 'border-slate-700');
+                weightA.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
+                weightB.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
+                fontA.classList.remove('text-white');
+                fontB.classList.remove('text-white');
+                pa.classList.remove('text-white');
+                pb.classList.remove('text-white');
+
+                // Restore Light Mode Styles
+                wrapA.classList.add('bg-indigo-50/20', 'border-indigo-100/50');
+                wrapB.classList.add('bg-violet-50/20', 'border-violet-100/50');
+                panelA.classList.add('bg-white', 'border-slate-200');
+                panelB.classList.add('bg-white', 'border-slate-200');
+                tabA.classList.add('bg-indigo-50', 'border-indigo-100');
+                tabB.classList.add('bg-violet-50', 'border-violet-100');
+                weightA.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                weightB.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                fontA.classList.add('text-slate-800');
+                fontB.classList.add('text-slate-800');
+                pa.classList.add('text-slate-900');
+                pb.classList.add('text-slate-900');
                 
-                titleA.classList.replace('text-white', 'text-slate-800');
-                titleB.classList.replace('text-white', 'text-slate-800');
-                
-                weightA.classList.replace('bg-slate-800', 'bg-slate-50');
-                weightA.classList.replace('border-slate-700', 'border-slate-200');
-                weightA.classList.replace('text-white', 'text-slate-600');
-                
-                weightB.classList.replace('bg-slate-800', 'bg-slate-50');
-                weightB.classList.replace('border-slate-700', 'border-slate-200');
-                weightB.classList.replace('text-white', 'text-slate-600');
-                
-                pa.classList.replace('text-white', 'text-slate-900');
-                pb.classList.replace('text-white', 'text-slate-900');
                 lbl.innerText = "Dark Mode";
             }}
             u();
@@ -2076,7 +2089,7 @@ try:
 
 except Exception as e:
     print(f"❌ Generation Error: {e}")
-    sys.exit(0)
+    sys.exit(1) # Using exit code 1 so terminal clearly catches the failure
 
 # 10. POST TO X
 try:
