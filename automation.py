@@ -154,7 +154,7 @@ top_guides = [
     ("how-to-fix-blurry-fonts-on-browser", "How to Fix Blurry Fonts in Chrome", "Rendering Optimization", "On MacOS, you can toggle the subpixel rendering engine to make light text on dark backgrounds appear crisper and less bulky.", "-webkit-font-smoothing: antialiased;\n-moz-osx-font-smoothing: grayscale;", "Only use antialiased smoothing for light text on dark backgrounds; it hurts dark text legibility."),
     ("how-to-import-adobe-fonts", "How to Import Adobe Fonts", "Premium Typography", "Adobe Fonts are integrated using a stylesheet exactly like Google Fonts, utilizing your specific project ID in the link tag.", "<link rel='stylesheet' href='https://use.typekit.net/your_id.css'>", "Adobe Fonts do not support the exact same subsetting parameters via URL as Google Fonts."),
     ("what-is-x-height-typography", "Understanding X-Height in Typography", "Design Theory", "The x-height is the vertical distance between the baseline and the median line of lowercase letters. Large x-heights improve legibility at small sizes.", "/* Conceptual Design Rule */", "When pairing fonts, try to match their x-heights to create visual harmony across the interface."),
-    ("how-to-add-font-fallback-stacks", "Creating Bulletproof Font Stacks", "Resilience", "A font stack is a prioritized list of fallback fonts. The browser will try each one in order until it finds one installed on the users system.", "font-family: 'MyCustomFont', 'Helvetica Neue', Arial, sans-serif;", "Always end your CSS font stack with a generic family name like sans-serif or serif.")
+    ("how-to-add-font-fallback-stacks", "Creating Bulletproof Font Stacks", "Resilience", "A font stack is a prioritized list of fallback fonts. The browser will try each one in order until it finds one installed on the user's system.", "font-family: 'MyCustomFont', 'Helvetica Neue', Arial, sans-serif;", "Always end your CSS font stack with a generic family name like sans-serif or serif.")
 ]
 
 top_comparisons = [
@@ -468,21 +468,21 @@ try:
 
     <div id="code-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
         <div class="bg-white rounded-3xl shadow-2xl w-full max-w-xl p-8 relative transform scale-95 transition-all duration-300" id="modal-content">
-            <button onclick="closeModal('code-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 bg-slate-50 hover:bg-slate-100 rounded-full p-2 transition">✕</button>
+            <button onclick="closeModal('code-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 bg-slate-50 rounded-full p-2">✕</button>
             <h3 class="text-3xl font-black text-slate-900 tracking-tighter mb-8" id="modal-font-name">Font Detail</h3>
             <div class="space-y-6">
                 <div>
                     <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2" id="modal-html-label">1. Add to HTML Head</label>
                     <div class="bg-slate-900 rounded-xl p-4 relative group">
                         <code id="modal-html" class="text-xs text-indigo-300 font-mono break-all block"></code>
-                        <button id="copy-html-btn" onclick="copyElementText('modal-html')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY HTML</button>
+                        <button id="copy-html-btn" onclick="copyElementText('modal-html')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY HTML</button>
                     </div>
                 </div>
                 <div>
                     <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">2. Apply CSS Rule</label>
                     <div class="bg-slate-900 rounded-xl p-4 relative group border-2 border-indigo-500/30">
                         <code id="modal-css" class="text-xs font-mono text-indigo-300 block"></code>
-                        <button onclick="copyElementText('modal-css')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY CSS</button>
+                        <button onclick="copyElementText('modal-css')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY CSS</button>
                     </div>
                 </div>
             </div>
@@ -1051,7 +1051,6 @@ try:
         .toast-active {{ opacity: 1; transform: translate(-50%, 0); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }}
         .modal-active {{ opacity: 1; transform: scale(1) translateY(0); transition: all 0.2s ease-out; }}
         .comparison-text {{ transition: font-size 0.2s ease, font-weight 0.2s ease, line-height 0.2s ease, letter-spacing 0.2s ease; }}
-        .preview-dark {{ background-color: #0f172a !important; border-color: #1e293b !important; color: #f8fafc !important; }}
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
@@ -1130,11 +1129,11 @@ try:
             </div>
         </div>
 
-        <div id="xray-arena" class="hidden relative w-full min-h-[400px] bg-white rounded-3xl border border-slate-200 shadow-inner overflow-hidden mb-10 p-10 flex items-center justify-center">
-            <div class="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:16px_16px] opacity-50 pointer-events-none"></div>
+        <div id="xray-arena" class="hidden relative w-full min-h-[400px] bg-white rounded-3xl border border-slate-200 shadow-inner overflow-hidden mb-10 p-10 flex items-center justify-center transition-colors">
+            <div class="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:16px_16px] opacity-50 pointer-events-none" id="xray-bg-pattern"></div>
             <div class="relative w-full max-w-4xl flex justify-center text-center items-center z-10">
-                <p id="xray-preview-a" class="absolute comparison-text text-[#0ea5e9] mix-blend-multiply opacity-60 break-words w-full top-1/2 -translate-y-1/2 left-0"></p>
-                <p id="xray-preview-b" class="absolute comparison-text text-[#f43f5e] mix-blend-multiply opacity-60 break-words w-full top-1/2 -translate-y-1/2 left-0"></p>
+                <p id="xray-preview-a" class="absolute comparison-text break-words w-full top-1/2 -translate-y-1/2 left-0"></p>
+                <p id="xray-preview-b" class="absolute comparison-text break-words w-full top-1/2 -translate-y-1/2 left-0"></p>
             </div>
         </div>
 
@@ -1150,7 +1149,7 @@ try:
                 </div>
                 
                 <div id="wrap-a" class="flex-grow flex items-start pt-4 px-6 pb-6 min-h-[300px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden">
-                    <p id="vs-preview-a" class="comparison-text text-slate-900 break-words w-full"></p>
+                    <p id="vs-preview-a" class="comparison-text break-words w-full"></p>
                 </div>
                 
                 <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-lg shadow-indigo-200 mt-6 group flex justify-center items-center gap-2">
@@ -1169,7 +1168,7 @@ try:
                 </div>
                 
                 <div id="wrap-b" class="flex-grow flex items-start pt-4 px-6 pb-6 min-h-[300px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden">
-                    <p id="vs-preview-b" class="comparison-text text-slate-900 break-words w-full"></p>
+                    <p id="vs-preview-b" class="comparison-text break-words w-full"></p>
                 </div>
                 
                 <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-lg shadow-violet-100 mt-6 group flex justify-center items-center gap-2">
@@ -1197,7 +1196,7 @@ try:
             
             <div class="space-y-6">
                 <div>
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2" id="modal-html-label">1. Add to HTML Head</label>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">1. Add to HTML Head</label>
                     <div class="bg-slate-900 rounded-xl p-4 relative group">
                         <code id="modal-html" class="text-xs text-indigo-300 font-mono break-all block"></code>
                         <button id="copy-html-btn" onclick="copyElementText('modal-html')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY</button>
@@ -1227,7 +1226,7 @@ try:
         let isXray = false;
         let vsData = {{ a: null, b: null }};
         const loadedFonts = new Set();
-        let loadedCount = 0; // Async race condition safety
+        let loadedCount = 0; 
 
         function loadFont(link, callback) {{
             if (!link || loadedFonts.has(link)) {{
@@ -1255,18 +1254,19 @@ try:
             const lbl = document.getElementById('lbl-dark');
             
             if(isDark) {{
-                wrapA.classList.add('preview-dark');
-                wrapB.classList.add('preview-dark');
+                wrapA.classList.add('bg-slate-900', 'border-slate-800');
+                wrapB.classList.add('bg-slate-900', 'border-slate-800');
                 panelA.classList.add('bg-slate-800', 'border-slate-700');
                 panelB.classList.add('bg-slate-800', 'border-slate-700');
                 lbl.innerText = "Light Mode";
             }} else {{
-                wrapA.classList.remove('preview-dark');
-                wrapB.classList.remove('preview-dark');
+                wrapA.classList.remove('bg-slate-900', 'border-slate-800');
+                wrapB.classList.remove('bg-slate-900', 'border-slate-800');
                 panelA.classList.remove('bg-slate-800', 'border-slate-700');
                 panelB.classList.remove('bg-slate-800', 'border-slate-700');
                 lbl.innerText = "Dark Mode";
             }}
+            u();
         }}
 
         function toggleXRay() {{
@@ -1302,9 +1302,11 @@ try:
             const currentVal = sel.value; 
             sel.innerHTML = '';
             
+            const weightNames = {{ '100':'Thin', '200':'ExtraLight', '300':'Light', '400':'Regular', '500':'Medium', '600':'SemiBold', '700':'Bold', '800':'ExtraBold', '900':'Black' }};
+            
             const weights = parseWeights(fontObj.link);
             weights.forEach(w => {{
-                let label = w === '400' ? '400 (Reg)' : w === '700' ? '700 (Bold)' : w;
+                let label = weightNames[w] ? `${{w}} (${{weightNames[w]}})` : w;
                 sel.add(new Option(label, w));
             }});
             
@@ -1367,10 +1369,14 @@ try:
             
             const wA = document.getElementById('vs-weight-a').value;
             const wB = document.getElementById('vs-weight-b').value;
+            
+            // Handle Text Colors for Standard Grid
+            const textColor = isDark ? '#ffffff' : '#0f172a';
 
             // STANDARD GRID RENDER
             if (!isXray) {{
                 const pA = document.getElementById('vs-preview-a');
+                pA.style.color = textColor;
                 pA.style.fontFamily = vsData.a.css;
                 pA.style.fontSize = sz + 'px';
                 pA.style.fontWeight = wA;
@@ -1379,6 +1385,7 @@ try:
                 pA.innerText = text;
 
                 const pB = document.getElementById('vs-preview-b');
+                pB.style.color = textColor;
                 pB.style.fontFamily = vsData.b.css;
                 pB.style.fontSize = sz + 'px';
                 pB.style.fontWeight = wB;
@@ -1389,6 +1396,23 @@ try:
             // X-RAY ENGINE RENDER
             else {{
                 const xa = document.getElementById('xray-preview-a');
+                const xb = document.getElementById('xray-preview-b');
+                const arena = document.getElementById('xray-arena');
+                
+                if (isDark) {{
+                    arena.classList.replace('bg-white', 'bg-slate-900');
+                    xa.style.mixBlendMode = 'screen';
+                    xb.style.mixBlendMode = 'screen';
+                    xa.style.color = '#0ff'; // Bright Cyan
+                    xb.style.color = '#f0f'; // Bright Magenta
+                }} else {{
+                    arena.classList.replace('bg-slate-900', 'bg-white');
+                    xa.style.mixBlendMode = 'multiply';
+                    xb.style.mixBlendMode = 'multiply';
+                    xa.style.color = '#0ea5e9'; // Tailwind sky-500
+                    xb.style.color = '#f43f5e'; // Tailwind rose-500
+                }}
+
                 xa.style.fontFamily = vsData.a.css;
                 xa.style.fontSize = sz + 'px';
                 xa.style.fontWeight = wA;
@@ -1396,7 +1420,6 @@ try:
                 xa.style.letterSpacing = ls + 'em';
                 xa.innerText = text;
 
-                const xb = document.getElementById('xray-preview-b');
                 xb.style.fontFamily = vsData.b.css;
                 xb.style.fontSize = sz + 'px';
                 xb.style.fontWeight = wB;
