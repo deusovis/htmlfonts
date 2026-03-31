@@ -234,7 +234,6 @@ try:
     sitemap = f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     sitemap += f'  <url><loc>{DOMAIN}/</loc><priority>1.0</priority></url>\n'
     sitemap += f'  <url><loc>{DOMAIN}/font-vs-font-comparison-tool.html</loc><priority>0.9</priority></url>\n'
-    sitemap += f'  <url><loc>{DOMAIN}/editors-desk.html</loc><priority>0.9</priority></url>\n'
     sitemap += f'  <url><loc>{DOMAIN}/html-css-font-guides.html</loc><priority>0.9</priority></url>\n'
 
     print("Generating Daily Tip...")
@@ -761,7 +760,101 @@ try:
 </html>"""
     with open("html-css-font-guides.html", 'w', encoding='utf-8') as f: f.write(guides_page_html)
 
-    # 6. GENERATE COMPARISONS
+    # 6. GENERATE EDITOR'S DESK PAGINATION
+    print("Generating Editor's Desk Pagination...")
+    posts_per_page = 10
+    total_pages = math.ceil(len(history) / posts_per_page) if len(history) > 0 else 1
+
+    for page_num in range(1, total_pages + 1):
+        start_idx = (page_num - 1) * posts_per_page
+        end_idx = start_idx + posts_per_page
+        current_posts = history[start_idx:end_idx]
+
+        posts_html = ""
+        for post in current_posts:
+            safe_css = html.escape(post.get('css_snippet', ''))
+            posts_html += f"""
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">{post.get('date', 'Recent')}</span>
+                </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">{post.get('title', 'Typography Tip')}</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">{post.get('tip', '')}</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">{safe_css}</code></pre>
+                </div>
+            </article>"""
+
+        # Pagination Controls
+        prev_link = ""
+        next_link = ""
+        
+        if page_num > 1:
+            prev_url = "editors-desk.html" if page_num == 2 else f"editors-desk-{page_num-1}.html"
+            prev_link = f'<a href="/{prev_url}" class="bg-white border border-slate-200 text-slate-700 hover:border-indigo-300 hover:text-indigo-600 font-bold text-xs uppercase tracking-widest px-6 py-3 rounded-xl transition shadow-sm">&larr; Newer Posts</a>'
+        else:
+            prev_link = '<div></div>'
+            
+        if page_num < total_pages:
+            next_url = f"editors-desk-{page_num+1}.html"
+            next_link = f'<a href="/{next_url}" class="bg-white border border-slate-200 text-slate-700 hover:border-indigo-300 hover:text-indigo-600 font-bold text-xs uppercase tracking-widest px-6 py-3 rounded-xl transition shadow-sm">Older Posts &rarr;</a>'
+        else:
+            next_link = '<div></div>'
+
+        pagination_html = f"""
+        <div class="flex items-center justify-between mt-12 pt-8 border-t border-slate-200">
+            {prev_link}
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Page {page_num} of {total_pages}</span>
+            {next_link}
+        </div>"""
+
+        file_name = "editors-desk.html" if page_num == 1 else f"editors-desk-{page_num}.html"
+
+        editors_page_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor's Desk - Page {page_num} | htmlfonts</title>
+    <meta name="description" content="Daily CSS typography tips, UI design tricks, and code snippets.">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{GA_CODE}
+    <script src="{TAILWIND}"></script>
+    <style>
+        body {{ font-family: system-ui, sans-serif; }}
+        .custom-scrollbar::-webkit-scrollbar {{ width: 6px; height: 6px; }}
+        .custom-scrollbar::-webkit-scrollbar-track {{ background: #0f172a; border-radius: 8px; }}
+        .custom-scrollbar::-webkit-scrollbar-thumb {{ background: #334155; border-radius: 8px; }}
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {{ background: #475569; }}
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
+{header_html}
+    <div class="bg-white border-b border-slate-200 overflow-hidden relative">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-white to-white"></div>
+        <div class="max-w-7xl mx-auto px-6 pt-10 pb-12 md:pt-12 md:pb-16 relative z-10 text-center">
+            <span class="inline-block bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-[0.2em] mb-4 shadow-sm">Daily Updates</span>
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Editor's Desk</span>
+            </h1>
+            <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mt-4 mb-8">Bite-sized CSS typography tips, UI design tricks, and code snippets delivered daily.</p>
+        </div>
+    </div>
+    
+    <main class="flex-grow py-12 px-6 max-w-3xl mx-auto w-full">
+        {posts_html}
+        {pagination_html}
+    </main>
+{footer_html}
+</body>
+</html>"""
+        with open(file_name, 'w', encoding='utf-8') as f:
+            f.write(editors_page_html)
+        
+        sitemap += f"  <url><loc>{DOMAIN}/{file_name}</loc><changefreq>daily</changefreq><priority>0.9</priority></url>\n"
+
+    # 7. GENERATE COMPARISONS
     print("Generating Font Comparisons...")
     comparison_grid_links = ""
     for font_a, font_b, css_a, css_b, link_a, link_b in top_comparisons:
@@ -1166,6 +1259,7 @@ try:
             const lh = document.getElementById('vs-lh').value;
             const ls = document.getElementById('vs-ls').value;
             
+            document.getElementById('vs-size-label').innerText = sz + 'px';
             document.getElementById('lbl-size').innerText = sz + 'px';
             document.getElementById('lbl-lh').innerText = lh;
             document.getElementById('lbl-ls').innerText = ls + 'em';
@@ -1650,10 +1744,10 @@ try:
                 lbl.innerText = "Light Mode";
             }} else {{
                 // Remove Dark Mode Styles
-                wrapA.classList.remove('bg-slate-900', 'border-slate-700');
-                wrapB.classList.remove('bg-slate-900', 'border-slate-700');
-                panelA.classList.remove('bg-slate-800', 'border-slate-700');
-                panelB.classList.remove('bg-slate-800', 'border-slate-700');
+                wrapA.classList.replace('bg-slate-900', 'border-slate-700');
+                wrapB.classList.replace('bg-slate-900', 'border-slate-700');
+                panelA.classList.replace('bg-slate-800', 'border-slate-700');
+                panelB.classList.replace('bg-slate-800', 'border-slate-700');
                 tabA.classList.remove('bg-slate-800', 'border-slate-700');
                 tabB.classList.remove('bg-slate-800', 'border-slate-700');
                 weightA.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
@@ -1780,8 +1874,8 @@ try:
             document.getElementById('lbl-lh').innerText = lh;
             document.getElementById('lbl-ls').innerText = ls + 'em';
             
-            const wA = document.getElementById('vs-weight-a').value || '400';
-            const wB = document.getElementById('vs-weight-b').value || '400';
+            const wA = document.getElementById('vs-weight-a').value;
+            const wB = document.getElementById('vs-weight-b').value;
             
             const txtColor = isDark ? '#ffffff' : '#0f172a';
 
@@ -1833,6 +1927,7 @@ try:
                 xb.style.fontFamily = vsData.b.css;
                 xb.style.fontSize = sz + 'px';
                 xb.style.fontWeight = wB;
+                low_w = wB;
                 xb.style.lineHeight = lh;
                 xb.style.letterSpacing = ls + 'em';
                 xb.innerText = text;
