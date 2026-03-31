@@ -1,8 +1,8 @@
 {
-    "title": "Typography Tip Mar 31",
-    "slug": "typography-tip-1774931044",
-    "tweet": "Check out today's CSS typography tip! #webdesign #css",
-    "tip": "To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.",
-    "css_snippet": "body {\n  line-height: 1.5;\n}",
+    "title": "Mastering Fluid Typography for Responsive UI: Leveraging CSS `clamp()`",
+    "slug": "mastering-fluid-typography-css-clamp-responsive-ui",
+    "tweet": "Unlock truly responsive text with CSS `clamp()`! Learn how to create fluid typography that adapts perfectly to any screen size, enhancing #UI design & #UserExperience. Say goodbye to media query overload! #CSSTypography #WebFonts",
+    "tip": "To achieve truly fluid and responsive typography, embrace the CSS `clamp()` function. It allows you to define a minimum, preferred, and maximum value for properties like `font-size`. This means your text will scale dynamically with the viewport, ensuring readability on both small and large screens without needing excessive media queries, significantly improving #UI design and #UserExperience by maintaining optimal line length and visual hierarchy.",
+    "css_snippet": "h1 {\n  font-size: clamp(2rem, 5vw + 1rem, 4rem);\n  line-height: 1.2;\n  margin-bottom: 0.5em;\n}\n\np {\n  font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);\n  line-height: 1.6;\n}",
     "date": "March 31, 2026"
 }

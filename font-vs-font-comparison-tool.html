@@ -136,7 +136,7 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 divide-y md:divide-y-0 md:divide-x divide-slate-100 items-start" id="compare-grid">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 transition-all items-start" id="compare-grid">
             
             <div class="bg-white p-4 md:p-6 rounded-[2rem] shadow-sm border border-slate-200 flex flex-col transition-colors" id="panel-a">
                 <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6">
@@ -147,13 +147,13 @@
                     <select id="vs-weight-a" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
                 
-                <div id="wrap-a" class="w-full flex items-center p-4 md:p-6 min-h-[80px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden relative">
+                <div id="wrap-a" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden relative">
                     <p id="vs-preview-a" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
                 
                 <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-indigo-200 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                    Copy Fluid CSS
+                    Copy HTML / CSS
                 </button>
             </div>
 
@@ -166,16 +166,53 @@
                     <select id="vs-weight-b" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
                 
-                <div id="wrap-b" class="w-full flex items-center p-4 md:p-6 min-h-[80px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden relative">
+                <div id="wrap-b" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden relative">
                     <p id="vs-preview-b" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
                 
                 <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-violet-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                    Copy Fluid CSS
+                    Copy HTML / CSS
                 </button>
             </div>
 
+        </div>
+        
+        <div class="border-t border-slate-200 pt-16 mt-24">
+            <h2 class="text-3xl font-black text-slate-900 mb-8 text-center tracking-tight">Most Searched Comparisons</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <a href="/compare/roboto-vs-open-sans.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Roboto vs Open Sans</a>
+                    <a href="/compare/arial-vs-helvetica.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Arial vs Helvetica</a>
+                    <a href="/compare/montserrat-vs-poppins.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Montserrat vs Poppins</a>
+                    <a href="/compare/lato-vs-open-sans.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Lato vs Open Sans</a>
+                    <a href="/compare/inter-vs-roboto.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Inter vs Roboto</a>
+                    <a href="/compare/playfair-display-vs-merriweather.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Playfair Display vs Merriweather</a>
+                    <a href="/compare/nunito-vs-poppins.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Nunito vs Poppins</a>
+                    <a href="/compare/raleway-vs-montserrat.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Raleway vs Montserrat</a>
+                    <a href="/compare/times-new-roman-vs-georgia.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Times New Roman vs Georgia</a>
+                    <a href="/compare/lora-vs-pt-serif.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Lora vs PT Serif</a>
+                    <a href="/compare/work-sans-vs-fira-sans.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Work Sans vs Fira Sans</a>
+                    <a href="/compare/rubik-vs-karla.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Rubik vs Karla</a>
+                    <a href="/compare/fira-code-vs-source-code-pro.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Fira Code vs Source Code Pro</a>
+                    <a href="/compare/jetbrains-mono-vs-fira-code.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">JetBrains Mono vs Fira Code</a>
+                    <a href="/compare/dm-sans-vs-poppins.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">DM Sans vs Poppins</a>
+                    <a href="/compare/crimson-text-vs-lora.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Crimson Text vs Lora</a>
+                    <a href="/compare/quicksand-vs-nunito.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Quicksand vs Nunito</a>
+                    <a href="/compare/inconsolata-vs-roboto-mono.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Inconsolata vs Roboto Mono</a>
+                    <a href="/compare/pt-sans-vs-open-sans.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">PT Sans vs Open Sans</a>
+                    <a href="/compare/noto-sans-vs-roboto.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Noto Sans vs Roboto</a>
+                    <a href="/compare/bitter-vs-roboto-slab.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Bitter vs Roboto Slab</a>
+                    <a href="/compare/zilla-slab-vs-roboto-slab.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Zilla Slab vs Roboto Slab</a>
+                    <a href="/compare/outfit-vs-lexend.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Outfit vs Lexend</a>
+                    <a href="/compare/barlow-vs-rubik.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Barlow vs Rubik</a>
+                    <a href="/compare/space-grotesk-vs-lexend.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Space Grotesk vs Lexend</a>
+                    <a href="/compare/public-sans-vs-dm-sans.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Public Sans vs DM Sans</a>
+                    <a href="/compare/cormorant-vs-playfair-display.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Cormorant vs Playfair Display</a>
+                    <a href="/compare/pacifico-vs-dancing-script.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Pacifico vs Dancing Script</a>
+                    <a href="/compare/oswald-vs-bebas-neue.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">Oswald vs Bebas Neue</a>
+                    <a href="/compare/ibm-plex-mono-vs-space-mono.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">IBM Plex Mono vs Space Mono</a>
+
+            </div>
         </div>
 
     </main>
@@ -278,67 +315,69 @@
             const fontB = document.getElementById('vs-font-b');
             const weightA = document.getElementById('vs-weight-a');
             const weightB = document.getElementById('vs-weight-b');
-            const lbl = document.getElementById('lbl-dark');
             const pa = document.getElementById('vs-preview-a');
             const pb = document.getElementById('vs-preview-b');
+            const lbl = document.getElementById('lbl-dark');
             
             if(isDark) {
+                // Remove Light Mode Styles
                 wrapA.classList.remove('bg-indigo-50/20', 'border-indigo-100/50');
                 wrapB.classList.remove('bg-violet-50/20', 'border-violet-100/50');
                 panelA.classList.remove('bg-white', 'border-slate-200');
                 panelB.classList.remove('bg-white', 'border-slate-200');
                 tabA.classList.remove('bg-indigo-50', 'border-indigo-100');
                 tabB.classList.remove('bg-violet-50', 'border-violet-100');
-                fontA.classList.remove('bg-transparent');
-                fontB.classList.remove('bg-transparent');
+                weightA.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                weightB.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                fontA.classList.remove('text-slate-800');
+                fontB.classList.remove('text-slate-800');
+                pa.classList.remove('text-slate-900');
+                pb.classList.remove('text-slate-900');
                 
-                fontA.classList.replace('text-slate-800', 'text-white');
-                fontB.classList.replace('text-slate-800', 'text-white');
-                weightA.classList.replace('text-slate-600', 'text-slate-200');
-                weightB.classList.replace('text-slate-600', 'text-slate-200');
-                pa.classList.replace('text-slate-900', 'text-white');
-                pb.classList.replace('text-slate-900', 'text-white');
-                
+                // Add Dark Mode Styles
                 wrapA.classList.add('bg-slate-900', 'border-slate-700');
                 wrapB.classList.add('bg-slate-900', 'border-slate-700');
                 panelA.classList.add('bg-slate-800', 'border-slate-700');
                 panelB.classList.add('bg-slate-800', 'border-slate-700');
-                tabA.classList.add('bg-slate-900', 'border-slate-700');
-                tabB.classList.add('bg-slate-900', 'border-slate-700');
-                fontA.classList.add('bg-slate-800');
-                fontB.classList.add('bg-slate-800');
-                weightA.classList.add('bg-slate-900', 'border-slate-700');
-                weightB.classList.add('bg-slate-900', 'border-slate-700');
+                tabA.classList.add('bg-slate-800', 'border-slate-700');
+                tabB.classList.add('bg-slate-800', 'border-slate-700');
+                weightA.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
+                weightB.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
+                fontA.classList.add('text-white');
+                fontB.classList.add('text-white');
+                pa.classList.add('text-white');
+                pb.classList.add('text-white');
+                
                 lbl.innerText = "Light Mode";
             } else {
+                // Remove Dark Mode Styles
                 wrapA.classList.remove('bg-slate-900', 'border-slate-700');
                 wrapB.classList.remove('bg-slate-900', 'border-slate-700');
                 panelA.classList.remove('bg-slate-800', 'border-slate-700');
                 panelB.classList.remove('bg-slate-800', 'border-slate-700');
-                tabA.classList.remove('bg-slate-900', 'border-slate-700');
-                tabB.classList.remove('bg-slate-900', 'border-slate-700');
-                fontA.classList.remove('bg-slate-800');
-                fontB.classList.remove('bg-slate-800');
-                weightA.classList.remove('bg-slate-900', 'border-slate-700');
-                weightB.classList.remove('bg-slate-900', 'border-slate-700');
+                tabA.classList.remove('bg-slate-800', 'border-slate-700');
+                tabB.classList.remove('bg-slate-800', 'border-slate-700');
+                weightA.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
+                weightB.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
+                fontA.classList.remove('text-white');
+                fontB.classList.remove('text-white');
+                pa.classList.remove('text-white');
+                pb.classList.remove('text-white');
 
-                fontA.classList.replace('text-white', 'text-slate-800');
-                fontB.classList.replace('text-white', 'text-slate-800');
-                weightA.classList.replace('text-slate-200', 'text-slate-600');
-                weightB.classList.replace('text-slate-200', 'text-slate-600');
-                pa.classList.replace('text-white', 'text-slate-900');
-                pb.classList.replace('text-white', 'text-slate-900');
-
+                // Restore Light Mode Styles
                 wrapA.classList.add('bg-indigo-50/20', 'border-indigo-100/50');
                 wrapB.classList.add('bg-violet-50/20', 'border-violet-100/50');
                 panelA.classList.add('bg-white', 'border-slate-200');
                 panelB.classList.add('bg-white', 'border-slate-200');
                 tabA.classList.add('bg-indigo-50', 'border-indigo-100');
                 tabB.classList.add('bg-violet-50', 'border-violet-100');
-                fontA.classList.add('bg-transparent');
-                fontB.classList.add('bg-transparent');
-                weightA.classList.add('bg-slate-50', 'border-slate-200');
-                weightB.classList.add('bg-slate-50', 'border-slate-200');
+                weightA.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                weightB.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-600');
+                fontA.classList.add('text-slate-800');
+                fontB.classList.add('text-slate-800');
+                pa.classList.add('text-slate-900');
+                pb.classList.add('text-slate-900');
+                
                 lbl.innerText = "Dark Mode";
             }
             u();
@@ -475,14 +514,14 @@
                     arena.classList.replace('bg-white', 'bg-slate-900');
                     xa.style.mixBlendMode = 'screen';
                     xb.style.mixBlendMode = 'screen';
-                    xa.style.color = '#0ff'; 
-                    xb.style.color = '#f0f'; 
+                    xa.style.color = '#0ff'; // Bright Cyan
+                    xb.style.color = '#f0f'; // Bright Magenta
                 } else {
                     arena.classList.replace('bg-slate-900', 'bg-white');
                     xa.style.mixBlendMode = 'multiply';
                     xb.style.mixBlendMode = 'multiply';
-                    xa.style.color = '#0ea5e9'; 
-                    xb.style.color = '#f43f5e'; 
+                    xa.style.color = '#0ea5e9'; // Sky
+                    xb.style.color = '#f43f5e'; // Rose
                 }
 
                 xa.style.fontFamily = vsData.a.css;
