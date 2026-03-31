@@ -217,6 +217,13 @@ header_html = """    <header class="bg-white/90 backdrop-blur-md border-b border
         </div>
     </header>"""
 
+footer_html = f"""    <footer class="bg-white border-t border-slate-200 py-16 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">&copy; {datetime.datetime.now().year} htmlfonts. All rights reserved.</p>
+            <a href="https://x.com/HtmlFonts" target="_blank" class="text-xs font-bold text-indigo-500 hover:text-indigo-600 uppercase tracking-widest transition">Follow @HtmlFonts</a>
+        </div>
+    </footer>"""
+
 try:
     api_exhausted = False
     
@@ -398,9 +405,7 @@ try:
             {ai_content}
         </article>
     </main>
-    <footer class="bg-white border-t border-slate-200 py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
-        <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
-    </footer>
+{footer_html}
 </body>
 </html>"""
         with open(f"font/{slug}.html", 'w', encoding='utf-8') as f: f.write(font_page_html)
@@ -510,12 +515,7 @@ try:
         </div>
     </div>
 
-    <footer class="bg-white border-t border-slate-200 py-16 mt-auto">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">&copy; {datetime.datetime.now().year} htmlfonts. All rights reserved.</p>
-            <a href="[https://x.com/HtmlFonts](https://x.com/HtmlFonts)" target="_blank" class="text-xs font-bold text-indigo-500 hover:text-indigo-600 uppercase tracking-widest transition">Follow @HtmlFonts</a>
-        </div>
-    </footer>
+{footer_html}
     
     <script>
         const previewInput = document.getElementById('global-preview-input');
@@ -713,9 +713,7 @@ try:
             </article>
         </div>
     </main>
-    <footer class="bg-white border-t border-slate-200 py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
-        <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
-    </footer>
+{footer_html}
 </body>
 </html>"""
         with open(f"article/{slug}.html", 'w', encoding='utf-8') as f: f.write(html_page)
@@ -758,9 +756,7 @@ try:
             {guides_cards_html}
         </div>
     </main>
-    <footer class="bg-white border-t border-slate-200 py-12 text-center text-xs font-bold text-slate-500 uppercase tracking-widest mt-auto">
-        <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
-    </footer>
+{footer_html}
 </body>
 </html>"""
     with open("html-css-font-guides.html", 'w', encoding='utf-8') as f: f.write(guides_page_html)
@@ -1017,12 +1013,7 @@ try:
         </div>
     </div>
 
-    <footer class="bg-white border-t border-slate-200 py-12 mt-auto">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center text-xs font-bold text-slate-500 uppercase tracking-widest">
-            <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
-            <a href="[https://x.com/HtmlFonts](https://x.com/HtmlFonts)" target="_blank" class="hover:text-indigo-600 text-indigo-500">@HtmlFonts</a>
-        </div>
-    </footer>
+{footer_html}
 
     <script>
         const fontData = {{
@@ -1098,7 +1089,6 @@ try:
             const lbl = document.getElementById('lbl-dark');
             
             if(isDark) {{
-                // Remove Light Mode Styles
                 wrapA.classList.replace('bg-indigo-50/20', 'bg-slate-900');
                 wrapA.classList.replace('border-indigo-100/50', 'border-slate-700');
                 wrapB.classList.replace('bg-violet-50/20', 'bg-slate-900');
@@ -1124,7 +1114,6 @@ try:
                 pb.classList.replace('text-slate-900', 'text-white');
                 lbl.innerText = "Light Mode";
             }} else {{
-                // Remove Dark Mode Styles
                 wrapA.classList.replace('bg-slate-900', 'border-slate-700');
                 wrapB.classList.replace('bg-slate-900', 'border-slate-700');
                 panelA.classList.replace('bg-slate-800', 'border-slate-700');
@@ -1569,12 +1558,7 @@ try:
         </div>
     </div>
 
-    <footer class="bg-white border-t border-slate-200 py-12 mt-auto">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center text-xs font-bold text-slate-500 uppercase tracking-widest">
-            <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
-            <a href="[https://x.com/HtmlFonts](https://x.com/HtmlFonts)" target="_blank" class="hover:text-indigo-600 text-indigo-500">@HtmlFonts</a>
-        </div>
-    </footer>
+{footer_html}
 
     <script>
         let fontsRaw = {json.dumps(master_fonts)};
