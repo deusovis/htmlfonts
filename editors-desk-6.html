@@ -66,6 +66,49 @@
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 30, 2026</span>
                 </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering Fluid Typography with CSS `clamp()`: The Secret to Responsive & Readable UI</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">Leverage CSS `clamp()` to set a minimum, preferred (fluid), and maximum font size. This technique ensures your text scales gracefully between breakpoints, improving readability and reducing the need for extensive media queries for typography, leading to a superior user experience with minimal effort.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">/* Define fluid font sizes using CSS `clamp()` variables */
+
+:root {
+  /* Base font scaling */
+  --fluid-min-font: 1rem; /* Smallest font size (e.g., on mobile) */
+  --fluid-max-font: 1.25rem; /* Largest font size (e.g., on desktop) */
+  
+  /* Viewport widths for scaling */
+  --viewport-min: 20rem; /* Viewport width where scaling begins (e.g., 320px) */
+  --viewport-max: 80rem; /* Viewport width where scaling ends (e.g., 1280px) */
+}
+
+body {
+  font-size: clamp(var(--fluid-min-font),
+                   calc(var(--fluid-min-font) + (var(--fluid-max-font) - var(--fluid-min-font)) * ((100vw - var(--viewport-min)) / (var(--viewport-max) - var(--viewport-min)))),
+                   var(--fluid-max-font));
+  line-height: 1.6; /* Optimal for readability */
+  font-family: &#x27;Inter&#x27;, sans-serif; /* Example web font for modern UI */
+  color: #333; /* Good contrast for UX */
+}
+
+/* Example for a heading (h1) to also be fluid */
+h1 {
+  --h1-min-font: 2.5rem;
+  --h1-max-font: 4rem;
+  font-size: clamp(var(--h1-min-font),
+                   calc(var(--h1-min-font) + (var(--h1-max-font) - var(--h1-min-font)) * ((100vw - var(--viewport-min)) / (var(--viewport-max) - var(--viewport-min)))),
+                   var(--h1-max-font));
+  line-height: 1.1;
+  font-weight: 700;
+  margin-block-start: 1.5em; /* Better vertical rhythm */
+  margin-block-end: 0.5em;
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 30, 2026</span>
+                </div>
                 <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering Variable Fonts: Elevating UI/UX with Performance & Precision</h2>
                 <p class="text-slate-600 font-medium leading-relaxed mb-6">Leverage Variable Fonts to dramatically reduce HTTP requests and enable fine-grained typographic control (e.g., optical sizing, weight interpolation, or custom axes) within a single font file. This not only boosts performance but also enhances #UIDesign adaptability, allowing for subtle, responsive adjustments directly via CSS without needing JavaScript or loading multiple static font variants.</p>
                 <div class="bg-slate-900 rounded-xl p-4 relative">

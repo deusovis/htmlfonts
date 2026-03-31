@@ -66,6 +66,19 @@
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
                 </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Typography Tip Mar 31</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">body {
+  line-height: 1.5;
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
                 <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering Fluid Type: Variable Fonts & Advanced CSS Typography</h2>
                 <p class="text-slate-600 font-medium leading-relaxed mb-6">Harness the power of variable fonts and `font-variation-settings` for unparalleled typographic control and efficiency. Instead of loading multiple static font files (e.g., light, regular, bold), a single variable font file contains all axis variations (weight, width, optical size, slant, etc.). This drastically reduces HTTP requests and overall font file size, leading to faster page loads and a smoother #UserExperience. Combine with CSS `clamp()` for truly responsive, fluid typography that adapts perfectly across all screen sizes without media queries for every breakpoint.</p>
                 <div class="bg-slate-900 rounded-xl p-4 relative">
@@ -288,32 +301,6 @@ h1 {
   font-size: clamp(2.5rem, 1.8rem + 3vw, 4rem); /* H1 scales from 40px to 64px */
   line-height: 1.1;
   letter-spacing: -0.02em;
-}</code></pre>
-                </div>
-            </article>
-            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
-                </div>
-                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering Responsive Type Scales for Superior UI/UX with CSS `clamp()`</h2>
-                <p class="text-slate-600 font-medium leading-relaxed mb-6">Harness the power of CSS `clamp()` for truly fluid and responsive typography. It lets you define a minimum, preferred (fluid viewport-based), and maximum font size, gracefully scaling text while maintaining readability and consistency, significantly enhancing your UI/UX design.</p>
-                <div class="bg-slate-900 rounded-xl p-4 relative">
-                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">body {
-  /* Sets font size to be at least 1rem, at most 1.25rem, 
-     and fluidly scales between them based on viewport width. */
-  font-size: clamp(1rem, 2vw + 0.5rem, 1.25rem);
-  line-height: 1.6;
-  font-family: &#x27;Inter&#x27;, sans-serif;
-  text-rendering: optimizeLegibility; /* Enhances text rendering for better clarity */
-  -webkit-font-smoothing: antialiased; /* macOS font smoothing */
-  -moz-osx-font-smoothing: grayscale; /* macOS font smoothing */
-}
-
-h1 {
-  /* Larger fluid scale for headings */
-  font-size: clamp(2rem, 5vw + 1rem, 3.5rem);
-  line-height: 1.2;
 }</code></pre>
                 </div>
             </article>
