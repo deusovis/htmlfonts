@@ -157,7 +157,7 @@ top_guides = [
     ("how-to-add-font-fallback-stacks", "Creating Bulletproof Font Stacks", "Resilience", "A font stack is a prioritized list of fallback fonts. The browser will try each one in order until it finds one installed on the user's system.", "font-family: 'MyCustomFont', 'Helvetica Neue', Arial, sans-serif;", "Always end your CSS font stack with a generic family name like sans-serif or serif.")
 ]
 
-# PERFECTLY FIXED: All 30 entries now have exactly 6 arguments.
+# Ensure every tuple has exactly 6 elements to prevent unpacking crash
 top_comparisons = [
     ("Roboto", "Open Sans", "'Roboto', sans-serif", "'Open Sans', sans-serif", "Roboto:wght@400;700", "Open+Sans:wght@400;700"),
     ("Arial", "Helvetica", "Arial, sans-serif", "Helvetica, Arial, sans-serif", "", ""),
@@ -168,7 +168,7 @@ top_comparisons = [
     ("Nunito", "Poppins", "'Nunito', sans-serif", "'Poppins', sans-serif", "Nunito:wght@400;700", "Poppins:wght@400;700"),
     ("Raleway", "Montserrat", "'Raleway', sans-serif", "'Montserrat', sans-serif", "Raleway:wght@400;700", "Montserrat:wght@400;700"),
     ("Times New Roman", "Georgia", "'Times New Roman', Times, serif", "Georgia, serif", "", ""),
-    ("Lora", "PT Serif", "'Lora', serif", "'PT Serif', serif", "Lora:wght@400;700", "PT+Serif:wght@400;700"),
+    ("Lora", "PT Serif", "'PT Serif', serif", "Lora:wght@400;700", "PT+Serif:wght@400;700"),
     ("Work Sans", "Fira Sans", "'Work Sans', sans-serif", "'Fira Sans', sans-serif", "Work+Sans:wght@400;700", "Fira+Sans:wght@400;700"),
     ("Rubik", "Karla", "'Rubik', sans-serif", "'Karla', sans-serif", "Rubik:wght@400;700", "Karla:wght@400;700"),
     ("Fira Code", "Source Code Pro", "'Fira Code', monospace", "'Source Code Pro', monospace", "Fira+Code:wght@400;700", "Source+Code+Pro:wght@400;700"),
@@ -874,16 +874,17 @@ try:
 
     # 7. GENERATE COMPARISONS
     print("Generating Font Comparisons...")
+    
+    # Pre-generate the "Most Searched Comparisons" grid links BEFORE building the individual pages
     comparison_grid_links = ""
+    for font_a, font_b, css_a, css_b, link_a, link_b in top_comparisons:
+        slug = f"{font_a.lower().replace(' ', '-')}-vs-{font_b.lower().replace(' ', '-')}"
+        comparison_grid_links += f'                <a href="/compare/{slug}.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">{font_a} vs {font_b}</a>\n'
+
     for font_a, font_b, css_a, css_b, link_a, link_b in top_comparisons:
         slug = f"{font_a.lower().replace(' ', '-')}-vs-{font_b.lower().replace(' ', '-')}"
         imp_a = f"<link href='{GFONTS}?family={link_a}&display=swap' rel='stylesheet'>" if link_a else ""
         imp_b = f"<link href='{GFONTS}?family={link_b}&display=swap' rel='stylesheet'>" if link_b else ""
-        
-        type_a = next((f['type'] for f in master_fonts if f['name'] == font_a), 'Sans-Serif')
-        type_b = next((f['type'] for f in master_fonts if f['name'] == font_b), 'Sans-Serif')
-        
-        comparison_grid_links += f'                    <a href="/compare/{slug}.html" class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all font-bold text-sm text-slate-700 hover:text-indigo-600 text-center">{font_a} vs {font_b}</a>\n'
 
         sys_msg = '<span class="font-sans font-medium text-emerald-400 select-none">✨ Web-safe system font. Pre-installed on all devices for zero-latency loading. No HTML import required!</span>'
         html_a = imp_a if imp_a else sys_msg
@@ -1082,6 +1083,13 @@ try:
 
         <div class="mt-12 bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 text-slate-600">
             {seo_description}
+        </div>
+        
+        <div class="border-t border-slate-200 pt-16 mt-24">
+            <h2 class="text-3xl font-black text-slate-900 mb-8 text-center tracking-tight">Most Searched Comparisons</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+{comparison_grid_links}
+            </div>
         </div>
     </main>
     
@@ -1617,9 +1625,13 @@ try:
             </div>
         </div>
 
-        <div class="mt-12 bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 text-slate-600">
-            {seo_description}
+        <div class="border-t border-slate-200 pt-16 mt-24">
+            <h2 class="text-3xl font-black text-slate-900 mb-8 text-center tracking-tight">Most Searched Comparisons</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+{comparison_grid_links}
+            </div>
         </div>
+
     </main>
     
     <div id="code-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
@@ -1751,10 +1763,10 @@ try:
                 lbl.innerText = "Light Mode";
             }} else {{
                 // Remove Dark Mode Styles
-                wrapA.classList.replace('bg-slate-900', 'border-slate-700');
-                wrapB.classList.replace('bg-slate-900', 'border-slate-700');
-                panelA.classList.replace('bg-slate-800', 'border-slate-700');
-                panelB.classList.replace('bg-slate-800', 'border-slate-700');
+                wrapA.classList.remove('bg-slate-900', 'border-slate-700');
+                wrapB.classList.remove('bg-slate-900', 'border-slate-700');
+                panelA.classList.remove('bg-slate-800', 'border-slate-700');
+                panelB.classList.remove('bg-slate-800', 'border-slate-700');
                 tabA.classList.remove('bg-slate-800', 'border-slate-700');
                 tabB.classList.remove('bg-slate-800', 'border-slate-700');
                 weightA.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
