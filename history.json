@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate Your UI/UX: Mastering Fluid Responsive Typography with CSS `clamp()`",
+        "slug": "fluid-responsive-typography-css-clamp",
+        "tweet": "Boost your UI/UX! \ud83d\ude80 Master fluid responsive typography with CSS `clamp()`. Create adaptive text that scales beautifully across devices without media queries. A game-changer for #CSSTypography & #UIDesign. #WebFonts #UXTips",
+        "tip": "Leverage CSS `clamp()` for responsive font sizes and line heights. This powerful function allows you to define a minimum, preferred, and maximum value, creating fluid typography that automatically adapts to viewport changes, significantly enhancing readability and user experience across all devices without the need for numerous media queries. It's ideal for maintaining visual hierarchy and optimal line length for improved legibility.",
+        "css_snippet": "/* Fluid Typography with CSS clamp() */\n\n:root {\n  --min-font: 1rem; /* Minimum font size */\n  --max-font: 1.25rem; /* Maximum font size */\n  --fluid-viewport: 2vw; /* Fluid scaling factor */\n  --min-h1: 2.5rem;\n  --max-h1: 4.5rem;\n}\n\nbody {\n  font-family: 'Inter', system-ui, sans-serif;\n  /* Scales from 1rem to 1.25rem as viewport grows */\n  font-size: clamp(var(--min-font), var(--fluid-viewport) + 0.5rem, var(--max-font));\n  /* Example for fluid line-height */\n  line-height: clamp(1.5, var(--fluid-viewport) + 1.25, 1.75);\n  color: #333;\n}\n\nh1 {\n  /* Scales from 2.5rem to 4.5rem */\n  font-size: clamp(var(--min-h1), var(--fluid-viewport) * 2 + 1rem, var(--max-h1));\n  line-height: 1.1;\n  margin-bottom: 0.5em;\n}\n\np {\n  max-width: 70ch; /* Optimal line length for readability */\n}",
+        "date": "March 31, 2026"
+    },
+    {
         "title": "Mastering font-display for Superior Web Font Loading and User Experience",
         "slug": "font-display-web-fonts-ux-performance",
         "tweet": "Boost your website's perceived performance and enhance user experience! Learn how to effectively use `font-display` in your `@font-face` rules to control web font loading behavior and prevent layout shifts (CLS). #CSSTypography #WebFonts #UIDesign #UX",

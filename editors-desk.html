@@ -66,6 +66,45 @@
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
                 </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Elevate Your UI/UX: Mastering Fluid Responsive Typography with CSS `clamp()`</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">Leverage CSS `clamp()` for responsive font sizes and line heights. This powerful function allows you to define a minimum, preferred, and maximum value, creating fluid typography that automatically adapts to viewport changes, significantly enhancing readability and user experience across all devices without the need for numerous media queries. It's ideal for maintaining visual hierarchy and optimal line length for improved legibility.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">/* Fluid Typography with CSS clamp() */
+
+:root {
+  --min-font: 1rem; /* Minimum font size */
+  --max-font: 1.25rem; /* Maximum font size */
+  --fluid-viewport: 2vw; /* Fluid scaling factor */
+  --min-h1: 2.5rem;
+  --max-h1: 4.5rem;
+}
+
+body {
+  font-family: &#x27;Inter&#x27;, system-ui, sans-serif;
+  /* Scales from 1rem to 1.25rem as viewport grows */
+  font-size: clamp(var(--min-font), var(--fluid-viewport) + 0.5rem, var(--max-font));
+  /* Example for fluid line-height */
+  line-height: clamp(1.5, var(--fluid-viewport) + 1.25, 1.75);
+  color: #333;
+}
+
+h1 {
+  /* Scales from 2.5rem to 4.5rem */
+  font-size: clamp(var(--min-h1), var(--fluid-viewport) * 2 + 1rem, var(--max-h1));
+  line-height: 1.1;
+  margin-bottom: 0.5em;
+}
+
+p {
+  max-width: 70ch; /* Optimal line length for readability */
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
                 <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering font-display for Superior Web Font Loading and User Experience</h2>
                 <p class="text-slate-600 font-medium leading-relaxed mb-6">Always include a `font-display` descriptor in your `@font-face` rules. For most body text, `font-display: swap;` offers the best balance, showing a fallback quickly and swapping in your custom font when ready. For critical hero text, `block` might be acceptable, but for secondary elements, consider `fallback` or `optional` to minimize layout shifts (CLS) and ensure a fast initial render, prioritizing readability.</p>
                 <div class="bg-slate-900 rounded-xl p-4 relative">
@@ -252,26 +291,6 @@ h1 {
                     <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">body {
   line-height: 1.5;
 }</code></pre>
-                </div>
-            </article>
-            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
-                </div>
-                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering `font-display`: Optimizing Web Font Loading for Superior UX</h2>
-                <p class="text-slate-600 font-medium leading-relaxed mb-6">Beyond `font-display: swap;`, explore `optional` for non-critical fonts to minimize network requests and improve resilience, or `fallback` for subtle font differences where a brief blank period is acceptable. Always pair your chosen `font-display` strategy with `<link rel="preload" as="font" crossorigin>` for critical web fonts. This combination ensures fonts are fetched early without render-blocking, drastically improving First Contentful Paint (FCP) and perceived loading speed, which is crucial for modern #UIDesign and accessibility.</p>
-                <div class="bg-slate-900 rounded-xl p-4 relative">
-                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">@font-face {
-  font-family: &#x27;Open Sans&#x27;;
-  src: url(&#x27;/fonts/OpenSans-Regular.woff2&#x27;) format(&#x27;woff2&#x27;);
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap; /* Consider &#x27;optional&#x27; for less critical fonts, or &#x27;fallback&#x27; for minimal differences */
-}
-
-/* In your HTML &lt;head&gt; for critical fonts */
-&lt;link rel=&quot;preload&quot; href=&quot;/fonts/OpenSans-Regular.woff2&quot; as=&quot;font&quot; type=&quot;font/woff2&quot; crossorigin&gt;</code></pre>
                 </div>
             </article>
         
