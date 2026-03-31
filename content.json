@@ -1,8 +1,8 @@
 {
-    "title": "Optimizing Web Font Loading with `font-display: optional` for Superior UX",
-    "slug": "optimize-web-font-loading-font-display-optional-ux",
-    "tweet": "Master `font-display: optional` to eliminate layout shifts and prioritize user experience! Learn how this CSS property delivers stable and fast web typography. #CSSTypography #WebFonts #UIDesign #UX",
-    "tip": "For web typography experts, one of the most impactful ways to enhance user experience and UI design is by carefully managing font loading. While `font-display: swap` is common for a quick FOUT (Flash of Unstyled Text) to render content quickly with a fallback, it often leads to jarring layout shifts once the custom web font loads. To prioritize stability and a seamless user experience, particularly on slower connections, leverage `font-display: optional`. This setting tells the browser to use the custom font only if it loads within a very short timeframe (typically 100ms). If not, the browser will permanently use the fallback font for that page load, preventing any layout shifts or FOUT. This approach guarantees a consistent and fast visual experience, making it an excellent choice for critical UI elements where content stability is paramount. Combine it with font subsetting and preloading for a truly optimized web font strategy.",
-    "css_snippet": "/* Defining a custom web font with optional display */\n@font-face {\n  font-family: 'Merriweather';\n  src: url('/fonts/Merriweather-Regular.woff2') format('woff2'),\n       url('/fonts/Merriweather-Regular.woff') format('woff');\n  font-weight: 400;\n  font-style: normal;\n  font-display: optional; /* Crucial for UX: uses fallback if not loaded quickly */\n}\n\n/* Applying the font to critical UI elements */\nh1,\n.hero-title {\n  font-family: 'Merriweather', serif;\n  font-size: clamp(2.5rem, 6vw, 4rem);\n  line-height: 1.1;\n  letter-spacing: -0.03em;\n  color: #2c3e50;\n  /* Further CSS typography refinements */\n  text-rendering: optimizeLegibility;\n}\n\np {\n  font-family: 'Merriweather', serif; /* Or another body font */\n  font-size: 1.125rem;\n  line-height: 1.6;\n  color: #34495e;\n}",
+    "title": "Typography Tip Mar 31",
+    "slug": "typography-tip-1774973381",
+    "tweet": "Check out today's CSS typography tip! #webdesign #css",
+    "tip": "To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.",
+    "css_snippet": "body {\n  line-height: 1.5;\n}",
     "date": "March 31, 2026"
 }

@@ -1,5 +1,13 @@
 [
     {
+        "title": "Typography Tip Mar 31",
+        "slug": "typography-tip-1774973381",
+        "tweet": "Check out today's CSS typography tip! #webdesign #css",
+        "tip": "To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.",
+        "css_snippet": "body {\n  line-height: 1.5;\n}",
+        "date": "March 31, 2026"
+    },
+    {
         "title": "Optimizing Web Font Loading with `font-display: optional` for Superior UX",
         "slug": "optimize-web-font-loading-font-display-optional-ux",
         "tweet": "Master `font-display: optional` to eliminate layout shifts and prioritize user experience! Learn how this CSS property delivers stable and fast web typography. #CSSTypography #WebFonts #UIDesign #UX",
