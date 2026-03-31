@@ -1721,10 +1721,8 @@ try:
             const wrapB = document.getElementById('wrap-b');
             const panelA = document.getElementById('panel-a');
             const panelB = document.getElementById('panel-b');
-            const tabA = document.getElementById('tab-a');
-            const tabB = document.getElementById('tab-b');
-            const fontA = document.getElementById('vs-font-a');
-            const fontB = document.getElementById('vs-font-b');
+            const titleA = document.getElementById('title-a');
+            const titleB = document.getElementById('title-b');
             const weightA = document.getElementById('vs-weight-a');
             const weightB = document.getElementById('vs-weight-b');
             const pa = document.getElementById('vs-preview-a');
@@ -1733,68 +1731,55 @@ try:
             
             if(isDark) {{
                 // Remove Light Mode Styles
-                wrapA.classList.remove('bg-indigo-50/20', 'border-indigo-100/50');
-                wrapB.classList.remove('bg-violet-50/20', 'border-violet-100/50');
-                panelA.classList.remove('bg-white', 'border-slate-200');
-                panelB.classList.remove('bg-white', 'border-slate-200');
-                tabA.classList.remove('bg-indigo-50', 'border-indigo-100');
-                tabB.classList.remove('bg-violet-50', 'border-violet-100');
-                weightA.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
-                weightB.classList.remove('bg-slate-50', 'border-slate-200', 'text-slate-600');
-                fontA.classList.remove('text-slate-800');
-                fontB.classList.remove('text-slate-800');
-                pa.classList.remove('text-slate-900');
-                pb.classList.remove('text-slate-900');
+                wrapA.classList.replace('bg-indigo-50/20', 'bg-slate-900');
+                wrapA.classList.replace('border-indigo-100/50', 'border-slate-700');
+                wrapB.classList.replace('bg-violet-50/20', 'bg-slate-900');
+                wrapB.classList.replace('border-violet-100/50', 'border-slate-700');
                 
-                // Add Dark Mode Styles
-                wrapA.classList.add('bg-slate-900', 'border-slate-700');
-                wrapB.classList.add('bg-slate-900', 'border-slate-700');
-                panelA.classList.add('bg-slate-800', 'border-slate-700');
-                panelB.classList.add('bg-slate-800', 'border-slate-700');
-                tabA.classList.add('bg-slate-800', 'border-slate-700');
-                tabB.classList.add('bg-slate-800', 'border-slate-700');
-                weightA.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
-                weightB.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
-                fontA.classList.add('text-white');
-                fontB.classList.add('text-white');
-                pa.classList.add('text-white');
-                pb.classList.add('text-white');
+                panelA.classList.replace('bg-white', 'bg-slate-800');
+                panelA.classList.replace('border-slate-200', 'border-slate-700');
+                panelB.classList.replace('bg-white', 'bg-slate-800');
+                panelB.classList.replace('border-slate-200', 'border-slate-700');
                 
+                titleA.classList.replace('text-slate-800', 'text-white');
+                titleB.classList.replace('text-slate-800', 'text-white');
+                
+                weightA.classList.replace('bg-slate-50', 'bg-slate-800');
+                weightA.classList.replace('border-slate-200', 'border-slate-700');
+                weightA.classList.replace('text-slate-600', 'text-white');
+                
+                weightB.classList.replace('bg-slate-50', 'bg-slate-800');
+                weightB.classList.replace('border-slate-200', 'border-slate-700');
+                weightB.classList.replace('text-slate-600', 'text-white');
+                
+                pa.classList.replace('text-slate-900', 'text-white');
+                pb.classList.replace('text-slate-900', 'text-white');
                 lbl.innerText = "Light Mode";
             }} else {{
                 // Remove Dark Mode Styles
-                wrapA.classList.remove('bg-slate-900', 'border-slate-700');
-                wrapB.classList.remove('bg-slate-900', 'border-slate-700');
-                panelA.classList.remove('bg-slate-800', 'border-slate-700');
-                panelB.classList.remove('bg-slate-800', 'border-slate-700');
-                tabA.classList.remove('bg-slate-800', 'border-slate-700');
-                tabB.classList.remove('bg-slate-800', 'border-slate-700');
-                weightA.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
-                weightB.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
-                fontA.classList.remove('text-white');
-                fontB.classList.remove('text-white');
-                pa.classList.remove('text-white');
-                pb.classList.remove('text-white');
-
-                // Restore Light Mode Styles
-                wrapA.classList.add('bg-indigo-50/20', 'border-indigo-100/50');
-                wrapB.classList.add('bg-violet-50/20', 'border-violet-100/50');
-                panelA.classList.add('bg-white', 'border-slate-200');
-                panelB.classList.add('bg-white', 'border-slate-200');
-                tabA.classList.add('bg-indigo-50', 'border-indigo-100');
-                tabB.classList.add('bg-violet-50', 'border-violet-100');
-                weightA.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-600');
-                weightB.classList.add('bg-slate-50', 'border-slate-200', 'text-slate-600');
-                fontA.classList.add('text-slate-800');
-                fontB.classList.add('text-slate-800');
-                pa.classList.add('text-slate-900');
-                pb.classList.add('text-slate-900');
+                wrapA.classList.replace('bg-slate-900', 'border-slate-700');
+                wrapB.classList.replace('bg-slate-900', 'border-slate-700');
+                panelA.classList.replace('bg-slate-800', 'border-slate-700');
+                panelB.classList.replace('bg-slate-800', 'border-slate-700');
                 
+                titleA.classList.replace('text-white', 'text-slate-800');
+                titleB.classList.replace('text-white', 'text-slate-800');
+                
+                weightA.classList.replace('bg-slate-800', 'bg-slate-50');
+                weightA.classList.replace('border-slate-700', 'border-slate-200');
+                weightA.classList.replace('text-white', 'text-slate-600');
+                
+                weightB.classList.replace('bg-slate-800', 'bg-slate-50');
+                weightB.classList.replace('border-slate-700', 'border-slate-200');
+                weightB.classList.replace('text-white', 'text-slate-600');
+                
+                pa.classList.replace('text-white', 'text-slate-900');
+                pb.classList.replace('text-white', 'text-slate-900');
                 lbl.innerText = "Dark Mode";
             }}
             u();
         }}
-
+        
         function toggleXRay() {{
             isXray = !isXray;
             const grid = document.getElementById('compare-grid');
