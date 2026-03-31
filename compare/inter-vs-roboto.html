@@ -215,10 +215,10 @@
         </div>
     </div>
 
-    <footer class="bg-white border-t border-slate-200 py-12 mt-auto">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center text-xs font-bold text-slate-500 uppercase tracking-widest">
-            <p>&copy; 2026 htmlfonts</p>
-            <a href="[https://x.com/HtmlFonts](https://x.com/HtmlFonts)" target="_blank" class="hover:text-indigo-600 text-indigo-500">@HtmlFonts</a>
+    <footer class="bg-white border-t border-slate-200 py-16 mt-auto">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">&copy; 2026 htmlfonts. All rights reserved.</p>
+            <a href="https://x.com/HtmlFonts" target="_blank" class="text-xs font-bold text-indigo-500 hover:text-indigo-600 uppercase tracking-widest transition">Follow @HtmlFonts</a>
         </div>
     </footer>
 
@@ -296,7 +296,6 @@
             const lbl = document.getElementById('lbl-dark');
             
             if(isDark) {
-                // Remove Light Mode Styles
                 wrapA.classList.replace('bg-indigo-50/20', 'bg-slate-900');
                 wrapA.classList.replace('border-indigo-100/50', 'border-slate-700');
                 wrapB.classList.replace('bg-violet-50/20', 'bg-slate-900');
@@ -322,7 +321,6 @@
                 pb.classList.replace('text-slate-900', 'text-white');
                 lbl.innerText = "Light Mode";
             } else {
-                // Remove Dark Mode Styles
                 wrapA.classList.replace('bg-slate-900', 'border-slate-700');
                 wrapB.classList.replace('bg-slate-900', 'border-slate-700');
                 panelA.classList.replace('bg-slate-800', 'border-slate-700');
