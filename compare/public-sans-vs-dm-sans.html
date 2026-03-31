@@ -21,9 +21,10 @@
         .toast-active { opacity: 1; transform: translate(-50%, 0); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .modal-active { opacity: 1; transform: scale(1) translateY(0); transition: all 0.2s ease-out; }
         .comparison-text { transition: font-size 0.2s ease; }
+        option { background-color: #ffffff; color: #0f172a; }
     </style>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
     <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3">Copied! 🚀</div>
     <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6 shadow-sm">
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
@@ -64,7 +65,7 @@
             <a href="/font-vs-font-comparison-tool.html" class="text-indigo-600 font-bold text-xs uppercase tracking-widest hover:text-indigo-800 transition">&larr; Back to Tool</a>
         </div>
         
-        <div class="bg-white rounded-3xl p-4 md:p-10 shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100">
+        <div class="bg-white rounded-3xl p-4 md:p-10 shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 mb-6 md:mb-10">
             <div class="flex flex-col md:flex-row gap-4 md:gap-6 mb-8 md:mb-12 items-stretch">
                 <div class="w-full md:w-2/3 bg-slate-50 border border-slate-200 rounded-2xl py-4 px-6 shadow-inner flex flex-col justify-center focus-within:ring-2 focus-within:ring-indigo-500 focus-within:bg-white transition-all">
                     <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 px-1">Testing Playground</label>
@@ -84,30 +85,32 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 divide-y md:divide-y-0 md:divide-x divide-slate-100">
-                <div class="md:pr-10 pt-4 md:pt-0 flex flex-col h-full">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 divide-y md:divide-y-0 md:divide-x divide-slate-100 items-start" id="compare-grid">
+                <div class="md:pr-10 pt-4 md:pt-0 flex flex-col transition-colors" id="panel-a">
                     <div class="flex items-center gap-3 mb-6">
                         <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-indigo-200 uppercase">A</span>
-                        <h3 class="text-2xl font-black">Public Sans</h3>
+                        <h3 id="title-a" class="text-2xl font-black text-slate-800 transition-colors">Public Sans</h3>
                     </div>
-                    <div class="flex-grow flex items-start p-4 md:p-6 min-h-[150px] md:min-h-[250px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50">
+                    <div id="wrap-a" class="w-full flex items-center p-4 md:p-6 min-h-[80px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden relative">
                         <p id="pa" class="comparison-text text-black break-words leading-tight w-full" style="font-family: 'Public Sans', sans-serif; font-size: 32px;">Optimize your UI design with fast-loading free web fonts.</p>
                     </div>
-                    <button onclick="openModal('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-xl shadow-indigo-100 mt-8 group">
-                        GET CODE FOR FONT A <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+                    <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-xl shadow-indigo-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        Copy HTML / CSS
                     </button>
                 </div>
 
-                <div class="md:pl-10 pt-10 md:pt-0 flex flex-col h-full">
+                <div class="md:pl-10 pt-10 md:pt-0 flex flex-col transition-colors" id="panel-b">
                     <div class="flex items-center gap-3 mb-6">
                         <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-violet-200 uppercase">B</span>
-                        <h3 class="text-2xl font-black">DM Sans</h3>
+                        <h3 id="title-b" class="text-2xl font-black text-slate-800 transition-colors">DM Sans</h3>
                     </div>
-                    <div class="flex-grow flex items-start p-4 md:p-6 min-h-[150px] md:min-h-[250px] bg-violet-50/20 rounded-2xl border border-violet-100/50">
+                    <div id="wrap-b" class="w-full flex items-center p-4 md:p-6 min-h-[80px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden relative">
                         <p id="pb" class="comparison-text text-black break-words leading-tight w-full" style="font-family: 'DM Sans', sans-serif; font-size: 32px;">Optimize your UI design with fast-loading free web fonts.</p>
                     </div>
-                    <button onclick="openModal('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-4 rounded-xl transition shadow-xl shadow-violet-100 mt-8 group">
-                        GET CODE FOR FONT B <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+                    <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-xl shadow-violet-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        Copy HTML / CSS
                     </button>
                 </div>
             </div>
@@ -118,23 +121,39 @@
         </div>
     </main>
     
-    <div id="code-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-xl p-8 relative modal-enter" id="modal-content">
-            <button onclick="closeModal('code-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 bg-slate-50 rounded-full p-2">✕</button>
-            <h3 class="text-3xl font-black text-slate-900 tracking-tighter mb-8" id="modal-font-name">Font Detail</h3>
+    <div id="code-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-2xl p-6 md:p-8 relative transform scale-95 transition-all duration-300" id="modal-content">
+            <button onclick="closeModal('code-modal')" class="absolute top-4 right-4 md:top-6 md:right-6 text-slate-400 hover:text-slate-900 bg-slate-50 hover:bg-slate-100 rounded-full p-2 transition">✕</button>
+            
+            <h3 class="text-2xl md:text-3xl font-black text-slate-900 tracking-tighter mb-2" id="modal-font-name">Font Detail</h3>
+            <p class="text-slate-500 text-xs md:text-sm font-medium mb-6">Production-ready code generated from your slider settings.</p>
+            
             <div class="space-y-6">
                 <div>
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2" id="modal-html-label">1. Add to HTML Head</label>
-                    <div class="bg-slate-900 rounded-xl p-4 relative group">
-                        <code id="modal-html" class="text-xs text-indigo-300 font-mono break-all block"></code>
-                        <button id="copy-html-btn" onclick="copyElementText('modal-html')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY HTML</button>
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">1. Import Font</label>
+                        <div class="flex bg-slate-100 p-1 rounded-lg">
+                            <button onclick="toggleImportMode('html')" id="btn-imp-html" class="text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition">HTML &lt;link&gt;</button>
+                            <button onclick="toggleImportMode('css')" id="btn-imp-css" class="text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition">CSS @import</button>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-xl p-4 relative group min-h-[80px] flex items-center">
+                        <code id="modal-html" class="text-[11px] md:text-xs text-indigo-300 font-mono break-all block whitespace-pre-wrap"></code>
+                        <button onclick="copyElementText('modal-html')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 hover:bg-indigo-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY</button>
                     </div>
                 </div>
+
                 <div>
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">2. Apply CSS Rule</label>
-                    <div class="bg-slate-900 rounded-xl p-4 relative group border-2 border-indigo-500/30">
-                        <code id="modal-css" class="text-xs font-mono text-indigo-300 block"></code>
-                        <button onclick="copyElementText('modal-css')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-indigo-600 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY CSS</button>
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] flex items-center gap-2">2. Apply CSS <span class="bg-emerald-500 text-white px-1.5 py-0.5 rounded-full text-[7px] hidden md:inline-block">FLUID CLAMP()</span></label>
+                        <div class="flex bg-slate-100 p-1 rounded-lg">
+                            <button onclick="toggleCSSMode('vanilla')" id="btn-css-vanilla" class="text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-emerald-600 transition">Vanilla CSS</button>
+                            <button onclick="toggleCSSMode('tailwind')" id="btn-css-tailwind" class="text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition">Tailwind</button>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-xl p-4 relative group border-2 border-emerald-500/30 min-h-[120px] flex items-center">
+                        <pre class="w-full m-0"><code id="modal-css" class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap leading-relaxed w-full"></code></pre>
+                        <button onclick="copyElementText('modal-css')" class="absolute top-3 right-3 text-[10px] font-bold text-white bg-emerald-600 hover:bg-emerald-500 px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md">COPY</button>
                     </div>
                 </div>
             </div>
@@ -147,13 +166,34 @@
     
     <script>
         const fontData = {
-            'a': { name: "Public Sans", css: "'Public Sans', sans-serif", html: '<link href=\'https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap\' rel=\'stylesheet\'>' },
-            'b': { name: "DM Sans", css: "'DM Sans', sans-serif", html: '<link href=\'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap\' rel=\'stylesheet\'>' }
+            'a': { name: "Public Sans", css: "'Public Sans', sans-serif", link: "Public+Sans:wght@400;700", type: "Sans-Serif" },
+            'b': { name: "DM Sans", css: "'DM Sans', sans-serif", link: "DM+Sans:wght@400;700", type: "Sans-Serif" }
         };
+
+        let isDark = false;
+        let importMode = 'html'; 
+        let cssMode = 'vanilla'; 
+        
+        let activeModalData = {
+            name: '', link: '', cssObj: '', type: '', weight: '400', 
+            sz: 32, lh: '1.5', ls: '0'
+        };
+
+        function getFallbackStack(type) {
+            if (type === 'Sans-Serif') return "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
+            if (type === 'Serif') return "Georgia, Cambria, 'Times New Roman', Times, serif";
+            if (type === 'Monospace') return "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace";
+            return "system-ui, sans-serif"; 
+        }
+
+        function initComparePage() {
+            u();
+        }
 
         function u() { 
             const v = document.getElementById('vs-text').value || 'Optimize your UI design with fast-loading free web fonts.'; 
             const sz = document.getElementById('vs-font-size').value;
+            
             document.getElementById('vs-size-label').innerText = sz + 'px';
             
             const pa = document.getElementById('pa');
@@ -164,37 +204,170 @@
             pb.innerText = v;
             pb.style.fontSize = sz + 'px';
         } 
-        
-        function openModal(side) {
-            const data = fontData[side];
-            document.getElementById('modal-font-name').innerText = data.name;
-            const htmlCode = document.getElementById('modal-html');
-            const copyBtn = document.getElementById('copy-html-btn');
-            const htmlLabel = document.getElementById('modal-html-label');
+
+        function toggleDarkMode() {
+            isDark = !isDark;
+            const wrapA = document.getElementById('wrap-a');
+            const wrapB = document.getElementById('wrap-b');
+            const panelA = document.getElementById('panel-a');
+            const panelB = document.getElementById('panel-b');
+            const titleA = document.getElementById('title-a');
+            const titleB = document.getElementById('title-b');
+            const pa = document.getElementById('pa');
+            const pb = document.getElementById('pb');
             
-            htmlLabel.innerText = "1. Add to HTML Head";
-            
-            if (data.html.includes('Web-safe system font')) {
-                htmlCode.innerHTML = data.html; 
-                htmlCode.className = "text-xs block";
-                copyBtn.style.display = 'none';
+            if(isDark) {
+                wrapA.classList.replace('bg-indigo-50/20', 'bg-slate-900');
+                wrapA.classList.replace('border-indigo-100/50', 'border-slate-700');
+                wrapB.classList.replace('bg-violet-50/20', 'bg-slate-900');
+                wrapB.classList.replace('border-violet-100/50', 'border-slate-700');
+                
+                panelA.classList.replace('bg-white', 'bg-slate-800');
+                panelA.classList.replace('border-slate-200', 'border-slate-700');
+                panelB.classList.replace('bg-white', 'bg-slate-800');
+                panelB.classList.replace('border-slate-200', 'border-slate-700');
+                
+                titleA.classList.replace('text-slate-800', 'text-white');
+                titleB.classList.replace('text-slate-800', 'text-white');
+                pa.classList.replace('text-slate-900', 'text-white');
+                pb.classList.replace('text-slate-900', 'text-white');
             } else {
-                htmlCode.textContent = data.html; 
-                htmlCode.className = "text-xs font-mono text-indigo-300 break-all block";
-                copyBtn.style.display = 'block';
+                wrapA.classList.replace('bg-slate-900', 'bg-indigo-50/20');
+                wrapA.classList.replace('border-slate-700', 'border-indigo-100/50');
+                wrapB.classList.replace('bg-slate-900', 'bg-violet-50/20');
+                wrapB.classList.replace('border-slate-700', 'border-violet-100/50');
+                
+                panelA.classList.replace('bg-slate-800', 'bg-white');
+                panelA.classList.replace('border-slate-700', 'border-slate-200');
+                panelB.classList.replace('bg-slate-800', 'bg-white');
+                panelB.classList.replace('border-slate-700', 'border-slate-200');
+
+                titleA.classList.replace('text-white', 'text-slate-800');
+                titleB.classList.replace('text-white', 'text-slate-800');
+                pa.classList.replace('text-white', 'text-slate-900');
+                pb.classList.replace('text-white', 'text-slate-900');
             }
-            
-            document.getElementById('modal-css').innerText = `font-family: ${data.css};`;
-            document.getElementById('code-modal').classList.remove('hidden');
-            setTimeout(() => document.getElementById('modal-content').classList.add('modal-active'), 10);
         }
-        
-        function closeModal(id) { document.getElementById('modal-content').classList.remove('modal-active'); setTimeout(() => document.getElementById(id).classList.add('hidden'), 200); }
+
+        function updateModalDisplay() {
+            const htmlCode = document.getElementById('modal-html');
+            if (activeModalData.link) {
+                if (importMode === 'html') {
+                    htmlCode.textContent = `<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=${activeModalData.link}&display=swap" rel="stylesheet">`;
+                } else {
+                    htmlCode.textContent = `@import url('https://fonts.googleapis.com/css2?family=${activeModalData.link}&display=swap');`;
+                }
+                document.getElementById('copy-html-btn').style.display = 'block';
+            } else {
+                htmlCode.innerHTML = `<span class="font-sans font-medium text-emerald-400 select-none">✨ System Font. No import required!</span>`;
+                document.getElementById('copy-html-btn').style.display = 'none';
+            }
+
+            const fontStack = `"${activeModalData.name}", ${getFallbackStack(activeModalData.type)}`;
+            const cssEl = document.getElementById('modal-css');
+            
+            let minSize = Math.max(12, Math.round(activeModalData.sz * 0.6));
+            let remMin = (minSize / 16).toFixed(3).replace(/\.?0+$/, '');
+            let remMax = (activeModalData.sz / 16).toFixed(3).replace(/\.?0+$/, '');
+            let fluidClamp = `clamp(${remMin}rem, 2vw + 0.5rem, ${remMax}rem)`;
+
+            if (cssMode === 'vanilla') {
+                let cssBlock = `.pro-text {
+`;
+                cssBlock += `  font-family: ${fontStack};
+`;
+                cssBlock += `  font-weight: ${activeModalData.weight};
+`;
+                cssBlock += `  font-size: ${fluidClamp};
+`;
+                cssBlock += `  line-height: ${activeModalData.lh};
+`;
+                if (activeModalData.ls !== "0" && activeModalData.ls !== "0.00") cssBlock += `  letter-spacing: ${activeModalData.ls}em;
+`;
+                cssBlock += `}`;
+                cssEl.textContent = cssBlock;
+            } else {
+                let twStr = `font-['${activeModalData.name}'] font-[${activeModalData.weight}] text-[${fluidClamp}] leading-[${activeModalData.lh}]`;
+                if (activeModalData.ls !== "0" && activeModalData.ls !== "0.00") twStr += ` tracking-[${activeModalData.ls}em]`;
+                cssEl.textContent = twStr;
+            }
+        }
+
+        function toggleImportMode(mode) {
+            importMode = mode;
+            const btnHtml = document.getElementById('btn-imp-html');
+            const btnCss = document.getElementById('btn-imp-css');
+            
+            if (mode === 'html') {
+                btnHtml.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition";
+                btnCss.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
+            } else {
+                btnCss.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition";
+                btnHtml.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
+            }
+            updateModalDisplay();
+        }
+
+        function toggleCSSMode(mode) {
+            cssMode = mode;
+            const btnVan = document.getElementById('btn-css-vanilla');
+            const btnTw = document.getElementById('btn-css-tailwind');
+            
+            if (mode === 'vanilla') {
+                btnVan.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-emerald-600 transition";
+                btnTw.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
+            } else {
+                btnTw.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-emerald-600 transition";
+                btnVan.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
+            }
+            updateModalDisplay();
+        }
+
+        function openModalFromVS(side) { 
+            const fontObj = fontData[side];
+            
+            activeModalData = {
+                name: fontObj.name,
+                link: fontObj.link,
+                cssObj: fontObj.css,
+                type: fontObj.type,
+                weight: '400',
+                sz: parseInt(document.getElementById('vs-font-size').value),
+                lh: '1.5',
+                ls: '0'
+            };
+
+            document.getElementById('modal-font-name').innerText = activeModalData.name + ' (' + activeModalData.weight + ')';
+            
+            updateModalDisplay();
+            
+            const modal = document.getElementById('code-modal');
+            const modalContent = document.getElementById('modal-content');
+            modal.classList.remove('hidden');
+            void modal.offsetWidth;
+            modal.classList.remove('opacity-0');
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+        }
+
+        function closeModal(id) { 
+            const modal = document.getElementById(id);
+            const modalContent = document.getElementById('modal-content');
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => modal.classList.add('hidden'), 300); 
+        }
         
         function triggerToast(msg = "Copied! 🚀") {
             const t = document.getElementById('toast'); 
-            t.classList.remove('hidden'); setTimeout(() => t.classList.add('toast-active'), 10);
-            setTimeout(() => { t.classList.remove('toast-active'); setTimeout(() => t.classList.add('hidden'), 300); }, 3000);
+            t.classList.remove('hidden'); 
+            void t.offsetWidth;
+            t.classList.remove('opacity-0', 'translate-y-4');
+            setTimeout(() => { 
+                t.classList.add('opacity-0', 'translate-y-4'); 
+                setTimeout(() => t.classList.add('hidden'), 300); 
+            }, 3000);
         }
         
         function copyElementText(id) {
@@ -204,6 +377,8 @@
                 el.select(); document.execCommand('copy'); document.body.removeChild(el); triggerToast();
             });
         }
+        
+        initComparePage();
     </script>
 </body>
 </html>
