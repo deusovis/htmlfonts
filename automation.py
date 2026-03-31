@@ -1089,6 +1089,7 @@ try:
             const lbl = document.getElementById('lbl-dark');
             
             if(isDark) {{
+                // Remove Light Mode Styles
                 wrapA.classList.replace('bg-indigo-50/20', 'bg-slate-900');
                 wrapA.classList.replace('border-indigo-100/50', 'border-slate-700');
                 wrapB.classList.replace('bg-violet-50/20', 'bg-slate-900');
@@ -1114,6 +1115,7 @@ try:
                 pb.classList.replace('text-slate-900', 'text-white');
                 lbl.innerText = "Light Mode";
             }} else {{
+                // Remove Dark Mode Styles
                 wrapA.classList.replace('bg-slate-900', 'border-slate-700');
                 wrapB.classList.replace('bg-slate-900', 'border-slate-700');
                 panelA.classList.replace('bg-slate-800', 'border-slate-700');
@@ -1778,8 +1780,8 @@ try:
             document.getElementById('lbl-lh').innerText = lh;
             document.getElementById('lbl-ls').innerText = ls + 'em';
             
-            const wA = document.getElementById('vs-weight-a').value;
-            const wB = document.getElementById('vs-weight-b').value;
+            const wA = document.getElementById('vs-weight-a').value || '400';
+            const wB = document.getElementById('vs-weight-b').value || '400';
             
             const txtColor = isDark ? '#ffffff' : '#0f172a';
 
