@@ -241,12 +241,14 @@ home_js_raw = r"""
         
         let idxState = { name: '', url: '', css: '', impMode: 'html', cssMode: 'vanilla' };
 
-        previewInput.addEventListener('input', (e) => {
-            const val = e.target.value;
-            previewTexts.forEach(p => {
-                p.textContent = val ? val : p.getAttribute('data-default');
+        if(previewInput) {
+            previewInput.addEventListener('input', (e) => {
+                const val = e.target.value;
+                previewTexts.forEach(p => {
+                    p.textContent = val ? val : p.getAttribute('data-default');
+                });
             });
-        });
+        }
 
         const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
@@ -763,9 +765,9 @@ tool_js_raw = r"""
         }
 
         function openModalFromVS(side) { 
-            const currObj = (typeof fontData !== 'undefined' && fontData[side]) ? fontData[side] : vsData[side];
-            if(!currObj) return;
-
+            let currObj = (typeof fontData !== 'undefined' && fontData[side]) ? fontData[side] : vsData[side];
+            if (!currObj) return;
+            
             const wEl = document.getElementById(side === 'a' ? 'vs-weight-a' : 'vs-weight-b');
             const szEl = document.getElementById('vs-font-size');
             const lhEl = document.getElementById('vs-lh');
@@ -1016,6 +1018,7 @@ try:
     </div>
 
     <main class="flex-grow py-16 px-4 md:px-6 w-full">
+        <!-- Narrowed container for the perfect 65-75 character reading line length -->
         <article class="max-w-3xl mx-auto">
             {ai_content}
         </article>
@@ -1092,6 +1095,7 @@ try:
             </div>
 
             <div class="space-y-5 overflow-y-auto flex-grow pr-2 custom-scrollbar">
+                <!-- Import Box -->
                 <div>
                     <div class="flex items-center justify-between mb-2">
                         <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">1. Import Font</label>
@@ -1106,6 +1110,7 @@ try:
                     </div>
                 </div>
 
+                <!-- CSS Box -->
                 <div>
                     <div class="flex items-center justify-between mb-2">
                         <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">2. Apply CSS</label>
@@ -1438,8 +1443,9 @@ try:
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
-    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-emerald-500 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3">
-        <span>CSS Code Copied! 🚀</span>
+    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-emerald-50 text-emerald-600 px-6 py-3 rounded-xl border border-emerald-200 shadow-xl z-[100] text-sm font-bold uppercase flex items-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        <span>CSS Code Copied!</span>
     </div>
 {header_html}
     <div class="bg-white border-b border-slate-200 overflow-hidden relative">
@@ -1651,8 +1657,9 @@ try:
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
 
-    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-emerald-500 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3">
-        <span>CSS Code Copied! 🚀</span>
+    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-emerald-50 text-emerald-600 px-6 py-3 rounded-xl border border-emerald-200 shadow-xl z-[100] text-sm font-bold uppercase flex items-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        <span>CSS Code Copied!</span>
     </div>
 
 {header_html}
@@ -1758,7 +1765,7 @@ try:
                 <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6 items-center justify-between">
                     <div class="flex items-center">
                         <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-violet-200 uppercase mr-3">B</span>
-                        <h3 id="title-b" class="text-2xl font-black text-slate-800 transition-colors">{font_b}</h3>
+                        <select id="vs-font-b" class="w-full bg-transparent py-3 font-bold text-slate-800 outline-none cursor-pointer text-sm transition-colors"></select>
                     </div>
                     <select id="vs-weight-b" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
@@ -1772,7 +1779,7 @@ try:
             </div>
         </div>
 
-        <div class="mt-12 border-t border-slate-200 pt-16">
+        <div class="border-t border-slate-200 pt-16 mt-24">
             <h2 class="text-3xl font-black text-slate-900 mb-8 text-center tracking-tight">Most Searched Comparisons</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 {comparison_grid_links}
