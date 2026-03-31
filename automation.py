@@ -699,7 +699,8 @@ try:
 </body>
 </html>"""
     with open("html-css-font-guides.html", 'w', encoding='utf-8') as f: f.write(guides_page_html)
-# 6. GENERATE COMPARISONS
+
+    # 6. GENERATE COMPARISONS
     print("Generating Font Comparisons...")
     comparison_grid_links = ""
     for font_a, font_b, css_a, css_b, link_a, link_b in top_comparisons:
@@ -833,7 +834,7 @@ try:
                     <div id="wrap-a" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden relative">
                         <p id="pa" class="comparison-text text-black break-words leading-tight w-full" style="font-family: {css_a}; font-size: 32px;">Optimize your UI design with fast-loading free web fonts.</p>
                     </div>
-                    <button id="copy-html-btn" onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-xl shadow-indigo-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
+                    <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-xl shadow-indigo-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                         Copy Fluid CSS
                     </button>
@@ -850,7 +851,7 @@ try:
                     <div id="wrap-b" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden relative">
                         <p id="pb" class="comparison-text text-black break-words leading-tight w-full" style="font-family: {css_b}; font-size: 32px;">Optimize your UI design with fast-loading free web fonts.</p>
                     </div>
-                    <button id="copy-html-btn" onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-xl shadow-violet-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
+                    <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-xl shadow-violet-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                         Copy Fluid CSS
                     </button>
@@ -1182,9 +1183,9 @@ try:
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 {GA_CODE}
     <script src="{TAILWIND}"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+    <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap)" rel="stylesheet">
     <style>
         body {{ font-family: system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }}
         .toast-active {{ opacity: 1; transform: translate(-50%, 0); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }}
@@ -1295,7 +1296,7 @@ try:
                     <p id="vs-preview-a" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
                 
-                <button id="copy-html-btn" onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-indigo-200 mt-4 md:mt-6 group flex justify-center items-center gap-2">
+                <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-indigo-200 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     Copy HTML / CSS
                 </button>
@@ -1314,7 +1315,7 @@ try:
                     <p id="vs-preview-b" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
                 
-                <button id="copy-html-btn" onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-violet-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
+                <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-violet-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     Copy HTML / CSS
                 </button>
@@ -1373,12 +1374,12 @@ try:
     <footer class="bg-white border-t border-slate-200 py-12 mt-auto">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center text-xs font-bold text-slate-500 uppercase tracking-widest">
             <p>&copy; {datetime.datetime.now().year} htmlfonts</p>
-            <a href="https://x.com/HtmlFonts" target="_blank" class="hover:text-indigo-600 text-indigo-500">@HtmlFonts</a>
+            <a href="[https://x.com/HtmlFonts](https://x.com/HtmlFonts)" target="_blank" class="hover:text-indigo-600 text-indigo-500">@HtmlFonts</a>
         </div>
     </footer>
 
     <script>
-        let fontsRaw = {{json.dumps(master_fonts)}};
+        let fontsRaw = {json.dumps(master_fonts)};
         let isDark = false;
         let isXray = false;
         let importMode = 'html'; 
