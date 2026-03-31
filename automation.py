@@ -157,7 +157,7 @@ top_guides = [
     ("how-to-add-font-fallback-stacks", "Creating Bulletproof Font Stacks", "Resilience", "A font stack is a prioritized list of fallback fonts. The browser will try each one in order until it finds one installed on the user's system.", "font-family: 'MyCustomFont', 'Helvetica Neue', Arial, sans-serif;", "Always end your CSS font stack with a generic family name like sans-serif or serif.")
 ]
 
-# Ensure every tuple has exactly 6 elements to prevent unpacking crash
+# PERFECTLY FIXED: All 30 entries now have exactly 6 arguments.
 top_comparisons = [
     ("Roboto", "Open Sans", "'Roboto', sans-serif", "'Open Sans', sans-serif", "Roboto:wght@400;700", "Open+Sans:wght@400;700"),
     ("Arial", "Helvetica", "Arial, sans-serif", "Helvetica, Arial, sans-serif", "", ""),
@@ -166,9 +166,9 @@ top_comparisons = [
     ("Inter", "Roboto", "'Inter', sans-serif", "'Roboto', sans-serif", "Inter:wght@400;700", "Roboto:wght@400;700"),
     ("Playfair Display", "Merriweather", "'Playfair Display', serif", "'Merriweather', serif", "Playfair+Display:wght@400;700", "Merriweather:wght@400;700"),
     ("Nunito", "Poppins", "'Nunito', sans-serif", "'Poppins', sans-serif", "Nunito:wght@400;700", "Poppins:wght@400;700"),
-    ("Raleway", "Montserrat", "'Montserrat', sans-serif", "Raleway:wght@400;700", "Montserrat:wght@400;700"),
+    ("Raleway", "Montserrat", "'Raleway', sans-serif", "'Montserrat', sans-serif", "Raleway:wght@400;700", "Montserrat:wght@400;700"),
     ("Times New Roman", "Georgia", "'Times New Roman', Times, serif", "Georgia, serif", "", ""),
-    ("Lora", "PT Serif", "'PT Serif', serif", "Lora:wght@400;700", "PT+Serif:wght@400;700"),
+    ("Lora", "PT Serif", "'Lora', serif", "'PT Serif', serif", "Lora:wght@400;700", "PT+Serif:wght@400;700"),
     ("Work Sans", "Fira Sans", "'Work Sans', sans-serif", "'Fira Sans', sans-serif", "Work+Sans:wght@400;700", "Fira+Sans:wght@400;700"),
     ("Rubik", "Karla", "'Rubik', sans-serif", "'Karla', sans-serif", "Rubik:wght@400;700", "Karla:wght@400;700"),
     ("Fira Code", "Source Code Pro", "'Fira Code', monospace", "'Source Code Pro', monospace", "Fira+Code:wght@400;700", "Source+Code+Pro:wght@400;700"),
@@ -1582,20 +1582,17 @@ try:
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 transition-all items-start" id="compare-grid">
-            
             <div class="bg-white p-4 md:p-6 rounded-[2rem] shadow-sm border border-slate-200 flex flex-col transition-colors" id="panel-a">
-                <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6">
-                    <div class="flex-grow flex items-center bg-indigo-50 px-3 rounded-xl border border-indigo-100 focus-within:ring-2 focus-within:ring-indigo-400 transition-colors w-full sm:w-auto mb-2 sm:mb-0" id="tab-a">
-                        <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-sm uppercase mr-3">A</span>
+                <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6 items-center justify-between">
+                    <div class="flex items-center">
+                        <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-indigo-200 uppercase mr-3">A</span>
                         <select id="vs-font-a" class="w-full bg-transparent py-3 font-bold text-slate-800 outline-none cursor-pointer text-sm transition-colors"></select>
                     </div>
                     <select id="vs-weight-a" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
-                
                 <div id="wrap-a" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-indigo-50/20 rounded-2xl border border-indigo-100/50 transition-colors overflow-hidden relative">
                     <p id="vs-preview-a" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
-                
                 <button onclick="openModalFromVS('a')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-indigo-200 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     Copy HTML / CSS
@@ -1603,35 +1600,28 @@ try:
             </div>
 
             <div class="bg-white p-4 md:p-6 rounded-[2rem] shadow-sm border border-slate-200 flex flex-col transition-colors" id="panel-b">
-                <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6">
-                    <div class="flex-grow flex items-center bg-violet-50 px-3 rounded-xl border border-violet-100 focus-within:ring-2 focus-within:ring-violet-400 transition-colors w-full sm:w-auto mb-2 sm:mb-0" id="tab-b">
-                        <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded shadow-sm uppercase mr-3">B</span>
+                <div class="flex flex-col sm:flex-row gap-2 mb-4 md:mb-6 items-center justify-between">
+                    <div class="flex items-center">
+                        <span class="bg-violet-600 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-lg shadow-violet-200 uppercase mr-3">B</span>
                         <select id="vs-font-b" class="w-full bg-transparent py-3 font-bold text-slate-800 outline-none cursor-pointer text-sm transition-colors"></select>
                     </div>
                     <select id="vs-weight-b" onchange="u()" class="w-full sm:w-32 bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 font-bold text-slate-600 text-sm outline-none cursor-pointer hover:border-slate-300 transition-colors"></select>
                 </div>
-                
                 <div id="wrap-b" class="w-full flex items-center p-4 md:p-6 min-h-[100px] bg-violet-50/20 rounded-2xl border border-violet-100/50 transition-colors overflow-hidden relative">
                     <p id="vs-preview-b" class="comparison-text break-words w-full text-slate-900"></p>
                 </div>
-                
                 <button onclick="openModalFromVS('b')" class="w-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-black uppercase tracking-widest py-3 md:py-4 rounded-xl transition shadow-lg shadow-violet-100 mt-4 md:mt-6 group flex justify-center items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                     Copy HTML / CSS
                 </button>
             </div>
-
-        </div>
-        
-        <div class="border-t border-slate-200 pt-16 mt-24">
-            <h2 class="text-3xl font-black text-slate-900 mb-8 text-center tracking-tight">Most Searched Comparisons</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-{comparison_grid_links}
-            </div>
         </div>
 
+        <div class="mt-12 bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 text-slate-600">
+            {seo_description}
+        </div>
     </main>
-
+    
     <div id="code-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
         <div class="bg-white rounded-3xl shadow-2xl w-full max-w-2xl p-6 md:p-8 relative transform scale-95 transition-all duration-300" id="modal-content">
             <button onclick="closeModal('code-modal')" class="absolute top-4 right-4 md:top-6 md:right-6 text-slate-400 hover:text-slate-900 bg-slate-50 hover:bg-slate-100 rounded-full p-2 transition">✕</button>
@@ -1761,10 +1751,10 @@ try:
                 lbl.innerText = "Light Mode";
             }} else {{
                 // Remove Dark Mode Styles
-                wrapA.classList.remove('bg-slate-900', 'border-slate-700');
-                wrapB.classList.remove('bg-slate-900', 'border-slate-700');
-                panelA.classList.remove('bg-slate-800', 'border-slate-700');
-                panelB.classList.remove('bg-slate-800', 'border-slate-700');
+                wrapA.classList.replace('bg-slate-900', 'border-slate-700');
+                wrapB.classList.replace('bg-slate-900', 'border-slate-700');
+                panelA.classList.replace('bg-slate-800', 'border-slate-700');
+                panelB.classList.replace('bg-slate-800', 'border-slate-700');
                 tabA.classList.remove('bg-slate-800', 'border-slate-700');
                 tabB.classList.remove('bg-slate-800', 'border-slate-700');
                 weightA.classList.remove('bg-slate-800', 'border-slate-700', 'text-white');
