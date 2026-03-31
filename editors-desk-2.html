@@ -66,6 +66,37 @@
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
                 </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering Fluid Type: Variable Fonts & Advanced CSS Typography</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">Harness the power of variable fonts and `font-variation-settings` for unparalleled typographic control and efficiency. Instead of loading multiple static font files (e.g., light, regular, bold), a single variable font file contains all axis variations (weight, width, optical size, slant, etc.). This drastically reduces HTTP requests and overall font file size, leading to faster page loads and a smoother #UserExperience. Combine with CSS `clamp()` for truly responsive, fluid typography that adapts perfectly across all screen sizes without media queries for every breakpoint.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">@font-face {
+  font-family: &#x27;Inter Variable&#x27;;
+  src: url(&#x27;/fonts/Inter-VariableFont.woff2&#x27;) format(&#x27;woff2-variations&#x27;);
+  font-weight: 100 900; /* Define the available weight range */
+  font-display: swap; /* Optimize font loading for better UX */
+}
+
+body {
+  font-family: &#x27;Inter Variable&#x27;, sans-serif;
+  font-variation-settings: &#x27;wght&#x27; var(--body-weight, 400);
+  font-size: clamp(1rem, 2vw + 0.5rem, 1.25rem); /* Fluid font sizing */
+  line-height: 1.6;
+}
+
+h1 {
+  font-family: &#x27;Inter Variable&#x27;, sans-serif;
+  font-variation-settings: &#x27;wght&#x27; var(--heading-weight, 700), &#x27;slnt&#x27; var(--heading-slant, 0);
+  font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
                 <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Typography Tip Mar 31</h2>
                 <p class="text-slate-600 font-medium leading-relaxed mb-6">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
                 <div class="bg-slate-900 rounded-xl p-4 relative">
@@ -286,34 +317,10 @@ h1 {
 }</code></pre>
                 </div>
             </article>
-            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
-                </div>
-                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Optimizing Web Font Loading for Superior UI/UX with CSS</h2>
-                <p class="text-slate-600 font-medium leading-relaxed mb-6">To drastically improve perceived performance and prevent 'Flash of Invisible Text' (FOIT) or 'Flash of Unstyled Text' (FOUT), always include `font-display: swap;` in your `@font-face` declarations. This instructs the browser to use a fallback font immediately while the custom web font loads, then swap it in once available, ensuring content is readable sooner and minimizing Cumulative Layout Shift (CLS).</p>
-                <div class="bg-slate-900 rounded-xl p-4 relative">
-                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">@font-face {
-  font-family: &#x27;Open Sans&#x27;;
-  src: url(&#x27;/fonts/OpenSans-Regular.woff2&#x27;) format(&#x27;woff2&#x27;);
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap; /* Ensures immediate text visibility */
-}
-
-body {
-  font-family: &#x27;Open Sans&#x27;, Arial, sans-serif; /* Define a robust font stack */
-  line-height: 1.6;
-  color: #333;
-  font-size: 1rem;
-}</code></pre>
-                </div>
-            </article>
         
         <div class="flex items-center justify-between mt-12 pt-8 border-t border-slate-200">
             <a href="/editors-desk.html" class="bg-white border border-slate-200 text-slate-700 hover:border-indigo-300 hover:text-indigo-600 font-bold text-xs uppercase tracking-widest px-6 py-3 rounded-xl transition shadow-sm">&larr; Newer Posts</a>
-            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Page 2 of 5</span>
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Page 2 of 6</span>
             <a href="/editors-desk-3.html" class="bg-white border border-slate-200 text-slate-700 hover:border-indigo-300 hover:text-indigo-600 font-bold text-xs uppercase tracking-widest px-6 py-3 rounded-xl transition shadow-sm">Older Posts &rarr;</a>
         </div>
     </main>
