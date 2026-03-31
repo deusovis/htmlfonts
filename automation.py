@@ -794,7 +794,7 @@ try:
             <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mt-4 mb-8">Compare legibility and design aesthetics side-by-side.</p>
         </div>
     </div>
-    <main class="flex-grow w-full py-12 px-6 max-w-7xl mx-auto">
+    <main class="flex-grow w-full pt-4 md:pt-8 pb-24 px-6 max-w-7xl mx-auto">
         <div class="text-center mb-12 max-w-3xl mx-auto">
             <a href="/font-vs-font-comparison-tool.html" class="text-indigo-600 font-bold text-xs uppercase tracking-widest hover:text-indigo-800 transition">&larr; Back to Tool</a>
         </div>
@@ -1068,9 +1068,10 @@ try:
         .toast-active {{ opacity: 1; transform: translate(-50%, 0); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }}
         .modal-active {{ opacity: 1; transform: scale(1) translateY(0); transition: all 0.2s ease-out; }}
         .comparison-text {{ transition: font-size 0.2s ease, font-weight 0.2s ease, line-height 0.2s ease, letter-spacing 0.2s ease; }}
+        .preview-dark {{ background-color: #0f172a !important; border-color: #1e293b !important; color: #f8fafc !important; }}
     </style>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
 
     <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-emerald-500 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3">
         <span>CSS Code Copied! 🚀</span>
@@ -1088,7 +1089,7 @@ try:
         </div>
     </div>
 
-    <main class="flex-grow py-12 px-6 max-w-7xl mx-auto w-full">
+    <main class="flex-grow pt-4 md:pt-8 pb-24 px-6 max-w-7xl mx-auto w-full">
 
         <div class="bg-white rounded-3xl p-4 md:p-8 shadow-xl border border-slate-200/60 mb-6 md:mb-10">
             
