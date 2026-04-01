@@ -46,10 +46,6 @@ def save_cache():
 def save_profile_cache():
     with open(PROFILE_CACHE_FILE, 'w', encoding='utf-8') as f: json.dump(profile_cache, f, indent=4)
 
-seo_prompt = """Generate a high-value JSON object for a web typography expert blog. 
-Target Keywords: CSS typography, UI design, web fonts, user experience. 
-Keys MUST exactly match: "title", "slug", "tweet", "tip", "css_snippet".
-Return ONLY raw JSON."""
 
 # 2. FULL DATA ARRAYS
 master_fonts = [
@@ -849,11 +845,23 @@ try:
     sitemap += f'  <url><loc>{DOMAIN}/html-css-font-guides.html</loc><priority>0.9</priority></url>\n'
 
     print("Generating Daily Tip...")
+    
+    # Pre-load history so we can pass past topics to AI for uniqueness
+    history = []
+    if os.path.exists('history.json'):
+        with open('history.json', 'r', encoding='utf-8') as f: 
+            history = json.load(f)
+            
+    recent_titles = [post.get("title", "") for post in history[:10]]
+    
+    # Prompt explicitly ensures uniqueness and bans backticks
+    prompt_with_history = seo_prompt + f"\n\nDO NOT write about these past topics: {recent_titles}\nCRITICAL: DO NOT use backticks (`) anywhere in your JSON response strings. Use standard double quotes or single quotes instead."
+
     raw_text = ""
     for attempt in range(3):
         try:
             if not os.environ.get("GEMINI_API_KEY"): break
-            response = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=seo_prompt)
+            response = client_gemini.models.generate_content(model='gemini-2.5-flash', contents=prompt_with_history)
             raw_text = response.text.strip()
             break
         except Exception as e:
@@ -888,12 +896,11 @@ try:
             "css_snippet": "body {\n  line-height: 1.5;\n}"
         }
         
+    # Sanitize backticks explicitly just in case
+    new_data["title"] = new_data.get("title", "").replace('`', '"')
+    new_data["tip"] = new_data.get("tip", "").replace('`', '"')
     new_data["date"] = datetime.datetime.now().strftime("%B %d, %Y")
 
-    history = []
-    if os.path.exists('history.json'):
-        with open('history.json', 'r', encoding='utf-8') as f: 
-            history = json.load(f)
     history.insert(0, new_data)
     
     with open('history.json', 'w', encoding='utf-8') as f: json.dump(history, f, indent=4)
@@ -1032,6 +1039,18 @@ try:
     # 4. BUILD THE HOME PAGE (INDEX.HTML)
     print("Generating new Home Page (index.html)...")
     
+    latest_tip_title = history[0].get('title', 'Typography Tip') if history else new_data.get('title', 'Typography Tip')
+    
+    daily_update_html = f"""
+        <div class="mt-16 bg-indigo-50 border border-indigo-100 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+            <div>
+                <span class="inline-block bg-indigo-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest mb-3">Today's Update</span>
+                <h2 class="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">{latest_tip_title}</h2>
+            </div>
+            <a href="/editors-desk.html" class="shrink-0 bg-white hover:bg-slate-50 text-indigo-600 border border-indigo-200 font-bold text-xs uppercase tracking-widest px-6 py-3.5 rounded-xl transition shadow-sm hover:shadow-md hover:-translate-y-1">Read at Editor's Desk &rarr;</a>
+        </div>
+    """
+    
     home_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1083,6 +1102,8 @@ try:
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {directory_grid_html}
         </div>
+        
+        {daily_update_html}
     </main>
 
     <div id="code-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
@@ -1271,15 +1292,15 @@ try:
             if not isinstance(date_raw, str): date_raw = str(date_raw)
             
             posts_html += f"""
-            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+            <article class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-200 relative overflow-hidden group flex flex-col h-full hover:shadow-xl hover:-translate-y-1 transition-all">
                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">{date_raw}</span>
                 </div>
-                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">{title_raw}</h2>
-                <p class="text-slate-600 font-medium leading-relaxed mb-6">{tip_raw}</p>
-                <div class="bg-slate-900 rounded-xl p-4 relative">
-                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">{safe_css}</code></pre>
+                <h2 class="text-xl font-black text-slate-900 mb-4 leading-snug">{title_raw}</h2>
+                <p class="text-slate-600 text-sm font-medium leading-relaxed mb-6 flex-grow">{tip_raw}</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative mt-auto">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[10px] font-mono text-emerald-400 block whitespace-pre-wrap">{safe_css}</code></pre>
                 </div>
             </article>"""
 
@@ -1300,7 +1321,7 @@ try:
             next_link = '<div></div>'
 
         pagination_html = f"""
-        <div class="flex items-center justify-between mt-12 pt-8 border-t border-slate-200">
+        <div class="col-span-1 md:col-span-2 flex items-center justify-between mt-12 pt-8 border-t border-slate-200">
             {prev_link}
             <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Page {page_num} of {total_pages}</span>
             {next_link}
@@ -1339,9 +1360,11 @@ try:
         </div>
     </div>
     
-    <main class="flex-grow py-12 px-6 max-w-3xl mx-auto w-full">
-        {posts_html}
-        {pagination_html}
+    <main class="flex-grow py-12 px-6 max-w-6xl mx-auto w-full">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {posts_html}
+            {pagination_html}
+        </div>
     </main>
 {footer_html}
 </body>
@@ -1863,7 +1886,7 @@ try:
             access_token=os.environ["X_ACCESS_TOKEN"],
             access_token_secret=os.environ["X_ACCESS_TOKEN_SECRET"]
         )
-        tweet_text = f"{new_data.get('tweet', 'Check out our latest web typography tip!')}\n\nRead Tip: {DOMAIN}/article/{new_data.get('slug', 'fallback')}.html #webdesign #typography"
+        tweet_text = f"{new_data.get('tweet', 'Check out our latest web typography tip!')}\n\nRead Tip: {DOMAIN}/editors-desk.html #webdesign #typography"
         response = client_x.create_tweet(text=tweet_text)
         print(f"✅ X Post Successful. Status ID: {response.data['id']}")
 except Exception as e:
