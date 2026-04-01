@@ -230,10 +230,62 @@ footer_html = """    <footer class="bg-white border-t border-slate-200 py-16 mt-
         </div>
     </footer>"""
 
+share_button_html = """
+    <div class="fixed bottom-6 right-6 z-50">
+        <button onclick="sharePage()" class="bg-indigo-600 text-white p-4 rounded-full shadow-xl shadow-indigo-200 hover:bg-indigo-700 hover:scale-110 hover:-translate-y-1 transition-all group flex items-center justify-center relative" aria-label="Share">
+            <span class="absolute right-full mr-4 bg-slate-900 text-white text-[10px] font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">Share Page</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+        </button>
+    </div>
+"""
 
-# ---------------------------------------------------------
-# RAW JAVASCRIPT BLOCKS (Prevents all f-string formatting errors)
-# ---------------------------------------------------------
+toast_html = """
+    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3 transition-all duration-300 opacity-0 translate-y-4">
+        <span id="toast-msg">Copied! 🚀</span>
+    </div>
+"""
+
+base_js_raw = r"""
+    <script>
+        function triggerToast(msg) {
+            const t = document.getElementById('toast'); 
+            if(t) {
+                if(msg) {
+                    const span = document.getElementById('toast-msg');
+                    if(span) span.innerText = msg;
+                }
+                t.classList.remove('hidden'); 
+                void t.offsetWidth;
+                t.classList.remove('opacity-0', 'translate-y-4');
+                setTimeout(() => { 
+                    t.classList.add('opacity-0', 'translate-y-4'); 
+                    setTimeout(() => t.classList.add('hidden'), 300); 
+                }, 3000);
+            }
+        }
+
+        function copyElementText(id) {
+            const el = document.getElementById(id);
+            if(!el) return;
+            const txt = el.textContent;
+            navigator.clipboard.writeText(txt).then(() => triggerToast("Copied! 🚀")).catch(() => {
+                const ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta);
+                ta.select(); document.execCommand('copy'); document.body.removeChild(ta); triggerToast("Copied! 🚀");
+            });
+        }
+        
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                navigator.clipboard.writeText(window.location.href).then(() => triggerToast("Link Copied! 🚀")).catch(console.error);
+            }
+        }
+    </script>
+"""
 
 home_js_raw = r"""
     <script>
@@ -355,29 +407,11 @@ home_js_raw = r"""
             modalContent.classList.add('scale-95');
             setTimeout(() => modal.classList.add('hidden'), 300); 
         }
-        
-        function triggerToast() {
-            const t = document.getElementById('toast'); 
-            t.classList.remove('hidden'); 
-            void t.offsetWidth;
-            t.classList.remove('opacity-0', 'translate-y-4');
-            setTimeout(() => { 
-                t.classList.add('opacity-0', 'translate-y-4'); 
-                setTimeout(() => t.classList.add('hidden'), 300); 
-            }, 3000);
-        }
-        
-        function copyElementText(id) {
-            const txt = document.getElementById(id).textContent;
-            navigator.clipboard.writeText(txt).then(() => triggerToast()).catch(() => {
-                const el = document.createElement('textarea'); el.value = txt; document.body.appendChild(el);
-                el.select(); document.execCommand('copy'); document.body.removeChild(el); triggerToast();
-            });
-        }
     </script>
 """
 
 tool_js_raw = r"""
+    <script>
         let isDark = false;
         let isXray = false;
         let importMode = 'html'; 
@@ -766,9 +800,9 @@ tool_js_raw = r"""
         }
 
         function openModalFromVS(side) { 
-            const currObj = (typeof fontData !== 'undefined' && fontData[side]) ? fontData[side] : vsData[side];
-            if(!currObj) return;
-
+            let currObj = (typeof fontData !== 'undefined' && fontData[side]) ? fontData[side] : vsData[side];
+            if (!currObj) return;
+            
             const wEl = document.getElementById(side === 'a' ? 'vs-weight-a' : 'vs-weight-b');
             const szEl = document.getElementById('vs-font-size');
             const lhEl = document.getElementById('vs-lh');
@@ -811,29 +845,7 @@ tool_js_raw = r"""
                 setTimeout(() => modal.classList.add('hidden'), 300); 
             }
         }
-        
-        function triggerToast(msg = "Copied! 🚀") {
-            const t = document.getElementById('toast'); 
-            if(t) {
-                t.classList.remove('hidden'); 
-                void t.offsetWidth;
-                t.classList.remove('opacity-0', 'translate-y-4');
-                setTimeout(() => { 
-                    t.classList.add('opacity-0', 'translate-y-4'); 
-                    setTimeout(() => t.classList.add('hidden'), 300); 
-                }, 3000);
-            }
-        }
-        
-        function copyElementText(id) {
-            const el = document.getElementById(id);
-            if(!el) return;
-            const txt = el.textContent;
-            navigator.clipboard.writeText(txt).then(() => triggerToast()).catch(() => {
-                const ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta);
-                ta.select(); document.execCommand('copy'); document.body.removeChild(ta); triggerToast();
-            });
-        }
+    </script>
 """
 
 try:
@@ -956,6 +968,7 @@ try:
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
+{toast_html}
 {header_html}
     <div class="bg-white border-b border-slate-200 overflow-hidden relative">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-white to-white"></div>
@@ -974,8 +987,9 @@ try:
             </div>
         </article>
     </main>
+{share_button_html}
 {footer_html}
-{home_js_raw}
+{base_js_raw}
 </body>
 </html>"""
         with open(f"editors-desk/{slug_raw}.html", 'w', encoding='utf-8') as f:
@@ -1088,6 +1102,7 @@ try:
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
+{toast_html}
 {header_html}
 
     <div class="bg-white border-b border-slate-200 overflow-hidden relative">
@@ -1107,7 +1122,9 @@ try:
             {ai_content}
         </article>
     </main>
+{share_button_html}
 {footer_html}
+{base_js_raw}
 </body>
 </html>"""
         with open(f"font/{slug}.html", 'w', encoding='utf-8') as f: f.write(font_page_html)
@@ -1151,7 +1168,7 @@ try:
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
-    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3 transition-all duration-300 opacity-0 translate-y-4">Copied! 🚀</div>
+{toast_html}
 {header_html}
     
     <div class="bg-white border-b border-slate-200 overflow-hidden relative">
@@ -1233,7 +1250,10 @@ try:
             </div>
         </div>
     </div>
-""" + footer_html + home_js_raw + """
+{share_button_html}
+{footer_html}
+{base_js_raw}
+{home_js_raw}
 </body>
 </html>"""
     with open("index.html", 'w', encoding='utf-8') as f: f.write(home_html)
@@ -1257,6 +1277,7 @@ try:
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
+{toast_html}
 {header_html}
     <main class="flex-grow py-16 px-4">
         <div class="max-w-4xl mx-auto">
@@ -1291,7 +1312,9 @@ try:
             </article>
         </div>
     </main>
+{share_button_html}
 {footer_html}
+{base_js_raw}
 </body>
 </html>"""
         with open(f"article/{slug}.html", 'w', encoding='utf-8') as f: f.write(html_page)
@@ -1318,12 +1341,13 @@ try:
     <style>body {{ font-family: system-ui, sans-serif; }}</style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
+{toast_html}
 {header_html}
     <div class="bg-white border-b border-slate-200 overflow-hidden relative">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-white to-white"></div>
         <div class="max-w-7xl mx-auto px-6 pt-10 pb-12 md:pt-12 md:pb-16 relative z-10 text-center">
             <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Font Guides</span>
+                Font <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Guides</span>
             </h1>
             <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mt-4 mb-8">Master CSS typography and build better web interfaces with our deep-dive technical tutorials.</p>
         </div>
@@ -1334,13 +1358,15 @@ try:
             {guides_cards_html}
         </div>
     </main>
+{share_button_html}
 {footer_html}
+{base_js_raw}
 </body>
 </html>"""
     with open("html-css-font-guides.html", 'w', encoding='utf-8') as f: f.write(guides_page_html)
 
     # 6. GENERATE EDITOR'S DESK INDEX (SINGLE PAGE WITH JS PAGINATION)
-    print("Generating Editor's Desk Index...")
+    print("Generating Editor's Desk Pagination...")
     
     js_posts = []
     for post in history:
@@ -1372,13 +1398,14 @@ try:
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
+{toast_html}
 {header_html}
     <div class="bg-white border-b border-slate-200 overflow-hidden relative">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-white to-white"></div>
         <div class="max-w-7xl mx-auto px-6 pt-10 pb-12 md:pt-12 md:pb-16 relative z-10 text-center">
             <span class="inline-block bg-indigo-50 border border-slate-100 text-indigo-700 text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-[0.2em] mb-4 shadow-sm">Daily Updates</span>
             <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Editor's Desk</span>
+                Editor's <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Desk</span>
             </h1>
             <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mt-4 mb-8">Bite-sized CSS typography tips, UI design tricks, and code snippets delivered daily.</p>
         </div>
@@ -1388,8 +1415,9 @@ try:
         <div id="posts-container" class="flex flex-col gap-4"></div>
         <div id="pagination-controls" class="flex items-center justify-between mt-12 pt-8 border-t border-slate-200"></div>
     </main>
+{share_button_html}
 {footer_html}
-{home_js_raw}
+{base_js_raw}
 <script>
     const posts = {js_posts_json};
     const postsPerPage = 25;
@@ -1539,17 +1567,12 @@ try:
     {imp_b}
     <style>
         body {{ font-family: system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }}
-        .toast-active {{ opacity: 1; transform: translate(-50%, 0); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }}
-        .modal-active {{ opacity: 1; transform: scale(1) translateY(0); transition: all 0.2s ease-out; }}
         .comparison-text {{ transition: font-size 0.2s ease, font-weight 0.2s ease, line-height 0.2s ease, letter-spacing 0.2s ease; }}
         option {{ background-color: #ffffff; color: #0f172a; }}
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
-    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-emerald-50 text-emerald-600 px-6 py-3 rounded-xl border border-emerald-200 shadow-xl z-[100] text-sm font-bold uppercase flex items-center gap-2">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-        <span>CSS Code Copied!</span>
-    </div>
+{toast_html}
 {header_html}
     <div class="bg-white border-b border-slate-200 overflow-hidden relative">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-white to-white"></div>
@@ -1679,6 +1702,7 @@ try:
 {comparison_grid_links}
             </div>
         </div>
+
     </main>
     
     <div id="code-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
@@ -1719,15 +1743,13 @@ try:
             </div>
         </div>
     </div>
-""" + footer_html + f"""
-    <script>
-        const fontData = {{
-            'a': {{ name: "{font_a}", css: "{css_a}", link: "{safe_link_a}", type: "{type_a}" }},
-            'b': {{ name: "{font_b}", css: "{css_b}", link: "{safe_link_b}", type: "{type_b}" }}
-        }};
-""" + tool_js_raw + f"""
-        initComparePage();
-    </script>
+{share_button_html}
+{footer_html}
+{base_js_raw}
+{tool_js_raw}
+<script>
+    initComparePage();
+</script>
 </body>
 </html>"""
 
@@ -1752,19 +1774,12 @@ try:
     {TOOL_FONT_LINK}
     <style>
         body {{ font-family: system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }}
-        .toast-active {{ opacity: 1; transform: translate(-50%, 0); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }}
-        .modal-active {{ opacity: 1; transform: scale(1) translateY(0); transition: all 0.2s ease-out; }}
         .comparison-text {{ transition: font-size 0.2s ease, font-weight 0.2s ease, line-height 0.2s ease, letter-spacing 0.2s ease; }}
         option {{ background-color: #ffffff; color: #0f172a; }}
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans selection:bg-indigo-200 selection:text-indigo-900">
-
-    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-emerald-50 text-emerald-600 px-6 py-3 rounded-xl border border-emerald-200 shadow-xl z-[100] text-sm font-bold uppercase flex items-center gap-2">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-        <span>CSS Code Copied!</span>
-    </div>
-
+{toast_html}
 {header_html}
 
     <div class="bg-white border-b border-slate-200 overflow-hidden relative">
@@ -1935,12 +1950,13 @@ try:
             </div>
         </div>
     </div>
-""" + footer_html + f"""
-    <script>
-        let fontsRaw = {json.dumps(master_fonts)};
-""" + tool_js_raw + f"""
-        initVSTool();
-    </script>
+{share_button_html}
+{footer_html}
+{base_js_raw}
+{tool_js_raw}
+<script>
+    initVSTool();
+</script>
 </body>
 </html>"""
 
