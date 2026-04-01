@@ -66,6 +66,19 @@
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
                 </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Typography Tip Mar 31</h2>
+                <p class="text-slate-600 font-medium leading-relaxed mb-6">To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.</p>
+                <div class="bg-slate-900 rounded-xl p-4 relative">
+                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">body {
+  line-height: 1.5;
+}</code></pre>
+                </div>
+            </article>
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 31, 2026</span>
+                </div>
                 <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Typographic Scale & Harmony: Elevating UI Design with Modern CSS</h2>
                 <p class="text-slate-600 font-medium leading-relaxed mb-6">To achieve superior readability and a professional UI design, move beyond arbitrary font sizes. Implement a modular typographic scale (e.g., using a 'Major Third' or 'Perfect Fifth' ratio) with CSS Custom Properties and `rem` units. This ensures consistency and responsiveness across devices, while pairing `line-height` values thoughtfully (ideally a multiple of your baseline grid) will create a harmonious vertical rhythm, significantly boosting user experience.</p>
                 <div class="bg-slate-900 rounded-xl p-4 relative">
@@ -340,24 +353,6 @@ body {
 /* Example of corresponding HTML preload in &lt;head&gt;:
 &lt;link rel=&quot;preload&quot; as=&quot;font&quot; type=&quot;font/woff2&quot; crossorigin href=&quot;/fonts/CustomBrandFont-Regular.woff2&quot;&gt;
 */</code></pre>
-                </div>
-            </article>
-            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">March 30, 2026</span>
-                </div>
-                <h2 class="text-2xl font-black text-slate-900 mb-4 leading-snug">Mastering Fluid Typography with CSS clamp() for Superior UI/UX</h2>
-                <p class="text-slate-600 font-medium leading-relaxed mb-6">To achieve truly adaptive text, leverage CSS `clamp()` for your `font-size` properties. This powerful function allows you to define a minimum, a preferred (often viewport-width-based), and a maximum font size. It scales smoothly between these limits, drastically reducing the need for numerous media queries for font scaling, leading to a more maintainable stylesheet and a consistently excellent user experience across diverse screen sizes.</p>
-                <div class="bg-slate-900 rounded-xl p-4 relative">
-                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[11px] md:text-xs font-mono text-emerald-400 block whitespace-pre-wrap">body {
-  /* Define fluid font-size for body text: */
-  /* min: 1rem (16px), preferred: 0.8rem + 1vw, max: 1.25rem (20px) */
-  font-size: clamp(1rem, 0.8rem + 1vw, 1.25rem);
-  line-height: 1.6; /* Essential for readability with fluid text */
-  font-family: &#x27;Inter&#x27;, sans-serif; /* Example web font */
-  text-rendering: optimizeLegibility; /* Enhance font rendering */
-}</code></pre>
                 </div>
             </article>
         

@@ -652,9 +652,9 @@
         }
 
         function openModalFromVS(side) { 
-            const currObj = (typeof fontData !== 'undefined' && fontData[side]) ? fontData[side] : vsData[side];
-            if(!currObj) return;
-
+            let currObj = (typeof fontData !== 'undefined' && fontData[side]) ? fontData[side] : vsData[side];
+            if (!currObj) return;
+            
             const wEl = document.getElementById(side === 'a' ? 'vs-weight-a' : 'vs-weight-b');
             const szEl = document.getElementById('vs-font-size');
             const lhEl = document.getElementById('vs-lh');
