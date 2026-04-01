@@ -1,8 +1,8 @@
 {
-    "title": "Achieve Impeccable Headlines: Boost UI/UX with CSS 'text-wrap: balance'",
-    "slug": "achieve-impeccable-headlines-boost-ui-ux-with-css-text-wrap-balance",
-    "tweet": "Revolutionize your web typography! Discover how CSS 'text-wrap: balance' creates perfectly balanced headlines, boosting UI design & user experience. #CSSTypography #WebDesign #UX",
-    "tip": "For short blocks of text, especially headlines and captions, uneven line lengths can disrupt visual flow and readability. The new CSS 'text-wrap: balance' property intelligently distributes text across lines to create a more visually balanced and appealing block. This subtle enhancement dramatically improves UI aesthetics and user comprehension, making your content feel more polished and professional without manual breaks. It's a game-changer for modern web typography.",
-    "css_snippet": "h1, .caption { text-wrap: balance; }",
+    "title": "Perfect Your Numbers: Boost UI Readability with CSS font-feature-settings for Tabular Figures",
+    "slug": "perfect-your-numbers-boost-ui-readability-with-css-font-feature-settings-for-tabular-figures",
+    "tweet": "Elevate your UI design! Ensure perfect alignment and readability for numbers in tables & data displays using CSS 'font-feature-settings'. A small detail, huge UX impact. #CSSTypography #UIDesign #WebFonts #UserExperience",
+    "tip": "Many web fonts include multiple styles for numbers, such as 'proportional' (natural width) and 'tabular' (fixed width). For data tables, price lists, or any columnar numerical data, using 'tabular' figures is crucial for consistent vertical alignment and enhanced readability. Without it, numbers like '1' and '8' can cause columns to wobble, making comparisons difficult and frustrating for users. Leverage CSS 'font-feature-settings' to activate these stylistic sets, providing a professional and highly legible numeric experience, especially for financial data or statistical reports. This small CSS tweak significantly improves data-heavy UI's user experience.",
+    "css_snippet": ".data-table td.numeric {\n  font-feature-settings: \"tnum\"; /* Activates tabular figures */\n  font-variant-numeric: tabular-nums; /* Modern equivalent/shorthand */\n}\n\n/* For older browsers or specific needs, you might use: */\n.legacy-numeric {\n  -webkit-font-feature-settings: \"tnum\";\n  -moz-font-feature-settings: \"tnum\";\n  font-feature-settings: \"tnum\";\n}",
     "date": "April 01, 2026"
 }
