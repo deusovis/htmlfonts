@@ -1339,77 +1339,36 @@ try:
 </html>"""
     with open("html-css-font-guides.html", 'w', encoding='utf-8') as f: f.write(guides_page_html)
 
-    # 6. GENERATE EDITOR'S DESK PAGINATION
-    print("Generating Editor's Desk Pagination...")
-    posts_per_page = 10
-    total_pages = math.ceil(len(history) / posts_per_page) if len(history) > 0 else 1
-
-    for page_num in range(1, total_pages + 1):
-        start_idx = (page_num - 1) * posts_per_page
-        end_idx = start_idx + posts_per_page
-        current_posts = history[start_idx:end_idx]
-
-        posts_html = ""
-        for post in current_posts:
-            if not isinstance(post, dict): continue
-            
-            title_raw = str(post.get('title', 'Typography Tip'))
-            slug_raw = post.get('slug', '')
-            date_raw = str(post.get('date', 'Recent'))
-            
-            posts_html += f"""
-            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 relative overflow-hidden group flex flex-col h-full hover:shadow-xl hover:-translate-y-1 transition-all">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">{date_raw}</span>
-                </div>
-                <h2 class="text-2xl font-black text-slate-900 mb-6 leading-snug">{title_raw}</h2>
-                <div class="mt-auto pt-2">
-                    <a href="/editors-desk/{slug_raw}.html" class="inline-flex items-center gap-2 text-indigo-600 font-bold text-xs uppercase tracking-widest hover:text-indigo-800 transition">Read Post &rarr;</a>
-                </div>
-            </article>"""
-
-        # Pagination Controls
-        prev_link = ""
-        next_link = ""
+    # 6. GENERATE EDITOR'S DESK INDEX (SINGLE PAGE WITH JS PAGINATION)
+    print("Generating Editor's Desk Index...")
+    
+    js_posts = []
+    for post in history:
+        if not isinstance(post, dict): continue
+        title_raw = str(post.get('title', 'Typography Tip'))
+        slug_raw = str(post.get('slug', ''))
+        date_raw = str(post.get('date', 'Recent'))
         
-        if page_num > 1:
-            prev_url = "editors-desk.html" if page_num == 2 else f"editors-desk-{page_num-1}.html"
-            prev_link = f'<a href="/{prev_url}" class="bg-white border border-slate-200 text-slate-700 hover:border-indigo-300 hover:text-indigo-600 font-bold text-xs uppercase tracking-widest px-6 py-3 rounded-xl transition shadow-sm">&larr; Newer Posts</a>'
-        else:
-            prev_link = '<div></div>'
-            
-        if page_num < total_pages:
-            next_url = f"editors-desk-{page_num+1}.html"
-            next_link = f'<a href="/{next_url}" class="bg-white border border-slate-200 text-slate-700 hover:border-indigo-300 hover:text-indigo-600 font-bold text-xs uppercase tracking-widest px-6 py-3 rounded-xl transition shadow-sm">Older Posts &rarr;</a>'
-        else:
-            next_link = '<div></div>'
-
-        pagination_html = f"""
-        <div class="col-span-1 md:col-span-2 flex items-center justify-between mt-12 pt-8 border-t border-slate-200">
-            {prev_link}
-            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Page {page_num} of {total_pages}</span>
-            {next_link}
-        </div>"""
-
-        file_name = "editors-desk.html" if page_num == 1 else f"editors-desk-{page_num}.html"
-
-        editors_page_html = f"""<!DOCTYPE html>
+        js_posts.append({
+            "title": html.unescape(title_raw),
+            "slug": slug_raw,
+            "date": date_raw
+        })
+    
+    js_posts_json = json.dumps(js_posts)
+    
+    editors_page_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editor's Desk - Page {page_num} | htmlfonts</title>
+    <title>Editor's Desk | htmlfonts</title>
     <meta name="description" content="Daily CSS typography tips, UI design tricks, and code snippets.">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 {GA_CODE}
     <script src="{TAILWIND}"></script>
     <style>
         body {{ font-family: system-ui, sans-serif; }}
-        .custom-scrollbar::-webkit-scrollbar {{ width: 6px; height: 6px; }}
-        .custom-scrollbar::-webkit-scrollbar-track {{ background: #0f172a; border-radius: 8px; }}
-        .custom-scrollbar::-webkit-scrollbar-thumb {{ background: #334155; border-radius: 8px; }}
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {{ background: #475569; }}
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
@@ -1425,20 +1384,75 @@ try:
         </div>
     </div>
     
-    <main class="flex-grow py-12 px-6 max-w-3xl mx-auto w-full">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {posts_html}
-            {pagination_html}
-        </div>
+    <main class="flex-grow py-12 px-6 max-w-4xl mx-auto w-full">
+        <div id="posts-container" class="flex flex-col gap-4"></div>
+        <div id="pagination-controls" class="flex items-center justify-between mt-12 pt-8 border-t border-slate-200"></div>
     </main>
 {footer_html}
 {home_js_raw}
+<script>
+    const posts = {js_posts_json};
+    const postsPerPage = 25;
+    let currentPage = 1;
+    const totalPages = Math.ceil(posts.length / postsPerPage);
+
+    function renderPosts() {{
+        const container = document.getElementById('posts-container');
+        container.innerHTML = '';
+        const start = (currentPage - 1) * postsPerPage;
+        const end = start + postsPerPage;
+        const currentPosts = posts.slice(start, end);
+
+        currentPosts.forEach(post => {{
+            const div = document.createElement('div');
+            div.innerHTML = `
+                <a href="/editors-desk/${{post.slug}}.html" class="group flex flex-col sm:flex-row sm:items-center justify-between bg-white p-5 md:p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all gap-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 w-full">
+                        <span class="text-[10px] sm:text-xs font-black text-indigo-500 uppercase tracking-widest w-32 shrink-0">${{post.date}}</span>
+                        <h2 class="text-base sm:text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors m-0 leading-snug">${{post.title}}</h2>
+                    </div>
+                    <span class="hidden sm:block text-slate-400 group-hover:text-indigo-600 transition-colors ml-4">&rarr;</span>
+                </a>
+            `;
+            container.appendChild(div.firstElementChild);
+        }});
+        renderPagination();
+    }}
+
+    function renderPagination() {{
+        const controls = document.getElementById('pagination-controls');
+        if (posts.length === 0) {{
+            controls.innerHTML = '';
+            return;
+        }}
+        
+        let prevBtn = currentPage > 1 
+            ? `<button onclick="changePage(-1)" class="bg-white border border-slate-200 text-slate-700 hover:border-indigo-300 hover:text-indigo-600 font-bold text-xs uppercase tracking-widest px-6 py-3 rounded-xl transition shadow-sm">&larr; Newer</button>` 
+            : `<div></div>`;
+        
+        let nextBtn = currentPage < totalPages 
+            ? `<button onclick="changePage(1)" class="bg-white border border-slate-200 text-slate-700 hover:border-indigo-300 hover:text-indigo-600 font-bold text-xs uppercase tracking-widest px-6 py-3 rounded-xl transition shadow-sm">Older &rarr;</button>` 
+            : `<div></div>`;
+
+        controls.innerHTML = `
+            ${{prevBtn}}
+            <span class="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-widest">Page ${{currentPage}} of ${{totalPages || 1}}</span>
+            ${{nextBtn}}
+        `;
+    }}
+
+    function changePage(dir) {{
+        currentPage += dir;
+        renderPosts();
+        window.scrollTo({{ top: 0, behavior: 'smooth' }});
+    }}
+
+    renderPosts();
+</script>
 </body>
 </html>"""
-        with open(file_name, 'w', encoding='utf-8') as f:
-            f.write(editors_page_html)
-        
-        sitemap += f"  <url><loc>{DOMAIN}/{file_name}</loc><changefreq>daily</changefreq><priority>0.9</priority></url>\n"
+    with open("editors-desk.html", 'w', encoding='utf-8') as f:
+        f.write(editors_page_html)
 
     # 7. GENERATE COMPARISONS
     print("Generating Font Comparisons...")
