@@ -19,6 +19,11 @@
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
+
+    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] text-sm font-black uppercase flex items-center gap-3 transition-all duration-300 opacity-0 translate-y-4">
+        <span id="toast-msg">Copied! 🚀</span>
+    </div>
+
     <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 h-16 flex items-center px-6 shadow-sm">
         <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
             <a href="/" class="flex items-center gap-2 group">
@@ -49,7 +54,7 @@
         <div class="max-w-7xl mx-auto px-6 pt-10 pb-12 md:pt-12 md:pb-16 relative z-10 text-center">
             <span class="inline-block bg-indigo-50 border border-slate-100 text-indigo-700 text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-[0.2em] mb-4 shadow-sm">Daily Updates</span>
             <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Editor's Desk</span>
+                Editor's <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Desk</span>
             </h1>
             <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mt-4 mb-8">Bite-sized CSS typography tips, UI design tricks, and code snippets delivered daily.</p>
         </div>
@@ -59,6 +64,14 @@
         <div id="posts-container" class="flex flex-col gap-4"></div>
         <div id="pagination-controls" class="flex items-center justify-between mt-12 pt-8 border-t border-slate-200"></div>
     </main>
+
+    <div class="fixed bottom-6 right-6 z-50">
+        <button onclick="sharePage()" class="bg-indigo-600 text-white p-4 rounded-full shadow-xl shadow-indigo-200 hover:bg-indigo-700 hover:scale-110 hover:-translate-y-1 transition-all group flex items-center justify-center relative" aria-label="Share">
+            <span class="absolute right-full mr-4 bg-slate-900 text-white text-[10px] font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">Share Page</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+        </button>
+    </div>
+
     <footer class="bg-white border-t border-slate-200 py-16 mt-auto">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">&copy; 2026 htmlfonts. All rights reserved.</p>
@@ -67,147 +80,47 @@
     </footer>
 
     <script>
-        const previewInput = document.getElementById('global-preview-input');
-        const previewTexts = document.querySelectorAll('.font-preview-text');
-        
-        let idxState = { name: '', url: '', css: '', impMode: 'html', cssMode: 'vanilla' };
-
-        if(previewInput) {
-            previewInput.addEventListener('input', (e) => {
-                const val = e.target.value;
-                previewTexts.forEach(p => {
-                    p.textContent = val ? val : p.getAttribute('data-default');
-                });
-            });
-        }
-
-        const observer = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    const card = entry.target;
-                    const fontUrl = card.getAttribute('data-font-link');
-                    if(fontUrl && !document.querySelector(`link[href="${fontUrl}"]`)) {
-                        const link = document.createElement('link');
-                        link.rel = 'stylesheet'; link.href = fontUrl;
-                        document.head.appendChild(link);
-                    }
-                    obs.unobserve(card); 
-                }
-            });
-        }, { rootMargin: '350px' });
-
-        document.querySelectorAll('.font-card').forEach(card => {
-            observer.observe(card);
-            card.addEventListener('click', function(e) {
-                if (e.target.closest('a')) return;
-                
-                idxState.name = this.getAttribute('data-font-name');
-                idxState.css = this.getAttribute('data-font-css');
-                idxState.url = this.getAttribute('data-font-url');
-                const slug = this.getAttribute('data-font-slug');
-                
-                document.getElementById('modal-read-more').href = `/font/${slug}.html`;
-                
-                openFontModal();
-            });
-        });
-
-        function renderIdxModal() {
-            document.getElementById('modal-font-name').innerText = idxState.name;
-            const htmlCode = document.getElementById('modal-html');
-            const cssCode = document.getElementById('modal-css');
-            const copyBtn = document.getElementById('copy-html-btn');
-            
-            if (!idxState.url || idxState.url === "") {
-                htmlCode.innerHTML = '<span class="font-sans font-medium text-emerald-400 select-none">✨ System font. Pre-installed on all devices. No import required!</span>';
-                copyBtn.style.display = 'none';
-            } else {
-                copyBtn.style.display = 'block';
-                if (idxState.impMode === 'html') {
-                    htmlCode.textContent = `<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="${idxState.url}" rel="stylesheet">`;
-                } else {
-                    htmlCode.textContent = `@import url('${idxState.url}');`;
-                }
-            }
-            
-            if (idxState.cssMode === 'vanilla') {
-                cssCode.textContent = `font-family: ${idxState.css};`;
-            } else {
-                const safeName = idxState.name.replace(/\s+/g, '').toLowerCase();
-                cssCode.textContent = `// tailwind.config.js\nmodule.exports = {\n  theme: {\n    extend: {\n      fontFamily: {\n        '${safeName}': [${idxState.css}]\n      }\n    }\n  }\n}`;
-            }
-        }
-
-        function idxToggleImport(mode) {
-            idxState.impMode = mode;
-            const btnHtml = document.getElementById('idx-btn-html');
-            const btnCss = document.getElementById('idx-btn-css');
-            if(mode === 'html') {
-                btnHtml.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition";
-                btnCss.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
-            } else {
-                btnCss.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition";
-                btnHtml.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
-            }
-            renderIdxModal();
-        }
-
-        function idxToggleCss(mode) {
-            idxState.cssMode = mode;
-            const btnVan = document.getElementById('idx-btn-vanilla');
-            const btnTw = document.getElementById('idx-btn-tailwind');
-            if(mode === 'vanilla') {
-                btnVan.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-emerald-600 transition";
-                btnTw.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
-            } else {
-                btnTw.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white shadow-sm text-emerald-600 transition";
-                btnVan.className = "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded text-slate-500 hover:text-slate-700 transition";
-            }
-            renderIdxModal();
-        }
-
-        function openFontModal() {
-            renderIdxModal();
-            const modal = document.getElementById('code-modal');
-            const modalContent = document.getElementById('modal-content');
-            modal.classList.remove('hidden');
-            void modal.offsetWidth; 
-            modal.classList.remove('opacity-0');
-            modalContent.classList.remove('scale-95');
-            modalContent.classList.add('scale-100');
-        }
-        
-        function closeModal(id) { 
-            const modal = document.getElementById(id);
-            const modalContent = document.getElementById('modal-content');
-            modal.classList.add('opacity-0');
-            modalContent.classList.remove('scale-100');
-            modalContent.classList.add('scale-95');
-            setTimeout(() => modal.classList.add('hidden'), 300); 
-        }
-        
-        function triggerToast() {
+        function triggerToast(msg) {
             const t = document.getElementById('toast'); 
-            t.classList.remove('hidden'); 
-            void t.offsetWidth;
-            t.classList.remove('opacity-0', 'translate-y-4');
-            setTimeout(() => { 
-                t.classList.add('opacity-0', 'translate-y-4'); 
-                setTimeout(() => t.classList.add('hidden'), 300); 
-            }, 3000);
+            if(t) {
+                if(msg) {
+                    const span = document.getElementById('toast-msg');
+                    if(span) span.innerText = msg;
+                }
+                t.classList.remove('hidden'); 
+                void t.offsetWidth;
+                t.classList.remove('opacity-0', 'translate-y-4');
+                setTimeout(() => { 
+                    t.classList.add('opacity-0', 'translate-y-4'); 
+                    setTimeout(() => t.classList.add('hidden'), 300); 
+                }, 3000);
+            }
+        }
+
+        function copyElementText(id) {
+            const el = document.getElementById(id);
+            if(!el) return;
+            const txt = el.textContent;
+            navigator.clipboard.writeText(txt).then(() => triggerToast("Copied! 🚀")).catch(() => {
+                const ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta);
+                ta.select(); document.execCommand('copy'); document.body.removeChild(ta); triggerToast("Copied! 🚀");
+            });
         }
         
-        function copyElementText(id) {
-            const txt = document.getElementById(id).textContent;
-            navigator.clipboard.writeText(txt).then(() => triggerToast()).catch(() => {
-                const el = document.createElement('textarea'); el.value = txt; document.body.appendChild(el);
-                el.select(); document.execCommand('copy'); document.body.removeChild(el); triggerToast();
-            });
+        function sharePage() {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                navigator.clipboard.writeText(window.location.href).then(() => triggerToast("Link Copied! 🚀")).catch(console.error);
+            }
         }
     </script>
 
 <script>
-    const posts = [{"title": "Typography Tip Apr 01", "slug": "typography-tip-apr-01", "date": "April 01, 2026"}, {"title": "Mastering Vertical Rhythm for Impeccable UI/UX and Readability", "slug": "mastering-vertical-rhythm-for-impeccable-ui-ux-and-readability", "date": "April 01, 2026"}, {"title": "Unlock Dynamic UI: How Variable Fonts Revolutionize Web Typography & UX", "slug": "unlock-dynamic-ui-how-variable-fonts-revolutionize-web-typography-ux", "date": "April 01, 2026"}, {"title": "Typography Tip Apr 01", "slug": "typography-tip-apr-01", "date": "April 01, 2026"}, {"title": "Mastering Fluid Typography for Legible UI/UX on All Devices", "slug": "mastering-fluid-typography-for-legible-ui-ux-on-all-devices", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Elevate Your UI: Mastering Fluid Typography with CSS `clamp()` for Superior UX", "slug": "elevate-your-ui-mastering-fluid-typography-with-css-clamp-for-superior-ux", "date": "March 31, 2026"}, {"title": "Mastering `font-display` for Superior Web Font Loading & UX", "slug": "mastering-font-display-for-superior-web-font-loading-ux", "date": "March 31, 2026"}, {"title": "Mastering `font-display` for Superior Web Font Performance & UX", "slug": "mastering-font-display-for-superior-web-font-performance-ux", "date": "March 31, 2026"}, {"title": "Mastering Fluid Typography: Elevate UI Design with CSS clamp() for Superior UX", "slug": "mastering-fluid-typography-elevate-ui-design-with-css-clamp-for-superior-ux", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Mastering font-display for Superior Web Font Performance & UX", "slug": "mastering-font-display-for-superior-web-font-performance-ux", "date": "March 31, 2026"}, {"title": "Elevate Your UI/UX: Mastering Fluid Responsive Typography with CSS `clamp()`", "slug": "elevate-your-ui-ux-mastering-fluid-responsive-typography-with-css-clamp", "date": "March 31, 2026"}, {"title": "Mastering font-display for Superior Web Font Loading and User Experience", "slug": "mastering-font-display-for-superior-web-font-loading-and-user-experience", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Mastering Fluid Typography with CSS `clamp()` for Superior UI/UX", "slug": "mastering-fluid-typography-with-css-clamp-for-superior-ui-ux", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Mastering Fluid Type: Variable Fonts & Advanced CSS Typography", "slug": "mastering-fluid-type-variable-fonts-advanced-css-typography", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Mastering `font-display`: Optimizing Web Font Loading for Superior UX", "slug": "mastering-font-display-optimizing-web-font-loading-for-superior-ux", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Optimizing Web Font Loading with `font-display: optional` for Superior UX", "slug": "optimizing-web-font-loading-with-font-display-optional-for-superior-ux", "date": "March 31, 2026"}, {"title": "Elevate Your UI: Advanced CSS Typography for Readability & Performance", "slug": "elevate-your-ui-advanced-css-typography-for-readability-performance", "date": "March 31, 2026"}, {"title": "Mastering Responsive Type Scales with CSS `clamp()` for Superior UX", "slug": "mastering-responsive-type-scales-with-css-clamp-for-superior-ux", "date": "March 31, 2026"}, {"title": "Fluid Typography: Crafting Adaptive Text for Superior UI/UX", "slug": "fluid-typography-crafting-adaptive-text-for-superior-ui-ux", "date": "March 31, 2026"}, {"title": "Mastering Responsive Type Scales for Superior UI/UX with CSS `clamp()`", "slug": "mastering-responsive-type-scales-for-superior-ui-ux-with-css-clamp", "date": "March 31, 2026"}, {"title": "Optimizing Web Font Loading for Superior UI/UX with CSS", "slug": "optimizing-web-font-loading-for-superior-ui-ux-with-css", "date": "March 31, 2026"}, {"title": "Mastering Fluid Typography for Responsive UI: Leveraging CSS `clamp()`", "slug": "mastering-fluid-typography-for-responsive-ui-leveraging-css-clamp", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Mastering Line-Height for Superior Web Readability and UI Experience", "slug": "mastering-line-height-for-superior-web-readability-and-ui-experience", "date": "March 31, 2026"}, {"title": "Mastering Responsive Typography with `ch` Units for Superior UI/UX", "slug": "mastering-responsive-typography-with-ch-units-for-superior-ui-ux", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Mastering `font-display` for Superior Web Font Performance & UX", "slug": "mastering-font-display-for-superior-web-font-performance-ux", "date": "March 31, 2026"}, {"title": "Mastering Responsive CSS Typography for Elite UI Design and Superior User Experience", "slug": "mastering-responsive-css-typography-for-elite-ui-design-and-superior-user-experience", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Typographic Scale & Harmony: Elevating UI Design with Modern CSS", "slug": "typographic-scale-harmony-elevating-ui-design-with-modern-css", "date": "March 31, 2026"}, {"title": "Mastering Fluid Typography with CSS clamp() for Superior UI/UX", "slug": "mastering-fluid-typography-with-css-clamp-for-superior-ui-ux", "date": "March 30, 2026"}, {"title": "Mastering `font-display` for Optimal Web Font Performance & UX", "slug": "mastering-font-display-for-optimal-web-font-performance-ux", "date": "March 30, 2026"}, {"title": "Typography Tip Mar 30", "slug": "typography-tip-mar-30", "date": "March 30, 2026"}, {"title": "Elevating UX: Mastering Fluid Typography with CSS clamp() for Responsive UI", "slug": "elevating-ux-mastering-fluid-typography-with-css-clamp-for-responsive-ui", "date": "March 30, 2026"}, {"title": "Leveraging Variable Fonts for Dynamic UI, Peak Performance, and Superior UX", "slug": "leveraging-variable-fonts-for-dynamic-ui-peak-performance-and-superior-ux", "date": "March 30, 2026"}, {"title": "Mastering Font Loading for Superior UX: The Power of `font-display: swap`", "slug": "mastering-font-loading-for-superior-ux-the-power-of-font-display-swap", "date": "March 30, 2026"}, {"title": "Mastering font-display: Optimizing Web Font Loading for Superior User Experience", "slug": "mastering-font-display-optimizing-web-font-loading-for-superior-user-experience", "date": "March 30, 2026"}, {"title": "Mastering Web Font Loading: Optimizing for Performance and User Experience", "slug": "mastering-web-font-loading-optimizing-for-performance-and-user-experience", "date": "March 30, 2026"}, {"title": "Mastering Fluid Typography with CSS clamp() for Superior UI/UX", "slug": "mastering-fluid-typography-with-css-clamp-for-superior-ui-ux", "date": "March 30, 2026"}, {"title": "Typography Tip Mar 30", "slug": "typography-tip-mar-30", "date": "March 30, 2026"}, {"title": "Mastering Responsive Typography with CSS Clamp() for Superior UI/UX", "slug": "mastering-responsive-typography-with-css-clamp-for-superior-ui-ux", "date": "March 30, 2026"}, {"title": "Mastering Font Loading Strategies for Enhanced UI/UX and Performance", "slug": "mastering-font-loading-strategies-for-enhanced-ui-ux-and-performance", "date": "March 30, 2026"}, {"title": "Mastering Fluid Typography with CSS `clamp()` for Superior UI/UX", "slug": "mastering-fluid-typography-with-css-clamp-for-superior-ui-ux", "date": "March 30, 2026"}, {"title": "Elevate Your UI: Mastering `font-display` for Flawless Web Font Performance & UX", "slug": "elevate-your-ui-mastering-font-display-for-flawless-web-font-performance-ux", "date": "March 30, 2026"}, {"title": "Mastering Fluid Typography with CSS `clamp()`: The Secret to Responsive & Readable UI", "slug": "mastering-fluid-typography-with-css-clamp-the-secret-to-responsive-readable-ui", "date": "March 30, 2026"}, {"title": "Mastering Variable Fonts: Elevating UI/UX with Performance & Precision", "slug": "mastering-variable-fonts-elevating-ui-ux-with-performance-precision", "date": "March 30, 2026"}];
+    const posts = [{"title": "Typography Tip Apr 01", "slug": "typography-tip-apr-01", "date": "April 01, 2026"}, {"title": "Typography Tip Apr 01", "slug": "typography-tip-apr-01", "date": "April 01, 2026"}, {"title": "Mastering Vertical Rhythm for Impeccable UI/UX and Readability", "slug": "mastering-vertical-rhythm-for-impeccable-ui-ux-and-readability", "date": "April 01, 2026"}, {"title": "Unlock Dynamic UI: How Variable Fonts Revolutionize Web Typography & UX", "slug": "unlock-dynamic-ui-how-variable-fonts-revolutionize-web-typography-ux", "date": "April 01, 2026"}, {"title": "Typography Tip Apr 01", "slug": "typography-tip-apr-01", "date": "April 01, 2026"}, {"title": "Mastering Fluid Typography for Legible UI/UX on All Devices", "slug": "mastering-fluid-typography-for-legible-ui-ux-on-all-devices", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Elevate Your UI: Mastering Fluid Typography with CSS `clamp()` for Superior UX", "slug": "elevate-your-ui-mastering-fluid-typography-with-css-clamp-for-superior-ux", "date": "March 31, 2026"}, {"title": "Mastering `font-display` for Superior Web Font Loading & UX", "slug": "mastering-font-display-for-superior-web-font-loading-ux", "date": "March 31, 2026"}, {"title": "Mastering `font-display` for Superior Web Font Performance & UX", "slug": "mastering-font-display-for-superior-web-font-performance-ux", "date": "March 31, 2026"}, {"title": "Mastering Fluid Typography: Elevate UI Design with CSS clamp() for Superior UX", "slug": "mastering-fluid-typography-elevate-ui-design-with-css-clamp-for-superior-ux", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Mastering font-display for Superior Web Font Performance & UX", "slug": "mastering-font-display-for-superior-web-font-performance-ux", "date": "March 31, 2026"}, {"title": "Elevate Your UI/UX: Mastering Fluid Responsive Typography with CSS `clamp()`", "slug": "elevate-your-ui-ux-mastering-fluid-responsive-typography-with-css-clamp", "date": "March 31, 2026"}, {"title": "Mastering font-display for Superior Web Font Loading and User Experience", "slug": "mastering-font-display-for-superior-web-font-loading-and-user-experience", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Mastering Fluid Typography with CSS `clamp()` for Superior UI/UX", "slug": "mastering-fluid-typography-with-css-clamp-for-superior-ui-ux", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Mastering Fluid Type: Variable Fonts & Advanced CSS Typography", "slug": "mastering-fluid-type-variable-fonts-advanced-css-typography", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Mastering `font-display`: Optimizing Web Font Loading for Superior UX", "slug": "mastering-font-display-optimizing-web-font-loading-for-superior-ux", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Optimizing Web Font Loading with `font-display: optional` for Superior UX", "slug": "optimizing-web-font-loading-with-font-display-optional-for-superior-ux", "date": "March 31, 2026"}, {"title": "Elevate Your UI: Advanced CSS Typography for Readability & Performance", "slug": "elevate-your-ui-advanced-css-typography-for-readability-performance", "date": "March 31, 2026"}, {"title": "Mastering Responsive Type Scales with CSS `clamp()` for Superior UX", "slug": "mastering-responsive-type-scales-with-css-clamp-for-superior-ux", "date": "March 31, 2026"}, {"title": "Fluid Typography: Crafting Adaptive Text for Superior UI/UX", "slug": "fluid-typography-crafting-adaptive-text-for-superior-ui-ux", "date": "March 31, 2026"}, {"title": "Mastering Responsive Type Scales for Superior UI/UX with CSS `clamp()`", "slug": "mastering-responsive-type-scales-for-superior-ui-ux-with-css-clamp", "date": "March 31, 2026"}, {"title": "Optimizing Web Font Loading for Superior UI/UX with CSS", "slug": "optimizing-web-font-loading-for-superior-ui-ux-with-css", "date": "March 31, 2026"}, {"title": "Mastering Fluid Typography for Responsive UI: Leveraging CSS `clamp()`", "slug": "mastering-fluid-typography-for-responsive-ui-leveraging-css-clamp", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Mastering Line-Height for Superior Web Readability and UI Experience", "slug": "mastering-line-height-for-superior-web-readability-and-ui-experience", "date": "March 31, 2026"}, {"title": "Mastering Responsive Typography with `ch` Units for Superior UI/UX", "slug": "mastering-responsive-typography-with-ch-units-for-superior-ui-ux", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Mastering `font-display` for Superior Web Font Performance & UX", "slug": "mastering-font-display-for-superior-web-font-performance-ux", "date": "March 31, 2026"}, {"title": "Mastering Responsive CSS Typography for Elite UI Design and Superior User Experience", "slug": "mastering-responsive-css-typography-for-elite-ui-design-and-superior-user-experience", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Typography Tip Mar 31", "slug": "typography-tip-mar-31", "date": "March 31, 2026"}, {"title": "Typographic Scale & Harmony: Elevating UI Design with Modern CSS", "slug": "typographic-scale-harmony-elevating-ui-design-with-modern-css", "date": "March 31, 2026"}, {"title": "Mastering Fluid Typography with CSS clamp() for Superior UI/UX", "slug": "mastering-fluid-typography-with-css-clamp-for-superior-ui-ux", "date": "March 30, 2026"}, {"title": "Mastering `font-display` for Optimal Web Font Performance & UX", "slug": "mastering-font-display-for-optimal-web-font-performance-ux", "date": "March 30, 2026"}, {"title": "Typography Tip Mar 30", "slug": "typography-tip-mar-30", "date": "March 30, 2026"}, {"title": "Elevating UX: Mastering Fluid Typography with CSS clamp() for Responsive UI", "slug": "elevating-ux-mastering-fluid-typography-with-css-clamp-for-responsive-ui", "date": "March 30, 2026"}, {"title": "Leveraging Variable Fonts for Dynamic UI, Peak Performance, and Superior UX", "slug": "leveraging-variable-fonts-for-dynamic-ui-peak-performance-and-superior-ux", "date": "March 30, 2026"}, {"title": "Mastering Font Loading for Superior UX: The Power of `font-display: swap`", "slug": "mastering-font-loading-for-superior-ux-the-power-of-font-display-swap", "date": "March 30, 2026"}, {"title": "Mastering font-display: Optimizing Web Font Loading for Superior User Experience", "slug": "mastering-font-display-optimizing-web-font-loading-for-superior-user-experience", "date": "March 30, 2026"}, {"title": "Mastering Web Font Loading: Optimizing for Performance and User Experience", "slug": "mastering-web-font-loading-optimizing-for-performance-and-user-experience", "date": "March 30, 2026"}, {"title": "Mastering Fluid Typography with CSS clamp() for Superior UI/UX", "slug": "mastering-fluid-typography-with-css-clamp-for-superior-ui-ux", "date": "March 30, 2026"}, {"title": "Typography Tip Mar 30", "slug": "typography-tip-mar-30", "date": "March 30, 2026"}, {"title": "Mastering Responsive Typography with CSS Clamp() for Superior UI/UX", "slug": "mastering-responsive-typography-with-css-clamp-for-superior-ui-ux", "date": "March 30, 2026"}, {"title": "Mastering Font Loading Strategies for Enhanced UI/UX and Performance", "slug": "mastering-font-loading-strategies-for-enhanced-ui-ux-and-performance", "date": "March 30, 2026"}, {"title": "Mastering Fluid Typography with CSS `clamp()` for Superior UI/UX", "slug": "mastering-fluid-typography-with-css-clamp-for-superior-ui-ux", "date": "March 30, 2026"}, {"title": "Elevate Your UI: Mastering `font-display` for Flawless Web Font Performance & UX", "slug": "elevate-your-ui-mastering-font-display-for-flawless-web-font-performance-ux", "date": "March 30, 2026"}, {"title": "Mastering Fluid Typography with CSS `clamp()`: The Secret to Responsive & Readable UI", "slug": "mastering-fluid-typography-with-css-clamp-the-secret-to-responsive-readable-ui", "date": "March 30, 2026"}, {"title": "Mastering Variable Fonts: Elevating UI/UX with Performance & Precision", "slug": "mastering-variable-fonts-elevating-ui-ux-with-performance-precision", "date": "March 30, 2026"}];
     const postsPerPage = 25;
     let currentPage = 1;
     const totalPages = Math.ceil(posts.length / postsPerPage);
