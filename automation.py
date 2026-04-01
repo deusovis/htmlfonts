@@ -4,6 +4,7 @@ import datetime
 import sys
 import math
 import html
+import re
 import time
 from google import genai
 import tweepy
@@ -765,9 +766,9 @@ tool_js_raw = r"""
         }
 
         function openModalFromVS(side) { 
-            let currObj = (typeof fontData !== 'undefined' && fontData[side]) ? fontData[side] : vsData[side];
-            if (!currObj) return;
-            
+            const currObj = (typeof fontData !== 'undefined' && fontData[side]) ? fontData[side] : vsData[side];
+            if(!currObj) return;
+
             const wEl = document.getElementById(side === 'a' ? 'vs-weight-a' : 'vs-weight-b');
             const szEl = document.getElementById('vs-font-size');
             const lhEl = document.getElementById('vs-lh');
@@ -841,6 +842,7 @@ try:
     os.makedirs('compare', exist_ok=True)
     os.makedirs('article', exist_ok=True)
     os.makedirs('font', exist_ok=True)
+    os.makedirs('editors-desk', exist_ok=True)
     
     sitemap = f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     sitemap += f'  <url><loc>{DOMAIN}/</loc><priority>1.0</priority></url>\n'
@@ -907,8 +909,79 @@ try:
 
     history.insert(0, new_data)
     
+    # Ensure slug mapping for all history items to fix past bad data and guarantee exact title match URLs
+    for post in history:
+        if isinstance(post, dict):
+            t_raw = str(post.get("title", "Typography Tip"))
+            post["slug"] = re.sub(r'[^a-z0-9]+', '-', t_raw.lower()).strip('-')
+    
     with open('history.json', 'w', encoding='utf-8') as f: json.dump(history, f, indent=4)
     with open('content.json', 'w', encoding='utf-8') as f: json.dump(new_data, f, indent=4)
+
+    # NEW: GENERATE INDIVIDUAL POSTS IN editors-desk/
+    print("Generating Individual Editor's Desk Posts...")
+    for post in history:
+        if not isinstance(post, dict): continue
+        slug_raw = post.get('slug')
+        title_raw = str(post.get('title', 'Typography Tip'))
+        date_raw = str(post.get('date', 'Recent'))
+        tip_raw = str(post.get('tip', ''))
+        
+        css_raw = post.get('css_snippet', '')
+        if isinstance(css_raw, dict) or isinstance(css_raw, list): 
+            css_raw = json.dumps(css_raw, indent=2)
+        else: 
+            css_raw = str(css_raw)
+        safe_css = html.escape(css_raw)
+
+        post_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title_raw} | Editor's Desk</title>
+    <meta name="description" content="Read the latest CSS typography tip: {title_raw}">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{GA_CODE}
+    <script src="{TAILWIND}"></script>
+    {PRECONNECT_1}
+    {PRECONNECT_2}
+    {MAIN_FONT_LINK}
+    <style>
+        body {{ font-family: system-ui, sans-serif; }}
+        .custom-scrollbar::-webkit-scrollbar {{ width: 6px; height: 6px; }}
+        .custom-scrollbar::-webkit-scrollbar-track {{ background: #0f172a; border-radius: 8px; }}
+        .custom-scrollbar::-webkit-scrollbar-thumb {{ background: #334155; border-radius: 8px; }}
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {{ background: #475569; }}
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col selection:bg-indigo-200 selection:text-indigo-900">
+{header_html}
+    <div class="bg-white border-b border-slate-200 overflow-hidden relative">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-white to-white"></div>
+        <div class="max-w-4xl mx-auto px-6 pt-10 pb-12 md:pt-12 md:pb-16 relative z-10 text-center">
+            <a href="/editors-desk.html" class="text-indigo-600 font-bold uppercase tracking-widest text-xs hover:text-indigo-800 transition inline-block mb-6">&larr; Back to Editor's Desk</a>
+            <span class="block text-[10px] font-black text-indigo-500 uppercase tracking-widest mb-4">{date_raw}</span>
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-8">{title_raw}</h1>
+        </div>
+    </div>
+    
+    <main class="flex-grow py-12 px-6 max-w-4xl mx-auto w-full">
+        <article class="prose prose-lg text-slate-600 max-w-none">
+            <p class="text-xl font-medium leading-relaxed text-slate-700 mb-8">{tip_raw}</p>
+            <div class="bg-slate-900 rounded-2xl p-6 relative shadow-xl border border-slate-800">
+                <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-sm font-mono text-emerald-400 block whitespace-pre-wrap">{safe_css}</code></pre>
+            </div>
+        </article>
+    </main>
+{footer_html}
+{home_js_raw}
+</body>
+</html>"""
+        with open(f"editors-desk/{slug_raw}.html", 'w', encoding='utf-8') as f:
+            f.write(post_html)
+        sitemap += f"  <url><loc>{DOMAIN}/editors-desk/{slug_raw}.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>\n"
+
 
     # 3. BUILD INDIVIDUAL SEO FONT PAGES & DIRECTORY CARDS
     directory_grid_html = ""
@@ -1044,6 +1117,7 @@ try:
     print("Generating new Home Page (index.html)...")
     
     latest_tip_title = history[0].get('title', 'Typography Tip') if history else new_data.get('title', 'Typography Tip')
+    latest_slug = history[0].get('slug', new_data.get('slug', 'fallback'))
     
     daily_update_html = f"""
         <div class="mt-16 bg-indigo-50 border border-indigo-100 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
@@ -1051,7 +1125,7 @@ try:
                 <span class="inline-block bg-indigo-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest mb-3">Today's Update</span>
                 <h2 class="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">{latest_tip_title}</h2>
             </div>
-            <a href="/editors-desk.html" class="shrink-0 bg-white hover:bg-slate-50 text-indigo-600 border border-indigo-200 font-bold text-xs uppercase tracking-widest px-6 py-3.5 rounded-xl transition shadow-sm hover:shadow-md hover:-translate-y-1">Read at Editor's Desk &rarr;</a>
+            <a href="/editors-desk/{latest_slug}.html" class="shrink-0 bg-white hover:bg-slate-50 text-indigo-600 border border-indigo-200 font-bold text-xs uppercase tracking-widest px-6 py-3.5 rounded-xl transition shadow-sm hover:shadow-md hover:-translate-y-1">Read at Editor's Desk &rarr;</a>
         </div>
     """
     
@@ -1279,32 +1353,19 @@ try:
         for post in current_posts:
             if not isinstance(post, dict): continue
             
-            css_raw = post.get('css_snippet', '')
-            if isinstance(css_raw, dict) or isinstance(css_raw, list): 
-                css_raw = json.dumps(css_raw, indent=2)
-            elif not isinstance(css_raw, str): 
-                css_raw = str(css_raw)
-            safe_css = html.escape(css_raw)
-            
-            title_raw = post.get('title', 'Typography Tip')
-            if not isinstance(title_raw, str): title_raw = str(title_raw)
-            
-            tip_raw = post.get('tip', '')
-            if not isinstance(tip_raw, str): tip_raw = str(tip_raw)
-            
-            date_raw = post.get('date', 'Recent')
-            if not isinstance(date_raw, str): date_raw = str(date_raw)
+            title_raw = str(post.get('title', 'Typography Tip'))
+            slug_raw = post.get('slug', '')
+            date_raw = str(post.get('date', 'Recent'))
             
             posts_html += f"""
-            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group flex flex-col h-full hover:shadow-xl hover:-translate-y-1 transition-all">
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 relative overflow-hidden group flex flex-col h-full hover:shadow-xl hover:-translate-y-1 transition-all">
                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">{date_raw}</span>
                 </div>
-                <h2 class="text-xl font-black text-slate-900 mb-4 leading-snug">{title_raw}</h2>
-                <p class="text-slate-600 text-sm font-medium leading-relaxed mb-6 flex-grow">{tip_raw}</p>
-                <div class="bg-slate-900 rounded-xl p-4 relative mt-auto">
-                    <pre class="w-full m-0 overflow-x-auto custom-scrollbar"><code class="text-[10px] font-mono text-emerald-400 block whitespace-pre-wrap">{safe_css}</code></pre>
+                <h2 class="text-2xl font-black text-slate-900 mb-6 leading-snug">{title_raw}</h2>
+                <div class="mt-auto pt-2">
+                    <a href="/editors-desk/{slug_raw}.html" class="inline-flex items-center gap-2 text-indigo-600 font-bold text-xs uppercase tracking-widest hover:text-indigo-800 transition">Read Post &rarr;</a>
                 </div>
             </article>"""
 
@@ -1371,6 +1432,7 @@ try:
         </div>
     </main>
 {footer_html}
+{home_js_raw}
 </body>
 </html>"""
         with open(file_name, 'w', encoding='utf-8') as f:
@@ -1593,7 +1655,11 @@ try:
             </div>
         </div>
 
-        <div class="mt-12 border-t border-slate-200 pt-16">
+        <div class="mt-12 bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 text-slate-600">
+            {seo_description}
+        </div>
+        
+        <div class="border-t border-slate-200 pt-16 mt-24">
             <h2 class="text-3xl font-black text-slate-900 mb-8 text-center tracking-tight">Most Searched Comparisons</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 {comparison_grid_links}
@@ -1886,7 +1952,9 @@ try:
             access_token=os.environ["X_ACCESS_TOKEN"],
             access_token_secret=os.environ["X_ACCESS_TOKEN_SECRET"]
         )
-        tweet_text = f"{new_data.get('tweet', 'Check out our latest web typography tip!')}\n\nRead Tip: {DOMAIN}/article/{new_data.get('slug', 'fallback')}.html #webdesign #typography"
+        post_slug = new_data.get('slug')
+        if not post_slug: post_slug = re.sub(r'[^a-z0-9]+', '-', str(new_data.get('title', 'Typography Tip')).lower()).strip('-')
+        tweet_text = f"{new_data.get('tweet', 'Check out our latest web typography tip!')}\n\nRead Tip: {DOMAIN}/editors-desk/{post_slug}.html #webdesign #typography"
         response = client_x.create_tweet(text=tweet_text)
         print(f"✅ X Post Successful. Status ID: {response.data['id']}")
 except Exception as e:
