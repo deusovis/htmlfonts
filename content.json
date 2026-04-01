@@ -1,8 +1,8 @@
 {
-    "title": "Mastering Vertical Rhythm for Impeccable UI/UX and Readability",
-    "slug": "mastering-vertical-rhythm-for-impeccable-ui-ux-and-readability",
-    "tweet": "Elevate your UI/UX! Learn how to master vertical rhythm with CSS for consistent layouts, enhanced readability, and beautiful web fonts. #CSSTypography #WebDesign #UX",
-    "tip": "Achieve visual harmony and superior readability by establishing a robust vertical rhythm in your UI. Use a consistent base unit (like 'rem') for your 'line-height' and vertical spacing, ensuring all elements align to an invisible grid. This creates a predictable and pleasant reading experience, especially with custom #WebFonts.",
-    "css_snippet": ":root {\n  font-size: 16px; /* Define base for rem units */\n  --base-line-height: 1.5rem; /* Our consistent vertical rhythm grid unit (24px) */\n}\n\nbody {\n  font-family: 'Lato', sans-serif; /* Example web font */\n  line-height: var(--base-line-height); /* Set base line-height for body text */\n  color: #333;\n  /* Improve text rendering for sharper UI/UX */\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n/* Apply tighter line-heights for headings but maintain consistent vertical spacing */\nh1, h2, h3, h4, h5, h6 {\n  line-height: 1.2; /* A common, tighter line-height for headings */\n  margin-top: var(--base-line-height); /* Ensures consistent spacing above headings */\n  margin-bottom: var(--base-line-height); /* Ensures consistent spacing below headings, aligning subsequent blocks */\n}\n\n/* Ensure all primary text blocks adhere to the vertical rhythm */\np, ul, ol, blockquote {\n  line-height: var(--base-line-height); /* Consistent line-height for main text content */\n  margin-bottom: var(--base-line-height); /* Align block elements to the grid */\n}",
+    "title": "Typography Tip Apr 01",
+    "slug": "typography-tip-apr-01",
+    "tweet": "Check out today's CSS typography tip! #webdesign #css",
+    "tip": "To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.",
+    "css_snippet": "body {\n  line-height: 1.5;\n}",
     "date": "April 01, 2026"
 }
