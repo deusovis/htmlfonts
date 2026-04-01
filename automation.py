@@ -46,6 +46,10 @@ def save_cache():
 def save_profile_cache():
     with open(PROFILE_CACHE_FILE, 'w', encoding='utf-8') as f: json.dump(profile_cache, f, indent=4)
 
+seo_prompt = """Generate a high-value JSON object for a web typography expert blog. 
+Target Keywords: CSS typography, UI design, web fonts, user experience. 
+Keys MUST exactly match: "title", "slug", "tweet", "tip", "css_snippet".
+Return ONLY raw JSON."""
 
 # 2. FULL DATA ARRAYS
 master_fonts = [
@@ -1292,7 +1296,7 @@ try:
             if not isinstance(date_raw, str): date_raw = str(date_raw)
             
             posts_html += f"""
-            <article class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-200 relative overflow-hidden group flex flex-col h-full hover:shadow-xl hover:-translate-y-1 transition-all">
+            <article class="bg-white p-8 md:p-10 rounded-[2rem] shadow-sm border border-slate-200 mb-8 relative overflow-hidden group flex flex-col h-full hover:shadow-xl hover:-translate-y-1 transition-all">
                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-50 group-hover:opacity-100 transition-opacity"></div>
                 <div class="flex items-center justify-between mb-4">
                     <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">{date_raw}</span>
@@ -1360,7 +1364,7 @@ try:
         </div>
     </div>
     
-    <main class="flex-grow py-12 px-6 max-w-6xl mx-auto w-full">
+    <main class="flex-grow py-12 px-6 max-w-3xl mx-auto w-full">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             {posts_html}
             {pagination_html}
@@ -1589,11 +1593,7 @@ try:
             </div>
         </div>
 
-        <div class="mt-12 bg-white p-8 md:p-12 rounded-3xl shadow-[0_20px_50px_rgb(0,0,0,0.05)] border border-slate-100 text-slate-600">
-            {seo_description}
-        </div>
-        
-        <div class="border-t border-slate-200 pt-16 mt-24">
+        <div class="mt-12 border-t border-slate-200 pt-16">
             <h2 class="text-3xl font-black text-slate-900 mb-8 text-center tracking-tight">Most Searched Comparisons</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 {comparison_grid_links}
@@ -1886,7 +1886,7 @@ try:
             access_token=os.environ["X_ACCESS_TOKEN"],
             access_token_secret=os.environ["X_ACCESS_TOKEN_SECRET"]
         )
-        tweet_text = f"{new_data.get('tweet', 'Check out our latest web typography tip!')}\n\nRead Tip: {DOMAIN}/editors-desk.html #webdesign #typography"
+        tweet_text = f"{new_data.get('tweet', 'Check out our latest web typography tip!')}\n\nRead Tip: {DOMAIN}/article/{new_data.get('slug', 'fallback')}.html #webdesign #typography"
         response = client_x.create_tweet(text=tweet_text)
         print(f"✅ X Post Successful. Status ID: {response.data['id']}")
 except Exception as e:
