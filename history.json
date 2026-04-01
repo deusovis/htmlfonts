@@ -1,5 +1,13 @@
 [
     {
+        "title": "Precision Typography: Mastering Line Height and Letter Spacing for UI Readability",
+        "slug": "precision-typography-mastering-line-height-and-letter-spacing-for-ui-readability",
+        "tweet": "Elevate your UI design with precise #CSSTypography! Learn how optimal line height & letter spacing dramatically improve readability and user experience. #WebFonts #UIDesign #UX",
+        "tip": "For optimal readability, aim for a line-height that is 1.4 to 1.6 times your font-size for body text. Adjust letter-spacing subtly; usually, a small negative value can improve visual balance for larger display fonts, while positive values can enhance readability in all-caps text.",
+        "css_snippet": "/* Body text for readability */\nbody {\n  font-family: 'Inter', sans-serif;\n  font-size: 18px; /* Base font size */\n  line-height: 1.5; /* Optimal for readability: 18px * 1.5 = 27px line height */\n  letter-spacing: -0.01em; /* Subtle negative spacing for better visual flow */\n  color: #333;\n}\n\n/* Headings for visual impact */\nh1 {\n  font-family: 'DM Serif Display', serif;\n  font-size: 48px;\n  line-height: 1.1; /* Tighter for large headings */\n  letter-spacing: -0.02em; /* More aggressive negative spacing for display fonts */\n  color: #1a1a1a;\n}\n\n/* All-caps text (e.g., buttons, tags) */\n.uppercase-label {\n  text-transform: uppercase;\n  font-size: 14px;\n  letter-spacing: 0.08em; /* Positive spacing enhances readability for all-caps */\n  line-height: 1.2;\n}",
+        "date": "April 01, 2026"
+    },
+    {
         "title": "Mastering Responsive Typography: The Power of CSS clamp() for Optimal Line Lengths",
         "slug": "mastering-responsive-typography-the-power-of-css-clamp-for-optimal-line-lengths",
         "tweet": "Boost UI readability! Use CSS clamp() for dynamic font sizing and line-heights. Achieve optimal measure & enhance #UserExperience. #CSSTypography #WebFonts",
