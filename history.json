@@ -1,5 +1,13 @@
 [
     {
+        "title": "Unlock Dynamic UI: How Variable Fonts Revolutionize Web Typography & UX",
+        "slug": "variable-fonts-dynamic-ui-ux-revolution",
+        "tweet": "Boost your UI design & performance with Variable Fonts! Learn how this modern CSS typography technique enhances user experience without sacrificing file size. #WebFonts #CSS #UIDesign #UX",
+        "tip": "Variable Fonts offer incredible flexibility in UI design, allowing you to fine-tune weight, width, and other axes without loading multiple font files. This significantly reduces page weight and allows for highly responsive typography, enhancing both performance and user experience. Explore custom axis settings like 'wght' for weight or 'wdth' for width.",
+        "css_snippet": "@font-face {\n  font-family: 'Inter Variable';\n  src: url('Inter-roman.var.woff2') format('woff2');\n  font-weight: 100 900;\n  font-style: normal;\n  font-display: swap;\n}\n\nbody {\n  font-family: 'Inter Variable', sans-serif;\n  font-variation-settings: \"wght\" 450; /* Example: setting a specific weight */\n}\n\nh1 {\n  font-variation-settings: \"wght\" 780, \"slnt\" -10; /* Example: multiple axes */\n}",
+        "date": "April 01, 2026"
+    },
+    {
         "title": "Typography Tip Apr 01",
         "slug": "typography-tip-1775001641",
         "tweet": "Check out today's CSS typography tip! #webdesign #css",
