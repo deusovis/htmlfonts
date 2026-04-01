@@ -163,7 +163,6 @@ top_guides = [
     ("how-to-add-font-fallback-stacks", "Creating Bulletproof Font Stacks", "Resilience", "A font stack is a prioritized list of fallback fonts. The browser will try each one in order until it finds one installed on the user's system.", "font-family: 'MyCustomFont', 'Helvetica Neue', Arial, sans-serif;", "Always end your CSS font stack with a generic family name like sans-serif or serif.")
 ]
 
-# PERFECTLY FIXED: All 30 entries now have exactly 6 string values.
 top_comparisons = [
     ("Roboto", "Open Sans", "'Roboto', sans-serif", "'Open Sans', sans-serif", "Roboto:wght@400;700", "Open+Sans:wght@400;700"),
     ("Arial", "Helvetica", "Arial, sans-serif", "Helvetica, Arial, sans-serif", "", ""),
@@ -1495,6 +1494,11 @@ try:
         type_a = next((f['type'] for f in master_fonts if f['name'] == font_a), 'Sans-Serif')
         type_b = next((f['type'] for f in master_fonts if f['name'] == font_b), 'Sans-Serif')
 
+        # NEW: Create fontData JSON for JS injection
+        font_a_obj = next((f for f in master_fonts if f['name'] == font_a), {"name": font_a, "css": css_a, "link": link_a, "type": type_a})
+        font_b_obj = next((f for f in master_fonts if f['name'] == font_b), {"name": font_b, "css": css_b, "link": link_b, "type": type_b})
+        font_data_json = json.dumps({"a": font_a_obj, "b": font_b_obj})
+
         slug = f"{font_a.lower().replace(' ', '-')}-vs-{font_b.lower().replace(' ', '-')}"
         
         # Build raw links safely
@@ -1748,6 +1752,7 @@ try:
 {base_js_raw}
 {tool_js_raw}
 <script>
+    const fontData = {font_data_json};
     initComparePage();
 </script>
 </body>
@@ -1758,6 +1763,9 @@ try:
 
     # 9. BUILD FONT VS FONT COMPARISON TOOL PAGE 
     print("Generating Font Comparison Tool Page...")
+    
+    # NEW: Serialize master_fonts to JSON for JS dropdown injection
+    fonts_json = json.dumps(master_fonts)
     
     tool_html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -1955,6 +1963,7 @@ try:
 {base_js_raw}
 {tool_js_raw}
 <script>
+    const fontsRaw = {fonts_json};
     initVSTool();
 </script>
 </body>
