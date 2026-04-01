@@ -1106,16 +1106,16 @@ try:
 
     <div class="bg-white border-b border-slate-200 overflow-hidden relative">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-white to-white"></div>
-        <div class="max-w-7xl mx-auto px-6 pt-10 pb-12 md:pt-12 md:pb-16 relative z-10 text-center">
+        <div class="max-w-7xl mx-auto px-6 pt-10 pb-8 md:pt-12 md:pb-10 relative z-10 text-center">
             <a href="/" class="text-indigo-600 font-bold uppercase tracking-widest text-xs hover:text-indigo-800 transition inline-block mb-6">&larr; Back to Directory</a>
             <h1 class="text-6xl md:text-8xl font-black tracking-tight mb-4 break-words text-slate-900" style="font-family: {f_css};">
                 {f_name}
             </h1>
-            <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mt-4 mb-8">The complete typography profile, history, and usage guide.</p>
+            <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mt-4">The complete typography profile, history, and usage guide.</p>
         </div>
     </div>
 
-    <main class="flex-grow py-16 px-4 md:px-6 w-full">
+    <main class="flex-grow pt-8 pb-16 md:pt-10 px-4 md:px-6 w-full">
         <!-- Narrowed container for the perfect 65-75 character reading line length -->
         <article class="max-w-3xl mx-auto">
             {ai_content}
@@ -1582,7 +1582,7 @@ try:
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-50/50 via-white to-white"></div>
         <div class="max-w-7xl mx-auto px-6 pt-10 pb-12 md:pt-12 md:pb-16 relative z-10 text-center">
             <h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">{font_a} vs {font_b}</span>
+                {font_a} <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">vs</span> {font_b}
             </h1>
             <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mt-4 mb-8">Compare legibility and design aesthetics side-by-side.</p>
         </div>
