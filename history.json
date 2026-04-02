@@ -1,5 +1,13 @@
 [
     {
+        "title": "Optimizing Web Font Loading: A Critical Step for Superior UI Performance and User Experience",
+        "slug": "optimizing-web-font-loading-a-critical-step-for-superior-ui-performance-and-user-experience",
+        "tweet": "Boost your #UIDesign and #UX! Master strategic web font loading to prevent FOUT/FOIT, reduce CLS, and deliver a lightning-fast #CSSTypography experience. Essential for modern #WebFonts!",
+        "tip": "Prioritize web font performance to prevent layout shifts (CLS) and improve perceived load times. Always use 'font-display: swap' or 'font-display: optional' within your @font-face rules. Preload critical fonts using '<link rel=\"preload\" as=\"font\">' tags for immediate availability, and serve WOFF2 format for maximum compression and browser support. Consider font subsetting to reduce file size further, loading only the characters truly needed.",
+        "css_snippet": "@font-face {\n  font-family: 'AppBrandFont';\n  src: url('/fonts/AppBrandFont-Regular.woff2') format('woff2') tech('woff2'),\n       url('/fonts/AppBrandFont-Regular.woff') format('woff');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* 'swap' for quick fallback, 'optional' for less intrusive loading */\n}\n\n@font-face {\n  font-family: 'AppBrandFont';\n  src: url('/fonts/AppBrandFont-Bold.woff2') format('woff2') tech('woff2'),\n       url('/fonts/AppBrandFont-Bold.woff') format('woff');\n  font-weight: 700;\n  font-style: normal;\n  font-display: swap;\n}\n\nbody {\n  font-family: 'AppBrandFont', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}",
+        "date": "April 02, 2026"
+    },
+    {
         "title": "Precision Typography: Mastering Line Height and Letter Spacing for UI Readability",
         "slug": "precision-typography-mastering-line-height-and-letter-spacing-for-ui-readability",
         "tweet": "Elevate your UI design with precise #CSSTypography! Learn how optimal line height & letter spacing dramatically improve readability and user experience. #WebFonts #UIDesign #UX",
