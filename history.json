@@ -1,5 +1,13 @@
 [
     {
+        "title": "Building Scalable Typography Systems with CSS Custom Properties",
+        "slug": "building-scalable-typography-systems-with-css-custom-properties",
+        "tweet": "Boost your UI design workflow & user experience! Learn how CSS Custom Properties enable flexible, scalable typography systems for web fonts. #CSSTypography #UIDesign #WebFonts #UX",
+        "tip": "Leverage CSS Custom Properties (variables) to centralize your typography settings. Define variables for font families, sizes, weights, and even line heights. This approach ensures design consistency across your UI, makes global changes trivial, and dramatically improves maintainability, contributing to a superior user experience and more robust web font management.",
+        "css_snippet": ":root {\n  --font-primary: 'Inter', sans-serif;\n  --font-secondary: 'Merriweather', serif;\n\n  --text-base-size: 1rem;\n  --text-lg-size: 1.25rem;\n  --text-xl-size: 1.5rem;\n\n  --font-weight-regular: 400;\n  --font-weight-bold: 700;\n\n  --line-height-body: 1.6;\n  --line-height-heading: 1.2;\n}\n\nbody {\n  font-family: var(--font-primary);\n  font-size: var(--text-base-size);\n  line-height: var(--line-height-body);\n}\n\nh1 {\n  font-family: var(--font-secondary);\n  font-size: var(--text-xl-size);\n  font-weight: var(--font-weight-bold);\n  line-height: var(--line-height-heading);\n}",
+        "date": "April 03, 2026"
+    },
+    {
         "title": "Optimizing Web Font Loading: A Critical Step for Superior UI Performance and User Experience",
         "slug": "optimizing-web-font-loading-a-critical-step-for-superior-ui-performance-and-user-experience",
         "tweet": "Boost your #UIDesign and #UX! Master strategic web font loading to prevent FOUT/FOIT, reduce CLS, and deliver a lightning-fast #CSSTypography experience. Essential for modern #WebFonts!",
