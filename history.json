@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevating UI Typography: Unleashing OpenType Features with CSS for Enhanced User Experience",
+        "slug": "elevating-ui-typography-unleashing-opentype-features-with-css-for-enhanced-user-experience",
+        "tweet": "Unlock the full potential of your #WebFonts! Learn how to leverage advanced #OpenType features with #CSS for stunning #UITypography and a superior #UserExperience. A must-read for #WebDesigners! #CSSTips",
+        "tip": "Don't just pick a font; truly master it. Many professional web fonts come with rich OpenType features like ligatures, stylistic sets, or tabular figures. Activating these through CSS can dramatically improve readability, aesthetic appeal, and overall UI design quality, making your text more sophisticated and user-friendly.",
+        "css_snippet": ".text-with-opentype {\n  font-family: 'Merriweather', serif; /* Ensure your font supports these features */\n  font-feature-settings: \"liga\" 1, \"ss01\" 1, \"tnum\" 1; /* Common ligatures, stylistic set 1, tabular numerals */\n  -webkit-font-feature-settings: \"liga\" 1, \"ss01\" 1, \"tnum\" 1; /* For older WebKit browsers */\n  font-variant-ligatures: common-ligatures; /* Modern alternative for common ligatures */\n  font-variant-numeric: tabular-nums; /* Modern alternative for tabular numerals */\n  font-variant-alternates: stylistic(ss01); /* Modern alternative for stylistic set 1 */\n}",
+        "date": "April 06, 2026"
+    },
+    {
         "title": "Elevating UI Cohesion: Strategizing Your Web Font Fallback Stack for Superior User Experience",
         "slug": "elevating-ui-cohesion-strategizing-your-web-font-fallback-stack-for-superior-user-experience",
         "tweet": "Don't leave your web typography to chance! Master font fallback stacks to ensure visual consistency & a robust UI, even when primary web fonts fail. #CSSTypography #WebFonts #UIDesign #UX",
