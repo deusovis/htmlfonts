@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Polish: Customizing Text Selection Colors with CSS for Enhanced User Experience",
-    "slug": "elevate-ui-polish-customizing-text-selection-colors-with-css-for-enhanced-user-experience",
-    "tweet": "Boost your UI's polish! Learn how to customize text selection colors with CSS to refine the #UserExperience. A small detail, huge impact. #CSSTypography #WebDesign",
-    "tip": "Beyond default browser blue, customizing text selection colors with the ::selection pseudo-element aligns your site's interaction feedback with your brand's aesthetic, significantly enhancing the perceived polish and user experience. It's a subtle but powerful detail in UI design that often goes overlooked.",
-    "css_snippet": "::selection {\n  background-color: #A0C4FF; /* Your brand's accent color */\n  color: #000000;          /* Text color when selected */\n}\n\n/* For older WebKit browsers (optional) */\n::-webkit-selection {\n  background-color: #A0C4FF;\n  color: #000000;\n}\n\n/* For Firefox */\n::-moz-selection {\n  background-color: #A0C4FF;\n  color: #000000;\n}",
-    "date": "April 07, 2026"
+    "title": "Crafting Clear Visual Hierarchy: Semantic HTML & CSS for Enhanced UI Readability",
+    "slug": "crafting-clear-visual-hierarchy-semantic-html-css-for-enhanced-ui-readability",
+    "tweet": "Boost your UI's readability! Learn how to combine semantic HTML and strategic CSS typography to create clear visual hierarchies that enhance user experience. #CSSTypography #UIDesign #WebFonts #UserExperience",
+    "tip": "Leverage semantic HTML (like H1-H6, p, strong, em) as your foundation for typography. Then, use CSS to visually reinforce this hierarchy with distinct font-sizes, font-weights, and text-transforms, ensuring a clear and intuitive reading flow without relying solely on visual styling in HTML.",
+    "css_snippet": "/* Example for establishing hierarchy */\nh1 {\n  font-size: 2.5rem;\n  font-weight: 700;\n  text-transform: uppercase;\n  margin-bottom: 0.75em;\n  color: #2c3e50;\n}\n\nh2 {\n  font-size: 1.8rem;\n  font-weight: 600;\n  margin-bottom: 0.6em;\n  color: #34495e;\n}\n\np {\n  font-size: 1rem;\n  line-height: 1.6;\n  margin-bottom: 1em;\n  color: #555;\n}\n\nstrong {\n  font-weight: 700;\n  color: #333;\n}",
+    "date": "April 08, 2026"
 }
