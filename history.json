@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering font-display: Elevating User Experience During Web Font Loads",
+        "slug": "mastering-font-display-elevating-user-experience-during-web-font-loads",
+        "tweet": "Boost UI satisfaction during web font loading! Learn how CSS 'font-display' strategically manages FOUT/FOIT, enhancing user experience. #CSSTypography #WebFonts #UIDesign #UX",
+        "tip": "Use 'font-display: swap;' for primary text to ensure content is immediately readable while custom web fonts load, improving perceived performance. For icons or less critical elements, 'fallback' or 'optional' can prevent layout shifts.",
+        "css_snippet": "@font-face {\n  font-family: 'Inter';\n  src: url('/fonts/Inter-Regular.woff2') format('woff2');\n  font-weight: 400;\n  font-display: swap; /* Ensures immediate text visibility */\n}\n\n@font-face {\n  font-family: 'IconFont';\n  src: url('/fonts/Icons.woff2') format('woff2');\n  font-weight: normal;\n  font-display: optional; /* Less critical, optional load */\n}\n\nbody {\n  font-family: 'Inter', sans-serif;\n}",
+        "date": "April 09, 2026"
+    },
+    {
         "title": "Crafting Clear Visual Hierarchy: Semantic HTML & CSS for Enhanced UI Readability",
         "slug": "crafting-clear-visual-hierarchy-semantic-html-css-for-enhanced-ui-readability",
         "tweet": "Boost your UI's readability! Learn how to combine semantic HTML and strategic CSS typography to create clear visual hierarchies that enhance user experience. #CSSTypography #UIDesign #WebFonts #UserExperience",
