@@ -1,8 +1,8 @@
 {
-    "title": "Mastering font-display: Elevating User Experience During Web Font Loads",
-    "slug": "mastering-font-display-elevating-user-experience-during-web-font-loads",
-    "tweet": "Boost UI satisfaction during web font loading! Learn how CSS 'font-display' strategically manages FOUT/FOIT, enhancing user experience. #CSSTypography #WebFonts #UIDesign #UX",
-    "tip": "Use 'font-display: swap;' for primary text to ensure content is immediately readable while custom web fonts load, improving perceived performance. For icons or less critical elements, 'fallback' or 'optional' can prevent layout shifts.",
-    "css_snippet": "@font-face {\n  font-family: 'Inter';\n  src: url('/fonts/Inter-Regular.woff2') format('woff2');\n  font-weight: 400;\n  font-display: swap; /* Ensures immediate text visibility */\n}\n\n@font-face {\n  font-family: 'IconFont';\n  src: url('/fonts/Icons.woff2') format('woff2');\n  font-weight: normal;\n  font-display: optional; /* Less critical, optional load */\n}\n\nbody {\n  font-family: 'Inter', sans-serif;\n}",
-    "date": "April 09, 2026"
+    "title": "Improve UI Readability: Harnessing CSS Hyphens for Balanced Text Layout",
+    "slug": "improve-ui-readability-harnessing-css-hyphens-for-balanced-text-layout",
+    "tweet": "Boost UI readability! Learn how CSS hyphens automatically create more balanced text blocks, reducing awkward gaps and improving user experience in your web designs. #CSSTypography #UIDesign #WebFonts #UX",
+    "tip": "Achieving truly balanced text layout, especially in fluid or narrow columns, can be a challenge. CSS hyphens allow the browser to automatically break words at appropriate points, creating more even lines and reducing large, unsightly gaps in justified or block-aligned text. This significantly improves visual flow and readability, making the content easier and more pleasant to consume. While browser support for automatic hyphenation varies and requires language attributes, it's a powerful tool for elevating typographic polish and user experience.",
+    "css_snippet": "body {\n  -webkit-hyphens: auto; /* For older WebKit browsers */\n  -ms-hyphens: auto;    /* For Internet Explorer */\n  hyphens: auto;        /* Standard property */\n  word-break: break-word; /* Ensure long words don't overflow */\n}\n\n/* For best results, ensure the lang attribute is set on the HTML or relevant element, e.g., <html lang=\"en\"> */\n.article-content {\n  hyphens: auto;\n  text-align: justify; /* Often used effectively with hyphens */\n  -webkit-hyphens: auto;\n  -ms-hyphens: auto;\n}",
+    "date": "April 10, 2026"
 }
