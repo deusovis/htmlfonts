@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering Fluid Typography: CSS clamp() for Seamless Responsive UI",
+        "slug": "mastering-fluid-typography-css-clamp-for-seamless-responsive-ui",
+        "tweet": "Elevate your UI design! Discover how CSS clamp() creates fluid typography that adapts beautifully across devices, boosting user experience. #CSSTypography #FluidDesign #WebFonts #UIUX",
+        "tip": "Achieve truly adaptive text sizing without complex media queries by leveraging CSS clamp(). It intelligently scales your web fonts between a minimum and maximum size, ensuring optimal readability and a superior user experience on any screen. This technique is key for modern responsive UI.",
+        "css_snippet": "/* Example for a main heading */\nh1 {\n    font-size: clamp(2rem, 5vw + 1rem, 4rem);\n    /* Minimum: 2rem */\n    /* Fluid: scales with 5% of viewport width + 1rem */\n    /* Maximum: 4rem */\n    line-height: 1.2; /* Complementary for good readability */\n}\n\n/* Example for body text */\np {\n    font-size: clamp(1rem, 2vw + 0.5rem, 1.25rem);\n    line-height: 1.6;\n}\n\n/* Remember to define your web fonts for superior UI */\nbody {\n    font-family: 'Inter', sans-serif;\n    text-rendering: optimizeLegibility;\n}",
+        "date": "April 11, 2026"
+    },
+    {
         "title": "Improve UI Readability: Harnessing CSS Hyphens for Balanced Text Layout",
         "slug": "improve-ui-readability-harnessing-css-hyphens-for-balanced-text-layout",
         "tweet": "Boost UI readability! Learn how CSS hyphens automatically create more balanced text blocks, reducing awkward gaps and improving user experience in your web designs. #CSSTypography #UIDesign #WebFonts #UX",
