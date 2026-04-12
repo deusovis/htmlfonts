@@ -1,5 +1,13 @@
 [
     {
+        "title": "Fine-Tuning UI Readability: Mastering CSS Letter-Spacing for Polished Typography",
+        "slug": "fine-tuning-ui-readability-mastering-css-letter-spacing-for-polished-typography",
+        "tweet": "Elevate your UI's typography! Mastering CSS letter-spacing refines text, enhances readability, and adds a professional touch to your web fonts. #CSSTypography #UIDesign #WebFonts #UserExperience",
+        "tip": "Strategic use of letter-spacing (also known as tracking) is crucial for both readability and visual appeal. For larger headings, a slightly negative letter-spacing often creates a tighter, more intentional look, preventing text from appearing too loose. Conversely, for small text or all-caps sections, slightly positive letter-spacing can significantly improve legibility and reduce crowding. Always test across different font families, weights, and sizes to find the sweet spot that aligns with your UI design and enhances the user experience.",
+        "css_snippet": "/* For main body text, a subtle adjustment can improve flow */\np {\n  letter-spacing: 0.01em;\n}\n\n/* For large headings, to tighten visual spacing */\nh1 {\n  letter-spacing: -0.03em;\n  font-weight: 700;\n}\n\n/* For small, all-caps text like labels or navigation, to enhance legibility */\n.label {\n  text-transform: uppercase;\n  letter-spacing: 0.08em;\n  font-size: 0.85rem;\n  line-height: 1.2;\n}",
+        "date": "April 12, 2026"
+    },
+    {
         "title": "Mastering Fluid Typography: CSS clamp() for Seamless Responsive UI",
         "slug": "mastering-fluid-typography-css-clamp-for-seamless-responsive-ui",
         "tweet": "Elevate your UI design! Discover how CSS clamp() creates fluid typography that adapts beautifully across devices, boosting user experience. #CSSTypography #FluidDesign #WebFonts #UIUX",

@@ -1,8 +1,8 @@
 {
-    "title": "Mastering Fluid Typography: CSS clamp() for Seamless Responsive UI",
-    "slug": "mastering-fluid-typography-css-clamp-for-seamless-responsive-ui",
-    "tweet": "Elevate your UI design! Discover how CSS clamp() creates fluid typography that adapts beautifully across devices, boosting user experience. #CSSTypography #FluidDesign #WebFonts #UIUX",
-    "tip": "Achieve truly adaptive text sizing without complex media queries by leveraging CSS clamp(). It intelligently scales your web fonts between a minimum and maximum size, ensuring optimal readability and a superior user experience on any screen. This technique is key for modern responsive UI.",
-    "css_snippet": "/* Example for a main heading */\nh1 {\n    font-size: clamp(2rem, 5vw + 1rem, 4rem);\n    /* Minimum: 2rem */\n    /* Fluid: scales with 5% of viewport width + 1rem */\n    /* Maximum: 4rem */\n    line-height: 1.2; /* Complementary for good readability */\n}\n\n/* Example for body text */\np {\n    font-size: clamp(1rem, 2vw + 0.5rem, 1.25rem);\n    line-height: 1.6;\n}\n\n/* Remember to define your web fonts for superior UI */\nbody {\n    font-family: 'Inter', sans-serif;\n    text-rendering: optimizeLegibility;\n}",
-    "date": "April 11, 2026"
+    "title": "Fine-Tuning UI Readability: Mastering CSS Letter-Spacing for Polished Typography",
+    "slug": "fine-tuning-ui-readability-mastering-css-letter-spacing-for-polished-typography",
+    "tweet": "Elevate your UI's typography! Mastering CSS letter-spacing refines text, enhances readability, and adds a professional touch to your web fonts. #CSSTypography #UIDesign #WebFonts #UserExperience",
+    "tip": "Strategic use of letter-spacing (also known as tracking) is crucial for both readability and visual appeal. For larger headings, a slightly negative letter-spacing often creates a tighter, more intentional look, preventing text from appearing too loose. Conversely, for small text or all-caps sections, slightly positive letter-spacing can significantly improve legibility and reduce crowding. Always test across different font families, weights, and sizes to find the sweet spot that aligns with your UI design and enhances the user experience.",
+    "css_snippet": "/* For main body text, a subtle adjustment can improve flow */\np {\n  letter-spacing: 0.01em;\n}\n\n/* For large headings, to tighten visual spacing */\nh1 {\n  letter-spacing: -0.03em;\n  font-weight: 700;\n}\n\n/* For small, all-caps text like labels or navigation, to enhance legibility */\n.label {\n  text-transform: uppercase;\n  letter-spacing: 0.08em;\n  font-size: 0.85rem;\n  line-height: 1.2;\n}",
+    "date": "April 12, 2026"
 }
