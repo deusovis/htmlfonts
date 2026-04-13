@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate Your UI: Mastering CSS font-kerning for Visually Balanced Typography",
+        "slug": "elevate-your-ui-mastering-css-font-kerning-for-visually-balanced-typography",
+        "tweet": "Boost your web typography! Learn how CSS font-kerning refines text spacing for a truly polished UI design. Small detail, big impact on user experience. #CSSTypography #WebDesign #UIDesign",
+        "tip": "To enhance the visual harmony and professionalism of your web typography, leverage the 'font-kerning' CSS property. It enables finer control over character spacing for specific glyph pairs, leading to a more refined and readable user experience, especially with custom web fonts. Use 'normal' to enable the browser's kerning tables, or 'none' to disable.",
+        "css_snippet": "body {\n  font-family: \"Your Web Font\", sans-serif;\n  font-kerning: normal; /* Enables kerning for better visual balance */\n  -webkit-font-kerning: normal; /* For older WebKit browsers */\n  -moz-font-kerning: normal; /* For older Firefox browsers */\n}\n\nh1, h2, p {\n  text-rendering: optimizeLegibility; /* Improves kerning and ligatures where available */\n}",
+        "date": "April 13, 2026"
+    },
+    {
         "title": "Fine-Tuning UI Readability: Mastering CSS Letter-Spacing for Polished Typography",
         "slug": "fine-tuning-ui-readability-mastering-css-letter-spacing-for-polished-typography",
         "tweet": "Elevate your UI's typography! Mastering CSS letter-spacing refines text, enhances readability, and adds a professional touch to your web fonts. #CSSTypography #UIDesign #WebFonts #UserExperience",
