@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevating UI Links: Mastering Modern Underlines with CSS text-underline-offset and text-decoration-thickness",
+        "slug": "elevating-ui-links-mastering-modern-underlines-with-css-text-underline-offset-and-text-decoration-thickness",
+        "tweet": "Ditch those boring, text-slicing underlines! \ud83c\udfa8 Master CSS text-underline-offset and text-decoration-thickness to create elegant, readable links that boost your UI design and user experience. #CSSTypography #UIDesign #WebFonts #UX",
+        "tip": "Standard browser underlines often clash with descenders, hurting readability. Use text-underline-offset to move the underline away from the text baseline for a cleaner look, and text-decoration-thickness to control its weight, ensuring your links enhance, not detract from, your UI's aesthetic and user experience.",
+        "css_snippet": "a {\n  text-decoration: underline; /* Ensure underline is present */\n  text-underline-offset: 0.2em; /* Adjust to move underline away from text */\n  text-decoration-thickness: 1px; /* Control the thickness of the underline */\n  text-decoration-color: var(--primary-color, #007bff); /* Customize color */\n}\n\na:hover {\n  text-decoration-color: var(--hover-color, #0056b3);\n  text-decoration-thickness: 2px; /* A subtle hover effect */\n}",
+        "date": "April 14, 2026"
+    },
+    {
         "title": "Elevate Your UI: Mastering CSS font-kerning for Visually Balanced Typography",
         "slug": "elevate-your-ui-mastering-css-font-kerning-for-visually-balanced-typography",
         "tweet": "Boost your web typography! Learn how CSS font-kerning refines text spacing for a truly polished UI design. Small detail, big impact on user experience. #CSSTypography #WebDesign #UIDesign",
