@@ -1,8 +1,8 @@
 {
-    "title": "Elevating UI Links: Mastering Modern Underlines with CSS text-underline-offset and text-decoration-thickness",
-    "slug": "elevating-ui-links-mastering-modern-underlines-with-css-text-underline-offset-and-text-decoration-thickness",
-    "tweet": "Ditch those boring, text-slicing underlines! \ud83c\udfa8 Master CSS text-underline-offset and text-decoration-thickness to create elegant, readable links that boost your UI design and user experience. #CSSTypography #UIDesign #WebFonts #UX",
-    "tip": "Standard browser underlines often clash with descenders, hurting readability. Use text-underline-offset to move the underline away from the text baseline for a cleaner look, and text-decoration-thickness to control its weight, ensuring your links enhance, not detract from, your UI's aesthetic and user experience.",
-    "css_snippet": "a {\n  text-decoration: underline; /* Ensure underline is present */\n  text-underline-offset: 0.2em; /* Adjust to move underline away from text */\n  text-decoration-thickness: 1px; /* Control the thickness of the underline */\n  text-decoration-color: var(--primary-color, #007bff); /* Customize color */\n}\n\na:hover {\n  text-decoration-color: var(--hover-color, #0056b3);\n  text-decoration-thickness: 2px; /* A subtle hover effect */\n}",
-    "date": "April 14, 2026"
+    "title": "Mastering Word-Break and Overflow-Wrap for Robust UI Typography",
+    "slug": "mastering-word-break-and-overflow-wrap-for-robust-ui-typography",
+    "tweet": "Prevent awkward text overflows! Learn how CSS 'word-break' and 'overflow-wrap' ensure your UI typography stays clean and readable, even with long words or URLs. #CSSTypography #UIDesign #WebFonts #UX",
+    "tip": "For challenging layouts with potentially long, unbroken strings (like URLs or product IDs), combine 'overflow-wrap: break-word;' with 'word-break: break-all;' sparingly for maximum protection against horizontal overflow. Always prioritize 'overflow-wrap' first for more natural breaks, and only resort to 'word-break: break-all;' when absolutely necessary.",
+    "css_snippet": ".text-container {\n  /* Default and recommended for most cases to prevent overflow */\n  overflow-wrap: break-word; /* Breaks words if necessary to prevent overflow */\n\n  /* For fine-tuning, 'word-break' can be more aggressive */\n  /* Example: breaking extremely long words without spaces */\n  /* word-break: break-all; */ /* Breaks at any character to fit, use with caution */\n\n  /* Default behavior (no forced breaks unless line-wrapping algorithm allows) */\n  /* word-break: normal; */\n\n  /* Combine with hyphens for improved readability of broken words */\n  /* hyphens: auto; */ /* Requires language attribute on HTML element */\n}",
+    "date": "April 15, 2026"
 }

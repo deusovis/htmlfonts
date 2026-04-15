@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering Word-Break and Overflow-Wrap for Robust UI Typography",
+        "slug": "mastering-word-break-and-overflow-wrap-for-robust-ui-typography",
+        "tweet": "Prevent awkward text overflows! Learn how CSS 'word-break' and 'overflow-wrap' ensure your UI typography stays clean and readable, even with long words or URLs. #CSSTypography #UIDesign #WebFonts #UX",
+        "tip": "For challenging layouts with potentially long, unbroken strings (like URLs or product IDs), combine 'overflow-wrap: break-word;' with 'word-break: break-all;' sparingly for maximum protection against horizontal overflow. Always prioritize 'overflow-wrap' first for more natural breaks, and only resort to 'word-break: break-all;' when absolutely necessary.",
+        "css_snippet": ".text-container {\n  /* Default and recommended for most cases to prevent overflow */\n  overflow-wrap: break-word; /* Breaks words if necessary to prevent overflow */\n\n  /* For fine-tuning, 'word-break' can be more aggressive */\n  /* Example: breaking extremely long words without spaces */\n  /* word-break: break-all; */ /* Breaks at any character to fit, use with caution */\n\n  /* Default behavior (no forced breaks unless line-wrapping algorithm allows) */\n  /* word-break: normal; */\n\n  /* Combine with hyphens for improved readability of broken words */\n  /* hyphens: auto; */ /* Requires language attribute on HTML element */\n}",
+        "date": "April 15, 2026"
+    },
+    {
         "title": "Elevating UI Links: Mastering Modern Underlines with CSS text-underline-offset and text-decoration-thickness",
         "slug": "elevating-ui-links-mastering-modern-underlines-with-css-text-underline-offset-and-text-decoration-thickness",
         "tweet": "Ditch those boring, text-slicing underlines! \ud83c\udfa8 Master CSS text-underline-offset and text-decoration-thickness to create elegant, readable links that boost your UI design and user experience. #CSSTypography #UIDesign #WebFonts #UX",
