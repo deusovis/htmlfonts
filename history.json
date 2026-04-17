@@ -1,5 +1,13 @@
 [
     {
+        "title": "Sharpening Your UI: Mastering CSS text-rendering for Pixel-Perfect Typography",
+        "slug": "sharpening-your-ui-mastering-css-text-rendering-for-pixel-perfect-typography",
+        "tweet": "Give your web typography a razor-sharp edge! \ud83d\ude80 Discover how CSS 'text-rendering' can transform your UI, making text clearer and more readable for an enhanced user experience across all devices. #CSSTypography #UIDesign #WebFonts #UserExperience",
+        "tip": "For screens with high pixel density (Retina displays), using 'text-rendering: optimizeLegibility;' can significantly improve the visual quality of text by enabling advanced typographic features like ligatures and kerning. However, be mindful of potential performance impacts on older or less powerful devices, especially with large amounts of text. For performance-critical areas or interactive elements, 'text-rendering: optimizeSpeed;' or 'text-rendering: geometricPrecision;' might be more appropriate, or even leaving it to the browser default for broader compatibility. Combine with font-smoothing properties for a truly polished look.",
+        "css_snippet": "/* Apply to body or specific text elements for global effect */\nbody {\n  -webkit-font-smoothing: antialiased; /* For macOS & iOS with WebKit */\n  -moz-osx-font-smoothing: grayscale; /* For Firefox on macOS */\n  text-rendering: optimizeLegibility; /* Enables ligatures, kerning, better hinting */\n}\n\n/* Example for specific, performance-sensitive elements if optimizeLegibility causes issues */\nh1, .hero-title {\n  text-rendering: optimizeSpeed; /* Prioritizes rendering speed over advanced features */\n}",
+        "date": "April 17, 2026"
+    },
+    {
         "title": "Achieving Harmonious Layouts: Mastering Vertical Rhythm with CSS Custom Properties",
         "slug": "achieving-harmonious-layouts-mastering-vertical-rhythm-with-css-custom-properties",
         "tweet": "Elevate your UI design! Learn how to implement perfect vertical rhythm using CSS custom properties for a visually consistent and delightful user experience. #CSSTypography #UIDesign #WebFonts #UserExperience",
