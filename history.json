@@ -1,5 +1,13 @@
 [
     {
+        "title": "Unlock Visual Precision: Mastering CSS font-optical-sizing for Responsive UI Text",
+        "slug": "unlock-visual-precision-mastering-css-font-optical-sizing-for-responsive-ui-text",
+        "tweet": "Boost your UI's visual precision! Learn how CSS font-optical-sizing dynamically adjusts font strokes for optimal readability at any size. A must-know for web typography experts. #CSSTypography #UIDesign #WebFonts #UserExperience",
+        "tip": "Leverage 'font-optical-sizing: auto;' with supported variable fonts to allow the browser to automatically adjust glyph shapes and stroke thickness based on the rendered text size. This significantly improves visual clarity and balance, especially for headings and body text that scale across responsive layouts, enhancing the overall user experience.",
+        "css_snippet": "body {\n  font-family: \"Your Variable Font\", sans-serif; /* Use a variable font that supports optical sizing */\n  font-optical-sizing: auto;\n}\n\nh1, h2 {\n  font-optical-sizing: auto;\n  /* Ensure your chosen font supports optical sizing for headings */\n}",
+        "date": "April 19, 2026"
+    },
+    {
         "title": "Elevate Your UI: Mastering Variable Fonts for Dynamic & Adaptive Web Typography",
         "slug": "elevate-your-ui-mastering-variable-fonts-for-dynamic-adaptive-web-typography",
         "tweet": "Transform your web typography! Discover how Variable Fonts with CSS empower dynamic UI, enhance UX, and reduce file sizes. #CSSTypography #WebFonts #UIDesign #VariableFonts",
