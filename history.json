@@ -1,5 +1,13 @@
 [
     {
+        "title": "Perfecting UI Readability: Mastering CSS text-wrap: balance for Harmonious Web Typography",
+        "slug": "perfecting-ui-readability-mastering-css-text-wrap-balance-for-harmonious-web-typography",
+        "tweet": "Struggling with awkward line breaks in your #UI design? Discover CSS text-wrap: balance! Perfect web font layouts & boost user experience. A must-read for #CSSTypography experts. #WebFonts",
+        "tip": "Leverage text-wrap: balance on headings, captions, and short paragraphs to prevent orphaned words and create visually balanced text blocks, significantly enhancing UI readability and user experience. Combine with a sensible 'max-width' for optimal line length.",
+        "css_snippet": "h1, .caption-text {\n  text-wrap: balance;\n  max-width: 70ch; /* Optimize line length for readability */\n  font-family: 'Open Sans', sans-serif;\n  color: #333;\n  line-height: 1.2;\n}",
+        "date": "April 21, 2026"
+    },
+    {
         "title": "Elevate Your UI: Mastering CSS font-display for Flawless Web Font Loading",
         "slug": "elevate-your-ui-mastering-css-font-display-for-flawless-web-font-loading",
         "tweet": "Stop FOIT & FOUT! Optimize your web font loading for a superior #UI design and #UX with CSS font-display. Learn how to ensure consistent typography and boost perceived performance. #CSSTypography #WebFonts",
