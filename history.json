@@ -1,5 +1,13 @@
 [
     {
+        "title": "Precision Numerals: Enhancing UI Readability with CSS font-variant-numeric",
+        "slug": "precision-numerals-enhancing-ui-readability-with-css-font-variant-numeric",
+        "tweet": "Unlock advanced numeral presentation in your UI! Master CSS font-variant-numeric for improved data readability, consistent alignment, and a polished user experience. #CSSTypography #UIDesign #WebFonts #UX",
+        "tip": "Elevate the readability and consistency of numerical data in your UI by leveraging CSS's font-variant-numeric property. This powerful CSS feature allows you to control the display of digits, fractions, and ordinal markers, ensuring better alignment and visual harmony, especially in tables, dashboards, or any data-rich interfaces. By choosing between lining and old-style figures, and managing tabular or proportional spacing, you can significantly reduce cognitive load and enhance the overall user experience.",
+        "css_snippet": "/* Apply old-style proportional figures for body text */\n.body-text {\n  font-variant-numeric: old-style;\n}\n\n/* Ensure tabular lining figures for data display (e.g., tables, prices) */\n.data-display {\n  font-variant-numeric: tabular-nums lining-nums;\n  /* Equivalent to font-feature-settings: \"tnum\", \"lnum\"; */\n}\n\n/* Use slashed zeros for clarity in code or data */\n.code-block {\n  font-variant-numeric: slashed-zero;\n}",
+        "date": "April 23, 2026"
+    },
+    {
         "title": "Fluid Typography Power-Up: Mastering CSS clamp() for Responsive Font Sizing",
         "slug": "fluid-typography-power-up-mastering-css-clamp-for-responsive-font-sizing",
         "tweet": "Achieve effortlessly responsive font sizes with CSS clamp()! Learn how to create adaptable typography that scales beautifully across all devices, enhancing #UI design & #UserExperience. #CSSTypography #WebFonts",
