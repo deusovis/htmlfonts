@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering CSS letter-spacing for UI Readability and Visual Harmony",
+        "slug": "mastering-css-letter-spacing-for-ui-readability-and-visual-harmony",
+        "tweet": "Elevate your UI's visual appeal and readability! Discover how to master CSS letter-spacing to refine text and create truly harmonious designs. #CSSTypography #UIDesign #WebFonts #UserExperience",
+        "tip": "Fine-tune letter-spacing subtly for different font sizes and weights. Larger text (headlines) often benefits from slight negative spacing, while body text usually requires minor positive adjustments for optimal legibility, especially with web fonts that might have default tight spacing. Always test on various screen sizes and devices.",
+        "css_snippet": "/* Default spacing for body text */\nbody {\n  font-family: 'Inter', sans-serif;\n  letter-spacing: 0.01em; /* Small positive adjustment for readability */\n  line-height: 1.6;\n}\n\n/* Tighter spacing for headlines/large text */\nh1 {\n  font-family: 'Lora', serif;\n  font-size: 3em;\n  letter-spacing: -0.02em; /* Slight negative adjustment */\n  font-weight: 700;\n}\n\n/* Moderate spacing for smaller UI elements (e.g., buttons, tags) */\n.button-text {\n  font-family: 'Inter', sans-serif;\n  font-size: 0.9em;\n  letter-spacing: 0.03em; /* More pronounced positive adjustment for smaller caps/buttons */\n  text-transform: uppercase;\n  font-weight: 600;\n}",
+        "date": "April 24, 2026"
+    },
+    {
         "title": "Precision Numerals: Enhancing UI Readability with CSS font-variant-numeric",
         "slug": "precision-numerals-enhancing-ui-readability-with-css-font-variant-numeric",
         "tweet": "Unlock advanced numeral presentation in your UI! Master CSS font-variant-numeric for improved data readability, consistent alignment, and a polished user experience. #CSSTypography #UIDesign #WebFonts #UX",
