@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevating UI Links: Mastering CSS text-underline-offset and text-decoration-thickness for Superior User Experience",
+        "slug": "elevating-ui-links-mastering-css-text-underline-offset-and-text-decoration-thickness-for-superior-user-experience",
+        "tweet": "#CSSTypography tip! Improve UI readability & aesthetics by mastering text-underline-offset & text-decoration-thickness. Create elegant, accessible links that stand out. #UIDesign #WebFonts #UX",
+        "tip": "Beyond basic underlines, use text-underline-offset to gracefully lift underlines off descenders for cleaner readability and text-decoration-thickness to control their weight. This nuanced control significantly enhances the visual hierarchy and professionalism of your UI's interactive elements, making links more appealing and legible without needing complex hacks or custom SVG solutions.",
+        "css_snippet": "a {\n  text-decoration: underline; /* Ensure underline is present */\n  text-decoration-color: var(--link-color, #007bff); /* Customize color */\n  text-underline-offset: 0.2em; /* Lift underline off descenders for better readability */\n  text-decoration-thickness: 1px; /* Control underline thickness for visual harmony */\n  transition: text-decoration-color 0.3s ease, text-underline-offset 0.3s ease;\n}\n\na:hover {\n  text-decoration-color: var(--link-hover-color, #0056b3);\n  text-underline-offset: 0.25em; /* Slightly lift more on hover for subtle feedback */\n  text-decoration-thickness: 2px; /* Emphasize underline on hover */\n}",
+        "date": "April 25, 2026"
+    },
+    {
         "title": "Mastering CSS letter-spacing for UI Readability and Visual Harmony",
         "slug": "mastering-css-letter-spacing-for-ui-readability-and-visual-harmony",
         "tweet": "Elevate your UI's visual appeal and readability! Discover how to master CSS letter-spacing to refine text and create truly harmonious designs. #CSSTypography #UIDesign #WebFonts #UserExperience",
