@@ -1,5 +1,13 @@
 [
     {
+        "title": "Embrace Native UI: Boost Performance & Aesthetics with CSS System Font Stacks",
+        "slug": "embrace-native-ui-boost-performance-aesthetics-with-css-system-font-stacks",
+        "tweet": "Want blazing-fast load times & a native OS feel? Learn how CSS system font keywords like `system-ui` deliver superior #UIDesign & #UX without custom font bloat. Improve your #WebFonts strategy! #CSSTypography",
+        "tip": "For lightning-fast page loads and a user experience that feels inherently 'native' to their operating system, prioritize system font stacks. Keywords like 'system-ui', 'ui-sans-serif', 'ui-serif', 'ui-monospace', or 'ui-rounded' dynamically select the optimal system font for the user's device. This eliminates font download requests, drastically improving First Contentful Paint (FCP) and ensuring readability with a familiar aesthetic, directly impacting user satisfaction and accessibility.",
+        "css_snippet": "body { font-family: system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen-Sans, Ubuntu, Cantarell, \"Helvetica Neue\", sans-serif; } /* For modern browsers, a more concise approach for sans-serif */ .heading { font-family: ui-sans-serif, sans-serif; }",
+        "date": "April 26, 2026"
+    },
+    {
         "title": "Elevating UI Links: Mastering CSS text-underline-offset and text-decoration-thickness for Superior User Experience",
         "slug": "elevating-ui-links-mastering-css-text-underline-offset-and-text-decoration-thickness-for-superior-user-experience",
         "tweet": "#CSSTypography tip! Improve UI readability & aesthetics by mastering text-underline-offset & text-decoration-thickness. Create elegant, accessible links that stand out. #UIDesign #WebFonts #UX",
