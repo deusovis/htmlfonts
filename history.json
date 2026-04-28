@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate Web Font UX: Mastering CSS Font Metric Overrides for Layout Stability",
+        "slug": "elevate-web-font-ux-mastering-css-font-metric-overrides-for-layout-stability",
+        "tweet": "Stop jarring layout shifts! Master CSS @font-face metric overrides (size-adjust, ascent-override, etc.) for flawless web font loading and a stable UI. Boost UX now! #CSSTypography #WebFonts #UIDesign #UX",
+        "tip": "Leverage @font-face descriptors like size-adjust, ascent-override, descent-override, and line-gap-override to precisely match your web font's metrics with its fallback. This prevents jarring Cumulative Layout Shifts (CLS) when web fonts load, significantly improving user experience and perceived performance by maintaining consistent visual spacing and text alignment.",
+        "css_snippet": "@font-face {\n  font-family: 'MyCustomFont';\n  src: url('mycustomfont.woff2') format('woff2');\n  font-display: swap; /* Use a display strategy that fits your needs */\n\n  /* Tune these values to align with your fallback font's metrics */\n  /* Example values; precise values require font analysis */\n  size-adjust: 105%;    /* Adjusts the overall font size to match fallback */\n  ascent-override: 95%; /* Adjusts the ascender height of the font */\n  descent-override: 25%; /* Adjusts the descender height of the font */\n  line-gap-override: 10%; /* Adjusts the line gap (leading) of the font */\n}\n\nbody {\n  font-family: 'MyCustomFont', serif; /* Ensure a suitable fallback */\n  font-size: 1rem;\n  line-height: 1.5;\n}",
+        "date": "April 28, 2026"
+    },
+    {
         "title": "Mastering Vertical Rhythm: Elevate Your UI with Harmonious Web Typography",
         "slug": "mastering-vertical-rhythm-elevate-your-ui-with-harmonious-web-typography",
         "tweet": "Elevate your web UI with perfect vertical rhythm! Learn how CSS line-height, margin, & padding align text baselines for superior readability & design harmony. #CSSTypography #UIDesign #WebFonts #UserExperience",
