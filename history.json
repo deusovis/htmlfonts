@@ -1,5 +1,13 @@
 [
     {
+        "title": "Unlock Dynamic UI Typography: Mastering Variable Fonts with CSS font-variation-settings",
+        "slug": "unlock-dynamic-ui-typography-mastering-variable-fonts-with-css-font-variation-settings",
+        "tweet": "Transform your UI with the power of variable fonts! Learn how CSS font-variation-settings unlocks unparalleled control over typeface aesthetics & enhances user experience. #CSSTypography #UIDesign #WebFonts",
+        "tip": "Leverage variable fonts with font-variation-settings to adapt typeface weight, width, and other optical properties contextually within your UI. This allows for unparalleled design flexibility and improved readability across diverse screen sizes and content densities, boosting the overall user experience. Experiment with different axes like 'wght' for weight, 'wdth' for width, or custom axes provided by the font designer to create truly dynamic typography.",
+        "css_snippet": ":root {\n  --font-weight-base: 400;\n  --font-width-base: 100;\n}\n\nbody {\n  font-family: \"Inter var\", sans-serif; /* Example variable font */\n  font-variation-settings: 'wght' var(--font-weight-base), 'wdth' var(--font-width-base);\n}\n\nh1 {\n  /* Dynamic weight and width for headings */\n  font-variation-settings: 'wght' 700, 'wdth' 120;\n}\n\n@media (max-width: 768px) {\n  h1 {\n    /* Adjust for smaller screens to improve readability */\n    font-variation-settings: 'wght' 600, 'wdth' 100;\n  }\n}\n\n.hero-text {\n  /* Apply optical size and a very bold weight for display text */\n  font-variation-settings: 'wght' 850, 'opsz' 18;\n  font-size: 3em;\n}",
+        "date": "April 30, 2026"
+    },
+    {
         "title": "Optimize UI Text Rendering: Mastering CSS text-rendering for Clarity & Speed",
         "slug": "optimize-ui-text-rendering-mastering-css-text-rendering-for-clarity-speed",
         "tweet": "Boost your UI's visual clarity & performance! Learn how CSS text-rendering property fine-tunes text appearance for crisp web typography. Essential for #WebFonts & #UIDesign. #CSSTypography #UX",
