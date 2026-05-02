@@ -1,8 +1,8 @@
 {
-    "title": "Unlock Advanced Typography: Mastering CSS font-feature-settings for UI Excellence",
-    "slug": "unlock-advanced-typography-mastering-css-font-feature-settings-for-ui-excellence",
-    "tweet": "Boost your #UI_design & #UserExperience! Discover how CSS font-feature-settings unlocks advanced OpenType typography for stunning web fonts. A must-read for #CSSTypography experts! #WebFonts",
-    "tip": "For truly refined UI typography, don't overlook CSS font-feature-settings. It empowers you to tap into advanced OpenType features like standard ligatures ('liga', 'clig'), stylistic sets ('ss01'), small caps ('smcp'), and old-style figures ('onum') directly in your web fonts, dramatically improving readability and visual appeal for a superior user experience. Always test cross-browser, as feature support depends on both the font and the browser.",
-    "css_snippet": "h1 {\n  font-family: \"Playfair Display\", serif; /* Example font supporting OpenType features */\n  font-size: 2.8em;\n  /* Enable discretionary ligatures ('dlig') and old-style numerals ('onum') */\n  font-feature-settings: \"dlig\" 1, \"onum\" 1;\n}\n\np {\n  font-family: \"Merriweather\", serif;\n  line-height: 1.6;\n  /* Enable common ligatures ('liga') and small caps ('smcp') */\n  font-feature-settings: \"liga\" 1, \"smcp\" 1;\n}\n\n/* Important: Ensure your chosen web fonts actually include these OpenType features. */",
-    "date": "May 01, 2026"
+    "title": "Elevate UI Performance: Master CSS font-display for Seamless Web Font Loading",
+    "slug": "elevate-ui-performance-master-css-font-display-for-seamless-web-font-loading",
+    "tweet": "Stop FOUT & FOIT! \ud83d\uded1 Master CSS font-display to prevent janky web font loading. Improve UI performance & user experience with these essential strategies. #CSSTypography #WebFonts #UIDesign #UXTips",
+    "tip": "To prevent disruptive 'Flash of Unstyled Text' (FOUT) or 'Flash of Invisible Text' (FOIT) when using web fonts, strategically implement the 'font-display' property within your '@font-face' rules. 'swap' is great for critical content, ensuring text is immediately visible with a fallback while the web font loads, then swaps when ready. 'fallback' offers a short block period before falling back, then swaps if the font loads quickly. For non-critical fonts, 'optional' can improve initial render performance by only loading the font if the network is idle or if it's cached.",
+    "css_snippet": "@font-face {\n  font-family: 'Inter UI';\n  src: url('/fonts/Inter-Regular.woff2') format('woff2'),\n       url('/fonts/Inter-Regular.woff') format('woff');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Options: block, swap, fallback, optional */\n}",
+    "date": "May 02, 2026"
 }
