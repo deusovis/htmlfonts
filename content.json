@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Performance: Master CSS font-display for Seamless Web Font Loading",
-    "slug": "elevate-ui-performance-master-css-font-display-for-seamless-web-font-loading",
-    "tweet": "Stop FOUT & FOIT! \ud83d\uded1 Master CSS font-display to prevent janky web font loading. Improve UI performance & user experience with these essential strategies. #CSSTypography #WebFonts #UIDesign #UXTips",
-    "tip": "To prevent disruptive 'Flash of Unstyled Text' (FOUT) or 'Flash of Invisible Text' (FOIT) when using web fonts, strategically implement the 'font-display' property within your '@font-face' rules. 'swap' is great for critical content, ensuring text is immediately visible with a fallback while the web font loads, then swaps when ready. 'fallback' offers a short block period before falling back, then swaps if the font loads quickly. For non-critical fonts, 'optional' can improve initial render performance by only loading the font if the network is idle or if it's cached.",
-    "css_snippet": "@font-face {\n  font-family: 'Inter UI';\n  src: url('/fonts/Inter-Regular.woff2') format('woff2'),\n       url('/fonts/Inter-Regular.woff') format('woff');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Options: block, swap, fallback, optional */\n}",
-    "date": "May 02, 2026"
+    "title": "Elevate UI Readability: Mastering CSS text-wrap for Balanced Headlines and Paragraphs",
+    "slug": "elevate-ui-readability-mastering-css-text-wrap-for-balanced-headlines-and-paragraphs",
+    "tweet": "Boost UI readability & aesthetics effortlessly! Discover CSS text-wrap: balance; to automatically optimize line breaks, prevent orphans, and enhance the visual harmony of your #WebFonts. A game-changer for #CSSTypography & #UIDesign!",
+    "tip": "Utilize the 'text-wrap: balance;' property for your headlines, subheadings, and short descriptive texts to automatically optimize line breaks. This CSS feature intelligently ensures text lines are roughly equal in length, preventing single-word orphans and significantly improving visual balance and user experience in your UI design. It's especially powerful with web fonts, making text blocks look professionally typeset without manual tweaks.",
+    "css_snippet": "h1,\n.hero-subtitle,\n.product-card-title {\n  text-wrap: balance;\n  /* Optimizes line breaks for visual balance, ideal for short text blocks. */\n  /* Improves UI aesthetics by preventing awkward line lengths and orphans. */\n}",
+    "date": "May 03, 2026"
 }
