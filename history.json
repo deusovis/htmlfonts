@@ -1,5 +1,13 @@
 [
     {
+        "title": "Preserving Web Font Integrity: Mastering CSS font-synthesis for Pristine UI Typography",
+        "slug": "preserving-web-font-integrity-mastering-css-font-synthesis-for-pristine-ui-typography",
+        "tweet": "Ensure your web fonts always look their best! Learn how CSS font-synthesis prevents faux bold & italic, enhancing UI typography & user experience. #CSSTypography #WebFonts #UIDesign",
+        "tip": "To guarantee the visual integrity of your custom web fonts and provide an optimal UI experience, always set font-synthesis to 'none'. This prevents browsers from artificially synthesizing bold or italic styles when a true font variation isn't loaded, ensuring your design vision is perfectly rendered without distortion.",
+        "css_snippet": "body {\n  font-family: \"CustomFont\", sans-serif;\n  font-synthesis: none; /* Crucial for web fonts to prevent faux bold/italic */\n}\n\n/* Example of allowing specific synthesis if truly needed, though generally 'none' is best */\n.legacy-content {\n  font-synthesis: weight style; /* Allows synthesis for weight and style if original font lacks it */\n}",
+        "date": "May 05, 2026"
+    },
+    {
         "title": "Effortless Responsive Typography: Master CSS clamp() for Fluid Font Sizes",
         "slug": "effortless-responsive-typography-master-css-clamp-for-fluid-font-sizes",
         "tweet": "Achieve perfect responsive typography with CSS clamp()! Learn how to create fluid font sizes and line heights that adapt seamlessly across devices, enhancing #UIDesign and #UX. #CSSTypography #WebFonts",

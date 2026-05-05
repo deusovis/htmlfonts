@@ -1,8 +1,8 @@
 {
-    "title": "Effortless Responsive Typography: Master CSS clamp() for Fluid Font Sizes",
-    "slug": "effortless-responsive-typography-master-css-clamp-for-fluid-font-sizes",
-    "tweet": "Achieve perfect responsive typography with CSS clamp()! Learn how to create fluid font sizes and line heights that adapt seamlessly across devices, enhancing #UIDesign and #UX. #CSSTypography #WebFonts",
-    "tip": "Leverage CSS clamp() to define minimum, preferred, and maximum values for font-size and line-height. This eliminates complex media queries for basic scaling, ensuring your text remains legible and aesthetically pleasing on any screen size. Combine it with viewport units for optimal fluid scaling.",
-    "css_snippet": ":root {\n  /* Fluid base font size: min 16px, preferred scales (1rem + 0.5vw), max 20px */\n  font-size: clamp(16px, 1rem + 0.5vw, 20px);\n}\n\nh1 {\n  /* Fluid H1 font size: min 40px, preferred scales (7vw + 1rem), max 80px */\n  font-size: clamp(2.5rem, 7vw + 1rem, 5rem);\n  line-height: 1.1;\n}\n\np {\n  /* Fluid paragraph font size: min 16px, preferred scales (1.5vw + 0.5rem), max 20px */\n  font-size: clamp(1rem, 1.5vw + 0.5rem, 1.25rem);\n}",
-    "date": "May 04, 2026"
+    "title": "Preserving Web Font Integrity: Mastering CSS font-synthesis for Pristine UI Typography",
+    "slug": "preserving-web-font-integrity-mastering-css-font-synthesis-for-pristine-ui-typography",
+    "tweet": "Ensure your web fonts always look their best! Learn how CSS font-synthesis prevents faux bold & italic, enhancing UI typography & user experience. #CSSTypography #WebFonts #UIDesign",
+    "tip": "To guarantee the visual integrity of your custom web fonts and provide an optimal UI experience, always set font-synthesis to 'none'. This prevents browsers from artificially synthesizing bold or italic styles when a true font variation isn't loaded, ensuring your design vision is perfectly rendered without distortion.",
+    "css_snippet": "body {\n  font-family: \"CustomFont\", sans-serif;\n  font-synthesis: none; /* Crucial for web fonts to prevent faux bold/italic */\n}\n\n/* Example of allowing specific synthesis if truly needed, though generally 'none' is best */\n.legacy-content {\n  font-synthesis: weight style; /* Allows synthesis for weight and style if original font lacks it */\n}",
+    "date": "May 05, 2026"
 }
