@@ -1,5 +1,13 @@
 [
     {
+        "title": "Micro-Adjustments, Macro Impact: Fine-Tuning Letter-Spacing and Line-Height for Superior UI Readability",
+        "slug": "micro-adjustments-macro-impact-fine-tuning-letter-spacing-and-line-height-for-superior-ui-readability",
+        "tweet": "Boost your UI's readability & aesthetic! Learn to master CSS letter-spacing and line-height for a superior user experience with web fonts. #CSSTypography #UIDesign #WebFonts #UserExperience",
+        "tip": "Always test your chosen line-height and letter-spacing values across different font sizes and devices. What looks good on a desktop might feel cramped or too loose on mobile. Aim for a 'just right' visual balance that enhances readability without drawing attention to itself.",
+        "css_snippet": "/* Optimize paragraph readability */\np {\n  font-family: 'Inter', sans-serif;\n  font-size: 1rem; /* Base size for body copy */\n  line-height: 1.6; /* Generous line spacing for legibility */\n  letter-spacing: 0.005em; /* Small positive adjustment for most sans-serifs */\n}\n\n/* Enhance heading impact and readability */\nh2 {\n  font-family: 'Playfair Display', serif;\n  font-size: 2.25rem; /* Larger heading size */\n  line-height: 1.2; /* Tighter line spacing for headings */\n  letter-spacing: -0.02em; /* Slight negative letter spacing for display fonts */\n}",
+        "date": "May 07, 2026"
+    },
+    {
         "title": "Harmonize Your UI: Mastering CSS font-size-adjust for Consistent X-Heights",
         "slug": "harmonize-your-ui-mastering-css-font-size-adjust-for-consistent-x-heights",
         "tweet": "Achieve perfect visual consistency across diverse web fonts! Learn how CSS font-size-adjust harmonizes x-heights for a superior UI experience and improved readability. #CSSTypography #WebDesign #UIDesign #WebFonts #FontConsistency",
