@@ -1,5 +1,13 @@
 [
     {
+        "title": "Unlock Dynamic UI Colors: Mastering CSS font-palette for Expressive Web Fonts",
+        "slug": "unlock-dynamic-ui-colors-mastering-css-font-palette-for-expressive-web-fonts",
+        "tweet": "Enhance your UI with vibrant color fonts! \ud83c\udfa8 Learn how CSS font-palette lets you control and switch color palettes within your web fonts for stunning, consistent designs. #CSSTypography #WebFonts #UIDesign #UserExperience",
+        "tip": "Leverage CSS font-palette to seamlessly integrate colorful typography into your UI. Many modern color fonts offer multiple built-in color schemes, and font-palette allows you to activate these without changing font files, providing dynamic styling and enhanced branding opportunities. Experiment with different palettes to match your site's aesthetic or respond to dark mode preferences.",
+        "css_snippet": "/* Assuming 'MyColorFont' is a COLR v1 or SVG font that includes predefined palettes like 'light', 'dark', 'vibrant', 'corporate' */\n@font-face {\n  font-family: 'MyColorFont';\n  src: url('my-color-font.woff2') format('woff2-COLR');\n  /* The browser might default to a specific palette if not explicitly set here,\n     or the font author might define a default. */\n}\n\nbody {\n  font-family: 'MyColorFont', sans-serif;\n  /* Apply a specific named palette defined within the font */\n  font-palette: dark;\n}\n\n.heading {\n  /* Switch to another palette for specific elements */\n  font-palette: vibrant;\n  font-size: 3em;\n  line-height: 1.1;\n}\n\n.footer-text {\n  /* Use yet another palette */\n  font-palette: corporate;\n  font-size: 0.9em;\n  opacity: 0.8;\n}\n\n/* Example for dark mode adaptation (if palettes are defined within the font) */\n@media (prefers-color-scheme: dark) {\n  body {\n    font-palette: dark-mode-optimized; /* Or just 'dark' if it's generic */\n  }\n}",
+        "date": "May 08, 2026"
+    },
+    {
         "title": "Micro-Adjustments, Macro Impact: Fine-Tuning Letter-Spacing and Line-Height for Superior UI Readability",
         "slug": "micro-adjustments-macro-impact-fine-tuning-letter-spacing-and-line-height-for-superior-ui-readability",
         "tweet": "Boost your UI's readability & aesthetic! Learn to master CSS letter-spacing and line-height for a superior user experience with web fonts. #CSSTypography #UIDesign #WebFonts #UserExperience",
