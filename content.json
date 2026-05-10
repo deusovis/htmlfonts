@@ -1,8 +1,8 @@
 {
-    "title": "Mastering Underline Aesthetics: Elevate UI Readability with CSS text-underline-offset and text-decoration-thickness",
-    "slug": "mastering-underline-aesthetics-elevate-ui-readability-with-css-text-underline-offset-and-text-decoration-thickness",
-    "tweet": "Beyond basic underlines! Elevate your UI's #typography & #UX with CSS text-underline-offset and text-decoration-thickness. Get pro tips and a CSS snippet to create clean, readable link styles. #CSS #WebFonts #UIDesign",
-    "tip": "Modern CSS offers precise control over underlines. Use text-underline-offset to prevent descenders from clashing with the underline, significantly improving legibility. Pair it with text-decoration-thickness for a visually balanced and accessible UI, especially crucial for link states in #WebFonts.",
-    "css_snippet": "a {\n  text-decoration: underline;\n  text-decoration-color: var(--link-color, #007bff); /* Custom color or theme variable */\n  text-underline-offset: 0.2em; /* Lifts the underline to prevent descender clash */\n  text-decoration-thickness: 0.08em; /* Controls the underline's thickness */\n  transition: text-underline-offset 0.2s ease-in-out, text-decoration-thickness 0.2s ease-in-out;\n}\n\na:hover {\n  text-underline-offset: 0.25em; /* Slightly lift on hover */\n  text-decoration-thickness: 0.12em; /* Slightly thicker on hover */\n}",
-    "date": "May 09, 2026"
+    "title": "Sharpen Your UI Text: Mastering CSS font-optical-sizing for Optimal Readability",
+    "slug": "sharpen-your-ui-text-mastering-css-font-optical-sizing-for-optimal-readability",
+    "tweet": "Elevate your UI design with CSS font-optical-sizing! Learn how this subtle CSS property automatically adjusts font characteristics for superior readability across all text sizes, enhancing user experience. #CSSTypography #UIDesign #WebFonts #UserExperience",
+    "tip": "Implement 'font-optical-sizing: auto;' to allow your chosen web fonts to adapt their visual characteristics for optimal legibility at different sizes. This is particularly beneficial for complex typefaces or when a single font family is used across a wide range of text sizes, ensuring micro-typographic adjustments by the font itself enhance overall UI readability.",
+    "css_snippet": "/* Apply automatic optical sizing for better readability */\nbody {\n  font-family: 'Inter', sans-serif; /* Or any font supporting optical sizing */\n  font-optical-sizing: auto;\n}\n\n/* Ensure headings also benefit from optical adjustments */\nh1, h2, h3 {\n  font-optical-sizing: auto;\n  text-rendering: optimizeLegibility; /* Optional: Further optimize text rendering */\n}",
+    "date": "May 10, 2026"
 }

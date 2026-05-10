@@ -1,5 +1,13 @@
 [
     {
+        "title": "Sharpen Your UI Text: Mastering CSS font-optical-sizing for Optimal Readability",
+        "slug": "sharpen-your-ui-text-mastering-css-font-optical-sizing-for-optimal-readability",
+        "tweet": "Elevate your UI design with CSS font-optical-sizing! Learn how this subtle CSS property automatically adjusts font characteristics for superior readability across all text sizes, enhancing user experience. #CSSTypography #UIDesign #WebFonts #UserExperience",
+        "tip": "Implement 'font-optical-sizing: auto;' to allow your chosen web fonts to adapt their visual characteristics for optimal legibility at different sizes. This is particularly beneficial for complex typefaces or when a single font family is used across a wide range of text sizes, ensuring micro-typographic adjustments by the font itself enhance overall UI readability.",
+        "css_snippet": "/* Apply automatic optical sizing for better readability */\nbody {\n  font-family: 'Inter', sans-serif; /* Or any font supporting optical sizing */\n  font-optical-sizing: auto;\n}\n\n/* Ensure headings also benefit from optical adjustments */\nh1, h2, h3 {\n  font-optical-sizing: auto;\n  text-rendering: optimizeLegibility; /* Optional: Further optimize text rendering */\n}",
+        "date": "May 10, 2026"
+    },
+    {
         "title": "Mastering Underline Aesthetics: Elevate UI Readability with CSS text-underline-offset and text-decoration-thickness",
         "slug": "mastering-underline-aesthetics-elevate-ui-readability-with-css-text-underline-offset-and-text-decoration-thickness",
         "tweet": "Beyond basic underlines! Elevate your UI's #typography & #UX with CSS text-underline-offset and text-decoration-thickness. Get pro tips and a CSS snippet to create clean, readable link styles. #CSS #WebFonts #UIDesign",
