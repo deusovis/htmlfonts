@@ -1,8 +1,8 @@
 {
-    "title": "Sharpen Your UI Text: Mastering CSS font-optical-sizing for Optimal Readability",
-    "slug": "sharpen-your-ui-text-mastering-css-font-optical-sizing-for-optimal-readability",
-    "tweet": "Elevate your UI design with CSS font-optical-sizing! Learn how this subtle CSS property automatically adjusts font characteristics for superior readability across all text sizes, enhancing user experience. #CSSTypography #UIDesign #WebFonts #UserExperience",
-    "tip": "Implement 'font-optical-sizing: auto;' to allow your chosen web fonts to adapt their visual characteristics for optimal legibility at different sizes. This is particularly beneficial for complex typefaces or when a single font family is used across a wide range of text sizes, ensuring micro-typographic adjustments by the font itself enhance overall UI readability.",
-    "css_snippet": "/* Apply automatic optical sizing for better readability */\nbody {\n  font-family: 'Inter', sans-serif; /* Or any font supporting optical sizing */\n  font-optical-sizing: auto;\n}\n\n/* Ensure headings also benefit from optical adjustments */\nh1, h2, h3 {\n  font-optical-sizing: auto;\n  text-rendering: optimizeLegibility; /* Optional: Further optimize text rendering */\n}",
-    "date": "May 10, 2026"
+    "title": "Elevate Data Readability: Mastering CSS font-variant-numeric for Sharper UI Numbers",
+    "slug": "elevate-data-readability-mastering-css-font-variant-numeric-for-sharper-ui-numbers",
+    "tweet": "Boost your UI's data clarity! Learn how CSS font-variant-numeric transforms numbers for better readability in tables, dashboards, & prices, enhancing user experience. #CSSTypography #UIDesign #WebFonts #UX",
+    "tip": "Enhance the legibility and visual consistency of numerical data in your UI by leveraging CSS font-variant-numeric. This powerful property allows you to control the rendering of numbers, enabling features like lining figures, old-style figures, fractions, and ordinal markers directly in CSS. Using 'tabular-nums' is crucial for maintaining perfect column alignment in data tables and dashboards, preventing visual 'jumps' caused by varying digit widths in proportional fonts. Meanwhile, 'lining-nums' ensures uniform height for all numbers, ideal for financial displays, and 'oldstyle-nums' can improve text flow in paragraphs. Mastering this property significantly improves the user experience when scanning data-rich interfaces.",
+    "css_snippet": "/* For consistent alignment in data tables and dashboards */\n.data-value {\n  font-variant-numeric: tabular-nums lining-nums;\n}\n\n/* For numbers that blend seamlessly with paragraph text */\n.paragraph-with-numbers {\n  font-variant-numeric: oldstyle-nums;\n}\n\n/* For displaying stacked or diagonal fractions (font support needed) */\n.measurement-value {\n  font-variant-numeric: stacked-fractions;\n}",
+    "date": "May 11, 2026"
 }
