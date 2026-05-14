@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering CSS font-kerning for Polished UI Typography and Enhanced Readability",
+        "slug": "mastering-css-font-kerning-for-polished-ui-typography-and-enhanced-readability",
+        "tweet": "Elevate your UI design with perfectly spaced text! Discover how CSS font-kerning enhances readability & creates professional typography. #CSSTypography #UIDesign #WebFonts #UX",
+        "tip": "Achieve professional-grade text spacing by enabling CSS font-kerning. This property controls the use of kerning tables present in sophisticated web fonts, subtly adjusting space between specific character pairs (e.g., 'VA', 'Wo') for improved visual harmony and readability in your UI. Set it to 'normal' or 'auto' for best results.",
+        "css_snippet": "body { font-family: \"Georgia Pro\", Georgia, serif; /* A font with good kerning data */ font-kerning: normal; /* Apply font-defined kerning */ text-rendering: optimizeLegibility; /* Further enhance text rendering */ } h1 { font-kerning: auto; /* Browser decides when to apply, often for larger text */ }",
+        "date": "May 14, 2026"
+    },
+    {
         "title": "Optimizing Web Font Loading: Mastering font-display for Superior UI Performance",
         "slug": "optimizing-web-font-loading-mastering-font-display-for-superior-ui-performance",
         "tweet": "Improve your UI's perceived performance! Master CSS font-display to control web font loading behavior and eliminate layout shifts (FOIT/FOUT). #CSSTypography #WebFonts #UIDesign #UX",

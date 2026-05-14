@@ -1,8 +1,8 @@
 {
-    "title": "Optimizing Web Font Loading: Mastering font-display for Superior UI Performance",
-    "slug": "optimizing-web-font-loading-mastering-font-display-for-superior-ui-performance",
-    "tweet": "Improve your UI's perceived performance! Master CSS font-display to control web font loading behavior and eliminate layout shifts (FOIT/FOUT). #CSSTypography #WebFonts #UIDesign #UX",
-    "tip": "To prevent unsightly Flash of Invisible Text (FOIT) or jarring Flash of Unstyled Text (FOUT) that disrupts user experience, strategically use the CSS font-display property within your @font-face rules. For most body text, 'swap' is an excellent choice as it displays fallback text immediately and swaps in the custom font once loaded, prioritizing content readability. For critical UI elements or logos, 'fallback' might be suitable to show a fallback quickly but give a very short grace period for the custom font. Avoid 'block' for general content as it can cause significant FOIT.",
-    "css_snippet": "@font-face {\n  font-family: 'MyBrandFont';\n  src: url('/fonts/MyBrandFont-Regular.woff2') format('woff2');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Key for optimizing perceived performance */\n}\n\nbody {\n  font-family: 'MyBrandFont', sans-serif;\n}",
-    "date": "May 13, 2026"
+    "title": "Mastering CSS font-kerning for Polished UI Typography and Enhanced Readability",
+    "slug": "mastering-css-font-kerning-for-polished-ui-typography-and-enhanced-readability",
+    "tweet": "Elevate your UI design with perfectly spaced text! Discover how CSS font-kerning enhances readability & creates professional typography. #CSSTypography #UIDesign #WebFonts #UX",
+    "tip": "Achieve professional-grade text spacing by enabling CSS font-kerning. This property controls the use of kerning tables present in sophisticated web fonts, subtly adjusting space between specific character pairs (e.g., 'VA', 'Wo') for improved visual harmony and readability in your UI. Set it to 'normal' or 'auto' for best results.",
+    "css_snippet": "body { font-family: \"Georgia Pro\", Georgia, serif; /* A font with good kerning data */ font-kerning: normal; /* Apply font-defined kerning */ text-rendering: optimizeLegibility; /* Further enhance text rendering */ } h1 { font-kerning: auto; /* Browser decides when to apply, often for larger text */ }",
+    "date": "May 14, 2026"
 }
