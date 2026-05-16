@@ -1,5 +1,13 @@
 [
     {
+        "title": "Enhance UI Readability: Mastering CSS text-wrap: balance for Perfect Headlines",
+        "slug": "enhance-ui-readability-mastering-css-text-wrap-balance-for-perfect-headlines",
+        "tweet": "Transform your web typography! Discover how CSS text-wrap: balance perfects headlines & improves UI readability instantly. A game-changer for #CSS_typography & #UI_design. Elevate your #WebFonts & #UserExperience.",
+        "tip": "Leverage CSS text-wrap: balance for your headings and short paragraphs to automatically create more visually balanced line breaks, preventing awkward single words on a new line (orphans). This improves the aesthetic appeal and readability of your UI design, contributing to a smoother user experience without manual intervention.",
+        "css_snippet": "h1,\n.section-title,\np.intro-text {\n  text-wrap: balance;\n  /* Ensure browser compatibility with prefixes if targeting older browsers (though widely supported now) */\n}",
+        "date": "May 16, 2026"
+    },
+    {
         "title": "Effortless Responsiveness: Mastering CSS clamp() for Fluid UI Typography",
         "slug": "effortless-responsiveness-mastering-css-clamp-for-fluid-ui-typography",
         "tweet": "Design truly responsive UIs! Learn how CSS clamp() creates fluid typography that adapts perfectly across devices, enhancing user experience. #CSSTypography #UIDesign #WebFonts",
