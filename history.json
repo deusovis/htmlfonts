@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate Readability: Mastering CSS text-decoration-skip-ink for Cleaner Underlines",
+        "slug": "elevate-readability-mastering-css-text-decoration-skip-ink-for-cleaner-underlines",
+        "tweet": "Enhance UI readability with pristine underlines! Discover CSS text-decoration-skip-ink to prevent underlines from clashing with descenders. A small CSS tweak, a huge UX win. #CSSTypography #UIDesign #WebFonts #UserExperience",
+        "tip": "To significantly improve the readability and aesthetic of underlined text, especially with custom web fonts, use the CSS property \"text-decoration-skip-ink: auto;\". This ensures the underline intelligently 'skips' through descenders (like in 'p', 'g', 'y') instead of intersecting them, making your text much cleaner and easier to parse, elevating the overall user experience of your UI design.",
+        "css_snippet": "a { text-decoration: underline; /* Ensure underline is visible */ text-decoration-skip-ink: auto; /* Prevent underlines from cutting through descenders */ text-decoration-color: #007bff; /* Optional: Customize underline color for better contrast */ }",
+        "date": "May 17, 2026"
+    },
+    {
         "title": "Enhance UI Readability: Mastering CSS text-wrap: balance for Perfect Headlines",
         "slug": "enhance-ui-readability-mastering-css-text-wrap-balance-for-perfect-headlines",
         "tweet": "Transform your web typography! Discover how CSS text-wrap: balance perfects headlines & improves UI readability instantly. A game-changer for #CSS_typography & #UI_design. Elevate your #WebFonts & #UserExperience.",
