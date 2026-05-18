@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering letter-spacing for Polished UI Typography and Enhanced Readability",
+        "slug": "mastering-letter-spacing-for-polished-ui-typography-and-enhanced-readability",
+        "tweet": "Elevate your UI design! Discover how precise CSS letter-spacing refines web typography, boosts readability, and creates a professional user experience. #CSSTypography #WebFonts #UIDesign #UserExperience",
+        "tip": "Fine-tuning letter-spacing is crucial for visual harmony, especially with ALL CAPS, display fonts, or small text. Use subtle adjustments (e.g., -0.02em for display, 0.03em for small body text) to prevent text from feeling too cramped or too loose, ensuring optimal readability and a premium UI aesthetic. Always test across different font sizes and weights.",
+        "css_snippet": "/* Example 1: Tightening display headlines */\nh1 {\n  font-family: 'Montserrat', sans-serif;\n  letter-spacing: -0.02em; /* Subtle tightening for display fonts */\n  font-weight: 700;\n}\n\n/* Example 2: Loosening all caps text slightly */\n.call-to-action {\n  text-transform: uppercase;\n  letter-spacing: 0.05em; /* A bit more space for uppercase text */\n  font-size: 0.9em;\n}\n\n/* Example 3: Default body text adjustment (often not needed, but can fine-tune) */\np {\n  font-family: 'Inter', sans-serif;\n  letter-spacing: 0.01em; /* Very subtle adjustment, or leave at normal */\n  line-height: 1.5;\n}",
+        "date": "May 18, 2026"
+    },
+    {
         "title": "Elevate Readability: Mastering CSS text-decoration-skip-ink for Cleaner Underlines",
         "slug": "elevate-readability-mastering-css-text-decoration-skip-ink-for-cleaner-underlines",
         "tweet": "Enhance UI readability with pristine underlines! Discover CSS text-decoration-skip-ink to prevent underlines from clashing with descenders. A small CSS tweak, a huge UX win. #CSSTypography #UIDesign #WebFonts #UserExperience",
