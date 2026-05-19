@@ -1,8 +1,8 @@
 {
-    "title": "Mastering letter-spacing for Polished UI Typography and Enhanced Readability",
-    "slug": "mastering-letter-spacing-for-polished-ui-typography-and-enhanced-readability",
-    "tweet": "Elevate your UI design! Discover how precise CSS letter-spacing refines web typography, boosts readability, and creates a professional user experience. #CSSTypography #WebFonts #UIDesign #UserExperience",
-    "tip": "Fine-tuning letter-spacing is crucial for visual harmony, especially with ALL CAPS, display fonts, or small text. Use subtle adjustments (e.g., -0.02em for display, 0.03em for small body text) to prevent text from feeling too cramped or too loose, ensuring optimal readability and a premium UI aesthetic. Always test across different font sizes and weights.",
-    "css_snippet": "/* Example 1: Tightening display headlines */\nh1 {\n  font-family: 'Montserrat', sans-serif;\n  letter-spacing: -0.02em; /* Subtle tightening for display fonts */\n  font-weight: 700;\n}\n\n/* Example 2: Loosening all caps text slightly */\n.call-to-action {\n  text-transform: uppercase;\n  letter-spacing: 0.05em; /* A bit more space for uppercase text */\n  font-size: 0.9em;\n}\n\n/* Example 3: Default body text adjustment (often not needed, but can fine-tune) */\np {\n  font-family: 'Inter', sans-serif;\n  letter-spacing: 0.01em; /* Very subtle adjustment, or leave at normal */\n  line-height: 1.5;\n}",
-    "date": "May 18, 2026"
+    "title": "Sharpen Your UI Text: Mastering CSS font-feature-settings for Elegant Ligatures",
+    "slug": "sharpen-your-ui-text-mastering-css-font-feature-settings-for-elegant-ligatures",
+    "tweet": "Boost UI readability & aesthetics! Learn how CSS font-feature-settings enables elegant ligatures for polished web typography. #CSSTypography #UIDesign #WebFonts #UserExperience",
+    "tip": "Ligatures (like 'fi', 'fl') improve text flow and visual harmony, especially for body copy and headlines. Use 'font-feature-settings: 'liga';' to enable standard ligatures, or 'font-feature-settings: 'dlig';' for discretionary ones where supported. Always test across browsers and ensure your chosen web font supports these features for optimal user experience.",
+    "css_snippet": "body {\n  font-family: 'Merriweather', serif;\n  font-size: 18px;\n  line-height: 1.6;\n  font-feature-settings: 'liga'; /* Enable standard ligatures */\n}\n\nh1 {\n  font-family: 'Playfair Display', serif;\n  font-size: 4em;\n  font-weight: 700;\n  font-feature-settings: 'liga', 'dlig'; /* Enable standard and discretionary ligatures for headlines */\n}",
+    "date": "May 19, 2026"
 }
