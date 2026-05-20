@@ -1,8 +1,8 @@
 {
-    "title": "Sharpen Your UI Text: Mastering CSS font-feature-settings for Elegant Ligatures",
-    "slug": "sharpen-your-ui-text-mastering-css-font-feature-settings-for-elegant-ligatures",
-    "tweet": "Boost UI readability & aesthetics! Learn how CSS font-feature-settings enables elegant ligatures for polished web typography. #CSSTypography #UIDesign #WebFonts #UserExperience",
-    "tip": "Ligatures (like 'fi', 'fl') improve text flow and visual harmony, especially for body copy and headlines. Use 'font-feature-settings: 'liga';' to enable standard ligatures, or 'font-feature-settings: 'dlig';' for discretionary ones where supported. Always test across browsers and ensure your chosen web font supports these features for optimal user experience.",
-    "css_snippet": "body {\n  font-family: 'Merriweather', serif;\n  font-size: 18px;\n  line-height: 1.6;\n  font-feature-settings: 'liga'; /* Enable standard ligatures */\n}\n\nh1 {\n  font-family: 'Playfair Display', serif;\n  font-size: 4em;\n  font-weight: 700;\n  font-feature-settings: 'liga', 'dlig'; /* Enable standard and discretionary ligatures for headlines */\n}",
-    "date": "May 19, 2026"
+    "title": "Mastering Vertical Rhythm: Elevating UI Readability with CSS line-height",
+    "slug": "mastering-vertical-rhythm-elevating-ui-readability-with-css-line-height",
+    "tweet": "Elevate your UI design with strong vertical rhythm! Learn how to use CSS line-height to create visually harmonious and highly readable web typography. #CSSTypography #UIDesign #WebFonts #UserExperience",
+    "tip": "Achieving consistent vertical rhythm across your UI isn't just aesthetic; it significantly boosts readability. Use unitless line-height values (e.g., 1.5) and define a base line-height, then scale it modularly. Consider how different font sizes interact with your chosen line-height to maintain a harmonious flow. CSS custom properties make this incredibly manageable.",
+    "css_snippet": ":root {\n  --base-font-size: 1rem;\n  --base-line-height: 1.6;\n  --spacing-unit: calc(var(--base-font-size) * var(--base-line-height));\n}\n\nbody {\n  font-family: 'Inter', sans-serif;\n  font-size: var(--base-font-size);\n  line-height: var(--base-line-height);\n}\n\nh1, h2, h3, h4, h5, h6, p, ul, ol, blockquote {\n  margin-bottom: var(--spacing-unit);\n}\n\n/* Example of scaling line-height for headings */\nh1 {\n  font-size: 3rem;\n  line-height: 1.2; /* Tighter line-height for large headings */\n  margin-bottom: calc(var(--spacing-unit) * 1.5); /* Adjust spacing */\n}\n\nh2 {\n  font-size: 2rem;\n  line-height: 1.3;\n  margin-bottom: var(--spacing-unit);\n}",
+    "date": "May 20, 2026"
 }
