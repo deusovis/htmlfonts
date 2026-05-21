@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Aesthetics: Mastering CSS font-optical-sizing for Perfect Readability",
+        "slug": "elevate-ui-aesthetics-mastering-css-font-optical-sizing-for-perfect-readability",
+        "tweet": "Boost your UI's visual appeal! Discover how CSS font-optical-sizing automatically adjusts font glyphs for optimal readability at any size. A small CSS tweak, a big UX win. #CSSTypography #UIDesign #WebFonts",
+        "tip": "To ensure your web fonts look their best across all sizes, especially display sizes and very small text, leverage 'font-optical-sizing: auto'. It allows the browser to select font glyphs optimized for the specific font size, improving character clarity and overall aesthetic quality without manual intervention. This is particularly effective with variable fonts designed with optical sizing axes.",
+        "css_snippet": "body {\n  font-family: \"Inter\", sans-serif;\n  font-optical-sizing: auto; /* Enables automatic glyph adjustments for better appearance at different sizes */\n  text-rendering: optimizeLegibility; /* Can complement optical sizing for smoother text */\n}\n\nh1 {\n  font-size: 3.5rem;\n  /* font-optical-sizing: auto; - inherited from body, but can be set explicitly */\n}\n\n.small-print {\n  font-size: 0.8rem;\n  /* font-optical-sizing: auto; - crucial for small text clarity */\n}",
+        "date": "May 21, 2026"
+    },
+    {
         "title": "Mastering Vertical Rhythm: Elevating UI Readability with CSS line-height",
         "slug": "mastering-vertical-rhythm-elevating-ui-readability-with-css-line-height",
         "tweet": "Elevate your UI design with strong vertical rhythm! Learn how to use CSS line-height to create visually harmonious and highly readable web typography. #CSSTypography #UIDesign #WebFonts #UserExperience",

@@ -1,8 +1,8 @@
 {
-    "title": "Mastering Vertical Rhythm: Elevating UI Readability with CSS line-height",
-    "slug": "mastering-vertical-rhythm-elevating-ui-readability-with-css-line-height",
-    "tweet": "Elevate your UI design with strong vertical rhythm! Learn how to use CSS line-height to create visually harmonious and highly readable web typography. #CSSTypography #UIDesign #WebFonts #UserExperience",
-    "tip": "Achieving consistent vertical rhythm across your UI isn't just aesthetic; it significantly boosts readability. Use unitless line-height values (e.g., 1.5) and define a base line-height, then scale it modularly. Consider how different font sizes interact with your chosen line-height to maintain a harmonious flow. CSS custom properties make this incredibly manageable.",
-    "css_snippet": ":root {\n  --base-font-size: 1rem;\n  --base-line-height: 1.6;\n  --spacing-unit: calc(var(--base-font-size) * var(--base-line-height));\n}\n\nbody {\n  font-family: 'Inter', sans-serif;\n  font-size: var(--base-font-size);\n  line-height: var(--base-line-height);\n}\n\nh1, h2, h3, h4, h5, h6, p, ul, ol, blockquote {\n  margin-bottom: var(--spacing-unit);\n}\n\n/* Example of scaling line-height for headings */\nh1 {\n  font-size: 3rem;\n  line-height: 1.2; /* Tighter line-height for large headings */\n  margin-bottom: calc(var(--spacing-unit) * 1.5); /* Adjust spacing */\n}\n\nh2 {\n  font-size: 2rem;\n  line-height: 1.3;\n  margin-bottom: var(--spacing-unit);\n}",
-    "date": "May 20, 2026"
+    "title": "Elevate UI Aesthetics: Mastering CSS font-optical-sizing for Perfect Readability",
+    "slug": "elevate-ui-aesthetics-mastering-css-font-optical-sizing-for-perfect-readability",
+    "tweet": "Boost your UI's visual appeal! Discover how CSS font-optical-sizing automatically adjusts font glyphs for optimal readability at any size. A small CSS tweak, a big UX win. #CSSTypography #UIDesign #WebFonts",
+    "tip": "To ensure your web fonts look their best across all sizes, especially display sizes and very small text, leverage 'font-optical-sizing: auto'. It allows the browser to select font glyphs optimized for the specific font size, improving character clarity and overall aesthetic quality without manual intervention. This is particularly effective with variable fonts designed with optical sizing axes.",
+    "css_snippet": "body {\n  font-family: \"Inter\", sans-serif;\n  font-optical-sizing: auto; /* Enables automatic glyph adjustments for better appearance at different sizes */\n  text-rendering: optimizeLegibility; /* Can complement optical sizing for smoother text */\n}\n\nh1 {\n  font-size: 3.5rem;\n  /* font-optical-sizing: auto; - inherited from body, but can be set explicitly */\n}\n\n.small-print {\n  font-size: 0.8rem;\n  /* font-optical-sizing: auto; - crucial for small text clarity */\n}",
+    "date": "May 21, 2026"
 }
