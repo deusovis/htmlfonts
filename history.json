@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering font-display: Optimize Web Font Loading for Superior UX",
+        "slug": "mastering-font-display-optimize-web-font-loading-for-superior-ux",
+        "tweet": "Eliminate FOIT/FOUT & enhance #UI design with CSS 'font-display'! Control how #WebFonts load for a seamless #UserExperience. Essential for performant #CSStypography. #WebDevTips",
+        "tip": "Leverage the CSS 'font-display' property within your @font-face rules to dictate the font loading strategy. Using values like 'swap' or 'fallback' prevents unsightly flashes of invisible text (FOIT) or unstyled text (FOUT), dramatically improving perceived performance and ensuring a smoother, more consistent visual #UI design. This crucial setting prioritizes content readability and #UserExperience even before your custom #WebFonts are fully loaded.",
+        "css_snippet": "@font-face {\n  font-family: 'Custom Web Font';\n  src: url('/fonts/CustomWebFont.woff2') format('woff2'),\n       url('/fonts/CustomWebFont.woff') format('woff');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* 'swap' provides a fallback font immediately, then swaps */\n}\n\nbody {\n  font-family: 'Custom Web Font', 'Helvetica Neue', Arial, sans-serif;\n}",
+        "date": "May 24, 2026"
+    },
+    {
         "title": "Unlock Advanced Typography: Mastering CSS font-variation-settings for Custom UI Design",
         "slug": "unlock-advanced-typography-mastering-css-font-variation-settings-for-custom-ui-design",
         "tweet": "Dive deep into #CSSTypography! Master font-variation-settings to fine-tune variable fonts and achieve unique #UIDesign. Elevate your #WebFonts for superior #UX with unparalleled control. #FrontEndDev",

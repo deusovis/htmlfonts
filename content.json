@@ -1,8 +1,8 @@
 {
-    "title": "Unlock Advanced Typography: Mastering CSS font-variation-settings for Custom UI Design",
-    "slug": "unlock-advanced-typography-mastering-css-font-variation-settings-for-custom-ui-design",
-    "tweet": "Dive deep into #CSSTypography! Master font-variation-settings to fine-tune variable fonts and achieve unique #UIDesign. Elevate your #WebFonts for superior #UX with unparalleled control. #FrontEndDev",
-    "tip": "Leveraging font-variation-settings allows you to precisely control individual axes of variable fonts, such as weight (wght), width (wdth), slant (slnt), or even custom axes like grade (GRAD) or optical size (opsz) if the font supports them. This offers unparalleled flexibility to match your design system's exact needs, moving beyond standard font weights to create truly bespoke typographic expressions for optimal readability and aesthetic appeal across various screen sizes and contexts. It's crucial for achieving consistent visual hierarchy and brand identity.",
-    "css_snippet": "body {\n  font-family: \"Inter Variable\", sans-serif;\n  font-variation-settings: \"wght\" 450, \"wdth\" 105; /* Custom weight and width */\n}\n\nh1 {\n  font-variation-settings: \"wght\" 750, \"wdth\" 90, \"slnt\" -5; /* Bolder, narrower, slightly slanted */\n  letter-spacing: -0.02em;\n}",
-    "date": "May 23, 2026"
+    "title": "Mastering font-display: Optimize Web Font Loading for Superior UX",
+    "slug": "mastering-font-display-optimize-web-font-loading-for-superior-ux",
+    "tweet": "Eliminate FOIT/FOUT & enhance #UI design with CSS 'font-display'! Control how #WebFonts load for a seamless #UserExperience. Essential for performant #CSStypography. #WebDevTips",
+    "tip": "Leverage the CSS 'font-display' property within your @font-face rules to dictate the font loading strategy. Using values like 'swap' or 'fallback' prevents unsightly flashes of invisible text (FOIT) or unstyled text (FOUT), dramatically improving perceived performance and ensuring a smoother, more consistent visual #UI design. This crucial setting prioritizes content readability and #UserExperience even before your custom #WebFonts are fully loaded.",
+    "css_snippet": "@font-face {\n  font-family: 'Custom Web Font';\n  src: url('/fonts/CustomWebFont.woff2') format('woff2'),\n       url('/fonts/CustomWebFont.woff') format('woff');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* 'swap' provides a fallback font immediately, then swaps */\n}\n\nbody {\n  font-family: 'Custom Web Font', 'Helvetica Neue', Arial, sans-serif;\n}",
+    "date": "May 24, 2026"
 }
