@@ -1,8 +1,8 @@
 {
-    "title": "Mastering font-display: Optimize Web Font Loading for Superior UX",
-    "slug": "mastering-font-display-optimize-web-font-loading-for-superior-ux",
-    "tweet": "Eliminate FOIT/FOUT & enhance #UI design with CSS 'font-display'! Control how #WebFonts load for a seamless #UserExperience. Essential for performant #CSStypography. #WebDevTips",
-    "tip": "Leverage the CSS 'font-display' property within your @font-face rules to dictate the font loading strategy. Using values like 'swap' or 'fallback' prevents unsightly flashes of invisible text (FOIT) or unstyled text (FOUT), dramatically improving perceived performance and ensuring a smoother, more consistent visual #UI design. This crucial setting prioritizes content readability and #UserExperience even before your custom #WebFonts are fully loaded.",
-    "css_snippet": "@font-face {\n  font-family: 'Custom Web Font';\n  src: url('/fonts/CustomWebFont.woff2') format('woff2'),\n       url('/fonts/CustomWebFont.woff') format('woff');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* 'swap' provides a fallback font immediately, then swaps */\n}\n\nbody {\n  font-family: 'Custom Web Font', 'Helvetica Neue', Arial, sans-serif;\n}",
-    "date": "May 24, 2026"
+    "title": "Ensure Authentic Typography: Mastering CSS font-synthesis for UI Clarity",
+    "slug": "ensure-authentic-typography-mastering-css-font-synthesis-for-ui-clarity",
+    "tweet": "Prevent browser-generated fake bold/italic styles! Master CSS font-synthesis to ensure your web fonts look exactly as designed, enhancing UI clarity & user experience. #CSSTypography #WebDesign #UIUX",
+    "tip": "Many web fonts lack true bold or italic variants. Browsers often \"fake\" them by algorithmically skewing or thickening the regular variant, which can degrade text quality and UI professionalism. Use font-synthesis to explicitly control this behavior, ensuring only genuine font styles are rendered for superior aesthetic integrity and readability.",
+    "css_snippet": "/* Disable all font synthesis globally for precise control */ body { font-synthesis: none; } /* Allow only synthetic bolding */ h1 { font-synthesis: weight; } /* Allow only synthetic italics */ p em { font-synthesis: style; } /* Allow both (default browser behavior) */ .default-styling { font-synthesis: auto; }",
+    "date": "May 25, 2026"
 }
