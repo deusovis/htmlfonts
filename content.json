@@ -1,8 +1,8 @@
 {
-    "title": "Ensure Authentic Typography: Mastering CSS font-synthesis for UI Clarity",
-    "slug": "ensure-authentic-typography-mastering-css-font-synthesis-for-ui-clarity",
-    "tweet": "Prevent browser-generated fake bold/italic styles! Master CSS font-synthesis to ensure your web fonts look exactly as designed, enhancing UI clarity & user experience. #CSSTypography #WebDesign #UIUX",
-    "tip": "Many web fonts lack true bold or italic variants. Browsers often \"fake\" them by algorithmically skewing or thickening the regular variant, which can degrade text quality and UI professionalism. Use font-synthesis to explicitly control this behavior, ensuring only genuine font styles are rendered for superior aesthetic integrity and readability.",
-    "css_snippet": "/* Disable all font synthesis globally for precise control */ body { font-synthesis: none; } /* Allow only synthetic bolding */ h1 { font-synthesis: weight; } /* Allow only synthetic italics */ p em { font-synthesis: style; } /* Allow both (default browser behavior) */ .default-styling { font-synthesis: auto; }",
-    "date": "May 25, 2026"
+    "title": "Mastering CSS hyphens: Crafting Perfect Text Blocks for Superior UI Readability",
+    "slug": "mastering-css-hyphens-crafting-perfect-text-blocks-for-superior-ui-readability",
+    "tweet": "Tired of awkward gaps and rivers in your justified text? Learn to master CSS hyphens to create beautifully balanced paragraphs, enhancing UI readability and user experience. #CSSTypography #UIDesign #WebFonts",
+    "tip": "For optimal text flow and reduced whitespace issues, especially in justified or narrow columns, combine CSS 'hyphens: auto' with an appropriate 'lang' attribute on your HTML element. This tells the browser which language rules to apply for accurate hyphenation, drastically improving typographic quality.",
+    "css_snippet": ".article-body {\n  hyphens: auto;\n  -webkit-hyphens: auto; /* For older Safari/Chrome */\n  -ms-hyphens: auto;    /* For Internet Explorer */\n  lang: en; /* Critical for accurate hyphenation rules */\n}\n\n/* Example: Preventing hyphenation in specific elements */\nh2.headline {\n  hyphens: manual;\n}",
+    "date": "May 27, 2026"
 }
