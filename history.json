@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering Fluid Typography with CSS clamp() for Adaptive UI Design",
+        "slug": "mastering-fluid-typography-with-css-clamp-for-adaptive-ui-design",
+        "tweet": "Boost #UIUX with fluid typography! Learn how CSS clamp() creates adaptive font sizes that elegantly scale across all devices. Essential for modern #CSS_typography & #webfonts. #UIDesign",
+        "tip": "Leverage CSS clamp() to define a flexible range for font sizes. It allows you to set a minimum, a preferred, and a maximum value, ensuring your text scales beautifully without breakpoints, enhancing responsiveness and user experience.",
+        "css_snippet": "/* Example for a body font size */\nbody {\n  font-size: clamp(1rem, 2vw + 1rem, 1.25rem); /* min, preferred, max */\n}\n\n/* Example for a heading */\nh1 {\n  font-size: clamp(2.5rem, 5vw + 1rem, 4rem); /* min, preferred, max */\n}",
+        "date": "May 28, 2026"
+    },
+    {
         "title": "Mastering CSS hyphens: Crafting Perfect Text Blocks for Superior UI Readability",
         "slug": "mastering-css-hyphens-crafting-perfect-text-blocks-for-superior-ui-readability",
         "tweet": "Tired of awkward gaps and rivers in your justified text? Learn to master CSS hyphens to create beautifully balanced paragraphs, enhancing UI readability and user experience. #CSSTypography #UIDesign #WebFonts",
