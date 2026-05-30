@@ -1,5 +1,13 @@
 [
     {
+        "title": "Refine UI Readability: Mastering CSS letter-spacing for Perfect Typographic Balance",
+        "slug": "refine-ui-readability-mastering-css-letter-spacing-for-perfect-typographic-balance",
+        "tweet": "Elevate your UI's readability! Discover how to master CSS letter-spacing for optimal typographic balance across all text sizes. A subtle tweak, a massive UX impact. #CSSTypography #UIDesign #WebFonts #UserExperience",
+        "tip": "Even the most beautiful web fonts can suffer from poor default letter-spacing, impacting UI readability and visual appeal. Mastering CSS letter-spacing allows you to fine-tune the space between characters, ensuring optimal legibility and typographic harmony across your design. Large headlines often benefit from a subtle negative letter-spacing to appear more cohesive and impactful, while smaller body text or navigation elements might require slightly positive spacing to prevent characters from merging, especially at smaller font sizes or on high-density displays. The goal is to achieve visual balance and enhance user experience by ensuring every piece of text is effortlessly scannable and readable. Always test your adjustments across various font weights and sizes, and consider implementing responsive adjustments to maintain perfection across devices.",
+        "css_snippet": "/* Base adjustment for body text for better readability */\nbody {\n  font-family: 'Inter', sans-serif;\n  letter-spacing: 0.01em; /* Subtle positive spacing for general text */\n}\n\n/* Headings often benefit from tighter spacing for a stronger presence */\nh1, h2 {\n  letter-spacing: -0.025em; /* Negative spacing for large, bold headings */\n  font-weight: 700;\n}\n\n/* Small text, like captions or navigation, might need more space for clarity */\n.small-text, nav a {\n  font-size: 0.85em;\n  letter-spacing: 0.03em; /* Increased spacing for legibility at small sizes */\n}\n\n/* Consider responsive adjustments for different screen sizes */\n@media (max-width: 768px) {\n  h1 {\n    letter-spacing: -0.01em; /* Slightly less aggressive on smaller screens */\n  }\n}",
+        "date": "May 30, 2026"
+    },
+    {
         "title": "Elevate UI Headings: Master CSS text-wrap: balance for Optimal Typography & User Experience",
         "slug": "elevate-ui-headings-master-css-text-wrap-balance-for-optimal-typography-user-experience",
         "tweet": "Achieve perfectly balanced headlines and short text blocks effortlessly! Discover how CSS text-wrap: balance dramatically improves UI readability and aesthetics for web fonts. A must-know for modern #CSSTypography and #UIDesign, enhancing #UserExperience. #WebFonts",
