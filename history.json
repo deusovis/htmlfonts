@@ -1,5 +1,13 @@
 [
     {
+        "title": "Refining Link Underlines: Boost UI Clarity with CSS text-underline-offset and text-decoration-thickness",
+        "slug": "refining-link-underlines-boost-ui-clarity-with-css-text-underline-offset-and-text-decoration-thickness",
+        "tweet": "Elevate your UI design! Learn how CSS text-underline-offset & text-decoration-thickness vastly improve link readability and visual appeal. A small CSS tweak, a big UX win! #CSSTypography #UIDesign #WebFonts #UserExperience",
+        "tip": "Don't let default link underlines obstruct descenders or feel flimsy. Leverage text-underline-offset to gracefully position underlines below text baselines, preventing overlap with characters like 'g', 'p', 'q', and 'y'. Combine it with text-decoration-thickness to control the underline's visual weight, making links more legible and aesthetically integrated into your UI design, significantly boosting user experience.",
+        "css_snippet": "a {\n  text-decoration: underline;\n  text-underline-offset: 0.2em; /* Adjust distance from baseline */\n  text-decoration-thickness: 0.08em; /* Control thickness of the line */\n  text-decoration-color: var(--link-color, #007bff); /* Custom color for the underline */\n  transition: text-decoration-thickness 0.2s ease-out, text-underline-offset 0.2s ease-out, text-decoration-color 0.2s ease-out;\n}\n\na:hover {\n  text-decoration-thickness: 0.12em; /* Slightly thicker on hover */\n  text-underline-offset: 0.15em; /* Closer on hover for a subtle effect */\n  text-decoration-color: var(--link-hover-color, #0056b3);\n}",
+        "date": "May 31, 2026"
+    },
+    {
         "title": "Refine UI Readability: Mastering CSS letter-spacing for Perfect Typographic Balance",
         "slug": "refine-ui-readability-mastering-css-letter-spacing-for-perfect-typographic-balance",
         "tweet": "Elevate your UI's readability! Discover how to master CSS letter-spacing for optimal typographic balance across all text sizes. A subtle tweak, a massive UX impact. #CSSTypography #UIDesign #WebFonts #UserExperience",
