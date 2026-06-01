@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Numbers: Master CSS font-feature-settings for Tabular Figures & Consistent Layouts",
+        "slug": "elevate-ui-numbers-master-css-font-feature-settings-for-tabular-figures-consistent-layouts",
+        "tweet": "Boost UI clarity & consistency! Learn how CSS font-feature-settings enables tabular figures, ensuring numbers align perfectly in tables, forms, and lists. A must for data-rich interfaces. #CSSTypography #UIDesign #WebFonts #UX",
+        "tip": "Ensure numerical data aligns perfectly across columns or in dynamic content like price lists and data tables by leveraging CSS font-feature-settings to enable 'Tabular Figures'. By default, most fonts use 'Proportional Figures', where each number has a variable width, leading to jagged vertical alignment. Activating 'Tabular Figures' (often abbreviated 'tnum') assigns a consistent width to all numerals, dramatically improving readability and visual consistency in structured data, a critical aspect of good UI design and user experience. This fine-grained control over OpenType features helps create truly professional and functional typographic layouts, especially vital for financial dashboards, e-commerce sites, or any interface displaying numerical comparisons. Beyond 'tnum', explore features like 'liga' (standard ligatures), 'smcp' (small caps), or 'onum' (old style figures) to further refine your typography.",
+        "css_snippet": "/* Apply tabular figures to elements displaying numerical data */\n.data-table td, \n.price-list li .amount, \n.statistic-value {\n    font-feature-settings: \"tnum\"; /* Ensures numbers have consistent width for vertical alignment */\n    /* Many fonts also support 'onum' (old style figures) or 'pnum' (proportional figures) */\n}\n\n/* Example: Enabling standard ligatures for improved readability in body text */\np.body-text {\n    font-feature-settings: \"liga\", \"clig\"; /* Standard and contextual ligatures */\n}\n\n/* Example: Small caps for acronyms or initialisms */\n.acronym {\n    font-feature-settings: \"smcp\"; /* Renders lowercase letters as small capitals */\n    text-transform: lowercase; /* Essential to allow smcp to work if input is uppercase */\n}",
+        "date": "June 01, 2026"
+    },
+    {
         "title": "Refining Link Underlines: Boost UI Clarity with CSS text-underline-offset and text-decoration-thickness",
         "slug": "refining-link-underlines-boost-ui-clarity-with-css-text-underline-offset-and-text-decoration-thickness",
         "tweet": "Elevate your UI design! Learn how CSS text-underline-offset & text-decoration-thickness vastly improve link readability and visual appeal. A small CSS tweak, a big UX win! #CSSTypography #UIDesign #WebFonts #UserExperience",
