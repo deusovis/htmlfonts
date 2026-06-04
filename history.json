@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering CSS @font-face Descriptors: Control Font Fallback Metrics for Stable UI",
+        "slug": "mastering-css-font-face-descriptors-control-font-fallback-metrics-for-stable-ui",
+        "tweet": "Prevent layout shifts & visual inconsistencies! Learn how to use ascent-override, descent-override, and line-gap-override in CSS @font-face to control font fallback metrics, ensuring a stable and professional UI. #CSSTypography #WebFonts #UIDesign",
+        "tip": "To prevent Cumulative Layout Shift (CLS) and maintain consistent line heights when web fonts load, leverage CSS @font-face descriptors like ascent-override, descent-override, and line-gap-override. These allow you to adjust the metrics of your fallback fonts to more closely match your primary web font, significantly improving the visual stability and user experience during font loading.",
+        "css_snippet": "@font-face {\n  font-family: 'PrimaryWebFont';\n  src: url('/fonts/PrimaryWebFont.woff2') format('woff2');\n  font-display: swap;\n  /* These values are examples; calculate based on your primary font's actual metrics */\n  ascent-override: 95%; /* Adjust to match the primary font's ascent */\n  descent-override: 25%; /* Adjust to match the primary font's descent */\n  line-gap-override: 10%; /* Adjust to match the primary font's line gap */\n}\n\nbody {\n  font-family: 'PrimaryWebFont', 'Arial', sans-serif;\n}",
+        "date": "June 04, 2026"
+    },
+    {
         "title": "Achieving Harmonious Layouts: Mastering Vertical Rhythm with CSS for Superior UI",
         "slug": "achieving-harmonious-layouts-mastering-vertical-rhythm-with-css-for-superior-ui",
         "tweet": "Elevate your UI design with perfectly aligned text and elements! Learn how to master vertical rhythm using CSS, creating harmonious, readable layouts for superior user experience. #CSSTypography #UIDesign #WebFonts #UserExperience",
