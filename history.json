@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Adaptability: Mastering CSS font-variation-settings for Responsive Variable Fonts",
+        "slug": "elevate-ui-adaptability-mastering-css-font-variation-settings-for-responsive-variable-fonts",
+        "tweet": "Unleash the power of variable fonts! Master CSS font-variation-settings to create dynamic, responsive typography that perfectly adapts to any UI context, boosting UX. #CSSTypography #WebFonts #UIDesign",
+        "tip": "Variable fonts offer incredible flexibility. By using font-variation-settings, you can precisely control various axes (like weight, width, optical size, slant) to fine-tune your typography based on screen size, theme, or user preferences, leading to a truly adaptive and polished UI.",
+        "css_snippet": "/* Example for a variable font with 'wght' (weight) and 'wdth' (width) axes */\nh1 {\n  font-family: \"Inter Variable\", sans-serif;\n  font-variation-settings: \"wght\" 700, \"wdth\" 100; /* Default */\n}\n\n@media (max-width: 768px) {\n  h1 {\n    font-variation-settings: \"wght\" 600, \"wdth\" 90; /* Slightly lighter and narrower on smaller screens */\n    /* Or even an 'opsz' (optical size) axis if available */\n    /* font-variation-settings: \"wght\" 600, \"wdth\" 90, \"opsz\" 18; */\n  }\n}\n\n/* For a custom axis, e.g., 'GRAD' for grade */\n.product-title {\n  font-family: \"MyProductSans Variable\", sans-serif;\n  font-variation-settings: \"wght\" 500, \"GRAD\" 100;\n}",
+        "date": "June 05, 2026"
+    },
+    {
         "title": "Mastering CSS @font-face Descriptors: Control Font Fallback Metrics for Stable UI",
         "slug": "mastering-css-font-face-descriptors-control-font-fallback-metrics-for-stable-ui",
         "tweet": "Prevent layout shifts & visual inconsistencies! Learn how to use ascent-override, descent-override, and line-gap-override in CSS @font-face to control font fallback metrics, ensuring a stable and professional UI. #CSSTypography #WebFonts #UIDesign",
