@@ -1,8 +1,8 @@
 {
-    "title": "Boost UI Performance: Mastering CSS font-display for Optimal Web Font Loading",
-    "slug": "boost-ui-performance-mastering-css-font-display-for-optimal-web-font-loading",
-    "tweet": "Enhance UI speed & user experience! Learn how CSS font-display strategically loads web fonts, preventing frustrating blank text or layout shifts. #CSSTypography #WebFonts #UIUX",
-    "tip": "To prevent the 'flash of invisible text' (FOIT) and minimize Cumulative Layout Shift (CLS), use font-display: swap; for most body text. For critical UI elements like logos or crucial headings where immediate visual identity is paramount, consider font-display: block; to ensure the custom font is eventually rendered, accepting a temporary blank state if the font is slow to load. Experiment with font-display: optional; for non-critical branding elements or decorative text where the default system font is an acceptable permanent fallback.",
-    "css_snippet": "@font-face {\n  font-family: 'Inter';\n  src: url('/fonts/Inter-Regular.woff2') format('woff2');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Recommended for most body text to prevent FOIT */\n}\n\n@font-face {\n  font-family: 'BrandHeader';\n  src: url('/fonts/BrandHeader-Bold.woff2') format('woff2');\n  font-weight: 700;\n  font-style: normal;\n  font-display: block; /* Use for critical branding; allows FOIT but guarantees custom font */\n}\n\n@font-face {\n  font-family: 'IconFont';\n  src: url('/fonts/IconFont.woff2') format('woff2');\n  font-weight: normal;\n  font-style: normal;\n  font-display: optional; /* For non-critical fonts; uses system font if not loaded quickly */\n}\n\nh1 {\n  font-family: 'BrandHeader', sans-serif;\n}\n\np {\n  font-family: 'Inter', sans-serif;\n}",
-    "date": "June 06, 2026"
+    "title": "Maintain Typographic Integrity: Master CSS \"font-synthesis\" for Consistent UI",
+    "slug": "maintain-typographic-integrity-master-css-font-synthesis-for-consistent-ui",
+    "tweet": "Ensure precise UI typography! Learn how CSS font-synthesis prevents unwanted browser-generated bold/italic styles, maintaining web font integrity. #CSSTypography #UIDesign #WebFonts #UserExperience",
+    "tip": "The \"font-synthesis\" CSS property prevents browsers from artificially bolding or italicizing text when true bold or italic font faces are missing. This is crucial for preserving the intended design and visual hierarchy of your web fonts, enhancing overall UI consistency and user experience.",
+    "css_snippet": "body {\n  font-family: \"MyCustomWebFont\", sans-serif;\n  font-synthesis: none; /* Prevents all artificial bold/italic synthesis */\n}\n\n/* Example for specific elements to ensure strict font usage */\nh1 {\n  font-weight: 700; /* Assumes a defined 700 weight */\n  font-synthesis: none; /* Explicitly prevent synthesis if 700 isn't available */\n}",
+    "date": "June 07, 2026"
 }
