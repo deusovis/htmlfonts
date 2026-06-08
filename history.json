@@ -1,5 +1,13 @@
 [
     {
+        "title": "Achieve Visual Harmony: Master CSS font-size-adjust for Uniform Web Font Presentation",
+        "slug": "achieve-visual-harmony-master-css-font-size-adjust-for-uniform-web-font-presentation",
+        "tweet": "Boost your UI consistency! \ud83d\ude80 Learn how CSS font-size-adjust creates visual harmony across different web fonts by normalizing x-heights. A must-know for better user experience! #CSSTypography #WebFonts #UIDesign",
+        "tip": "Use font-size-adjust to ensure your fallback fonts or different primary fonts maintain a consistent visual size (x-height) relative to your primary font. This significantly reduces visual jarring when fonts load or change, improving overall UI stability and readability, especially during FOUT (Flash Of Unstyled Text) or FOIT (Flash Of Invisible Text) scenarios.",
+        "css_snippet": "body {\n  font-family: 'Roboto', 'Arial', sans-serif; /* Primary web font, then fallback system fonts */\n  font-size: 1rem;\n  /* 'Roboto' has an average x-height to font-size ratio of approximately 0.53.\n     By setting font-size-adjust to this value, the browser will scale 'Arial'\n     or 'sans-serif' to match Roboto's x-height at 1rem, ensuring visual consistency.\n  */\n  font-size-adjust: 0.53;\n  line-height: 1.6;\n}\n\nh1 {\n  font-family: 'Playfair Display', 'Georgia', serif; /* Primary display font */\n  font-size: 2.5rem;\n  /* 'Playfair Display' typically has a lower x-height ratio, around 0.45.\n     Setting font-size-adjust to 0.45 ensures that 'Georgia' or other serif fallbacks\n     are scaled to maintain a similar visual x-height to 'Playfair Display'.\n  */\n  font-size-adjust: 0.45;\n  line-height: 1.2;\n}",
+        "date": "June 08, 2026"
+    },
+    {
         "title": "Maintain Typographic Integrity: Master CSS \"font-synthesis\" for Consistent UI",
         "slug": "maintain-typographic-integrity-master-css-font-synthesis-for-consistent-ui",
         "tweet": "Ensure precise UI typography! Learn how CSS font-synthesis prevents unwanted browser-generated bold/italic styles, maintaining web font integrity. #CSSTypography #UIDesign #WebFonts #UserExperience",
