@@ -1,5 +1,13 @@
 [
     {
+        "title": "Achieve Typographic Harmony: Master CSS 'text-wrap: balance' for Perfect UI Headlines",
+        "slug": "achieve-typographic-harmony-master-css-text-wrap-balance-for-perfect-ui-headlines",
+        "tweet": "Struggling with uneven multi-line headlines? Master 'text-wrap: balance' in #CSS! It automatically creates visually appealing, balanced text blocks for better #UI design and #UX. Boost your #WebFonts presentation! #Typography",
+        "tip": "Improve the aesthetics and readability of multi-line headlines and short paragraphs by ensuring text lines are roughly equal in length. The 'text-wrap: balance' CSS property, part of CSS Text Level 4, prevents awkward single words on a new line and creates a more visually pleasing block of text. This significantly enhances the user experience by making titles easier to scan and digest, crucial for effective UI design, especially when paired with modern web fonts.",
+        "css_snippet": "h1, .hero-heading {\n  text-wrap: balance;\n  max-width: 60ch; /* Optional: Combine with max-width for optimal results */\n}",
+        "date": "June 09, 2026"
+    },
+    {
         "title": "Achieve Visual Harmony: Master CSS font-size-adjust for Uniform Web Font Presentation",
         "slug": "achieve-visual-harmony-master-css-font-size-adjust-for-uniform-web-font-presentation",
         "tweet": "Boost your UI consistency! \ud83d\ude80 Learn how CSS font-size-adjust creates visual harmony across different web fonts by normalizing x-heights. A must-know for better user experience! #CSSTypography #WebFonts #UIDesign",
