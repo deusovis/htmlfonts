@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Readability: Master CSS \"hyphens\" for Perfect Text Flow and Consistent Layouts",
+        "slug": "elevate-ui-readability-master-css-hyphens-for-perfect-text-flow-and-consistent-layouts",
+        "tweet": "Improve your web typography! \ud83d\ude80 Discover how CSS 'hyphens' can transform text flow, prevent awkward breaks, and create visually consistent layouts for a superior #UI design. #CSSTypography #WebFonts #UserExperience",
+        "tip": "To enhance text readability and maintain consistent line lengths in justified or narrow columns, judiciously apply the 'hyphens' CSS property. Combine 'hyphens: auto;' with a correctly set HTML 'lang' attribute for language-specific hyphenation rules and consider 'hyphenate-limit-chars' for fine-grained control, preventing overly short word fragments at line breaks.",
+        "css_snippet": "/* Crucial: Ensure the HTML lang attribute is set for the page or relevant elements, e.g., <html lang=\"en\"> */\n\n.article-body {\n    hyphens: auto; /* Enable automatic hyphenation */\n    text-align: justify; /* Often used with hyphenation for even margins */\n    hyphenate-limit-chars: 6 3 3; /* Min chars in word, before hyphen, after hyphen */\n    hyphenate-limit-lines: 2; /* Max consecutive lines that can end with a hyphen */\n    hyphenate-limit-last: always; /* Allow hyphenation even on the last line of a paragraph */\n    word-break: normal; /* Default, works well with hyphens */\n\n    /* Vendor prefixes might still be needed for older browser support */\n    -webkit-hyphens: auto;\n    -ms-hyphens: auto;\n}\n\n/* Example for a specific language with different hyphenation preferences */\nhtml[lang=\"de\"] .article-body {\n    hyphens: auto;\n    -webkit-hyphens: auto;\n    -ms-hyphens: auto;\n    hyphenate-limit-chars: 6 2 2; /* More aggressive hyphenation for German */\n}",
+        "date": "June 10, 2026"
+    },
+    {
         "title": "Achieve Typographic Harmony: Master CSS 'text-wrap: balance' for Perfect UI Headlines",
         "slug": "achieve-typographic-harmony-master-css-text-wrap-balance-for-perfect-ui-headlines",
         "tweet": "Struggling with uneven multi-line headlines? Master 'text-wrap: balance' in #CSS! It automatically creates visually appealing, balanced text blocks for better #UI design and #UX. Boost your #WebFonts presentation! #Typography",
