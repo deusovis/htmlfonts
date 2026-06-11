@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Refinement: Master CSS font-kerning for Precise Typographic Spacing",
+        "slug": "elevate-ui-refinement-master-css-font-kerning-for-precise-typographic-spacing",
+        "tweet": "Refine your UI typography! Discover how CSS 'font-kerning' enhances letter spacing for a professional, legible look. A small CSS tweak, a huge UX impact. #CSSTypography #WebFonts #UIDesign #UserExperience",
+        "tip": "Achieve professional-grade typographic spacing by judiciously applying CSS 'font-kerning'. While 'auto' is often the default, explicitly setting 'font-kerning: normal;' ensures kerning data embedded in your web fonts is utilized for improved letter spacing, especially crucial for display text and headings. Be mindful of browser support and test across different environments to ensure consistent visual quality. For performance-critical situations with large bodies of text, 'none' might be considered, but 'normal' offers superior aesthetic quality, significantly boosting readability and perceived UI quality.",
+        "css_snippet": "/* Ensure professional kerning is applied for refined UI text */\nh1, h2, .display-heading {\n  font-kerning: normal; /* Activates font-specific kerning data, if available */\n  text-rendering: optimizeLegibility; /* Hints browser to prioritize readability, can impact performance */\n}\n\n/* Example of disabling kerning for specific elements, e.g., monospaced code blocks */\n.code-block {\n  font-kerning: none;\n  letter-spacing: normal; /* Override any inherited letter-spacing if needed */\n}",
+        "date": "June 11, 2026"
+    },
+    {
         "title": "Elevate UI Readability: Master CSS \"hyphens\" for Perfect Text Flow and Consistent Layouts",
         "slug": "elevate-ui-readability-master-css-hyphens-for-perfect-text-flow-and-consistent-layouts",
         "tweet": "Improve your web typography! \ud83d\ude80 Discover how CSS 'hyphens' can transform text flow, prevent awkward breaks, and create visually consistent layouts for a superior #UI design. #CSSTypography #WebFonts #UserExperience",
