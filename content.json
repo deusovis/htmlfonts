@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Refinement: Master CSS font-kerning for Precise Typographic Spacing",
-    "slug": "elevate-ui-refinement-master-css-font-kerning-for-precise-typographic-spacing",
-    "tweet": "Refine your UI typography! Discover how CSS 'font-kerning' enhances letter spacing for a professional, legible look. A small CSS tweak, a huge UX impact. #CSSTypography #WebFonts #UIDesign #UserExperience",
-    "tip": "Achieve professional-grade typographic spacing by judiciously applying CSS 'font-kerning'. While 'auto' is often the default, explicitly setting 'font-kerning: normal;' ensures kerning data embedded in your web fonts is utilized for improved letter spacing, especially crucial for display text and headings. Be mindful of browser support and test across different environments to ensure consistent visual quality. For performance-critical situations with large bodies of text, 'none' might be considered, but 'normal' offers superior aesthetic quality, significantly boosting readability and perceived UI quality.",
-    "css_snippet": "/* Ensure professional kerning is applied for refined UI text */\nh1, h2, .display-heading {\n  font-kerning: normal; /* Activates font-specific kerning data, if available */\n  text-rendering: optimizeLegibility; /* Hints browser to prioritize readability, can impact performance */\n}\n\n/* Example of disabling kerning for specific elements, e.g., monospaced code blocks */\n.code-block {\n  font-kerning: none;\n  letter-spacing: normal; /* Override any inherited letter-spacing if needed */\n}",
-    "date": "June 11, 2026"
+    "title": "Elevate UI Typography: Master CSS 'font-feature-settings' for OpenType Features",
+    "slug": "elevate-ui-typography-master-css-font-feature-settings-for-opentype-features",
+    "tweet": "Unlock advanced OpenType typography in your UI! Master CSS 'font-feature-settings' to control ligatures, old-style figures, and stylistic sets for superior web fonts & UX. #CSSTypography #WebFonts #UIDesign",
+    "tip": "Leverage 'font-feature-settings' to enable specific OpenType features like standard ligatures (liga), discretionary ligatures (dlig), or small caps (smcp) directly in your CSS. This granular control dramatically enhances the visual sophistication and readability of your text, ensuring your web fonts truly shine. Combine with '@font-face' src to ensure font files support the features.",
+    "css_snippet": "/* Enable standard and discretionary ligatures, and old-style figures */\n.prose-content {\n  font-feature-settings: \"liga\" 1, \"dlig\" 1, \"onum\" 1;\n}\n\n/* Or use the preferred method for small caps */\n.small-caps-text {\n  font-variant-caps: small-caps;\n  /* Fallback/alternative using font-feature-settings if font-variant-caps is not sufficient */\n  /* font-feature-settings: \"smcp\" 1; */\n}\n\n.stylistic-set-1 {\n  font-feature-settings: \"ss01\" 1;\n}",
+    "date": "June 12, 2026"
 }
