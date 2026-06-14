@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Aesthetics: Master CSS 'text-underline-offset' and 'text-decoration-thickness' for Refined Web Typography",
+        "slug": "elevate-ui-aesthetics-master-css-text-underline-offset-and-text-decoration-thickness-for-refined-web-typography",
+        "tweet": "Beyond basic underlines! Enhance UI #typography & #UX with 'text-underline-offset' and 'text-decoration-thickness'. Fine-tune link aesthetics for cleaner, more readable designs. #CSS #WebFonts #UIDesign",
+        "tip": "Default underlines can often obstruct descenders or feel visually heavy, impacting readability and the overall aesthetic of your UI. CSS properties 'text-underline-offset' and 'text-decoration-thickness' provide granular control to refine the appearance of text decorations, especially for links. By adjusting the offset, you can ensure underlines clear descenders beautifully, reducing visual clutter and improving text legibility. Simultaneously, 'text-decoration-thickness' allows you to set the perfect visual weight for your underlines, harmonizing them with your chosen web fonts and design system. This subtle but powerful control significantly enhances user experience by making decorated text cleaner, more accessible, and visually integrated, moving beyond browser defaults to a truly polished typographic presentation.",
+        "css_snippet": "a {\n  text-decoration: underline; /* Ensure underline is present */\n  text-underline-offset: 0.2em; /* Lift underline slightly above descenders */\n  text-decoration-thickness: 1px; /* Set a specific thickness for the underline */\n  text-decoration-color: var(--link-color, #007bff); /* Match theme */\n}\n\n/* For a more modern approach, combining with 'text-decoration-line' */\n.decorated-text {\n  text-decoration-line: underline;\n  text-underline-offset: 0.15em;\n  text-decoration-thickness: from-font; /* Let the font suggest thickness, or specify a value */\n  text-decoration-color: currentColor; /* Inherit text color */\n}",
+        "date": "June 14, 2026"
+    },
+    {
         "title": "Elevate UI Readability: Master CSS 'font-optical-sizing' for Optimal Web Font Presentation",
         "slug": "elevate-ui-readability-master-css-font-optical-sizing-for-optimal-web-font-presentation",
         "tweet": "Unlock superior UI readability! Learn how CSS 'font-optical-sizing' optimizes variable web fonts for visual balance & legibility across all sizes. A must for #WebTypography & #UIDesign. #CSS #UX",
