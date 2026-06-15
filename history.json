@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Readability: Master Fluid Line-Height and Letter-Spacing for Responsive Typography",
+        "slug": "elevate-ui-readability-master-fluid-line-height-and-letter-spacing-for-responsive-typography",
+        "tweet": "Optimize UI readability across devices! Learn to implement fluid line-height and letter-spacing using modern CSS for truly responsive web typography. Your users will thank you! #CSSTypography #UIDesign #WebFonts #UserExperience",
+        "tip": "Beyond fixed values, truly responsive typography employs fluid line-height and letter-spacing. Use 'clamp()' or CSS custom properties with 'calc()' and viewport units to dynamically adjust these crucial typographic properties. This ensures optimal readability and visual comfort for users, whether on a mobile phone or a large desktop monitor. Consider a smaller line-height for headlines and larger for body text, always scaling proportionally.",
+        "css_snippet": "body {\n  /* Fluid line-height: min 1.4, preferred 1.4rem + 0.5vw, max 1.7 */\n  line-height: clamp(1.4, 1.4rem + 0.5vw, 1.7);\n  /* Fluid letter-spacing: min -0.02em, preferred -0.01em + 0.05vw, max 0.01em */\n  letter-spacing: clamp(-0.02em, -0.01em + 0.05vw, 0.01em);\n}\n\nh1 {\n  /* Fluid font-size example for headings */\n  font-size: clamp(2rem, 1.5rem + 3vw, 4rem);\n  /* Tighter line-height for headings */\n  line-height: clamp(1, 1rem + 0.2vw, 1.2);\n  /* Tighter letter-spacing for larger headings */\n  letter-spacing: clamp(-0.05em, -0.03em + 0.1vw, -0.01em);\n}\n\n/* Alternative with custom properties and calc() for more control */\n/* This linearly interpolates between values from a min to max viewport width */\np {\n  --min-vw: 320px;\n  --max-vw: 1200px;\n  --min-line-height: 1.4;\n  --max-line-height: 1.7;\n  --min-letter-spacing: -0.01em;\n  --max-letter-spacing: 0.01em;\n  \n  line-height: calc(var(--min-line-height) + (var(--max-line-height) - var(--min-line-height)) * ((100vw - var(--min-vw)) / (var(--max-vw) - var(--min-vw))));\n  letter-spacing: calc(var(--min-letter-spacing) + (var(--max-letter-spacing) - var(--min-letter-spacing)) * ((100vw - var(--min-vw)) / (var(--max-vw) - var(--min-vw))));\n}",
+        "date": "June 15, 2026"
+    },
+    {
         "title": "Elevate UI Aesthetics: Master CSS 'text-underline-offset' and 'text-decoration-thickness' for Refined Web Typography",
         "slug": "elevate-ui-aesthetics-master-css-text-underline-offset-and-text-decoration-thickness-for-refined-web-typography",
         "tweet": "Beyond basic underlines! Enhance UI #typography & #UX with 'text-underline-offset' and 'text-decoration-thickness'. Fine-tune link aesthetics for cleaner, more readable designs. #CSS #WebFonts #UIDesign",
