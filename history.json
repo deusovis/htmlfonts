@@ -1,5 +1,13 @@
 [
     {
+        "title": "Enhance UI Legibility: Master CSS 'text-rendering' for Optimal Font Smoothing",
+        "slug": "enhance-ui-legibility-master-css-text-rendering-for-optimal-font-smoothing",
+        "tweet": "Unlock crisper text on screen! Learn how CSS 'text-rendering' fine-tunes font smoothing for superior UI design & user experience. #CSSTypography #WebFonts #UIDesign",
+        "tip": "For most modern web applications, 'text-rendering: optimizeLegibility;' offers a balanced approach, prioritizing legibility over speed and enabling the browser to apply typographic optimizations like ligatures for a better user experience. Be mindful of performance on very large text blocks.",
+        "css_snippet": "body {\n  -webkit-font-smoothing: antialiased; /* For macOS & iOS */\n  -moz-osx-font-smoothing: grayscale; /* For macOS & iOS */\n  text-rendering: optimizeLegibility; /* Standard for advanced font rendering */\n}\n\n/* Consider performance for very large text areas */\n.performance-critical-area {\n  text-rendering: optimizeSpeed; /* Prioritize speed for large blocks of less critical text */\n}",
+        "date": "June 16, 2026"
+    },
+    {
         "title": "Elevate UI Readability: Master Fluid Line-Height and Letter-Spacing for Responsive Typography",
         "slug": "elevate-ui-readability-master-fluid-line-height-and-letter-spacing-for-responsive-typography",
         "tweet": "Optimize UI readability across devices! Learn to implement fluid line-height and letter-spacing using modern CSS for truly responsive web typography. Your users will thank you! #CSSTypography #UIDesign #WebFonts #UserExperience",
