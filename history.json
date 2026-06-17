@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Performance: Master CSS 'font-display' for Optimal Web Font Loading",
+        "slug": "elevate-ui-performance-master-css-font-display-for-optimal-web-font-loading",
+        "tweet": "Boost #UIDesign & #UX by mastering CSS font-display! Control web font loading behavior to prevent FOIT/FOUT & ensure a smooth user experience. Learn how to optimize performance. #CSSTypography #WebFonts",
+        "tip": "Optimizing web font loading is crucial for user experience and site performance. The 'font-display' CSS descriptor, used within your @font-face rules, dictates how a font loads and displays based on its download status. Using 'swap' ensures immediate text display with a fallback font, swapping to the custom font once available, minimizing Flash of Invisible Text (FOIT). For critical elements, 'block' might be used, but generally 'swap' or 'fallback' offer better perceived performance. Choose 'optional' for non-critical fonts to avoid render-blocking and prioritize speed. Understanding each value ('auto', 'block', 'swap', 'fallback', 'optional') allows you to fine-tune your font loading strategy, delivering a faster, more visually consistent UI.",
+        "css_snippet": "@font-face {\n  font-family: 'MyCustomFont';\n  src: url('/fonts/mycustomfont-regular.woff2') format('woff2');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Or 'fallback', 'optional' */\n}",
+        "date": "June 17, 2026"
+    },
+    {
         "title": "Enhance UI Legibility: Master CSS 'text-rendering' for Optimal Font Smoothing",
         "slug": "enhance-ui-legibility-master-css-text-rendering-for-optimal-font-smoothing",
         "tweet": "Unlock crisper text on screen! Learn how CSS 'text-rendering' fine-tunes font smoothing for superior UI design & user experience. #CSSTypography #WebFonts #UIDesign",
