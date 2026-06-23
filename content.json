@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Readability: Master CSS 'hyphens' for Seamless Text Flow",
-    "slug": "elevate-ui-readability-master-css-hyphens-for-seamless-text-flow",
-    "tweet": "Improve text flow & readability in your UI with CSS 'hyphens'. No more awkward gaps! Learn how to create beautifully justified text. #CSSTypography #UIDesign #WebFonts #UserExperience",
-    "tip": "Achieve superior text justification and prevent unsightly gaps in your paragraphs by intelligently enabling CSS 'hyphens'. This property allows browsers to automatically hyphenate words at line breaks, leading to a more consistent line length, improved aesthetics, and a smoother reading experience, especially with justified text or narrow columns. Combine it with 'text-align: justify' for the best results, ensuring a balanced and professional look across all screen sizes.",
-    "css_snippet": "p {\n  text-align: justify;\n  hyphens: auto; /* Enables automatic hyphenation */\n  -webkit-hyphens: auto; /* For WebKit browsers */\n  -ms-hyphens: auto; /* For IE/Edge */\n  hyphenate-limit-chars: 6 3 2; /* Optional: min chars in word, before hyphen, after hyphen */\n}\n\n/* Optional: Disable hyphenation for specific elements if needed */\nh1, h2, h3 {\n  hyphens: none;\n}",
-    "date": "June 22, 2026"
+    "title": "Typography Tip Jun 23",
+    "slug": "typography-tip-jun-23",
+    "tweet": "Check out today's CSS typography tip! #webdesign #css",
+    "tip": "To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.",
+    "css_snippet": "body {\n  line-height: 1.5;\n}",
+    "date": "June 23, 2026"
 }
