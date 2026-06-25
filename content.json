@@ -1,8 +1,8 @@
 {
-    "title": "Boost UI Performance: Master CSS 'unicode-range' for Efficient Web Font Loading",
-    "slug": "boost-ui-performance-master-css-unicode-range-for-efficient-web-font-loading",
-    "tweet": "Improve #WebPerformance & #UI with CSS 'unicode-range'! Load only necessary font glyphs, reduce file sizes, and speed up page renders. A must-know for #WebFonts & #CSS typography experts! #UXDesign",
-    "tip": "To significantly reduce web font file sizes and improve page load times, especially for internationalization or specific symbol sets, leverage the 'unicode-range' descriptor within your @font-face rules. This tells the browser to download a font file (or specific subsets of it) only if characters within that defined Unicode range are actually used on the page. For example, if you're using a decorative font only for numbers, you can subset it to just those numerical glyphs. This is crucial for optimizing the user experience by ensuring faster content display and saving bandwidth.",
-    "css_snippet": "@font-face {\n  font-family: 'SpecialNumbers';\n  src: url('/fonts/special-numbers.woff2') format('woff2');\n  unicode-range: U+0-9, U+20-2F, U+3A-40, U+5B-60, U+7B-7E; /* Basic ASCII numbers and common symbols */\n  font-weight: 400;\n  font-style: normal;\n}\n\n@font-face {\n  font-family: 'MainBodyFont';\n  src: url('/fonts/main-body.woff2') format('woff2');\n  unicode-range: U+0020-007E; /* Basic Latin, printable ASCII characters */\n  font-weight: 400;\n  font-style: normal;\n}\n\nh1 {\n  font-family: 'SpecialNumbers', sans-serif;\n  /* Other heading styles */\n}\n\np {\n  font-family: 'MainBodyFont', sans-serif;\n  /* Other paragraph styles */\n}",
-    "date": "June 24, 2026"
+    "title": "Elevate UI Clarity: Master CSS 'font-optical-sizing' for Precision Typography",
+    "slug": "elevate-ui-clarity-master-css-font-optical-sizing-for-precision-typography",
+    "tweet": "Boost your #UITypography! Learn how CSS 'font-optical-sizing' subtly adjusts fonts for optimal readability at any size. A game-changer for #WebFonts & #UX. #CSS",
+    "tip": "Modern web fonts often include optical sizing data, allowing glyphs to subtly change their appearance to maintain optimal stroke weights and clarity across different font sizes. Applying 'font-optical-sizing: auto' leverages this embedded data, making headlines sharp and body text highly legible, significantly enhancing user experience without manual adjustments.",
+    "css_snippet": "body {\n  font-family: \"Your Display Font\", sans-serif;\n  font-optical-sizing: auto; /* Activates optical sizing if font supports it */\n  text-rendering: optimizeLegibility; /* Also helps with overall rendering */\n}\n\nh1 {\n  font-size: 4rem;\n  font-optical-sizing: auto; /* Ensures large headings are precisely rendered */\n}\n\np {\n  font-size: 1.125rem;\n  font-optical-sizing: auto; /* Improves readability of body text */\n}",
+    "date": "June 25, 2026"
 }
