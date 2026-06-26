@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Clarity: Master CSS 'font-optical-sizing' for Precision Typography",
-    "slug": "elevate-ui-clarity-master-css-font-optical-sizing-for-precision-typography",
-    "tweet": "Boost your #UITypography! Learn how CSS 'font-optical-sizing' subtly adjusts fonts for optimal readability at any size. A game-changer for #WebFonts & #UX. #CSS",
-    "tip": "Modern web fonts often include optical sizing data, allowing glyphs to subtly change their appearance to maintain optimal stroke weights and clarity across different font sizes. Applying 'font-optical-sizing: auto' leverages this embedded data, making headlines sharp and body text highly legible, significantly enhancing user experience without manual adjustments.",
-    "css_snippet": "body {\n  font-family: \"Your Display Font\", sans-serif;\n  font-optical-sizing: auto; /* Activates optical sizing if font supports it */\n  text-rendering: optimizeLegibility; /* Also helps with overall rendering */\n}\n\nh1 {\n  font-size: 4rem;\n  font-optical-sizing: auto; /* Ensures large headings are precisely rendered */\n}\n\np {\n  font-size: 1.125rem;\n  font-optical-sizing: auto; /* Improves readability of body text */\n}",
-    "date": "June 25, 2026"
+    "title": "Elevate UI Readability: Master CSS 'font-kerning' for Precise Letter Spacing",
+    "slug": "elevate-ui-readability-master-css-font-kerning-for-precise-letter-spacing",
+    "tweet": "Enhance your #UIDesign & #UserExperience! Discover how CSS 'font-kerning' fine-tunes letter spacing for pristine #Typography and readability. #WebFonts",
+    "tip": "CSS 'font-kerning' allows browsers to adjust the space between specific character pairs (like 'AV' or 'To') for better visual balance and readability, based on the font's embedded kerning data. While often 'auto' by default, explicitly setting 'font-kerning: normal;' guarantees that your text benefits from the font designer's precise spacing intentions. This subtle but powerful property significantly enhances the aesthetic quality and legibility of your UI, particularly in headings and larger display text, contributing to a polished user experience with your web fonts.",
+    "css_snippet": "h1, h2, .display-text {\n  font-family: 'Lora', serif;\n  font-size: 3.5rem;\n  font-kerning: normal; /* Activates font-specific kerning adjustments */\n  line-height: 1.1;\n  letter-spacing: -0.02em;\n}",
+    "date": "June 26, 2026"
 }

@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Readability: Master CSS 'font-kerning' for Precise Letter Spacing",
+        "slug": "elevate-ui-readability-master-css-font-kerning-for-precise-letter-spacing",
+        "tweet": "Enhance your #UIDesign & #UserExperience! Discover how CSS 'font-kerning' fine-tunes letter spacing for pristine #Typography and readability. #WebFonts",
+        "tip": "CSS 'font-kerning' allows browsers to adjust the space between specific character pairs (like 'AV' or 'To') for better visual balance and readability, based on the font's embedded kerning data. While often 'auto' by default, explicitly setting 'font-kerning: normal;' guarantees that your text benefits from the font designer's precise spacing intentions. This subtle but powerful property significantly enhances the aesthetic quality and legibility of your UI, particularly in headings and larger display text, contributing to a polished user experience with your web fonts.",
+        "css_snippet": "h1, h2, .display-text {\n  font-family: 'Lora', serif;\n  font-size: 3.5rem;\n  font-kerning: normal; /* Activates font-specific kerning adjustments */\n  line-height: 1.1;\n  letter-spacing: -0.02em;\n}",
+        "date": "June 26, 2026"
+    },
+    {
         "title": "Elevate UI Clarity: Master CSS 'font-optical-sizing' for Precision Typography",
         "slug": "elevate-ui-clarity-master-css-font-optical-sizing-for-precision-typography",
         "tweet": "Boost your #UITypography! Learn how CSS 'font-optical-sizing' subtly adjusts fonts for optimal readability at any size. A game-changer for #WebFonts & #UX. #CSS",
