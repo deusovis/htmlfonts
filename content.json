@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Readability: Master CSS 'font-kerning' for Precise Letter Spacing",
-    "slug": "elevate-ui-readability-master-css-font-kerning-for-precise-letter-spacing",
-    "tweet": "Enhance your #UIDesign & #UserExperience! Discover how CSS 'font-kerning' fine-tunes letter spacing for pristine #Typography and readability. #WebFonts",
-    "tip": "CSS 'font-kerning' allows browsers to adjust the space between specific character pairs (like 'AV' or 'To') for better visual balance and readability, based on the font's embedded kerning data. While often 'auto' by default, explicitly setting 'font-kerning: normal;' guarantees that your text benefits from the font designer's precise spacing intentions. This subtle but powerful property significantly enhances the aesthetic quality and legibility of your UI, particularly in headings and larger display text, contributing to a polished user experience with your web fonts.",
-    "css_snippet": "h1, h2, .display-text {\n  font-family: 'Lora', serif;\n  font-size: 3.5rem;\n  font-kerning: normal; /* Activates font-specific kerning adjustments */\n  line-height: 1.1;\n  letter-spacing: -0.02em;\n}",
-    "date": "June 26, 2026"
+    "title": "Elevate UI Clarity: Master CSS 'text-rendering' for Optimal Web Text Sharpness",
+    "slug": "elevate-ui-clarity-master-css-text-rendering-for-optimal-web-text-sharpness",
+    "tweet": "Boost your web typography! Learn how CSS 'text-rendering' can dramatically improve text clarity & UI design. Essential for crisp fonts & a superior user experience. #CSSTypography #UIDesign #WebFonts #UX",
+    "tip": "The 'text-rendering' CSS property is a powerful, yet often underutilized, tool for fine-tuning how text is rendered by the browser. While 'auto' is the default, using 'optimizeLegibility' can significantly enhance the appearance of fonts, especially at smaller sizes or with complex scripts, by enabling features like ligatures and kerning. However, be mindful that 'optimizeLegibility' can sometimes impact rendering performance, so test thoroughly. For display text, 'geometricPrecision' can offer ultra-sharp outlines but might ignore font hints. A balanced approach often involves applying 'optimizeLegibility' to body text and using 'auto' or 'geometricPrecision' judiciously for specific elements.",
+    "css_snippet": "body {\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased; /* For WebKit/Blink browsers */\n  -moz-osx-font-smoothing: grayscale; /* For Firefox on macOS */\n}\n\nh1, h2 {\n  text-rendering: geometricPrecision; /* Can be good for large display text */\n}",
+    "date": "June 27, 2026"
 }
