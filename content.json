@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Clarity: Master CSS 'text-rendering' for Optimal Web Text Sharpness",
-    "slug": "elevate-ui-clarity-master-css-text-rendering-for-optimal-web-text-sharpness",
-    "tweet": "Boost your web typography! Learn how CSS 'text-rendering' can dramatically improve text clarity & UI design. Essential for crisp fonts & a superior user experience. #CSSTypography #UIDesign #WebFonts #UX",
-    "tip": "The 'text-rendering' CSS property is a powerful, yet often underutilized, tool for fine-tuning how text is rendered by the browser. While 'auto' is the default, using 'optimizeLegibility' can significantly enhance the appearance of fonts, especially at smaller sizes or with complex scripts, by enabling features like ligatures and kerning. However, be mindful that 'optimizeLegibility' can sometimes impact rendering performance, so test thoroughly. For display text, 'geometricPrecision' can offer ultra-sharp outlines but might ignore font hints. A balanced approach often involves applying 'optimizeLegibility' to body text and using 'auto' or 'geometricPrecision' judiciously for specific elements.",
-    "css_snippet": "body {\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased; /* For WebKit/Blink browsers */\n  -moz-osx-font-smoothing: grayscale; /* For Firefox on macOS */\n}\n\nh1, h2 {\n  text-rendering: geometricPrecision; /* Can be good for large display text */\n}",
-    "date": "June 27, 2026"
+    "title": "Elevate UI Experience: Master CSS 'font-display' for Optimal Web Font Loading",
+    "slug": "elevate-ui-experience-master-css-font-display-for-optimal-web-font-loading",
+    "tweet": "Optimize web font loading and enhance user experience! Learn how CSS 'font-display' prevents FOUT/FOIT, ensuring your UI looks great from the start. A must for #CSSTypography and #WebFonts. #UIDesign #UserExperience",
+    "tip": "To prevent jarring layout shifts (FOIT - Flash of Invisible Text) or unpleasant font changes (FOUT - Flash of Unstyled Text), master the CSS 'font-display' property. Use it within your '@font-face' rules to dictate how web fonts are loaded and displayed. 'swap' is often a great default for better UX, showing fallback text immediately and swapping once the custom font is ready. For critical UI elements, 'optional' can improve performance by only loading the font if network conditions are ideal, relying on fallbacks otherwise. This ensures a smoother visual experience and boosts perceived performance, crucial for modern #UIDesign.",
+    "css_snippet": "@font-face {\n  font-family: 'MyCustomFont';\n  src: url('/fonts/mycustomfont.woff2') format('woff2');\n  font-display: swap; /* Choose 'block', 'fallback', 'optional', or 'swap' */\n}",
+    "date": "June 28, 2026"
 }

@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Experience: Master CSS 'font-display' for Optimal Web Font Loading",
+        "slug": "elevate-ui-experience-master-css-font-display-for-optimal-web-font-loading",
+        "tweet": "Optimize web font loading and enhance user experience! Learn how CSS 'font-display' prevents FOUT/FOIT, ensuring your UI looks great from the start. A must for #CSSTypography and #WebFonts. #UIDesign #UserExperience",
+        "tip": "To prevent jarring layout shifts (FOIT - Flash of Invisible Text) or unpleasant font changes (FOUT - Flash of Unstyled Text), master the CSS 'font-display' property. Use it within your '@font-face' rules to dictate how web fonts are loaded and displayed. 'swap' is often a great default for better UX, showing fallback text immediately and swapping once the custom font is ready. For critical UI elements, 'optional' can improve performance by only loading the font if network conditions are ideal, relying on fallbacks otherwise. This ensures a smoother visual experience and boosts perceived performance, crucial for modern #UIDesign.",
+        "css_snippet": "@font-face {\n  font-family: 'MyCustomFont';\n  src: url('/fonts/mycustomfont.woff2') format('woff2');\n  font-display: swap; /* Choose 'block', 'fallback', 'optional', or 'swap' */\n}",
+        "date": "June 28, 2026"
+    },
+    {
         "title": "Elevate UI Clarity: Master CSS 'text-rendering' for Optimal Web Text Sharpness",
         "slug": "elevate-ui-clarity-master-css-text-rendering-for-optimal-web-text-sharpness",
         "tweet": "Boost your web typography! Learn how CSS 'text-rendering' can dramatically improve text clarity & UI design. Essential for crisp fonts & a superior user experience. #CSSTypography #UIDesign #WebFonts #UX",
