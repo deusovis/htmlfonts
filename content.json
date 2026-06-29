@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Experience: Master CSS 'font-display' for Optimal Web Font Loading",
-    "slug": "elevate-ui-experience-master-css-font-display-for-optimal-web-font-loading",
-    "tweet": "Optimize web font loading and enhance user experience! Learn how CSS 'font-display' prevents FOUT/FOIT, ensuring your UI looks great from the start. A must for #CSSTypography and #WebFonts. #UIDesign #UserExperience",
-    "tip": "To prevent jarring layout shifts (FOIT - Flash of Invisible Text) or unpleasant font changes (FOUT - Flash of Unstyled Text), master the CSS 'font-display' property. Use it within your '@font-face' rules to dictate how web fonts are loaded and displayed. 'swap' is often a great default for better UX, showing fallback text immediately and swapping once the custom font is ready. For critical UI elements, 'optional' can improve performance by only loading the font if network conditions are ideal, relying on fallbacks otherwise. This ensures a smoother visual experience and boosts perceived performance, crucial for modern #UIDesign.",
-    "css_snippet": "@font-face {\n  font-family: 'MyCustomFont';\n  src: url('/fonts/mycustomfont.woff2') format('woff2');\n  font-display: swap; /* Choose 'block', 'fallback', 'optional', or 'swap' */\n}",
-    "date": "June 28, 2026"
+    "title": "Elevate UI Legibility: Master CSS 'letter-spacing' for Optimal Text Density",
+    "slug": "elevate-ui-legibility-master-css-letter-spacing-for-optimal-text-density",
+    "tweet": "Boost UI readability! Learn how precise CSS 'letter-spacing' enhances text density & legibility for web fonts, creating a superior user experience. #CSSTypography #UIDesign #WebFonts #UX",
+    "tip": "Achieve impeccable UI legibility by carefully adjusting the 'letter-spacing' CSS property. Too tight or too loose spacing can severely hinder readability, especially with different font weights and sizes. A subtle positive value often improves display fonts, while a slightly negative value can optimize larger headlines or certain display typefaces. Aim for visual balance to guide the user's eye smoothly across text.",
+    "css_snippet": "/* For body text, subtle adjustments often improve readability */\nbody {\n  letter-spacing: 0.01em; /* or -0.005em for larger body fonts */\n}\n\n/* For large headlines, a slightly negative value can enhance aesthetics */\nh1 {\n  letter-spacing: -0.02em;\n  font-weight: 700;\n}\n\n/* Be cautious with very small text */\nsmall {\n  letter-spacing: 0.02em; /* May need slight positive spacing */\n}",
+    "date": "June 29, 2026"
 }
