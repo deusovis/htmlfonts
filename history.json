@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Readability: Master CSS 'line-height' for Optimal Vertical Rhythm",
+        "slug": "elevate-ui-readability-master-css-line-height-for-optimal-vertical-rhythm",
+        "tweet": "Boost UI design and user experience! Learn to master CSS 'line-height' for impeccable vertical rhythm and crystal-clear readability. #CSSTypography #UIUX #WebFonts",
+        "tip": "A 'line-height' value between 1.4 and 1.6 (unitless) is often ideal for body text, creating sufficient space between lines without feeling too airy or too dense, improving user experience across devices. Remember, unitless values are relative to the font-size and scale proportionally.",
+        "css_snippet": "body {\n  font-family: 'Inter', sans-serif;\n  font-size: 18px;\n  line-height: 1.5;\n}\n\nh1 {\n  font-size: 2.5em;\n  line-height: 1.1;\n  margin-bottom: 0.5em;\n}\n\np + p {\n  margin-top: 1em;\n}",
+        "date": "June 30, 2026"
+    },
+    {
         "title": "Elevate UI Legibility: Master CSS 'letter-spacing' for Optimal Text Density",
         "slug": "elevate-ui-legibility-master-css-letter-spacing-for-optimal-text-density",
         "tweet": "Boost UI readability! Learn how precise CSS 'letter-spacing' enhances text density & legibility for web fonts, creating a superior user experience. #CSSTypography #UIDesign #WebFonts #UX",
