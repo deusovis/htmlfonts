@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Readability: Master CSS 'line-height' for Optimal Vertical Rhythm",
-    "slug": "elevate-ui-readability-master-css-line-height-for-optimal-vertical-rhythm",
-    "tweet": "Boost UI design and user experience! Learn to master CSS 'line-height' for impeccable vertical rhythm and crystal-clear readability. #CSSTypography #UIUX #WebFonts",
-    "tip": "A 'line-height' value between 1.4 and 1.6 (unitless) is often ideal for body text, creating sufficient space between lines without feeling too airy or too dense, improving user experience across devices. Remember, unitless values are relative to the font-size and scale proportionally.",
-    "css_snippet": "body {\n  font-family: 'Inter', sans-serif;\n  font-size: 18px;\n  line-height: 1.5;\n}\n\nh1 {\n  font-size: 2.5em;\n  line-height: 1.1;\n  margin-bottom: 0.5em;\n}\n\np + p {\n  margin-top: 1em;\n}",
-    "date": "June 30, 2026"
+    "title": "Elevate UI Precision: Master CSS 'font-variation-settings' for Variable Fonts",
+    "slug": "elevate-ui-precision-master-css-font-variation-settings-for-variable-fonts",
+    "tweet": "Unlock unparalleled typographic control! Discover how CSS 'font-variation-settings' transforms your UI with variable fonts, enhancing design precision & UX. #CSSTypography #VariableFonts #UIDesign",
+    "tip": "Leverage CSS 'font-variation-settings' to fine-tune variable fonts. Instead of loading multiple static weights, access a continuum of styles, allowing granular control over weight, width, optical size, and more. This optimizes performance by reducing HTTP requests and offers unmatched design flexibility, adapting typography perfectly to various screen sizes and contexts for a superior user experience. It's the ultimate tool for responsive and dynamic web typography.",
+    "css_snippet": "@font-face {\n    font-family: 'Inter Variable';\n    src: url('/fonts/Inter-roman.var.woff2') format('woff2-variations');\n    font-weight: 100 900; /* Range of weights available */\n    font-stretch: 25% 150%; /* Range of widths available */\n    font-style: normal;\n}\n\nbody {\n    font-family: 'Inter Variable', sans-serif;\n    /* Set default weight (wght) and slant (slnt) */\n    font-variation-settings: \"wght\" 400, \"slnt\" 0;\n}\n\nh1 {\n    /* Custom weight and negative slant for a distinct heading */\n    font-variation-settings: \"wght\" 750, \"slnt\" -7;\n    font-weight: 750; /* Fallback/hint for non-variable font support */\n}\n\np.caption {\n    /* Lighter weight, narrower width for captions */\n    font-variation-settings: \"wght\" 300, \"wdth\" 85;\n    font-weight: 300; /* Fallback/hint */\n    font-stretch: 85%; /* Fallback/hint */\n}",
+    "date": "July 01, 2026"
 }
