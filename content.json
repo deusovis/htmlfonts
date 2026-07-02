@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Precision: Master CSS 'font-variation-settings' for Variable Fonts",
-    "slug": "elevate-ui-precision-master-css-font-variation-settings-for-variable-fonts",
-    "tweet": "Unlock unparalleled typographic control! Discover how CSS 'font-variation-settings' transforms your UI with variable fonts, enhancing design precision & UX. #CSSTypography #VariableFonts #UIDesign",
-    "tip": "Leverage CSS 'font-variation-settings' to fine-tune variable fonts. Instead of loading multiple static weights, access a continuum of styles, allowing granular control over weight, width, optical size, and more. This optimizes performance by reducing HTTP requests and offers unmatched design flexibility, adapting typography perfectly to various screen sizes and contexts for a superior user experience. It's the ultimate tool for responsive and dynamic web typography.",
-    "css_snippet": "@font-face {\n    font-family: 'Inter Variable';\n    src: url('/fonts/Inter-roman.var.woff2') format('woff2-variations');\n    font-weight: 100 900; /* Range of weights available */\n    font-stretch: 25% 150%; /* Range of widths available */\n    font-style: normal;\n}\n\nbody {\n    font-family: 'Inter Variable', sans-serif;\n    /* Set default weight (wght) and slant (slnt) */\n    font-variation-settings: \"wght\" 400, \"slnt\" 0;\n}\n\nh1 {\n    /* Custom weight and negative slant for a distinct heading */\n    font-variation-settings: \"wght\" 750, \"slnt\" -7;\n    font-weight: 750; /* Fallback/hint for non-variable font support */\n}\n\np.caption {\n    /* Lighter weight, narrower width for captions */\n    font-variation-settings: \"wght\" 300, \"wdth\" 85;\n    font-weight: 300; /* Fallback/hint */\n    font-stretch: 85%; /* Fallback/hint */\n}",
-    "date": "July 01, 2026"
+    "title": "Elevate UI Design: Master CSS 'text-wrap: balance' for Perfect Headline Layouts",
+    "slug": "elevate-ui-design-master-css-text-wrap-balance-for-perfect-headline-layouts",
+    "tweet": "Beyond basic line breaks! Discover how CSS 'text-wrap: balance' revolutionizes headline legibility and UI aesthetics. A game-changer for responsive typography, preventing awkward single-word lines. #CSSTypography #UIDesign #WebFonts #UserExperience",
+    "tip": "Improve headline aesthetics and readability significantly by using 'text-wrap: balance'. This CSS property intelligently distributes words across lines to create more visually balanced blocks of text, preventing awkward single-word lines and enhancing the overall user experience, especially on responsive layouts. Ideal for short blocks of text like titles and captions, it ensures a cleaner, more professional look.",
+    "css_snippet": "h1, .headline {\n  text-wrap: balance;\n}",
+    "date": "July 02, 2026"
 }
