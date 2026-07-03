@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Underlines: Master CSS 'text-underline-offset' and 'text-decoration-thickness' for Enhanced Readability",
+        "slug": "elevate-ui-underlines-master-css-text-underline-offset-and-text-decoration-thickness-for-enhanced-readability",
+        "tweet": "Enhance #UI design & #UX with sophisticated underlines! Learn how CSS 'text-underline-offset' and 'text-decoration-thickness' transform default browser underlines into elegant typographic elements. #CSSTypography #WebFonts",
+        "tip": "Default browser underlines often clash with descenders or appear too thin, diminishing visual appeal. Utilize CSS 'text-underline-offset' to move the underline baseline, preventing overlap with glyphs like 'g' or 'p', and 'text-decoration-thickness' to adjust its weight for better readability and aesthetic harmony. This combination dramatically improves link and emphasized text presentation, making your UI look polished and professional.",
+        "css_snippet": "a {\n  text-decoration: underline; /* Ensure underline is present */\n  text-underline-offset: 0.2em; /* Adjusts vertical position to avoid descenders */\n  text-decoration-thickness: 0.08em; /* Sets initial thickness */\n  text-decoration-color: var(--primary-color, currentColor); /* Optional: customize color */\n  transition: text-decoration-color 0.2s ease-in-out, text-decoration-thickness 0.2s ease-in-out;\n}\n\na:hover {\n  text-decoration-thickness: 0.15em; /* Thicker on hover for subtle interaction */\n}",
+        "date": "July 03, 2026"
+    },
+    {
         "title": "Elevate UI Design: Master CSS 'text-wrap: balance' for Perfect Headline Layouts",
         "slug": "elevate-ui-design-master-css-text-wrap-balance-for-perfect-headline-layouts",
         "tweet": "Beyond basic line breaks! Discover how CSS 'text-wrap: balance' revolutionizes headline legibility and UI aesthetics. A game-changer for responsive typography, preventing awkward single-word lines. #CSSTypography #UIDesign #WebFonts #UserExperience",
