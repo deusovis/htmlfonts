@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Readability: Master CSS 'hyphens' for Flawless Text Flow",
-    "slug": "elevate-ui-readability-master-css-hyphens-for-flawless-text-flow",
-    "tweet": "Improve web text justification & readability! Learn how the CSS 'hyphens' property prevents awkward gaps & enhances UI elegance. A must for #CSSTypography & #UIDesign pros. #WebFonts #UX",
-    "tip": "Achieve more even text blocks and prevent unsightly 'rivers' or large gaps in justified text by strategically using the 'hyphens' property. Combine with 'text-align: justify' for professional-grade layout, especially in narrow columns or responsive designs. It significantly boosts the perceived quality of your typography and user experience.",
-    "css_snippet": "p {\n  -webkit-hyphens: auto;\n  -ms-hyphens: auto;\n  hyphens: auto;\n  text-align: justify;\n  hyphenate-limit-chars: 6 3 2; /* min-chars-in-word min-chars-before min-chars-after */\n  hyphenate-limit-lines: 2; /* Number of consecutive hyphenated lines */\n  hyphenate-limit-last: always; /* Prevent hyphenation on the last line of a block */\n}\n\n/* Example for specific language */\nhtml[lang=\"de\"] {\n  hyphens: manual; /* Or use 'auto' for browser defaults based on language */\n}",
-    "date": "July 05, 2026"
+    "title": "Elevate UI Legibility: Master CSS 'font-optical-sizing' for Adaptive Font Rendering",
+    "slug": "elevate-ui-legibility-master-css-font-optical-sizing-for-adaptive-font-rendering",
+    "tweet": "Boost UX with CSS 'font-optical-sizing'! Discover how this property automatically optimizes font shapes for better legibility at any size. Essential for modern web typography. #CSSTypography #UIDesign #WebFonts",
+    "tip": "Leverage 'font-optical-sizing: auto' with variable fonts that include optical sizing axes. This powerful CSS property allows browsers to subtly adjust glyph forms (like stroke contrast or aperture size) based on the font's rendered size, ensuring optimal readability and visual harmony across diverse UI elements, from large headings to small body text.",
+    "css_snippet": "/* Enable 'font-optical-sizing' on your body or root element */\nbody {\n  font-family: 'Merriweather Sans Variable', sans-serif; /* Example variable font */\n  font-optical-sizing: auto;\n  /* 'auto' tells the browser to apply optical sizing based on font-size */\n}\n\n/* No further CSS needed for individual elements; \n   the browser handles adjustments automatically based on their font-size */\nh1 {\n  font-size: 3rem;\n}\n\np {\n  font-size: 1rem;\n}",
+    "date": "July 06, 2026"
 }

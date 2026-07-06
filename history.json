@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Legibility: Master CSS 'font-optical-sizing' for Adaptive Font Rendering",
+        "slug": "elevate-ui-legibility-master-css-font-optical-sizing-for-adaptive-font-rendering",
+        "tweet": "Boost UX with CSS 'font-optical-sizing'! Discover how this property automatically optimizes font shapes for better legibility at any size. Essential for modern web typography. #CSSTypography #UIDesign #WebFonts",
+        "tip": "Leverage 'font-optical-sizing: auto' with variable fonts that include optical sizing axes. This powerful CSS property allows browsers to subtly adjust glyph forms (like stroke contrast or aperture size) based on the font's rendered size, ensuring optimal readability and visual harmony across diverse UI elements, from large headings to small body text.",
+        "css_snippet": "/* Enable 'font-optical-sizing' on your body or root element */\nbody {\n  font-family: 'Merriweather Sans Variable', sans-serif; /* Example variable font */\n  font-optical-sizing: auto;\n  /* 'auto' tells the browser to apply optical sizing based on font-size */\n}\n\n/* No further CSS needed for individual elements; \n   the browser handles adjustments automatically based on their font-size */\nh1 {\n  font-size: 3rem;\n}\n\np {\n  font-size: 1rem;\n}",
+        "date": "July 06, 2026"
+    },
+    {
         "title": "Elevate UI Readability: Master CSS 'hyphens' for Flawless Text Flow",
         "slug": "elevate-ui-readability-master-css-hyphens-for-flawless-text-flow",
         "tweet": "Improve web text justification & readability! Learn how the CSS 'hyphens' property prevents awkward gaps & enhances UI elegance. A must for #CSSTypography & #UIDesign pros. #WebFonts #UX",
