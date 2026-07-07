@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Consistency: Master CSS 'font-size-adjust' for Seamless Font Fallbacks",
+        "slug": "elevate-ui-consistency-master-css-font-size-adjust-for-seamless-font-fallbacks",
+        "tweet": "Ensure consistent x-height across your font fallbacks with CSS 'font-size-adjust'. A subtle yet powerful property for superior UI design & user experience! #CSSTypography #WebFonts #UIDesign #UserExperience",
+        "tip": "To prevent jarring size shifts when web fonts fail to load or when using fallback fonts, apply 'font-size-adjust'. This property helps maintain a consistent x-height, improving overall UI visual harmony and readability. It's especially useful for balancing the visual weight of your primary font with its system font fallbacks. For optimal results, research the x-height ratio of your primary font.",
+        "css_snippet": "body {\n  font-family: 'Inter', sans-serif;\n  font-size: 16px;\n  font-size-adjust: 0.52; /* Example x-height ratio for 'Inter' */\n}\n\nh1 {\n  font-family: 'Merriweather', serif, sans-serif;\n  font-size: 2.5em;\n  font-size-adjust: 0.45; /* Example x-height ratio for 'Merriweather' */\n}\n\n/* How to determine 'font-size-adjust' value:\n   1. Measure the x-height and the overall font-size (em-square) of your desired font.\n   2. Divide x-height by em-square (or cap-height for some contexts).\n   3. Tools like Font Squirrel's @font-face generator often provide these metrics. */",
+        "date": "July 07, 2026"
+    },
+    {
         "title": "Elevate UI Legibility: Master CSS 'font-optical-sizing' for Adaptive Font Rendering",
         "slug": "elevate-ui-legibility-master-css-font-optical-sizing-for-adaptive-font-rendering",
         "tweet": "Boost UX with CSS 'font-optical-sizing'! Discover how this property automatically optimizes font shapes for better legibility at any size. Essential for modern web typography. #CSSTypography #UIDesign #WebFonts",
