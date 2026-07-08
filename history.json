@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Clarity: Master CSS 'text-rendering' for Sharper Web Fonts",
+        "slug": "elevate-ui-clarity-master-css-text-rendering-for-sharper-web-fonts",
+        "tweet": "Boost your #CSS typography & #UIDesign! Discover how 'text-rendering' ensures sharper, more legible text, enhancing #UserExperience across #WebFonts. A subtle CSS gem for pixel-perfect displays!",
+        "tip": "The 'text-rendering' CSS property offers control over the browser's rendering engine, allowing you to prioritize legibility (optimizeLegibility), rendering speed (optimizeSpeed), or geometric precision (geometricPrecision). For most web fonts and modern displays, 'optimizeLegibility' is a great default, engaging advanced OpenType features like ligatures and kerning. 'geometricPrecision' can be useful for SVG text or specialized logos. Be mindful that 'optimizeLegibility' might have a minor performance impact on very large text blocks.",
+        "css_snippet": "body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; /* For macOS Chrome/Safari */ -moz-osx-font-smoothing: grayscale; /* For macOS Firefox */ } h1, h2, h3 { text-rendering: geometricPrecision; /* Often good for larger, display text */ }",
+        "date": "July 08, 2026"
+    },
+    {
         "title": "Elevate UI Consistency: Master CSS 'font-size-adjust' for Seamless Font Fallbacks",
         "slug": "elevate-ui-consistency-master-css-font-size-adjust-for-seamless-font-fallbacks",
         "tweet": "Ensure consistent x-height across your font fallbacks with CSS 'font-size-adjust'. A subtle yet powerful property for superior UI design & user experience! #CSSTypography #WebFonts #UIDesign #UserExperience",
