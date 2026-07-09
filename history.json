@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Clarity: Master CSS 'font-variant-numeric' for Precision in Web Typography",
+        "slug": "elevate-ui-clarity-master-css-font-variant-numeric-for-precision-in-web-typography",
+        "tweet": "Transform your UI's numeric data! Learn how CSS 'font-variant-numeric' enhances legibility and user experience by precisely controlling number forms, fractions, and symbols. #CSSTypography #WebFonts #UIDesign #UserExperience",
+        "tip": "Use the 'font-variant-numeric' CSS property to ensure consistent and legible display of numbers, fractions, and ordinal markers. For instance, 'tabular-nums' aligns numbers vertically, crucial for data tables, while 'lining-nums' ensures all numbers sit on the baseline. This level of control significantly boosts UI readability in financial data, dashboards, or any numeric heavy content.",
+        "css_snippet": ".data-table td {\n    font-variant-numeric: tabular-nums lining-nums;\n    /* Fallback for older browsers that only support font-feature-settings */\n    font-feature-settings: 'tnum' 1, 'lnum' 1;\n}\n\n.ordinal-numbers {\n    font-variant-numeric: ordinal;\n    font-feature-settings: 'ordn' 1;\n}\n\n.fractions {\n    font-variant-numeric: diagonal-fractions;\n    font-feature-settings: 'frac' 1;\n}",
+        "date": "July 09, 2026"
+    },
+    {
         "title": "Elevate UI Clarity: Master CSS 'text-rendering' for Sharper Web Fonts",
         "slug": "elevate-ui-clarity-master-css-text-rendering-for-sharper-web-fonts",
         "tweet": "Boost your #CSS typography & #UIDesign! Discover how 'text-rendering' ensures sharper, more legible text, enhancing #UserExperience across #WebFonts. A subtle CSS gem for pixel-perfect displays!",
