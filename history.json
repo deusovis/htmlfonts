@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Performance: Master CSS 'font-display' for Optimal Web Font Loading",
+        "slug": "elevate-ui-performance-master-css-font-display-for-optimal-web-font-loading",
+        "tweet": "Boost UI performance and user experience! Learn how CSS 'font-display' strategically loads web fonts, preventing FOIT/FOUT for seamless typography. #CSSTypography #WebFonts #UIDesign #UX",
+        "tip": "Optimize your web font loading strategy with 'font-display'. Using 'swap' ensures immediate text visibility with a fallback, then swaps to your custom font once loaded, preventing blank text (FOIT) and improving perceived performance. For critical UI elements, consider 'block' or 'fallback' to balance load time with visual consistency.",
+        "css_snippet": "@font-face {\n  font-family: 'YourCustomFont';\n  src: url('/fonts/yourcustomfont.woff2') format('woff2');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Key property for optimal UX */\n}\n\nbody {\n  font-family: 'YourCustomFont', sans-serif;\n}",
+        "date": "July 10, 2026"
+    },
+    {
         "title": "Elevate UI Clarity: Master CSS 'font-variant-numeric' for Precision in Web Typography",
         "slug": "elevate-ui-clarity-master-css-font-variant-numeric-for-precision-in-web-typography",
         "tweet": "Transform your UI's numeric data! Learn how CSS 'font-variant-numeric' enhances legibility and user experience by precisely controlling number forms, fractions, and symbols. #CSSTypography #WebFonts #UIDesign #UserExperience",
