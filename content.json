@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Readability: Master CSS 'letter-spacing' for Optimal Text Rhythm",
-    "slug": "elevate-ui-readability-master-css-letter-spacing-for-optimal-text-rhythm",
-    "tweet": "Fine-tune your web typography! Learn how strategic 'letter-spacing' enhances UI readability & creates a balanced text rhythm. A must for better UX. #CSSTypography #WebDesign #UX",
-    "tip": "Adjust 'letter-spacing' (or tracking) contextually. Tighter spacing often works for larger display fonts to prevent an airy look, while slightly looser spacing can improve readability for smaller body text. Always test across different font families and sizes for optimal visual rhythm and clarity.",
-    "css_snippet": "/* For larger headlines to prevent an airy feel */\nh1, .hero-title {\n  letter-spacing: -0.02em; /* Slightly tighter */\n}\n\n/* For body text to enhance readability */\np, .body-text {\n  letter-spacing: 0.01em; /* Slightly looser */\n  line-height: 1.6; /* Complement with good line-height */\n}\n\n/* For small, uppercase text (e.g., labels, navigation) */\n.label, .nav-item {\n  text-transform: uppercase;\n  letter-spacing: 0.08em; /* Often needs more space */\n}",
-    "date": "July 11, 2026"
+    "title": "Elevate UI Precision: Master CSS 'font-variation-settings' for Dynamic Variable Fonts",
+    "slug": "elevate-ui-precision-master-css-font-variation-settings-for-dynamic-variable-fonts",
+    "tweet": "Unleash typographic superpowers! \ud83d\ude80 Master CSS 'font-variation-settings' to control variable font axes like weight, width & optical size. Fine-tune your UI design for ultimate readability & #UX. #CSStypography #WebFonts #UIDesign",
+    "tip": "Variable fonts, controlled by 'font-variation-settings', offer unparalleled design flexibility and often smaller file sizes than traditional static fonts. Use them to create subtle visual hierarchies and responsive typography that adapts precisely to different screen sizes and user preferences, significantly enhancing your UI's overall aesthetic and user experience. Always consult your font's documentation for available axes and their valid ranges.",
+    "css_snippet": ".dynamic-headline {\n  font-family: 'Inter var', sans-serif;\n  font-weight: 550; /* Fallback for non-variable font or simpler control */\n  font-variation-settings: 'wght' 550, 'wdth' 105, 'slnt' -7;\n  /* Adjust 'wght' (weight), 'wdth' (width), 'slnt' (slant) as needed. */\n  /* Many other axes like 'opsz' (optical size) or custom axes can exist. */\n}\n\n@media (min-width: 768px) {\n  .dynamic-headline {\n    font-variation-settings: 'wght' 600, 'wdth' 110, 'slnt' 0;\n  }\n}",
+    "date": "July 12, 2026"
 }
