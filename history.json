@@ -1,5 +1,13 @@
 [
     {
+        "title": "Master CSS 'word-break' & 'overflow-wrap' for Robust UI Typography",
+        "slug": "master-css-word-break-overflow-wrap-for-robust-ui-typography",
+        "tweet": "Elevate your UI design! Learn how CSS 'word-break' and 'overflow-wrap' prevent layout issues and enhance readability for web fonts. A must-know for better user experience. #CSSTypography #UIDesign #WebFonts",
+        "tip": "Avoid horizontal scrollbars and broken layouts with long words. 'overflow-wrap: break-word' (or 'break-anywhere' in modern CSS) is often a safer default for responsive containers than 'word-break', which can be more aggressive. Understand their interplay for optimal text flow.",
+        "css_snippet": ".responsive-text-container {\n  word-break: normal; /* Default, breaks only at whitespace */\n  overflow-wrap: break-word; /* Breaks long words if they overflow */\n  /* For even more aggressive breaking, consider: */\n  /* word-break: break-all; */\n  /* overflow-wrap: break-anywhere; /* Modern alternative to break-word */\n}\n\n.long-url-display {\n  overflow-wrap: break-word; /* Ensures URLs break within their container */\n  hyphens: auto; /* Optional: adds hyphenation when words break */\n}",
+        "date": "July 13, 2026"
+    },
+    {
         "title": "Elevate UI Precision: Master CSS 'font-variation-settings' for Dynamic Variable Fonts",
         "slug": "elevate-ui-precision-master-css-font-variation-settings-for-dynamic-variable-fonts",
         "tweet": "Unleash typographic superpowers! \ud83d\ude80 Master CSS 'font-variation-settings' to control variable font axes like weight, width & optical size. Fine-tune your UI design for ultimate readability & #UX. #CSStypography #WebFonts #UIDesign",
