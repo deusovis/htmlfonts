@@ -1,8 +1,8 @@
 {
-    "title": "Master CSS 'word-break' & 'overflow-wrap' for Robust UI Typography",
-    "slug": "master-css-word-break-overflow-wrap-for-robust-ui-typography",
-    "tweet": "Elevate your UI design! Learn how CSS 'word-break' and 'overflow-wrap' prevent layout issues and enhance readability for web fonts. A must-know for better user experience. #CSSTypography #UIDesign #WebFonts",
-    "tip": "Avoid horizontal scrollbars and broken layouts with long words. 'overflow-wrap: break-word' (or 'break-anywhere' in modern CSS) is often a safer default for responsive containers than 'word-break', which can be more aggressive. Understand their interplay for optimal text flow.",
-    "css_snippet": ".responsive-text-container {\n  word-break: normal; /* Default, breaks only at whitespace */\n  overflow-wrap: break-word; /* Breaks long words if they overflow */\n  /* For even more aggressive breaking, consider: */\n  /* word-break: break-all; */\n  /* overflow-wrap: break-anywhere; /* Modern alternative to break-word */\n}\n\n.long-url-display {\n  overflow-wrap: break-word; /* Ensures URLs break within their container */\n  hyphens: auto; /* Optional: adds hyphenation when words break */\n}",
-    "date": "July 13, 2026"
+    "title": "Mastering CSS 'line-height' for Superior UI Readability and Visual Rhythm",
+    "slug": "mastering-css-line-height-for-superior-ui-readability-and-visual-rhythm",
+    "tweet": "Elevate your UI design! Discover how precise CSS 'line-height' impacts readability & visual flow, a critical factor for exceptional user experience. #CSSTypography #UIDesign #WebFonts #UX",
+    "tip": "Beyond simple numbers, calculate 'line-height' relative to your font-size and consider the x-height/cap-height of your specific web font. Aim for a value that offers sufficient breathing room between lines, typically 1.4 to 1.6 for body text, adapting for smaller or larger text sizes. Prioritize consistent vertical rhythm across UI components for a harmonious and professional look.",
+    "css_snippet": "body {\n  font-family: 'Inter', sans-serif;\n  font-size: 16px;\n  line-height: 1.6; /* Unitless value for better scaling relative to font-size */\n}\n\nh1 {\n  font-size: 2.5em;\n  line-height: 1.15; /* Tighter line-height for larger headings */\n}\n\np {\n  margin-bottom: 1em; /* Ensures consistent vertical spacing between paragraphs */\n}\n\n.small-text {\n  font-size: 0.875em;\n  line-height: 1.5; /* Slightly tighter for smaller text, adjusting for legibility */\n}",
+    "date": "July 14, 2026"
 }
