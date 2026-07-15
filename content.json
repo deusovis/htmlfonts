@@ -1,8 +1,8 @@
 {
-    "title": "Mastering CSS 'line-height' for Superior UI Readability and Visual Rhythm",
-    "slug": "mastering-css-line-height-for-superior-ui-readability-and-visual-rhythm",
-    "tweet": "Elevate your UI design! Discover how precise CSS 'line-height' impacts readability & visual flow, a critical factor for exceptional user experience. #CSSTypography #UIDesign #WebFonts #UX",
-    "tip": "Beyond simple numbers, calculate 'line-height' relative to your font-size and consider the x-height/cap-height of your specific web font. Aim for a value that offers sufficient breathing room between lines, typically 1.4 to 1.6 for body text, adapting for smaller or larger text sizes. Prioritize consistent vertical rhythm across UI components for a harmonious and professional look.",
-    "css_snippet": "body {\n  font-family: 'Inter', sans-serif;\n  font-size: 16px;\n  line-height: 1.6; /* Unitless value for better scaling relative to font-size */\n}\n\nh1 {\n  font-size: 2.5em;\n  line-height: 1.15; /* Tighter line-height for larger headings */\n}\n\np {\n  margin-bottom: 1em; /* Ensures consistent vertical spacing between paragraphs */\n}\n\n.small-text {\n  font-size: 0.875em;\n  line-height: 1.5; /* Slightly tighter for smaller text, adjusting for legibility */\n}",
-    "date": "July 14, 2026"
+    "title": "Elevate UI Aesthetics: Master CSS 'text-underline-offset' & 'text-decoration-thickness'",
+    "slug": "elevate-ui-aesthetics-master-css-text-underline-offset-text-decoration-thickness",
+    "tweet": "Customizing underlines beyond the default improves UI readability & aesthetics. Master CSS 'text-underline-offset' & 'text-decoration-thickness' for beautifully styled links & emphasized text. #CSSTypography #UIDesign #WebFonts #UX",
+    "tip": "Traditional browser underlines often cut through descenders or appear too thin/thick, detracting from readability and visual appeal. Use 'text-underline-offset' to position the underline away from the text baseline and 'text-decoration-thickness' to control its stroke width. This allows for precise, design-aligned underlines that enhance legibility and create a polished user interface. Apply these properties to links, highlighted text, or even custom decorative elements.",
+    "css_snippet": "a { text-decoration-line: underline; text-decoration-color: var(--primary-color); text-decoration-thickness: 0.08em; /* Adjust for desired weight */ text-underline-offset: 0.2em; /* Adjust for desired offset */ /* For older browsers, consider a bottom border fallback */ /* border-bottom: 2px solid var(--primary-color); */ }",
+    "date": "July 15, 2026"
 }
