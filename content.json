@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Aesthetics: Master CSS 'text-underline-offset' & 'text-decoration-thickness'",
-    "slug": "elevate-ui-aesthetics-master-css-text-underline-offset-text-decoration-thickness",
-    "tweet": "Customizing underlines beyond the default improves UI readability & aesthetics. Master CSS 'text-underline-offset' & 'text-decoration-thickness' for beautifully styled links & emphasized text. #CSSTypography #UIDesign #WebFonts #UX",
-    "tip": "Traditional browser underlines often cut through descenders or appear too thin/thick, detracting from readability and visual appeal. Use 'text-underline-offset' to position the underline away from the text baseline and 'text-decoration-thickness' to control its stroke width. This allows for precise, design-aligned underlines that enhance legibility and create a polished user interface. Apply these properties to links, highlighted text, or even custom decorative elements.",
-    "css_snippet": "a { text-decoration-line: underline; text-decoration-color: var(--primary-color); text-decoration-thickness: 0.08em; /* Adjust for desired weight */ text-underline-offset: 0.2em; /* Adjust for desired offset */ /* For older browsers, consider a bottom border fallback */ /* border-bottom: 2px solid var(--primary-color); */ }",
-    "date": "July 15, 2026"
+    "title": "Elevate UI Readability: Master CSS 'text-wrap: balance' for Balanced Headlines",
+    "slug": "elevate-ui-readability-master-css-text-wrap-balance-for-balanced-headlines",
+    "tweet": "Improve UI aesthetics & readability with CSS 'text-wrap: balance'! No more awkward single-word lines in headlines. Perfect for #CSS #Typography #UIDesign. Learn how to balance your text effortlessly!",
+    "tip": "Revolutionize your headline presentation and significantly boost UI readability with the CSS property 'text-wrap: balance'. This powerful feature intelligently balances the text across multiple lines, preventing unsightly single-word orphans or extremely short lines. It's a game-changer for responsive web design, ensuring your headings always look polished and professional, regardless of screen size. By optimizing text distribution, 'text-wrap: balance' contributes directly to a smoother user experience, reducing cognitive load and enhancing visual appeal without manual intervention. Implement it for a modern, refined typographical aesthetic.",
+    "css_snippet": "h1, .hero-title {\n  text-wrap: balance;\n  max-width: 60ch; /* Optimal for readability across devices */\n  font-family: 'Inter', sans-serif;\n}",
+    "date": "July 16, 2026"
 }
