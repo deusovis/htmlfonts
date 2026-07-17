@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Clarity: Master CSS 'font-optical-sizing' for Adaptive Web Typography",
+        "slug": "elevate-ui-clarity-master-css-font-optical-sizing-for-adaptive-web-typography",
+        "tweet": "Boost UI readability with CSS 'font-optical-sizing'! Discover how this property fine-tunes web fonts for optimal clarity at any size, enhancing user experience. #CSSTypography #UIDesign #WebFonts #UX",
+        "tip": "Leverage 'font-optical-sizing: auto' to enable automatic font adjustments based on text size, ensuring sharper details in headlines and clearer forms in body text, especially with variable fonts designed to support this feature. This subtly improves legibility across your UI.",
+        "css_snippet": "body {\n  font-family: 'Inter', sans-serif;\n  font-optical-sizing: auto; /* Enables browser to adjust font for optimal readability at different sizes */\n}\n\nh1 {\n  font-size: 3rem;\n  font-optical-sizing: auto;\n}\n\n/* Ensure your chosen font supports optical sizing for this to have an effect. */",
+        "date": "July 17, 2026"
+    },
+    {
         "title": "Elevate UI Readability: Master CSS 'text-wrap: balance' for Balanced Headlines",
         "slug": "elevate-ui-readability-master-css-text-wrap-balance-for-balanced-headlines",
         "tweet": "Improve UI aesthetics & readability with CSS 'text-wrap: balance'! No more awkward single-word lines in headlines. Perfect for #CSS #Typography #UIDesign. Learn how to balance your text effortlessly!",
