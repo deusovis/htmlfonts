@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Clarity: Master CSS 'font-optical-sizing' for Adaptive Web Typography",
-    "slug": "elevate-ui-clarity-master-css-font-optical-sizing-for-adaptive-web-typography",
-    "tweet": "Boost UI readability with CSS 'font-optical-sizing'! Discover how this property fine-tunes web fonts for optimal clarity at any size, enhancing user experience. #CSSTypography #UIDesign #WebFonts #UX",
-    "tip": "Leverage 'font-optical-sizing: auto' to enable automatic font adjustments based on text size, ensuring sharper details in headlines and clearer forms in body text, especially with variable fonts designed to support this feature. This subtly improves legibility across your UI.",
-    "css_snippet": "body {\n  font-family: 'Inter', sans-serif;\n  font-optical-sizing: auto; /* Enables browser to adjust font for optimal readability at different sizes */\n}\n\nh1 {\n  font-size: 3rem;\n  font-optical-sizing: auto;\n}\n\n/* Ensure your chosen font supports optical sizing for this to have an effect. */",
-    "date": "July 17, 2026"
+    "title": "Harmonize Your UI: Master CSS 'font-size-adjust' for Consistent Web Font X-Heights",
+    "slug": "harmonize-your-ui-master-css-font-size-adjust-for-consistent-web-font-x-heights",
+    "tweet": "Ever notice visual jumps when web fonts fail? CSS 'font-size-adjust' maintains consistent x-heights between your primary and fallback fonts, ensuring visual harmony and a smoother #UserExperience. A must-know for #UIDesign! #CSSTypography #WebFonts",
+    "tip": "Leverage CSS 'font-size-adjust' to prevent jarring visual shifts when web fonts load or fail. By normalizing the x-height of your fallback fonts to match your primary font, you ensure superior readability and maintain a consistent aesthetic, crucial for polished UI design.",
+    "css_snippet": "body {\n  font-family: \"BrandFont Display\", \"Helvetica Neue\", Arial, sans-serif;\n  font-size: 1.125rem; /* Base 18px */\n  font-size-adjust: 0.52; /* Set to the aspect value (x-height to font-size ratio) of \"BrandFont Display\" */\n}\n\nh1 {\n  font-family: \"BrandFont Heading\", Georgia, serif;\n  font-size: 2.5rem; /* Base 40px */\n  font-size-adjust: 0.48; /* Set to the aspect value of \"BrandFont Heading\" */\n}",
+    "date": "July 18, 2026"
 }
