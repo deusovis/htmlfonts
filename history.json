@@ -1,5 +1,13 @@
 [
     {
+        "title": "Unlocking Advanced Typography: Master CSS 'font-feature-settings' for Web Fonts",
+        "slug": "unlocking-advanced-typography-master-css-font-feature-settings-for-web-fonts",
+        "tweet": "Beyond the basics! Elevate your UI design & readability with advanced OpenType features. Master CSS 'font-feature-settings' for ligatures, fractions & more in web typography. #CSSTypography #WebFonts #UIDesign",
+        "tip": "Leverage 'font-feature-settings' to enable specific OpenType features like discretionary ligatures ('dlig'), old-style figures ('onum'), or small caps ('smcp'). This brings print-quality typography to the web, significantly enhancing readability and aesthetic appeal, especially for brand-specific fonts. Always test across browsers as support for specific features can vary and requires the font to embed those features.",
+        "css_snippet": "/* Enable common ligatures and old-style figures for body text */\n.article-body {\n  font-feature-settings: \"liga\" 1, \"onum\" 1;\n  -webkit-font-feature-settings: \"liga\" 1, \"onum\" 1; /* For older WebKit compatibility */\n}\n\n/* Enable discretionary ligatures and small caps for headlines */\nh1 {\n  font-feature-settings: \"dlig\" 1, \"smcp\" 1;\n  -webkit-font-feature-settings: \"dlig\" 1, \"smcp\" 1; /* For older WebKit compatibility */\n  font-variant: small-caps; /* Fallback/helper for wider browser support */\n}",
+        "date": "July 19, 2026"
+    },
+    {
         "title": "Harmonize Your UI: Master CSS 'font-size-adjust' for Consistent Web Font X-Heights",
         "slug": "harmonize-your-ui-master-css-font-size-adjust-for-consistent-web-font-x-heights",
         "tweet": "Ever notice visual jumps when web fonts fail? CSS 'font-size-adjust' maintains consistent x-heights between your primary and fallback fonts, ensuring visual harmony and a smoother #UserExperience. A must-know for #UIDesign! #CSSTypography #WebFonts",
