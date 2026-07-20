@@ -1,8 +1,8 @@
 {
-    "title": "Unlocking Advanced Typography: Master CSS 'font-feature-settings' for Web Fonts",
-    "slug": "unlocking-advanced-typography-master-css-font-feature-settings-for-web-fonts",
-    "tweet": "Beyond the basics! Elevate your UI design & readability with advanced OpenType features. Master CSS 'font-feature-settings' for ligatures, fractions & more in web typography. #CSSTypography #WebFonts #UIDesign",
-    "tip": "Leverage 'font-feature-settings' to enable specific OpenType features like discretionary ligatures ('dlig'), old-style figures ('onum'), or small caps ('smcp'). This brings print-quality typography to the web, significantly enhancing readability and aesthetic appeal, especially for brand-specific fonts. Always test across browsers as support for specific features can vary and requires the font to embed those features.",
-    "css_snippet": "/* Enable common ligatures and old-style figures for body text */\n.article-body {\n  font-feature-settings: \"liga\" 1, \"onum\" 1;\n  -webkit-font-feature-settings: \"liga\" 1, \"onum\" 1; /* For older WebKit compatibility */\n}\n\n/* Enable discretionary ligatures and small caps for headlines */\nh1 {\n  font-feature-settings: \"dlig\" 1, \"smcp\" 1;\n  -webkit-font-feature-settings: \"dlig\" 1, \"smcp\" 1; /* For older WebKit compatibility */\n  font-variant: small-caps; /* Fallback/helper for wider browser support */\n}",
-    "date": "July 19, 2026"
+    "title": "Elevate UI Readability: Master CSS 'hyphens' for Optimal Text Flow",
+    "slug": "elevate-ui-readability-master-css-hyphens-for-optimal-text-flow",
+    "tweet": "Boost your UI's readability and text flow! Learn how CSS 'hyphens' prevents awkward gaps in justified text, creating a smoother reading experience with web fonts. #CSSTypography #UIDesign #WebFonts #UX",
+    "tip": "Tame unruly text blocks and elevate user experience with the CSS 'hyphens' property. Especially in justified layouts or narrow columns, automatic hyphenation can significantly improve readability by preventing large word spacing and unsightly 'rivers' of white space. This leads to a more professional and visually appealing text flow, crucial for a seamless UI.",
+    "css_snippet": "p { -webkit-hyphens: auto; /* For Safari */ -ms-hyphens: auto; /* For Edge/IE */ hyphens: auto; text-align: justify; /* Use with caution for justified text; ensure the document's lang attribute is set for proper language-specific hyphenation. */ }",
+    "date": "July 20, 2026"
 }
