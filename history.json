@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Performance: Master CSS 'font-display' for Optimal Web Font Loading",
+        "slug": "elevate-ui-performance-master-css-font-display-for-optimal-web-font-loading",
+        "tweet": "Boost UI speed & UX! Learn how CSS 'font-display' controls web font loading behavior, preventing flashes of unstyled text (FOUT) & ensuring a smooth visual experience. #CSSTypography #WebFonts #UIDesign #Performance",
+        "tip": "Enhance your user experience and mitigate the 'flash of unstyled text' (FOUT) or 'flash of invisible text' (FOIT) by strategically using the CSS 'font-display' property within your '@font-face' rules. 'swap' is often a great default for important text, showing fallback immediately and swapping once the custom font loads. For less critical fonts, 'fallback' or 'optional' can further improve perceived performance by limiting layout shifts or even skipping custom font loading on slow connections. Choose 'block' carefully as it can delay content rendering. This optimizes how your web fonts are delivered, making your UI feel faster and more polished.",
+        "css_snippet": "@font-face {\n  font-family: 'MyCustomFont';\n  src: url('/fonts/mycustomfont.woff2') format('woff2');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Or 'block', 'fallback', 'optional' */\n}\n\n/* Apply the font to a critical element */\nh1 {\n  font-family: 'MyCustomFont', sans-serif;\n  font-size: 2.5em;\n  line-height: 1.2;\n}",
+        "date": "July 21, 2026"
+    },
+    {
         "title": "Elevate UI Readability: Master CSS 'hyphens' for Optimal Text Flow",
         "slug": "elevate-ui-readability-master-css-hyphens-for-optimal-text-flow",
         "tweet": "Boost your UI's readability and text flow! Learn how CSS 'hyphens' prevents awkward gaps in justified text, creating a smoother reading experience with web fonts. #CSSTypography #UIDesign #WebFonts #UX",

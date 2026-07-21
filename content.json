@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Readability: Master CSS 'hyphens' for Optimal Text Flow",
-    "slug": "elevate-ui-readability-master-css-hyphens-for-optimal-text-flow",
-    "tweet": "Boost your UI's readability and text flow! Learn how CSS 'hyphens' prevents awkward gaps in justified text, creating a smoother reading experience with web fonts. #CSSTypography #UIDesign #WebFonts #UX",
-    "tip": "Tame unruly text blocks and elevate user experience with the CSS 'hyphens' property. Especially in justified layouts or narrow columns, automatic hyphenation can significantly improve readability by preventing large word spacing and unsightly 'rivers' of white space. This leads to a more professional and visually appealing text flow, crucial for a seamless UI.",
-    "css_snippet": "p { -webkit-hyphens: auto; /* For Safari */ -ms-hyphens: auto; /* For Edge/IE */ hyphens: auto; text-align: justify; /* Use with caution for justified text; ensure the document's lang attribute is set for proper language-specific hyphenation. */ }",
-    "date": "July 20, 2026"
+    "title": "Elevate UI Performance: Master CSS 'font-display' for Optimal Web Font Loading",
+    "slug": "elevate-ui-performance-master-css-font-display-for-optimal-web-font-loading",
+    "tweet": "Boost UI speed & UX! Learn how CSS 'font-display' controls web font loading behavior, preventing flashes of unstyled text (FOUT) & ensuring a smooth visual experience. #CSSTypography #WebFonts #UIDesign #Performance",
+    "tip": "Enhance your user experience and mitigate the 'flash of unstyled text' (FOUT) or 'flash of invisible text' (FOIT) by strategically using the CSS 'font-display' property within your '@font-face' rules. 'swap' is often a great default for important text, showing fallback immediately and swapping once the custom font loads. For less critical fonts, 'fallback' or 'optional' can further improve perceived performance by limiting layout shifts or even skipping custom font loading on slow connections. Choose 'block' carefully as it can delay content rendering. This optimizes how your web fonts are delivered, making your UI feel faster and more polished.",
+    "css_snippet": "@font-face {\n  font-family: 'MyCustomFont';\n  src: url('/fonts/mycustomfont.woff2') format('woff2');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Or 'block', 'fallback', 'optional' */\n}\n\n/* Apply the font to a critical element */\nh1 {\n  font-family: 'MyCustomFont', sans-serif;\n  font-size: 2.5em;\n  line-height: 1.2;\n}",
+    "date": "July 21, 2026"
 }
