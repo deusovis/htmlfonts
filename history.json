@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Integrity: Master CSS 'font-synthesis' for Authentic Web Font Styles",
+        "slug": "elevate-ui-integrity-master-css-font-synthesis-for-authentic-web-font-styles",
+        "tweet": "Ensure your web fonts always look their best! \ud83c\udfa8 Learn how CSS 'font-synthesis: none;' prevents browsers from faking bold or italic styles, preserving the designer's intent and elevating your #UITypography. #WebFonts #CSSDesign #UX",
+        "tip": "Browsers often attempt to synthesize bold or italic font styles if a web font family doesn't provide specific variants (e.g., a dedicated 'YourFont-Bold.woff2' file). While seemingly helpful, this artificial rendering can lead to visually inferior results: blurry text, inconsistent stroke weights, or distorted character shapes that deviate significantly from the font designer's intent. To maintain the pristine quality and integrity of your chosen web fonts, and thereby enhance your UI's professionalism, apply 'font-synthesis: none;'. This CSS property instructs the browser to only use explicitly defined bold or italic font files that you've supplied. If a genuine style isn't available, the text will simply display in its normal weight or style, preventing visual degradation and ensuring a consistent, high-fidelity user experience across your typography.",
+        "css_snippet": "body {\n    font-family: \"Inter\", sans-serif; /* Replace with your actual web font */\n    font-synthesis: none; /* Crucial for preventing artificial bold/italic rendering */\n}\n\n/* Example: Apply it to specific headings for maximum impact */\nh1, h2, h3 {\n    font-weight: 700; /* Ensure you're loading a genuine bold variant */\n    font-synthesis: none;\n}\n\np {\n    font-style: italic; /* Ensure you're loading a genuine italic variant */\n    font-synthesis: none;\n}",
+        "date": "July 22, 2026"
+    },
+    {
         "title": "Elevate UI Performance: Master CSS 'font-display' for Optimal Web Font Loading",
         "slug": "elevate-ui-performance-master-css-font-display-for-optimal-web-font-loading",
         "tweet": "Boost UI speed & UX! Learn how CSS 'font-display' controls web font loading behavior, preventing flashes of unstyled text (FOUT) & ensuring a smooth visual experience. #CSSTypography #WebFonts #UIDesign #Performance",
