@@ -1,5 +1,13 @@
 [
     {
+        "title": "Building a Scalable Web Typography System with CSS Custom Properties",
+        "slug": "building-a-scalable-web-typography-system-with-css-custom-properties",
+        "tweet": "Streamline your #UI design! Master CSS Custom Properties to build a scalable, consistent #WebTypography system. Enhance #UX and easily manage #WebFonts across your site. #CSS #FrontendDev",
+        "tip": "Leverage CSS custom properties (variables) to define your core typography scale, font families, and line heights. This creates a single source of truth, making global updates effortless and ensuring UI consistency. Pair with semantic class names for maximum flexibility in your web fonts and overall user experience.",
+        "css_snippet": ":root {\n  --font-family-primary: \"Inter\", sans-serif;\n  --font-family-secondary: \"Lora\", serif;\n\n  --font-size-base: 1rem;\n  --font-size-h1: 3.052rem; /* Example using a modular scale */\n  --font-size-h2: 2.441rem;\n  --font-size-body-sm: 0.8rem;\n\n  --line-height-base: 1.6;\n  --line-height-heading: 1.2;\n\n  --color-text-primary: #222;\n  --color-text-secondary: #555;\n}\n\nbody {\n  font-family: var(--font-family-primary);\n  font-size: var(--font-size-base);\n  line-height: var(--line-height-base);\n  color: var(--color-text-primary);\n}\n\nh1 {\n  font-family: var(--font-family-secondary);\n  font-size: var(--font-size-h1);\n  line-height: var(--line-height-heading);\n  color: var(--color-text-primary);\n}\n\n.text-small {\n  font-size: var(--font-size-body-sm);\n  color: var(--color-text-secondary);\n}",
+        "date": "July 24, 2026"
+    },
+    {
         "title": "Dynamic Typography: Master CSS clamp() for Fluid Web Font Scaling in UI Design",
         "slug": "dynamic-typography-master-css-clamp-for-fluid-web-font-scaling-in-ui-design",
         "tweet": "Unleash responsive typography with CSS clamp()! Achieve fluid font scaling that adapts beautifully to any screen size, enhancing #UIDesign & #UserExperience. A game-changer for #CSSTypography. Learn more!",
