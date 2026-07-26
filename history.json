@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Aesthetics: Master Modern CSS Text Decoration for Superior Web Font Readability",
+        "slug": "elevate-ui-aesthetics-master-modern-css-text-decoration-for-superior-web-font-readability",
+        "tweet": "Boring underlines? No more! Master modern CSS 'text-decoration' properties to dramatically improve #WebFonts readability & #UI design. A simple tweak for a better #UserExperience. #CSStypography",
+        "tip": "Forget the default, often overlapping underlines. Enhance your UI's readability and aesthetic appeal by customizing text underlines using 'text-decoration-thickness' and 'text-underline-offset'. This prevents the underline from clashing with descenders, creating cleaner text presentation, especially crucial for web fonts with unique characteristics. A well-designed underline subtly guides the eye without hindering legibility, significantly improving the user experience.",
+        "css_snippet": "a {\n    color: #007bff;\n    text-decoration: underline;\n    text-decoration-color: #007bff;\n    text-decoration-thickness: 1.5px;\n    text-underline-offset: 0.2em;\n    text-decoration-skip-ink: auto; /* Ensures underline skips descenders, enhancing legibility */\n}\n\na:hover {\n    text-decoration-color: #0056b3;\n    text-decoration-thickness: 2px;\n}",
+        "date": "July 26, 2026"
+    },
+    {
         "title": "Precision Spacing: Master CSS 'letter-spacing' for Optimal Web Font Readability in UI Design",
         "slug": "precision-spacing-master-css-letter-spacing-for-optimal-web-font-readability-in-ui-design",
         "tweet": "Elevate your UI design! Learn how to master CSS 'letter-spacing' for superior web font readability & a polished user experience across devices. #CSSTypography #WebFonts #UIDesign",
