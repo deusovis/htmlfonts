@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering Web Font Fallbacks: Ensure Rock-Solid UI Stability with Optimal CSS Typography",
+        "slug": "mastering-web-font-fallbacks-ensure-rock-solid-ui-stability-with-optimal-css-typography",
+        "tweet": "Prevent layout shifts & ensure consistent UI with smart web font fallback strategies. Learn how to craft resilient CSS typography stacks for superior user experience. #WebFonts #CSS #UITips",
+        "tip": "To prevent disruptive layout shifts (CLS) and improve perceived performance, always define a robust font stack. Start with your desired web font, followed by a local font (if applicable), then generic system fonts matching the desired weight/style, and finally a generic family (serif, sans-serif, monospace). This provides progressive enhancement and ensures text is always readable, even if web fonts fail to load.",
+        "css_snippet": "body {\n  /* Your primary web font */\n  font-family: \"Inter\",\n               /* System UI fonts for local fallback */\n               -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen-Sans, Ubuntu, Cantarell,\n               /* Generic sans-serif fallback */\n               \"Helvetica Neue\", Arial, sans-serif;\n  /* A consistent line-height helps prevent layout shifts if font metrics vary */\n  line-height: 1.5;\n}\n\nh1 {\n  font-family: \"Playfair Display\",\n               /* A good system serif alternative */\n               \"Georgia\",\n               /* Generic serif fallback */\n               serif;\n  line-height: 1.2;\n}",
+        "date": "July 28, 2026"
+    },
+    {
         "title": "Elevate UI Clarity: Master CSS Text Rendering for Pin-Sharp Web Fonts",
         "slug": "elevate-ui-clarity-master-css-text-rendering-for-pin-sharp-web-fonts",
         "tweet": "Boost your UI's visual appeal! Learn how CSS 'text-rendering' and '-webkit-font-smoothing' can make your web fonts exceptionally sharp and readable. Essential for a premium user experience. #CSSTypography #UIDesign #WebFonts #UX",
