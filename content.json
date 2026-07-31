@@ -1,8 +1,8 @@
 {
-    "title": "Refine Your Web Fonts: Master OpenType Features with CSS 'font-feature-settings' for Superior UI Design",
-    "slug": "refine-your-web-fonts-master-opentype-features-with-css-font-feature-settings-for-superior-ui-design",
-    "tweet": "Elevate your #WebFonts with #CSSTypography! Discover how 'font-feature-settings' unlocks OpenType features like ligatures, fractions, & old-style figures for superior #UIDesign & #UserExperience. Transform your text today! #WebDev",
-    "tip": "When implementing 'font-feature-settings', always test across different browsers and ensure your chosen web font actually supports the OpenType features you're trying to activate. Not all fonts are created equal, and some features might render differently or not at all if unsupported. Start with common features like 'liga' for standard ligatures to subtly improve readability and visual flow.",
-    "css_snippet": ".article-body {\n  font-family: 'Merriweather', serif;\n  font-size: 1.125em;\n  line-height: 1.6;\n  font-feature-settings: \"liga\" 1, \"onum\" 1; /* Enable standard ligatures and old-style figures */\n}\n\nh2.section-heading {\n  font-family: 'Montserrat', sans-serif;\n  font-size: 1.8em;\n  font-weight: 700;\n  font-feature-settings: \"smcp\" 1; /* Enable small caps */\n  text-transform: lowercase; /* Important for 'smcp' */\n}",
-    "date": "July 30, 2026"
+    "title": "Mastering Vertical Rhythm: Elevate UI Harmony and Readability with CSS Typography",
+    "slug": "mastering-vertical-rhythm-elevate-ui-harmony-and-readability-with-css-typography",
+    "tweet": "Achieve pixel-perfect UI harmony! Learn how to implement vertical rhythm in your web designs using CSS typography to boost readability & user experience. #CSSTypography #UIDesign #WebFonts #UserExperience",
+    "tip": "To establish a consistent vertical rhythm, define a base line-height for your body text and ensure all other vertical measurements (margins, paddings, image heights) are multiples or fractions of this base. Using 'rem' units derived from a root 'font-size' that aligns with your line-height can create a robust, scalable system. This principle helps guide the user's eye naturally through content, significantly improving perceived order and readability.",
+    "css_snippet": ":root {\n  --base-font-size: 1rem;\n  --base-line-height: 1.5;\n  --vertical-rhythm-unit: calc(var(--base-font-size) * var(--base-line-height));\n}\n\nbody {\n  font-size: var(--base-font-size);\n  line-height: var(--base-line-height);\n}\n\nh1 {\n  font-size: 2.5rem;\n  line-height: 1.2;\n  margin-top: var(--vertical-rhythm-unit);\n  margin-bottom: var(--vertical-rhythm-unit);\n}\n\np {\n  margin-bottom: var(--vertical-rhythm-unit);\n}\n\n.section-spacing {\n  padding-top: calc(2 * var(--vertical-rhythm-unit));\n  padding-bottom: calc(2 * var(--vertical-rhythm-unit));\n}",
+    "date": "July 31, 2026"
 }

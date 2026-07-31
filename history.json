@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering Vertical Rhythm: Elevate UI Harmony and Readability with CSS Typography",
+        "slug": "mastering-vertical-rhythm-elevate-ui-harmony-and-readability-with-css-typography",
+        "tweet": "Achieve pixel-perfect UI harmony! Learn how to implement vertical rhythm in your web designs using CSS typography to boost readability & user experience. #CSSTypography #UIDesign #WebFonts #UserExperience",
+        "tip": "To establish a consistent vertical rhythm, define a base line-height for your body text and ensure all other vertical measurements (margins, paddings, image heights) are multiples or fractions of this base. Using 'rem' units derived from a root 'font-size' that aligns with your line-height can create a robust, scalable system. This principle helps guide the user's eye naturally through content, significantly improving perceived order and readability.",
+        "css_snippet": ":root {\n  --base-font-size: 1rem;\n  --base-line-height: 1.5;\n  --vertical-rhythm-unit: calc(var(--base-font-size) * var(--base-line-height));\n}\n\nbody {\n  font-size: var(--base-font-size);\n  line-height: var(--base-line-height);\n}\n\nh1 {\n  font-size: 2.5rem;\n  line-height: 1.2;\n  margin-top: var(--vertical-rhythm-unit);\n  margin-bottom: var(--vertical-rhythm-unit);\n}\n\np {\n  margin-bottom: var(--vertical-rhythm-unit);\n}\n\n.section-spacing {\n  padding-top: calc(2 * var(--vertical-rhythm-unit));\n  padding-bottom: calc(2 * var(--vertical-rhythm-unit));\n}",
+        "date": "July 31, 2026"
+    },
+    {
         "title": "Refine Your Web Fonts: Master OpenType Features with CSS 'font-feature-settings' for Superior UI Design",
         "slug": "refine-your-web-fonts-master-opentype-features-with-css-font-feature-settings-for-superior-ui-design",
         "tweet": "Elevate your #WebFonts with #CSSTypography! Discover how 'font-feature-settings' unlocks OpenType features like ligatures, fractions, & old-style figures for superior #UIDesign & #UserExperience. Transform your text today! #WebDev",
