@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Performance: Master CSS 'font-display' for Optimal Web Font Loading",
+        "slug": "elevate-ui-performance-master-css-font-display-for-optimal-web-font-loading",
+        "tweet": "Boost your web's UI performance and user experience! Learn how to master CSS 'font-display' for smart web font loading strategies. Say goodbye to FOUT/FOIT. #CSSTypography #WebFonts #UIDesign #Performance",
+        "tip": "To significantly enhance the user experience and perceived performance of your UI, strategically implement the 'font-display' property in your CSS @font-face rules. This controls how web fonts are loaded and displayed, mitigating issues like Flash of Unstyled Text (FOUT) or Flash of Invisible Text (FOIT), ensuring a smoother visual experience during page load. Opt for 'font-display: swap' for critical body text to prioritize content readability, or 'font-display: fallback' for less critical elements to balance performance and visual integrity.",
+        "css_snippet": "@font-face {\n  font-family: \"MyDisplayFont\";\n  src: url(\"/fonts/mydisplayfont-bold.woff2\") format(\"woff2\"),\n       url(\"/fonts/mydisplayfont-bold.woff\") format(\"woff\");\n  font-weight: 700;\n  font-style: normal;\n  font-display: swap; /* Prioritize content with immediate fallback, then swap */\n}\n\n@font-face {\n  font-family: \"MyBodyFont\";\n  src: url(\"/fonts/mybodyfont-regular.woff2\") format(\"woff2\"),\n       url(\"/fonts/mybodyfont-regular.woff\") format(\"woff\");\n  font-weight: 400;\n  font-style: normal;\n  font-display: fallback; /* Short block period, then fallback, then swap */\n}",
+        "date": "August 02, 2026"
+    },
+    {
         "title": "Elevate UI Precision: Master CSS font-variation-settings for Dynamic Variable Fonts",
         "slug": "elevate-ui-precision-master-css-font-variation-settings-for-dynamic-variable-fonts",
         "tweet": "Unleash the full power of #VariableFonts with CSS font-variation-settings! \ud83d\ude80 Fine-tune weight, width, and optical size for unparalleled #UITypography and enhanced #UserExperience. A must-read for #WebFonts experts.",
