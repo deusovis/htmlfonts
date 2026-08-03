@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Performance: Master CSS 'font-display' for Optimal Web Font Loading",
-    "slug": "elevate-ui-performance-master-css-font-display-for-optimal-web-font-loading",
-    "tweet": "Boost your web's UI performance and user experience! Learn how to master CSS 'font-display' for smart web font loading strategies. Say goodbye to FOUT/FOIT. #CSSTypography #WebFonts #UIDesign #Performance",
-    "tip": "To significantly enhance the user experience and perceived performance of your UI, strategically implement the 'font-display' property in your CSS @font-face rules. This controls how web fonts are loaded and displayed, mitigating issues like Flash of Unstyled Text (FOUT) or Flash of Invisible Text (FOIT), ensuring a smoother visual experience during page load. Opt for 'font-display: swap' for critical body text to prioritize content readability, or 'font-display: fallback' for less critical elements to balance performance and visual integrity.",
-    "css_snippet": "@font-face {\n  font-family: \"MyDisplayFont\";\n  src: url(\"/fonts/mydisplayfont-bold.woff2\") format(\"woff2\"),\n       url(\"/fonts/mydisplayfont-bold.woff\") format(\"woff\");\n  font-weight: 700;\n  font-style: normal;\n  font-display: swap; /* Prioritize content with immediate fallback, then swap */\n}\n\n@font-face {\n  font-family: \"MyBodyFont\";\n  src: url(\"/fonts/mybodyfont-regular.woff2\") format(\"woff2\"),\n       url(\"/fonts/mybodyfont-regular.woff\") format(\"woff\");\n  font-weight: 400;\n  font-style: normal;\n  font-display: fallback; /* Short block period, then fallback, then swap */\n}",
-    "date": "August 02, 2026"
+    "title": "Master Fluid Typography: Elevate UI Responsiveness with CSS clamp()",
+    "slug": "master-fluid-typography-elevate-ui-responsiveness-with-css-clamp",
+    "tweet": "Elevate your UI responsiveness! Discover how CSS clamp() revolutionizes fluid typography, ensuring perfect text scaling across all devices for superior UX. #CSSTypography #UIDesign #WebFonts",
+    "tip": "Achieve truly fluid typography that adapts gracefully to different screen sizes without breakpoints. CSS clamp() allows you to define a minimum, preferred (ideal), and maximum font size, preventing text from becoming too small or too large, significantly enhancing user experience and readability on any device.",
+    "css_snippet": ":root {\n  --min-body-font: 1rem;\n  --max-body-font: 1.25rem;\n  --fluid-scale-factor: 2vw; /* Adjusts with viewport width */\n  --base-rem-offset: 0.5rem; /* Baseline for preferred size */\n}\n\nbody {\n  font-size: clamp(var(--min-body-font), calc(var(--fluid-scale-factor) + var(--base-rem-offset)), var(--max-body-font));\n  line-height: 1.6;\n  font-family: 'Inter', sans-serif;\n  color: #333;\n}\n\nh1 {\n  font-size: clamp(2.5rem, calc(5vw + 1rem), 5rem);\n  line-height: 1.1;\n  margin-bottom: 0.5em;\n}",
+    "date": "August 03, 2026"
 }
