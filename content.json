@@ -1,8 +1,8 @@
 {
-    "title": "Master Fluid Typography: Elevate UI Responsiveness with CSS clamp()",
-    "slug": "master-fluid-typography-elevate-ui-responsiveness-with-css-clamp",
-    "tweet": "Elevate your UI responsiveness! Discover how CSS clamp() revolutionizes fluid typography, ensuring perfect text scaling across all devices for superior UX. #CSSTypography #UIDesign #WebFonts",
-    "tip": "Achieve truly fluid typography that adapts gracefully to different screen sizes without breakpoints. CSS clamp() allows you to define a minimum, preferred (ideal), and maximum font size, preventing text from becoming too small or too large, significantly enhancing user experience and readability on any device.",
-    "css_snippet": ":root {\n  --min-body-font: 1rem;\n  --max-body-font: 1.25rem;\n  --fluid-scale-factor: 2vw; /* Adjusts with viewport width */\n  --base-rem-offset: 0.5rem; /* Baseline for preferred size */\n}\n\nbody {\n  font-size: clamp(var(--min-body-font), calc(var(--fluid-scale-factor) + var(--base-rem-offset)), var(--max-body-font));\n  line-height: 1.6;\n  font-family: 'Inter', sans-serif;\n  color: #333;\n}\n\nh1 {\n  font-size: clamp(2.5rem, calc(5vw + 1rem), 5rem);\n  line-height: 1.1;\n  margin-bottom: 0.5em;\n}",
-    "date": "August 03, 2026"
+    "title": "Elevate UI Consistency: Master CSS 'font-synthesis' for Flawless Web Font Rendering",
+    "slug": "elevate-ui-consistency-master-css-font-synthesis-for-flawless-web-font-rendering",
+    "tweet": "Prevent unwanted browser-generated bolds & italics! Master CSS 'font-synthesis' to ensure your web fonts render perfectly, maintaining visual consistency and a superior user experience. #CSSTypography #WebFonts #UIDesign",
+    "tip": "To ensure your web fonts are always rendered as intended and prevent browsers from synthesizing bold or italic styles when a specific font weight/style is missing, explicitly set the 'font-synthesis' CSS property. Setting 'font-synthesis: none;' is often the best practice for critical UI elements, preserving design integrity and readability. This prevents the browser from creating 'fake' bold or italic versions, which can look amateurish or inconsistent with the font's design.",
+    "css_snippet": "/* Prevent all font synthesis for better control and consistent UI */\nbody {\n  font-family: 'MyCustomFont', sans-serif;\n  font-synthesis: none;\n}\n\n/* Allow synthesis for only bold, prevent italic (less common, but an option) */\nh1 {\n  font-family: 'AnotherFont', serif;\n  font-synthesis: weight;\n}\n\n/* Allow synthesis for only italic, prevent bold (also less common) */\nem {\n  font-family: 'SomeFont', sans-serif;\n  font-synthesis: style;\n}",
+    "date": "August 04, 2026"
 }

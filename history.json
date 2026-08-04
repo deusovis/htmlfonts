@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Consistency: Master CSS 'font-synthesis' for Flawless Web Font Rendering",
+        "slug": "elevate-ui-consistency-master-css-font-synthesis-for-flawless-web-font-rendering",
+        "tweet": "Prevent unwanted browser-generated bolds & italics! Master CSS 'font-synthesis' to ensure your web fonts render perfectly, maintaining visual consistency and a superior user experience. #CSSTypography #WebFonts #UIDesign",
+        "tip": "To ensure your web fonts are always rendered as intended and prevent browsers from synthesizing bold or italic styles when a specific font weight/style is missing, explicitly set the 'font-synthesis' CSS property. Setting 'font-synthesis: none;' is often the best practice for critical UI elements, preserving design integrity and readability. This prevents the browser from creating 'fake' bold or italic versions, which can look amateurish or inconsistent with the font's design.",
+        "css_snippet": "/* Prevent all font synthesis for better control and consistent UI */\nbody {\n  font-family: 'MyCustomFont', sans-serif;\n  font-synthesis: none;\n}\n\n/* Allow synthesis for only bold, prevent italic (less common, but an option) */\nh1 {\n  font-family: 'AnotherFont', serif;\n  font-synthesis: weight;\n}\n\n/* Allow synthesis for only italic, prevent bold (also less common) */\nem {\n  font-family: 'SomeFont', sans-serif;\n  font-synthesis: style;\n}",
+        "date": "August 04, 2026"
+    },
+    {
         "title": "Master Fluid Typography: Elevate UI Responsiveness with CSS clamp()",
         "slug": "master-fluid-typography-elevate-ui-responsiveness-with-css-clamp",
         "tweet": "Elevate your UI responsiveness! Discover how CSS clamp() revolutionizes fluid typography, ensuring perfect text scaling across all devices for superior UX. #CSSTypography #UIDesign #WebFonts",
