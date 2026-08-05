@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Consistency: Master CSS 'font-synthesis' for Flawless Web Font Rendering",
-    "slug": "elevate-ui-consistency-master-css-font-synthesis-for-flawless-web-font-rendering",
-    "tweet": "Prevent unwanted browser-generated bolds & italics! Master CSS 'font-synthesis' to ensure your web fonts render perfectly, maintaining visual consistency and a superior user experience. #CSSTypography #WebFonts #UIDesign",
-    "tip": "To ensure your web fonts are always rendered as intended and prevent browsers from synthesizing bold or italic styles when a specific font weight/style is missing, explicitly set the 'font-synthesis' CSS property. Setting 'font-synthesis: none;' is often the best practice for critical UI elements, preserving design integrity and readability. This prevents the browser from creating 'fake' bold or italic versions, which can look amateurish or inconsistent with the font's design.",
-    "css_snippet": "/* Prevent all font synthesis for better control and consistent UI */\nbody {\n  font-family: 'MyCustomFont', sans-serif;\n  font-synthesis: none;\n}\n\n/* Allow synthesis for only bold, prevent italic (less common, but an option) */\nh1 {\n  font-family: 'AnotherFont', serif;\n  font-synthesis: weight;\n}\n\n/* Allow synthesis for only italic, prevent bold (also less common) */\nem {\n  font-family: 'SomeFont', sans-serif;\n  font-synthesis: style;\n}",
-    "date": "August 04, 2026"
+    "title": "Beyond Fixed Sizes: Enhance UI Design with CSS 'font-optical-sizing' for Dynamic Web Fonts",
+    "slug": "beyond-fixed-sizes-enhance-ui-design-with-css-font-optical-sizing-for-dynamic-web-fonts",
+    "tweet": "Optimize your web fonts for stunning UI across all sizes! Learn how CSS 'font-optical-sizing' dynamically refines text aesthetics for superior user experience. #CSSTypography #WebFonts #UIDesign",
+    "tip": "For truly sophisticated web typography, leverage CSS 'font-optical-sizing'. This property empowers variable fonts to automatically adjust their optical characteristics \u2013 like stroke thickness and spacing \u2013 based on their rendered size. This subtle but powerful enhancement ensures your web fonts maintain optimal readability and visual harmony, regardless of whether they are a tiny caption or a large headline. It's a crucial step in delivering a premium user experience and pixel-perfect UI design, especially when using modern variable fonts, making them look their best in every context.",
+    "css_snippet": "body { font-family: 'Inter Variable', sans-serif; font-optical-sizing: auto; } /* Ensures variable fonts adapt their visual weight and spacing for optimal readability at different sizes. */",
+    "date": "August 05, 2026"
 }
