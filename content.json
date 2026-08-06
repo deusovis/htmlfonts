@@ -1,8 +1,8 @@
 {
-    "title": "Beyond Fixed Sizes: Enhance UI Design with CSS 'font-optical-sizing' for Dynamic Web Fonts",
-    "slug": "beyond-fixed-sizes-enhance-ui-design-with-css-font-optical-sizing-for-dynamic-web-fonts",
-    "tweet": "Optimize your web fonts for stunning UI across all sizes! Learn how CSS 'font-optical-sizing' dynamically refines text aesthetics for superior user experience. #CSSTypography #WebFonts #UIDesign",
-    "tip": "For truly sophisticated web typography, leverage CSS 'font-optical-sizing'. This property empowers variable fonts to automatically adjust their optical characteristics \u2013 like stroke thickness and spacing \u2013 based on their rendered size. This subtle but powerful enhancement ensures your web fonts maintain optimal readability and visual harmony, regardless of whether they are a tiny caption or a large headline. It's a crucial step in delivering a premium user experience and pixel-perfect UI design, especially when using modern variable fonts, making them look their best in every context.",
-    "css_snippet": "body { font-family: 'Inter Variable', sans-serif; font-optical-sizing: auto; } /* Ensures variable fonts adapt their visual weight and spacing for optimal readability at different sizes. */",
-    "date": "August 05, 2026"
+    "title": "Mastering Line Height: Achieve Perfect Readability and UI Balance with Web Fonts",
+    "slug": "mastering-line-height-achieve-perfect-readability-and-ui-balance-with-web-fonts",
+    "tweet": "Elevate your #CSS typography! Learn to master 'line-height' for optimal #WebFonts readability & UI balance across devices. A game-changer for #UIDesign & #UserExperience.",
+    "tip": "For consistent visual spacing with diverse web fonts, use unitless 'line-height' values (e.g., '1.5'). This scales proportionally with 'font-size', improving readability and maintaining UI balance across different font sizes and screen resolutions. Always test different web fonts as their inherent vertical metrics can vary significantly.",
+    "css_snippet": "body {\n  font-family: 'Open Sans', sans-serif;\n  font-size: 16px;\n  line-height: 1.6; /* Unitless value for proportional scaling */\n}\n\nh1 {\n  font-family: 'Playfair Display', serif;\n  font-size: 2.8em;\n  line-height: 1.1; /* Tighter line-height for larger headlines */\n  margin-bottom: 0.5em;\n}\n\np {\n  font-family: 'Open Sans', sans-serif;\n  line-height: 1.7; /* Slightly more generous for body text */\n}\n\n.callout {\n  font-family: 'Montserrat', sans-serif;\n  font-size: 1.1em;\n  line-height: 1.4; /* Adjusted for this font and size */\n  padding: 1em 1.5em;\n  background-color: #f0f8ff;\n  border-left: 4px solid #007bff;\n}",
+    "date": "August 06, 2026"
 }
