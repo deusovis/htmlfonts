@@ -1,8 +1,8 @@
 {
-    "title": "Mastering Line Height: Achieve Perfect Readability and UI Balance with Web Fonts",
-    "slug": "mastering-line-height-achieve-perfect-readability-and-ui-balance-with-web-fonts",
-    "tweet": "Elevate your #CSS typography! Learn to master 'line-height' for optimal #WebFonts readability & UI balance across devices. A game-changer for #UIDesign & #UserExperience.",
-    "tip": "For consistent visual spacing with diverse web fonts, use unitless 'line-height' values (e.g., '1.5'). This scales proportionally with 'font-size', improving readability and maintaining UI balance across different font sizes and screen resolutions. Always test different web fonts as their inherent vertical metrics can vary significantly.",
-    "css_snippet": "body {\n  font-family: 'Open Sans', sans-serif;\n  font-size: 16px;\n  line-height: 1.6; /* Unitless value for proportional scaling */\n}\n\nh1 {\n  font-family: 'Playfair Display', serif;\n  font-size: 2.8em;\n  line-height: 1.1; /* Tighter line-height for larger headlines */\n  margin-bottom: 0.5em;\n}\n\np {\n  font-family: 'Open Sans', sans-serif;\n  line-height: 1.7; /* Slightly more generous for body text */\n}\n\n.callout {\n  font-family: 'Montserrat', sans-serif;\n  font-size: 1.1em;\n  line-height: 1.4; /* Adjusted for this font and size */\n  padding: 1em 1.5em;\n  background-color: #f0f8ff;\n  border-left: 4px solid #007bff;\n}",
-    "date": "August 06, 2026"
+    "title": "Elevate UI Sharpness: Master CSS 'text-rendering' for Pristine Web Font Clarity",
+    "slug": "elevate-ui-sharpness-master-css-text-rendering-for-pristine-web-font-clarity",
+    "tweet": "Boost your UI's visual fidelity! Learn how CSS 'text-rendering' can transform your web fonts from blurry to razor-sharp, enhancing readability and user experience. #CSSTypography #UIDesign #WebFonts",
+    "tip": "Leverage the 'text-rendering' CSS property to fine-tune how browsers render your web fonts. For most modern UIs, setting 'text-rendering: optimizeLegibility;' can significantly improve character spacing and ligatures, leading to a crisper, more professional appearance. Be mindful of potential performance implications on very large text blocks, and consider 'optimizeSpeed' for interactive elements if needed. Always test across different browsers and devices for optimal user experience.",
+    "css_snippet": "body {\n  -webkit-font-smoothing: antialiased; /* For macOS/iOS */\n  -moz-osx-font-smoothing: grayscale; /* For macOS/iOS */\n  text-rendering: optimizeLegibility; /* General enhancement for quality */\n  font-smoothing: antialiased; /* Future-proofing for standard */\n}\n\n/* For specific large headlines where precision is key (use with caution due to performance) */\nh1 {\n  text-rendering: geometricPrecision;\n}\n\n/* For performance-critical interactive elements where speed matters most */\n.interactive-button-text {\n  text-rendering: optimizeSpeed;\n}",
+    "date": "August 07, 2026"
 }
