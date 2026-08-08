@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Readability: Master CSS 'text-underline-offset' and 'text-decoration-thickness' for Pristine Link Design",
+        "slug": "elevate-ui-readability-master-css-text-underline-offset-and-text-decoration-thickness-for-pristine-link-design",
+        "tweet": "Enhance link clarity & UI aesthetics! Master CSS 'text-underline-offset' and 'text-decoration-thickness' to create perfectly positioned, readable underlines for your web fonts. #CSSTypography #UIDesign #WebFonts #UX",
+        "tip": "Standard browser underlines can often obscure descenders or appear too close to the text, hindering readability and visual appeal. By leveraging 'text-underline-offset' and 'text-decoration-thickness', you gain granular control. 'text-underline-offset' allows you to precisely lift the underline away from the baseline, preventing it from clashing with characters like 'g', 'p', or 'y'. 'text-decoration-thickness' lets you control the line's weight, making it subtle or prominent as your design requires. This precision ensures your links and emphasized text not only look professional but also significantly improve the overall user experience by being clear and unobtrusive.",
+        "css_snippet": "a {\n  text-decoration-line: underline; /* Ensure underline is active */\n  text-decoration-color: var(--link-color, #007bff);\n  text-decoration-thickness: 0.08em; /* Adjust thickness relative to font size */\n  text-underline-offset: 0.2em; /* Lift the underline up */\n}\n\na:hover {\n  text-decoration-thickness: 0.12em; /* Slightly thicker on hover */\n  text-underline-offset: 0.18em; /* Adjust offset slightly if desired */\n}",
+        "date": "August 08, 2026"
+    },
+    {
         "title": "Elevate UI Sharpness: Master CSS 'text-rendering' for Pristine Web Font Clarity",
         "slug": "elevate-ui-sharpness-master-css-text-rendering-for-pristine-web-font-clarity",
         "tweet": "Boost your UI's visual fidelity! Learn how CSS 'text-rendering' can transform your web fonts from blurry to razor-sharp, enhancing readability and user experience. #CSSTypography #UIDesign #WebFonts",
