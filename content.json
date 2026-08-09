@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Readability: Master CSS 'text-underline-offset' and 'text-decoration-thickness' for Pristine Link Design",
-    "slug": "elevate-ui-readability-master-css-text-underline-offset-and-text-decoration-thickness-for-pristine-link-design",
-    "tweet": "Enhance link clarity & UI aesthetics! Master CSS 'text-underline-offset' and 'text-decoration-thickness' to create perfectly positioned, readable underlines for your web fonts. #CSSTypography #UIDesign #WebFonts #UX",
-    "tip": "Standard browser underlines can often obscure descenders or appear too close to the text, hindering readability and visual appeal. By leveraging 'text-underline-offset' and 'text-decoration-thickness', you gain granular control. 'text-underline-offset' allows you to precisely lift the underline away from the baseline, preventing it from clashing with characters like 'g', 'p', or 'y'. 'text-decoration-thickness' lets you control the line's weight, making it subtle or prominent as your design requires. This precision ensures your links and emphasized text not only look professional but also significantly improve the overall user experience by being clear and unobtrusive.",
-    "css_snippet": "a {\n  text-decoration-line: underline; /* Ensure underline is active */\n  text-decoration-color: var(--link-color, #007bff);\n  text-decoration-thickness: 0.08em; /* Adjust thickness relative to font size */\n  text-underline-offset: 0.2em; /* Lift the underline up */\n}\n\na:hover {\n  text-decoration-thickness: 0.12em; /* Slightly thicker on hover */\n  text-underline-offset: 0.18em; /* Adjust offset slightly if desired */\n}",
-    "date": "August 08, 2026"
+    "title": "Maintain Visual Harmony: Master CSS 'font-size-adjust' for Consistent Web Font X-Height",
+    "slug": "maintain-visual-harmony-master-css-font-size-adjust-for-consistent-web-font-x-height",
+    "tweet": "Elevate UI readability! Learn to master CSS 'font-size-adjust' to keep x-height consistent across your web font stack. Essential for flawless typography and user experience. #CSSTypography #WebFonts #UIDesign",
+    "tip": "Ensure visual consistency and optimal readability by using 'font-size-adjust'. Different fonts, even at the same 'font-size', can have vastly different x-heights, impacting legibility when web fonts fail to load or fallbacks are used. By setting 'font-size-adjust' to the aspect value (x-height divided by font-size) of your primary web font, you can normalize the x-height of fallback fonts, preventing jarring shifts in text appearance and maintaining UI integrity for a better user experience.",
+    "css_snippet": "body { font-family: 'Inter', sans-serif; font-size: 16px; font-size-adjust: 0.58; /* Example aspect value for Inter (approx), ensures fallbacks match x-height */ } .heading { font-family: 'Lora', serif; font-size: 2em; font-size-adjust: 0.49; /* Example aspect value for Lora (approx) */ }",
+    "date": "August 09, 2026"
 }
