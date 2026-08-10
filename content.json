@@ -1,8 +1,8 @@
 {
-    "title": "Maintain Visual Harmony: Master CSS 'font-size-adjust' for Consistent Web Font X-Height",
-    "slug": "maintain-visual-harmony-master-css-font-size-adjust-for-consistent-web-font-x-height",
-    "tweet": "Elevate UI readability! Learn to master CSS 'font-size-adjust' to keep x-height consistent across your web font stack. Essential for flawless typography and user experience. #CSSTypography #WebFonts #UIDesign",
-    "tip": "Ensure visual consistency and optimal readability by using 'font-size-adjust'. Different fonts, even at the same 'font-size', can have vastly different x-heights, impacting legibility when web fonts fail to load or fallbacks are used. By setting 'font-size-adjust' to the aspect value (x-height divided by font-size) of your primary web font, you can normalize the x-height of fallback fonts, preventing jarring shifts in text appearance and maintaining UI integrity for a better user experience.",
-    "css_snippet": "body { font-family: 'Inter', sans-serif; font-size: 16px; font-size-adjust: 0.58; /* Example aspect value for Inter (approx), ensures fallbacks match x-height */ } .heading { font-family: 'Lora', serif; font-size: 2em; font-size-adjust: 0.49; /* Example aspect value for Lora (approx) */ }",
-    "date": "August 09, 2026"
+    "title": "Refine UI Text: Master CSS 'font-kerning' for Precise Letter Spacing and Visual Balance",
+    "slug": "refine-ui-text-master-css-font-kerning-for-precise-letter-spacing-and-visual-balance",
+    "tweet": "Boost your UI's visual polish! Discover how CSS 'font-kerning' fine-tunes letter spacing for impeccable web typography. Elevate user experience with this subtle yet powerful CSS typography trick. #CSSTypography #UIDesign #WebFonts #UX",
+    "tip": "Many modern web fonts include kerning information for optimal letter pair spacing. However, browser defaults or specific font settings might sometimes ignore it. Using 'font-kerning: normal;' explicitly ensures that the browser applies the font's built-in kerning, improving readability and visual balance, especially for headings and display text. Use 'none' for performance-critical areas with less precise font requirements, or 'auto' for browser-determined behavior.",
+    "css_snippet": "/* Ensure kerning is applied for precise letter spacing */\nh1, h2, .display-text {\n  font-kerning: normal; /* Apply the font's built-in kerning information */\n  letter-spacing: -0.02em; /* Optional: fine-tune general letter spacing */\n  text-rendering: optimizeLegibility; /* Hint for better text rendering, often enables kerning implicitly */\n}\n\n/* Disable kerning for specific cases, e.g., monospaced fonts or performance */\n.code-block {\n  font-kerning: none;\n}",
+    "date": "August 10, 2026"
 }
