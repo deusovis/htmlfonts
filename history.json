@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Data Readability: Master CSS 'font-variant-numeric' for Precision Typographic Styling",
+        "slug": "elevate-ui-data-readability-master-css-font-variant-numeric-for-precision-typographic-styling",
+        "tweet": "Boost UI clarity with CSS 'font-variant-numeric'! Learn how to control number styling for better data readability & a polished user experience. #CSSTypography #UIDesign #WebFonts #UserExperience",
+        "tip": "Leverage 'font-variant-numeric' to specify how numbers are displayed. For instance, 'tabular-nums' ensures consistent width across digits, crucial for aligning columns in tables or data displays. 'oldstyle-nums' can provide a more classic, less obtrusive look in body text, while 'lining-nums' offer a uniform height suitable for headings and modern interfaces. This level of control enhances both aesthetics and user comprehension in data-rich UI.",
+        "css_snippet": "/* For tabular data alignment */\n.data-table td {\n    font-variant-numeric: tabular-nums;\n}\n\n/* For classic body text numbers */\np.classic-text {\n    font-variant-numeric: oldstyle-nums;\n}\n\n/* For modern heading numbers */\nh1 {\n    font-variant-numeric: lining-nums proportional-nums;\n}",
+        "date": "August 11, 2026"
+    },
+    {
         "title": "Refine UI Text: Master CSS 'font-kerning' for Precise Letter Spacing and Visual Balance",
         "slug": "refine-ui-text-master-css-font-kerning-for-precise-letter-spacing-and-visual-balance",
         "tweet": "Boost your UI's visual polish! Discover how CSS 'font-kerning' fine-tunes letter spacing for impeccable web typography. Elevate user experience with this subtle yet powerful CSS typography trick. #CSSTypography #UIDesign #WebFonts #UX",

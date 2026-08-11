@@ -1,8 +1,8 @@
 {
-    "title": "Refine UI Text: Master CSS 'font-kerning' for Precise Letter Spacing and Visual Balance",
-    "slug": "refine-ui-text-master-css-font-kerning-for-precise-letter-spacing-and-visual-balance",
-    "tweet": "Boost your UI's visual polish! Discover how CSS 'font-kerning' fine-tunes letter spacing for impeccable web typography. Elevate user experience with this subtle yet powerful CSS typography trick. #CSSTypography #UIDesign #WebFonts #UX",
-    "tip": "Many modern web fonts include kerning information for optimal letter pair spacing. However, browser defaults or specific font settings might sometimes ignore it. Using 'font-kerning: normal;' explicitly ensures that the browser applies the font's built-in kerning, improving readability and visual balance, especially for headings and display text. Use 'none' for performance-critical areas with less precise font requirements, or 'auto' for browser-determined behavior.",
-    "css_snippet": "/* Ensure kerning is applied for precise letter spacing */\nh1, h2, .display-text {\n  font-kerning: normal; /* Apply the font's built-in kerning information */\n  letter-spacing: -0.02em; /* Optional: fine-tune general letter spacing */\n  text-rendering: optimizeLegibility; /* Hint for better text rendering, often enables kerning implicitly */\n}\n\n/* Disable kerning for specific cases, e.g., monospaced fonts or performance */\n.code-block {\n  font-kerning: none;\n}",
-    "date": "August 10, 2026"
+    "title": "Elevate UI Data Readability: Master CSS 'font-variant-numeric' for Precision Typographic Styling",
+    "slug": "elevate-ui-data-readability-master-css-font-variant-numeric-for-precision-typographic-styling",
+    "tweet": "Boost UI clarity with CSS 'font-variant-numeric'! Learn how to control number styling for better data readability & a polished user experience. #CSSTypography #UIDesign #WebFonts #UserExperience",
+    "tip": "Leverage 'font-variant-numeric' to specify how numbers are displayed. For instance, 'tabular-nums' ensures consistent width across digits, crucial for aligning columns in tables or data displays. 'oldstyle-nums' can provide a more classic, less obtrusive look in body text, while 'lining-nums' offer a uniform height suitable for headings and modern interfaces. This level of control enhances both aesthetics and user comprehension in data-rich UI.",
+    "css_snippet": "/* For tabular data alignment */\n.data-table td {\n    font-variant-numeric: tabular-nums;\n}\n\n/* For classic body text numbers */\np.classic-text {\n    font-variant-numeric: oldstyle-nums;\n}\n\n/* For modern heading numbers */\nh1 {\n    font-variant-numeric: lining-nums proportional-nums;\n}",
+    "date": "August 11, 2026"
 }
