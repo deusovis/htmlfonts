@@ -1,5 +1,13 @@
 [
     {
+        "title": "Improve UI Readability: Master CSS 'hyphens' for Perfect Justified Text and Web Fonts",
+        "slug": "improve-ui-readability-master-css-hyphens-for-perfect-justified-text-and-web-fonts",
+        "tweet": "Enhance your #CSS typography! Learn how 'hyphens' improves #UI design & #UserExperience by creating balanced justified text with web fonts. A must for every front-end dev! #WebFonts",
+        "tip": "Utilize the 'hyphens' CSS property to prevent awkward gaps in justified text or narrow columns. Setting 'hyphens: auto;' combined with a 'lang' attribute on your HTML element significantly improves readability and the visual flow of your WebFonts, contributing to a superior UserExperience in UIDesign.",
+        "css_snippet": "body {\n    font-family: 'Open Sans', sans-serif;\n    line-height: 1.6;\n    -webkit-hyphens: auto; /* For Safari */\n    -ms-hyphens: auto;    /* For IE */\n    hyphens: auto;        /* Standard */\n    text-align: justify;  /* To demonstrate effect */\n    max-width: 700px;\n    margin: 0 auto;\n}\n\nhtml {\n    lang: 'en'; /* Or appropriate language, e.g., 'de', 'fr' */\n}",
+        "date": "August 12, 2026"
+    },
+    {
         "title": "Elevate UI Data Readability: Master CSS 'font-variant-numeric' for Precision Typographic Styling",
         "slug": "elevate-ui-data-readability-master-css-font-variant-numeric-for-precision-typographic-styling",
         "tweet": "Boost UI clarity with CSS 'font-variant-numeric'! Learn how to control number styling for better data readability & a polished user experience. #CSSTypography #UIDesign #WebFonts #UserExperience",
