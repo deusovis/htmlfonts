@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Performance: Master CSS 'font-display' for Optimal Web Font Loading and UX",
+        "slug": "elevate-ui-performance-master-css-font-display-for-optimal-web-font-loading-and-ux",
+        "tweet": "Boost your site's UI & UX! Learn how CSS 'font-display' manages web font loading, preventing layout shifts & ensuring a smooth experience. A must-know for every typography expert. #CSStypography #WebFonts #UIDesign #UX",
+        "tip": "Using 'font-display: swap' is often the best balance for user experience. It prioritizes content display immediately with a fallback font, then 'swaps' in your custom web font once loaded, minimizing perceived page load time and Cumulative Layout Shift (CLS).",
+        "css_snippet": "@font-face {\n  font-family: 'Inter';\n  src: url('/fonts/Inter-Regular.woff2') format('woff2');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Ensures content is visible quickly */\n}\n\nbody {\n  font-family: 'Inter', sans-serif;\n}",
+        "date": "August 13, 2026"
+    },
+    {
         "title": "Improve UI Readability: Master CSS 'hyphens' for Perfect Justified Text and Web Fonts",
         "slug": "improve-ui-readability-master-css-hyphens-for-perfect-justified-text-and-web-fonts",
         "tweet": "Enhance your #CSS typography! Learn how 'hyphens' improves #UI design & #UserExperience by creating balanced justified text with web fonts. A must for every front-end dev! #WebFonts",
