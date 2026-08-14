@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Performance: Master CSS 'font-display' for Optimal Web Font Loading and UX",
-    "slug": "elevate-ui-performance-master-css-font-display-for-optimal-web-font-loading-and-ux",
-    "tweet": "Boost your site's UI & UX! Learn how CSS 'font-display' manages web font loading, preventing layout shifts & ensuring a smooth experience. A must-know for every typography expert. #CSStypography #WebFonts #UIDesign #UX",
-    "tip": "Using 'font-display: swap' is often the best balance for user experience. It prioritizes content display immediately with a fallback font, then 'swaps' in your custom web font once loaded, minimizing perceived page load time and Cumulative Layout Shift (CLS).",
-    "css_snippet": "@font-face {\n  font-family: 'Inter';\n  src: url('/fonts/Inter-Regular.woff2') format('woff2');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Ensures content is visible quickly */\n}\n\nbody {\n  font-family: 'Inter', sans-serif;\n}",
-    "date": "August 13, 2026"
+    "title": "Elevate UI Typography: Unlock OpenType Magic with CSS 'font-feature-settings'",
+    "slug": "elevate-ui-typography-unlock-opentype-magic-with-css-font-feature-settings",
+    "tweet": "Beyond basics! Master CSS 'font-feature-settings' to unlock advanced OpenType features like ligatures & stylistic sets. Elevate UI readability & aesthetic appeal with powerful web font capabilities. #CSSTypography #UIDesign #WebFonts #UX",
+    "tip": "Leverage the 'font-feature-settings' CSS property to activate specific OpenType features embedded within your web fonts. This allows you to enable stylistic enhancements like discretionary ligatures, old-style figures, small caps, or specific stylistic sets, which significantly improve the visual quality and readability of your text. For instance, enabling 'dlig' (discretionary ligatures) can refine character connections for a more polished look, while 'salt' (stylistic alternates) can offer variant glyphs to differentiate your UI. Always test with your chosen font as feature support varies.",
+    "css_snippet": ".enhanced-text {\n  font-family: \"My Variable Font\", sans-serif;\n  /* Enable standard ligatures (on by default for many fonts) */\n  font-feature-settings: \"liga\" on; \n  /* Enable discretionary ligatures */\n  font-feature-settings: \"dlig\" on;\n  /* Or combine multiple features */\n  font-feature-settings: \"liga\" on, \"dlig\" on, \"salt\" 1;\n  /* For specific stylistic set 10 */\n  font-feature-settings: \"ss10\" on; \n  /* Fallback for older browsers (or use font-variant-ligatures) */\n  -webkit-font-feature-settings: \"dlig\" 1; \n  -moz-font-feature-settings: \"dlig\" 1;\n  /* Modern shorthand for some features */\n  font-variant-ligatures: common-ligatures discretionary-ligatures;\n}",
+    "date": "August 14, 2026"
 }
