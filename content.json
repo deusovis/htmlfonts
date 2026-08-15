@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Typography: Unlock OpenType Magic with CSS 'font-feature-settings'",
-    "slug": "elevate-ui-typography-unlock-opentype-magic-with-css-font-feature-settings",
-    "tweet": "Beyond basics! Master CSS 'font-feature-settings' to unlock advanced OpenType features like ligatures & stylistic sets. Elevate UI readability & aesthetic appeal with powerful web font capabilities. #CSSTypography #UIDesign #WebFonts #UX",
-    "tip": "Leverage the 'font-feature-settings' CSS property to activate specific OpenType features embedded within your web fonts. This allows you to enable stylistic enhancements like discretionary ligatures, old-style figures, small caps, or specific stylistic sets, which significantly improve the visual quality and readability of your text. For instance, enabling 'dlig' (discretionary ligatures) can refine character connections for a more polished look, while 'salt' (stylistic alternates) can offer variant glyphs to differentiate your UI. Always test with your chosen font as feature support varies.",
-    "css_snippet": ".enhanced-text {\n  font-family: \"My Variable Font\", sans-serif;\n  /* Enable standard ligatures (on by default for many fonts) */\n  font-feature-settings: \"liga\" on; \n  /* Enable discretionary ligatures */\n  font-feature-settings: \"dlig\" on;\n  /* Or combine multiple features */\n  font-feature-settings: \"liga\" on, \"dlig\" on, \"salt\" 1;\n  /* For specific stylistic set 10 */\n  font-feature-settings: \"ss10\" on; \n  /* Fallback for older browsers (or use font-variant-ligatures) */\n  -webkit-font-feature-settings: \"dlig\" 1; \n  -moz-font-feature-settings: \"dlig\" 1;\n  /* Modern shorthand for some features */\n  font-variant-ligatures: common-ligatures discretionary-ligatures;\n}",
-    "date": "August 14, 2026"
+    "title": "Elevate UI Readability: Master CSS 'text-wrap: balance' for Harmonious Headlines",
+    "slug": "elevate-ui-readability-master-css-text-wrap-balance-for-harmonious-headlines",
+    "tweet": "Improve your UI design with 'text-wrap: balance'! Create visually appealing, balanced headlines and short texts, enhancing readability and user experience. A game-changer for modern web typography. #CSSTypography #UIDesign #WebFonts #UX",
+    "tip": "The 'text-wrap: balance' property is a powerful addition to CSS typography, specifically designed to optimize the layout of short blocks of text, such as headings, captions, and short paragraphs. By balancing the text across lines, it prevents awkward single-word orphans and creates a more visually cohesive and harmonious block of text. This significantly enhances readability and the overall aesthetic appeal of your UI, ensuring that your content looks professionally typeset. It is a subtle yet impactful detail that elevates the user experience, especially with web fonts.",
+    "css_snippet": "h1, .intro-paragraph { text-wrap: balance; }",
+    "date": "August 15, 2026"
 }
