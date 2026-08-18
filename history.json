@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Design: Master CSS 'initial-letter' for Stunning Drop Caps and Enhanced Web Typography",
+        "slug": "elevate-ui-design-master-css-initial-letter-for-stunning-drop-caps-and-enhanced-web-typography",
+        "tweet": "Transform your web typography! Discover how CSS 'initial-letter' can create elegant drop caps, boosting UI design and readability. A simple CSS property for striking visual impact. #CSSTypography #UIDesign #WebFonts #UserExperience",
+        "tip": "When implementing 'initial-letter', pay close attention to the font's x-height and ascender/descender lines. Adjust the second value (the number of lines the letter sinks) to align with your baseline grid for optimal vertical rhythm. Consider using a complementary font for the initial letter, or a heavier weight of the body font, to make it pop without sacrificing legibility. Always test across different viewport sizes, as the visual impact can shift dramatically, potentially requiring media queries for refinement to ensure consistent user experience.",
+        "css_snippet": "p::first-letter {\n  font-family: \"Playfair Display\", serif; /* Or a bolder variant of your body font */\n  font-weight: 700;\n  initial-letter: 3 3; /* Sinks 3 lines, spans 3 lines */\n  color: #333;\n  margin-right: 0.1em;\n  line-height: 1; /* Essential for precise vertical alignment */\n  float: left; /* Necessary for initial-letter to function correctly */\n  padding-top: 0.1em; /* Fine-tune vertical position */\n  /* Add 'text-shadow' for a subtle lift or 'border' for a boxed effect */\n}",
+        "date": "August 18, 2026"
+    },
+    {
         "title": "Elevate UI Responsiveness: Master CSS 'clamp()' for Fluid Typographic Scales",
         "slug": "elevate-ui-responsiveness-master-css-clamp-for-fluid-typographic-scales",
         "tweet": "Achieve truly responsive typography! Learn how CSS 'clamp()' creates fluid font sizes, enhancing UI design and user experience across all devices. #CSSTypography #ResponsiveDesign #UIDesign",
