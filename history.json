@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Readability: Master CSS 'overflow-wrap' for Unbreakable Text and Stable Layouts",
+        "slug": "elevate-ui-readability-master-css-overflow-wrap-for-unbreakable-text-and-stable-layouts",
+        "tweet": "Prevent pesky text overflows! Learn how CSS 'overflow-wrap: break-word' (or 'anywhere') ensures your UI stays neat, responsive, and readable, even with long, unbreakable strings. #CSSTypography #UIDesign #WebFonts #UX",
+        "tip": "Long URLs, unique IDs, or single unbreakable words can wreak havoc on your responsive UI, causing horizontal scrollbars or overflowing containers. Master CSS 'overflow-wrap' to gracefully handle these situations. Setting 'overflow-wrap: break-word' will break an otherwise unbreakable string at an arbitrary point to prevent it from overflowing its parent container. For more aggressive breaking, 'overflow-wrap: anywhere' allows breaking even if there are no opportunities within the word itself. This simple property is a game-changer for maintaining layout integrity and readability, ensuring a robust user experience across all screen sizes.",
+        "css_snippet": ".long-content-container {\n  overflow-wrap: break-word; /* Prevents long words/URLs from breaking layout */\n  /* Alternatively, for even more aggressive breaking, consider: */\n  /* overflow-wrap: anywhere; */\n}\n\n/* For broader browser support, 'word-break: break-all;' can be used alongside or as a fallback for older browsers. */\n.url-display {\n  overflow-wrap: break-word;\n  word-break: break-all;\n}",
+        "date": "August 20, 2026"
+    },
+    {
         "title": "Elevate UI Design: Master CSS 'text-underline-offset' for Pristine Link Underlines",
         "slug": "elevate-ui-design-master-css-text-underline-offset-for-pristine-link-underlines",
         "tweet": "Transform your UI links! Learn how CSS 'text-underline-offset' creates elegant, readable underlines that avoid descenders. Boost #CSS_typography & #UI_design UX instantly. #WebFonts",
