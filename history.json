@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Readability: Master CSS 'line-height' for Optimal Vertical Rhythm",
+        "slug": "elevate-ui-readability-master-css-line-height-for-optimal-vertical-rhythm",
+        "tweet": "Boost UI readability & user experience by mastering CSS 'line-height'. Learn how to achieve perfect vertical rhythm and enhance your web typography. #CSSTypography #UIDesign #WebFonts #UX",
+        "tip": "Achieving optimal readability and a harmonious vertical rhythm in your UI is critical for user experience. The 'line-height' CSS property is your key. Instead of relying solely on unitless values, consider using 'rem' or 'em' units relative to the font-size for better scalability and consistency across responsive designs, or stick with unitless values (e.g., 1.6) which are relative to the element's font-size. Aim for values between 1.4 and 1.8 for body text, adjusting based on font characteristics, line length, and target audience. Properly set line-height prevents text from feeling too cramped or too airy, significantly improving content legibility and visual flow.",
+        "css_snippet": "body {\n  font-family: 'Inter', sans-serif; /* Example web font */\n  font-size: 1.125rem; /* Base font size */\n  line-height: 1.6; /* Optimal unitless line height for readability */\n  color: #333;\n}\n\nh1 {\n  font-size: 3rem;\n  line-height: 1.2; /* Tighter line height for headings */\n  margin-bottom: 0.5em;\n}\n\np {\n  margin-bottom: 1em; /* Consistent spacing between paragraphs */\n}",
+        "date": "August 21, 2026"
+    },
+    {
         "title": "Elevate UI Readability: Master CSS 'overflow-wrap' for Unbreakable Text and Stable Layouts",
         "slug": "elevate-ui-readability-master-css-overflow-wrap-for-unbreakable-text-and-stable-layouts",
         "tweet": "Prevent pesky text overflows! Learn how CSS 'overflow-wrap: break-word' (or 'anywhere') ensures your UI stays neat, responsive, and readable, even with long, unbreakable strings. #CSSTypography #UIDesign #WebFonts #UX",
