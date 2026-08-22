@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Consistency: Master CSS 'font-size-adjust' for Unified Visual Hierarchy",
+        "slug": "elevate-ui-consistency-master-css-font-size-adjust-for-unified-visual-hierarchy",
+        "tweet": "Ensure consistent visual hierarchy and readability across diverse web fonts! Discover CSS 'font-size-adjust' to normalize x-heights and boost UI #accessibility. #CSSTypography #WebFonts #UIDesign #UserExperience",
+        "tip": "Different fonts have varying x-heights, leading to visual inconsistencies when a primary web font fails to load or when using font stacks. The CSS 'font-size-adjust' property allows you to normalize the x-height across fonts by specifying an aspect value (ratio of x-height to font-size). This ensures that even fallback fonts maintain a similar perceived size and readability, crucial for a stable UI and predictable user experience, especially in multilingual or robust font-stack scenarios. It's an often-overlooked gem for maintaining visual rhythm.",
+        "css_snippet": "body {\n  font-family: \"MyCustomWebFont\", Arial, sans-serif;\n  font-size: 16px;\n  font-size-adjust: 0.58; /* Adjust based on the x-height of MyCustomWebFont */\n}\n\n/* Example with different fallback adjustment */\nh1 {\n  font-family: \"HeadingFont\", Georgia, serif;\n  font-size: 2.5em;\n  font-size-adjust: 0.50; /* Adjust based on the x-height of HeadingFont */\n}",
+        "date": "August 22, 2026"
+    },
+    {
         "title": "Elevate UI Readability: Master CSS 'line-height' for Optimal Vertical Rhythm",
         "slug": "elevate-ui-readability-master-css-line-height-for-optimal-vertical-rhythm",
         "tweet": "Boost UI readability & user experience by mastering CSS 'line-height'. Learn how to achieve perfect vertical rhythm and enhance your web typography. #CSSTypography #UIDesign #WebFonts #UX",
