@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Clarity: Master CSS 'font-optical-sizing' for Visually Perfect Web Fonts",
+        "slug": "elevate-ui-clarity-master-css-font-optical-sizing-for-visually-perfect-web-fonts",
+        "tweet": "Unlock superior UI readability! Learn how CSS 'font-optical-sizing' dynamically adjusts text for optimal legibility at any size, boosting your web typography & user experience. #CSSTypography #WebFonts #UIDesign #UXTips",
+        "tip": "Modern web fonts often include optical sizing information, allowing their design to subtly change at different text sizes to maintain optimal stroke weights and character forms. By enabling CSS 'font-optical-sizing', you empower the browser to apply these design adjustments, significantly enhancing legibility and visual consistency across your UI. This is crucial for responsive designs where text scales dramatically, preventing thin lines from disappearing at small sizes or thick lines from becoming heavy at large sizes, ensuring a polished user experience.",
+        "css_snippet": "body {\n  font-family: 'Inter', sans-serif;\n  font-optical-sizing: auto; /* Or 'none' to disable; 'auto' is often default */\n}\n\nh1 {\n  font-size: 3rem;\n  font-optical-sizing: auto; /* Ensures headlines render optimally */\n}",
+        "date": "August 23, 2026"
+    },
+    {
         "title": "Elevate UI Consistency: Master CSS 'font-size-adjust' for Unified Visual Hierarchy",
         "slug": "elevate-ui-consistency-master-css-font-size-adjust-for-unified-visual-hierarchy",
         "tweet": "Ensure consistent visual hierarchy and readability across diverse web fonts! Discover CSS 'font-size-adjust' to normalize x-heights and boost UI #accessibility. #CSSTypography #WebFonts #UIDesign #UserExperience",
