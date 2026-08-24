@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Performance: Master CSS 'font-display' for Optimal Web Font Loading",
+        "slug": "elevate-ui-performance-master-css-font-display-for-optimal-web-font-loading",
+        "tweet": "Boost #WebPerformance & #UX with 'font-display'! Learn how to prevent FOUT/FOIT and ensure your #WebFonts load elegantly. A must-read for #CSS experts. #UITypography #WebDev",
+        "tip": "Choosing the right 'font-display' strategy (like 'swap' or 'optional') is crucial for minimizing Cumulative Layout Shift (CLS) and improving perceived performance. 'swap' is often a good default for critical fonts, while 'optional' offers maximum control for non-essential ones, respecting user bandwidth and preventing unnecessary downloads.",
+        "css_snippet": "@font-face {\n  font-family: 'Inter Display';\n  src: url('/fonts/Inter-Regular.woff2') format('woff2');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Values: 'auto', 'block', 'swap', 'fallback', 'optional' */\n}\n\nbody {\n  font-family: 'Inter Display', sans-serif;\n}",
+        "date": "August 24, 2026"
+    },
+    {
         "title": "Elevate UI Clarity: Master CSS 'font-optical-sizing' for Visually Perfect Web Fonts",
         "slug": "elevate-ui-clarity-master-css-font-optical-sizing-for-visually-perfect-web-fonts",
         "tweet": "Unlock superior UI readability! Learn how CSS 'font-optical-sizing' dynamically adjusts text for optimal legibility at any size, boosting your web typography & user experience. #CSSTypography #WebFonts #UIDesign #UXTips",
