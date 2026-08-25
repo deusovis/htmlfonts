@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Design: Master CSS 'font-feature-settings' for Precision Web Typography",
+        "slug": "elevate-ui-design-master-css-font-feature-settings-for-precision-web-typography",
+        "tweet": "Unlock advanced typographic control! Discover how CSS 'font-feature-settings' transforms UI design, enhances readability, and delivers a polished user experience with web fonts. Perfect for precision typography. #CSSTypography #UIDesign #WebFonts #UserExperience",
+        "tip": "Harness the power of 'font-feature-settings' to activate OpenType features like true small caps ('smcp'), old-style figures ('onum'), or discretionary ligatures ('dlig'). This fine-grained control allows you to showcase the full potential of your web fonts, creating a sophisticated and highly legible UI that significantly boosts user experience.",
+        "css_snippet": "h1 { font-feature-settings: \"liga\" 1, \"kern\" 1; } /* Enable standard ligatures and kerning */\n.small-caps { font-feature-settings: \"smcp\" 1; } /* Activate true small caps */\n.old-style { font-feature-settings: \"onum\" 1; } /* Use old-style (lowercase) figures */",
+        "date": "August 25, 2026"
+    },
+    {
         "title": "Elevate UI Performance: Master CSS 'font-display' for Optimal Web Font Loading",
         "slug": "elevate-ui-performance-master-css-font-display-for-optimal-web-font-loading",
         "tweet": "Boost #WebPerformance & #UX with 'font-display'! Learn how to prevent FOUT/FOIT and ensure your #WebFonts load elegantly. A must-read for #CSS experts. #UITypography #WebDev",
