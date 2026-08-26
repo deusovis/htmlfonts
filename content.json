@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Design: Master CSS 'font-feature-settings' for Precision Web Typography",
-    "slug": "elevate-ui-design-master-css-font-feature-settings-for-precision-web-typography",
-    "tweet": "Unlock advanced typographic control! Discover how CSS 'font-feature-settings' transforms UI design, enhances readability, and delivers a polished user experience with web fonts. Perfect for precision typography. #CSSTypography #UIDesign #WebFonts #UserExperience",
-    "tip": "Harness the power of 'font-feature-settings' to activate OpenType features like true small caps ('smcp'), old-style figures ('onum'), or discretionary ligatures ('dlig'). This fine-grained control allows you to showcase the full potential of your web fonts, creating a sophisticated and highly legible UI that significantly boosts user experience.",
-    "css_snippet": "h1 { font-feature-settings: \"liga\" 1, \"kern\" 1; } /* Enable standard ligatures and kerning */\n.small-caps { font-feature-settings: \"smcp\" 1; } /* Activate true small caps */\n.old-style { font-feature-settings: \"onum\" 1; } /* Use old-style (lowercase) figures */",
-    "date": "August 25, 2026"
+    "title": "Elevate UI Readability: Master CSS 'text-rendering' for Crisp Web Typography",
+    "slug": "elevate-ui-readability-master-css-text-rendering-for-crisp-web-typography",
+    "tweet": "Refine your web text clarity! Discover how CSS 'text-rendering' impacts character display & anti-aliasing for superior #UIDesign & #UserExperience. A must for #CSSTypography pros! #WebFonts",
+    "tip": "Master 'text-rendering' to control how browsers render your web fonts. For dense body text, 'optimizeLegibility' can activate advanced typographic features like ligatures and kerning, significantly improving readability, but watch for potential performance impacts on older browsers or very large text blocks. For crisp headings or performance-sensitive areas, consider 'optimizeSpeed' or 'geometricPrecision' to prioritize speed or sharp outlines. Combine with '-webkit-font-smoothing' and '-moz-osx-font-smoothing' for a polished cross-browser look, especially on macOS.",
+    "css_snippet": "body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; } h1 { text-rendering: geometricPrecision; }",
+    "date": "August 26, 2026"
 }
