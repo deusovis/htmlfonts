@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Readability: Master CSS 'letter-spacing' for Optimal Text Density",
+        "slug": "elevate-ui-readability-master-css-letter-spacing-for-optimal-text-density",
+        "tweet": "Fine-tune your web typography! Learn how strategic CSS 'letter-spacing' improves readability and visual balance in UI design. #CSSTypography #WebDesign #UIDesign #UserExperience",
+        "tip": "Overlooked 'letter-spacing' can significantly impact text legibility and the overall aesthetic of your UI. Use small, precise adjustments (often negative for display fonts, slightly positive for body text) to eliminate visual 'rivers' or overly dense character clusters, enhancing the user's reading comfort. Test across various font sizes and weights.",
+        "css_snippet": "/* For body text, gentle positive spacing to improve readability */\np {\n  letter-spacing: 0.01em; /* Adjust slightly based on font */\n}\n\n/* For headlines, often negative spacing to tighten large text */\nh1 {\n  letter-spacing: -0.03em; /* Tighten for visual impact */\n}\n\n/* For small text, might need a bit more spacing */\n.caption {\n  font-size: 0.8em;\n  letter-spacing: 0.02em;\n}",
+        "date": "August 30, 2026"
+    },
+    {
         "title": "Elevate UI Readability: Master CSS 'hyphens' for Seamless Text Flow",
         "slug": "elevate-ui-readability-master-css-hyphens-for-seamless-text-flow",
         "tweet": "Enhance #UI design & #UX by mastering CSS 'hyphens'! Prevent awkward gaps & improve readability in justified text. A small detail, huge impact. #CSSTypography #WebFonts",
