@@ -1,5 +1,13 @@
 [
     {
+        "title": "Enhance Readability: Master CSS 'text-underline-offset' for Superior Underlines",
+        "slug": "enhance-readability-master-css-text-underline-offset-for-superior-underlines",
+        "tweet": "Stop ugly underlines! Learn CSS 'text-underline-offset' to prevent descender overlaps & boost UI readability. Elevate your web typography game! #CSSTypography #UIDesign #WebFonts #UX",
+        "tip": "Default browser underlines often cut through descenders (g, j, p, q, y), making text harder to read. Use 'text-underline-offset' to precisely position underlines, ensuring clean typography and a superior user experience, especially crucial with diverse web fonts. Combine with 'text-decoration-thickness' for full control.",
+        "css_snippet": "a { text-decoration: underline; text-underline-offset: 0.2em; /* Adjust to lift underline above descenders */ text-decoration-thickness: 1px; /* Control thickness for better legibility */ color: #007bff; /* Example link color */ }",
+        "date": "September 01, 2026"
+    },
+    {
         "title": "Elevate UI Design: Master CSS 'font-stretch' for Dynamic Text Fit",
         "slug": "elevate-ui-design-master-css-font-stretch-for-dynamic-text-fit",
         "tweet": "Boost your #UI design with CSS 'font-stretch'! Learn how to dynamically adjust text width for perfect fit & enhanced #UserExperience. A must for modern #WebFonts & #CSSTypography. #WebDesignTips",
