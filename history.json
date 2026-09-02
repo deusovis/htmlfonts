@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Readability: Master CSS 'line-height' for Optimal Text Flow",
+        "slug": "elevate-ui-readability-master-css-line-height-for-optimal-text-flow",
+        "tweet": "Struggling with text readability? Your 'line-height' might be the culprit! Learn how proper leading improves UI rhythm & user experience. #CSSTypography #UIDesign #WebFonts #UserExperience",
+        "tip": "Achieving optimal 'line-height' is crucial for text readability. A general rule of thumb for body text is 1.5 to 1.7 times the 'font-size'. This provides sufficient vertical spacing, reducing eye strain and improving text flow, especially on smaller screens or with longer paragraphs. Always test across various devices and font sizes to find the perfect balance for your chosen typeface.",
+        "css_snippet": "body {\n    font-family: \"Open Sans\", sans-serif;\n    font-size: 16px;\n    line-height: 1.6;\n}\n\nh1 {\n    font-size: 2.5em;\n    line-height: 1.2;\n}\n\np {\n    margin-bottom: 1em;\n}\n\n@media (max-width: 768px) {\n    body {\n        font-size: 15px;\n        line-height: 1.65;\n    }\n}",
+        "date": "September 02, 2026"
+    },
+    {
         "title": "Enhance Readability: Master CSS 'text-underline-offset' for Superior Underlines",
         "slug": "enhance-readability-master-css-text-underline-offset-for-superior-underlines",
         "tweet": "Stop ugly underlines! Learn CSS 'text-underline-offset' to prevent descender overlaps & boost UI readability. Elevate your web typography game! #CSSTypography #UIDesign #WebFonts #UX",
