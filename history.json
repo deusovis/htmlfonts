@@ -1,5 +1,13 @@
 [
     {
+        "title": "Harmonize Your UI: Master CSS 'font-size-adjust' for Consistent Web Font Readability",
+        "slug": "harmonize-your-ui-master-css-font-size-adjust-for-consistent-web-font-readability",
+        "tweet": "Struggling with visual inconsistencies when mixing web fonts? Learn how CSS 'font-size-adjust' can harmonize your UI's text readability. Essential for a superior user experience! #CSSTypography #WebFonts #UIDesign",
+        "tip": "When pairing web fonts, especially for headings and body text, their intrinsic x-heights can vary greatly. Use 'font-size-adjust' to visually normalize their sizes, ensuring consistent readability and an improved user experience across your UI, regardless of the font fallback. This prevents jarring shifts when a preferred font fails to load.",
+        "css_snippet": "body {\n  font-family: \"Inter\", sans-serif;\n  font-size: 16px;\n  font-size-adjust: 0.54; /* Approximate aspect value for Inter */\n}\n\nh1 {\n  font-family: \"Lora\", serif;\n  font-size: 2.5em;\n  /* Inherits font-size-adjust from body, adjusting Lora's x-height if it becomes the rendered font */\n}\n\n.secondary-text {\n  font-family: \"Montserrat\", sans-serif;\n  font-size: 1.1em;\n  font-size-adjust: 0.54; /* Explicitly set to maintain visual balance with base font */\n}",
+        "date": "September 03, 2026"
+    },
+    {
         "title": "Elevate UI Readability: Master CSS 'line-height' for Optimal Text Flow",
         "slug": "elevate-ui-readability-master-css-line-height-for-optimal-text-flow",
         "tweet": "Struggling with text readability? Your 'line-height' might be the culprit! Learn how proper leading improves UI rhythm & user experience. #CSSTypography #UIDesign #WebFonts #UserExperience",
