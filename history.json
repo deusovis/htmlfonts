@@ -1,5 +1,13 @@
 [
     {
+        "title": "Sharpen UI Text: Master CSS 'font-optical-sizing' for Visual Precision",
+        "slug": "sharpen-ui-text-master-css-font-optical-sizing-for-visual-precision",
+        "tweet": "Elevate your web typography! \ud83d\ude80 Discover how CSS 'font-optical-sizing' dramatically improves text legibility and UI design by adjusting glyphs for different sizes. #CSSTypography #WebFonts #UIDesign #UserExperience",
+        "tip": "For an unparalleled level of visual precision in your web typography, leverage 'font-optical-sizing'. This CSS property allows compatible variable fonts to automatically adjust their glyph shapes based on their rendered font size. Smaller text benefits from wider, more open counters, while larger headlines can gain subtle refinements, leading to superior legibility and a more polished UI design across all scales. It's a game-changer for sophisticated web font integration and user experience.",
+        "css_snippet": "body {\n  font-family: \"MyVariableFont\", serif;\n  font-optical-sizing: auto;\n}\n\nh1 {\n  font-family: \"MyVariableFont\", serif;\n  font-size: clamp(2rem, 5vw, 4rem);\n  font-optical-sizing: auto;\n}",
+        "date": "September 04, 2026"
+    },
+    {
         "title": "Harmonize Your UI: Master CSS 'font-size-adjust' for Consistent Web Font Readability",
         "slug": "harmonize-your-ui-master-css-font-size-adjust-for-consistent-web-font-readability",
         "tweet": "Struggling with visual inconsistencies when mixing web fonts? Learn how CSS 'font-size-adjust' can harmonize your UI's text readability. Essential for a superior user experience! #CSSTypography #WebFonts #UIDesign",
