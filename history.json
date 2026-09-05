@@ -1,5 +1,13 @@
 [
     {
+        "title": "Precision in Pixels: Master CSS 'font-kerning' for Optimal Web Typography",
+        "slug": "precision-in-pixels-master-css-font-kerning-for-optimal-web-typography",
+        "tweet": "Boost your UI's visual harmony! Learn how CSS 'font-kerning' refines spacing between specific letter pairs for superior web typography and user experience. #CSSTypography #UIDesign #WebFonts",
+        "tip": "Enhance the professional appearance and readability of your text by intelligently adjusting the spacing between problematic letter combinations (like 'Va', 'We', 'To'). CSS 'font-kerning' allows the browser to utilize kerning tables embedded in your web fonts, significantly improving the visual balance and user experience, especially for headings and larger display text.",
+        "css_snippet": "/* Apply font kerning for improved visual balance */\nh1, .display-text {\n  font-kerning: normal; /* Enables kerning based on font data */\n  /* 'auto' (default) allows browser to decide, 'none' disables it. */\n}\n\n/* Example of disabling kerning for specific elements if needed */\n.no-kerning {\n  font-kerning: none;\n}",
+        "date": "September 05, 2026"
+    },
+    {
         "title": "Sharpen UI Text: Master CSS 'font-optical-sizing' for Visual Precision",
         "slug": "sharpen-ui-text-master-css-font-optical-sizing-for-visual-precision",
         "tweet": "Elevate your web typography! \ud83d\ude80 Discover how CSS 'font-optical-sizing' dramatically improves text legibility and UI design by adjusting glyphs for different sizes. #CSSTypography #WebFonts #UIDesign #UserExperience",
