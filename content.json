@@ -1,8 +1,8 @@
 {
-    "title": "Precision in Pixels: Master CSS 'font-kerning' for Optimal Web Typography",
-    "slug": "precision-in-pixels-master-css-font-kerning-for-optimal-web-typography",
-    "tweet": "Boost your UI's visual harmony! Learn how CSS 'font-kerning' refines spacing between specific letter pairs for superior web typography and user experience. #CSSTypography #UIDesign #WebFonts",
-    "tip": "Enhance the professional appearance and readability of your text by intelligently adjusting the spacing between problematic letter combinations (like 'Va', 'We', 'To'). CSS 'font-kerning' allows the browser to utilize kerning tables embedded in your web fonts, significantly improving the visual balance and user experience, especially for headings and larger display text.",
-    "css_snippet": "/* Apply font kerning for improved visual balance */\nh1, .display-text {\n  font-kerning: normal; /* Enables kerning based on font data */\n  /* 'auto' (default) allows browser to decide, 'none' disables it. */\n}\n\n/* Example of disabling kerning for specific elements if needed */\n.no-kerning {\n  font-kerning: none;\n}",
-    "date": "September 05, 2026"
+    "title": "Optimize Web Font Loading: Master CSS 'font-display' for Superior UI & UX",
+    "slug": "optimize-web-font-loading-master-css-font-display-for-superior-ui-ux",
+    "tweet": "Boost your UI's perceived performance and enhance user experience by mastering CSS 'font-display'. Say goodbye to FOUC & FOIT! #CSSTypography #WebFonts #UIDesign #UX",
+    "tip": "Employ 'font-display: swap;' for most web fonts to prioritize content readability quickly, then swap in your custom font. For critical brand fonts, consider 'block' or 'fallback' with careful testing to manage layout shifts.",
+    "css_snippet": "@font-face {\n  font-family: 'MyCustomFont';\n  src: url('/fonts/MyCustomFont.woff2') format('woff2');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Or block, fallback, optional */\n}",
+    "date": "September 06, 2026"
 }
