@@ -1,8 +1,8 @@
 {
-    "title": "Optimize Web Font Loading: Master CSS 'font-display' for Superior UI & UX",
-    "slug": "optimize-web-font-loading-master-css-font-display-for-superior-ui-ux",
-    "tweet": "Boost your UI's perceived performance and enhance user experience by mastering CSS 'font-display'. Say goodbye to FOUC & FOIT! #CSSTypography #WebFonts #UIDesign #UX",
-    "tip": "Employ 'font-display: swap;' for most web fonts to prioritize content readability quickly, then swap in your custom font. For critical brand fonts, consider 'block' or 'fallback' with careful testing to manage layout shifts.",
-    "css_snippet": "@font-face {\n  font-family: 'MyCustomFont';\n  src: url('/fonts/MyCustomFont.woff2') format('woff2');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Or block, fallback, optional */\n}",
-    "date": "September 06, 2026"
+    "title": "Optimize Font Rendering: Master CSS 'text-rendering' for Sharper UI & UX",
+    "slug": "optimize-font-rendering-master-css-text-rendering-for-sharper-ui-ux",
+    "tweet": "Boost your web typography! Learn how CSS 'text-rendering' enhances font clarity & UI visuals, providing a superior #UX. Get sharper text with this overlooked CSS property. #CSSTypography #WebFonts #UIDesign",
+    "tip": "While 'text-rendering: optimizeLegibility' can significantly improve character spacing and ligature display for better UI readability, always test its performance impact, especially on mobile devices or pages with heavy text. For smaller text or headings where geometric accuracy is paramount, 'geometricPrecision' can prevent pixel snapping issues common with default rendering engines. Combine with 'font-smoothing' properties for complete control.",
+    "css_snippet": "body {\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased; /* For macOS & iOS */\n  -moz-osx-font-smoothing: grayscale; /* For Firefox on macOS */\n}\n\nh1, .hero-title {\n  text-rendering: geometricPrecision;\n}",
+    "date": "September 07, 2026"
 }
