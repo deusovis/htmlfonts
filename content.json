@@ -1,8 +1,8 @@
 {
-    "title": "Optimize Font Rendering: Master CSS 'text-rendering' for Sharper UI & UX",
-    "slug": "optimize-font-rendering-master-css-text-rendering-for-sharper-ui-ux",
-    "tweet": "Boost your web typography! Learn how CSS 'text-rendering' enhances font clarity & UI visuals, providing a superior #UX. Get sharper text with this overlooked CSS property. #CSSTypography #WebFonts #UIDesign",
-    "tip": "While 'text-rendering: optimizeLegibility' can significantly improve character spacing and ligature display for better UI readability, always test its performance impact, especially on mobile devices or pages with heavy text. For smaller text or headings where geometric accuracy is paramount, 'geometricPrecision' can prevent pixel snapping issues common with default rendering engines. Combine with 'font-smoothing' properties for complete control.",
-    "css_snippet": "body {\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased; /* For macOS & iOS */\n  -moz-osx-font-smoothing: grayscale; /* For Firefox on macOS */\n}\n\nh1, .hero-title {\n  text-rendering: geometricPrecision;\n}",
-    "date": "September 07, 2026"
+    "title": "Unleash Dynamic UI: Master CSS 'font-variation-settings' for Variable Fonts",
+    "slug": "unleash-dynamic-ui-master-css-font-variation-settings-for-variable-fonts",
+    "tweet": "Unlock unparalleled typographic control! Master CSS 'font-variation-settings' for variable fonts to create dynamic, responsive UI. Enhance #WebFonts & #UIDesign. #CSSTypography #UX",
+    "tip": "Leverage CSS 'font-variation-settings' to fine-tune variable fonts beyond standard weights and styles. Adjust optical size, width, slant, or custom axes (like contrast or grade) for specific UI contexts, ensuring optimal readability and aesthetic appeal across different screen sizes and design requirements. This granular control dramatically improves user experience by allowing typefaces to adapt perfectly to their environment.",
+    "css_snippet": "/* Example for a variable font supporting 'wght' (weight) and 'wdth' (width) axes */\n.hero-title {\n    font-family: 'Inter Variable', sans-serif;\n    font-variation-settings: \"wght\" 700, \"wdth\" 120; /* Weight 700 and width 120 */\n    font-size: 3rem;\n    line-height: 1.1;\n}\n\n.call-to-action {\n    font-family: 'Inter Variable', sans-serif;\n    font-variation-settings: \"wght\" 600, \"wdth\" 90; /* Weight 600 and width 90 */\n    font-size: 1.25rem;\n    letter-spacing: -0.02em;\n}\n\n/* Example with a custom axis for grade (GRAD), if supported by the font */\n.subtle-text {\n    font-family: 'Custom Var Font', serif;\n    font-variation-settings: \"wght\" 400, \"GRAD\" 50; /* Normal weight, grade 50 */\n    font-size: 0.9rem;\n    color: #555;\n}",
+    "date": "September 08, 2026"
 }
