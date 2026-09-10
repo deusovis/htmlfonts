@@ -1,8 +1,8 @@
 {
-    "title": "Fluid & Responsive Type: Master CSS clamp() for Dynamic Font Sizing in UI",
-    "slug": "fluid-responsive-type-master-css-clamp-for-dynamic-font-sizing-in-ui",
-    "tweet": "Achieve truly fluid and responsive typography with CSS clamp()! Say goodbye to tedious media queries for font sizes. Learn how to dynamically scale your web fonts for superior UI & UX. #CSSTypography #UIDesign #WebFonts #ResponsiveDesign",
-    "tip": "Leverage CSS clamp() for font-size to create a powerful, maintainable, and truly responsive typographic scale. It allows you to define a minimum font size, an ideal fluid size (often using viewport units like 'vw'), and a maximum font size, all within a single declaration. This eliminates the need for numerous media queries for font sizing, improving performance and readability across diverse screen sizes for an optimal user experience.",
-    "css_snippet": ":root {\n  /* Define a base fluid font size for the body */\n  --body-fluid-font-size: clamp(1rem, 0.8rem + 0.8vw, 1.25rem);\n  /* Example for a heading, even more dynamic */\n  --h1-fluid-font-size: clamp(2rem, 1.5rem + 3vw, 4rem);\n}\n\nbody {\n  font-size: var(--body-fluid-font-size);\n}\n\nh1 {\n  font-size: var(--h1-fluid-font-size);\n}",
-    "date": "September 09, 2026"
+    "title": "Fine-Tune UI Text: Master CSS 'letter-spacing' for Optimal Readability & Design",
+    "slug": "fine-tune-ui-text-master-css-letter-spacing-for-optimal-readability-design",
+    "tweet": "Boost your UI's visual harmony! Learn how CSS 'letter-spacing' refines text readability and elevates your web typography. Essential for #CSSTypography #WebDesign #UIUX",
+    "tip": "Subtle adjustments to 'letter-spacing' (tracking) can dramatically improve the legibility and aesthetic balance of both headlines and body text. Generally, decrease spacing slightly for larger, display fonts and increase it for smaller, all-caps text to enhance user experience and visual comfort. Always test across different font sizes, weights, and devices to find the perfect harmony.",
+    "css_snippet": "h1 {\n    letter-spacing: -0.03em; /* Tighter for large headlines */\n}\np {\n    letter-spacing: 0.01em; /* Slightly looser for body text */\n}\n.all-caps-label {\n    text-transform: uppercase;\n    letter-spacing: 0.08em; /* Looser for all-caps for readability */\n    font-weight: 600;\n}",
+    "date": "September 10, 2026"
 }

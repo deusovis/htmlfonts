@@ -1,5 +1,13 @@
 [
     {
+        "title": "Fine-Tune UI Text: Master CSS 'letter-spacing' for Optimal Readability & Design",
+        "slug": "fine-tune-ui-text-master-css-letter-spacing-for-optimal-readability-design",
+        "tweet": "Boost your UI's visual harmony! Learn how CSS 'letter-spacing' refines text readability and elevates your web typography. Essential for #CSSTypography #WebDesign #UIUX",
+        "tip": "Subtle adjustments to 'letter-spacing' (tracking) can dramatically improve the legibility and aesthetic balance of both headlines and body text. Generally, decrease spacing slightly for larger, display fonts and increase it for smaller, all-caps text to enhance user experience and visual comfort. Always test across different font sizes, weights, and devices to find the perfect harmony.",
+        "css_snippet": "h1 {\n    letter-spacing: -0.03em; /* Tighter for large headlines */\n}\np {\n    letter-spacing: 0.01em; /* Slightly looser for body text */\n}\n.all-caps-label {\n    text-transform: uppercase;\n    letter-spacing: 0.08em; /* Looser for all-caps for readability */\n    font-weight: 600;\n}",
+        "date": "September 10, 2026"
+    },
+    {
         "title": "Fluid & Responsive Type: Master CSS clamp() for Dynamic Font Sizing in UI",
         "slug": "fluid-responsive-type-master-css-clamp-for-dynamic-font-sizing-in-ui",
         "tweet": "Achieve truly fluid and responsive typography with CSS clamp()! Say goodbye to tedious media queries for font sizes. Learn how to dynamically scale your web fonts for superior UI & UX. #CSSTypography #UIDesign #WebFonts #ResponsiveDesign",
