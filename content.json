@@ -1,8 +1,8 @@
 {
-    "title": "Fine-Tune UI Text: Master CSS 'letter-spacing' for Optimal Readability & Design",
-    "slug": "fine-tune-ui-text-master-css-letter-spacing-for-optimal-readability-design",
-    "tweet": "Boost your UI's visual harmony! Learn how CSS 'letter-spacing' refines text readability and elevates your web typography. Essential for #CSSTypography #WebDesign #UIUX",
-    "tip": "Subtle adjustments to 'letter-spacing' (tracking) can dramatically improve the legibility and aesthetic balance of both headlines and body text. Generally, decrease spacing slightly for larger, display fonts and increase it for smaller, all-caps text to enhance user experience and visual comfort. Always test across different font sizes, weights, and devices to find the perfect harmony.",
-    "css_snippet": "h1 {\n    letter-spacing: -0.03em; /* Tighter for large headlines */\n}\np {\n    letter-spacing: 0.01em; /* Slightly looser for body text */\n}\n.all-caps-label {\n    text-transform: uppercase;\n    letter-spacing: 0.08em; /* Looser for all-caps for readability */\n    font-weight: 600;\n}",
-    "date": "September 10, 2026"
+    "title": "Elevate UI Headings: Master 'text-wrap: balance' for Perfect Line Breaks",
+    "slug": "elevate-ui-headings-master-text-wrap-balance-for-perfect-line-breaks",
+    "tweet": "Boost your UI design with 'text-wrap: balance'! \u2728 Say goodbye to awkward heading line breaks and hello to perfectly balanced text, improving readability & UX. #CSSTypography #UIDesign #WebFonts #UserExperience",
+    "tip": "Achieve visually harmonious and readable headings by leveraging the CSS 'text-wrap: balance' property. This experimental yet powerful feature intelligently distributes words across lines to minimize visual imbalance, making your headlines easier to scan and more aesthetically pleasing. It's particularly effective for short blocks of text like titles and captions, significantly enhancing the overall user experience and polish of your UI.",
+    "css_snippet": "h1, h2, h3, .balanced-text { text-wrap: balance; }",
+    "date": "September 11, 2026"
 }
