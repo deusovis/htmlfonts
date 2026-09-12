@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Readability: Master CSS 'hyphens' for Flawless Text Flow",
+        "slug": "elevate-ui-readability-master-css-hyphens-for-flawless-text-flow",
+        "tweet": "Improve UI readability and text flow with CSS 'hyphens'. Say goodbye to awkward gaps and hello to elegant text blocks, especially in narrow columns. #CSSTypography #UIDesign #WebFonts #UX",
+        "tip": "Employ CSS 'hyphens: auto' on your paragraph elements to allow browsers to automatically hyphenate words, significantly improving text justification and reducing large, unsightly gaps in your UI. Pair with 'text-align: justify' for newspaper-like elegance, ensuring a smoother reading experience in compact layouts.",
+        "css_snippet": "p {\n  hyphens: auto;\n  text-align: justify;\n  -webkit-hyphens: auto; /* For Safari */\n  -ms-hyphens: auto;     /* For IE/Edge */\n  overflow-wrap: break-word; /* Ensures long words break if hyphens aren't enough */\n}\n\n/* Ensure language is declared for optimal hyphenation accuracy */\nhtml {\n  lang: \"en\"; /* Adjust to your content's language */\n}",
+        "date": "September 12, 2026"
+    },
+    {
         "title": "Elevate UI Headings: Master 'text-wrap: balance' for Perfect Line Breaks",
         "slug": "elevate-ui-headings-master-text-wrap-balance-for-perfect-line-breaks",
         "tweet": "Boost your UI design with 'text-wrap: balance'! \u2728 Say goodbye to awkward heading line breaks and hello to perfectly balanced text, improving readability & UX. #CSSTypography #UIDesign #WebFonts #UserExperience",
