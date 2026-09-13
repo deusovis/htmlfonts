@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Readability: Master CSS 'hyphens' for Flawless Text Flow",
-    "slug": "elevate-ui-readability-master-css-hyphens-for-flawless-text-flow",
-    "tweet": "Improve UI readability and text flow with CSS 'hyphens'. Say goodbye to awkward gaps and hello to elegant text blocks, especially in narrow columns. #CSSTypography #UIDesign #WebFonts #UX",
-    "tip": "Employ CSS 'hyphens: auto' on your paragraph elements to allow browsers to automatically hyphenate words, significantly improving text justification and reducing large, unsightly gaps in your UI. Pair with 'text-align: justify' for newspaper-like elegance, ensuring a smoother reading experience in compact layouts.",
-    "css_snippet": "p {\n  hyphens: auto;\n  text-align: justify;\n  -webkit-hyphens: auto; /* For Safari */\n  -ms-hyphens: auto;     /* For IE/Edge */\n  overflow-wrap: break-word; /* Ensures long words break if hyphens aren't enough */\n}\n\n/* Ensure language is declared for optimal hyphenation accuracy */\nhtml {\n  lang: \"en\"; /* Adjust to your content's language */\n}",
-    "date": "September 12, 2026"
+    "title": "Master CSS 'white-space' for Pixel-Perfect Text Layouts in UI Design",
+    "slug": "master-css-white-space-for-pixel-perfect-text-layouts-in-ui-design",
+    "tweet": "Unlock pixel-perfect text layouts! Learn to master CSS 'white-space' for better UI design, improved readability, and a superior user experience. #CSSTypography #UIDesign #WebFonts #UX",
+    "tip": "The 'white-space' CSS property is a powerful tool for controlling how whitespace and line breaks are handled within an element, crucial for preventing unwanted wrapping or preserving formatted text. Use 'white-space: nowrap;' for single-line text in navigation or buttons to maintain layout integrity, or 'white-space: pre-wrap;' for user-generated content where line breaks and spaces must be preserved without overflowing containers. This fine-grained control significantly enhances UI aesthetics and readability, making text behave exactly as intended for a polished user experience.",
+    "css_snippet": ".single-line-text {\n  white-space: nowrap; /* Prevents text from wrapping to the next line */\n  overflow: hidden; /* Hides any text that overflows the container */\n  text-overflow: ellipsis; /* Displays an ellipsis (...) to indicate clipped text */\n}\n\n.pre-formatted-content {\n  white-space: pre-wrap; /* Preserves whitespace and line breaks, but allows wrapping */\n  font-family: monospace; /* Often used with pre-wrap for code blocks or pre-formatted text */\n}\n\n.standard-paragraph {\n  white-space: normal; /* Default behavior: collapses multiple spaces and wraps text as needed */\n}",
+    "date": "September 13, 2026"
 }
