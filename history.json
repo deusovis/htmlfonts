@@ -1,5 +1,13 @@
 [
     {
+        "title": "Crafting Robust Font Stacks: Master CSS 'font-family' for Consistent UI & UX",
+        "slug": "crafting-robust-font-stacks-master-css-font-family-for-consistent-ui-ux",
+        "tweet": "Ensure consistent web typography across devices! Learn to master CSS 'font-family' and strategic font stacks for reliable UI design & a seamless user experience, even with web fonts. #CSSTypography #WebFonts #UIDesign #UserExperience",
+        "tip": "Always define a robust font stack in CSS, starting with your primary web font, followed by generic family fallbacks like 'serif', 'sans-serif', or 'monospace'. This guarantees your UI remains readable and aesthetically pleasing, significantly enhancing the user experience even if web fonts fail to load.",
+        "css_snippet": "body {\n  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;\n}",
+        "date": "September 14, 2026"
+    },
+    {
         "title": "Master CSS 'white-space' for Pixel-Perfect Text Layouts in UI Design",
         "slug": "master-css-white-space-for-pixel-perfect-text-layouts-in-ui-design",
         "tweet": "Unlock pixel-perfect text layouts! Learn to master CSS 'white-space' for better UI design, improved readability, and a superior user experience. #CSSTypography #UIDesign #WebFonts #UX",

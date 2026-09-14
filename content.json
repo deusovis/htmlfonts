@@ -1,8 +1,8 @@
 {
-    "title": "Master CSS 'white-space' for Pixel-Perfect Text Layouts in UI Design",
-    "slug": "master-css-white-space-for-pixel-perfect-text-layouts-in-ui-design",
-    "tweet": "Unlock pixel-perfect text layouts! Learn to master CSS 'white-space' for better UI design, improved readability, and a superior user experience. #CSSTypography #UIDesign #WebFonts #UX",
-    "tip": "The 'white-space' CSS property is a powerful tool for controlling how whitespace and line breaks are handled within an element, crucial for preventing unwanted wrapping or preserving formatted text. Use 'white-space: nowrap;' for single-line text in navigation or buttons to maintain layout integrity, or 'white-space: pre-wrap;' for user-generated content where line breaks and spaces must be preserved without overflowing containers. This fine-grained control significantly enhances UI aesthetics and readability, making text behave exactly as intended for a polished user experience.",
-    "css_snippet": ".single-line-text {\n  white-space: nowrap; /* Prevents text from wrapping to the next line */\n  overflow: hidden; /* Hides any text that overflows the container */\n  text-overflow: ellipsis; /* Displays an ellipsis (...) to indicate clipped text */\n}\n\n.pre-formatted-content {\n  white-space: pre-wrap; /* Preserves whitespace and line breaks, but allows wrapping */\n  font-family: monospace; /* Often used with pre-wrap for code blocks or pre-formatted text */\n}\n\n.standard-paragraph {\n  white-space: normal; /* Default behavior: collapses multiple spaces and wraps text as needed */\n}",
-    "date": "September 13, 2026"
+    "title": "Crafting Robust Font Stacks: Master CSS 'font-family' for Consistent UI & UX",
+    "slug": "crafting-robust-font-stacks-master-css-font-family-for-consistent-ui-ux",
+    "tweet": "Ensure consistent web typography across devices! Learn to master CSS 'font-family' and strategic font stacks for reliable UI design & a seamless user experience, even with web fonts. #CSSTypography #WebFonts #UIDesign #UserExperience",
+    "tip": "Always define a robust font stack in CSS, starting with your primary web font, followed by generic family fallbacks like 'serif', 'sans-serif', or 'monospace'. This guarantees your UI remains readable and aesthetically pleasing, significantly enhancing the user experience even if web fonts fail to load.",
+    "css_snippet": "body {\n  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;\n}",
+    "date": "September 14, 2026"
 }
