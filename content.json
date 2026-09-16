@@ -1,8 +1,8 @@
 {
-    "title": "Beyond Basic Underlines: Master CSS 'text-decoration' for Superior UI & Web Font UX",
-    "slug": "beyond-basic-underlines-master-css-text-decoration-for-superior-ui-web-font-ux",
-    "tweet": "Elevate your UI design beyond basic underlines! Master CSS 'text-decoration' properties like thickness & offset for enhanced readability, accessibility, and a superior user experience with your web fonts. #CSSTypography #UIDesign #WebFonts #UXDesign",
-    "tip": "Leverage 'text-decoration-thickness' and 'text-underline-offset' to prevent underlines from clashing with descenders, significantly improving readability and visual harmony in your UI design. This subtle refinement enhances the overall user experience.",
-    "css_snippet": "a {\n  color: #3366cc;\n  text-decoration: underline;\n  text-decoration-color: #6699ff; /* Custom color for better brand integration */\n  text-decoration-thickness: 0.08em; /* Subtle thickness for elegance */\n  text-underline-offset: 0.18em; /* Lifts the underline above descenders */\n  transition: text-decoration-color 0.2s ease;\n}\na:hover {\n  text-decoration-color: #3366cc;\n}",
-    "date": "September 15, 2026"
+    "title": "Master CSS 'text-overflow' for Elegant UI Truncation & Improved UX",
+    "slug": "master-css-text-overflow-for-elegant-ui-truncation-improved-ux",
+    "tweet": "Don't let long text break your UI! Master CSS 'text-overflow' to gracefully truncate content and maintain a clean design. Elevate your #CSS typography & #UIDesign for better #WebFonts #UX.",
+    "tip": "For seamless text truncation, always combine 'text-overflow: ellipsis;' with 'white-space: nowrap;' and 'overflow: hidden;' on your block-level or inline-block element. This ensures text is cut off cleanly with an ellipsis without wrapping, crucial for constrained UI components like navigation items or data tables.",
+    "css_snippet": ".truncate-single-line {\n  max-width: 280px; /* Or use a percentage, e.g., 100% */\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis; /* Displays '...' for truncated text */\n  /* text-overflow: clip; /* Alternative: simply clips the text */\n  display: inline-block; /* Or block, depending on context */\n  vertical-align: top;\n}",
+    "date": "September 16, 2026"
 }
