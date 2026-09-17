@@ -1,8 +1,8 @@
 {
-    "title": "Master CSS 'text-overflow' for Elegant UI Truncation & Improved UX",
-    "slug": "master-css-text-overflow-for-elegant-ui-truncation-improved-ux",
-    "tweet": "Don't let long text break your UI! Master CSS 'text-overflow' to gracefully truncate content and maintain a clean design. Elevate your #CSS typography & #UIDesign for better #WebFonts #UX.",
-    "tip": "For seamless text truncation, always combine 'text-overflow: ellipsis;' with 'white-space: nowrap;' and 'overflow: hidden;' on your block-level or inline-block element. This ensures text is cut off cleanly with an ellipsis without wrapping, crucial for constrained UI components like navigation items or data tables.",
-    "css_snippet": ".truncate-single-line {\n  max-width: 280px; /* Or use a percentage, e.g., 100% */\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis; /* Displays '...' for truncated text */\n  /* text-overflow: clip; /* Alternative: simply clips the text */\n  display: inline-block; /* Or block, depending on context */\n  vertical-align: top;\n}",
-    "date": "September 16, 2026"
+    "title": "Unlock Typographic Brilliance: Master CSS 'font-feature-settings' for Elite UI & Web Font UX",
+    "slug": "unlock-typographic-brilliance-master-css-font-feature-settings-for-elite-ui-web-font-ux",
+    "tweet": "Elevate your web typography! Discover how CSS 'font-feature-settings' unlocks hidden OpenType features like ligatures & small caps for stunning UI & enhanced UX. #CSSTypography #WebDesign #UIUX",
+    "tip": "Leverage CSS 'font-feature-settings' to enable sophisticated OpenType features like standard ligatures ('liga'), discretionary ligatures ('dlig'), kerning ('kern'), or specific numeral styles ('onum' for oldstyle numbers) to significantly improve text aesthetics and readability. This is particularly effective with high-quality web fonts that include these features.",
+    "css_snippet": ".enhanced-text {\n  font-feature-settings: \"liga\" 1, \"kern\" 1, \"onum\" 1;\n  /* Shorthand for common features (supported by many browsers): */\n  /* font-variant-ligatures: common-ligatures; */\n  /* font-variant-numeric: oldstyle-nums; */\n}\n\n/* Example for specific feature application */\n.drop-cap {\n  font-feature-settings: \"dlig\" 1; /* Discretionary ligatures */\n  /* This often requires a font that specifically supports it */\n}\n\n/* For browsers that support the more semantic font-variant properties */\nh1 {\n  font-variant-ligatures: common-ligatures contextual;\n  font-variant-numeric: oldstyle-nums slashed-zero;\n  font-variant-caps: small-caps;\n}",
+    "date": "September 17, 2026"
 }
