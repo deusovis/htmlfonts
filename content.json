@@ -1,8 +1,8 @@
 {
-    "title": "Unlock Typographic Brilliance: Master CSS 'font-feature-settings' for Elite UI & Web Font UX",
-    "slug": "unlock-typographic-brilliance-master-css-font-feature-settings-for-elite-ui-web-font-ux",
-    "tweet": "Elevate your web typography! Discover how CSS 'font-feature-settings' unlocks hidden OpenType features like ligatures & small caps for stunning UI & enhanced UX. #CSSTypography #WebDesign #UIUX",
-    "tip": "Leverage CSS 'font-feature-settings' to enable sophisticated OpenType features like standard ligatures ('liga'), discretionary ligatures ('dlig'), kerning ('kern'), or specific numeral styles ('onum' for oldstyle numbers) to significantly improve text aesthetics and readability. This is particularly effective with high-quality web fonts that include these features.",
-    "css_snippet": ".enhanced-text {\n  font-feature-settings: \"liga\" 1, \"kern\" 1, \"onum\" 1;\n  /* Shorthand for common features (supported by many browsers): */\n  /* font-variant-ligatures: common-ligatures; */\n  /* font-variant-numeric: oldstyle-nums; */\n}\n\n/* Example for specific feature application */\n.drop-cap {\n  font-feature-settings: \"dlig\" 1; /* Discretionary ligatures */\n  /* This often requires a font that specifically supports it */\n}\n\n/* For browsers that support the more semantic font-variant properties */\nh1 {\n  font-variant-ligatures: common-ligatures contextual;\n  font-variant-numeric: oldstyle-nums slashed-zero;\n  font-variant-caps: small-caps;\n}",
-    "date": "September 17, 2026"
+    "title": "Master CSS 'line-height' for Optimal Readability & UI Harmony",
+    "slug": "master-css-line-height-for-optimal-readability-ui-harmony",
+    "tweet": "Unlock superior UI readability! Dive into CSS 'line-height' and see how perfectly tuned vertical spacing transforms user experience with web fonts. A critical skill for every web designer. #CSSTypography #UIDesign #WebFonts",
+    "tip": "For optimal body text readability, aim for a unitless 'line-height' value between 1.4 and 1.6 times the 'font-size'. This provides sufficient vertical breathing room, especially with longer line lengths, making text easier to follow and improving overall UI harmony.",
+    "css_snippet": "body {\n    font-family: \"Inter\", sans-serif;\n    font-size: 18px;\n    line-height: 1.5; /* Unitless value is crucial for responsiveness */\n    color: #333;\n}\n\nh1 {\n    font-family: \"Playfair Display\", serif;\n    font-size: 48px;\n    line-height: 1.15; /* Tighter for headings for visual impact */\n    color: #1a1a1a;\n}\n\n.small-print {\n    font-size: 14px;\n    line-height: 1.3; /* Can be slightly tighter for smaller text */\n    color: #666;\n}",
+    "date": "September 18, 2026"
 }
