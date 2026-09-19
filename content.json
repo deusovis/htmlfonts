@@ -1,8 +1,8 @@
 {
-    "title": "Master CSS 'line-height' for Optimal Readability & UI Harmony",
-    "slug": "master-css-line-height-for-optimal-readability-ui-harmony",
-    "tweet": "Unlock superior UI readability! Dive into CSS 'line-height' and see how perfectly tuned vertical spacing transforms user experience with web fonts. A critical skill for every web designer. #CSSTypography #UIDesign #WebFonts",
-    "tip": "For optimal body text readability, aim for a unitless 'line-height' value between 1.4 and 1.6 times the 'font-size'. This provides sufficient vertical breathing room, especially with longer line lengths, making text easier to follow and improving overall UI harmony.",
-    "css_snippet": "body {\n    font-family: \"Inter\", sans-serif;\n    font-size: 18px;\n    line-height: 1.5; /* Unitless value is crucial for responsiveness */\n    color: #333;\n}\n\nh1 {\n    font-family: \"Playfair Display\", serif;\n    font-size: 48px;\n    line-height: 1.15; /* Tighter for headings for visual impact */\n    color: #1a1a1a;\n}\n\n.small-print {\n    font-size: 14px;\n    line-height: 1.3; /* Can be slightly tighter for smaller text */\n    color: #666;\n}",
-    "date": "September 18, 2026"
+    "title": "Elevate UI Numbers: Master CSS 'font-variant-numeric' for Precision Web Font Presentation & UX",
+    "slug": "elevate-ui-numbers-master-css-font-variant-numeric-for-precision-web-font-presentation-ux",
+    "tweet": "Numbers matter! \ud83d\udd22 Elevate your #UI design & #webfonts UX by mastering CSS 'font-variant-numeric'. Get precise control over figures (lining, oldstyle, fractions) for stunning #CSSTypography. Learn how to make your numbers sing! #WebDev #Typography",
+    "tip": "Leverage 'font-variant-numeric' to specify how numbers, fractions, and ordinal markers are rendered, crucial for tabular data, price displays, or any content where numeric consistency or specific stylistic forms (e.g., old-style vs. lining figures) are vital. It dramatically enhances readability and professional polish for specific UI elements, ensuring your web fonts truly shine, especially with high-quality typefaces.",
+    "css_snippet": "/* Apply 'lining-nums' for consistent, modern headings/prices */\nh1, .product-price {\n  font-variant-numeric: lining-nums;\n  /* Ensures all numbers occupy a consistent height, aligning nicely */\n}\n\n/* Use 'tabular-nums' for data tables or financial displays */\n.data-table td {\n  font-variant-numeric: tabular-nums;\n  /* Guarantees numbers have uniform width, preventing \"jiggle\" in columns */\n}\n\n/* Or 'oldstyle-nums' for a classic, flowing look in body text */\np.main-content {\n  font-variant-numeric: oldstyle-nums;\n  /* Numbers align with x-height, blending better with lowercase letters */\n}",
+    "date": "September 19, 2026"
 }
