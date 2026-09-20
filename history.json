@@ -1,5 +1,13 @@
 [
     {
+        "title": "Master CSS 'font-display' for Optimal Web Font Loading & Seamless UI/UX",
+        "slug": "master-css-font-display-for-optimal-web-font-loading-seamless-ui-ux",
+        "tweet": "Elevate web font UX! Discover how CSS 'font-display' optimizes loading, prevents FOIT/FOUT, & ensures a seamless UI. A must-read for every web dev. #CSSTypography #WebFonts #UIDesign",
+        "tip": "To significantly improve perceived performance and prevent disruptive flashes of unstyled text (FOUT) or invisible text (FOIT), always specify a 'font-display' value for your '@font-face' declarations. 'font-display: swap;' is often a great default, showing system fonts immediately then swapping to the web font once loaded.",
+        "css_snippet": "@font-face {\n  font-family: 'MyCustomFont';\n  src: url('my-custom-font.woff2') format('woff2');\n  font-weight: 400;\n  font-display: swap; /* Critical for UX! */\n}\n\nbody {\n  font-family: 'MyCustomFont', sans-serif;\n}",
+        "date": "September 20, 2026"
+    },
+    {
         "title": "Elevate UI Numbers: Master CSS 'font-variant-numeric' for Precision Web Font Presentation & UX",
         "slug": "elevate-ui-numbers-master-css-font-variant-numeric-for-precision-web-font-presentation-ux",
         "tweet": "Numbers matter! \ud83d\udd22 Elevate your #UI design & #webfonts UX by mastering CSS 'font-variant-numeric'. Get precise control over figures (lining, oldstyle, fractions) for stunning #CSSTypography. Learn how to make your numbers sing! #WebDev #Typography",

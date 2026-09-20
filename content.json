@@ -1,8 +1,8 @@
 {
-    "title": "Elevate UI Numbers: Master CSS 'font-variant-numeric' for Precision Web Font Presentation & UX",
-    "slug": "elevate-ui-numbers-master-css-font-variant-numeric-for-precision-web-font-presentation-ux",
-    "tweet": "Numbers matter! \ud83d\udd22 Elevate your #UI design & #webfonts UX by mastering CSS 'font-variant-numeric'. Get precise control over figures (lining, oldstyle, fractions) for stunning #CSSTypography. Learn how to make your numbers sing! #WebDev #Typography",
-    "tip": "Leverage 'font-variant-numeric' to specify how numbers, fractions, and ordinal markers are rendered, crucial for tabular data, price displays, or any content where numeric consistency or specific stylistic forms (e.g., old-style vs. lining figures) are vital. It dramatically enhances readability and professional polish for specific UI elements, ensuring your web fonts truly shine, especially with high-quality typefaces.",
-    "css_snippet": "/* Apply 'lining-nums' for consistent, modern headings/prices */\nh1, .product-price {\n  font-variant-numeric: lining-nums;\n  /* Ensures all numbers occupy a consistent height, aligning nicely */\n}\n\n/* Use 'tabular-nums' for data tables or financial displays */\n.data-table td {\n  font-variant-numeric: tabular-nums;\n  /* Guarantees numbers have uniform width, preventing \"jiggle\" in columns */\n}\n\n/* Or 'oldstyle-nums' for a classic, flowing look in body text */\np.main-content {\n  font-variant-numeric: oldstyle-nums;\n  /* Numbers align with x-height, blending better with lowercase letters */\n}",
-    "date": "September 19, 2026"
+    "title": "Master CSS 'font-display' for Optimal Web Font Loading & Seamless UI/UX",
+    "slug": "master-css-font-display-for-optimal-web-font-loading-seamless-ui-ux",
+    "tweet": "Elevate web font UX! Discover how CSS 'font-display' optimizes loading, prevents FOIT/FOUT, & ensures a seamless UI. A must-read for every web dev. #CSSTypography #WebFonts #UIDesign",
+    "tip": "To significantly improve perceived performance and prevent disruptive flashes of unstyled text (FOUT) or invisible text (FOIT), always specify a 'font-display' value for your '@font-face' declarations. 'font-display: swap;' is often a great default, showing system fonts immediately then swapping to the web font once loaded.",
+    "css_snippet": "@font-face {\n  font-family: 'MyCustomFont';\n  src: url('my-custom-font.woff2') format('woff2');\n  font-weight: 400;\n  font-display: swap; /* Critical for UX! */\n}\n\nbody {\n  font-family: 'MyCustomFont', sans-serif;\n}",
+    "date": "September 20, 2026"
 }
