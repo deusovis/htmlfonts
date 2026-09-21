@@ -1,5 +1,13 @@
 [
     {
+        "title": "Fine-Tune Readability: Master CSS 'letter-spacing' & 'word-spacing' for Optimal UI & Web Font UX",
+        "slug": "fine-tune-readability-master-css-letter-spacing-word-spacing-for-optimal-ui-web-font-ux",
+        "tweet": "Boost your UI's readability! Learn how 'letter-spacing' & 'word-spacing' in CSS can transform your web fonts, creating perfectly balanced text for superior user experience. #CSSTypography #UIDesign #WebFonts #UX",
+        "tip": "Achieving optimal readability and visual harmony in your UI often goes beyond just font size and line height. Subtle adjustments to 'letter-spacing' (kerning) and 'word-spacing' can dramatically improve text legibility, especially for display fonts, smaller text, or all-caps sections. Experiment carefully, as too much or too little can hinder rather than help. A common strategy is to slightly reduce letter-spacing for larger headings and slightly increase it for smaller body text, but always test across various devices and font styles.",
+        "css_snippet": "/* Optimize heading readability */\nh1 {\n  letter-spacing: -0.02em; /* Slightly tighter for large headings */\n  word-spacing: 0.05em;   /* A bit more space between words for balance */\n}\n\n/* Enhance small body text legibility */\np.small-text {\n  font-size: 0.8em;\n  letter-spacing: 0.01em; /* Slightly wider for small text */\n  word-spacing: 0.02em;\n}\n\n/* Reset for default elements if needed */\nbody {\n  letter-spacing: normal;\n  word-spacing: normal;\n}",
+        "date": "September 21, 2026"
+    },
+    {
         "title": "Master CSS 'font-display' for Optimal Web Font Loading & Seamless UI/UX",
         "slug": "master-css-font-display-for-optimal-web-font-loading-seamless-ui-ux",
         "tweet": "Elevate web font UX! Discover how CSS 'font-display' optimizes loading, prevents FOIT/FOUT, & ensures a seamless UI. A must-read for every web dev. #CSSTypography #WebFonts #UIDesign",
