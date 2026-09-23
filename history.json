@@ -1,5 +1,13 @@
 [
     {
+        "title": "Unlock Expressive Typography: Master CSS 'font-variation-settings' for Dynamic Web Font UI & UX",
+        "slug": "unlock-expressive-typography-master-css-font-variation-settings-for-dynamic-web-font-ui-ux",
+        "tweet": "Go beyond basic weights! Master CSS 'font-variation-settings' to dynamically control #VariableFonts axes like weight, width, & optical size. Elevate your #UITypography for superior #UX with fewer requests. #CSS #WebFonts",
+        "tip": "Variable fonts offer unparalleled typographic control, but many developers only use their preset weights. Dive deeper with the 'font-variation-settings' CSS property to precisely adjust individual font axes like weight ('wght'), width ('wdth'), optical size ('opsz'), or even custom axes specific to a font. This allows for nuanced design adaptations, like subtle adjustments for different screen sizes or dark modes, without loading multiple font files. It dramatically improves UI flexibility and performance, leading to a richer user experience with fewer network requests.",
+        "css_snippet": "h1 {\n  font-family: 'Inter var', sans-serif; /* Assumes a variable font is loaded */\n  font-variation-settings: \"wght\" 700, \"wdth\" 100;\n  transition: font-variation-settings 0.3s ease-in-out;\n}\n\nh1:hover {\n  font-variation-settings: \"wght\" 900, \"wdth\" 120;\n}\n\n/* For custom axes, check font documentation, e.g., 'GRAD' for grade */\np.subtle-text {\n  font-family: 'MyCustomVarFont', sans-serif;\n  font-variation-settings: \"wght\" 400, \"GRAD\" 50; /* Example with custom axis 'GRAD' */\n}",
+        "date": "September 23, 2026"
+    },
+    {
         "title": "Master Fluid Responsive Typography: Harness CSS clamp() for Perfect UI Font Scaling & UX",
         "slug": "master-fluid-responsive-typography-harness-css-clamp-for-perfect-ui-font-scaling-ux",
         "tweet": "Level up your UI typography! Discover how CSS clamp() delivers perfectly fluid, responsive font sizes, enhancing user experience across all devices. #CSSTypography #ResponsiveDesign #UIDesign #WebFonts #UX",
