@@ -1,8 +1,8 @@
 {
-    "title": "Unlock Expressive Typography: Master CSS 'font-variation-settings' for Dynamic Web Font UI & UX",
-    "slug": "unlock-expressive-typography-master-css-font-variation-settings-for-dynamic-web-font-ui-ux",
-    "tweet": "Go beyond basic weights! Master CSS 'font-variation-settings' to dynamically control #VariableFonts axes like weight, width, & optical size. Elevate your #UITypography for superior #UX with fewer requests. #CSS #WebFonts",
-    "tip": "Variable fonts offer unparalleled typographic control, but many developers only use their preset weights. Dive deeper with the 'font-variation-settings' CSS property to precisely adjust individual font axes like weight ('wght'), width ('wdth'), optical size ('opsz'), or even custom axes specific to a font. This allows for nuanced design adaptations, like subtle adjustments for different screen sizes or dark modes, without loading multiple font files. It dramatically improves UI flexibility and performance, leading to a richer user experience with fewer network requests.",
-    "css_snippet": "h1 {\n  font-family: 'Inter var', sans-serif; /* Assumes a variable font is loaded */\n  font-variation-settings: \"wght\" 700, \"wdth\" 100;\n  transition: font-variation-settings 0.3s ease-in-out;\n}\n\nh1:hover {\n  font-variation-settings: \"wght\" 900, \"wdth\" 120;\n}\n\n/* For custom axes, check font documentation, e.g., 'GRAD' for grade */\np.subtle-text {\n  font-family: 'MyCustomVarFont', sans-serif;\n  font-variation-settings: \"wght\" 400, \"GRAD\" 50; /* Example with custom axis 'GRAD' */\n}",
-    "date": "September 23, 2026"
+    "title": "Master CSS 'text-rendering' for Sharper UI Typography & Optimized Web Font Aesthetics",
+    "slug": "master-css-text-rendering-for-sharper-ui-typography-optimized-web-font-aesthetics",
+    "tweet": "Elevate your web typography! Discover how CSS 'text-rendering' refines font appearance, boosts UI readability, and polishes web font aesthetics. A must-know for UI/UX pros! #CSSTypography #WebFonts #UIDesign #UX",
+    "tip": "For optimal legibility on modern screens, especially with custom web fonts, consider applying 'text-rendering: optimizeLegibility;'. Be aware of potential performance implications on very large text blocks or older browsers, and test thoroughly. 'text-rendering: geometricPrecision;' can be highly effective for large headings and display text, yielding crisp, mathematically precise character outlines.",
+    "css_snippet": "body {\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased; /* For macOS/iOS */\n  -moz-osx-font-smoothing: grayscale; /* For macOS/iOS */\n}\n\nh1, h2 {\n  text-rendering: geometricPrecision;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}",
+    "date": "September 24, 2026"
 }

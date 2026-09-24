@@ -1,5 +1,13 @@
 [
     {
+        "title": "Master CSS 'text-rendering' for Sharper UI Typography & Optimized Web Font Aesthetics",
+        "slug": "master-css-text-rendering-for-sharper-ui-typography-optimized-web-font-aesthetics",
+        "tweet": "Elevate your web typography! Discover how CSS 'text-rendering' refines font appearance, boosts UI readability, and polishes web font aesthetics. A must-know for UI/UX pros! #CSSTypography #WebFonts #UIDesign #UX",
+        "tip": "For optimal legibility on modern screens, especially with custom web fonts, consider applying 'text-rendering: optimizeLegibility;'. Be aware of potential performance implications on very large text blocks or older browsers, and test thoroughly. 'text-rendering: geometricPrecision;' can be highly effective for large headings and display text, yielding crisp, mathematically precise character outlines.",
+        "css_snippet": "body {\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased; /* For macOS/iOS */\n  -moz-osx-font-smoothing: grayscale; /* For macOS/iOS */\n}\n\nh1, h2 {\n  text-rendering: geometricPrecision;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}",
+        "date": "September 24, 2026"
+    },
+    {
         "title": "Unlock Expressive Typography: Master CSS 'font-variation-settings' for Dynamic Web Font UI & UX",
         "slug": "unlock-expressive-typography-master-css-font-variation-settings-for-dynamic-web-font-ui-ux",
         "tweet": "Go beyond basic weights! Master CSS 'font-variation-settings' to dynamically control #VariableFonts axes like weight, width, & optical size. Elevate your #UITypography for superior #UX with fewer requests. #CSS #WebFonts",
