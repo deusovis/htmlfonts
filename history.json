@@ -1,5 +1,13 @@
 [
     {
+        "title": "Master CSS 'hyphens' for Enhanced Readability & Polished UI Text Layouts",
+        "slug": "master-css-hyphens-for-enhanced-readability-polished-ui-text-layouts",
+        "tweet": "Improve web text readability & UI aesthetics! Learn how CSS 'hyphens' automatically breaks words, reducing awkward gaps & creating a cleaner, more professional user experience. #CSSTypography #UIDesign #WebFonts #UX",
+        "tip": "When working with justified text or narrow columns, CSS 'hyphens: auto;' can dramatically improve visual balance and readability by allowing words to break gracefully. Ensure your <html/> element has a correct 'lang' attribute (e.g., <html lang=\"en\">) for the browser to apply the appropriate language-specific hyphenation dictionaries.",
+        "css_snippet": ".article-body {\n  text-align: justify;\n  -webkit-hyphens: auto; /* Safari compatibility */\n  -ms-hyphens: auto;     /* IE/Edge compatibility */\n  hyphens: auto;\n  hyphenate-limit-chars: 6 3 3; /* Optional: min word length, chars before/after hyphen */\n  hyphenate-limit-lines: 2;    /* Optional: max consecutive hyphenated lines */\n}",
+        "date": "September 25, 2026"
+    },
+    {
         "title": "Master CSS 'text-rendering' for Sharper UI Typography & Optimized Web Font Aesthetics",
         "slug": "master-css-text-rendering-for-sharper-ui-typography-optimized-web-font-aesthetics",
         "tweet": "Elevate your web typography! Discover how CSS 'text-rendering' refines font appearance, boosts UI readability, and polishes web font aesthetics. A must-know for UI/UX pros! #CSSTypography #WebFonts #UIDesign #UX",
