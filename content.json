@@ -1,8 +1,8 @@
 {
-    "title": "Achieve Visual Harmony: Master CSS 'text-wrap: balance' for Impeccable UI Typography & UX",
-    "slug": "achieve-visual-harmony-master-css-text-wrap-balance-for-impeccable-ui-typography-ux",
-    "tweet": "Eliminate awkward line breaks in headings! Master CSS 'text-wrap: balance' for perfectly balanced UI typography, boosting readability & UX. A simple CSS rule, huge visual impact! #CSSTypography #UIDesign #WebFonts #UX",
-    "tip": "Say goodbye to single-word orphans in your headings and short paragraphs. The powerful CSS property 'text-wrap: balance' intelligently re-distributes text across lines to create a more visually harmonious and aesthetically pleasing block. This significantly enhances your website's UI by making text easier to scan and read, directly improving user experience. It is particularly effective for titles, captions, and short blocks of introductory text where visual balance is paramount. Embrace this modern CSS feature to give your web typography a polished, professional finish.",
-    "css_snippet": "h1, h2, h3, .balanced-text {\n  text-wrap: balance;\n  /* For optimal results, ensure your text container has a defined width, e.g., max-width: 60ch; */\n}",
-    "date": "September 26, 2026"
+    "title": "Master Advanced CSS Underline Styles: Elevate UI Readability & Web Font Aesthetics",
+    "slug": "master-advanced-css-underline-styles-elevate-ui-readability-web-font-aesthetics",
+    "tweet": "Transform your UI with crisp, readable underlines! Discover how CSS 'text-underline-offset' and 'text-decoration-thickness' perfect your web typography and boost UX. #CSSTypography #UIDesign #WebFonts #UX",
+    "tip": "For optimal UI design and readability, avoid underlines that cut through descenders. Use 'text-underline-offset' to lift the underline slightly. Combine with 'text-decoration-thickness' for a subtle, elegant line weight that complements your web fonts, enhancing user experience without visual clutter.",
+    "css_snippet": "/* Refined Underline for Better UI Readability & Web Font Integration */\na {\n  text-decoration: underline;\n  text-underline-offset: 0.2em; /* Lifts the underline to avoid descenders */\n  text-decoration-thickness: 1px; /* Thins the underline for elegance */\n  text-decoration-color: #007bff; /* Custom color for brand consistency */\n  /* Consider text-decoration-skip-ink: none; if you want a continuous line */\n}\n\n/* Example with hover effect */\na:hover {\n  text-decoration-thickness: 2px; /* Slight thickening on hover */\n  text-decoration-color: #0056b3;\n}",
+    "date": "September 27, 2026"
 }
