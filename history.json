@@ -1,5 +1,13 @@
 [
     {
+        "title": "Refine Your Web Typography: Master CSS 'font-optical-sizing' for Optimal Readability & UI Elegance",
+        "slug": "refine-your-web-typography-master-css-font-optical-sizing-for-optimal-readability-ui-elegance",
+        "tweet": "Elevate your #UI design! Master CSS 'font-optical-sizing' to automatically adjust font shapes for perfect readability across sizes. A subtle yet powerful enhancement for #webfonts & #CSSTypography. Improve your #UserExperience today! #WebDev",
+        "tip": "Leverage CSS 'font-optical-sizing' to automatically enhance the visual appearance of your web fonts at different text sizes. Modern variable fonts can offer optical adjustments, making text more legible and aesthetically pleasing at both small body text sizes and large display headings, significantly improving the overall user experience.",
+        "css_snippet": "body {\n  font-family: \"Roboto Flex\", sans-serif; /* A variable font supporting optical sizing */\n  font-optical-sizing: auto;\n  text-rendering: optimizeLegibility; /* Good companion property */\n}\n\nh1 {\n  font-size: 4em;\n}\n\np {\n  font-size: 1em;\n}",
+        "date": "September 28, 2026"
+    },
+    {
         "title": "Master Advanced CSS Underline Styles: Elevate UI Readability & Web Font Aesthetics",
         "slug": "master-advanced-css-underline-styles-elevate-ui-readability-web-font-aesthetics",
         "tweet": "Transform your UI with crisp, readable underlines! Discover how CSS 'text-underline-offset' and 'text-decoration-thickness' perfect your web typography and boost UX. #CSSTypography #UIDesign #WebFonts #UX",
