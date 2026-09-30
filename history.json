@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Readability: Master CSS 'line-height' for Superior Web Font UX",
+        "slug": "elevate-ui-readability-master-css-line-height-for-superior-web-font-ux",
+        "tweet": "Boost your web typography! Optimal CSS 'line-height' drastically improves readability & UI comfort. Learn the golden rules for perfect spacing between lines. #CSSTypography #WebFonts #UIDesign #UX",
+        "tip": "The 'line-height' property is a silent hero of web typography, profoundly impacting readability and user experience. Insufficient line-height makes text dense and hard to follow, while excessive line-height can break visual coherence. For most body text, a value between 1.4 and 1.7 is a good starting point, often expressed as a unitless multiplier relative to the font-size. This ensures consistent spacing regardless of the element's font-size, improving accessibility and visual flow across different screen sizes and devices. Pay attention to how line-height interacts with paragraph spacing to create comfortable reading blocks.",
+        "css_snippet": "body {\n  font-family: 'Inter', sans-serif;\n  font-size: 1.125rem; /* 18px base font size */\n  line-height: 1.6; /* Optimal for readability */\n  color: #333;\n}\n\nh2 {\n  font-size: 2rem;\n  line-height: 1.2; /* Tighter for headings */\n  margin-bottom: 0.5em;\n}\n\np {\n  margin-bottom: 1em; /* Spacing between paragraphs */\n}",
+        "date": "September 30, 2026"
+    },
+    {
         "title": "Achieve Font Consistency: Master CSS 'font-size-adjust' for Harmonized Web Fonts & UI Readability",
         "slug": "achieve-font-consistency-master-css-font-size-adjust-for-harmonized-web-fonts-ui-readability",
         "tweet": "Ensure visual harmony across web fonts! \ud83d\udcab Master CSS 'font-size-adjust' to normalize x-heights, enhancing UI readability & user experience. #CSSTypography #WebFonts #UIDesign #UXTips",
