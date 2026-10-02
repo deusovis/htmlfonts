@@ -1,8 +1,8 @@
 {
-    "title": "Mastering CSS 'font-display' for Optimal Web Font Loading & Seamless UI Experience",
-    "slug": "mastering-css-font-display-for-optimal-web-font-loading-seamless-ui-experience",
-    "tweet": "Boost web font performance & UX! Learn how CSS 'font-display' controls font loading behavior, preventing disruptive flashes. Crucial for #CSSTypography #WebFonts #UIDesign #UX",
-    "tip": "Optimize your site's perceived performance and user experience by intelligently controlling web font loading behavior with the CSS 'font-display' descriptor. Instead of letting browsers decide how to handle font loading (which can lead to a 'Flash of Unstyled Text' (FOUT) or 'Flash of Invisible Text' (FOIT)), 'font-display' allows you to specify a strategy. For most content-heavy sites, 'font-display: swap' is highly recommended as it displays text immediately with a fallback font and swaps in the web font once it's loaded, prioritizing content readability. Other values like 'fallback', 'optional', and 'block' offer fine-tuned control for different UX priorities, helping mitigate layout shifts and improve perceived speed.",
-    "css_snippet": "@font-face {\n  font-family: 'YourCustomFont';\n  src: url('/fonts/YourCustomFont.woff2') format('woff2'),\n       url('/fonts/YourCustomFont.woff') format('woff');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Consider 'fallback', 'optional', or 'block' based on UX needs */\n}",
-    "date": "October 01, 2026"
+    "title": "Elevate UI Readability: Master CSS 'font-kerning' for Precise Web Font Typography",
+    "slug": "elevate-ui-readability-master-css-font-kerning-for-precise-web-font-typography",
+    "tweet": "Give your UI text a professional polish! Discover how CSS 'font-kerning' fine-tunes letter spacing for superior web font aesthetics & improved user experience. #CSSTypography #WebFonts #UIDesign #UserExperience",
+    "tip": "Utilize 'font-kerning: normal;' to automatically apply the sophisticated spacing adjustments defined within your web fonts' kerning tables. This significantly improves visual balance between letters, making text more pleasant to read and elevating the overall quality of your UI design.",
+    "css_snippet": "body {\n  /* Apply font kerning globally for enhanced default readability */\n  font-kerning: normal;\n}\n\nh1, .display-text {\n  /* Ensure optimal letter spacing for prominent headings and titles */\n  font-kerning: normal;\n  /* Optional: Micro-adjustments can further refine visual harmony */\n  letter-spacing: -0.02em;\n}\n\n/* In rare cases where kerning is undesired (e.g., specific artistic effects) */\n.no-kerning-example {\n  font-kerning: none;\n}",
+    "date": "October 02, 2026"
 }

@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Readability: Master CSS 'font-kerning' for Precise Web Font Typography",
+        "slug": "elevate-ui-readability-master-css-font-kerning-for-precise-web-font-typography",
+        "tweet": "Give your UI text a professional polish! Discover how CSS 'font-kerning' fine-tunes letter spacing for superior web font aesthetics & improved user experience. #CSSTypography #WebFonts #UIDesign #UserExperience",
+        "tip": "Utilize 'font-kerning: normal;' to automatically apply the sophisticated spacing adjustments defined within your web fonts' kerning tables. This significantly improves visual balance between letters, making text more pleasant to read and elevating the overall quality of your UI design.",
+        "css_snippet": "body {\n  /* Apply font kerning globally for enhanced default readability */\n  font-kerning: normal;\n}\n\nh1, .display-text {\n  /* Ensure optimal letter spacing for prominent headings and titles */\n  font-kerning: normal;\n  /* Optional: Micro-adjustments can further refine visual harmony */\n  letter-spacing: -0.02em;\n}\n\n/* In rare cases where kerning is undesired (e.g., specific artistic effects) */\n.no-kerning-example {\n  font-kerning: none;\n}",
+        "date": "October 02, 2026"
+    },
+    {
         "title": "Mastering CSS 'font-display' for Optimal Web Font Loading & Seamless UI Experience",
         "slug": "mastering-css-font-display-for-optimal-web-font-loading-seamless-ui-experience",
         "tweet": "Boost web font performance & UX! Learn how CSS 'font-display' controls font loading behavior, preventing disruptive flashes. Crucial for #CSSTypography #WebFonts #UIDesign #UX",
