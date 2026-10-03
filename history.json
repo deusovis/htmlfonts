@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Data Readability: Master CSS 'font-variant-numeric' for Precision Web Font Typography",
+        "slug": "elevate-ui-data-readability-master-css-font-variant-numeric-for-precision-web-font-typography",
+        "tweet": "Boost your UI's data readability! Discover how CSS 'font-variant-numeric' refines web font typography for superior user experience with tabular figures and elegant fractions. #CSSTypography #WebFonts #UIDesign #UserExperience",
+        "tip": "Leverage the 'font-variant-numeric' CSS property to precisely control the appearance of numbers within your UI. This is crucial for presenting data like prices, dates, or statistics consistently and legibly across various web fonts. Whether you need old-style figures for body text, tabular figures for perfect column alignment, or diagonal fractions for a polished look, 'font-variant-numeric' significantly enhances user experience without relying on image assets or complex JavaScript.",
+        "css_snippet": "/* Align numbers perfectly in tables or data grids */\n.data-table, .price-list {\n  font-variant-numeric: tabular-nums;\n  /* Ensures all numbers occupy the same horizontal space */\n}\n\n/* Display elegant, stacked fractions */\n.article-content .fraction {\n  font-variant-numeric: diagonal-fractions;\n  /* Transforms '1/2' into a proper typographic fraction */\n}\n\n/* Use classic, varying-height numbers in body text for aesthetic flow */\n.body-text {\n  font-variant-numeric: old-style-nums;\n  /* 'old-style-nums' gives a more traditional, calligraphic feel */\n}\n\n/* Combine features for specific UI elements */\n.product-specs {\n  font-variant-numeric: old-style-nums slashed-zero;\n  /* Old-style for elegance, slashed-zero to distinguish '0' from 'O' */\n}",
+        "date": "October 03, 2026"
+    },
+    {
         "title": "Elevate UI Readability: Master CSS 'font-kerning' for Precise Web Font Typography",
         "slug": "elevate-ui-readability-master-css-font-kerning-for-precise-web-font-typography",
         "tweet": "Give your UI text a professional polish! Discover how CSS 'font-kerning' fine-tunes letter spacing for superior web font aesthetics & improved user experience. #CSSTypography #WebFonts #UIDesign #UserExperience",
