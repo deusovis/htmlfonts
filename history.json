@@ -1,5 +1,13 @@
 [
     {
+        "title": "Master Variable Font Width: Dynamic Text Adapts with \"font-variation-settings\" for Responsive UI",
+        "slug": "master-variable-font-width-dynamic-text-adapts-with-font-variation-settings-for-responsive-ui",
+        "tweet": "Revolutionize responsive typography! Learn how to use CSS 'font-variation-settings' with variable fonts to dynamically adjust text width, enhancing UI readability & design on any screen. #CSSTypography #WebFonts #UIDesign #UXTips",
+        "tip": "Leverage the power of variable fonts by mastering the CSS \"font-variation-settings\" property. Unlike traditional fonts with fixed styles, variable fonts allow granular control over various typographic axes. Specifically, manipulating the 'wdth' (width) axis can dramatically improve responsive UI design. By subtly adjusting text width based on screen size, container constraints, or even content density, you can optimize line length, prevent orphans/widows, and ensure text fits elegantly without resorting to aggressive font-size changes. This technique offers unparalleled typographic flexibility, making your web content more adaptable and user-friendly across diverse viewing environments. Always verify your chosen variable font supports the 'wdth' axis and its available range.",
+        "css_snippet": "@font-face {\n  font-family: 'Outfit VF';\n  src: url('/fonts/Outfit-VariableFont.woff2') format('woff2-variations');\n  font-weight: 100 900; /* Defines the 'wght' axis range */\n  font-stretch: 75% 125%; /* Defines the 'wdth' axis range */\n}\n\nbody {\n  font-family: 'Outfit VF', sans-serif;\n  /* Default font width, typically 100 or 'normal' within the font's design space */\n  font-variation-settings: 'wdth' 100;\n}\n\n/* Adjust font width for smaller screens for better text flow */\n@media (max-width: 768px) {\n  p {\n    /* Slightly condensed text for tighter spaces */\n    font-variation-settings: 'wdth' 90;\n  }\n}\n\n/* Expand font width for larger, ample spaces */\n.hero-headline {\n  font-size: clamp(3rem, 8vw, 6rem);\n  /* Broader letters for a more open, impactful headline */\n  font-variation-settings: 'wdth' 120;\n  line-height: 1.1;\n}",
+        "date": "October 04, 2026"
+    },
+    {
         "title": "Elevate UI Data Readability: Master CSS 'font-variant-numeric' for Precision Web Font Typography",
         "slug": "elevate-ui-data-readability-master-css-font-variant-numeric-for-precision-web-font-typography",
         "tweet": "Boost your UI's data readability! Discover how CSS 'font-variant-numeric' refines web font typography for superior user experience with tabular figures and elegant fractions. #CSSTypography #WebFonts #UIDesign #UserExperience",
