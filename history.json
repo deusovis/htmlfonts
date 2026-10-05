@@ -1,5 +1,13 @@
 [
     {
+        "title": "Unlock Advanced Typography: Master CSS 'font-feature-settings' for Precision Web Fonts",
+        "slug": "unlock-advanced-typography-master-css-font-feature-settings-for-precision-web-fonts",
+        "tweet": "Elevate your web typography! Master CSS 'font-feature-settings' to unlock advanced OpenType features like ligatures, stylistic sets & old-style figures for superior UI design & UX. #CSSTypography #WebFonts #UIDesign",
+        "tip": "Elevate your web typography by directly controlling advanced OpenType features with CSS 'font-feature-settings'. This powerful property allows you to enable features like discretionary ligatures (\"dlig\"), stylistic sets (\"ss01\" to \"ss20\"), small caps (\"smcp\"), and various numeral styles (e.g., old-style figures \"onum\", tabular lining figures \"tnum\"). Judicious use of these features can dramatically improve text aesthetics, readability, and overall UI professionalism, especially in detailed content or branding. Always verify your chosen font supports the features and test across browsers for consistent user experience.",
+        "css_snippet": ".heading-fancy {\n  font-family: \"Playfair Display\", serif; /* Requires a font with OpenType features */\n  font-feature-settings: \"dlig\" 1, \"ss01\" 1; /* Enable discretionary ligatures & stylistic set 1 */\n  letter-spacing: -0.01em; /* Fine-tune spacing for aesthetic impact */\n}\n\n.data-table-numbers {\n  font-family: \"Inter\", sans-serif; /* A font known for good numeral features */\n  font-feature-settings: \"tnum\" 1, \"lnum\" 1; /* Ensure tabular lining numbers for alignment */\n  /* Values can be '1' or 'on' */\n}",
+        "date": "October 05, 2026"
+    },
+    {
         "title": "Master Variable Font Width: Dynamic Text Adapts with \"font-variation-settings\" for Responsive UI",
         "slug": "master-variable-font-width-dynamic-text-adapts-with-font-variation-settings-for-responsive-ui",
         "tweet": "Revolutionize responsive typography! Learn how to use CSS 'font-variation-settings' with variable fonts to dynamically adjust text width, enhancing UI readability & design on any screen. #CSSTypography #WebFonts #UIDesign #UXTips",
