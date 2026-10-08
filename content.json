@@ -1,8 +1,8 @@
 {
-    "title": "Master CSS 'text-rendering' for Crisp Web Fonts & Consistent UI Display",
-    "slug": "master-css-text-rendering-for-crisp-web-fonts-consistent-ui-display",
-    "tweet": "Enhance web font clarity & UI consistency across browsers! Discover CSS 'text-rendering' for pixel-perfect typography. #CSSTypography #WebFonts #UIDesign #UX",
-    "tip": "Optimize web font rendering with 'text-rendering: optimizeLegibility;' to prioritize beautiful character spacing and ligatures. For pixel-perfect consistency, consider '-webkit-font-smoothing: antialiased;' and '-moz-osx-font-smoothing: grayscale;' to ensure text looks sharp across diverse browsers and OS environments, significantly boosting user experience.",
-    "css_snippet": "body {\n  text-rendering: optimizeLegibility; /* Balances speed and legibility, enabling advanced typographic features */\n  -webkit-font-smoothing: antialiased; /* For WebKit/Blink browsers to render text with anti-aliasing */\n  -moz-osx-font-smoothing: grayscale; /* For macOS Firefox, making text lighter and sharper */\n  /* font-smooth: antialiased; /* Older Firefox support, generally superseded by -moz-osx-font-smoothing */\n}",
-    "date": "October 07, 2026"
+    "title": "Mastering CSS 'white-space' for Responsive UI & Clean Web Font Display",
+    "slug": "mastering-css-white-space-for-responsive-ui-clean-web-font-display",
+    "tweet": "Struggling with text wrapping in your UI? Learn how CSS 'white-space' can transform your web fonts & user experience. A must-read for clean typography! #CSSTypography #UIDesign #WebFonts",
+    "tip": "Properly utilizing the 'white-space' property prevents unwanted text wrapping or ensures text gracefully flows within its container, greatly enhancing UI consistency and overall user experience, especially with custom web fonts. Use 'nowrap' for single-line elements like navigation items to prevent breaks, or 'pre-wrap' for preserving formatting in user-generated content without overflow issues.",
+    "css_snippet": "/* Example 1: Prevent text wrapping in a header or navigation item */\n.headline {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis; /* Ensures graceful truncation for long text */\n  font-family: 'Montserrat', sans-serif; /* Example web font */\n}\n\n/* Example 2: Preserve pre-formatted text while allowing wrapping for readability */\n.code-block {\n  white-space: pre-wrap; /* Preserves spaces and line breaks, allows wrapping */\n  word-break: break-all; /* Prevents overflow of very long words/lines */\n  font-family: 'Roboto Mono', monospace; /* Monospaced web font */\n}",
+    "date": "October 08, 2026"
 }
