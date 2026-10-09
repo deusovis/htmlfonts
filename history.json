@@ -1,5 +1,13 @@
 [
     {
+        "title": "Master CSS 'letter-spacing' for Optimal Web Typography & UI Readability",
+        "slug": "master-css-letter-spacing-for-optimal-web-typography-ui-readability",
+        "tweet": "Elevate your web typography! Discover how mastering CSS 'letter-spacing' improves visual harmony & readability across all devices. Boost UI/UX instantly. #CSSTypography #WebFonts #UIDesign",
+        "tip": "Fine-tuning 'letter-spacing' (also known as 'tracking') is crucial for legibility, especially with various font families and sizes. Overly tight or loose spacing can hinder readability. Use subtle adjustments for headings and larger text to enhance visual appeal, and slightly open up spacing for smaller text blocks to improve distinction between characters. Always test across different devices and font sizes to ensure optimal user experience. Remember that proportional adjustments are key to maintaining a balanced aesthetic.",
+        "css_snippet": "h1 {\n  letter-spacing: -0.03em; /* Slightly tight for large headings */\n}\n\np {\n  letter-spacing: 0.01em; /* Slightly open for body text */\n  font-size: 1rem;\n}\n\n.small-text {\n  letter-spacing: 0.02em; /* More open for very small text */\n  font-size: 0.8rem;\n}",
+        "date": "October 09, 2026"
+    },
+    {
         "title": "Mastering CSS 'white-space' for Responsive UI & Clean Web Font Display",
         "slug": "mastering-css-white-space-for-responsive-ui-clean-web-font-display",
         "tweet": "Struggling with text wrapping in your UI? Learn how CSS 'white-space' can transform your web fonts & user experience. A must-read for clean typography! #CSSTypography #UIDesign #WebFonts",
