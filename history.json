@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate Web Fonts: Master CSS 'font-optical-sizing' for Responsive UI Readability",
+        "slug": "elevate-web-fonts-master-css-font-optical-sizing-for-responsive-ui-readability",
+        "tweet": "Boost #WebFonts legibility across all sizes! Learn how CSS 'font-optical-sizing' intelligently adjusts type for ultimate #UIDesign & #UX. Essential for better #CSSTypography.",
+        "tip": "To achieve superior web font clarity, especially with responsive designs, utilize 'font-optical-sizing: auto;'. This CSS property allows compatible variable fonts to subtly adjust their forms for improved legibility at different point sizes, ensuring your UI text looks crisp and balanced whether large or small. It's a game-changer for detailed typography and visual consistency, enhancing user experience without manual adjustments.",
+        "css_snippet": "body {\n    font-family: \"Inter\", sans-serif; /* Requires a variable font with an 'opsz' (optical size) axis */\n    font-optical-sizing: auto; /* Enables automatic optical sizing based on font-size */\n}\n\nh1 {\n    font-size: 3.5rem; /* Large text will be optically adjusted for large sizes */\n    /* font-optical-sizing: auto; is inherited here */\n}\n\np {\n    font-size: 1rem; /* Small text will be optically adjusted for small sizes */\n    /* font-optical-sizing: auto; is inherited here */\n}",
+        "date": "October 10, 2026"
+    },
+    {
         "title": "Master CSS 'letter-spacing' for Optimal Web Typography & UI Readability",
         "slug": "master-css-letter-spacing-for-optimal-web-typography-ui-readability",
         "tweet": "Elevate your web typography! Discover how mastering CSS 'letter-spacing' improves visual harmony & readability across all devices. Boost UI/UX instantly. #CSSTypography #WebFonts #UIDesign",
