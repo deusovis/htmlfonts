@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Readability: Optimize CSS 'line-height' for Seamless Web Font Experience",
+        "slug": "elevate-ui-readability-optimize-css-line-height-for-seamless-web-font-experience",
+        "tweet": "Boost your UI's #UserExperience! Learn how to fine-tune CSS 'line-height' for impeccable #WebFonts & #CSSTypography. Make your text a joy to read. Dive into our latest guide! #UIDesign #TypographyTips",
+        "tip": "For superior #CSSTypography & #UIDesign, always use unitless values for 'line-height' (e.g., 1.6) so it scales proportionally with 'font-size'. This ensures consistent readability across various screen sizes and #WebFonts, significantly improving #UserExperience.",
+        "css_snippet": "body {\n    font-family: 'Inter', sans-serif;\n    font-size: 18px;\n    line-height: 1.6; /* Unitless for scalability */\n}\n\n@media (max-width: 768px) {\n    body {\n        font-size: 16px;\n        line-height: 1.5; /* Slightly tighter on smaller screens */\n    }\n}\n\nh1 {\n    line-height: 1.1; /* Tighter line-height for headings */\n    font-weight: 700;\n}",
+        "date": "October 11, 2026"
+    },
+    {
         "title": "Elevate Web Fonts: Master CSS 'font-optical-sizing' for Responsive UI Readability",
         "slug": "elevate-web-fonts-master-css-font-optical-sizing-for-responsive-ui-readability",
         "tweet": "Boost #WebFonts legibility across all sizes! Learn how CSS 'font-optical-sizing' intelligently adjusts type for ultimate #UIDesign & #UX. Essential for better #CSSTypography.",
