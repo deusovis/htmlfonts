@@ -1,5 +1,13 @@
 [
     {
+        "title": "Optimize Web Font Loading: Master CSS 'font-display' for Superior UI & User Experience",
+        "slug": "optimize-web-font-loading-master-css-font-display-for-superior-ui-user-experience",
+        "tweet": "Improve your website's perceived performance and UI stability! Learn how CSS 'font-display' optimizes web font loading for a smoother user experience. #WebFonts #CSS #UX",
+        "tip": "To prevent layout shifts (CLS) and ensure a consistent UI, strategically use 'font-display: swap;' for primary content fonts. This shows fallback text immediately and swaps once the web font loads, minimizing blank text (FOIT). For critical icons or very fast loading fonts, consider 'block' or 'fallback' to minimize invisible text while gracefully preventing Flash of Unstyled Text (FOUT). Always test different values for optimal perceived performance.",
+        "css_snippet": "@font-face {\n  font-family: 'Inter';\n  src: url('/fonts/Inter-Regular.woff2') format('woff2');\n  font-weight: 400;\n  font-style: normal;\n  font-display: swap; /* Recommended for most content fonts */\n}\n\n@font-face {\n  font-family: 'Open Sans';\n  src: url('/fonts/OpenSans-Bold.woff2') format('woff2');\n  font-weight: 700;\n  font-style: normal;\n  font-display: fallback; /* Offers a small block period then swaps */\n}\n\n/* For critical elements where a brief FOIT is acceptable to ensure correct icon rendering quickly */\n@font-face {\n  font-family: 'IconFont';\n  src: url('/fonts/IconFont.woff2') format('woff2');\n  font-weight: 400;\n  font-style: normal;\n  font-display: block; /* Blocks rendering for a short period until loaded */\n}",
+        "date": "October 12, 2026"
+    },
+    {
         "title": "Elevate UI Readability: Optimize CSS 'line-height' for Seamless Web Font Experience",
         "slug": "elevate-ui-readability-optimize-css-line-height-for-seamless-web-font-experience",
         "tweet": "Boost your UI's #UserExperience! Learn how to fine-tune CSS 'line-height' for impeccable #WebFonts & #CSSTypography. Make your text a joy to read. Dive into our latest guide! #UIDesign #TypographyTips",
