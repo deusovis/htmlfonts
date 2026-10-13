@@ -1,5 +1,13 @@
 [
     {
+        "title": "Mastering CSS 'text-align' & 'text-align-last' for Refined Web Typography and UI Readability",
+        "slug": "mastering-css-text-align-text-align-last-for-refined-web-typography-and-ui-readability",
+        "tweet": "Elevate your #WebTypography & #UIDesign! Dive deep into CSS 'text-align' and 'text-align-last' to create balanced, readable text blocks. Improve user experience with perfect justification. #CSS #WebFonts",
+        "tip": "Beyond basic 'text-align: justify', leverage 'text-align-last' to precisely control the final line's alignment in a justified text block. Setting it to 'start' or 'center' prevents awkward single words from stretching, significantly enhancing visual balance and #WebFonts readability in your #UIDesign for a superior #UserExperience.",
+        "css_snippet": ".article-paragraph {\n  text-align: justify;\n  text-align-last: start; /* Options: start, end, center, justify (default) */\n  margin-bottom: 1em;\n  font-family: \"Merriweather\", serif; /* Example web font */\n  font-size: 1.125rem;\n  line-height: 1.6;\n  max-width: 65ch; /* Optimal line length for readability */\n  color: #333;\n  /* Adding soft hyphens for better justification, if not globally applied */\n  -webkit-hyphens: auto;\n  -ms-hyphens: auto;\n  hyphens: auto;\n  word-break: normal;\n}",
+        "date": "October 13, 2026"
+    },
+    {
         "title": "Optimize Web Font Loading: Master CSS 'font-display' for Superior UI & User Experience",
         "slug": "optimize-web-font-loading-master-css-font-display-for-superior-ui-user-experience",
         "tweet": "Improve your website's perceived performance and UI stability! Learn how CSS 'font-display' optimizes web font loading for a smoother user experience. #WebFonts #CSS #UX",
