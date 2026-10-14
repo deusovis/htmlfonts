@@ -1,5 +1,13 @@
 [
     {
+        "title": "Elevate UI Readability: Master CSS 'text-underline-offset' & 'text-decoration-thickness' for Modern Web Fonts",
+        "slug": "elevate-ui-readability-master-css-text-underline-offset-text-decoration-thickness-for-modern-web-fonts",
+        "tweet": "Beyond basic underlines! Boost #UI design & #UX with modern CSS 'text-underline-offset' & 'text-decoration-thickness'. Fine-tune web font aesthetics for superior readability. #CSSTypography #WebFonts",
+        "tip": "Default browser underlines often clash with web font descenders, hindering readability and UI elegance. Master 'text-underline-offset' to precisely control the underline's vertical position relative to the text, preventing overlap. Pair it with 'text-decoration-thickness' to adjust the underline's stroke weight, ensuring it complements your chosen web fonts without being too heavy or too light. This subtle refinement significantly enhances perceived quality and user experience across your UI.",
+        "css_snippet": "/* Refine link underlines for superior UI aesthetics */\na {\n  text-decoration: underline; /* Ensure underline is present */\n  text-decoration-color: var(--link-color, #007bff); /* Custom color */\n  text-decoration-thickness: 0.08em; /* Thinner line, relative to font-size */\n  text-underline-offset: 0.2em; /* Lift the underline slightly from descenders */\n}\n\n/* Apply to emphasized text or headings for consistency */\nh2.emphasized span {\n  text-decoration: underline;\n  text-decoration-thickness: 0.06em; /* Even finer for larger text */\n  text-underline-offset: 0.15em;\n  text-decoration-style: solid; /* Or 'wavy', 'double', 'dotted', 'dashed' */\n}",
+        "date": "October 14, 2026"
+    },
+    {
         "title": "Mastering CSS 'text-align' & 'text-align-last' for Refined Web Typography and UI Readability",
         "slug": "mastering-css-text-align-text-align-last-for-refined-web-typography-and-ui-readability",
         "tweet": "Elevate your #WebTypography & #UIDesign! Dive deep into CSS 'text-align' and 'text-align-last' to create balanced, readable text blocks. Improve user experience with perfect justification. #CSS #WebFonts",
