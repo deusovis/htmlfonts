@@ -1,5 +1,13 @@
 [
     {
+        "title": "Unleash Variable Fonts: Master CSS 'font-variation-settings' for Dynamic UI Typography",
+        "slug": "unleash-variable-fonts-master-css-font-variation-settings-for-dynamic-ui-typography",
+        "tweet": "Revolutionize your UI with variable fonts! Discover how CSS 'font-variation-settings' offers unparalleled control over typography, enhancing user experience and design flexibility. #CSS #WebFonts #UIDesign #Typography",
+        "tip": "Leverage CSS 'font-variation-settings' to finely tune variable font axes like weight ('wght'), width ('wdth'), or custom axes (e.g., 'slnt' for slant). This allows for precise typographic adjustments without needing multiple font files, drastically improving performance and design adaptability across different screen sizes and user preferences. Experiment with ranges to create subtle yet impactful dynamic typefaces, optimizing for both readability and visual impact in your UI design.",
+        "css_snippet": "@font-face {\n    font-family: 'Inter Variable';\n    src: url('Inter-roman.var.woff2') format('woff2');\n    font-weight: 100 900; /* Define the range of available weights */\n    font-display: swap;\n}\n\n.hero-title {\n    font-family: 'Inter Variable', sans-serif;\n    font-variation-settings: 'wght' 700, 'wdth' 100; /* Specific weight and width */\n    font-size: 3.5rem;\n    line-height: 1.1;\n}\n\n.body-text {\n    font-family: 'Inter Variable', sans-serif;\n    font-variation-settings: 'wght' 400;\n    font-size: 1.125rem;\n    line-height: 1.6;\n}\n\n@media (max-width: 768px) {\n    .hero-title {\n        font-variation-settings: 'wght' 600, 'wdth' 90; /* Adjust for smaller screens */\n        font-size: 2.5rem;\n    }\n}",
+        "date": "October 15, 2026"
+    },
+    {
         "title": "Elevate UI Readability: Master CSS 'text-underline-offset' & 'text-decoration-thickness' for Modern Web Fonts",
         "slug": "elevate-ui-readability-master-css-text-underline-offset-text-decoration-thickness-for-modern-web-fonts",
         "tweet": "Beyond basic underlines! Boost #UI design & #UX with modern CSS 'text-underline-offset' & 'text-decoration-thickness'. Fine-tune web font aesthetics for superior readability. #CSSTypography #WebFonts",
