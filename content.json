@@ -1,8 +1,8 @@
 {
-    "title": "Master CSS 'clamp()' for Fluid Responsive Typography & Superior UI Experience",
-    "slug": "master-css-clamp-for-fluid-responsive-typography-superior-ui-experience",
-    "tweet": "Achieve truly responsive text with CSS 'clamp()'! Say goodbye to breakpoint headaches and hello to dynamic, user-friendly typography that adapts seamlessly. #CSSTypography #UIDesign #WebFonts #UserExperience",
-    "tip": "CSS 'clamp()' is a powerful function for setting responsive font sizes, ensuring fluid scaling that adapts beautifully to different screen sizes. It takes three values: a minimum size, a preferred size (often using viewport units like 'vw'), and a maximum size. This allows your text to grow and shrink proportionally, but never fall below your minimum or exceed your maximum, greatly enhancing UI consistency and user experience without complex media queries. Pair it with 'rem' for accessibility and consistency across your web fonts.",
-    "css_snippet": "/* Example for a headline */\nh1 {\n  font-size: clamp(2rem, 5vw + 1rem, 4rem);\n  line-height: 1.2;\n}\n\n/* Example for body text */\np {\n  font-size: clamp(1rem, 1.5vw + 0.5rem, 1.25rem);\n  line-height: 1.6;\n}",
-    "date": "October 16, 2026"
+    "title": "Typography Tip Oct 17",
+    "slug": "typography-tip-oct-17",
+    "tweet": "Check out today's CSS typography tip! #webdesign #css",
+    "tip": "To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.",
+    "css_snippet": "body {\n  line-height: 1.5;\n}",
+    "date": "October 17, 2026"
 }
