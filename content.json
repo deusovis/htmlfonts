@@ -1,8 +1,8 @@
 {
-    "title": "Typography Tip Nov 05",
-    "slug": "typography-tip-nov-05",
+    "title": "Typography Tip Nov 06",
+    "slug": "typography-tip-nov-06",
     "tweet": "Check out today's CSS typography tip! #webdesign #css",
     "tip": "To maintain a clean vertical rhythm, always use unitless line-heights in your CSS.",
     "css_snippet": "body {\n  line-height: 1.5;\n}",
-    "date": "November 05, 2026"
+    "date": "November 06, 2026"
 }
